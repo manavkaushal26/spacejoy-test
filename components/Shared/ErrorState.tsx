@@ -18,4 +18,4 @@ const ErrorState = ({ status }: { status: number }): JSX.Element => {
   );
 };
 
-export default ErrorState;
+export default React.memo(ErrorState);

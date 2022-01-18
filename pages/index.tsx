@@ -131,7 +131,7 @@ export const Home = (): JSX.Element => {
           {/* Section Start */}
           <div className="container mx-auto px-20 my-40">
             <div className="flex justify-between items-center">
-              <div className="w-1/2 mr-32">
+              <div className="relative w-1/2 mr-32">
                 <div className="aspect-w-1 aspect-h-1 rounded-xl bg-gray-100">
                   <Image
                     src="https://images.unsplash.com/photo-1611175140153-bfd26338ff0d?auto=format&fit=crop&w=1000&q=80"
@@ -141,6 +141,9 @@ export const Home = (): JSX.Element => {
                     placeholder="blur"
                     blurDataURL={blurredBgProduct}
                   />
+                </div>
+                <div className="absolute bottom-10 bg-red-200 mx-auto width-32">
+                  <h3>Design Name</h3>
                 </div>
               </div>
               <div className="flex-1">
