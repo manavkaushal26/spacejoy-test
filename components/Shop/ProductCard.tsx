@@ -12,12 +12,13 @@ type ProductCardType = {
     displayPrice?: string;
     price: number;
     msrp: number;
+    slug?: string;
   };
 };
 
 const ProductCard = ({ product }: ProductCardType) => (
   <div>
-    <Link href={`/product-view/${product?._id}`}>
+    <Link href={`/product-view/${product?.slug}`}>
       <a>
         <div className="bg-white p-4 2xl:p-8 rounded-lg h-full">
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">

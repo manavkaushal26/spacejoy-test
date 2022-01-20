@@ -463,7 +463,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
+  const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
   const { data, statusCode } = response;
 
   return statusCode < 300 ? { props: { product: data } } : { notFound: true };
