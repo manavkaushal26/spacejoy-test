@@ -34,7 +34,10 @@
     "react-scrollmagic": "^2.3.0",
     "react-share": "^4.4.0",
     "react-slick": "^0.28.1",
-    "sharp": "^0.29.2"
+    "react-stripe-elements": "^6.1.2",
+    "sharp": "^0.29.2",
+    "swr": "^1.1.2",
+    "zustand": "^3.6.8"
   },
   "devDependencies": {
     "@headlessui/react": "^1.4.1",

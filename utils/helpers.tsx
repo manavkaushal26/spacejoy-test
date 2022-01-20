@@ -1,5 +1,6 @@
 function debounce(func, wait) {
   let timeout;
+
   return function x(...args) {
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => {
@@ -19,4 +20,7 @@ function arraysEqual(a, b) {
 
   return true;
 }
-export { debounce, arraysEqual };
+const isDigit = (str) => {
+  return /^\d+$/.test(str);
+};
+export { debounce, arraysEqual, isDigit };

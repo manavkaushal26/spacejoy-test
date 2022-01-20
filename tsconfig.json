@@ -22,9 +22,17 @@
       "@utils/*": ["./utils/*"],
       "@mocks/*": ["./mocks/*"],
       "@public/*": ["./public/*"],
-      "@store/*": ["./store/*"]
+      "@store/*": ["./store/*"],
+      "@lib/*": ["./lib/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/affirm.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "utils/affirm.js",
+    "lib/store.js",
+    "components/Payment/AffirmPayment.jsx"
+  ],
   "exclude": ["node_modules"]
 }

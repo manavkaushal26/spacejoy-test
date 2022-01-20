@@ -9,6 +9,7 @@ interface FetcherArgs {
   isSocket?: boolean;
   ctx?: NextPageContext | GetServerSidePropsContext;
   body?: any;
+  hasBaseUrl?: boolean;
 }
 
 const fetcher = async ({
@@ -17,8 +18,10 @@ const fetcher = async ({
   body,
   isSocket = false,
   type = 'text',
+  hasBaseUrl = false,
 }: FetcherArgs): Promise<Record<string, any>> => {
-  const JWT = '';
+  const JWT =
+    'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjQwNjkyMjAzLCJleHAiOjE2NDkzMzIyMDN9.wjw4xkyCpPT9JNw9eqyLWsBoJ8wNmoUW7zaDRzZDUUg';
   const contentType = type === 'file' ? '' : 'application/json';
 
   const headers = JWT ? { 'Content-Type': contentType, Authorization: JWT } : { 'Content-Type': contentType };
@@ -41,7 +44,7 @@ const fetcher = async ({
           body: type === 'file' ? getFileBody() : JSON.stringify(body),
         };
   const finalAPIBaseUrl = isSocket ? page.apiSocketUrl : page.apiBaseUrl;
-  const response = await fetch(finalAPIBaseUrl + endPoint, options);
+  const response = await fetch(hasBaseUrl ? endPoint : finalAPIBaseUrl + endPoint, options);
   if (response.status) {
     try {
       if (response.status === 204) {

@@ -1,5 +1,6 @@
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
+import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import { Disclosure } from '@headlessui/react';
@@ -14,6 +15,7 @@ import {
 } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import useBoolean from '@hooks/useBoolean';
+import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
 import fetcher from '@utils/fetcher';
@@ -21,8 +23,9 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import shallow from 'zustand/shallow';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 const entry = keyframes`
@@ -79,9 +82,56 @@ const renderFeatureSection = (description) => {
 
 const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
+
   const productImages = useMemo(() => {
     return [...(product?.renderImages || []), ...product?.productImages];
   }, [product]);
+
+  const [localProductQuantity, setLocalProductQuantity] = useState(1);
+
+  const incrementQty = () => {
+    setLocalProductQuantity((localProductQuantity) => localProductQuantity + 1);
+  };
+  const decrementQty = () => {
+    setLocalProductQuantity(localProductQuantity ? localProductQuantity - 1 : 0);
+  };
+
+  const { modifyCart, cart } = useStore(
+    (store) => ({
+      modifyCart: store.modifyCart,
+      cart: store.cart,
+    }),
+    shallow
+  );
+
+  const updateCart = async () => {
+    const {
+      _id,
+      retailer: { _id: brand },
+    } = product;
+    const { cartItems } = cart;
+    const quantity =
+      !cartItems[brand] || !cartItems[brand].products[product._id]
+        ? localProductQuantity
+        : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
+
+    await fetcher({
+      endPoint: '/v1/cart',
+      method: 'POST',
+      body: {
+        items: [
+          {
+            productId: product?._id,
+            quantity,
+            projectId: '',
+            designId: '',
+          },
+        ],
+      },
+    });
+
+    modifyCart(product, localProductQuantity, 'add');
+  };
 
   return (
     <Layout>
@@ -264,19 +314,22 @@ const ProductView = ({ product }): JSX.Element => {
                     <button
                       type="button"
                       className="group hover:shadow-lg text-base text-gray-900 py-3 px-3 rounded-xl bg-white font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                      onClick={decrementQty}
                     >
                       <MinusSmIcon className="w-6 h-6" />
                     </button>
-                    <p className="py-3 px-2">1</p>
+                    <p className="py-3 px-2">{localProductQuantity}</p>
                     <button
                       type="button"
                       className="group hover:shadow-lg text-base text-gray-900 py-3 px-3 rounded-xl bg-white font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                      onClick={incrementQty}
                     >
                       <PlusSmIcon className="w-6 h-6" />
                     </button>
                     <button
                       type="button"
                       className="group shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-xl bg-gray-900 font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      onClick={updateCart}
                     >
                       Add to bag
                     </button>
@@ -294,6 +347,7 @@ const ProductView = ({ product }): JSX.Element => {
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
                 )}
+                <DeliveryTimeline productId={product?._id} />
                 <Disclosure defaultOpen>
                   {({ open }) => (
                     <>

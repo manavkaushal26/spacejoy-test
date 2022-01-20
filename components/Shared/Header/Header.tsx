@@ -1,9 +1,11 @@
 import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 import ShopCategories from '@components/Shared/ShopCategories';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
+import { useStore } from '@lib/store';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useMemo, useState } from 'react';
+import shallow from 'zustand/shallow';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
 
@@ -51,6 +53,13 @@ const Header: React.FC = () => {
   const isSubNavHover = useMemo(() => {
     return subNavContent === 'shop' ? true : false;
   }, [subNavContent]);
+
+  const { cart } = useStore(
+    (store) => ({
+      cart: store.cart,
+    }),
+    shallow
+  );
 
   return (
     <>
@@ -164,10 +173,13 @@ const Header: React.FC = () => {
                   <SearchIcon className="inline h-4 w-4" />
                 </a>
               </Link>
-              <Link href="/shop">
-                <a className="text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border border-transparent hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none">
+              <Link href="/cart">
+                <a className="text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border border-transparent hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none relative ">
                   <span className="sr-only">Shopping</span>
                   <ShoppingBagIcon className="inline h-4 w-4" />
+                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full">
+                    {cart?.count || 0}
+                  </span>
                 </a>
               </Link>
               <Link href="/new-project">

@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { affirm, affirm as config } from '@utils/config';
+import { affirm as config } from '@utils/config';
 
 const _affirm_config = {
   public_api_key: config.key,
