@@ -100,46 +100,9 @@ const Header: React.FC = () => {
                           router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
                         }`}
                       >
-                        Ideas
+                        Design Your Space
                       </a>
                     </Link>
-                  </li>
-                  <li className="inline-block">
-                    <Link href="/collection">
-                      <a
-                        className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/collection' ? 'text-red-600' : 'text-gray-900'
-                        }`}
-                      >
-                        Collection
-                      </a>
-                    </Link>
-                  </li>
-                  <li className="flex">
-                    <button
-                      type="button"
-                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                        isOpenSubNav && subNavContent === 'stories' ? 'text-red-500' : 'text-gray-700'
-                      }`}
-                      onClick={
-                        isOpenSubNav
-                          ? () => {
-                              closeSubNav();
-                              setSubNavContent('');
-                            }
-                          : () => {
-                              openSubNav();
-                              setSubNavContent('stories');
-                            }
-                      }
-                    >
-                      Stories{' '}
-                      <ChevronDownIcon
-                        className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
-                          isOpenSubNav && subNavContent === 'stories' ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
                   </li>
                   <li className="inline-block">
                     <Link href="/pricing">
@@ -148,18 +111,7 @@ const Header: React.FC = () => {
                           router.asPath === '/pricing' ? 'text-red-600' : 'text-gray-900'
                         }`}
                       >
-                        Pricing
-                      </a>
-                    </Link>
-                  </li>
-                  <li className="inline-block">
-                    <Link href="/help">
-                      <a
-                        className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/help' ? 'text-red-600' : 'text-gray-900'
-                        }`}
-                      >
-                        Help
+                        Hire a Designer
                       </a>
                     </Link>
                   </li>
@@ -171,7 +123,6 @@ const Header: React.FC = () => {
                     }}
                     onMouseLeave={() => {
                       closeSubNav();
-                      // setSubNavContent('');
                     }}
                   >
                     <button
@@ -187,6 +138,17 @@ const Header: React.FC = () => {
                         }`}
                       />
                     </button>
+                  </li>
+                  <li className="inline-block">
+                    <Link href="/interior-designs">
+                      <a
+                        className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                          router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
+                        }`}
+                      >
+                        Explore Ideas
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

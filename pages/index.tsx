@@ -1,10 +1,14 @@
 import { Hero3 } from '@components/Home';
 import HomeSectionTitle from '@components/Home/Hero/HomeSectionTitle';
 import OutputGallery from '@components/Home/OutputGallery';
+import Carousel, { position } from '@components/Shared/Carousel';
 import Layout from '@components/Shared/Layout';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import { ArrowRightIcon } from '@heroicons/react/outline';
-import { blurredBgProduct } from '@public/images/bg-base-64';
+import { StarIcon } from '@heroicons/react/solid';
+import TeamData from '@mocks/DesignTeamData';
+import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
+import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import Image from 'next/image';
 import React from 'react';
@@ -132,19 +136,30 @@ export const Home = (): JSX.Element => {
           <div className="container mx-auto px-20 my-40">
             <div className="flex justify-between items-center">
               <div className="relative w-1/2 mr-32">
-                <div className="aspect-w-1 aspect-h-1 rounded-xl bg-gray-100">
-                  <Image
-                    src="https://images.unsplash.com/photo-1611175140153-bfd26338ff0d?auto=format&fit=crop&w=1000&q=80"
-                    alt="image 1"
-                    className="w-full h-full object-center object-cover rounded-xl"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-                <div className="absolute bottom-10 bg-red-200 mx-auto width-32">
-                  <h3>Design Name</h3>
-                </div>
+                <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
+                  {TeamData.map((item) => (
+                    <div key={item.lastName}>
+                      <div className="aspect-w-1 aspect-h-1 rounded-3xl">
+                        <Image
+                          src={`https://res.cloudinary.com/spacejoy/${item.bg}`}
+                          alt="image 1"
+                          className="w-full h-full object-center object-cover rounded-3xl"
+                          layout="fill"
+                          placeholder="blur"
+                          blurDataURL={blurredBgImage}
+                        />
+                        <div className="top-auto bottom-40 flex items-end justify-center">
+                          <div className="text-center">
+                            <h2 className="text-gray-50 font-bold text-2xl">
+                              {item.firstName} {item.lastName}
+                            </h2>
+                            <p className="text-white mt-2">Design Expert</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Carousel>
               </div>
               <div className="flex-1">
                 <HomeSectionTitle className="text-left">
@@ -249,6 +264,64 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
+            </div>
+            <div className="text-center mt-4">
+              <button
+                type="button"
+                className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+              >
+                Explore Categories
+              </button>
+            </div>
+          </div>
+          <div className="container mx-auto px-4 mb-40">
+            <HomeSectionTitle className="text-center">
+              <HomeSectionTitle.MainTitle>
+                Every room has <span className="text-red-500">a story</span>
+              </HomeSectionTitle.MainTitle>
+              <HomeSectionTitle.Description align="center">
+                See how our customers furnished their space with Spacejoy
+              </HomeSectionTitle.Description>
+            </HomeSectionTitle>
+            <div className="mt-8">
+              <Carousel centerPadding="0%" centerMode customButtons slidesToShow={4} position={position.outside}>
+                {TestimonialData.map((item) => (
+                  <div key={item.id} className="h-full">
+                    <div className="rounded-3xl border border-gray-300 h-full m-4 p-4 2xl:p-8">
+                      <div className="flex justify-between">
+                        <div className="flex">
+                          {[...new Array(5)].map((_d, i) => (
+                            <StarIcon key={`star-${i}`} className="w-6 h-6 text-gray-700" />
+                          ))}
+                        </div>
+                        <div>
+                          <p>{item?.roomType}</p>
+                        </div>
+                      </div>
+                      <div className="my-8">
+                        <p className="text-sm leading-relaxed">{item?.description}</p>
+                      </div>
+                      <div className="flex space-x-4 items-center">
+                        <div>
+                          <Image
+                            src={`https://res.cloudinary.com/spacejoy/${item?.dp}`}
+                            alt="image 1"
+                            className="w-full h-full object-center object-cover rounded-3xl"
+                            height={62}
+                            width={62}
+                            placeholder="blur"
+                            blurDataURL={blurredBgImage}
+                          />
+                        </div>
+                        <div>
+                          <h3>{item?.name}</h3>
+                          <p className="text-gray-400 text-sm">{item?.address}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
             </div>
           </div>
         </Layout.Body>

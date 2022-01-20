@@ -15,7 +15,7 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToScroll: 1,
+  slidesToScroll: 4,
   autoplay: false,
   autoplaySpeed: 5000,
   pauseOnHover: true,
@@ -37,8 +37,7 @@ const settings = {
 export enum position {
   top = 'top',
   bottom = 'bottom',
-  right = 'right',
-  left = 'left',
+  outside = 'outside',
 }
 
 interface CarouselInterface {
@@ -46,34 +45,59 @@ interface CarouselInterface {
   centerMode: boolean;
   position: position;
   customButtons: boolean;
+  slidesToShow?: number;
 }
 
-const Carousel: React.FC<CarouselInterface> = ({ children, centerPadding, centerMode, position, customButtons }) => {
+const Carousel: React.FC<CarouselInterface> = ({
+  children,
+  centerPadding,
+  centerMode,
+  position,
+  slidesToShow = 1,
+  customButtons,
+}) => {
   const sliderRef = useRef<Slider>(null);
 
-  const renderButtons = () => (
+  const renderTopButtons = () => (
     <div className="grid gap-4 xl:gap-8 grid-cols-2 mx-auto w-full absolute -top-10 lg:-top-14 ">
       <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
       <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
     </div>
   );
 
+  const renderBottomButtons = () => (
+    <div className="grid gap-4 xl:gap-8 grid-cols-2 mx-auto w-full absolute bottom-10 ">
+      <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
+      <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
+    </div>
+  );
+
+  const renderOutBottomButtons = () => (
+    <div className="grid gap-4 xl:gap-8 grid-cols-2 mx-auto w-full absolute -bottom-16 ">
+      <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
+      <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
+    </div>
+  );
+
   return (
-    <>
-      {position === 'top' && customButtons && renderButtons()}
+    <div className="relative">
+      {position === 'top' && customButtons && renderTopButtons()}
       <SliderWrapper className="overflow-hidden">
         <Slider
           {...settings}
           arrows={!customButtons}
           centerMode={centerMode}
           centerPadding={centerPadding}
+          slidesToShow={slidesToShow}
+          slidesToScroll={slidesToShow}
           ref={sliderRef}
         >
           {children}
         </Slider>
       </SliderWrapper>
-      {position !== 'top' && customButtons && renderButtons()}
-    </>
+      {position === 'bottom' && customButtons && renderBottomButtons()}
+      {position === 'outside' && customButtons && renderOutBottomButtons()}
+    </div>
   );
 };
 

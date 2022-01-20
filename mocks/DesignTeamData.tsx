@@ -1,19 +1,19 @@
 const data = [
   {
+    firstName: 'Ellysia',
+    lastName: 'Applewhite',
+    icon: 'v1611748547/web/designTime/2-Ellysia_Applewhite_n4tgtc.png',
+    isReversed: true,
+    bg: 'v1591546419/web/design-team/Ellysia_Applewhite_z8cao9_upilbm.jpg',
+    desc: 'Based in California, Ellysia strives to design unique interiors that have a positive impact on her clients lives. Ellysia loves all design styles but finds herself drawn to rustic boho spaces the most. ',
+  },
+  {
     firstName: 'Jeannine',
     lastName: 'Guerra',
     icon: 'v1611745119/web/designTime/1-Jeannine_Guerra_1_vpgklb.png',
     isReversed: false,
     bg: 'v1611750690/web/designTime/DESIGNEAR_PAGE-14_v9zibo.jpg',
     desc: 'Jeannine is an LA based designer with a love for mid-century boho interiors. Her style focuses on designing timeless and comfortable spaces alongside a versatile aesthetic that is clean, earthy, and relaxed.',
-  },
-  {
-    firstName: 'Ellysia',
-    lastName: 'Applewhite',
-    icon: 'v1611748547/web/designTime/2-Ellysia_Applewhite_n4tgtc.png',
-    isReversed: true,
-    bg: 'v1611741240/web/designTime/2_1_cmmv91.jpg',
-    desc: 'Based in California, Ellysia strives to design unique interiors that have a positive impact on her clients lives. Ellysia loves all design styles but finds herself drawn to rustic boho spaces the most. ',
   },
   {
     firstName: 'Maggie',

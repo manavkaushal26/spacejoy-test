@@ -39,7 +39,7 @@ const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
       <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={false}>
         <AnimateBox className={`${flow === 'left' ? 'justify-self-end' : 'justify-self-start'}`}>
           <button
-            className="relative z-10 lg:h-28 lg:w-28 h-20 w-20 bg-white shadow-lg border border-bg-50 transition hover:shadow-sm rounded-2xl flex items-center justify-center hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1"
+            className="relative z-10 h-14 w-14 bg-white shadow-lg border border-bg-50 transition hover:shadow-sm flex items-center justify-center hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-xl px-1"
             onClick={onClick}
             aria-label={flow}
           >
