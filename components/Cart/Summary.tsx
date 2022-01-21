@@ -6,7 +6,11 @@ import Link from 'next/link';
 import React from 'react';
 import shallow from 'zustand/shallow';
 
-const CartSummary = () => {
+interface CartSummaryInterface {
+  noBtn?: boolean;
+}
+
+const CartSummary = ({ noBtn }) => {
   const { cart, updateCart } = useStore(
     (store) => ({
       cart: store.cart,
@@ -36,24 +40,24 @@ const CartSummary = () => {
         ) : null}
 
         {cart?.invoiceData?.shippingCharge ? (
-          <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+          <div className="flex items-center justify-between pt-4 border-t border-gray-200">
             <dt className="flex items-center text-sm text-gray-600">
               <span>Shipping estimate</span>
-              <a href="#" className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
+              <a href="#" className="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-500">
                 <span className="sr-only">Learn more about how shipping is calculated</span>
-                <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
+                <QuestionMarkCircleIcon className="w-5 h-5" aria-hidden="true" />
               </a>
             </dt>
             <dd className="text-sm font-medium text-gray-900">${cart?.invoiceData?.shippingCharge}</dd>
           </div>
         ) : null}
 
-        <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+        <div className="flex items-center justify-between pt-4 border-t border-gray-200">
           <dt className="flex text-sm text-gray-600">
             <span>Tax estimate</span>
-            <a href="#" className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
+            <a href="#" className="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-500">
               <span className="sr-only">Learn more about how tax is calculated</span>
-              <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
+              <QuestionMarkCircleIcon className="w-5 h-5" aria-hidden="true" />
             </a>
           </dt>
           <dd className="text-sm font-medium text-gray-900">
@@ -62,7 +66,7 @@ const CartSummary = () => {
         </div>
         {cart?.invoiceData?.discount && cart?.invoiceData?.discount?.total > 0 ? (
           <div>
-            <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
               <dt className="text-sm text-gray-600">You save</dt>
               <dd className="text-sm font-medium text-gray-900">- ${cart?.invoiceData?.discount?.total}</dd>
             </div>
@@ -73,11 +77,11 @@ const CartSummary = () => {
               <ul className="px-4">
                 {cart?.invoiceData?.discount?.coupons?.map((coupon) => {
                   return (
-                    <li className="pt-4 flex items-center justify-between text-xs" key={coupon?.code}>
-                      <dt className="text-sm text-gray-600 flex items-center">
+                    <li className="flex items-center justify-between pt-4 text-xs" key={coupon?.code}>
+                      <dt className="flex items-center text-sm text-gray-600">
                         <span>{coupon?.code}</span>
                         <XCircleIcon
-                          className="h-4 w-4 ml-2 cursor-pointer"
+                          className="w-4 h-4 ml-2 cursor-pointer"
                           onClick={() => removeCoupon(coupon?._id)}
                         />
                       </dt>
@@ -90,23 +94,29 @@ const CartSummary = () => {
           </div>
         ) : null}
         {cart?.invoiceData?.total ? (
-          <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
-            <dt className="text-base font-medium text-gray-900">Order total</dt>
-            <dd className="text-base font-medium text-gray-900">${cart?.invoiceData?.total}</dd>
+          <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+            <dt className="text-base font-medium text-gray-900">
+              <strong>Order total</strong>
+            </dt>
+            <dd className="text-base font-medium text-gray-900">
+              <strong>${cart?.invoiceData?.total}</strong>
+            </dd>
           </div>
         ) : null}
       </dl>
 
-      <div className="mt-6">
-        <Link href="/checkout/store" passHref>
-          <button
-            type="button"
-            className="w-full bg-gray-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
-          >
-            Checkout
-          </button>
-        </Link>
-      </div>
+      {noBtn ? null : (
+        <div className="mt-6">
+          <Link href="/checkout/store" passHref>
+            <button
+              type="button"
+              className="w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+            >
+              Checkout
+            </button>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

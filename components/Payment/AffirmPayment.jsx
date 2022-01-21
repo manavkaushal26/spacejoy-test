@@ -1,6 +1,8 @@
 // import { NotificationService } from '@components/NotificationMessage';
 import affirm from '@utils/affirm';
+import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
@@ -63,7 +65,23 @@ const Affirm = ({ cb }) => {
     }
   };
 
-  return <button onClick={handleClick}>Pay With Affirm</button>;
+  return (
+    <>
+      <Image
+        width="70px"
+        src={`${cloudinary.baseDeliveryURL}/w_70/v1595658009/shared/affirm_bm4ocs.svg`}
+        alt="affirm logo"
+      />
+      <h4 className="y-margin-0">Big purchase? No problem.</h4>
+      <br />
+      <button
+        className="px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm w-fit hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+        onClick={handleClick}
+      >
+        Pay With Affirm
+      </button>
+    </>
+  );
 };
 
 Affirm.propTypes = {

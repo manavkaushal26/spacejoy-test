@@ -23,12 +23,13 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
 import StarRatings from 'react-star-ratings';
 import Reviews from '@components/ProductView/Reviews';
-import ReactScroll from 'react-scroll'
+import ReactScroll from 'react-scroll';
+import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 const entry = keyframes`
@@ -119,9 +120,14 @@ const renderMetaSection = (description) => {
   }
 };
 
-
 const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
+  const [couponList, setCouponList] = useState([]);
+  const [retailerOffers, setRetailerOffers] = useState([]);
+
+  const finalArrayOfOffers = useMemo(() => {
+    return couponList.concat(retailerOffers);
+  }, [couponList, retailerOffers]);
 
   const productImages = useMemo(() => {
     return [...(product?.renderImages || []), ...product?.productImages];
@@ -173,6 +179,11 @@ const ProductView = ({ product }): JSX.Element => {
     modifyCart(product, localProductQuantity, 'add');
   };
 
+  useEffect(() => {
+    getCouponsList(setCouponList);
+    fetchBrandOffers(setRetailerOffers, product?.retailer?._id);
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -220,13 +231,13 @@ const ProductView = ({ product }): JSX.Element => {
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
               <div className="sticky top-0">
-                <AnimateBox className="bg-white rounded-lg p-4 lg:p-8 xl:20">
+                <AnimateBox className="p-4 bg-white rounded-lg lg:p-8 xl:20">
                   <div className="aspect-w-1 aspect-h-1">
                     <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                       <Image
                         src={productImages[0]?.fileUrl}
                         alt="Angled front view with bag zipped and handles upright."
-                        className="object-center object-contain sm:rounded-lg"
+                        className="object-contain object-center sm:rounded-lg"
                         layout="fill"
                         placeholder="blur"
                         blurDataURL={blurredBgProduct}
@@ -234,15 +245,15 @@ const ProductView = ({ product }): JSX.Element => {
                     </div>
                   </div>
                 </AnimateBox>
-                <div className="grid grid-cols-3 mt-4 gap-4">
+                <div className="grid grid-cols-3 gap-4 mt-4">
                   {productImages[1] && (
-                    <div className="bg-white rounded p-4 col-span-2 row-span-2">
+                    <div className="col-span-2 row-span-2 p-4 bg-white rounded">
                       <div className="aspect-w-1 aspect-h-1">
                         <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                           <Image
                             src={productImages[1]?.fileUrl}
                             alt="Angled front view with bag zipped and handles upright."
-                            className="object-center object-contain sm:rounded-lg"
+                            className="object-contain object-center sm:rounded-lg"
                             layout="fill"
                             placeholder="blur"
                             blurDataURL={blurredBgProduct}
@@ -252,13 +263,13 @@ const ProductView = ({ product }): JSX.Element => {
                     </div>
                   )}
                   {productImages[2] && (
-                    <div className="bg-white rounded p-4">
+                    <div className="p-4 bg-white rounded">
                       <div className="aspect-w-1 aspect-h-1">
                         <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                           <Image
                             src={productImages[2]?.fileUrl}
                             alt="Angled front view with bag zipped and handles upright."
-                            className="object-center object-cover sm:rounded-lg"
+                            className="object-cover object-center sm:rounded-lg"
                             layout="fill"
                             placeholder="blur"
                             blurDataURL={blurredBgProduct}
@@ -268,13 +279,13 @@ const ProductView = ({ product }): JSX.Element => {
                     </div>
                   )}
                   {productImages[3] && (
-                    <div className="bg-white rounded p-4">
+                    <div className="p-4 bg-white rounded">
                       <div className="aspect-w-1 aspect-h-1">
                         <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                           <Image
                             src={productImages[3]?.fileUrl}
                             alt="Angled front view with bag zipped and handles upright."
-                            className="object-center object-cover sm:rounded-lg"
+                            className="object-cover object-center sm:rounded-lg"
                             layout="fill"
                             placeholder="blur"
                             blurDataURL={blurredBgProduct}
@@ -285,15 +296,15 @@ const ProductView = ({ product }): JSX.Element => {
                   )}
                 </div>
               </div>
-              <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+              <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
                 <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
-                <h1 className="text-3xl mt-1 font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
+                <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
                 <div className="mt-3">
                   <h2 className="sr-only">Product information</h2>
                   <p className="text-3xl text-gray-900">
                     ${product?.displayPrice}
                     {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
-                      <small className="text-sm text-gray-500 line-through inline-block ml-2">${product?.msrp}</small>
+                      <small className="inline-block ml-2 text-sm text-gray-500 line-through">${product?.msrp}</small>
                     )}
                   </p>
                 </div>
@@ -311,9 +322,16 @@ const ProductView = ({ product }): JSX.Element => {
                         isAggregateRating
                       />
                       <p className="sr-only">{product?.metaDetails?.rating} out of 5 stars</p>
-                      <div className="ml-4 flex">
+                      <div className="flex ml-4">
                         {/* <a className="text-sm font-medium text-gray-500 hover:text-red-500"> */}
-                        <ReactScroll.Link  to="reviewsSection" spy={true} smooth={true} className="hover:cursor-pointer hover:text-red-500 text-sm">See all {product?.metaDetails?.reviews.length} reviews</ReactScroll.Link>
+                        <ReactScroll.Link
+                          to="reviewsSection"
+                          spy={true}
+                          smooth={true}
+                          className="text-sm hover:cursor-pointer hover:text-red-500"
+                        >
+                          See all {product?.metaDetails?.reviews.length} reviews
+                        </ReactScroll.Link>
                         {/* </a> */}
                       </div>
                     </div>
@@ -329,7 +347,7 @@ const ProductView = ({ product }): JSX.Element => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <span className="font-bold text-sm">Dimensions: </span>
+                  <span className="text-sm font-bold">Dimensions: </span>
                   <span className="inline-block ml-2 text-sm text-gray-700">{`${(
                     product?.dimension?.width * 12
                   ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
@@ -337,15 +355,15 @@ const ProductView = ({ product }): JSX.Element => {
                   ).toFixed(2)} H`}</span>
                 </div>
                 <div className="mt-3">
-                  <span className="font-bold text-sm">Material: </span>
+                  <span className="text-sm font-bold">Material: </span>
                   <span className="inline-block ml-2 text-sm text-gray-700">{product?.material}</span>
                 </div>
                 <div className="mt-3">
-                  <span className="text-gray-900 text-sm font-bold">Color:</span>
+                  <span className="text-sm font-bold text-gray-900">Color:</span>
                   <span className="inline-block ml-2 text-sm text-gray-700">
                     {product?.colors?.map((color, index) => {
                       return (
-                        <span className="capitalize text-sm" key={color}>
+                        <span className="text-sm capitalize" key={color}>
                           {color}
                           {index === product?.colors?.length - 1 ? '' : ', '}
                         </span>
@@ -354,32 +372,32 @@ const ProductView = ({ product }): JSX.Element => {
                   </span>
                 </div>
                 <form className="mt-3">
-                  <div className="mt-10 flex sm:flex-col1 space-x-4">
+                  <div className="flex mt-10 space-x-4 sm:flex-col1">
                     <button
                       type="button"
-                      className="group hover:shadow-lg text-base text-gray-900 py-3 px-3 rounded-xl bg-white font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                      className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                       onClick={decrementQty}
                     >
                       <MinusSmIcon className="w-6 h-6" />
                     </button>
-                    <p className="py-3 px-2">{localProductQuantity}</p>
+                    <p className="px-2 py-3">{localProductQuantity}</p>
                     <button
                       type="button"
-                      className="group hover:shadow-lg text-base text-gray-900 py-3 px-3 rounded-xl bg-white font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                      className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                       onClick={incrementQty}
                     >
                       <PlusSmIcon className="w-6 h-6" />
                     </button>
                     <button
                       type="button"
-                      className="group shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-xl bg-gray-900 font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      className="px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                       onClick={updateCart}
                     >
                       Add to bag
                     </button>
                     <button
                       type="button"
-                      className="group hover:shadow-lg text-base text-gray-900 py-3 px-3 rounded-xl bg-white font-medium focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                      className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                     >
                       <HeartIcon className="w-6 h-6" />
                       <span className="sr-only">Add to favorites</span>
@@ -387,47 +405,61 @@ const ProductView = ({ product }): JSX.Element => {
                   </div>
                 </form>
                 {product?.price && (
-                  <div className="text-sm text-gray-700 my-6">
+                  <div className="my-6 text-sm text-gray-700">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
                 )}
                 <DeliveryTimeline productId={product?._id} />
-                <Disclosure defaultOpen>
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
-                        <div className="flex">
-                          <span className="text-gray-900 text-sm mr-2">Available Offers</span>
-                          <LottieAnimation animationData={offerLottie} height={20} width={20} />
-                        </div>
-                        {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
-                      </Disclosure.Button>
-                      <Disclosure.Panel>
-                        <div className="mt-4 text-base prose text-gray-700">
-                          <ul role="list">
-                            <li>
-                              Get exclusive discount of <strong>extra 15%</strong> when you purchase on Spacejoy.
-                            </li>
-                            <li>Use coupon code HOLIDAY75 to get flat $75 off on orders above $999.</li>
-                            <li>Get $25 when you refer a friend.</li>
-                          </ul>
-                        </div>
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
+                {finalArrayOfOffers.length !== 0 && (
+                  <Disclosure defaultOpen>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <div className="flex">
+                            <span className="mr-2 text-sm text-gray-900">Available Offers</span>
+                            <LottieAnimation animationData={offerLottie} height={20} width={20} />
+                          </div>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          <div className="mt-4 text-base prose text-gray-700">
+                            <ul role="list">
+                              {retailerOffers?.map((offer) => {
+                                return (
+                                  <li key={offer._id}>
+                                    Get <strong>{offer.discount}% off</strong> on a minimum purchase of $
+                                    {offer.constraints.minAmount} from {offer.retailer.name}. Max discount $
+                                    {offer.maxDiscount}.
+                                  </li>
+                                );
+                              })}
+                              {couponList.map((coupon) => {
+                                return (
+                                  <li key={coupon._id}>
+                                    Use coupon code <strong>{coupon?.code?.toUpperCase()}</strong> to get{' '}
+                                    {coupon?.title}.
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                )}
                 {product?.meta && product?.meta?.descriptions?.length && (
                   <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
-                          <span className="text-gray-900 text-sm">Product Description</span>
-                          {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Product Description</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
                           {product?.meta?.descriptions?.map((item, index) => {
                             return (
-                              <div key={`desc-${index}`} className="mt-4 text-sm text-gray-700 prose">
+                              <div key={`desc-${index}`} className="mt-4 text-sm prose text-gray-700">
                                 {renderFeatureSection(item)}
                               </div>
                             );
@@ -441,14 +473,14 @@ const ProductView = ({ product }): JSX.Element => {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
-                          <span className="text-gray-900 text-sm">Shipping Policy</span>
-                          {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Shipping Policy</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
                           {product?.metaDetails?.shipping?.map((item, index) => {
                             return (
-                              <div key={`ship-${index}`} className="mt-4 text-sm text-gray-700 prose">
+                              <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
                                 {renderMetaSection(item)}
                               </div>
                             );
@@ -462,9 +494,9 @@ const ProductView = ({ product }): JSX.Element => {
                     <Disclosure>
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
-                            <span className="text-gray-900 text-sm">Shipping Policy</span>
-                            {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                            <span className="text-sm text-gray-900">Shipping Policy</span>
+                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                           </Disclosure.Button>
                           <Disclosure.Panel>
                             <div className="mt-4 text-sm text-gray-700">{product?.retailer?.shippingPolicy}</div>
@@ -478,14 +510,14 @@ const ProductView = ({ product }): JSX.Element => {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
-                          <span className="text-gray-900 text-sm">Return Policy</span>
-                          {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Return Policy</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
                           {product?.metaDetails?.returnPolicy?.map((item, index) => {
                             return (
-                              <div key={`return-${index}`} className="mt-4 text-sm text-gray-700 prose">
+                              <div key={`return-${index}`} className="mt-4 text-sm prose text-gray-700">
                                 {renderMetaSection(item)}
                               </div>
                             );
@@ -495,30 +527,32 @@ const ProductView = ({ product }): JSX.Element => {
                     )}
                   </Disclosure>
                 ) : (
-                product?.retailer?.returnPolicy && (
-                  <Disclosure>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
-                          <span className="text-gray-900 text-sm">Return Policy</span>
-                          {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
-                        </Disclosure.Button>
-                        <Disclosure.Panel>
-                          <div className="mt-4 text-sm text-gray-700">{product?.retailer?.returnPolicy}</div>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                )
+                  product?.retailer?.returnPolicy && (
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                            <span className="text-sm text-gray-900">Return Policy</span>
+                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                          </Disclosure.Button>
+                          <Disclosure.Panel>
+                            <div className="mt-4 text-sm text-gray-700">{product?.retailer?.returnPolicy}</div>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  )
                 )}
               </div>
             </div>
           </div>
-          <div className="container mx-auto px-4">
+          <div className="container px-4 mx-auto">
             <SimilarProducts productId={product?._id} />
             <ProductDesignSet productIds={[product?._id]} />
             {product?.metaDetails ? (
-              <div id="reviewsSection"><Reviews  rating={product?.metaDetails?.rating} reviews={product?.metaDetails?.reviews} /></div>
+              <div id="reviewsSection">
+                <Reviews rating={product?.metaDetails?.rating} reviews={product?.metaDetails?.reviews} />
+              </div>
             ) : null}
           </div>
         </div>
@@ -554,7 +588,9 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
+  // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
+  const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
+
   const { data, statusCode } = response;
 
   return statusCode < 300 ? { props: { product: data } } : { notFound: true };

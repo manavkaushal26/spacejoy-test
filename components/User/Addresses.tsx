@@ -61,11 +61,11 @@ const UserAddresses = () => {
 
   return (
     <>
-      <div className=" border-t border-gray-200 ">
+      <div>
         <RadioGroup value={selectedDeliveyAddress} onChange={(data) => updateDeliveryAddress(data)}>
-          <RadioGroup.Label className="text-lg font-medium text-gray-900">Delivery Addresses</RadioGroup.Label>
+          <RadioGroup.Label className="text-lg font-medium text-gray-900">1. Delivery Addresses</RadioGroup.Label>
 
-          <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+          <div className="grid grid-cols-1 mt-4 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
             {shippingAddresses.map((shippingAddress, index) => (
               <RadioGroup.Option
                 key={`shipping-${index}`}
@@ -81,34 +81,34 @@ const UserAddresses = () => {
                 {({ checked, active }) => (
                   <>
                     {shippingAddress?.type === 'new_address' ? (
-                      <div className="flex-1 flex justify-center items-center">
+                      <div className="flex items-center justify-center flex-1">
                         <div className="flex flex-col items-center">
                           <RadioGroup.Label as="span" className="block text-sm font-medium text-gray-900">
-                            <PlusIcon className="h-8 w-8" />
+                            <PlusIcon className="w-8 h-8" />
                           </RadioGroup.Label>
-                          <RadioGroup.Description as="span" className="mt-4 flex items-center text-sm text-gray-500">
+                          <RadioGroup.Description as="span" className="flex items-center mt-4 text-sm text-gray-500">
                             Add New Address
                           </RadioGroup.Description>
                         </div>
                       </div>
                     ) : (
-                      <div className="flex-1 flex">
+                      <div className="flex flex-1">
                         <div className="flex flex-col">
                           <RadioGroup.Label as="span" className="block text-sm font-medium text-gray-900">
                             <div className="flex">
                               <span>
-                                <HomeIcon className="h-4 w-4 mr-2" />
+                                <HomeIcon className="w-4 h-4 mr-2" />
                               </span>
                               <span>{shippingAddress.title}</span>
                             </div>
                           </RadioGroup.Label>
-                          <RadioGroup.Description as="span" className="mt-1 flex items-center text-sm text-gray-500">
+                          <RadioGroup.Description as="span" className="flex items-center mt-1 text-sm text-gray-500">
                             {shippingAddress.firstName} {shippingAddress.lastName}
                           </RadioGroup.Description>
-                          <RadioGroup.Description as="span" className="mt-1 flex items-center text-sm text-gray-500">
+                          <RadioGroup.Description as="span" className="flex items-center mt-1 text-sm text-gray-500">
                             {shippingAddress.apartment}
                           </RadioGroup.Description>
-                          <RadioGroup.Description as="span" className="mt-1 flex items-center text-sm text-gray-500">
+                          <RadioGroup.Description as="span" className="flex items-center mt-1 text-sm text-gray-500">
                             {shippingAddress.addressLine1}
                           </RadioGroup.Description>
                           <RadioGroup.Description as="span" className="mt-6 text-sm font-medium text-gray-900">
@@ -122,7 +122,7 @@ const UserAddresses = () => {
                     )}
 
                     {checked ? (
-                      <CheckCircleIcon className="h-5 w-5 text-indigo-600 absolute top-4 right-4" aria-hidden="true" />
+                      <CheckCircleIcon className="absolute w-5 h-5 text-indigo-600 top-4 right-4" aria-hidden="true" />
                     ) : null}
                     <div
                       className={classNames(

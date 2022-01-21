@@ -20,3 +20,25 @@ h3 {
 .min-h-free {
   min-height: calc(100vh - 125px);
 }
+
+.checkout-textarea::-webkit-input-placeholder {
+  color: #bdbdbd;
+}
+
+.checkout-textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #bdbdbd;
+}
+
+.checkout-textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #bdbdbd;
+}
+
+.checkout-textarea:-ms-input-placeholder {
+  color: #bdbdbd;
+}
+
+.checkout-textarea::placeholder {
+  color: #bdbdbd;
+}
