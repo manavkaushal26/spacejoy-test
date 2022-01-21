@@ -5,7 +5,7 @@ import { useStore } from '@lib/store';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
-import { getSession, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
@@ -219,7 +219,10 @@ export default function Cart() {
   );
 }
 export const getServerSideProps = async (ctx) => {
-  const session = await getSession(ctx);
+  const session = await fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET' }).then((data) =>
+    data.json()
+  );
+  console.log(session);
 
   return {
     props: {
