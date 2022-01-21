@@ -330,7 +330,7 @@ const ProductView = ({ product }): JSX.Element => {
                           smooth={true}
                           className="text-sm hover:cursor-pointer hover:text-red-500"
                         >
-                          See all {product?.metaDetails?.reviews.length} reviews
+                          See top reviews
                         </ReactScroll.Link>
                         {/* </a> */}
                       </div>

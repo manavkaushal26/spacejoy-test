@@ -18,18 +18,18 @@ function classNames(...classes) {
 }
 
 export default function Example(props) {
-  const counts = [];
-  const getReviewsCount = () => {
-    for (let i = 1; i < 6; i++) {
-      counts.push({ rating: i, count: props.reviews?.filter((review) => review.rating === i)?.length });
-    }
-  };
-  getReviewsCount();
+  // const counts = [];
+  // const getReviewsCount = () => {
+  //   for (let i = 1; i < 6; i++) {
+  //     counts.push({ rating: i, count: props.reviews?.filter((review) => review.rating === i)?.length });
+  //   }
+  // };
+  // getReviewsCount();
 
   return (
     <div className="bg-white">
-      <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
-        <div className="lg:col-span-4">
+      <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8">
+        {/* <div className="lg:col-span-4">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Customer Reviews</h2>
 
           <div className="mt-3 flex items-center">
@@ -89,15 +89,14 @@ export default function Example(props) {
               ))}
             </dl>
           </div>
-        </div>
-
-        <div className="mt-16 lg:mt-0 lg:col-start-6 lg:col-span-7">
-          <h3 className="sr-only">Recent reviews</h3>
-
+        </div> */}
+        <h2 className='text-black-500 text-xl italic my-8 underline underline-offset-4'>Top Reviews</h2>
+        <div className="mt-16 lg:mt-0">
           <div className="flow-root">
-            <div className="-my-12 divide-y divide-gray-200">
-              {props.reviews.slice(0, 3).map((review) => (
-                <div key={review._id} className="py-12">
+            
+            <div className="-my-12 divide-y divide-gray-200 ">
+              {props.reviews.map((review) => (
+                <div key={review._id} className="py-12 lg:grid">
                   <div className="flex items-center justify-between">
                     <div>
                     {review.dp && (
@@ -130,7 +129,7 @@ export default function Example(props) {
                     <strong>{review.title}</strong>
                   </div>
                   <div
-                    className="mt-4 space-y-6 text-base italic text-gray-600"
+                    className="mt-4 space-y-6 text-base text-gray-600"
                     dangerouslySetInnerHTML={{ __html: review.review }}
                   />
                 </div>
