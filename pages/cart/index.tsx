@@ -5,11 +5,11 @@ import { useStore } from '@lib/store';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
+import { getSession, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import shallow from 'zustand/shallow';
-
 interface CartItemInterface {
   key: number;
   retailer: {
@@ -154,6 +154,9 @@ export default function Cart() {
     }
   };
 
+  const { data: session, status } = useSession();
+  console.log('session details', session, status);
+
   return (
     <>
       <Head>
@@ -215,3 +218,12 @@ export default function Cart() {
     </>
   );
 }
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  return {
+    props: {
+      session,
+    },
+  };
+};

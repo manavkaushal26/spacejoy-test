@@ -32,7 +32,8 @@
     "**/*.tsx",
     "utils/affirm.js",
     "lib/store.js",
-    "components/Payment/AffirmPayment.jsx"
+    "components/Payment/AffirmPayment.jsx",
+    "pages/api/auth/[...nextauth].js"
   ],
   "exclude": ["node_modules"]
 }
