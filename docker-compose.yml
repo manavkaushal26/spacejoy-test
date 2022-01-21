@@ -8,3 +8,4 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=production
+      - NEXTAUTH_URL=https://auth.spacejoy.com
