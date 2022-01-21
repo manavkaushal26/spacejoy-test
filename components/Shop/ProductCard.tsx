@@ -18,8 +18,8 @@ type ProductCardType = {
 
 const ProductCard = ({ product }: ProductCardType) => (
   <div>
-    <Link href={`/product-view/${product?.slug}`}>
-      <a>
+    <Link href={`/product-view/${product?._id}`}>
+      <a  target="_blank">
         <div className="bg-white p-4 2xl:p-8 rounded-lg h-full">
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">
             <Image
