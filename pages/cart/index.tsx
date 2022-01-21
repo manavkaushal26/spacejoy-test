@@ -5,10 +5,10 @@ import { useStore } from '@lib/store';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
   key: number;
@@ -153,6 +153,11 @@ export default function Cart() {
       updateCart(data);
     }
   };
+  useEffect(() => {
+    fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET' })
+      .then((data) => data.json())
+      .then(console.log);
+  }, []);
 
   const { data: session, status } = useSession();
   console.log('session details', session, status);
@@ -219,10 +224,7 @@ export default function Cart() {
   );
 }
 export const getServerSideProps = async (ctx) => {
-  const session = await fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET' }).then((data) =>
-    data.json()
-  );
-  console.log(session);
+  const session = await getSession(ctx);
 
   return {
     props: {
