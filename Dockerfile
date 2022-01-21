@@ -16,4 +16,5 @@ COPY . /usr/src/app
 RUN yarn build
 EXPOSE 3000
 
+CMD ["export", "NEXTAUTH_URL=http://localhost:3001"]
 CMD [ "yarn", "start" ]
