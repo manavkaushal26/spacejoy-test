@@ -26,6 +26,9 @@ import Link from 'next/link';
 import React, { useMemo, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
+import StarRatings from 'react-star-ratings';
+import Reviews from '@components/ProductView/Reviews';
+import ReactScroll from 'react-scroll'
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 const entry = keyframes`
@@ -79,6 +82,43 @@ const renderFeatureSection = (description) => {
       return null;
   }
 };
+
+const renderMetaSection = (description) => {
+  const { type = '' } = description;
+  switch (type) {
+    case 'visualOverview':
+      return (
+        <ul role="list">
+          {description?.value?.map((item) => {
+            return (
+              <li key={item?.image} className="flex items-center">
+                <Image src={item?.image} height="40" width="40" alt={item?.title} />
+                <span className="font-bold">{item?.title}</span>
+              </li>
+            );
+          })}
+        </ul>
+      );
+    case 'string':
+      return (
+        <ul role="list">
+          <li>{description?.value}</li>
+        </ul>
+      );
+    case 'stringArray':
+      return (
+        <ul role="list">
+          {description?.title && description?.value?.length ? <h4>{description?.title}</h4> : null}
+          {description?.value?.map((item) => {
+            return <li key={item}>{item}</li>;
+          })}
+        </ul>
+      );
+    default:
+      return null;
+  }
+};
+
 
 const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
@@ -259,21 +299,25 @@ const ProductView = ({ product }): JSX.Element => {
                 </div>
                 <div className="mt-3">
                   <h3 className="sr-only">Reviews</h3>
-                  <div className="flex items-center">
+                  {product?.metaDetails ? (
                     <div className="flex items-center">
-                      <StarIcon className="h-5 w-5 flex-shrink-0 text-gray-900" />
-                      <StarIcon className="h-5 w-5 flex-shrink-0 text-gray-900" />
-                      <StarIcon className="h-5 w-5 flex-shrink-0 text-gray-900" />
-                      <StarIcon className="h-5 w-5 flex-shrink-0 text-gray-900" />
-                      <StarIcon className="h-5 w-5 flex-shrink-0 text-gray-300" />
+                      <StarRatings
+                        rating={product?.metaDetails?.rating}
+                        starRatedColor="black"
+                        numberOfStars={5}
+                        name="productRating"
+                        starDimension="20px"
+                        starSpacing="5px"
+                        isAggregateRating
+                      />
+                      <p className="sr-only">{product?.metaDetails?.rating} out of 5 stars</p>
+                      <div className="ml-4 flex">
+                        {/* <a className="text-sm font-medium text-gray-500 hover:text-red-500"> */}
+                        <ReactScroll.Link  to="reviewsSection" spy={true} smooth={true} className="hover:cursor-pointer hover:text-red-500 text-sm">See all {product?.metaDetails?.reviews.length} reviews</ReactScroll.Link>
+                        {/* </a> */}
+                      </div>
                     </div>
-                    <p className="sr-only">4 out of 5 stars</p>
-                    <div className="ml-4 flex">
-                      <a href="#" className="text-sm font-medium text-gray-500 hover:text-red-500">
-                        See all 512 reviews
-                      </a>
-                    </div>
-                  </div>
+                  ) : null}
                 </div>
                 <div className="mt-3">
                   <h3 className="sr-only">Description</h3>
@@ -393,7 +437,7 @@ const ProductView = ({ product }): JSX.Element => {
                     )}
                   </Disclosure>
                 )}
-                {product?.retailer?.shippingPolicy && (
+                {product?.metaDetails?.shipping ? (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -402,13 +446,56 @@ const ProductView = ({ product }): JSX.Element => {
                           {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
-                          <div className="mt-4 text-sm text-gray-700">{product?.retailer?.shippingPolicy}</div>
+                          {product?.metaDetails?.shipping?.map((item, index) => {
+                            return (
+                              <div key={`ship-${index}`} className="mt-4 text-sm text-gray-700 prose">
+                                {renderMetaSection(item)}
+                              </div>
+                            );
+                          })}
                         </Disclosure.Panel>
                       </>
                     )}
                   </Disclosure>
+                ) : (
+                  product?.retailer?.shippingPolicy && (
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
+                            <span className="text-gray-900 text-sm">Shipping Policy</span>
+                            {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+                          </Disclosure.Button>
+                          <Disclosure.Panel>
+                            <div className="mt-4 text-sm text-gray-700">{product?.retailer?.shippingPolicy}</div>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  )
                 )}
-                {product?.retailer?.returnPolicy && (
+                {product?.metaDetails?.returnPolicy ? (
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="w-full text-left flex justify-between py-4 items-center rounded-sm border-b border-gray-300">
+                          <span className="text-gray-900 text-sm">Return Policy</span>
+                          {open ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          {product?.metaDetails?.returnPolicy?.map((item, index) => {
+                            return (
+                              <div key={`return-${index}`} className="mt-4 text-sm text-gray-700 prose">
+                                {renderMetaSection(item)}
+                              </div>
+                            );
+                          })}
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ) : (
+                product?.retailer?.returnPolicy && (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -422,6 +509,7 @@ const ProductView = ({ product }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
+                )
                 )}
               </div>
             </div>
@@ -429,6 +517,9 @@ const ProductView = ({ product }): JSX.Element => {
           <div className="container mx-auto px-4">
             <SimilarProducts productId={product?._id} />
             <ProductDesignSet productIds={[product?._id]} />
+            {product?.metaDetails ? (
+              <div id="reviewsSection"><Reviews  rating={product?.metaDetails?.rating} reviews={product?.metaDetails?.reviews} /></div>
+            ) : null}
           </div>
         </div>
       </Layout.Body>
