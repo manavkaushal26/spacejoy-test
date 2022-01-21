@@ -440,7 +440,7 @@ const ProductView = ({ product }): JSX.Element => {
 const getAllProducts = async () => {
   return {
     products: [
-      { slug: '61b4e65ae2f1a100374dcb9e' },
+      { slug: 'whitney-cabinet-oaax20kjeqnr7df9j6co' },
       { slug: '61b4bc69e2f1a100374c62a9' },
       { slug: '61b4a65ab9c243001c2eb35f' },
       { slug: '61b37d7f8aa921001d8c7e3c' },
