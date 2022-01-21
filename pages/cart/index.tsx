@@ -154,7 +154,7 @@ export default function Cart() {
     }
   };
   useEffect(() => {
-    fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET' })
+    fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET', credentials: 'include' })
       .then((data) => data.json())
       .then(console.log);
   }, []);
