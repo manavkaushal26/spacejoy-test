@@ -10,7 +10,7 @@ interface CartSummaryInterface {
   noBtn?: boolean;
 }
 
-const CartSummary = ({ noBtn }) => {
+const CartSummary: React.FC<CartSummaryInterface> = ({ noBtn }) => {
   const { cart, updateCart } = useStore(
     (store) => ({
       cart: store.cart,

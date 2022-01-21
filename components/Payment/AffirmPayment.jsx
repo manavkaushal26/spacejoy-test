@@ -69,6 +69,7 @@ const Affirm = ({ cb }) => {
     <>
       <Image
         width="70px"
+        height="30px"
         src={`${cloudinary.baseDeliveryURL}/w_70/v1595658009/shared/affirm_bm4ocs.svg`}
         alt="affirm logo"
       />
@@ -80,6 +81,7 @@ const Affirm = ({ cb }) => {
       >
         Pay With Affirm
       </button>
+      <p className="mt-2 text-sm text-gray-500">With Affirm, you can buy now and pay monthly.</p>
     </>
   );
 };
