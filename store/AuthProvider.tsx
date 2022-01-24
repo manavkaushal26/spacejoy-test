@@ -37,29 +37,19 @@ const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     // listen to crossDocument message from an iframe
     //listen to message event
-
-    window.onmessage = (event) => {
-      console.log(`event onmessage`, event);
+    const handleMessage = (event) => {
       if (event.origin === 'https://auth.spacejoy.com') {
         console.log(`event`, event);
-        if (event.data.type === 'SIGNIN_SUCCESS') {
+        if (event.data.type === 'SIGN_IN_SUCCESS') {
           fetchUser();
         }
       }
     };
+    window.addEventListener('message', handleMessage, false);
 
-    window.addEventListener(
-      'message',
-      (event) => {
-        if (event.origin === 'https://auth.spacejoy.com') {
-          console.log(`event`, event);
-          if (event.data.type === 'SIGNIN_SUCCESS') {
-            fetchUser();
-          }
-        }
-      },
-      false
-    );
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
   }, []);
 
   const logout = async () => {
