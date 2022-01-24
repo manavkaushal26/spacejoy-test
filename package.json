@@ -21,6 +21,7 @@
     ]
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.1",
     "gsap": "^3.9.1",
     "isomorphic-unfetch": "^3.1.0",
     "lottie-react-web": "^2.2.2",

@@ -1,30 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const SignupPage = () => {
-  useEffect(() => {
-    window.onmessage = (event) => {
-      console.log('event recevied', event);
-    };
-  }, []);
-
-  useEffect(() => {
-    //listen to message event
-    window.addEventListener(
-      'message',
-      (event) => {
-        console.log('event recevied', event);
-      },
-      false
-    );
-  }, []);
+  // useEffect(() => {
+  //   window.onmessage = (event) => {
+  //     console.log('event recevied', event);
+  //   };
+  // }, []);
 
   return (
     <div className="h-screen">
       <a
-        href="http://localhost:3000"
+        href="https://auth.spacejoy.com"
         target="popup"
         onClick={() => {
-          window.open('http://localhost:3000', 'popup', 'width=1000,height=1000');
+          window.open('https://auth.spacejoy.com', 'popup', 'width=1000,height=1000');
 
           return false;
         }}

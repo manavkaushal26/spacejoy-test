@@ -1,5 +1,6 @@
 import CommonSEO from '@components/Shared/SEO/DefaultSeo';
 import { Provider, useCreateStore } from '@lib/store';
+import AuthProvider from '@store/AuthProvider';
 import ShopFilterContextProvider from '@store/ShopFilterContext';
 import { SessionProvider } from 'next-auth/react';
 import React from 'react';
@@ -13,22 +14,24 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
 
   return (
     <>
-      <SessionProvider session={session}>
-        <Provider createStore={createStore}>
-          <CommonSEO />
-          <ThemeProvider theme={{}}>
-            <ShopFilterContextProvider>
-              <Component {...pageProps} />
-              <Toaster
-                position="bottom-center"
-                toastOptions={{
-                  className: 'shadow-lg',
-                }}
-              />
-            </ShopFilterContextProvider>
-          </ThemeProvider>
-        </Provider>
-      </SessionProvider>
+      <AuthProvider>
+        <SessionProvider session={session}>
+          <Provider createStore={createStore}>
+            <CommonSEO />
+            <ThemeProvider theme={{}}>
+              <ShopFilterContextProvider>
+                <Component {...pageProps} />
+                <Toaster
+                  position="bottom-center"
+                  toastOptions={{
+                    className: 'shadow-lg',
+                  }}
+                />
+              </ShopFilterContextProvider>
+            </ThemeProvider>
+          </Provider>
+        </SessionProvider>
+      </AuthProvider>
     </>
   );
 };

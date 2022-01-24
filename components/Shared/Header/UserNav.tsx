@@ -1,5 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon, ShareIcon, UserRemoveIcon, UsersIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/outline';
+import { useSession } from '@store/AuthProvider';
 import Link from 'next/link';
 import React, { Fragment } from 'react';
 
@@ -16,9 +17,22 @@ function NextLink(props) {
 }
 
 const UserNav = () => {
+  const { session, loading, logout } = useSession();
+
   const PreAuthRenderUI = () => (
     <Link href="/auth/login">
-      <a className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50">LOGIN</a>
+      <a
+        className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50"
+        href="https://auth.spacejoy.com"
+        target="popup"
+        onClick={() => {
+          window.open('https://auth.spacejoy.com', 'popup', 'width=1000,height=1000');
+
+          return false;
+        }}
+      >
+        LOGIN
+      </a>
     </Link>
   );
 
@@ -27,7 +41,7 @@ const UserNav = () => {
       <div className="relative inline-block">
         <Menu>
           <Menu.Button className="text-gray-700 text-sm py-1.5 ml-2 rounded-lg hover:text-red-500">
-            Admin <ChevronDownIcon className="inline w-4 h-4" />
+            {session?.user?.name} <ChevronDownIcon className="inline w-4 h-4" />
           </Menu.Button>
           <Transition
             as={Fragment}
@@ -55,19 +69,18 @@ const UserNav = () => {
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <NextLink
-                      href="/auth/login"
+                    <button
+                      onClick={logout}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                      active
                     >
-                      Login
-                    </NextLink>
+                      Logout
+                    </button>
                   )}
                 </Menu.Item>
               </div>
-              <div>
+              {/* <div>
                 <Menu.Item>
                   {({ active }) => (
                     <button
@@ -102,7 +115,7 @@ const UserNav = () => {
                     </button>
                   )}
                 </Menu.Item>
-              </div>
+              </div> */}
             </Menu.Items>
           </Transition>
         </Menu>
@@ -110,7 +123,7 @@ const UserNav = () => {
     );
   };
 
-  return true ? PostAuthRenderUI() : PreAuthRenderUI();
+  return session?.user?.name ? PostAuthRenderUI() : PreAuthRenderUI();
 };
 
 export default UserNav;
