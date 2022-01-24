@@ -34,9 +34,24 @@ const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     // listen to crossDocument message from an iframe
     //listen to message event
+
+    window.onmessage = (event) => {
+      console.log(`event onmessage`, event);
+      if (event.origin === 'https://auth.spacejoy.com') {
+        if (event.data.type === 'SIGNIN_SUCCESS') {
+          fetchUser();
+        } else {
+          toast.error("We couldn't sign you in. Please try again.");
+        }
+      } else {
+        toast.error(`${event.origin} is not allowed to post messages to this domain.`);
+      }
+    };
+
     window.addEventListener(
       'message',
       (event) => {
+        console.log(`event`, event);
         if (event.origin === 'https://auth.spacejoy.com') {
           if (event.data.type === 'SIGNIN_SUCCESS') {
             fetchUser();
