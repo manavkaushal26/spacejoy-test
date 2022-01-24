@@ -25,11 +25,11 @@ const AuthProvider: React.FC = ({ children }) => {
     Cookie.set('token', user.token);
     setSession(user);
     setLoading(false);
-  }, [setSession, setLoading]);
+  }, []);
 
   useEffect(() => {
     fetchUser();
-  }, [fetchUser]);
+  }, []);
 
   useEffect(() => {
     // listen to crossDocument message from an iframe
