@@ -60,7 +60,7 @@ const AuthProvider: React.FC = ({ children }) => {
       method: 'POST',
       headers,
       credentials: 'include',
-      body: JSON.stringify(csrfToken),
+      body: new URLSearchParams({ ...csrfToken, json: true }),
     });
     if (response.ok) {
       setSession({});
