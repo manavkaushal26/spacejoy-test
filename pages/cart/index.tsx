@@ -8,7 +8,7 @@ import fetcher from '@utils/fetcher';
 import { getSession, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
   key: number;
@@ -153,6 +153,11 @@ export default function Cart() {
       updateCart(data);
     }
   };
+  useEffect(() => {
+    fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET', credentials: 'include' })
+      .then((data) => data.json())
+      .then(console.log);
+  }, []);
 
   const { data: session, status } = useSession();
   console.log('session details', session, status);

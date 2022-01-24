@@ -13,8 +13,9 @@ RUN yarn
 # Bundle app source
 COPY . /usr/src/app
 
+CMD ["export", "NEXTAUTH_URL=https://auth.spacejoy.com"]
+
 RUN yarn build
 EXPOSE 3000
 
-CMD ["export", "NEXTAUTH_URL=https://auth.spacejoy.com"]
 CMD [ "yarn", "start" ]
