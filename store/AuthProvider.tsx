@@ -16,19 +16,14 @@ const AuthProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(!session);
 
   const fetchUser = useCallback(async () => {
-    console.log('wut');
     setLoading(true);
     const user = await fetch('https://auth.spacejoy.com/api/auth/session', {
       method: 'GET',
       credentials: 'include',
     }).then((data) => {
-      console.log(data);
-
       return data.json();
     });
-    console.log('here', user);
-
-    Cookie.set('token', user.token);
+    if (user?.token) Cookie.set('token', user.token);
     setSession(user);
     setLoading(false);
   }, []);
@@ -42,7 +37,6 @@ const AuthProvider: React.FC = ({ children }) => {
     //listen to message event
     const handleMessage = (event) => {
       if (event.origin === 'https://auth.spacejoy.com') {
-        console.log(`event`, event);
         if (event.data.type === 'SIGN_IN_SUCCESS') {
           fetchUser();
         }
@@ -62,7 +56,7 @@ const AuthProvider: React.FC = ({ children }) => {
       method: 'GET',
       credentials: 'include',
     }).then((data) => data.json());
-    const response = await fetch('https://auth.spacejoy.com/api/auth/logout', {
+    const response = await fetch('https://auth.spacejoy.com/api/auth/signout', {
       method: 'POST',
       headers,
       credentials: 'include',
