@@ -7,9 +7,31 @@ const SignupPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    //listen to message event
+    window.addEventListener(
+      'message',
+      (event) => {
+        console.log('event recevied', event);
+      },
+      false
+    );
+  }, []);
+
   return (
     <div className="h-screen">
-      <iframe src="https://auth.spacejoy.com/" className="h-full w-full" />
+      <a
+        href="http://localhost:3000"
+        target="popup"
+        onClick={() => {
+          window.open('http://localhost:3000', 'popup', 'width=1000,height=1000');
+
+          return false;
+        }}
+      >
+        Login
+      </a>
+      {/* <iframe src="https://auth.spacejoy.com/" className="h-full w-full" /> */}
     </div>
   );
 };
