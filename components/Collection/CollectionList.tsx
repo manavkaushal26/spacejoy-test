@@ -68,12 +68,12 @@ const AnimateBox = styled.ul`
 const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
   const { list, count: totalRecords } = feedData;
   const { currentRenderList, isFetching, buttons } = usePagination(
-    { url: publicRoutes.collectionFeed, method: 'GET' },
+    { url: publicRoutes.collectionFeedV2, method: 'GET' },
     list,
     totalRecords,
     internalPages.InteriorDesigns.DEFAULT_PAGINATION_BUTTON_COUNT,
     internalPages.Collection.DEFAULT_PAGE_SIZE,
-    'list',
+    'data',
     {}
   );
 
