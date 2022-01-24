@@ -51,12 +51,10 @@ const AuthProvider: React.FC = ({ children }) => {
     window.addEventListener(
       'message',
       (event) => {
-        console.log(`event`, event);
-        if (event.origin === 'https://auth.spacejoy.com') {
+        if (event.origin === 'https://auth.spacejoy.com' || event.origin === 'https://test.spacejoy.com') {
+          console.log(`event`, event);
           if (event.data.type === 'SIGNIN_SUCCESS') {
             fetchUser();
-          } else {
-            toast.error("We couldn't sign you in. Please try again.");
           }
         } else {
           toast.error(`${event.origin} is not allowed to post messages to this domain.`);
