@@ -1,4 +1,3 @@
-import useLocalStorage from '@utils/hooks/useLocalStorage';
 import Cookie from 'js-cookie';
 import React, { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -12,7 +11,7 @@ const AuthContext = React.createContext({
 });
 
 const AuthProvider: React.FC = ({ children }) => {
-  const [session, setSession] = useLocalStorage('session', {});
+  const [session, setSession] = useState({});
 
   const [loading, setLoading] = useState(!session);
 
