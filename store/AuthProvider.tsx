@@ -18,7 +18,10 @@ const AuthProvider: React.FC = ({ children }) => {
   const fetchUser = useCallback(async () => {
     console.log('wut');
     setLoading(true);
-    const user = await fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET' }).then((data) => {
+    const user = await fetch('https://auth.spacejoy.com/api/auth/session', {
+      method: 'GET',
+      credentials: 'include',
+    }).then((data) => {
       console.log(data);
 
       return data.json();
@@ -55,12 +58,14 @@ const AuthProvider: React.FC = ({ children }) => {
   const logout = async () => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    const csrfToken = await fetch('https://auth.spacejoy.com/api/auth/csrf', { method: 'GET' }).then((data) =>
-      data.json()
-    );
+    const csrfToken = await fetch('https://auth.spacejoy.com/api/auth/csrf', {
+      method: 'GET',
+      credentials: 'include',
+    }).then((data) => data.json());
     const response = await fetch('https://auth.spacejoy.com/api/auth/logout', {
       method: 'POST',
       headers,
+      credentials: 'include',
       body: JSON.stringify(csrfToken),
     });
     if (response.ok) {
