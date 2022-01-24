@@ -20,7 +20,6 @@ const SignupPage = () => {
       >
         Login
       </a>
-      {/* <iframe src="https://auth.spacejoy.com/" className="h-full w-full" /> */}
     </div>
   );
 };

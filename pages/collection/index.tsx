@@ -25,10 +25,11 @@ const collection: React.FC<CollectionListInterface> = ({ feedData }) => {
 export const getStaticProps: GetStaticProps<CollectionListInterface> = async () => {
   const additionalParamsCollections = `?limit=${internalPages.Collection.DEFAULT_PAGE_SIZE}`;
   const res = await fetcher({
-    endPoint: `${publicRoutes.collectionFeed}${additionalParamsCollections}`,
+    endPoint: `${publicRoutes.collectionFeedV2}${additionalParamsCollections}`,
     method: 'GET',
   });
-  const { data: mainList } = res;
+
+  const { data: { hits: mainList = [] } = {} } = res;
 
   return {
     props: {

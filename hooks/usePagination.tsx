@@ -15,6 +15,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_LIST': {
       const { payload: { data, currentPage = 0 } = [] } = action;
+
       return {
         ...state,
         list: {
@@ -31,6 +32,7 @@ const reducer = (state = initialState, action) => {
     }
     case 'UPDATE_CURRENT_PAGE': {
       const { payload } = action;
+
       return {
         ...state,
         currentPage: payload,
@@ -52,6 +54,7 @@ const fetchMoreData = async (api, skip, limit, field) => {
 
   try {
     const res = await fetcher({ endPoint, method, ...(method === 'POST' && { body: { ...payload } }) });
+
     if (field === 'list') {
       const {
         data: { list = [] }, // TODO: Write processor
@@ -67,6 +70,7 @@ const fetchMoreData = async (api, skip, limit, field) => {
         data: { hits = [] }, // TODO: Write processor
         statusCode,
       } = res;
+
       if (statusCode <= 301) {
         return hits;
       } else {
@@ -74,6 +78,7 @@ const fetchMoreData = async (api, skip, limit, field) => {
       }
     }
   } catch (e) {
+    console.log('error message', e.message);
     throw new Error();
   }
 };
