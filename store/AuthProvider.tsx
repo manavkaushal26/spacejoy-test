@@ -1,7 +1,6 @@
 import useLocalStorage from '@utils/hooks/useLocalStorage';
 import Cookie from 'js-cookie';
 import React, { useCallback, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 const AuthContext = React.createContext({
   session: {
     user: { name: '', email: '', id: '' },
@@ -38,26 +37,21 @@ const AuthProvider: React.FC = ({ children }) => {
     window.onmessage = (event) => {
       console.log(`event onmessage`, event);
       if (event.origin === 'https://auth.spacejoy.com') {
+        console.log(`event`, event);
         if (event.data.type === 'SIGNIN_SUCCESS') {
           fetchUser();
-        } else {
-          toast.error("We couldn't sign you in. Please try again.");
         }
-      } else {
-        toast.error(`${event.origin} is not allowed to post messages to this domain.`);
       }
     };
 
     window.addEventListener(
       'message',
       (event) => {
-        if (event.origin === 'https://auth.spacejoy.com' || event.origin === 'https://test.spacejoy.com') {
+        if (event.origin === 'https://auth.spacejoy.com') {
           console.log(`event`, event);
           if (event.data.type === 'SIGNIN_SUCCESS') {
             fetchUser();
           }
-        } else {
-          toast.error(`${event.origin} is not allowed to post messages to this domain.`);
         }
       },
       false
