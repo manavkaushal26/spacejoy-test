@@ -103,15 +103,14 @@ const Header: React.FC = () => {
               <nav aria-label="Primary" className="h-full">
                 <ul className="h-full flex items-center">
                   <li className="inline-block">
-                    <Link href="/interior-designs">
-                      <a
-                        className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
-                        }`}
-                      >
-                        Design Your Space
-                      </a>
-                    </Link>
+                    <a
+                      className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                        router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
+                      }`}
+                      href="https://diy.spacejoy.com/room-select"
+                    >
+                      Design Your Space
+                    </a>
                   </li>
                   <li className="inline-block">
                     <Link href="/pricing">
