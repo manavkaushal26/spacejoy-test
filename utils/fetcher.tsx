@@ -1,5 +1,6 @@
 import { page } from '@utils/config';
 import fetch from 'isomorphic-unfetch';
+import Cookies from 'js-cookie';
 import { GetServerSidePropsContext, NextPageContext } from 'next';
 
 interface FetcherArgs {
@@ -20,8 +21,7 @@ const fetcher = async ({
   type = 'text',
   hasBaseUrl = false,
 }: FetcherArgs): Promise<Record<string, any>> => {
-  const JWT =
-    'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjQwNjkyMjAzLCJleHAiOjE2NDkzMzIyMDN9.wjw4xkyCpPT9JNw9eqyLWsBoJ8wNmoUW7zaDRzZDUUg';
+  const JWT = Cookies.get('token');
   const contentType = type === 'file' ? '' : 'application/json';
 
   const headers = JWT ? { 'Content-Type': contentType, Authorization: JWT } : { 'Content-Type': contentType };

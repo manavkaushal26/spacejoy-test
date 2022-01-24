@@ -1,7 +1,7 @@
 import useLocalStorage from '@utils/hooks/useLocalStorage';
+import Cookie from 'js-cookie';
 import React, { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-
 const AuthContext = React.createContext({
   session: {
     user: { name: '', email: '', id: '' },
@@ -21,6 +21,8 @@ const AuthProvider: React.FC = ({ children }) => {
     const user = await fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET' }).then((data) =>
       data.json()
     );
+
+    Cookie.set('token', user.token);
     setSession(user);
     setLoading(false);
   }, [setSession, setLoading]);
