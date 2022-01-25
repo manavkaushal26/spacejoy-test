@@ -30,6 +30,7 @@ import StarRatings from 'react-star-ratings';
 import Reviews from '@components/ProductView/Reviews';
 import ReactScroll from 'react-scroll';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
+import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 const entry = keyframes`
@@ -74,42 +75,6 @@ const renderFeatureSection = (description) => {
       return (
         <ul role="list">
           {description?.title && description?.value?.length ? <h3>{description?.title}</h3> : null}
-          {description?.value?.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
-      );
-    default:
-      return null;
-  }
-};
-
-const renderMetaSection = (description) => {
-  const { type = '' } = description;
-  switch (type) {
-    case 'visualOverview':
-      return (
-        <ul role="list">
-          {description?.value?.map((item) => {
-            return (
-              <li key={item?.image} className="flex items-center">
-                <Image src={item?.image} height="40" width="40" alt={item?.title} />
-                <span className="font-bold">{item?.title}</span>
-              </li>
-            );
-          })}
-        </ul>
-      );
-    case 'string':
-      return (
-        <ul role="list">
-          <li>{description?.value}</li>
-        </ul>
-      );
-    case 'stringArray':
-      return (
-        <ul role="list">
-          {description?.title && description?.value?.length ? <h4>{description?.title}</h4> : null}
           {description?.value?.map((item) => {
             return <li key={item}>{item}</li>;
           })}
@@ -323,7 +288,6 @@ const ProductView = ({ product }): JSX.Element => {
                       />
                       <p className="sr-only">{product?.metaDetails?.rating} out of 5 stars</p>
                       <div className="flex ml-4">
-                        {/* <a className="text-sm font-medium text-gray-500 hover:text-red-500"> */}
                         <ReactScroll.Link
                           to="reviewsSection"
                           spy={true}
@@ -448,7 +412,7 @@ const ProductView = ({ product }): JSX.Element => {
                     )}
                   </Disclosure>
                 )}
-                {product?.meta && product?.meta?.descriptions?.length && (
+                {product?.metaDetails?.description ? (
                   <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
@@ -457,10 +421,10 @@ const ProductView = ({ product }): JSX.Element => {
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
-                          {product?.meta?.descriptions?.map((item, index) => {
+                          {product?.metaDetails?.description?.map((item, index) => {
                             return (
                               <div key={`desc-${index}`} className="mt-4 text-sm prose text-gray-700">
-                                {renderFeatureSection(item)}
+                                {renderMetaSection(item)}
                               </div>
                             );
                           })}
@@ -468,7 +432,75 @@ const ProductView = ({ product }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
+                ) : (
+                  product?.meta &&
+                  product?.meta?.descriptions?.length && (
+                    <Disclosure defaultOpen>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                            <span className="text-sm text-gray-900">Product Description</span>
+                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                          </Disclosure.Button>
+                          <Disclosure.Panel>
+                            {product?.meta?.descriptions?.map((item, index) => {
+                              return (
+                                <div key={`desc-${index}`} className="mt-4 text-sm prose text-gray-700">
+                                  {renderFeatureSection(item)}
+                                </div>
+                              );
+                            })}
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  )
                 )}
+
+                {product?.metaDetails?.specification ? (
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Specifications</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          {product?.metaDetails?.specification?.map((item, index) => {
+                            return (
+                              <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
+                                {renderMetaSection(item)}
+                              </div>
+                            );
+                          })}
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ) : null}
+
+                {product?.metaDetails?.care ? (
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Care</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          {product?.metaDetails?.care?.map((item, index) => {
+                            return (
+                              <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
+                                {renderMetaSection(item)}
+                              </div>
+                            );
+                          })}
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ) : null}
+
                 {product?.metaDetails?.shipping ? (
                   <Disclosure>
                     {({ open }) => (
@@ -506,6 +538,7 @@ const ProductView = ({ product }): JSX.Element => {
                     </Disclosure>
                   )
                 )}
+
                 {product?.metaDetails?.returnPolicy ? (
                   <Disclosure>
                     {({ open }) => (
