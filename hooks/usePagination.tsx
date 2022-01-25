@@ -30,6 +30,12 @@ const reducer = (state = initialState, action) => {
         isFetching: !state.isFetching,
       };
     }
+    case 'REPLACE_LIST': {
+      return {
+        ...state,
+        list: { ...initialState?.list },
+      };
+    }
     case 'UPDATE_CURRENT_PAGE': {
       const { payload } = action;
 
@@ -127,6 +133,11 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
       dispatch({ type: 'ADD_TO_LIST', payload: { data: newData, currentPage } });
       dispatch({ type: 'SET_LOADING' });
     }
+
+    if (!arraysEqual(lastNewFilter?.current?.subcategory || [], api?.payload?.filters?.subcategory)) {
+      dispatch({ type: 'REPLACE_LIST' });
+    }
+
     if (
       !arraysEqual(api?.payload?.filters?.retailer || [], lastNewFilter?.current?.retailer || []) ||
       !arraysEqual(api?.payload?.filters?.subcategory || [], lastNewFilter?.current?.subcategory || []) ||
@@ -151,7 +162,7 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
       dispatch({ type: 'SET_LOADING' });
     }
 
-    if (!(state.currentPage === 0 && initialData && initialData.length)) {
+    if (!(state.currentPage === 0 && state?.list[currentPage] && state?.list[currentPage].length)) {
       const dataAtIndex = list[currentPage];
       if (!dataAtIndex || dataAtIndex?.length !== pageSize) {
         dispatch({ type: 'SET_LOADING' });

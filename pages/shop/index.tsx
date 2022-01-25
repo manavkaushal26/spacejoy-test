@@ -233,7 +233,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                 </form>
               </div>
               <div className="col-span-4 rounded">
-                <div className="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1 h-full">
+                <div className="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1">
                   {isFetching ? (
                     <>
                       {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {

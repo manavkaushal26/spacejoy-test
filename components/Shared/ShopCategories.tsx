@@ -2,7 +2,7 @@ import { useShopFilterContext } from '@store/ShopFilterContext';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
-const ShopCategories = () => {
+const ShopCategories = ({ callback }) => {
   const {
     filters: { category = [] },
     updateFilter,
@@ -38,7 +38,10 @@ const ShopCategories = () => {
                         >
                           <li
                             className="text-sm text-gray-700 cursor-pointer hover:underline capitalize"
-                            onClick={() => updateFilter(subCategory?._id, 'subCategory')}
+                            onClick={() => {
+                              updateFilter(subCategory?._id, 'subCategory');
+                              callback && callback();
+                            }}
                           >
                             {subCategory?.name}
                           </li>

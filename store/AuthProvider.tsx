@@ -17,15 +17,20 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const fetchUser = useCallback(async () => {
     setLoading(true);
-    const user = await fetch('https://auth.spacejoy.com/api/auth/session', {
-      method: 'GET',
-      credentials: 'include',
-    }).then((data) => {
-      return data.json();
-    });
-    if (user?.token) Cookie.set('token', user.token);
-    setSession(user);
-    setLoading(false);
+    try {
+      const user = await fetch('https://auth.spacejoy.com/api/auth/session', {
+        method: 'GET',
+        credentials: 'include',
+      }).then((data) => {
+        return data.json();
+      });
+      if (user?.token) Cookie.set('token', user.token);
+      setSession(user);
+    } catch (e) {
+      console.log('error ---', e.message);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 
 interface StaticComponents {
   Body?: React.FC;
@@ -11,6 +11,7 @@ interface ModalProps {
   closeSubNav: () => void;
   onCloseCallback?: () => void;
   hoverNav?: boolean;
+  updateNavStatus?: (boolean) => void;
 }
 const SubNav: React.FC<ModalProps> & StaticComponents = ({
   children,
@@ -18,30 +19,23 @@ const SubNav: React.FC<ModalProps> & StaticComponents = ({
   closeSubNav,
   onCloseCallback,
   hoverNav,
+  updateNavStatus,
 }) => {
-  const [subNavHoverState, setSubNavState] = useState(false);
-  const handleHover = (value) => {
-    if (hoverNav) {
-      setSubNavState(value);
-    }
-  };
-
   return (
-    <Transition appear show={subNavHoverState || subNavState} as={Fragment}>
+    <Transition appear show={subNavState} as={Fragment}>
       <Dialog
         as="div"
         className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
         onClose={() => {
           closeSubNav();
-          onCloseCallback();
-          setSubNavState(false);
+          onCloseCallback && onCloseCallback();
         }}
       >
         <div
           className="min-h-screen text-center"
           aria-label="secondary"
-          onMouseEnter={() => handleHover(true)}
-          onMouseLeave={() => handleHover(false)}
+          onMouseEnter={() => hoverNav && updateNavStatus(true)}
+          onMouseLeave={() => hoverNav && updateNavStatus(false)}
         >
           <Transition.Child
             as={Fragment}

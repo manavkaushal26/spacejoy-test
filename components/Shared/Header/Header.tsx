@@ -10,15 +10,29 @@ import SubNav from '../SubNav';
 import UserNav from './UserNav';
 
 const Header: React.FC = () => {
-  const [isOpenSubNav, setIsOpenSubNav] = useState(false);
+  const router = useRouter();
 
+  const [subNavContent, setSubNavContent] = useState('stories');
+
+  const isSubNavHover = useMemo(() => {
+    return subNavContent === 'shop' ? true : false;
+  }, [subNavContent]);
+
+  const [isOpenSubNav, setIsOpenSubNav] = useState(false);
   const closeSubNav = () => setIsOpenSubNav(false);
 
   const openSubNav = () => setIsOpenSubNav(true);
 
-  const router = useRouter();
+  const handleHover = (value) => {
+    setIsOpenSubNav(value);
+  };
 
-  const [subNavContent, setSubNavContent] = useState('stories');
+  const { cart } = useStore(
+    (store) => ({
+      cart: store.cart,
+    }),
+    shallow
+  );
 
   const getSubNavContent = useCallback(() => {
     if (!subNavContent) {
@@ -28,7 +42,7 @@ const Header: React.FC = () => {
         case 'stories':
           return <CustomerStoriesNav />;
         case 'shop':
-          return <ShopCategories />;
+          return <ShopCategories callback={closeSubNav} />;
         default:
           return null;
       }
@@ -49,17 +63,6 @@ const Header: React.FC = () => {
       }
     }
   }, [subNavContent]);
-
-  const isSubNavHover = useMemo(() => {
-    return subNavContent === 'shop' ? true : false;
-  }, [subNavContent]);
-
-  const { cart } = useStore(
-    (store) => ({
-      cart: store.cart,
-    }),
-    shallow
-  );
 
   return (
     <>
@@ -191,7 +194,12 @@ const Header: React.FC = () => {
           </div>
         </div>
       </header>
-      <SubNav subNavState={isOpenSubNav} closeSubNav={closeSubNav} onCloseCallback={() => {}} hoverNav={isSubNavHover}>
+      <SubNav
+        subNavState={isOpenSubNav}
+        closeSubNav={closeSubNav}
+        updateNavStatus={handleHover}
+        hoverNav={isSubNavHover}
+      >
         <SubNav.Header>{getSubNavHeader()}</SubNav.Header>
         <SubNav.Body>{getSubNavContent()}</SubNav.Body>
       </SubNav>
