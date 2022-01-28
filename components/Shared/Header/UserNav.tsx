@@ -26,7 +26,7 @@ const UserNav = () => {
         href="https://auth.spacejoy.com"
         target="popup"
         onClick={() => {
-          window.open('https://auth.spacejoy.com', 'popup', 'width=1000,height=1000');
+          window.open('https://auth.spacejoy.com', 'popup', 'width=1200,height=830');
 
           return false;
         }}
