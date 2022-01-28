@@ -1,3 +1,5 @@
+import CartItemDimmer from '@components/Cart/CartItemDimmer';
+import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
 import CartSummary from '@components/Cart/Summary';
 import Layout from '@components/Shared/Layout';
 import { TruckIcon, XIcon } from '@heroicons/react/solid';
@@ -159,8 +161,8 @@ export default function Cart() {
       .then(console.log);
   }, []);
 
-  const { data: session, status } = useSession();
-  console.log('session details', session, status);
+  // const { data: session, status } = useSession();
+  // console.log('session details', session, status);
 
   return (
     <>
@@ -179,8 +181,13 @@ export default function Cart() {
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
                   </h2>
-
-                  {Object.keys(cart?.cartItems)?.length &&
+                  {Object.keys(cart?.cartItems)?.length === 0 ? (
+                    <>
+                      {[...new Array(18)].map((_d, _i) => {
+                        return <CartItemDimmer key={_i} />;
+                      })}
+                    </>
+                  ) : (
                     Object.keys(cart?.cartItems)?.map((cItem) => {
                       return (
                         <div key={cItem} className="mt-8">
@@ -204,7 +211,8 @@ export default function Cart() {
                           </ul>
                         </div>
                       );
-                    })}
+                    })
+                  )}
                 </section>
 
                 {/* Order summary */}
@@ -212,7 +220,7 @@ export default function Cart() {
                   aria-labelledby="summary-heading"
                   className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
                 >
-                  <CartSummary />
+                  {Object.keys(cart?.invoiceData)?.length === 0 ? <CartSummaryDimmer /> :  <CartSummary />}
                 </section>
               </form>
             </div>

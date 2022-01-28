@@ -8,6 +8,7 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import React, { useState } from 'react';
 import shallow from 'zustand/shallow';
+import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
 
 const Payment = dynamic(() => import('@components/Payment'), { ssr: false });
 const Affirm = dynamic(() => import('@components/Payment/AffirmPayment'), {
@@ -182,7 +183,7 @@ const Checkout = () => {
 
                 {/* Order summary */}
                 <div className="sticky mt-10 top-20 lg:mt-0">
-                  <CartSummary noBtn />
+                {Object.keys(cartData?.invoiceData)?.length === 0 ? <CartSummaryDimmer noBtn/> :  <CartSummary noBtn/>}
                 </div>
               </div>
             </div>
