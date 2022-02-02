@@ -30,7 +30,7 @@ export const Home = (): JSX.Element => {
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Shop curated furniture & decor sets</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-                Choose from thousands of sets created to match your style, space and budget.
+                Choose from thousands of sets perfect for your style, space and budget.
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
@@ -85,7 +85,7 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
-              <div className="rounded-xl">
+              <a className="rounded-xl" href="https://diy.spacejoy.com/room-select">
                 <div className="relative aspect-w-3 aspect-h-4 rounded-xl bg-orange-300">
                   <div className="p-8 flex flex-col justify-between items-end">
                     <div className="bg-white rounded-full h-14 w-14 flex justify-center items-center">
@@ -96,7 +96,7 @@ export const Home = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
           {/* Section Start */}
@@ -108,12 +108,14 @@ export const Home = (): JSX.Element => {
                     From Pinterest to <span className="text-red-500">your home</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left">
-                    Have inspiration tucked away in your Pinterest Boards? Connect and shop everything you love from
-                    your pins.
+                    Inspiration tucked away in Pinterest Boards? Connect and shop everything you love from your pins.
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
               </div>
-              <div className="w-1/4 rounded-xl border border-red-400 p-4 h-32">
+              <a
+                className="w-1/4 rounded-xl border border-red-400 p-4 h-32"
+                href="https://diy.spacejoy.com/pinterest/search"
+              >
                 <div className="flex justify-between">
                   <div>
                     <span className="sr-only">Pinterest</span>
@@ -131,7 +133,7 @@ export const Home = (): JSX.Element => {
                   </div>
                 </div>
                 <h3 className="text-red-400 text-2xl mt-4">Connect Now!</h3>
-              </div>
+              </a>
             </div>
           </div>
           {/* Section Start */}
@@ -169,13 +171,15 @@ export const Home = (): JSX.Element => {
                     Want us to do the heavy lifting? <br />{' '}
                     <span className="text-red-500">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
-                  <HomeSectionTitle.Description align="left">
-                  In just 7 days, you’ll get 3D Designs of your actual room with products you can shop right away on Spacejoy!
+                  <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
+                  In just 7 days, get 3D Designs of your actual room with products you can shop right away on Spacejoy!
+
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
                 <button
                   type="button"
                   className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                  onClick={() => window.open('https://www.spacejoy.com/online-interior-design', '_blank')}
                 >
                   Hire a Designer
                 </button>
@@ -185,29 +189,18 @@ export const Home = (): JSX.Element => {
           {/* Section Start */}
           <div className="mt-32 mb-12">
             <HomeSectionTitle className="text-center">
-              <HomeSectionTitle.MainTitle>Beautiful room designs await you.</HomeSectionTitle.MainTitle>
-              <HomeSectionTitle.Description align="center">
-                From a corner to a whole room, see how our customers are transforming their homes with Spacejoy.
-              </HomeSectionTitle.Description>
-            </HomeSectionTitle>
-          </div>
-          <OutputGallery />
-          {/* Section Start */}
-          <div className="mt-32 mb-12">
-            <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
                 Shop all things home in <span className="text-red-500">one place.</span>
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-                Discover thousands of products from hundreds of furniture and decor brands, and bring home everything
-                you love in a single click!
+                Discover thousands of products from all your favorite brands in a single click!
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
           <div className="container mx-auto px-4 mb-20">
             <div className="flex space-x-8">
               <div className="bg-violet-100 flex-1 rounded-xl p-8">
-                <div className="flex justify-between items-center mb-40">
+                <div className="flex justify-between items-center">
                   <div>
                     <h3 className="text-xl">Sectional Sofas</h3>
                   </div>
@@ -227,9 +220,9 @@ export const Home = (): JSX.Element => {
                 </div>
               </div>
               <div className="bg-blue-100 flex-1 rounded-xl p-8">
-                <div className="flex justify-between items-center mb-40">
+                <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl">Sofa</h3>
+                    <h3 className="text-xl">Sofas</h3>
                   </div>
                   <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
                     <ArrowRightIcon className="w-4 h-4 inline" />
@@ -247,9 +240,9 @@ export const Home = (): JSX.Element => {
                 </div>
               </div>
               <div className="bg-teal-100 flex-1 rounded-xl p-8">
-                <div className="flex justify-between items-center mb-40">
+                <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl">Side Table</h3>
+                    <h3 className="text-xl">Side Tables</h3>
                   </div>
                   <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
                     <ArrowRightIcon className="w-4 h-4 inline" />
@@ -266,24 +259,43 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
+              {/* <div className="bg-red-100 flex-1 rounded-xl p-8">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-xl">Chairs</h3>
+                  </div>
+                  <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
+                    <ArrowRightIcon className="w-4 h-4 inline" />
+                  </div>
+                </div>
+                <div className="aspect-w-2 aspect-h-1">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722472/web/homepage-v3/MottSideTable_1_1_ipzkjg.png"
+                    alt="image 1"
+                    className="w-full h-full object-center object-contain"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div> */}
             </div>
             <div className="text-center mt-4">
               <button
                 type="button"
                 className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                onClick={() => (location.href = '/shop')}
               >
-                Explore Categories
+                Explore All
               </button>
             </div>
           </div>
           <div className="container mx-auto px-4 mb-40">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
-                Every room has <span className="text-red-500">a story</span>
+                <span className="text-red-500">Why</span> Spacejoy?
               </HomeSectionTitle.MainTitle>
-              <HomeSectionTitle.Description align="center">
-                See how our customers furnished their space with Spacejoy
-              </HomeSectionTitle.Description>
+              <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
             </HomeSectionTitle>
             <div className="mt-8">
               <Carousel centerPadding="0%" centerMode customButtons slidesToShow={4} position={position.outside}>
@@ -326,7 +338,22 @@ export const Home = (): JSX.Element => {
               </Carousel>
             </div>
           </div>
-          <DynamicFeaturedWithNoSSR />
+          {/* Section Start */}
+          <div className="mt-32 mb-12">
+            <HomeSectionTitle className="text-center">
+              <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
+              <HomeSectionTitle.Description align="center">
+              From a corner to a whole room, see how our customers are transforming their homes.
+              </HomeSectionTitle.Description>
+            </HomeSectionTitle>
+          </div>
+          <OutputGallery />
+          {/* Section Start */}
+          <div className="mt-32 mb-12">
+            <DynamicFeaturedWithNoSSR />
+          </div>
+
+          {/* Section Start */}
           <PreFooter />
         </Layout.Body>
         <Layout.Footer />

@@ -8,6 +8,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
+import Image from 'next/image'
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const Header: React.FC = () => {
     } else {
       switch (subNavContent) {
         case 'stories':
-          return 'Customer Stories';
+          return 'Explore';
         case 'shop':
           return 'Shop By Category';
         default:
@@ -80,7 +81,8 @@ const Header: React.FC = () => {
                 className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md pr-1 mr-10"
                 aria-label="logo"
               >
-                <svg height="30" width="139" viewBox="0 0 291 63" fill="none" baseProfile="full">
+                <Image src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg" width={125} height={25} alt="Spacejoy Logo" className="Logo__ImageStyled-sc-po3q2y-0 iZTGUF"/>
+                {/* <svg height="30" width="139" viewBox="0 0 291 63" fill="none" baseProfile="full">
                   <path
                     d="M51 0H12C5.373 0 0 5.373 0 12v39c0 6.627 5.373 12 12 12h39c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12z"
                     fill="url(#paint0_linear)"
@@ -99,7 +101,7 @@ const Header: React.FC = () => {
                       <stop offset="1" stopColor="#F39C12" />
                     </linearGradient>
                   </defs>
-                </svg>
+                </svg> */}
               </a>
             </Link>
             <div className="flex-1 h-full">
@@ -116,11 +118,12 @@ const Header: React.FC = () => {
                     </a>
                   </li>
                   <li className="inline-block">
-                    <Link href="/pricing">
+                    <Link href="https://www.spacejoy.com/online-interior-design">
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                           router.asPath === '/pricing' ? 'text-red-600' : 'text-gray-900'
                         }`}
+                        target="_blank"
                       >
                         Hire a Designer
                       </a>
@@ -214,7 +217,7 @@ const Header: React.FC = () => {
               </Link>
               <Link href="/new-project">
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700">
-                  Start Project
+                  Design Your Space
                 </a>
               </Link>
               <UserNav />

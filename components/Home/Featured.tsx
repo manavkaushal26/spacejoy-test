@@ -12,7 +12,7 @@ const Featured: React.FC = () => {
         title="Where Have We Been Mentioned?"
         description="Some of the world’s leading design publications."
       />
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto p-4">
         <div className="-mb-56 xl:-mb-72 max-w-7xl mx-auto z-10 relative">
           <div className="p-4 xl:p-8 shadow-lg rounded-lg border border-gray-100 bg-gradient-to-r from-blue-50 to-pink-50">
             <ScrollTrigger start="-500px center" end="-100px center">
@@ -38,11 +38,11 @@ const Featured: React.FC = () => {
               </div>
             </ScrollTrigger>
           </div>
-          <p className="max-w-3xl mx-auto text-gray-50 text-center mt-8">
+          {/* <p className="max-w-3xl mx-auto text-gray-50 text-center mt-8">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos maiores ea possimus rem consectetur ipsa
             labore consequatur repellat odit nihil veniam, sint ipsum sit nostrum et omnis praesentium ducimus?
             Asperiores.
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="relative ">
