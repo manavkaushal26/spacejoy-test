@@ -63,22 +63,20 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
   };
 
   return (
-    <li key={product._id} className="flex py-6 sm:py-10">
-      <div className="flex-shrink-0">
-        <div className="mb-2 aspect-w-1 aspect-h-1">
-          <Image
-            // src={product?.imageUrl}
-            src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
-            alt={product?.name}
-            className="object-center object-contain"
-            layout="fill"
-            placeholder="blur"
-            blurDataURL={blurredBgProduct}
-          />
-        </div>
+    <li key={product._id} className="grid grid-cols-12 py-6 sm:py-10">
+      <div className="col-span-3 mb-2 aspect-w-1 aspect-h-1">
+        <Image
+          // src={product?.imageUrl}
+          src={`${cloudinary.baseDeliveryURL}/w_400,ar_1,c_pad/${product?.cdn}`}
+          alt={product?.name}
+          layout="fill"
+          objectFit="contain"
+          placeholder="blur"
+          blurDataURL={blurredBgProduct}
+        />
       </div>
 
-      <div className="ml-4 flex-1 flex flex-col justify-between sm:ml-6">
+      <div className="ml-4 col-span-9 flex-1 flex flex-col justify-between sm:ml-6">
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div>
             <div className="flex justify-between">
