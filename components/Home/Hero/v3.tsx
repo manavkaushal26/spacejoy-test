@@ -17,8 +17,11 @@ const v3 = () => {
       </div>
       <div className="flex flex-col min-h-[700px] justify-center items-center relative z-10">
         <h1 className="text-5xl text-center leading-normal">
-          Which room will you <br /> furnish today?
+        Home decorating, simplified
         </h1>
+        <h4 className="text-xl text-center leading-normal">
+        See it. Try it. Buy it - It’s that easy!
+        </h4>
         <button
           type="button"
           className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"

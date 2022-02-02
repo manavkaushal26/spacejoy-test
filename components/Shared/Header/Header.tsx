@@ -150,7 +150,7 @@ const Header: React.FC = () => {
                       />
                     </button>
                   </li>
-                  <li className="inline-block">
+                  {/* <li className="inline-block">
                     <Link href="/interior-designs">
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
@@ -160,6 +160,32 @@ const Header: React.FC = () => {
                         Explore Ideas
                       </a>
                     </Link>
+                  </li> */}
+                  <li className="flex">
+                    <button
+                      type="button"
+                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                        isOpenSubNav && subNavContent === 'stories' ? 'text-red-500' : 'text-gray-700'
+                      }`}
+                      onClick={
+                        isOpenSubNav
+                          ? () => {
+                              closeSubNav();
+                              setSubNavContent('');
+                            }
+                          : () => {
+                              openSubNav();
+                              setSubNavContent('stories');
+                            }
+                      }
+                    >
+                      Explore Ideas{' '}
+                      <ChevronDownIcon
+                        className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
+                          isOpenSubNav && subNavContent === 'stories' ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
                   </li>
                 </ul>
               </nav>

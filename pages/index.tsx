@@ -10,8 +10,12 @@ import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React from 'react';
+import PreFooter from '@components/Shared/PreFooter';
+
+const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
 export const Home = (): JSX.Element => {
   return (
@@ -24,11 +28,9 @@ export const Home = (): JSX.Element => {
           <Hero3 />
           <div className="mt-32 mb-12">
             <HomeSectionTitle className="text-center">
-              <HomeSectionTitle.MainTitle>
-                Shop Design Sets - your shortcut to a stunning home.
-              </HomeSectionTitle.MainTitle>
+              <HomeSectionTitle.MainTitle>Shop curated furniture & decor sets</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-                Transform any space with our furniture & decor pairings curated to look good in your space.
+                Choose from thousands of sets created to match your style, space and budget.
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
@@ -38,7 +40,7 @@ export const Home = (): JSX.Element => {
               <div className="col-span-2 row-span-2">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1616594266774-769089710d76?auto=format&fit=crop&w=1480&q=80"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721757/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_niucpy.png"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -50,7 +52,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1630699295261-8bf3238d394c?auto=format&fit=crop&w=2340&q=80"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721846/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_1_ghmsjc.png"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -62,7 +64,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1617806265182-7b3f847f0b75?auto=format&fit=crop&w=1480&q=80"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721882/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_2_axenx0.png"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -74,7 +76,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1616593871468-2a9452218369?auto=format&fit=crop&w=1480&q=80"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721917/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_3_bly4do.png"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -106,8 +108,8 @@ export const Home = (): JSX.Element => {
                     From Pinterest to <span className="text-red-500">your home</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left">
-                    Have inspiration tucked away in your Pinterest Boards? Connect it to discover and shop everything
-                    you love from your pins.
+                    Have inspiration tucked away in your Pinterest Boards? Connect and shop everything you love from
+                    your pins.
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
               </div>
@@ -168,8 +170,7 @@ export const Home = (): JSX.Element => {
                     <span className="text-red-500">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left">
-                    Get 3D Designs of your actual room with product recommendations you can shop right away - Within 7
-                    days
+                  In just 7 days, you’ll get 3D Designs of your actual room with products you can shop right away on Spacejoy!
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
                 <button
@@ -186,7 +187,7 @@ export const Home = (): JSX.Element => {
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Beautiful room designs await you.</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-                Hire our experts to do what they do best - design a home you&apos;ll love!
+                From a corner to a whole room, see how our customers are transforming their homes with Spacejoy.
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
@@ -198,7 +199,8 @@ export const Home = (): JSX.Element => {
                 Shop all things home in <span className="text-red-500">one place.</span>
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-                Hire our experts to do what they do best - design a home you&apos;ll love!
+                Discover thousands of products from hundreds of furniture and decor brands, and bring home everything
+                you love in a single click!
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
@@ -215,7 +217,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1581590997/web/Spacejoy_Sofa_qbyblt.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722434/web/homepage-v3/ValenciaModularSectional_1_xzscpq.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -235,7 +237,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1581590997/web/Spacejoy_Sofa_qbyblt.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722463/web/homepage-v3/HewittChair_01_1_grynjo.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -255,7 +257,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1581590997/web/Spacejoy_Sofa_qbyblt.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722472/web/homepage-v3/MottSideTable_1_1_ipzkjg.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -324,6 +326,8 @@ export const Home = (): JSX.Element => {
               </Carousel>
             </div>
           </div>
+          <DynamicFeaturedWithNoSSR />
+          <PreFooter />
         </Layout.Body>
         <Layout.Footer />
       </Layout>

@@ -15,14 +15,14 @@ const Modal: React.FC = () => {
 
   return (
     <>
-      <button
+      {/* <button
         type="button"
         onClick={openModal}
         className="focus:outline-none text-gray-700 hover:text-red-500 text-xs py-2 px-4 rounded-full hover:shadow-md border border-gray-500 hover:border-red-500"
       >
         <span className="sr-only">Filter</span>
         Filter <FilterIcon className="inline w-4 h-4" />
-      </button>
+      </button> */}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"

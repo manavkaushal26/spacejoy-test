@@ -29,6 +29,7 @@ interface CategoryType {
   _id: string;
   selected: boolean;
   subCategories: Array<SubcategoryType>;
+  isPublic: boolean;
 }
 interface VerticalType {
   _id: string;
@@ -63,6 +64,7 @@ const ShopFilterContextProvider = ({ children }) => {
         subCategories: [
           { _id: '', selected: false, verticals: [{ _id: '', name: '', selected: false, subcategory: '' }] },
         ],
+        isPublic: true,
       },
     ],
   });
@@ -77,7 +79,7 @@ const ShopFilterContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const categories = [...(shopFilters?.categoryTree || [])].map((item) => {
+    const categories = [...(shopFilters?.categoryTree || [])].filter(item => item.isPublic).map((item) => {
       return { ...item, type: 'category' };
     });
 

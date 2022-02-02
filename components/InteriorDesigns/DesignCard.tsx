@@ -39,7 +39,7 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
               <p className="text-gray-500 text-xs capitalize">{cardData?.room?.roomType}</p>
               <p className="text-gray-800 mt-1 transition group-hover:text-red-500">{cardData?.name}</p>
             </div>
-            <div>
+            {/* <div>
               <button
                 type="button"
                 className="focus:outline-none text-gray-700 text-xs py-2 px-2 rounded-full hover:shadow-sm hover:bg-gray-100"
@@ -54,7 +54,7 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
                 <span className="sr-only">Share</span>
                 <ShareIcon className="w-5 h-5" />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </a>
