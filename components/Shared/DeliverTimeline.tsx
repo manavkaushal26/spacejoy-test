@@ -93,43 +93,46 @@ const DeliveryTimeline = ({ productId }) => {
 
   return isAvailableForRetailer ? (
     // <div id={!deliveryDetails?.status || errorMessage?.length > 0} className="flex items-center">
-    <div className="flex items-center">
-      <div className="text-sm">
-        Ship to:{' '}
-        <button className="expand-zipcode" onClick={toggleExpandZipCode}>
-          <span className="zipcode">{!isExpanded && zipCode}</span> <span className="icon-chevron-down" />
-        </button>
-      </div>
-      {isExpanded && (
-        <div id="zipcode-input">
-          <div className="relative ">
-            <input
-              type="text"
-              className="h-12 w-full pl-4 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-              placeholder="Enter zip code"
-              value={zipCode}
-              onChange={onValueChange}
-            />
-            <div className="absolute top-2 right-2">
-              <button
-                disabled={isCheckDisabled}
-                onClick={getDeliveryDetails}
-                className="h-8 w-20 text-white rounded-lg bg-gray-900"
-              >
-                {isLoading ? (
-                  <div className="text-center">
-                    <span className="icon-loader loading-spinner" />
-                  </div>
-                ) : (
-                  'Check'
-                )}
-              </button>
+    <div className="text-sm">
+      <div className="flex items-center">
+        <div>
+          Ship to:{' '}
+          <button className="expand-zipcode" onClick={toggleExpandZipCode}>
+            <span className="zipcode">{!isExpanded && zipCode}</span> <span className="icon-chevron-down" />
+          </button>
+        </div>
+        {isExpanded && (
+          <div id="zipcode-input">
+            <div className="relative ">
+              <input
+                type="text"
+                className="h-12 w-full pl-4 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                placeholder="Enter zip code"
+                value={zipCode}
+                onChange={onValueChange}
+              />
+              <div className="absolute top-2 right-2">
+                <button
+                  disabled={isCheckDisabled}
+                  onClick={getDeliveryDetails}
+                  className="h-8 w-20 text-white rounded-lg bg-gray-900"
+                >
+                  {isLoading ? (
+                    <div className="text-center">
+                      <span className="icon-loader loading-spinner" />
+                    </div>
+                  ) : (
+                    'Check'
+                  )}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+
+        {errorMessage.length > 0 && <p>{errorMessage}</p>}
+      </div>
       <p className="delivery-message">{deliveryDetails?.data?.estimation}</p>
-      {errorMessage.length > 0 && <p>{errorMessage}</p>}
     </div>
   ) : (
     <></>

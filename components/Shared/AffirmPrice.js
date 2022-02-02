@@ -27,13 +27,11 @@ const AffirmCartPrice = ({ totalAmount, flow, affirmType }) => {
 
   return (
     <AffirmWrapper>
-      <small>
-        <p
-          className={`affirm-${affirmType}`}
-          data-page-type={flow}
-          data-amount={(parseFloat(totalAmount) * 100).toString()}
-        />
-      </small>
+      <p
+        className={`affirm-${affirmType}`}
+        data-page-type={flow}
+        data-amount={(parseFloat(totalAmount) * 100).toString()}
+      />
     </AffirmWrapper>
   );
 };

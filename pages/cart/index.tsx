@@ -4,13 +4,13 @@ import CartSummary from '@components/Cart/Summary';
 import Layout from '@components/Shared/Layout';
 import { TruckIcon, XIcon } from '@heroicons/react/solid';
 import { useStore } from '@lib/store';
-import { blurredBgImage } from '@public/images/bg-base-64';
+import { blurredBgProduct } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React from 'react';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
   key: number;
@@ -65,14 +65,17 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
   return (
     <li key={product._id} className="flex py-6 sm:py-10">
       <div className="flex-shrink-0">
-        <Image
-          src={`${cloudinary.baseDeliveryURL}/${product?.cdn}`}
-          alt={product?.name}
-          placeholder="blur"
-          blurDataURL={blurredBgImage}
-          height="90"
-          width="160"
-        />
+        <div className="mb-2 aspect-w-1 aspect-h-1">
+          <Image
+            // src={product?.imageUrl}
+            src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
+            alt={product?.name}
+            className="object-center object-contain"
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={blurredBgProduct}
+          />
+        </div>
       </div>
 
       <div className="ml-4 flex-1 flex flex-col justify-between sm:ml-6">
@@ -149,12 +152,6 @@ export default function Cart() {
     }),
     shallow
   );
-
-  useEffect(() => {
-    fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET', credentials: 'include' })
-      .then((data) => data.json())
-      .then(console.log);
-  }, []);
 
   // const { data: session, status } = useSession();
   // console.log('session details', session, status);
