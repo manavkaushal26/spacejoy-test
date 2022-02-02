@@ -98,7 +98,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
         <title>Shop | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <div className="bg-gray-100 min-h-screen">

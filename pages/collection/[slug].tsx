@@ -35,7 +35,7 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
         <title>{collectionData?.name} | Spacejoy</title>
         <base href="/" />
       </Head>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <CollectionBanner data={collectionData} />

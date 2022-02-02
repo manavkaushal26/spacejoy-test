@@ -16,7 +16,7 @@ const DesignView: React.FC<DesignViewInterface> = ({ design }) => {
       <Head>
         <title>{design?.name} | Spacejoy</title>
       </Head>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <div className="bg-gray-100">

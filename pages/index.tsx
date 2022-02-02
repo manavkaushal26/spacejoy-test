@@ -3,6 +3,7 @@ import HomeSectionTitle from '@components/Home/Hero/HomeSectionTitle';
 import OutputGallery from '@components/Home/OutputGallery';
 import Carousel, { position } from '@components/Shared/Carousel';
 import Layout from '@components/Shared/Layout';
+import PreFooter from '@components/Shared/PreFooter';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
@@ -13,7 +14,6 @@ import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React from 'react';
-import PreFooter from '@components/Shared/PreFooter';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
@@ -22,7 +22,7 @@ export const Home = (): JSX.Element => {
     <>
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
-        <Layout.Banner />
+        {/* <Layout.Banner />  */}
         <Layout.Header />
         <Layout.Body>
           <Hero3 />
@@ -172,8 +172,8 @@ export const Home = (): JSX.Element => {
                     <span className="text-red-500">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
-                  In just 7 days, get 3D Designs of your actual room with products you can shop right away on Spacejoy!
-
+                    In just 7 days, get 3D Designs of your actual room with products you can shop right away on
+                    Spacejoy!
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
                 <button
@@ -343,7 +343,7 @@ export const Home = (): JSX.Element => {
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-              From a corner to a whole room, see how our customers are transforming their homes.
+                From a corner to a whole room, see how our customers are transforming their homes.
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>

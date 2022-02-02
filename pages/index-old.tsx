@@ -16,7 +16,7 @@ export const Home = (): JSX.Element => {
     <>
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
-        <Layout.Banner />
+        {/* <Layout.Banner />  */}
         <Layout.Header />
         <Layout.Body>
           <Hero1 />

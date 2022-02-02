@@ -6,7 +6,7 @@ import React from 'react';
 const CookiePolicy: React.FC = () => {
   return (
     <Layout>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <CookiesContent />

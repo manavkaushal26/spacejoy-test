@@ -6,7 +6,7 @@ import React from 'react';
 export const NextProject = (): JSX.Element => (
   <>
     <Layout>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <ThemeDisplay />

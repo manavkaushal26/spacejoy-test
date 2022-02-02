@@ -11,7 +11,7 @@ import React from 'react';
 const collection: React.FC<CollectionListInterface> = ({ feedData }) => {
   return (
     <Layout>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <CollectionList feedData={feedData} />

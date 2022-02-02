@@ -10,7 +10,7 @@ const CustomerStory: React.FC = () => {
         <title>Customer Story | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <EmptyState title="Customer Stories" message="Please check your network settings" />

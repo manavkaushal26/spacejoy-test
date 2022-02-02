@@ -1,4 +1,6 @@
+import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
+import Reviews from '@components/ProductView/Reviews';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
@@ -13,24 +15,21 @@ import {
   PlusIcon,
   PlusSmIcon,
 } from '@heroicons/react/outline';
-import { StarIcon } from '@heroicons/react/solid';
 import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
 import fetcher from '@utils/fetcher';
+import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
+import ReactScroll from 'react-scroll';
+import StarRatings from 'react-star-ratings';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
-import StarRatings from 'react-star-ratings';
-import Reviews from '@components/ProductView/Reviews';
-import ReactScroll from 'react-scroll';
-import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
-import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 const entry = keyframes`
@@ -155,7 +154,7 @@ const ProductView = ({ product }): JSX.Element => {
         <title>{product?.name} | Spacejoy</title>
         <base href="/" />
       </Head>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <div className="bg-gray-100">

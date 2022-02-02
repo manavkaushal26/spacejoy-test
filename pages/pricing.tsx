@@ -29,7 +29,7 @@ export const pricing = ({ pricingData }: InferGetStaticPropsType<typeof getStati
     <>
       <SEOWrapper seoProps={seoObject} />
       <Layout>
-        <Layout.Banner />
+        {/* <Layout.Banner />  */}
         <Layout.Header />
         <Layout.Body>
           <DynamicMindBlowingWithNoSSR />

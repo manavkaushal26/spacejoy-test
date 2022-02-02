@@ -28,7 +28,7 @@ const career: React.FC = () => {
         <title>Career @Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout.Banner />
+      {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
         <div className="container mx-auto px-4">
