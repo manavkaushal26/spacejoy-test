@@ -42,3 +42,21 @@ h3 {
 .checkout-textarea::placeholder {
   color: #bdbdbd;
 }
+
+.StripeElement {
+  padding: 1rem;
+  border: 1px solid #a9abb2;
+  border-radius: 2px;
+}
+
+.StripeElement--focus {
+  border: 1px solid #a9abb2;
+}
+
+.StripeElement--invalid {
+  border-color: #e74c3c;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}

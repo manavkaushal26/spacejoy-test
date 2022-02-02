@@ -1,16 +1,23 @@
+import Coupons from '@components/Coupons';
+import Drawer from '@components/Shared/Drawer';
 import { XCircleIcon } from '@heroicons/react/outline';
 import { QuestionMarkCircleIcon } from '@heroicons/react/solid';
+import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import fetcher from '@utils/fetcher';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
+import GiftCardSummary from './GiftCardSummary';
 
 interface CartSummaryInterface {
+  giftCards?: { code: string; discount: number; type: string; _id: string }[];
+  setShowGiftCardInput?: (boolean) => void;
   noBtn?: boolean;
 }
 
-const CartSummary: React.FC<CartSummaryInterface> = ({ noBtn }) => {
+const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShowGiftCardInput }) => {
   const { cart, updateCart } = useStore(
     (store) => ({
       cart: store.cart,
@@ -18,18 +25,62 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ noBtn }) => {
     }),
     shallow
   );
-  const removeCoupon = async (couponId) => {
-    const { statusCode, data } = await fetcher({ endPoint: `/v1/cartCoupons/${couponId}`, method: 'DELETE' });
-    if (statusCode <= 301) {
-      updateCart(data);
+  const [couponLoader, setCouponLoader] = useState(false);
+  const [giftCardLoader, setGiftCardLoader] = useState(false);
+
+  const removeCoupon = async (couponId, type) => {
+    if (type === 'coupon') {
+      setCouponLoader(true);
+    } else {
+      setGiftCardLoader(true);
+    }
+    try {
+      const { statusCode, data } = await fetcher({ endPoint: `/v1/cartCoupons/${couponId}`, method: 'DELETE' });
+      if (statusCode <= 301) {
+        updateCart(data);
+        toast.success(`Removed coupon successfully`);
+      } else {
+        toast.error(`Error while removing coupon`);
+      }
+    } catch {
+    } finally {
+      setCouponLoader(false);
+      setGiftCardLoader(false);
     }
   };
+  const [isOpen, setIsOpen] = useState(false);
+  const { loading, coupons } = useCoupons('product');
+
+  const couponSuccess = (successData) => {
+    setIsOpen(false);
+    updateCart(successData);
+    toast.success('Coupon Applied Successfully!');
+  };
+  const couponError = () => {
+    setIsOpen(false);
+    toast.error(`Error occurred while applying coupon.`);
+  };
+
+  const isCouponApplied = cart?.invoiceData?.discount?.coupons.length ? true : false;
+
+  //todo remove log
 
   return (
-    <section>
+    <section className="sticky top-24">
       <h2 id="summary-heading" className="text-lg font-medium text-gray-900">
         Order summary
       </h2>
+      {!isCouponApplied ? (
+        <button
+          type="button"
+          className="w-full px-4 py-3 text-base font-medium text-gray-900 bg-gray-50 border border-gray-900 rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 my-4 hover:text-white"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        >
+          Apply Coupons
+        </button>
+      ) : null}
 
       <dl className="mt-6 space-y-4">
         {cart?.invoiceData?.productTotal ? (
@@ -80,12 +131,32 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ noBtn }) => {
                     <li className="flex items-center justify-between pt-4 text-xs" key={coupon?.code}>
                       <dt className="flex items-center text-sm text-gray-600">
                         <span>{coupon?.code}</span>
-                        <XCircleIcon
-                          className="w-4 h-4 ml-2 cursor-pointer"
-                          onClick={() => removeCoupon(coupon?._id)}
-                        />
+                        {couponLoader ? (
+                          <svg
+                            className="w-4 h-4 ml-2 text-white animate-spin"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="black" strokeWidth="4" />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            />
+                          </svg>
+                        ) : (
+                          <XCircleIcon
+                            className="w-4 h-4 ml-2 cursor-pointer"
+                            onClick={() => {
+                              removeCoupon(coupon?._id, 'coupon');
+                            }}
+                          />
+                        )}
                       </dt>
-                      <dd className="text-sm font-medium text-gray-900">${cart?.invoiceData?.discount?.total}</dd>
+                      <dd className="text-sm font-medium text-gray-900">
+                        ${cart?.invoiceData?.discount?.couponDiscount}
+                      </dd>
                     </li>
                   );
                 })}
@@ -93,6 +164,13 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ noBtn }) => {
             ) : null}
           </div>
         ) : null}
+
+        {cart?.invoiceData?.discount?.total !== 0 &&
+          !!cart?.invoiceData?.discount?.type &&
+          cart?.invoiceData?.discount?.giftCards?.length && (
+            <GiftCardSummary giftCardLoader={giftCardLoader} removeCoupon={removeCoupon} giftCards={giftCards} />
+          )}
+
         {cart?.invoiceData?.total ? (
           <div className="flex items-center justify-between pt-4 border-t border-gray-200">
             <dt className="text-base font-medium text-gray-900">
@@ -117,6 +195,11 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ noBtn }) => {
           </Link>
         </div>
       )}
+      <>
+        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} title="Spacejoy Offers" description="">
+          <Coupons list={coupons} loading={loading} onSuccess={couponSuccess} onError={couponError} />
+        </Drawer>
+      </>
     </section>
   );
 };

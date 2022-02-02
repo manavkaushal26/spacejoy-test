@@ -42,6 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
     //listen to message event
     const handleMessage = (event) => {
       if (event.origin === 'https://auth.spacejoy.com') {
+        console.log('event', event);
         if (event.data.type === 'SIGN_IN_SUCCESS') {
           fetchUser();
         }

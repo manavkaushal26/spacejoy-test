@@ -1,5 +1,4 @@
 import { useShopFilterContext } from '@store/ShopFilterContext';
-import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
 const ShopCategories = ({ callback }) => {
@@ -17,8 +16,6 @@ const ShopCategories = ({ callback }) => {
 
     return res;
   }, [category]);
-
-  const router = useRouter();
 
   return (
     <div className="grid grid-cols-7 gap-4">

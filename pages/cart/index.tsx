@@ -7,7 +7,7 @@ import { useStore } from '@lib/store';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
-import { getSession, useSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
@@ -149,12 +149,7 @@ export default function Cart() {
     }),
     shallow
   );
-  const removeCoupon = async (couponId) => {
-    const { statusCode, data } = await fetcher({ endPoint: `/v1/cartCoupons/${couponId}`, method: 'DELETE' });
-    if (statusCode <= 301) {
-      updateCart(data);
-    }
-  };
+
   useEffect(() => {
     fetch('https://auth.spacejoy.com/api/auth/session', { method: 'GET', credentials: 'include' })
       .then((data) => data.json())
@@ -220,7 +215,7 @@ export default function Cart() {
                   aria-labelledby="summary-heading"
                   className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
                 >
-                  {Object.keys(cart?.invoiceData)?.length === 0 ? <CartSummaryDimmer /> :  <CartSummary />}
+                  {Object.keys(cart?.invoiceData)?.length === 0 ? <CartSummaryDimmer /> : <CartSummary />}
                 </section>
               </form>
             </div>

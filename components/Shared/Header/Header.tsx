@@ -205,11 +205,11 @@ const Header: React.FC = () => {
                 <a className="text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border border-transparent hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none relative ">
                   <span className="sr-only">Shopping</span>
                   <ShoppingBagIcon className="inline h-4 w-4" />
-                  {cart?.count && cart?.count > 0 && (
+                  {cart?.count && cart?.count > 0 ? (
                     <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full">
                       {cart?.count || 0}
                     </span>
-                  )}
+                  ) : null}
                 </a>
               </Link>
               <Link href="/new-project">
