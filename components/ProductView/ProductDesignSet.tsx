@@ -27,7 +27,7 @@ const ProductDesignSet = ({ productIds }) => {
               <a className="group block">
                 <div className="bg-white aspect-w-3 aspect-h-2 rounded-lg group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-4">
                   <Image
-                    src={`${cloudinary.baseDeliveryURL}/${product?.thumbnail}`}
+                    src={`${cloudinary.baseDeliveryURL}/q_auto,f_auto,w_300/${product?.thumbnail}`}
                     alt="Brown leather key ring with brass metal loops and rivets on wood table."
                     layout="fill"
                     placeholder="blur"
