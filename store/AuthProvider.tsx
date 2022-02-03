@@ -1,5 +1,6 @@
 import useLocalStorage from '@utils/hooks/useLocalStorage';
 import Cookie from 'js-cookie';
+import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
 const AuthContext = React.createContext({
   session: {
@@ -14,6 +15,8 @@ const AuthProvider: React.FC = ({ children }) => {
   const [session, setSession] = useLocalStorage('session', {});
 
   const [loading, setLoading] = useState(!session);
+
+  const router = useRouter();
 
   const fetchUser = useCallback(async () => {
     setLoading(true);
@@ -40,10 +43,12 @@ const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     // listen to crossDocument message from an iframe
     //listen to message event
-    const handleMessage = (event) => {
+    const handleMessage = async (event) => {
       if (event.origin === 'https://auth.spacejoy.com') {
         if (event.data.type === 'SIGN_IN_SUCCESS') {
-          fetchUser();
+          await fetchUser();
+          const redirectPath = event?.data?.data || '/';
+          router.push(redirectPath);
         }
       }
     };

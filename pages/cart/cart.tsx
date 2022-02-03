@@ -154,9 +154,6 @@ export default function Cart() {
     shallow
   );
 
-  // const { data: session, status } = useSession();
-  // console.log('session details', session, status);
-
   return (
     <>
       <Head>
@@ -182,13 +179,7 @@ export default function Cart() {
                     </>
                   )}
                   {Object.keys(cart?.cartItems)?.length === 0 && (
-                    <>
-                      {loading ? (
-                        <LoadingState />
-                      ) : (
-                        <EmptyState title="No items found" message={''} />
-                      )}
-                    </>
+                    <>{loading ? <LoadingState /> : <EmptyState title="No items found" message={''} />}</>
                   )}
                   {Object.keys(cart?.cartItems)?.map((cItem) => {
                     return (
@@ -221,11 +212,15 @@ export default function Cart() {
                   aria-labelledby="summary-heading"
                   className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
                 > */}
-                  {loading && <CartSummaryDimmer />}
-                  {!loading && cart?.count !== 0 && (<section
-                  aria-labelledby="summary-heading"
-                  className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
-                ><CartSummary/></section>)}
+                {loading && <CartSummaryDimmer />}
+                {!loading && cart?.count !== 0 && (
+                  <section
+                    aria-labelledby="summary-heading"
+                    className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
+                  >
+                    <CartSummary />
+                  </section>
+                )}
                 {/* </section> */}
               </form>
             </div>

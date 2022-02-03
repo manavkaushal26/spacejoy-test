@@ -33,7 +33,8 @@
     "utils/affirm.js",
     "lib/store.js",
     "components/Payment/AffirmPayment.jsx",
-    "pages/api/auth/[...nextauth].js"
+    "pages/api/auth/[...nextauth].js",
+    "pages/cart/_middleware.ts"
   ],
   "exclude": ["node_modules"]
 }

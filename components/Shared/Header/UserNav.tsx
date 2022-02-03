@@ -1,3 +1,4 @@
+import Login from '@components/Shared/LoginManager';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { useSession } from '@store/AuthProvider';
@@ -19,22 +20,7 @@ function NextLink(props) {
 const UserNav = () => {
   const { session, loading, logout } = useSession();
 
-  const PreAuthRenderUI = () => (
-    <Link href="/auth/login">
-      <a
-        className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50"
-        href="https://auth.spacejoy.com?redirect=cart"
-        target="popup"
-        onClick={() => {
-          window.open('https://auth.spacejoy.com?redirect=cart', 'popup', 'width=1200,height=830');
-
-          return false;
-        }}
-      >
-        LOGIN
-      </a>
-    </Link>
-  );
+  const PreAuthRenderUI = () => <Login />;
 
   const PostAuthRenderUI = () => {
     return (
