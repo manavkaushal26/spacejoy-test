@@ -7,7 +7,7 @@ export function middleware(req: NextRequest) {
   // Only rewrite requests to `/`, as _middleware on the `/pages` root will be executed in every request of the app.
   if (req.nextUrl.pathname === '/cart') {
     // Parse the cookie
-    const isAuthorised = req.cookies['token'] ? false : false
+    const isAuthorised = req.cookies['token'] ? true : false;
     const redirectTo = isAuthorised ? '/cart/cart' : '/unauthorised';
 
     // Rewrite to the correct page
