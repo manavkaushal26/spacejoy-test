@@ -5,8 +5,9 @@ interface CartSummaryDimmerInterface{
 
 const CartSummaryDimmer:React.FC<CartSummaryDimmerInterface> = ({noBtn}) => {
   return (
-    <div className="space-y-5 w-50 p-5 animate-pulse bg-white rounded-md">
-    <div className="w-1/2 h-8 bg-gray-200 rounded-md" />
+    <section className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20" >
+      <div className="space-y-5 w-50 p-5 animate-pulse bg-white rounded-md">
+    <div className="w-full h-10 bg-gray-200 rounded-md" />
 
     <div className="divide-y">
       <div className="flex flex-row justify-between my-5">
@@ -29,6 +30,8 @@ const CartSummaryDimmer:React.FC<CartSummaryDimmerInterface> = ({noBtn}) => {
 
     {noBtn ? null : <div className="w-full h-10 bg-gray-200" />}
   </div>
+    </section>
+    
   )
 };
 
