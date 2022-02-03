@@ -9,6 +9,7 @@ import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
+import Cookie from 'js-cookie';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -153,6 +154,10 @@ export default function Cart() {
     }),
     shallow
   );
+  const userToken = Cookie?.get('token');
+  React.useEffect(() => {
+    window && window?.location?.reload;
+  }, [userToken]);
 
   return (
     <>
