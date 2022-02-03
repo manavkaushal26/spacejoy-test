@@ -48,7 +48,7 @@ const AuthProvider: React.FC = ({ children }) => {
         if (event.data.type === 'SIGN_IN_SUCCESS') {
           console.log('event data', event.data);
           await fetchUser();
-          const redirectPath = event?.data?.data || '/';
+          const redirectPath = event?.data?.data?.redirect || '/';
           console.log('redirect path', redirectPath, Cookie.get('token'));
           router.push(redirectPath);
         }
