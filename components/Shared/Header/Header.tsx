@@ -2,13 +2,13 @@ import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 import ShopCategories from '@components/Shared/ShopCategories';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
-import Image from 'next/image'
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -81,7 +81,13 @@ const Header: React.FC = () => {
                 className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md pr-1 mr-10"
                 aria-label="logo"
               >
-                <Image src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg" width={125} height={25} alt="Spacejoy Logo" className="Logo__ImageStyled-sc-po3q2y-0 iZTGUF"/>
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
+                  width={125}
+                  height={25}
+                  alt="Spacejoy Logo"
+                  className="Logo__ImageStyled-sc-po3q2y-0 iZTGUF"
+                />
                 {/* <svg height="30" width="139" viewBox="0 0 291 63" fill="none" baseProfile="full">
                   <path
                     d="M51 0H12C5.373 0 0 5.373 0 12v39c0 6.627 5.373 12 12 12h39c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12z"
@@ -131,13 +137,17 @@ const Header: React.FC = () => {
                   </li>
                   <li
                     className="flex h-full items-center"
-                    onMouseEnter={() => {
-                      openSubNav();
-                      setSubNavContent('shop');
-                    }}
-                    onMouseLeave={() => {
-                      closeSubNav();
-                    }}
+                    onClick={
+                      isOpenSubNav
+                        ? () => {
+                            closeSubNav();
+                            setSubNavContent('');
+                          }
+                        : () => {
+                            openSubNav();
+                            setSubNavContent('shop');
+                          }
+                    }
                   >
                     <button
                       type="button"

@@ -1,7 +1,9 @@
 import CartItemDimmer from '@components/Cart/CartItemDimmer';
 import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
 import CartSummary from '@components/Cart/Summary';
+import EmptyState from '@components/Shared/EmptyState';
 import Layout from '@components/Shared/Layout';
+import LoadingState from '@components/Shared/LoadingState';
 import { TruckIcon, XIcon } from '@heroicons/react/solid';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
@@ -143,10 +145,11 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
 };
 
 export default function Cart() {
-  const { cart, updateCart } = useStore(
+  const { cart, updateCart, loading } = useStore(
     (store) => ({
       cart: store.cart,
       updateCart: store.updateCart,
+      loading: store.loading,
     }),
     shallow
   );
@@ -171,47 +174,59 @@ export default function Cart() {
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
                   </h2>
-                  {Object.keys(cart?.cartItems)?.length === 0 ? (
+                  {loading && (
                     <>
                       {[...new Array(18)].map((_d, _i) => {
                         return <CartItemDimmer key={_i} />;
                       })}
                     </>
-                  ) : (
-                    Object.keys(cart?.cartItems)?.map((cItem) => {
-                      return (
-                        <div key={cItem} className="mt-8">
-                          <div className="flex justify-between">
-                            <p className="font-bold">{cart?.cartItems[cItem]?.name}</p>
-                            <p className="text-sm">
-                              <span className="font-bold">Estimated Shipping:</span> $
-                              {cart?.cartItems[cItem]?.shippingCharge}
-                            </p>
-                          </div>
-                          <ul role="list" className="border-b border-gray-200 divide-y divide-gray-200">
-                            {Object.values(cart?.cartItems[cItem]?.products)?.map((product, productIdx) => {
-                              return (
-                                <CartItem
-                                  product={product}
-                                  key={productIdx}
-                                  retailer={{ _id: cItem, shippingMethod: cart?.cartItems[cItem]?.shippingMethod }}
-                                />
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      );
-                    })
                   )}
+                  {Object.keys(cart?.cartItems)?.length === 0 && (
+                    <>
+                      {loading ? (
+                        <LoadingState />
+                      ) : (
+                        <EmptyState title="No items found" message={''} />
+                      )}
+                    </>
+                  )}
+                  {Object.keys(cart?.cartItems)?.map((cItem) => {
+                    return (
+                      <div key={cItem} className="mt-8">
+                        <div className="flex justify-between">
+                          <p className="font-bold">{cart?.cartItems[cItem]?.name}</p>
+                          <p className="text-sm">
+                            <span className="font-bold">Estimated Shipping:</span> $
+                            {cart?.cartItems[cItem]?.shippingCharge}
+                          </p>
+                        </div>
+                        <ul role="list" className="border-b border-gray-200 divide-y divide-gray-200">
+                          {Object.values(cart?.cartItems[cItem]?.products)?.map((product, productIdx) => {
+                            return (
+                              <CartItem
+                                product={product}
+                                key={productIdx}
+                                retailer={{ _id: cItem, shippingMethod: cart?.cartItems[cItem]?.shippingMethod }}
+                              />
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    );
+                  })}
                 </section>
 
                 {/* Order summary */}
-                <section
+                {/* <section
                   aria-labelledby="summary-heading"
                   className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
-                >
-                  {Object.keys(cart?.invoiceData)?.length === 0 ? <CartSummaryDimmer /> : <CartSummary />}
-                </section>
+                > */}
+                  {loading && <CartSummaryDimmer />}
+                  {!loading && cart?.count !== 0 && (<section
+                  aria-labelledby="summary-heading"
+                  className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
+                ><CartSummary/></section>)}
+                {/* </section> */}
               </form>
             </div>
           </div>
