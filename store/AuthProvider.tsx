@@ -50,7 +50,7 @@ const AuthProvider: React.FC = ({ children }) => {
           await fetchUser();
           const redirectPath = event?.data?.data?.redirect || '/';
           console.log('redirect path', redirectPath, Cookie.get('token'));
-          router.push(redirectPath);
+          router.replace(redirectPath);
         }
       }
     };
