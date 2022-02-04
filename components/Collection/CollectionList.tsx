@@ -81,14 +81,12 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
     <div className="container mx-auto px-4">
       <div className="flex items-end py-20">
         <div className="flex-1">
-          <p className="text-gray-500">Largest collection of 3D rendered images</p>
+          <p className="text-gray-500">Our most popular design ideas handpicked for you</p>
           <h1 className="my-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Hand Picked Collections
+          Explore Curated Collections
           </h1>
           <p className="text-gray-800 max-w-3xl">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto id possimus, sit assumenda sequi qui
-            tempora placeat veritatis. Similique amet aperiam sequi assumenda. Quos ad, asperiores laboriosam nihil sint
-            provident.
+          Take a look at the wide collection of interior design ideas curated by our design experts for special occasions and ever-evolving trends. Our collections will help you visualize your new room effortlessly and create a space that is best suited for your needs.
           </p>
         </div>
       </div>

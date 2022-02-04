@@ -54,7 +54,7 @@ const DesignView: React.FC<DesignViewInterface> = ({ design }) => {
               </div>
               <div className="w-2/5 xl:w-1/4">
                 <div className="sticky top-24 2xl:top-28">
-                  <DesignerCard />
+                  {/* <DesignerCard /> */}
                   <div className="bg-white rounded-lg p-4 2xl:p-8 mt-4 2xl:mt-8">
                     <h3 className="text-lg mb-4">About the Design</h3>
                     <p className="text-sm text-gray-500 mb-6">{design?.description}</p>

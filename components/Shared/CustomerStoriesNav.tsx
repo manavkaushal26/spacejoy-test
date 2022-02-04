@@ -5,74 +5,74 @@ import React from 'react';
 const CustomerStoriesNav = () => {
   return (
     <div className=" max-w-800 max-w-screen-xl">
-      <div className="flex flex-row space-x-5">
-        <div className="shadow-sm rounded-xl bg-yellow-100 h-full cursor-pointer hover:bg-yellow-200" onClick={()=>location.href="/interior-designs"}>
-          <div className="flex h-full p-4 flex-col justify-end">
+      <div className="grid grid-cols-4 gap-10">
+        <div className="shadow-sm rounded-xl bg-green-50 h-full cursor-pointer hover:bg-green-100" onClick={()=>location.href="/interior-designs"}>
+          <div className="flex h-full p-4 flex-col">
             <div className="text-left">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1622188228/spj-v2/3d-icons/spj-10_pcm6mi.svg"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1643898253/spj-v2/3d-icons/Icon_qtem1z.png"
                 alt="No markups"
-                height={'75'}
-                width={'75'}
+                height={'50'}
+                width={'65'}
                 layout="intrinsic"
               />
             </div>
             <div>
               <h3 className="text-lg mt-2 text-green-700 font-poppins">Interior Designs</h3>
-              <p className="text-sm mb-2">Explore various creative designs by our team</p>
+              <p className="text-sm mb-2">Discover inspiration for your next design project</p>
               <ArrowRightIcon className="h-4 w-4" />
             </div>
           </div>
         </div>
-        <div className="shadow-sm rounded-xl bg-gray-100 h-full cursor-pointer hover:bg-gray-200" onClick={()=>location.href="/collection"}>
-          <div className="flex h-full p-4 flex-col justify-end">
+        <div className="shadow-sm rounded-xl bg-red-50 h-full cursor-pointer hover:bg-red-100" onClick={()=>location.href="/collection"}>
+          <div className="flex h-full p-4 flex-col">
             <div className="text-left">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1622188245/spj-v2/3d-icons/spj-26_ifwect.svg"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1643898249/spj-v2/3d-icons/Group_rp4mis.png"
                 alt="No markups"
-                height={'75'}
-                width={'75'}
+                height={'50'}
+                width={'65'}
                 layout="intrinsic"
               />
             </div>
             <div>
-              <h3 className="text-lg mt-2 text-green-700 font-poppins">Collection</h3>
-              <p className="text-sm mb-2">Largest collection of 3D rendered images</p>
+              <h3 className="text-lg mt-2 text-red-700 font-poppins">Collection</h3>
+              <p className="text-sm mb-2">Explore ideas for every style and space</p>
               <ArrowRightIcon className="h-4 w-4" />
             </div>
           </div>
         </div>
-        <div className="shadow-sm rounded-xl bg-teal-100 h-full cursor-pointer hover:bg-teal-200" onClick={()=>location.href="https://www.spacejoy.com/interior-designs-blog"}>
-          <div className="flex h-full p-4 flex-col justify-end">
+        <div className="shadow-sm rounded-xl bg-cyan-50 h-full cursor-pointer hover:bg-cyan-100" onClick={()=>location.href="https://www.spacejoy.com/interior-designs-blog"}>
+          <div className="flex h-full p-4 flex-col">
             <div>
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188242/spj-v2/3d-icons/spj-25_dhewua.png"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1643898245/spj-v2/3d-icons/Group_1_t66jhx.png"
                 alt="No markups"
-                height={'75'}
-                width={'75'}
+                height={'50'}
+                width={'50'}
                 layout="intrinsic"
               />
             </div>
             <div>
-              <h3 className="text-lg mt-2 text-red-700 font-poppins">Design Matters</h3>
+              <h3 className="text-lg mt-2 text-cyan-700 font-poppins">Design Matters</h3>
               <p className="text-sm mb-2">Tips & Guides</p>
               <ArrowRightIcon className="h-4 w-4" />
             </div>
           </div>
         </div>
-        <div className="shadow-sm rounded-xl bg-red-100 h-full cursor-pointer hover:bg-red-200" onClick={()=>location.href="https://www.spacejoy.com/customer-stories"}>
-          <div className="flex h-full p-4 flex-col justify-end">
-            <div className="text-left">
+        <div className="shadow-sm rounded-xl bg-yellow-50 h-full cursor-pointer hover:bg-yellow-100" onClick={()=>location.href="https://www.spacejoy.com/customer-stories"}>
+          <div className="flex h-full p-4 flex-col ">
+            <div>
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188232/spj-v2/3d-icons/spj-13_khzmql.png"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1643898240/spj-v2/3d-icons/Group_2_mbdyzg.png"
                 alt="No markups"
-                height={'75'}
-                width={'75'}
+                height={'50'}
+                width={'50'}
                 layout="intrinsic"
               />
             </div>
             <div>
-              <h3 className="text-lg mt-2 text-green-700 font-poppins">Customer Stories</h3>
+              <h3 className="text-lg mt-2 text-yellow-700 font-poppins">Customer Stories</h3>
               <p className="text-sm mb-2">100% Happiness Delivered</p>
               <ArrowRightIcon className="h-4 w-4" />
             </div>
