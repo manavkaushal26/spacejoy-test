@@ -14,7 +14,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  return NextResponse.rewrite('/unauthorised')
-
+  return new Response('Auth required');
 
 }
