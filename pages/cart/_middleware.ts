@@ -9,7 +9,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export function middleware(req: NextRequest) {
 
   const basicAuth = req.cookies['token'];
-  let start = Date.now()
 
   if (basicAuth) {
     return NextResponse.next();
@@ -18,6 +17,6 @@ export function middleware(req: NextRequest) {
   // return NextResponse.redirect('/unauthorised');
   // return new Response('Auth required')
   return NextResponse.redirect(
-    `/unauthorised?l=${Date.now() - start}`
+    `/unauthorised?l=${Date.now()}`
   )
 }
