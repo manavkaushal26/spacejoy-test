@@ -1,5 +1,4 @@
 import { blurredBgProduct } from '@public/images/bg-base-64';
-import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -24,9 +23,10 @@ const ProductCard = ({ product }: ProductCardType) => (
       <a target="_blank">
         <div className="bg-white p-4 2xl:p-8 rounded-lg h-full">
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">
+            {console.log(product)}
             <Image
-              // src={product?.imageUrl}
-              src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
+              src={product?.imageUrl}
+              // src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
               alt={product?.name}
               className="w-full h-full object-center object-contain"
               layout="fill"
