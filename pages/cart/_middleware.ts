@@ -9,7 +9,12 @@ export function middleware(req: NextRequest) {
   const redirectTo = isAuthorised ? '/cart/cart' : '/unauthorised';
 
   // Rewrite to the correct page
-  return NextResponse.rewrite(redirectTo).cookie("token", isAuthorised ? req.cookies['token'] : null);
+  if (isAuthorised) {
+    return NextResponse.rewrite(redirectTo).cookie("token", req.cookies['token']);
+  }
+
+  return NextResponse.rewrite(redirectTo);
+
 
 
 }
