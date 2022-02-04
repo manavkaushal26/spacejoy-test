@@ -44,10 +44,12 @@ const AuthProvider: React.FC = ({ children }) => {
     // listen to crossDocument message from an iframe
     //listen to message event
     const handleMessage = async (event) => {
-      if (event.origin === 'http://localhost:3000') {
+      if (event.origin === 'https://auth.spacejoy.com') {
         if (event.data.type === 'SIGN_IN_SUCCESS') {
+          console.log('event data', event.data);
           await fetchUser();
           const redirectPath = event?.data?.data?.redirect || '/';
+          console.log('redirect path', redirectPath, Cookie.get('token'));
           router.replace(redirectPath);
         }
       }
@@ -62,11 +64,11 @@ const AuthProvider: React.FC = ({ children }) => {
   const logout = async () => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    const csrfToken = await fetch('http://localhost:3000/api/auth/csrf', {
+    const csrfToken = await fetch('https://auth.spacejoy.com/api/auth/csrf', {
       method: 'GET',
       credentials: 'include',
     }).then((data) => data.json());
-    const response = await fetch('http://localhost:3000/api/auth/signout', {
+    const response = await fetch('https://auth.spacejoy.com/api/auth/signout', {
       method: 'POST',
       headers,
       credentials: 'include',
