@@ -231,10 +231,10 @@ export default function Cart() {
   );
 }
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps() {
   return {
     props: {
-      ctx,
+      data: {},
     },
   };
 }
