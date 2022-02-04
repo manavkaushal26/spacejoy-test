@@ -7,11 +7,17 @@ export function middleware(req: NextRequest) {
 
   const basicAuth = req.cookies['token'];
 
+  console.log('req', req.cookies);
+
   if (basicAuth) {
-
-    return NextResponse.next()
-
+    return NextResponse.next();
   }
 
-  return NextResponse.rewrite('/unauthorised')
+  // return new Response('Auth required', {
+  //   status: 401,
+  //   headers: {
+  //     'WWW-Authenticate': 'Basic realm="Secure Area"',
+  //   },
+  // })
+  return NextResponse.rewrite('/unauthorised');
 }
