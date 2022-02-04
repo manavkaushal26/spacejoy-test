@@ -15,11 +15,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.next().cookie('basic-auth', basicAuth);
   }
 
-  return NextResponse.redirect('/unauthorised');
-  // return new Response('Auth required', {
-  //   status: 401,
-  //   headers: {
-  //     'WWW-Authenticate': 'Basic realm="Secure Area"',
-  //   },
-  // })
+  // return NextResponse.redirect('/unauthorised');
+  return new Response('Auth required')
 }
