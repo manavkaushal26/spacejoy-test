@@ -93,12 +93,12 @@ const DeliveryTimeline = ({ productId }) => {
 
   return isAvailableForRetailer ? (
     // <div id={!deliveryDetails?.status || errorMessage?.length > 0} className="flex items-center">
-    <div className="text-sm">
+    <div className="text-sm space-y-4">
       <div className="flex items-center">
         <div>
-          Ship to:{' '}
+          <strong>Ship to:{' '}</strong>
           <button className="expand-zipcode" onClick={toggleExpandZipCode}>
-            <span className="zipcode">{!isExpanded && zipCode}</span> <span className="icon-chevron-down" />
+            <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span> <span className="icon-chevron-down" />
           </button>
         </div>
         {isExpanded && (
@@ -132,7 +132,7 @@ const DeliveryTimeline = ({ productId }) => {
 
         {errorMessage.length > 0 && <p>{errorMessage}</p>}
       </div>
-      <p className="delivery-message">{deliveryDetails?.data?.estimation}</p>
+      <p className="delivery-message font-bold">{deliveryDetails?.data?.estimation}</p>
     </div>
   ) : (
     <></>

@@ -37,13 +37,7 @@ export const Home = (): JSX.Element => {
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
-          <button
-            onClick={() => {
-              router.push('/cart');
-            }}
-          >
-            Click
-          </button>
+         
           {/* Section Start */}
           <div className="container mx-auto px-4 mb-10">
             <div className="grid grid-cols-4 gap-8">
