@@ -230,3 +230,11 @@ export default function Cart() {
     </>
   );
 }
+
+export async function getServerSideProps(ctx) {
+  return {
+    props: {
+      ctx,
+    },
+  };
+}
