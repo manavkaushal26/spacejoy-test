@@ -1,5 +1,6 @@
 import { page } from '@utils/config';
 import fetch from 'isomorphic-unfetch';
+import Cookies from 'js-cookie';
 import { GetServerSidePropsContext, NextPageContext } from 'next';
 
 interface FetcherArgs {
@@ -23,8 +24,8 @@ const fetcher = async ({
   // const JWT =
   //   Cookies.get('token') ||
   //   'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjQzMzcwNjQ3LCJleHAiOjE2NTIwMTA2NDd9.FLR_6QNa7NZc1XlaHyRxAsS5ef5vavPdjL6X4Xfthwo';
-  const JWT =
-    'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjQzODg1MjQwLCJleHAiOjE2NTI1MjUyNDB9.NPUMjWG0_sBqMh_ONlaOudYv68GaQTPDi_4vMce4a6s';
+  const JWT = Cookies.get('token');
+
   const contentType = type === 'file' ? '' : 'application/json';
 
   const headers = JWT ? { 'Content-Type': contentType, Authorization: JWT } : { 'Content-Type': contentType };
