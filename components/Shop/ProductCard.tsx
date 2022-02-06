@@ -1,20 +1,14 @@
+import { AssetType } from '@components/Collection/AssetType';
 import { blurredBgProduct } from '@public/images/bg-base-64';
+import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+type GenericObj = { _id: string; name: string };
+
 type ProductCardType = {
-  product: {
-    _id: string;
-    imageUrl: string;
-    retailer: string;
-    name: string;
-    displayPrice?: string;
-    price: number;
-    msrp: number;
-    slug?: string;
-    cdn?: string;
-  };
+  product: Partial<AssetType> & { retailer: GenericObj | string };
 };
 
 const ProductCard = ({ product }: ProductCardType) => (
@@ -24,7 +18,7 @@ const ProductCard = ({ product }: ProductCardType) => (
         <div className="bg-white p-4 2xl:p-8 rounded-lg h-full">
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">
             <Image
-              src={product?.imageUrl}
+              src={product?.cdn ? `${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}` : product?.imageUrl}
               // src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
               alt={product?.name}
               className="w-full h-full object-center object-contain"
@@ -33,7 +27,9 @@ const ProductCard = ({ product }: ProductCardType) => (
               blurDataURL={blurredBgProduct}
             />
           </div>
-          <small className="mt-4 text-xs text-gray-500">{product?.retailer}</small>
+          <small className="mt-4 text-xs text-gray-500">
+            {(product?.retailer as GenericObj)?.name || product?.retailer}
+          </small>
           <h3 className="text-md text-gray-700 overflow-ellipsis line-clamp-2">{product?.name}</h3>
           <p className="text-lg font-medium text-gray-900 mt-1">
             <span>${product?.displayPrice || product?.price}</span>
