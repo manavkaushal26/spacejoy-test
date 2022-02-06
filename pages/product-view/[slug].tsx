@@ -272,7 +272,7 @@ const ProductView = ({ product }): JSX.Element => {
                     )}
                   </p>
                 </div>
-                <div className="mt-3">
+                {/* <div className="mt-3">
                   <h3 className="sr-only">Reviews</h3>
                   {product?.metaDetails ? (
                     <div className="flex items-center">
@@ -295,11 +295,10 @@ const ProductView = ({ product }): JSX.Element => {
                         >
                           See top reviews
                         </ReactScroll.Link>
-                        {/* </a> */}
                       </div>
                     </div>
                   ) : null}
-                </div>
+                </div> */}
                 <div className="mt-3">
                   <h3 className="sr-only">Description</h3>
                   <div className="text-sm">
@@ -315,7 +314,7 @@ const ProductView = ({ product }): JSX.Element => {
                     product?.dimension?.width * 12
                   ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
                     product?.dimension?.height * 12
-                  ).toFixed(2)} H`}</span>
+                  ).toFixed(2)}"H`}</span>
                 </div>
                 <div className="mt-3">
                   <span className="text-sm font-bold">Material: </span>
@@ -334,6 +333,10 @@ const ProductView = ({ product }): JSX.Element => {
                     })}
                   </span>
                 </div>
+                <div className='my-5'>
+                <DeliveryTimeline productId={product?._id} />
+                </div>
+                
                 <form className="mt-3">
                   <div className="flex mt-10 space-x-4 sm:flex-col1">
                     <button
@@ -358,13 +361,13 @@ const ProductView = ({ product }): JSX.Element => {
                     >
                       Add to bag
                     </button>
-                    <button
+                    {/* <button
                       type="button"
                       className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                     >
                       <HeartIcon className="w-6 h-6" />
                       <span className="sr-only">Add to favorites</span>
-                    </button>
+                    </button> */}
                   </div>
                 </form>
                 {product?.price && (
@@ -372,7 +375,7 @@ const ProductView = ({ product }): JSX.Element => {
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
                 )}
-                <DeliveryTimeline productId={product?._id} />
+                
                 {finalArrayOfOffers.length !== 0 && (
                   <Disclosure defaultOpen>
                     {({ open }) => (
@@ -392,7 +395,7 @@ const ProductView = ({ product }): JSX.Element => {
                                   <li key={offer._id}>
                                     Get <strong>{offer.discount}% off</strong> on a minimum purchase of $
                                     {offer.constraints.minAmount} from {offer.retailer.name}. Max discount $
-                                    {offer.maxDiscount}.
+                                    {offer.maxDiscount}
                                   </li>
                                 );
                               })}
@@ -400,7 +403,7 @@ const ProductView = ({ product }): JSX.Element => {
                                 return (
                                   <li key={coupon._id}>
                                     Use coupon code <strong>{coupon?.code?.toUpperCase()}</strong> to get{' '}
-                                    {coupon?.title}.
+                                    {coupon?.title}
                                   </li>
                                 );
                               })}
@@ -411,7 +414,7 @@ const ProductView = ({ product }): JSX.Element => {
                     )}
                   </Disclosure>
                 )}
-                {product?.metaDetails?.description ? (
+                {/* {product?.metaDetails?.description ? (
                   <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
@@ -454,9 +457,9 @@ const ProductView = ({ product }): JSX.Element => {
                       )}
                     </Disclosure>
                   )
-                )}
+                )} */}
 
-                {product?.metaDetails?.specification ? (
+                {/* {product?.metaDetails?.specification ? (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -476,9 +479,9 @@ const ProductView = ({ product }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
-                ) : null}
+                ) : null} */}
 
-                {product?.metaDetails?.care ? (
+                {/* {product?.metaDetails?.care ? (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -498,9 +501,25 @@ const ProductView = ({ product }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
-                ) : null}
+                ) : null} */}
 
-                {product?.metaDetails?.shipping ? (
+                {product?.retailer?.shippingPolicy && (
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                            <span className="text-sm text-gray-900">Shipping Policy</span>
+                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                          </Disclosure.Button>
+                          <Disclosure.Panel>
+                            <div className="mt-4 text-sm text-gray-700">{product?.retailer?.shippingPolicy}</div>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  )}
+
+                {/* {product?.metaDetails?.shipping ? (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -536,9 +555,25 @@ const ProductView = ({ product }): JSX.Element => {
                       )}
                     </Disclosure>
                   )
-                )}
+                )} */}
 
-                {product?.metaDetails?.returnPolicy ? (
+                {product?.retailer?.returnPolicy && (
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                            <span className="text-sm text-gray-900">Return Policy</span>
+                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                          </Disclosure.Button>
+                          <Disclosure.Panel>
+                            <div className="mt-4 text-sm text-gray-700">{product?.retailer?.returnPolicy}</div>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  )}
+
+                {/* {product?.metaDetails?.returnPolicy ? (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -574,18 +609,18 @@ const ProductView = ({ product }): JSX.Element => {
                       )}
                     </Disclosure>
                   )
-                )}
+                )} */}
               </div>
             </div>
           </div>
           <div className="container px-4 mx-auto">
             <SimilarProducts productId={product?._id} />
             <ProductDesignSet productIds={[product?._id]} />
-            {product?.metaDetails ? (
+            {/* {product?.metaDetails ? (
               <div id="reviewsSection">
                 <Reviews rating={product?.metaDetails?.rating} reviews={product?.metaDetails?.reviews} />
               </div>
-            ) : null}
+            ) : null} */}
           </div>
         </div>
       </Layout.Body>

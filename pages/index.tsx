@@ -37,20 +37,14 @@ export const Home = (): JSX.Element => {
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
-          <button
-            onClick={() => {
-              router.push('/cart');
-            }}
-          >
-            Click
-          </button>
+         
           {/* Section Start */}
           <div className="container mx-auto px-4 mb-10">
             <div className="grid grid-cols-4 gap-8">
               <div className="col-span-2 row-span-2">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721757/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_niucpy.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643867907/web/homepage-v3/Website_Banner_Set_2_pjxcek.jpg"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -62,7 +56,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721846/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_1_ghmsjc.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643867892/web/homepage-v3/Website_design_set_1_fkt1mh.jpg"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -74,7 +68,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721882/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_2_axenx0.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643956818/web/homepage-v3/Website_design_set_5_aswpri.png"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -86,7 +80,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643721917/web/homepage-v3/jonathan-borba-UisC7KLAWjs-unsplash_1_3_bly4do.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643906661/web/homepage-v3/Website-design-set-323-final_2_evxhzz.jpg"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -200,7 +194,7 @@ export const Home = (): JSX.Element => {
           <div className="mt-32 mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
-                Shop all things home in <span className="text-red-500">one place.</span>
+                Shop all things home in <span className="text-red-500">one place</span>
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
                 Discover thousands of products from all your favorite brands in a single click!
@@ -209,10 +203,13 @@ export const Home = (): JSX.Element => {
           </div>
           <div className="container mx-auto px-4 mb-20">
             <div className="flex space-x-8">
-              <div className="bg-violet-100 flex-1 rounded-xl p-8">
+              <div
+                className="bg-violet-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
+                onClick={() => (location.href = '/shop?subcategory=Sofas')}
+              >
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl">Sectional Sofas</h3>
+                    <h3 className="text-xl">Sofas</h3>
                   </div>
                   <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
                     <ArrowRightIcon className="w-4 h-4 inline" />
@@ -229,10 +226,14 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
-              <div className="bg-blue-100 flex-1 rounded-xl p-8">
+              <div
+                className="bg-blue-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
+                // onClick={() => (location.href = '/shop?subcategory=Beds')}
+                onClick={() => (location.href = '/shop?subcategory=Rugs')}
+              >
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl">Sofas</h3>
+                    <h3 className="text-xl">Rugs</h3>
                   </div>
                   <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
                     <ArrowRightIcon className="w-4 h-4 inline" />
@@ -240,7 +241,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722463/web/homepage-v3/HewittChair_01_1_grynjo.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643909560/web/homepage-v3/Loomis-Black-And-White-Loop-Rug-8_x10_y66h1a.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -249,7 +250,10 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
-              <div className="bg-teal-100 flex-1 rounded-xl p-8">
+              <div
+                className="bg-teal-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
+                onClick={() => (location.href = '/shop?subcategory=Tables&vertical=End+%26+Side+Tables')}
+              >
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="text-xl">Side Tables</h3>
@@ -269,7 +273,10 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
-              {/* <div className="bg-red-100 flex-1 rounded-xl p-8">
+              <div
+                className="bg-red-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
+                onClick={() => (location.href = '/shop?subcategory=Chairs')}
+              >
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="text-xl">Chairs</h3>
@@ -280,7 +287,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722472/web/homepage-v3/MottSideTable_1_1_ipzkjg.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643909403/web/homepage-v3/Timber-Charme-Chocolat-Chair_uvmvxg.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -288,7 +295,7 @@ export const Home = (): JSX.Element => {
                     blurDataURL={blurredBgProduct}
                   />
                 </div>
-              </div> */}
+              </div>
             </div>
             <div className="text-center mt-4">
               <button
@@ -318,9 +325,9 @@ export const Home = (): JSX.Element => {
                             <StarIcon key={`star-${i}`} className="w-6 h-6 text-gray-700" />
                           ))}
                         </div>
-                        <div>
+                        {/* <div>
                           <p>{item?.roomType}</p>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="my-8">
                         <p className="text-sm leading-relaxed">{item?.description}</p>
@@ -353,7 +360,7 @@ export const Home = (): JSX.Element => {
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
-                From a corner to a whole room, see how our customers are transforming their homes.
+                From a corner to a whole room, see how our customers are transforming their homes
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>

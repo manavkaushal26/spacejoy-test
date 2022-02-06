@@ -8,24 +8,24 @@ const v3 = () => {
       <div className="absolute inset-0">
         <Image
           className="object-cover rounded-lg"
-          src="https://res.cloudinary.com/spacejoy/image/upload/v1643808186/web/hero/jonathan-borba-COzqEKjaxqo-unsplash_1_1_hwi3jh.png"
+          src="https://res.cloudinary.com/spacejoy/image/upload/v1643862255/web/homepage-v3/New-Website-Banner_1_neufwx.jpg"
           alt="home banner"
           layout="fill"
           placeholder="blur"
           blurDataURL={blurredBgImage}
         />
+        {/* https://res.cloudinary.com/spacejoy/image/upload/v1643862497/web/homepage-v3/New_Website_Banner_-_2-1_ttykfb.jpg */}
       </div>
       <div className="flex flex-col min-h-[700px] justify-center items-center relative z-10">
-        <h1 className="text-5xl text-center leading-normal">
-        Home decorating, simplified
-        </h1>
-        <h4 className="text-xl text-center leading-normal">
-        See it. Try it. Buy it. It’s that easy!
-        </h4>
+        <div className='absolute top-20'>
+          <h1 className="text-5xl text-center leading-normal">Home decorating, simplified</h1>
+          <h4 className="text-xl text-center leading-normal">See it. Try it. Buy it. It’s that easy!</h4>
+        </div>
+
         <button
           type="button"
-          className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-          onClick={()=>location.href="https://diy.spacejoy.com/room-select"}
+          className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none relative -top-20"
+          onClick={() => (location.href = 'https://diy.spacejoy.com/room-select')}
         >
           Get Started
         </button>

@@ -33,6 +33,7 @@ const AuthProvider: React.FC = ({ children }) => {
       console.log('error ---', e.message);
     } finally {
       setLoading(false);
+      // window.location.reload();
     }
   }, []);
 
@@ -77,6 +78,7 @@ const AuthProvider: React.FC = ({ children }) => {
     if (response.ok) {
       setSession({});
       Cookie.remove('token');
+      // window.location.reload();
     }
   };
 

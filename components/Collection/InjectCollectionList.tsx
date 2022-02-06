@@ -83,9 +83,9 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
         <div className="container mx-auto px-4 pt-4">
           <div className="flex items-end">
             <div className="flex-1">
-              <p className="text-gray-500">Largest collection of 3D rendered images</p>
+              <p className="text-gray-500">Design ideas for every space</p>
               <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Hand Picked Collections
+              Choose one to start exploring
               </h1>
             </div>
             <div className="text-right flex-1">
