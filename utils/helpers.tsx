@@ -9,6 +9,18 @@ function debounce(func, wait) {
     }, wait);
   };
 }
+
+function onlyUnique(value, index, self): boolean {
+  return self.indexOf(value) === index;
+}
+
+const priceToLocaleString = (price: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(price);
+};
+
 function arraysEqual(a, b) {
   if (a === b) return true;
   if (a == null || b == null) return false;
@@ -23,4 +35,84 @@ function arraysEqual(a, b) {
 const isDigit = (str) => {
   return /^\d+$/.test(str);
 };
-export { debounce, arraysEqual, isDigit };
+
+const WindowLocalStorage = function reactLocalStorage() {
+  const set = function set(key, value) {
+    localStorage[key] = value;
+
+    return localStorage[key];
+  };
+  const get = function get(key, defaultValue = undefined, silent = true) {
+    const value = localStorage.getItem(key) || defaultValue;
+    if (!silent && !value) throw Error(`${key} not found in localStorage`);
+
+    return value;
+  };
+  const setObject = function setObject(key, value) {
+    return Promise.resolve().then(() => {
+      localStorage.setItem(key, JSON.stringify(value));
+
+      return localStorage[key];
+    });
+  };
+  const getObject = function getObject(key, defaultValue = {}, silent = true) {
+    return new Promise((resolve, reject) => {
+      const valueFromLS = this.get(key, JSON.stringify(defaultValue), silent);
+      if (valueFromLS) {
+        resolve(JSON.parse(valueFromLS));
+      }
+      reject(new Error('No Data!'));
+    });
+  };
+  const clear = function clear() {
+    return localStorage.clear();
+  };
+  const remove = function remove(key) {
+    return localStorage.removeItem(key);
+  };
+  const noStorage = function noStorage() {
+    return {};
+  };
+  if (typeof window !== 'undefined') {
+    return {
+      set,
+      get,
+      setObject,
+      getObject,
+      clear,
+      remove,
+    };
+  }
+
+  return {
+    set: noStorage,
+    get: noStorage,
+    setObject: noStorage,
+    getObject: noStorage,
+    clear: noStorage,
+    remove: noStorage,
+  };
+};
+
+const reactLocalStorage = new (WindowLocalStorage as any)();
+
+const b64toFile = async (base64String) => {
+  return fetch(base64String)
+    .then((res) => res.blob())
+    .then((blob) => {
+      const file = new File([blob], 'File name', { type: 'image/png' });
+
+      return file;
+    });
+};
+
+function downloadURI(uri, name) {
+  const link = document.createElement('a');
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+export { debounce, arraysEqual, isDigit, onlyUnique, priceToLocaleString, reactLocalStorage, b64toFile, downloadURI };

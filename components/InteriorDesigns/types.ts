@@ -1,14 +1,7 @@
+import { AssetType } from "@components/Collection/AssetType";
+
 export interface AssetInterface {
-  asset: {
-    _id: string;
-    id: string;
-    price: number;
-    currency: string;
-    retailer: string;
-    name: string;
-    retailLink: string;
-    cdn: string;
-  };
+  asset: AssetType
 }
 
 export interface DesignViewInterface {
