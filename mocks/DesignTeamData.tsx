@@ -24,6 +24,14 @@ const data = [
   //   desc: 'A recent UNC Interior Architecture Graduate, Maggie specializes in space planning and designs with harmony. Maggie loves to work with eclectic and colorful designs ',
   // },
   {
+    firstName: 'Heather',
+    lastName: 'Wise',
+    icon: 'v1611748547/web/designTime/10-Laura_Wright_f4ob5n.png',
+    isReversed: true,
+    bg: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
+    desc: 'Heather hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Heather loves mid-century modern, boho and eclectic spaces. ',
+  },
+  {
     firstName: 'Nathan',
     lastName: 'Scheuer',
     icon: 'v1611748548/web/designTime/4-Nathan_Scheuer_mnxhiw.png',
@@ -79,14 +87,7 @@ const data = [
     bg: '/v1643954978/web/homepage-v3/designers/Laura_Wright_db5qzc.jpg',
     desc: 'Laura hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Laura loves mid-century modern, boho and eclectic spaces. ',
   },
-  {
-    firstName: 'Heather',
-    lastName: 'Wise',
-    icon: 'v1611748547/web/designTime/10-Laura_Wright_f4ob5n.png',
-    isReversed: true,
-    bg: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
-    desc: 'Heather hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Heather loves mid-century modern, boho and eclectic spaces. ',
-  },
+ 
   {
     firstName: 'Kate',
     lastName: 'Harvey',
