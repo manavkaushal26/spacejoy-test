@@ -77,7 +77,7 @@ const AuthProvider: React.FC = ({ children }) => {
     if (response.ok) {
       setSession({});
       Cookie.remove('token');
-      // window.location.reload();
+      window.location.reload();
     }
   };
 
