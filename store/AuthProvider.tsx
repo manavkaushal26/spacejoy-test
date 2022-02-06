@@ -47,11 +47,10 @@ const AuthProvider: React.FC = ({ children }) => {
     const handleMessage = async (event) => {
       if (event.origin === 'https://auth.spacejoy.com') {
         if (event.data.type === 'SIGN_IN_SUCCESS') {
-          console.log('event data', event.data);
           await fetchUser();
-          const redirectPath = event?.data?.data?.redirect || '/';
-          console.log('redirect path', redirectPath, Cookie.get('token'));
-          router.replace(redirectPath);
+          window && window.location.reload();
+          // const redirectPath = event?.data?.data?.redirect || '/';
+          // router.replace(redirectPath);
         }
       }
     };
