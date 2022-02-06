@@ -12,6 +12,7 @@ import fetcher from '@utils/fetcher';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
+import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
   key: number;
@@ -36,30 +37,70 @@ interface CartItemInterface {
   product: any;
 }
 const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
-  const { modifyCart, updateCart } = useStore(
+  const { modifyCart, updateCart, setLoading } = useStore(
     (store) => ({
       modifyCart: store.modifyCart,
       updateCart: store.updateCart,
+      setLoading: store.setLoading,
     }),
     shallow
   );
   const removeItem = async () => {
-    const { statusCode, data } = await fetcher({
-      endPoint: '/v1/cart',
-      method: 'POST',
-      body: {
-        items: [
-          {
-            productId: product?._id,
-            quantity: 0,
-            designId: '',
-            projectId: '',
-          },
-        ],
-      },
-    });
-    if (statusCode < 301) {
-      updateCart(data);
+    try {
+      setLoading(true);
+      const { statusCode, data } = await fetcher({
+        endPoint: '/v1/cart',
+        method: 'POST',
+        body: {
+          items: [
+            {
+              productId: product?._id,
+              quantity: 0,
+              designId: '',
+              projectId: '',
+            },
+          ],
+        },
+      });
+      if (statusCode < 301) {
+        updateCart(data);
+        toast.success('Removed item successfully!');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      toast.error('Error in removing item');
+    } finally {
+      setLoading(false);
+    }
+  };
+  const updateCartItemQty = async (quantity) => {
+    try {
+      setLoading(true);
+      const { statusCode, data } = await fetcher({
+        endPoint: '/v1/cart',
+        method: 'POST',
+        body: {
+          items: [
+            {
+              productId: product?._id,
+              quantity,
+              designId: '',
+              projectId: '',
+            },
+          ],
+        },
+      });
+      if (statusCode < 301) {
+        updateCart(data);
+        toast.success('Updated quantity successfully!');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      toast.error('Error in updating quantity');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -81,7 +122,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div>
             <div className="flex justify-between">
-              <h3 className="text-sm">
+              <h3 className="text-sm capitalize">
                 <a href={`/product-view/${product._id}`} className="font-medium text-gray-700 hover:text-gray-800">
                   {product.name}
                 </a>
@@ -110,7 +151,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
               name={`quantity-${key}`}
               className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-indigo-500 sm:text-sm"
               value={product.quantity}
-              onChange={(e) => modifyCart({ ...product, retailer: { _id: retailer?._id } }, e.target.value, 'update')}
+              onChange={(e) => updateCartItemQty(e?.target?.value)}
             >
               {[...new Array(20)].map((item, index) => {
                 return (
