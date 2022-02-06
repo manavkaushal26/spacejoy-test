@@ -36,7 +36,6 @@ const UnAuthorised: React.FC<ComponentInterface> = ({ title }) => {
 
 export const getServerSideProps = async (ctx) => {
   const redirectPath = ctx.req.cookies['redirect_path'] || '/';
-  console.log('redirectPath --- ', redirectPath);
 
   return {
     props: {
