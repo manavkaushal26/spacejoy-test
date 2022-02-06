@@ -6,6 +6,7 @@ const searchAutoCompleteRoute = '/v1/seoKeywordDesignMappings/autoComplete';
 const searchResultsRoute = '/v1/seoKeywordDesignMappings/search';
 const collageBase = '/v1/collages';
 const collectionFeedV2 = '/v2/web/design-collections';
+const collageCategoryRoute = '/v1/collageCategories';
 
 const publicRoutes = {
   pricingRoute,
@@ -16,6 +17,7 @@ const publicRoutes = {
   searchResultsRoute,
   collageBase,
   collectionFeedV2,
+  collageCategoryRoute,
 };
 
 export default publicRoutes;

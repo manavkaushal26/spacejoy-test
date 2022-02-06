@@ -6,9 +6,10 @@ type LottieAnimationType = {
   height?: number;
   width?: number;
   animationData?: {};
+  speed?: number;
 };
 
-const LottieAnimation: React.FC<LottieAnimationType> = ({ height, width, animationData }) => (
+const LottieAnimation: React.FC<LottieAnimationType> = ({ height, width, animationData, speed = 1 }) => (
   <Lottie
     height={height}
     width={width}
@@ -17,6 +18,7 @@ const LottieAnimation: React.FC<LottieAnimationType> = ({ height, width, animati
     options={{
       animationData: animationData || animation,
     }}
+    speed={speed}
   />
 );
 

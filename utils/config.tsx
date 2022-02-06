@@ -34,6 +34,12 @@ const cloudinary = {
   apiBaseURL: '//api.cloudinary.com/v1_1/spacejoy',
 };
 
+const pinterestConfig = {
+  appName: 'SpaceJoyWeb',
+  appId: 1473468,
+  redirect_uri: isProduction ? 'https://test.spacejoy.com' : 'http://localhost:3001',
+};
+
 const company = {
   logo: 'w_200/v1578101355/shared/spacejoy-logo_ase39m.svg',
   name: 'Neo Design Labs Inc',
@@ -119,6 +125,10 @@ const internalPages = {
     DEFAULT_PAGE_SIZE: 36,
     NUM_OF_BUTTONS: 7,
   },
+  Collages: {
+    DEFAULT_PAGE_SIZE: 24,
+    DEFAULT_PAGINATION_BUTTON_COUNT: 5,
+  },
 };
 
 const affirm = {
@@ -126,4 +136,4 @@ const affirm = {
   script: isProduction ? 'https://cdn1.affirm.com/js/v2/affirm.js' : 'https://sandbox.affirm.com/js/v2/affirm.js',
 };
 
-export { company, page, cloudinary, internalPages, affirm };
+export { company, page, cloudinary, internalPages, affirm, pinterestConfig };

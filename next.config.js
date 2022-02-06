@@ -14,6 +14,7 @@ module.exports = withPWA({
       'tailwindui.com',
       'storage.googleapis.com',
       'secure.img1-fg.wfcdn.com',
+      'i.pinimg.com',
     ],
   },
   pwa: {
