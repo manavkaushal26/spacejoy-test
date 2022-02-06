@@ -9,7 +9,7 @@ export function middleware(req: NextRequest) {
   const basicAuth = req.cookies['token'];
   const path = req.nextUrl.pathname;
 
-  if ((path === '/cart' || path === 'checkout/store')) {
+  if ((path === '/cart' || path === '/checkout/store')) {
     if (basicAuth && basicAuth?.length) {
       return NextResponse.next();
     }
