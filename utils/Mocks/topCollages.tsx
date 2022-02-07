@@ -54,15 +54,15 @@ const topCollages = {
     //   metaTitle: '2000+ 3D Renders',
     //   disabled: true,
     // },
-    {
-      _id: 5,
-      name: 'Holiday',
-      metaDescription: '2000+ 3D Renders',
-      slug: 'holiday-design-sets',
-      cdnThumbnail: 'v1639641938/web/homev3/Christmas-Contemporary-Corner_1_fqzo5b.jpg',
-      metaTitle: '2000+ 3D Renders',
-      disabled: false,
-    },
+    // {
+    //   _id: 5,
+    //   name: 'Holiday',
+    //   metaDescription: '2000+ 3D Renders',
+    //   slug: 'holiday-design-sets',
+    //   cdnThumbnail: 'v1639641938/web/homev3/Christmas-Contemporary-Corner_1_fqzo5b.jpg',
+    //   metaTitle: '2000+ 3D Renders',
+    //   disabled: false,
+    // },
   ],
 };
 

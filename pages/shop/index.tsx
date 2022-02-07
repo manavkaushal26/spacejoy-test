@@ -217,7 +217,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                                     />
                                     <label
                                       htmlFor={`filter-category-${retailer?._id}`}
-                                      className="ml-3 text-sm text-gray-900 cursor-pointer"
+                                      className="ml-3 text-sm text-gray-900 cursor-pointer capitalize"
                                     >
                                       {retailer?.name}
                                     </label>

@@ -55,17 +55,15 @@ const TopCollagesList: React.FC<DesignListInterface> = ({ feedData }) => {
         <div className="container mx-auto px-4 pt-4">
           <div className="flex items-end">
             <div className="flex-1">
-              <h1 className="mt-2 text-3xl leading-8 font-light tracking-loose text-gray-900 sm:text-4xl">
-                Pick a <span className="font-extrabold">Room!</span>
+            <h1 className="mt-2 text-3xl leading-8 tracking-loose text-gray-900 sm:text-4xl">
+              Which room do you want to furnish?
               </h1>
-              <ul className="pt-4 list-disc">
-                <li className="text-xl  ml-8">
-                  We will load the room into the canvas in the next step (Copy change needed)
-                </li>
-              </ul>
+              <p className='pt-4 text-xl'>
+              Pick one to get started
+              </p>
             </div>
           </div>
-          <div className="relative my-8 grid grid-cols-4 gap-4">
+          <div className="relative my-8 grid grid-cols-5 gap-4">
             {/* <Slider {...settings} ref={ref}> */}
             {list.map((collection, i) => (
               <RoomSelectCard key={collection?._id} cardData={collection} inset index={i} />

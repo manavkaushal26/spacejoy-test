@@ -16,6 +16,16 @@ const ProductCard = ({ product }: ProductCardType) => (
     <Link href={`/product-view/${product?._id}`}>
       <a target="_blank">
         <div className="bg-white p-4 2xl:p-8 rounded-lg h-full">
+          {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price && (
+            <>
+              <div className="absolute z-10">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#F5296E] text-white animate-pulse">
+                  SALE
+                </span>
+              </div>
+            </>
+          )}
+
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">
             <Image
               src={product?.cdn ? `${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}` : product?.imageUrl}
@@ -34,7 +44,12 @@ const ProductCard = ({ product }: ProductCardType) => (
           <p className="text-lg font-medium text-gray-900 mt-1">
             <span>${product?.displayPrice || product?.price}</span>
             {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price && (
-              <small className="text-sm text-gray-500 line-through inline-block ml-2">${product?.msrp}</small>
+              <>
+                <small className="text-sm text-gray-500 line-through inline-block ml-2">${product?.msrp}</small>
+                <small className="text-xs text-[#F5296E] inline-block ml-2">
+                  {(((product.msrp - product.price) / product.msrp) * 100).toFixed(0)}% OFF
+                </small>
+              </>
             )}
           </p>
         </div>

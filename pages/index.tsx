@@ -44,30 +44,6 @@ export const Home = (): JSX.Element => {
               <div className="col-span-2 row-span-2">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643867907/web/homepage-v3/Website_Banner_Set_2_pjxcek.jpg"
-                    alt="image 1"
-                    className="w-full h-full object-center object-cover rounded-xl"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div className="rounded-xl">
-                <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643867892/web/homepage-v3/Website_design_set_1_fkt1mh.jpg"
-                    alt="image 1"
-                    className="w-full h-full object-center object-cover rounded-xl"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div className="rounded-xl">
-                <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
-                  <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1643956818/web/homepage-v3/Website_design_set_5_aswpri.png"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
@@ -80,7 +56,31 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643906661/web/homepage-v3/Website-design-set-323-final_2_evxhzz.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042480/web/homepage-v3/Website-design-set-8_adkesj.jpg"
+                    alt="image 1"
+                    className="w-full h-full object-center object-cover rounded-xl"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+              <div className="rounded-xl">
+                <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042485/web/homepage-v3/Website_design_set_7_gumghq.jpg"
+                    alt="image 1"
+                    className="w-full h-full object-center object-cover rounded-xl"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+              <div className="rounded-xl">
+                <div className="aspect-w-3 aspect-h-4 rounded-xl bg-gray-100">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042492/web/homepage-v3/Website-design-set-92_wymkdg.jpg"
                     alt="image 1"
                     className="w-full h-full object-center object-cover rounded-xl"
                     layout="fill"
@@ -109,7 +109,7 @@ export const Home = (): JSX.Element => {
               <div className="w-3/4">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    From Pinterest to <span className="text-red-500">your home</span>
+                    From Pinterest to <span className="text-[#F5296E]">your home</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left">
                     Inspiration tucked away in Pinterest Boards? Connect and shop everything you love from your pins.
@@ -156,7 +156,7 @@ export const Home = (): JSX.Element => {
                           placeholder="blur"
                           blurDataURL={blurredBgImage}
                         />
-                        <div className="top-auto bottom-40 flex items-end justify-center">
+                        <div className="top-auto bottom-28 flex items-end justify-center">
                           <div className="text-center">
                             <h2 className="text-gray-50 font-bold text-2xl">
                               {item.firstName} {item.lastName}
@@ -173,7 +173,7 @@ export const Home = (): JSX.Element => {
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
                     Want us to do the heavy lifting? <br />{' '}
-                    <span className="text-red-500">Get paired with a Designer!</span>
+                    <span className="text-[#F5296E]">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
                     In just 7 days, get 3D Designs of your actual room with products you can shop right away on
@@ -194,7 +194,7 @@ export const Home = (): JSX.Element => {
           <div className="mt-32 mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
-                Shop all things home in <span className="text-red-500">one place</span>
+                Shop all things home in <span className="text-[#F5296E]">one place</span>
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
                 Discover thousands of products from all your favorite brands in a single click!
@@ -217,54 +217,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722434/web/homepage-v3/ValenciaModularSectional_1_xzscpq.png"
-                    alt="image 1"
-                    className="w-full h-full object-center object-contain"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div
-                className="bg-blue-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
-                // onClick={() => (location.href = '/shop?subcategory=Beds')}
-                onClick={() => (location.href = '/shop?subcategory=Rugs')}
-              >
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-xl">Rugs</h3>
-                  </div>
-                  <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
-                    <ArrowRightIcon className="w-4 h-4 inline" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643909560/web/homepage-v3/Loomis-Black-And-White-Loop-Rug-8_x10_y66h1a.png"
-                    alt="image 1"
-                    className="w-full h-full object-center object-contain"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div
-                className="bg-teal-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
-                onClick={() => (location.href = '/shop?subcategory=Tables&vertical=End+%26+Side+Tables')}
-              >
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-xl">Side Tables</h3>
-                  </div>
-                  <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
-                    <ArrowRightIcon className="w-4 h-4 inline" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643722472/web/homepage-v3/MottSideTable_1_1_ipzkjg.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042846/web/homepage-v3/STITCH-SOFA_itimwx.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -296,6 +249,54 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
+              <div
+                className="bg-blue-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
+                // onClick={() => (location.href = '/shop?subcategory=Beds')}
+                onClick={() => (location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables')}
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-xl">Coffee Tables</h3>
+                  </div>
+                  <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
+                    <ArrowRightIcon className="w-4 h-4 inline" />
+                  </div>
+                </div>
+                <div className="aspect-w-2 aspect-h-1">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042844/web/homepage-v3/Fargo-40-Round-Reclaimed-Wood-Coffee-Table_cwasso.png"
+                    alt="image 1"
+                    className="w-full h-full object-center object-contain"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+              <div
+                className="bg-teal-100 flex-1 rounded-xl p-8 hover:cursor-pointer"
+                onClick={() => (location.href = '/shop?subcategory=Beds')}
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-xl">Beds</h3>
+                  </div>
+                  <div className="bg-white rounded-full h-10 w-10 flex justify-center items-center">
+                    <ArrowRightIcon className="w-4 h-4 inline" />
+                  </div>
+                </div>
+                <div className="aspect-w-2 aspect-h-1">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042846/web/homepage-v3/Flange-King-Headboard-with-Batten-Plinth-Base-Be_hp_faxgqa.png"
+                    alt="image 1"
+                    className="w-full h-full object-center object-contain"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+              
             </div>
             <div className="text-center mt-4">
               <button
@@ -310,7 +311,7 @@ export const Home = (): JSX.Element => {
           <div className="container mx-auto px-4 mb-40">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
-                <span className="text-red-500">Why</span> Spacejoy?
+                <span className="text-[#F5296E]">Why</span> Spacejoy?
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
             </HomeSectionTitle>
