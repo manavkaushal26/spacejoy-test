@@ -104,7 +104,7 @@ const ProductView = ({ product }): JSX.Element => {
   const [localProductQuantity, setLocalProductQuantity] = useState(1);
 
   const incrementQty = () => {
-    setLocalProductQuantity((localProductQuantity) => localProductQuantity + 1);
+    setLocalProductQuantity((localProductQuantity) => ((localProductQuantity + 1) >= 20 ? 20 : (localProductQuantity + 1)));
   };
   const decrementQty = () => {
     setLocalProductQuantity(localProductQuantity ? ((localProductQuantity - 1) === 0 ? 1 : (localProductQuantity - 1)) : 0);

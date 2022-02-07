@@ -20,9 +20,9 @@ const Ecommerce: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
             <dl className="mt-6 space-y-6 divide-y divide-gray-300">
-              {HelpData?.map((item, index) => (
+              {/* {HelpData?.map((item, index) => (
                 <AccordionItem key={item.question} data={item} index={index} />
-              ))}
+              ))} */}
             </dl>
           </div>
         </div>
