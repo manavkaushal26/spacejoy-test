@@ -20,9 +20,7 @@ const Header: React.FC = () => {
   }, [subNavContent]);
 
   const [isOpenSubNav, setIsOpenSubNav] = useState(false);
-  const closeSubNav = () => setIsOpenSubNav(false);
-
-  const openSubNav = () => setIsOpenSubNav(true);
+  const toggleSubNav = () => setIsOpenSubNav((prevState) => !prevState);
 
   const handleHover = (value) => {
     setIsOpenSubNav(value);
@@ -43,7 +41,7 @@ const Header: React.FC = () => {
         case 'stories':
           return <CustomerStoriesNav />;
         case 'shop':
-          return <ShopCategories callback={closeSubNav} />;
+          return <ShopCategories callback={toggleSubNav} />;
         default:
           return null;
       }
@@ -119,17 +117,10 @@ const Header: React.FC = () => {
                   </li>
                   <li
                     className="flex h-full items-center"
-                    onClick={
-                      isOpenSubNav
-                        ? () => {
-                            closeSubNav();
-                            setSubNavContent('');
-                          }
-                        : () => {
-                            openSubNav();
-                            setSubNavContent('shop');
-                          }
-                    }
+                    onClick={() => {
+                      toggleSubNav();
+                      setSubNavContent('shop');
+                    }}
                   >
                     <button
                       type="button"
@@ -151,17 +142,10 @@ const Header: React.FC = () => {
                       className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                         isOpenSubNav && subNavContent === 'stories' ? 'text-red-500' : 'text-gray-700'
                       }`}
-                      onClick={
-                        isOpenSubNav
-                          ? () => {
-                              closeSubNav();
-                              setSubNavContent('');
-                            }
-                          : () => {
-                              openSubNav();
-                              setSubNavContent('stories');
-                            }
-                      }
+                      onClick={() => {
+                        toggleSubNav();
+                        setSubNavContent('stories');
+                      }}
                     >
                       Explore Ideas{' '}
                       <ChevronDownIcon
@@ -208,7 +192,7 @@ const Header: React.FC = () => {
       </header>
       <SubNav
         subNavState={isOpenSubNav}
-        closeSubNav={closeSubNav}
+        closeSubNav={toggleSubNav}
         updateNavStatus={handleHover}
         hoverNav={isSubNavHover}
       >
