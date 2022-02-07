@@ -25,18 +25,18 @@ const PlaygroundAssetDisplay = () => {
           const groupData = groupedData?.[id];
 
           return (
-            groupData && (
+            groupData?.assets?.length > 0 && (
               <div key={id} className="col-span-12  ">
                 <div className="flex justify-between py-8">
                   <h3 className="text-2xl font-bold">{name}</h3>
-                  <span className="text-2xl font-bold">{priceToLocaleString(groupedData?.[id]?.price)}</span>
+                  <span className="text-2xl font-bold">{priceToLocaleString(groupData?.price)}</span>
                 </div>
-                <CollageProductList assets={groupedData?.[id]?.assets} />
+                <CollageProductList assets={groupData?.assets} />
               </div>
             )
           );
         })}
-        {groupedData?.['addOn'] && (
+        {groupedData?.['addOn']?.assets?.length > 0 && (
           <div className="col-span-12">
             <div className="flex justify-between py-8">
               <h3 className="text-2xl font-bold">Complete the look</h3>
