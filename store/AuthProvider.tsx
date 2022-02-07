@@ -1,6 +1,5 @@
 import useLocalStorage from '@utils/hooks/useLocalStorage';
 import Cookie from 'js-cookie';
-import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
 const AuthContext = React.createContext({
   session: {
@@ -15,8 +14,6 @@ const AuthProvider: React.FC = ({ children }) => {
   const [session, setSession] = useLocalStorage('session', {});
 
   const [loading, setLoading] = useState(!session);
-
-  const router = useRouter();
 
   const fetchUser = useCallback(async () => {
     setLoading(true);

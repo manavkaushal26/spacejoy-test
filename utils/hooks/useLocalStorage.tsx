@@ -11,8 +11,6 @@ const useLocalStorage = (key, initialValue) => {
 
       return initialValue;
     } catch (error) {
-      console.log(error);
-
       return initialValue;
     }
   });
@@ -30,6 +28,8 @@ const useLocalStorage = (key, initialValue) => {
   useEffect(() => {
     const handler = (event) => {
       if (event.key === key) {
+        console.log('event', event);
+        console.log('new value, value', event.newValue, event.value);
         setStoredValue(event.newValue);
       }
     };
