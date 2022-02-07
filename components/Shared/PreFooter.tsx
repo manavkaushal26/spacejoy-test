@@ -10,7 +10,7 @@ const PreFooter: React.FC = () => (
         <button
           type="button"
           className="group shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-xl bg-gray-900 focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-          onClick={()=>location.href="https://diy.spacejoy.com/room-select"}
+          onClick={()=>location.href="/room-select"}
         >
           Design Your Space <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
         </button>

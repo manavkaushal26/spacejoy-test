@@ -109,7 +109,7 @@ export const Home = (): JSX.Element => {
               <div className="w-3/4">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    From Pinterest to <span className="text-red-500">your home</span>
+                    From Pinterest to <span className="text-[#F5296E]">your home</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left">
                     Inspiration tucked away in Pinterest Boards? Connect and shop everything you love from your pins.
@@ -173,7 +173,7 @@ export const Home = (): JSX.Element => {
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
                     Want us to do the heavy lifting? <br />{' '}
-                    <span className="text-red-500">Get paired with a Designer!</span>
+                    <span className="text-[#F5296E]">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
                     In just 7 days, get 3D Designs of your actual room with products you can shop right away on
@@ -194,7 +194,7 @@ export const Home = (): JSX.Element => {
           <div className="mt-32 mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
-                Shop all things home in <span className="text-red-500">one place</span>
+                Shop all things home in <span className="text-[#F5296E]">one place</span>
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
                 Discover thousands of products from all your favorite brands in a single click!
@@ -311,7 +311,7 @@ export const Home = (): JSX.Element => {
           <div className="container mx-auto px-4 mb-40">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
-                <span className="text-red-500">Why</span> Spacejoy?
+                <span className="text-[#F5296E]">Why</span> Spacejoy?
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
             </HomeSectionTitle>

@@ -43,7 +43,7 @@ const UserNav = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
-                      href="/dashboard"
+                      href="https://www.spacejoy.com/dashboard"
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
