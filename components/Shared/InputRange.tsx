@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -9,11 +10,11 @@ const StyledForm = styled.form`
   padding-left: 8px;
   .input-range__track--active,
   .input-range__slider {
-    background: #fa4a5b;
-    border-color: #fa4a5b;
+    background: black !important;
+    border-color: #000000 !important;
   }
   .input-range__label-container {
-    color: black;
+    color: black !important;
   }
 `;
 
@@ -25,7 +26,7 @@ const Index = ({ min, max, onChangeCallback }) => {
   }, [min, max]);
 
   const updateValue = (val) => {
-    console.log(val);
+    setValue({ ...val });
   };
 
   return (
