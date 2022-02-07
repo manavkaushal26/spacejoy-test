@@ -1,20 +1,10 @@
-import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
-import Reviews from '@components/ProductView/Reviews';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import { Disclosure } from '@headlessui/react';
-import {
-  ChevronRightIcon,
-  HeartIcon,
-  HomeIcon,
-  MinusIcon,
-  MinusSmIcon,
-  PlusIcon,
-  PlusSmIcon,
-} from '@heroicons/react/outline';
+import { ChevronRightIcon, HomeIcon, MinusIcon, MinusSmIcon, PlusIcon, PlusSmIcon } from '@heroicons/react/outline';
 import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
@@ -26,8 +16,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
-import ReactScroll from 'react-scroll';
-import StarRatings from 'react-star-ratings';
+import toast from 'react-hot-toast';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
 
@@ -106,15 +95,15 @@ const ProductView = ({ product }): JSX.Element => {
     setLocalProductQuantity(localProductQuantity ? localProductQuantity - 1 : 0);
   };
 
-  const { modifyCart, cart } = useStore(
+  const { updateCart, cart } = useStore(
     (store) => ({
-      modifyCart: store.modifyCart,
+      updateCart: store.updateCart,
       cart: store.cart,
     }),
     shallow
   );
 
-  const updateCart = async () => {
+  const addToCart = async () => {
     const {
       _id,
       retailer: { _id: brand },
@@ -125,7 +114,7 @@ const ProductView = ({ product }): JSX.Element => {
         ? localProductQuantity
         : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
 
-    await fetcher({
+    const { data: cartRes, statusCode } = await fetcher({
       endPoint: '/v1/cart',
       method: 'POST',
       body: {
@@ -139,8 +128,12 @@ const ProductView = ({ product }): JSX.Element => {
         ],
       },
     });
-
-    modifyCart(product, localProductQuantity, 'add');
+    if (statusCode < 301) {
+      updateCart(cartRes);
+      toast.success('Added to bag successfully!');
+    } else {
+      toast.error('An error occurred while adding to bag');
+    }
   };
 
   useEffect(() => {
@@ -333,10 +326,10 @@ const ProductView = ({ product }): JSX.Element => {
                     })}
                   </span>
                 </div>
-                <div className='my-5'>
-                <DeliveryTimeline productId={product?._id} />
+                <div className="my-5">
+                  <DeliveryTimeline productId={product?._id} />
                 </div>
-                
+
                 <form className="mt-3">
                   <div className="flex mt-10 space-x-4 sm:flex-col1">
                     <button
@@ -357,7 +350,7 @@ const ProductView = ({ product }): JSX.Element => {
                     <button
                       type="button"
                       className="px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                      onClick={updateCart}
+                      onClick={addToCart}
                     >
                       Add to bag
                     </button>
@@ -375,7 +368,7 @@ const ProductView = ({ product }): JSX.Element => {
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
                 )}
-                
+
                 {finalArrayOfOffers.length !== 0 && (
                   <Disclosure defaultOpen>
                     {({ open }) => (
@@ -504,20 +497,20 @@ const ProductView = ({ product }): JSX.Element => {
                 ) : null} */}
 
                 {product?.retailer?.shippingPolicy && (
-                    <Disclosure>
-                      {({ open }) => (
-                        <>
-                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                            <span className="text-sm text-gray-900">Shipping Policy</span>
-                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
-                          </Disclosure.Button>
-                          <Disclosure.Panel>
-                            <div className="mt-4 text-sm text-gray-700">{product?.retailer?.shippingPolicy}</div>
-                          </Disclosure.Panel>
-                        </>
-                      )}
-                    </Disclosure>
-                  )}
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Shipping Policy</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          <div className="mt-4 text-sm text-gray-700">{product?.retailer?.shippingPolicy}</div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                )}
 
                 {/* {product?.metaDetails?.shipping ? (
                   <Disclosure>
@@ -558,20 +551,20 @@ const ProductView = ({ product }): JSX.Element => {
                 )} */}
 
                 {product?.retailer?.returnPolicy && (
-                    <Disclosure>
-                      {({ open }) => (
-                        <>
-                          <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                            <span className="text-sm text-gray-900">Return Policy</span>
-                            {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
-                          </Disclosure.Button>
-                          <Disclosure.Panel>
-                            <div className="mt-4 text-sm text-gray-700">{product?.retailer?.returnPolicy}</div>
-                          </Disclosure.Panel>
-                        </>
-                      )}
-                    </Disclosure>
-                  )}
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm text-gray-900">Return Policy</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          <div className="mt-4 text-sm text-gray-700">{product?.retailer?.returnPolicy}</div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                )}
 
                 {/* {product?.metaDetails?.returnPolicy ? (
                   <Disclosure>
