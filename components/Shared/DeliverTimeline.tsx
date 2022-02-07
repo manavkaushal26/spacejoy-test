@@ -3,6 +3,7 @@ import fetcher from '@utils/fetcher';
 import { isDigit } from '@utils/helpers';
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
+import SVGLoader from './SVGloader';
 
 const domain = 'https://delivery.spacejoy.com/';
 
@@ -116,15 +117,9 @@ const DeliveryTimeline = ({ productId }) => {
                 <button
                   disabled={isCheckDisabled}
                   onClick={getDeliveryDetails}
-                  className="h-8 w-20 text-white rounded-lg bg-gray-900"
+                  className="h-8 w-20 text-white rounded-lg bg-gray-900 flex justify-center items-center"
                 >
-                  {isLoading ? (
-                    <div className="text-center w-full h-full text-white flex justify-center items-center">
-                      <span className="icon-loader border-white rounded-full border-l-2 border-b-2 w-4 inline-block h-4  animate-spin" />
-                    </div>
-                  ) : (
-                    'Check'
-                  )}
+                  {isLoading ? <SVGLoader /> : 'Check'}
                 </button>
               </div>
             </div>
