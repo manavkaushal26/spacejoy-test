@@ -20,7 +20,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
             <ShopFilterContextProvider>
               <Component {...pageProps} />
               <Toaster
-                position="bottom-center"
+                position="top-center"
                 toastOptions={{
                   className: 'shadow-lg',
                 }}

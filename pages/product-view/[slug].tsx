@@ -81,6 +81,17 @@ const ProductView = ({ product }): JSX.Element => {
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
 
+  const discountPercent = useMemo(() => {
+    const discount = ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / product?.msrp;
+    if (discount === 0) {
+      return '';
+    } else if (discount < 1 && discount > 0) {
+      return `${discount.toFixed(2)}% Off`;
+    } else {
+      return `${discount.toFixed(0)}% Off`;
+    }
+  }, [product?.price, product?.msrp]);
+
   const finalArrayOfOffers = useMemo(() => {
     return couponList.concat(retailerOffers);
   }, [couponList, retailerOffers]);
@@ -138,11 +149,20 @@ const ProductView = ({ product }): JSX.Element => {
       if (statusCode < 301) {
         updateCart(cartRes);
         toast.success('Added to bag successfully!');
+        setLocalProductQuantity(1);
       } else {
-        throw new Error('');
+        if (statusCode === 403) {
+          throw new Error('unauthorized');
+        } else {
+          throw new Error('error');
+        }
       }
-    } catch {
-      toast.error('An error occurred while adding to bag');
+    } catch (e) {
+      if (e?.message === 'unauthorized') {
+        toast.error('Please Sign In to add items to bag');
+      } else {
+        toast.error('An error occurred while adding to bag');
+      }
     } finally {
       isAddingToCart(false);
     }
@@ -281,6 +301,7 @@ const ProductView = ({ product }): JSX.Element => {
                         {priceToLocaleString(product?.msrp)}
                       </small>
                     )}
+                    <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">{discountPercent}</small>
                   </p>
                 </div>
                 {/* <div className="mt-3">
@@ -327,23 +348,28 @@ const ProductView = ({ product }): JSX.Element => {
                     product?.dimension?.height * 12
                   ).toFixed(2)}"H`}</span>
                 </div>
-                <div className="mt-3">
-                  <span className="text-sm font-bold">Material: </span>
-                  <span className="inline-block ml-2 text-sm text-gray-700">{product?.material}</span>
-                </div>
-                <div className="mt-3">
-                  <span className="text-sm font-bold text-gray-900">Color:</span>
-                  <span className="inline-block ml-2 text-sm text-gray-700">
-                    {product?.colors?.map((color, index) => {
-                      return (
-                        <span className="text-sm capitalize" key={color}>
-                          {color}
-                          {index === product?.colors?.length - 1 ? '' : ', '}
-                        </span>
-                      );
-                    })}
-                  </span>
-                </div>
+                {product?.material && product?.material?.toLowerCase() !== 'n/a' ? (
+                  <div className="mt-3">
+                    <span className="text-sm font-bold">Material: </span>
+                    <span className="inline-block ml-2 text-sm text-gray-700 capitalize">{product?.material}</span>
+                  </div>
+                ) : null}
+                {product?.colors && product?.colors?.length && product?.colors[0].toLowerCase() !== 'n/a' ? (
+                  <div className="mt-3">
+                    <span className="text-sm font-bold text-gray-900">Color:</span>
+                    <span className="inline-block ml-2 text-sm text-gray-700">
+                      {product?.colors?.map((color, index) => {
+                        return (
+                          <span className="text-sm capitalize" key={color}>
+                            {color}
+                            {index === product?.colors?.length - 1 ? '' : ', '}
+                          </span>
+                        );
+                      })}
+                    </span>
+                  </div>
+                ) : null}
+
                 <div className="my-5">
                   <DeliveryTimeline productId={product?._id} />
                 </div>
@@ -394,7 +420,7 @@ const ProductView = ({ product }): JSX.Element => {
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
                           <div className="flex">
-                            <span className="mr-2 text-sm text-gray-900">Available Offers</span>
+                            <span className="mr-2 text-sm text-gray-900 font-bold">Available Offers</span>
                             <LottieAnimation animationData={offerLottie} height={20} width={20} />
                           </div>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
@@ -520,7 +546,7 @@ const ProductView = ({ product }): JSX.Element => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                          <span className="text-sm text-gray-900">Shipping Policy</span>
+                          <span className="text-sm text-gray-900 font-bold">Shipping Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
@@ -574,7 +600,7 @@ const ProductView = ({ product }): JSX.Element => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                          <span className="text-sm text-gray-900">Return Policy</span>
+                          <span className="text-sm text-gray-900 font-bold">Return Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
