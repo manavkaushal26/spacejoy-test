@@ -35,12 +35,12 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                 <Image
                   loading="eager"
                   className="z-10"
-                  src={`https://res.cloudinary.com/spacejoy/image/upload/ar_1.67,c_mpad/e_trim/fl_lossy,q_auto,ar_1.67,${
+                  src={`https://res.cloudinary.com/spacejoy/image/upload/ar_1.67,c_mpad,e_trim/fl_lossy,q_auto,ar_1.67,${
                     large ? 'w_1400' : 'w_800'
                   },c_pad,b_auto/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
-                  objectFit={large ? 'cover' : 'contain'}
+                  objectFit={'contain'}
                 />
               </div>
             </div>
