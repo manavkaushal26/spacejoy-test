@@ -244,4 +244,15 @@ const data = [
       'At the moment Spacejoy doesn’t directly work with any freight forwarding companies. Should this change we’ll update our policy. ',
   },
 ];
-export default data;
+
+
+const groupedData = data.reduce((acc, entry) => {
+  if (!acc[entry.tag]) {
+    acc[entry.tag] = [entry];
+  }
+  acc[entry.tag].push(entry);
+
+  return acc;
+}, {});
+
+export default groupedData;

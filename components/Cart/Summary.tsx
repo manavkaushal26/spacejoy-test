@@ -97,10 +97,17 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
           <div className="flex items-center justify-between pt-4 border-t border-gray-200">
             <dt className="flex items-center text-sm text-gray-600">
               <span>Shipping estimate</span>
-              <a href="#" className="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Learn more about how shipping is calculated</span>
-                <QuestionMarkCircleIcon className="w-5 h-5" aria-hidden="true" />
-              </a>
+              <div className="group cursor-pointer relative  text-center">
+                <QuestionMarkCircleIcon
+                  className="group w-5 h-5 cursor-pointer relative inline-block"
+                  aria-hidden="true"
+                />
+                <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
+                  Standard shipping charges applied.
+                  <svg className="absolute text-black h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xmlSpace="preserve"><polygon className="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
+                </div>
+                
+              </div>
             </dt>
             <dd className="text-sm font-medium text-gray-900">
               {priceToLocaleString(cart?.invoiceData?.shippingCharge)}
@@ -111,10 +118,10 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
         <div className="flex items-center justify-between pt-4 border-t border-gray-200">
           <dt className="flex text-sm text-gray-600">
             <span>Tax estimate</span>
-            <a href="#" className="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-500">
+            {/* <a href="#" className="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-500">
               <span className="sr-only">Learn more about how tax is calculated</span>
               <QuestionMarkCircleIcon className="w-5 h-5" aria-hidden="true" />
-            </a>
+            </a> */}
           </dt>
           <dd className="text-sm font-medium text-gray-900">
             {cart?.invoiceData?.tax ? priceToLocaleString(cart.invoiceData?.tax) : 'TBD'}

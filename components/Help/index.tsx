@@ -46,56 +46,6 @@ function classNames(...classes) {
 }
 
 const Index = () => {
-  let [categories] = useState({
-    DIY: [
-      {
-        id: 1,
-        title: 'Does drinking coffee make you smarter?',
-        date: '5h ago',
-        commentCount: 5,
-        shareCount: 2,
-      },
-      {
-        id: 2,
-        title: "So you've bought coffee... now what?",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2,
-      },
-    ],
-    Pro: [
-      {
-        id: 1,
-        title: 'Is tech making coffee better or worse?',
-        date: 'Jan 7',
-        commentCount: 29,
-        shareCount: 16,
-      },
-      {
-        id: 2,
-        title: 'The most innovative things happening in coffee',
-        date: 'Mar 19',
-        commentCount: 24,
-        shareCount: 12,
-      },
-    ],
-    'E-commerce': [
-      {
-        id: 1,
-        title: 'Ask Me Anything: 10 answers to your questions about coffee',
-        date: '2d ago',
-        commentCount: 9,
-        shareCount: 5,
-      },
-      {
-        id: 2,
-        title: "The worst advice we've ever heard about coffee",
-        date: '4d ago',
-        commentCount: 1,
-        shareCount: 2,
-      },
-    ],
-  });
 
   return (
     <div className="bg-white">
@@ -104,7 +54,7 @@ const Index = () => {
         <Tab.Group>
           <div className="text-center relative z-10 -mb-6">
             <Tab.List className="inline-flex p-1 space-x-1 rounded-xl border border-gray-400 shadow-2xl bg-white bg-opacity-50 backdrop-filter backdrop-blur firefox:bg-opacity-90">
-              {Object.keys(categories).map((category) => (
+              {Object.keys(HelpData).map((category) => (
                 <Tab
                   key={category}
                   className={({ selected }) =>
@@ -120,12 +70,12 @@ const Index = () => {
             </Tab.List>
           </div>
           <Tab.Panels className="pb-8">
-            {Object.values(categories).map((posts, idx) => (
+            {Object.values(HelpData).map((posts, idx) => (
               <Tab.Panel key={idx}>
                 <AnimateBox>
                   <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
                     <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-                      {HelpData.map((faq) => (
+                      {Object.values(posts).map((faq) => (
                         <Disclosure as="div" key={faq.question} className="pt-6">
                           {({ open }) => (
                             <>

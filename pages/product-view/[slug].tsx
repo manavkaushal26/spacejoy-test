@@ -80,7 +80,7 @@ const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
-
+  console.log(product);
   const discountPercent = useMemo(() => {
     const discount =
       ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / (product?.msrp || product?.price);
@@ -104,10 +104,10 @@ const ProductView = ({ product }): JSX.Element => {
   const [localProductQuantity, setLocalProductQuantity] = useState(1);
 
   const incrementQty = () => {
-    setLocalProductQuantity((localProductQuantity) => localProductQuantity + 1);
+    setLocalProductQuantity((localProductQuantity) => ((localProductQuantity + 1) >= 20 ? 20 : (localProductQuantity + 1)));
   };
   const decrementQty = () => {
-    setLocalProductQuantity(localProductQuantity ? localProductQuantity - 1 : 0);
+    setLocalProductQuantity(localProductQuantity ? ((localProductQuantity - 1) === 0 ? 1 : (localProductQuantity - 1)) : 0);
   };
 
   const { updateCart, cart } = useStore(

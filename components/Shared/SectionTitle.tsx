@@ -16,7 +16,7 @@ const SectionTitle = ({
       <div className="text-center max-w-4xl mx-auto">
         {feature && <p className="text-gray-500 font-semibold tracking-wide uppercase mb-2">{feature}</p>}
         <h2
-          className={`mt-2 text-3xl leading-8 font-extrabold tracking-tight tracking-normal  sm:text-4xl mb-5 ${
+          className={`mt-2 text-5xl leading-8 font-extrabold tracking-tight tracking-normal  sm:text-5xl mb-5 ${
             accent === 'light' ? 'text-white' : 'text-gray-900'
           }`}
         >
