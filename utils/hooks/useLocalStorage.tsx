@@ -28,9 +28,8 @@ const useLocalStorage = (key, initialValue) => {
   useEffect(() => {
     const handler = (event) => {
       if (event.key === key) {
-        console.log('event', event);
-        console.log('new value, value', event.newValue, event.value);
-        setStoredValue(event.newValue);
+        const item = window.localStorage.getItem(key);
+        setStoredValue(item ? JSON.parse(item) : initialValue);
       }
     };
     window.addEventListener('storage', handler);
