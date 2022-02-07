@@ -29,9 +29,7 @@ const DesignSetAssetProvider: React.FC<DesignSetAssetProviderProps> = ({
     const newAssets = { ...assets };
 
     newAssets[newProductId] = productData;
-    console.log('oldProductId', oldProductId);
     delete newAssets[oldProductId];
-    console.log('newAssets[newProductId]', newAssets[newProductId]);
     setAssets(newAssets);
   };
 

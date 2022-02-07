@@ -1,5 +1,6 @@
 import { ExternalLinkIcon, SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { blurredProduct } from '@public/images/bg-base-64';
+import { priceToLocaleString } from '@utils/helpers';
 import AssetType from '@utils/types/AssetType';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -100,7 +101,11 @@ const ProductCard: React.FC<ProductCardInterface> = ({
         <small className="text-xs text-gray-500 capitalize">{product?.retailer}</small>
         <p className="h-10 text-sm line-clamp-2">{product?.name}</p>
         <div className="flex items-center justify-between mt-1">
-          <p className="font-bold">${product.displayPrice}</p>
+          <p className="text-sm font-medium text-gray-900 mt-1">
+            <span className="font-bold">
+              {priceToLocaleString(parseFloat(product?.displayPrice) || product?.price)}
+            </span>
+          </p>
           {!withShopNow && (
             <Link
               href={{
