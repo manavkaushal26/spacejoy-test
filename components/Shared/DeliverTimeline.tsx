@@ -3,6 +3,7 @@ import fetcher from '@utils/fetcher';
 import { isDigit } from '@utils/helpers';
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
+import SVGLoader from './SVGloader';
 
 const domain = 'https://delivery.spacejoy.com/';
 
@@ -96,9 +97,10 @@ const DeliveryTimeline = ({ productId }) => {
     <div className="text-sm space-y-4">
       <div className="flex items-center">
         <div>
-          <strong>Ship to:{' '}</strong>
+          <strong>Ship to: </strong>
           <button className="expand-zipcode" onClick={toggleExpandZipCode}>
-            <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span> <span className="icon-chevron-down" />
+            <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span>{' '}
+            <span className="icon-chevron-down" />
           </button>
         </div>
         {isExpanded && (
@@ -115,15 +117,9 @@ const DeliveryTimeline = ({ productId }) => {
                 <button
                   disabled={isCheckDisabled}
                   onClick={getDeliveryDetails}
-                  className="h-8 w-20 text-white rounded-lg bg-gray-900"
+                  className="h-8 w-20 text-white rounded-lg bg-gray-900 flex justify-center items-center"
                 >
-                  {isLoading ? (
-                    <div className="text-center">
-                      <span className="icon-loader loading-spinner" />
-                    </div>
-                  ) : (
-                    'Check'
-                  )}
+                  {isLoading ? <SVGLoader /> : 'Check'}
                 </button>
               </div>
             </div>

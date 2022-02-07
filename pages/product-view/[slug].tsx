@@ -3,6 +3,7 @@ import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
+import SVGLoader from '@components/Shared/SVGLoader';
 import { Disclosure } from '@headlessui/react';
 import { ChevronRightIcon, HomeIcon, MinusIcon, MinusSmIcon, PlusIcon, PlusSmIcon } from '@heroicons/react/outline';
 import useBoolean from '@hooks/useBoolean';
@@ -103,36 +104,45 @@ const ProductView = ({ product }): JSX.Element => {
     shallow
   );
 
-  const addToCart = async () => {
-    const {
-      _id,
-      retailer: { _id: brand },
-    } = product;
-    const { cartItems } = cart;
-    const quantity =
-      !cartItems[brand] || !cartItems[brand].products[product._id]
-        ? localProductQuantity
-        : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
+  const [addingToCart, isAddingToCart] = useState(false);
 
-    const { data: cartRes, statusCode } = await fetcher({
-      endPoint: '/v1/cart',
-      method: 'POST',
-      body: {
-        items: [
-          {
-            productId: product?._id,
-            quantity,
-            projectId: '',
-            designId: '',
-          },
-        ],
-      },
-    });
-    if (statusCode < 301) {
-      updateCart(cartRes);
-      toast.success('Added to bag successfully!');
-    } else {
+  const addToCart = async () => {
+    isAddingToCart(true);
+    try {
+      const {
+        _id,
+        retailer: { _id: brand },
+      } = product;
+      const { cartItems } = cart;
+      const quantity =
+        !cartItems[brand] || !cartItems[brand].products[product._id]
+          ? localProductQuantity
+          : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
+
+      const { data: cartRes, statusCode } = await fetcher({
+        endPoint: '/v1/cart',
+        method: 'POST',
+        body: {
+          items: [
+            {
+              productId: product?._id,
+              quantity,
+              projectId: '',
+              designId: '',
+            },
+          ],
+        },
+      });
+      if (statusCode < 301) {
+        updateCart(cartRes);
+        toast.success('Added to bag successfully!');
+      } else {
+        throw new Error('');
+      }
+    } catch {
       toast.error('An error occurred while adding to bag');
+    } finally {
+      isAddingToCart(false);
     }
   };
 
@@ -351,8 +361,9 @@ const ProductView = ({ product }): JSX.Element => {
                       type="button"
                       className="px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                       onClick={addToCart}
+                      disabled={addingToCart ? true : false}
                     >
-                      Add to bag
+                      {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
                     </button>
                     {/* <button
                       type="button"
