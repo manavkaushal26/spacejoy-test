@@ -140,10 +140,18 @@ const ProductView = ({ product }): JSX.Element => {
         toast.success('Added to bag successfully!');
         setLocalProductQuantity(1);
       } else {
-        throw new Error('');
+        if (statusCode === 403) {
+          throw new Error('unauthorized');
+        } else {
+          throw new Error('error');
+        }
       }
-    } catch {
-      toast.error('An error occurred while adding to bag');
+    } catch (e) {
+      if (e?.message === 'unauthorized') {
+        toast.error('Please Sign In to add items to bag');
+      } else {
+        toast.error('An error occurred while adding to bag');
+      }
     } finally {
       isAddingToCart(false);
     }
@@ -328,23 +336,28 @@ const ProductView = ({ product }): JSX.Element => {
                     product?.dimension?.height * 12
                   ).toFixed(2)}"H`}</span>
                 </div>
-                <div className="mt-3">
-                  <span className="text-sm font-bold">Material: </span>
-                  <span className="inline-block ml-2 text-sm text-gray-700">{product?.material}</span>
-                </div>
-                <div className="mt-3">
-                  <span className="text-sm font-bold text-gray-900">Color:</span>
-                  <span className="inline-block ml-2 text-sm text-gray-700">
-                    {product?.colors?.map((color, index) => {
-                      return (
-                        <span className="text-sm capitalize" key={color}>
-                          {color}
-                          {index === product?.colors?.length - 1 ? '' : ', '}
-                        </span>
-                      );
-                    })}
-                  </span>
-                </div>
+                {product?.material && product?.material?.toLowerCase() !== 'n/a' ? (
+                  <div className="mt-3">
+                    <span className="text-sm font-bold">Material: </span>
+                    <span className="inline-block ml-2 text-sm text-gray-700 capitalize">{product?.material}</span>
+                  </div>
+                ) : null}
+                {product?.colors && product?.colors?.length && product?.colors[0].toLowerCase() !== 'n/a' ? (
+                  <div className="mt-3">
+                    <span className="text-sm font-bold text-gray-900">Color:</span>
+                    <span className="inline-block ml-2 text-sm text-gray-700">
+                      {product?.colors?.map((color, index) => {
+                        return (
+                          <span className="text-sm capitalize" key={color}>
+                            {color}
+                            {index === product?.colors?.length - 1 ? '' : ', '}
+                          </span>
+                        );
+                      })}
+                    </span>
+                  </div>
+                ) : null}
+
                 <div className="my-5">
                   <DeliveryTimeline productId={product?._id} />
                 </div>
