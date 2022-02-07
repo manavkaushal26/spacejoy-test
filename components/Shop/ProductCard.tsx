@@ -17,7 +17,7 @@ const ProductCard = ({ product }: ProductCardType) => (
     <Link href={`/product-view/${product?._id}`}>
       <a target="_blank">
         <div className="bg-white p-4 2xl:p-8 rounded-lg h-full">
-          {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price && (
+          {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price ? (
             <>
               <div className="absolute z-10">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#F5296E] text-white animate-pulse">
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: ProductCardType) => (
                 </span>
               </div>
             </>
-          )}
+          ) : null}
 
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">
             <Image

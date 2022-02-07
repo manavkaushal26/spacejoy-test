@@ -24,6 +24,7 @@ const fetchAllFilters = async (ctx) => {
       const { isFulfilled } = data;
       if (isFulfilled) {
         const { fulfillmentValue = {} } = data;
+
         return { ...fulfillmentValue };
       }
     } else {
@@ -91,6 +92,7 @@ const fetchAssetList = async (
     const { data, statusCode } = response;
     if (statusCode <= 301) {
       const { hits = [], total } = data;
+
       return { list: hits, total };
     }
     throw new Error();

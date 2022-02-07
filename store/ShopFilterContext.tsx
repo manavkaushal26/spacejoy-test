@@ -8,8 +8,12 @@ const ShopFilterContext = createContext({
     subCategory: [{ _id: '', selected: false, verticals: [{ _id: '' }] }],
     category: [{ _id: '', selected: false, subCategories: [{ _id: '' }] }],
     vertical: [{ _id: '', name: '', selected: false, subcategory: 'string' }],
+    price: [0, 5000],
   },
   updateFilter: (id: string, type: string) => {
+    return;
+  },
+  addPriceFilter: ({}) => {
     return;
   },
 });
@@ -42,6 +46,7 @@ interface FilterType {
   subCategory: Array<SubcategoryType>;
   category: Array<CategoryType>;
   vertical: Array<VerticalType>;
+  price: Array<number>;
 }
 interface AssetFilterType {
   retailers: {
@@ -67,6 +72,7 @@ const ShopFilterContextProvider = ({ children }) => {
         isPublic: true,
       },
     ],
+    price: [0, 5000],
   });
 
   const router = useRouter();
@@ -79,9 +85,11 @@ const ShopFilterContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const categories = [...(shopFilters?.categoryTree || [])].filter(item => item.isPublic).map((item) => {
-      return { ...item, type: 'category' };
-    });
+    const categories = [...(shopFilters?.categoryTree || [])]
+      .filter((item) => item.isPublic)
+      .map((item) => {
+        return { ...item, type: 'category' };
+      });
 
     const subCategories = [...(shopFilters?.categoryTree || [])]
       ?.reduce((acc, category) => {
@@ -119,9 +127,18 @@ const ShopFilterContextProvider = ({ children }) => {
 
         return { ...item, type: 'retailer', selected: false };
       });
+    const priceQuery = router?.query?.price || '';
 
-    setFilters({ category: categories, subCategory: subCategories, vertical: verticals, retailer: retailers });
-  }, [router?.query?.subcategory, router?.query?.vertical, router?.query?.retailer, shopFilters]);
+    const priceFilter = (priceQuery as string)?.split('::').map((item) => (item ? parseInt(item) : 0));
+
+    setFilters({
+      category: categories,
+      subCategory: subCategories,
+      vertical: verticals,
+      retailer: retailers,
+      price: priceFilter,
+    });
+  }, [router?.query?.subcategory, router?.query?.vertical, router?.query?.retailer, shopFilters, router?.query?.price]);
 
   const updateFilter = (itemId, type) => {
     const chosenFilterObject = filters[type]?.filter((item) => item?._id === itemId);
@@ -159,11 +176,24 @@ const ShopFilterContextProvider = ({ children }) => {
     );
   };
 
+  const addPriceFilter = ({ min, max }) => {
+    const currentQueryParam = router?.query;
+    router.push(
+      {
+        query: { ...currentQueryParam, price: `${min}::${max}` },
+        pathname: router?.pathname,
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
   return (
     <ShopFilterContext.Provider
       value={{
         filters,
         updateFilter,
+        addPriceFilter,
       }}
     >
       {children}

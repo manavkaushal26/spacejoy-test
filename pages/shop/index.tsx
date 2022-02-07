@@ -1,4 +1,5 @@
 import EmptyState from '@components/Shared/EmptyState';
+import InputRange from '@components/Shared/InputRange';
 import Layout from '@components/Shared/Layout';
 import Pagination from '@components/Shared/Pagination';
 import ProductCard from '@components/Shop/ProductCard';
@@ -56,9 +57,11 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
     initialFilters
   );
   const {
-    filters: { retailer: retailerList = [], subCategory, vertical },
+    filters: { retailer: retailerList = [], subCategory, vertical, price },
     updateFilter,
+    addPriceFilter,
   } = useShopFilterContext();
+  const [min = 0, max = 5000] = price;
 
   const router = useRouter();
 
@@ -184,6 +187,30 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                       )}
                     </Disclosure>
                   )}
+                  <Disclosure defaultOpen>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="w-full text-left flex justify-between items-center py-2 rounded-sm mb-2">
+                          <h3 className="text-gray-700">Price</h3>
+                          <span className="ml-6 flex items-center">
+                            {open ? <MinusIcon className="h-3 w-3" /> : <PlusIcon className="h-3 w-3" />}
+                          </span>
+                        </Disclosure.Button>
+
+                        <Disclosure.Panel>
+                          <div className="space-y-2 my-12 mt-4">
+                            <InputRange
+                              min={min}
+                              max={max}
+                              onChangeCallback={(data) => {
+                                addPriceFilter(data);
+                              }}
+                            />
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
                   {retailerList?.length !== 0 && (
                     <Disclosure defaultOpen>
                       {({ open }) => (
