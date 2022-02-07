@@ -138,6 +138,7 @@ const ProductView = ({ product }): JSX.Element => {
       if (statusCode < 301) {
         updateCart(cartRes);
         toast.success('Added to bag successfully!');
+        setLocalProductQuantity(1);
       } else {
         throw new Error('');
       }
@@ -394,7 +395,7 @@ const ProductView = ({ product }): JSX.Element => {
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
                           <div className="flex">
-                            <span className="mr-2 text-sm text-gray-900">Available Offers</span>
+                            <span className="mr-2 text-sm text-gray-900 font-bold">Available Offers</span>
                             <LottieAnimation animationData={offerLottie} height={20} width={20} />
                           </div>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
@@ -520,7 +521,7 @@ const ProductView = ({ product }): JSX.Element => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                          <span className="text-sm text-gray-900">Shipping Policy</span>
+                          <span className="text-sm text-gray-900 font-bold">Shipping Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
@@ -574,7 +575,7 @@ const ProductView = ({ product }): JSX.Element => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                          <span className="text-sm text-gray-900">Return Policy</span>
+                          <span className="text-sm text-gray-900 font-bold">Return Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
