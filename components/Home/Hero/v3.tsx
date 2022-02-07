@@ -25,7 +25,7 @@ const v3 = () => {
         <button
           type="button"
           className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none relative -top-20"
-          onClick={() => (location.href = 'https://diy.spacejoy.com/room-select')}
+          onClick={() => (location.href = '/room-select')}
         >
           Get Started
         </button>

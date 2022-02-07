@@ -107,7 +107,7 @@ const ProductView = ({ product }): JSX.Element => {
     setLocalProductQuantity((localProductQuantity) => localProductQuantity + 1);
   };
   const decrementQty = () => {
-    setLocalProductQuantity(localProductQuantity ? localProductQuantity - 1 : 0);
+    setLocalProductQuantity(localProductQuantity ? ((localProductQuantity - 1) === 0 ? 1 : (localProductQuantity - 1)) : 0);
   };
 
   const { updateCart, cart } = useStore(
