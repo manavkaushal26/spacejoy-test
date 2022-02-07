@@ -82,7 +82,9 @@ const ProductView = ({ product }): JSX.Element => {
   const [retailerOffers, setRetailerOffers] = useState([]);
 
   const discountPercent = useMemo(() => {
-    const discount = ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / product?.msrp;
+    const discount =
+      ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / (product?.msrp || product?.price);
+    console.log('discountPercent', discount, product);
     if (discount === 0) {
       return '';
     } else if (discount < 1 && discount > 0) {
