@@ -96,9 +96,10 @@ const DeliveryTimeline = ({ productId }) => {
     <div className="text-sm space-y-4">
       <div className="flex items-center">
         <div>
-          <strong>Ship to:{' '}</strong>
+          <strong>Ship to: </strong>
           <button className="expand-zipcode" onClick={toggleExpandZipCode}>
-            <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span> <span className="icon-chevron-down" />
+            <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span>{' '}
+            <span className="icon-chevron-down" />
           </button>
         </div>
         {isExpanded && (
@@ -118,8 +119,8 @@ const DeliveryTimeline = ({ productId }) => {
                   className="h-8 w-20 text-white rounded-lg bg-gray-900"
                 >
                   {isLoading ? (
-                    <div className="text-center">
-                      <span className="icon-loader loading-spinner" />
+                    <div className="text-center w-full h-full text-white flex justify-center items-center">
+                      <span className="icon-loader border-white rounded-full border-l-2 border-b-2 w-4 inline-block h-4  animate-spin" />
                     </div>
                   ) : (
                     'Check'

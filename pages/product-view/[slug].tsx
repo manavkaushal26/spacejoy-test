@@ -9,8 +9,10 @@ import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
+import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
+import { priceToLocaleString } from '@utils/helpers';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -192,11 +194,12 @@ const ProductView = ({ product }): JSX.Element => {
                   <div className="aspect-w-1 aspect-h-1">
                     <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                       <Image
-                        src={productImages[0]?.fileUrl}
+                        src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[0]?.cdn}`}
                         alt="Angled front view with bag zipped and handles upright."
                         className="object-contain object-center sm:rounded-lg"
                         layout="fill"
                         placeholder="blur"
+                        objectFit="contain"
                         blurDataURL={blurredBgProduct}
                       />
                     </div>
@@ -208,11 +211,12 @@ const ProductView = ({ product }): JSX.Element => {
                       <div className="aspect-w-1 aspect-h-1">
                         <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                           <Image
-                            src={productImages[1]?.fileUrl}
+                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[1]?.cdn}`}
                             alt="Angled front view with bag zipped and handles upright."
                             className="object-contain object-center sm:rounded-lg"
                             layout="fill"
                             placeholder="blur"
+                            objectFit="contain"
                             blurDataURL={blurredBgProduct}
                           />
                         </div>
@@ -224,11 +228,12 @@ const ProductView = ({ product }): JSX.Element => {
                       <div className="aspect-w-1 aspect-h-1">
                         <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                           <Image
-                            src={productImages[2]?.fileUrl}
+                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[2]?.cdn}`}
                             alt="Angled front view with bag zipped and handles upright."
                             className="object-cover object-center sm:rounded-lg"
                             layout="fill"
                             placeholder="blur"
+                            objectFit="contain"
                             blurDataURL={blurredBgProduct}
                           />
                         </div>
@@ -240,11 +245,12 @@ const ProductView = ({ product }): JSX.Element => {
                       <div className="aspect-w-1 aspect-h-1">
                         <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
                           <Image
-                            src={productImages[3]?.fileUrl}
+                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[3]?.cdn}`}
                             alt="Angled front view with bag zipped and handles upright."
                             className="object-cover object-center sm:rounded-lg"
                             layout="fill"
                             placeholder="blur"
+                            objectFit="contain"
                             blurDataURL={blurredBgProduct}
                           />
                         </div>
@@ -259,9 +265,11 @@ const ProductView = ({ product }): JSX.Element => {
                 <div className="mt-3">
                   <h2 className="sr-only">Product information</h2>
                   <p className="text-3xl text-gray-900">
-                    ${product?.displayPrice}
+                    {priceToLocaleString(product?.displayPrice)}
                     {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
-                      <small className="inline-block ml-2 text-sm text-gray-500 line-through">${product?.msrp}</small>
+                      <small className="inline-block ml-2 text-sm text-gray-500 line-through">
+                        {priceToLocaleString(product?.msrp)}
+                      </small>
                     )}
                   </p>
                 </div>

@@ -1,6 +1,7 @@
-import React from 'react';
-import { XCircleIcon, GiftIcon } from '@heroicons/react/outline';
+import { GiftIcon, XCircleIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import { priceToLocaleString } from '@utils/helpers';
+import React from 'react';
 import shallow from 'zustand/shallow';
 
 interface GiftCardSummary {
@@ -56,7 +57,7 @@ const GiftCardSummary = ({ giftCardLoader, removeCoupon, giftCards }) => {
                   <XCircleIcon className="w-4 h-4 cursor-pointer" />
                 </button>
               </div>
-              <div>- ${giftCard?.discount?.toLocaleString()}</div>
+              <div>- {priceToLocaleString(giftCard?.discount)}</div>
             </div>
           </>
         ))}
@@ -65,7 +66,7 @@ const GiftCardSummary = ({ giftCardLoader, removeCoupon, giftCards }) => {
 
         <div className="flex items-center justify-between mt-3 text-sm text-gray-600">
           <span className="font-semibold">Total Gift Card Balance Used:</span>
-          <span>- ${cart?.invoiceData?.discount?.giftCardDiscount}</span>
+          <span>- {priceToLocaleString(cart?.invoiceData?.discount?.giftCardDiscount)}</span>
         </div>
       </div>
     </>
