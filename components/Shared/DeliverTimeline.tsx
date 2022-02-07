@@ -3,7 +3,7 @@ import fetcher from '@utils/fetcher';
 import { isDigit } from '@utils/helpers';
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
-import SVGLoader from './SVGloader';
+import SVGLoader from './SVGLoader';
 
 const domain = 'https://delivery.spacejoy.com/';
 
