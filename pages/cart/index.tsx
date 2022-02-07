@@ -141,7 +141,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
               ) : null}
             </div>
             <p className="mt-1 text-sm font-medium text-gray-900">
-              ${priceToLocaleString(product.displayPrice || product.price)}
+              {priceToLocaleString(product.displayPrice || product.price)}
             </p>
           </div>
 
