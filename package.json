@@ -37,6 +37,7 @@
     "react-gsap": "^3.2.1",
     "react-hot-toast": "^2.1.1",
     "react-infinite-scroller": "^1.2.4",
+    "react-input-range": "^1.3.0",
     "react-konva": "^17.0.2-5",
     "react-responsive-masonry": "^2.1.4",
     "react-scroll": "^1.8.4",
