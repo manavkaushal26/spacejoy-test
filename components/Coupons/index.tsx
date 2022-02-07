@@ -85,10 +85,10 @@ const Coupons = ({ list, loading, onSuccess, onError }) => {
               <>
                 <div
                   key={couponItem?._id}
-                  className="mt-4 border-gray-300 relative relative bg-white border rounded-lg shadow-sm p-4  cursor-pointer focus:outline-none"
+                  className="mt-4 border-gray-300 relative bg-white border rounded-lg shadow-sm p-4  cursor-pointer focus:outline-none"
                 >
                   <div className="inline-block">
-                    <div className="border border-dashed border-gray-900 flex inline-block items-center justify-center p-1">
+                    <div className="border border-dashed border-gray-900 inline-block items-center justify-center p-1">
                       <TagIcon className="h-4 w-4" />{' '}
                       <span className="inline-block ml-2">{couponItem?.code?.toUpperCase()}</span>
                     </div>

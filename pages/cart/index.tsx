@@ -9,6 +9,7 @@ import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
+import { priceToLocaleString } from '@utils/helpers';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
@@ -139,7 +140,9 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
                 </p>
               ) : null}
             </div>
-            <p className="mt-1 text-sm font-medium text-gray-900">${product.displayPrice || product.price}</p>
+            <p className="mt-1 text-sm font-medium text-gray-900">
+              ${priceToLocaleString(product.displayPrice || product.price)}
+            </p>
           </div>
 
           <div className="mt-4 sm:mt-0 sm:pr-9">

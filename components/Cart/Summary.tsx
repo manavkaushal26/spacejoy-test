@@ -5,6 +5,7 @@ import { QuestionMarkCircleIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import fetcher from '@utils/fetcher';
+import { priceToLocaleString } from '@utils/helpers';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -86,7 +87,9 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
         {cart?.invoiceData?.productTotal ? (
           <div className="flex items-center justify-between">
             <dt className="text-sm text-gray-600">Est. Product Total</dt>
-            <dd className="text-sm font-medium text-gray-900">${cart?.invoiceData?.productTotal}</dd>
+            <dd className="text-sm font-medium text-gray-900">
+              {priceToLocaleString(cart?.invoiceData?.productTotal)}
+            </dd>
           </div>
         ) : null}
 
@@ -99,7 +102,9 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
                 <QuestionMarkCircleIcon className="w-5 h-5" aria-hidden="true" />
               </a>
             </dt>
-            <dd className="text-sm font-medium text-gray-900">${cart?.invoiceData?.shippingCharge}</dd>
+            <dd className="text-sm font-medium text-gray-900">
+              {priceToLocaleString(cart?.invoiceData?.shippingCharge)}
+            </dd>
           </div>
         ) : null}
 
@@ -112,14 +117,16 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
             </a>
           </dt>
           <dd className="text-sm font-medium text-gray-900">
-            {cart?.invoiceData?.tax ? cart.invoiceData?.tax : 'TBD'}
+            {cart?.invoiceData?.tax ? priceToLocaleString(cart.invoiceData?.tax) : 'TBD'}
           </dd>
         </div>
         {cart?.invoiceData?.discount && cart?.invoiceData?.discount?.total > 0 ? (
           <div>
             <div className="flex items-center justify-between pt-4 border-t border-gray-200">
               <dt className="text-sm text-gray-600">You save</dt>
-              <dd className="text-sm font-medium text-gray-900">- ${cart?.invoiceData?.discount?.total}</dd>
+              <dd className="text-sm font-medium text-gray-900">
+                - {priceToLocaleString(cart?.invoiceData?.discount?.total)}
+              </dd>
             </div>
             {cart?.invoiceData?.discount &&
             cart?.invoiceData?.discount?.couponDiscount &&
@@ -155,7 +162,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
                         )}
                       </dt>
                       <dd className="text-sm font-medium text-gray-900">
-                        ${cart?.invoiceData?.discount?.couponDiscount}
+                        {priceToLocaleString(cart?.invoiceData?.discount?.couponDiscount)}
                       </dd>
                     </li>
                   );
@@ -177,7 +184,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
               <strong>Order total</strong>
             </dt>
             <dd className="text-base font-medium text-gray-900">
-              <strong>${cart?.invoiceData?.total}</strong>
+              <strong>{priceToLocaleString(cart?.invoiceData?.total)}</strong>
             </dd>
           </div>
         ) : null}
