@@ -81,6 +81,17 @@ const ProductView = ({ product }): JSX.Element => {
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
 
+  const discountPercent = useMemo(() => {
+    const discount = ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / product?.msrp;
+    if (discount === 0) {
+      return '';
+    } else if (discount < 1 && discount > 0) {
+      return `${discount.toFixed(2)}% Off`;
+    } else {
+      return `${discount.toFixed(0)}% Off`;
+    }
+  }, [product?.price, product?.msrp]);
+
   const finalArrayOfOffers = useMemo(() => {
     return couponList.concat(retailerOffers);
   }, [couponList, retailerOffers]);
@@ -290,6 +301,7 @@ const ProductView = ({ product }): JSX.Element => {
                         {priceToLocaleString(product?.msrp)}
                       </small>
                     )}
+                    <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">{discountPercent}</small>
                   </p>
                 </div>
                 {/* <div className="mt-3">
