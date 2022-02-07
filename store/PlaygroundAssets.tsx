@@ -354,7 +354,6 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         });
         if (statusCode < 300) {
           const { count, boxSize, image: { originalCdn = '' } = {} } = data;
-          console.log('productFetchStatus', productFetchStatus);
 
           const updatedAssets = PlaygroundAssets.map((plAsset) => {
             if (selectedId === plAsset?.id) {

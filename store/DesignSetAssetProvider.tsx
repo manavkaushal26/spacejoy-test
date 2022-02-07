@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 const DesignSetAssetContext = React.createContext({
   assets: {},
   groupedData: {},
-  replaceProduct: (newProductId, oldProductId, productData: AssetType) => {},
+  replaceProduct: (newProductId: string, oldProductId: string, productData: AssetType) => {},
 });
 
 interface DesignSetAssetProviderProps {
@@ -26,11 +26,13 @@ const DesignSetAssetProvider: React.FC<DesignSetAssetProviderProps> = ({
   const [initialLoad, setInitalLoad] = useState(true);
 
   const replaceProduct = (newProductId: string, oldProductId: string, productData: AssetType) => {
-    const newAssets = { ...assets };
+    if (newProductId !== oldProductId) {
+      const newAssets = { ...assets };
 
-    newAssets[newProductId] = productData;
-    delete newAssets[oldProductId];
-    setAssets(newAssets);
+      newAssets[newProductId] = productData;
+      delete newAssets[oldProductId];
+      setAssets(newAssets);
+    }
   };
 
   useEffect(() => {

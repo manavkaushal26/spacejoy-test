@@ -80,7 +80,7 @@ const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
-
+  console.log(product);
   const discountPercent = useMemo(() => {
     const discount = ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / product?.msrp;
     if (discount === 0) {

@@ -144,16 +144,18 @@ export const getStaticProps = async ({ params }) => {
 
           const groupedAssetList = uniqueAssetList.reduce((acc, assetId) => {
             const asset = productData[assetId];
-            if (!asset?.cdn) {
-              const renderedImagecdn = asset?.renderImages?.[0]?.cdn;
-              asset.cdn = renderedImagecdn || blurredBgProduct;
+            if (asset.price > 0) {
+              if (!asset?.cdn) {
+                const renderedImagecdn = asset?.renderImages?.[0]?.cdn;
+                asset.cdn = renderedImagecdn || blurredBgProduct;
+              }
+              const category = asset?.meta?.category?._id;
+              const isMainCategory = mainCategoryList.includes(category);
+              const categoryEntry = acc[isMainCategory ? category : 'addOn'] || { assets: [], price: 0 };
+              categoryEntry.assets.push(asset);
+              categoryEntry.price += asset?.price;
+              acc[isMainCategory ? category : 'addOn'] = categoryEntry;
             }
-            const category = asset?.meta?.category?._id;
-            const isMainCategory = mainCategoryList.includes(category);
-            const categoryEntry = acc[isMainCategory ? category : 'addOn'] || { assets: [], price: 0 };
-            categoryEntry.assets.push(asset);
-            categoryEntry.price += asset?.price;
-            acc[isMainCategory ? category : 'addOn'] = categoryEntry;
 
             return acc;
           }, {});
