@@ -240,7 +240,10 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
           </div>
         ) : null}
       </dl>
-      <AffirmPrice totalAmount={cart?.invoiceData?.total} affirmType="as-low-as" flow={affirmFlow} />
+      <div className="text-xs mt-4">
+        <AffirmPrice totalAmount={cart?.invoiceData?.total} affirmType="as-low-as" flow={affirmFlow} />
+      </div>
+
       <p className="text-xs mt-8 text-gray-500">
         *Have a promo/coupon code from your favorite brand? Apply it during checkout
       </p>
