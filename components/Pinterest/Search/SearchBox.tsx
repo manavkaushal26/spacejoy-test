@@ -161,9 +161,9 @@ const SearchBox: React.FC = () => {
   return (
     <div className="col-span-3 lg:col-span-2">
       <div className="flex flex-col gap-y-2 items-center px-8 py-12 text-center rounded-lg bg-spj-pinterest">
-        <div className="mb-2 text-xl font-bold">Get inspiration from your boards</div>
+        <div className="mb-2 text-xl font-bold">Shop home decor from your pins</div>
         <div className="text-lg text-gray-500">
-          Choose a Pinterest board that best represents your style. Then select a pin to proceed.
+        Choose a Pinterest board to select a pin
         </div>
         <div>
           <a
@@ -189,10 +189,10 @@ const SearchBox: React.FC = () => {
       </div>
 
       <div className="relative flex flex-col items-center px-8 py-12 rounded-lg bg-spj-pinterest gap-y-2">
-        <div className="mb-2 text-xl font-bold">Connect a public board</div>
-        <div className="text-lg text-center text-gray-500">
+        <div className="mb-2 text-xl font-bold">Connect any public Pinterest board</div>
+        {/* <div className="text-lg text-center text-gray-500">
           Paste a public pinterest board link to view similar products!
-        </div>
+        </div> */}
         <div className="w-full mt-4 text-center">
           <div className="relative w-full p-1 mx-auto">
             <input
@@ -200,7 +200,7 @@ const SearchBox: React.FC = () => {
               onChange={handleChange}
               defaultValue={searchQuery}
               onKeyDown={handleKeyDown}
-              placeholder="Search..."
+              placeholder="Eg: https://in.pinterest.com/spacejoyapp/spacejoy-recommendations/"
               autoComplete="off"
               name="search"
             />
