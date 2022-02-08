@@ -136,8 +136,6 @@ function CheckoutForm({
       },
     };
 
-    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
-
     const response = await fetcher({
       endPoint: getEndPoint(checkoutFlow, orderId),
       method: (paymentStatus === 'fail' || paymentError) && checkoutFlow === 'design' ? 'PUT' : 'POST',
