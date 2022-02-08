@@ -72,12 +72,14 @@ const Checkout = () => {
 
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  const orderSuccesActions = () => {
-    setOrderPlaced(true);
-    updateCart({
-      cartItems: {},
-      invoiceData: {},
-    });
+  const postOrderActions = (orderPlacedValue) => {
+    setOrderPlaced(orderPlacedValue);
+    if (orderPlacedValue) {
+      updateCart({
+        cartItems: {},
+        invoiceData: {},
+      });
+    }
   };
 
   return (
@@ -321,10 +323,10 @@ const Checkout = () => {
                             commentCouponCode={couponCode}
                             data={orderNote}
                             hideCardCapture={cartData?.invoiceData?.total <= 0}
-                            cb={orderSuccesActions}
+                            cb={postOrderActions}
                           />
                         ) : (
-                          <Affirm cb={orderSuccesActions} />
+                          <Affirm cb={postOrderActions} />
                         )}
                       </div>
                     </div>
