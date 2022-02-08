@@ -61,7 +61,7 @@ const DesignCardRow: React.FC<{
 
 const RecommendationsListView: React.FC = () => {
   const { isItemLoaded, loadMoreItems, count } = useRecommendationsListContext();
-  const [rowHeight] = useState(260);
+  const [rowHeight] = useState(280);
   const gridRef = React.createRef<Grid<any>>();
 
   const { data, loading } = useRecommendationsListContext();
