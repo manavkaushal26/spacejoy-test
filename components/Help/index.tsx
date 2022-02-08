@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import HelpData from '@mocks/HelpData';
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import ReactHtmlParser from 'react-html-parser';
 
 const entry = keyframes`
 	from { 
@@ -96,7 +97,7 @@ const Index = () => {
                                 </Disclosure.Button>
                               </dt>
                               <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                                <p className="text-base text-gray-700">{faq.answer}</p>
+                                <p className="text-base text-gray-700"><div>{ ReactHtmlParser(faq.answer) }</div></p>
                               </Disclosure.Panel>
                             </>
                           )}

@@ -9,14 +9,14 @@ const Featured: React.FC = () => {
     <>
       <SectionTitle
         feature="Media"
-        title="Where Have We Been Mentioned?"
-        description="Some of the world’s leading design publications."
+        title="Your favorites are talking about us"
+        description=""
       />
       <div className="container mx-auto p-4">
         <div className="-mb-56 xl:-mb-72 max-w-7xl mx-auto z-10 relative">
           <div className="p-4 xl:p-8 shadow-lg rounded-lg border border-gray-100 bg-gradient-to-r from-blue-50 to-pink-50">
             <ScrollTrigger start="-500px center" end="-100px center">
-              <div className="grid gap-4 xl:gap-8 grid-cols-4">
+              <div className="grid gap-4 xl:gap-8 grid-cols-3">
                 <Tween
                   from={{ scale: 0.95, opacity: 0, y: 50 }}
                   to={{ scale: 1, opacity: 1, y: 0 }}

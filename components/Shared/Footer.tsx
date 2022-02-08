@@ -2,6 +2,8 @@ import { company } from '@utils/config';
 import Link from 'next/link';
 import React from 'react';
 import SocialLinks from './Footer/SocialLinks';
+import Image from 'next/image';
+import spacejoyPromiseData from '@utils/Mocks/spacejoyPromises';
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
@@ -9,154 +11,228 @@ const currentYear = currentDate.getFullYear();
 const Footer: React.FC = () => {
   return (
     <footer className="antialiased border-t border-gray-200">
+      <div className="container px-4 mx-auto">
+        <div className="grid grid-cols-3 gap-6">
+          {spacejoyPromiseData.map((promise) => (
+            <div key={promise.title} className="mt-4">
+              <div className="relative flex flex-col py-5 space-x-3 bg-white rounded-lg justify-left lg:flex-row lg:items-start">
+                <div className="flex-shrink-0">
+                  <img className="w-16 h-16 mb-2 ml-3 lg:mb-0 lg:ml-0" src={promise.img} alt={promise.title} />
+                </div>
+                <div className="flex-1 min-w-0 ml-0 lg:ml-2">
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  <p className="mb-1 text-sm font-semibold text-gray-900">{promise.title}</p>
+                  <p className="text-sm text-gray-500">{promise.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="container mx-auto px-4">
-        <div className="py-12 grid grid-cols-6 gap-4">
+        <div className="py-12 grid grid-cols-6 gap-2">
           <div className="col-span-2 xl:w-3/4">
             <h3 className="mb-2">About Us</h3>
-            <p className="leading-relaxed text-sm text-gray-600">
+            <p className="text-sm leading-relaxed text-gray-600">
               Spacejoy is an online interior design studio. See your room designed in 3D curated with handpicked
               products that you shop right away from our platform.
             </p>
             <SocialLinks />
           </div>
           <div className="">
-            <h3 className="mb-2 px-1">Quick Links</h3>
+            <h3 className="px-1 mb-2">Quick Links</h3>
             <ul>
               <li>
-                <Link href="/pricing">
+                <Link href="https://www.spacejoy.com/furniture-decor-shop">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Pricing
+                    Furniture & Decor Shop
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/customer-stories">
+                <Link href="https://test.spacejoy.com/room-select">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Furniture & Decor Sets
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/online-interior-design">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Hire a Designer
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/customer-stories">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Customer Stories
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/interior-designs">
+                <Link href="https://test.spacejoy.com/interior-designs">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Interior Designs Ideas
+                    Interior Design Ideas
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/purchase-gift-card">
+                <Link href="https://www.spacejoy.com/purchase-gift-card">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Gift Cards
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/online-room-design">
+                <Link href="https://www.spacejoy.com/trending-items">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Design Process
+                    Deals Of The Day
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/online-interior-designers">
+                <Link href="https://www.spacejoy.com/style-quiz-intro">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Meet The Team
+                    Style Quiz
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/balance-check">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Check Card Balance
                   </a>
                 </Link>
               </li>
             </ul>
           </div>
           <div className="">
-            <h3 className="mb-2 px-1">Blog</h3>
+            <h3 className="px-1 mb-2">Blog</h3>
             <ul>
               <li>
                 <Link
                   href={{
-                    pathname: '/interior-designs-blog',
+                    pathname:
+                      'https://www.spacejoy.com/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture',
                   }}
                 >
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Online Interior Design Blog
+                    Spring furniture ideas
                   </a>
                 </Link>
               </li>
               <li>
                 <Link
                   href={{
-                    pathname: '/interior-designs-blog',
+                    pathname: 'https://www.spacejoy.com/interior-designs-blog/popular-living-room-colors',
                     query: { slug: 'for-a-year-round-spring-feel-light-and-airy-furniture' },
                   }}
-                  as="/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture"
+                  // as="/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture"
                 >
                   <a
                     className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture"
+                    href="https://www.spacejoy.com/interior-designs-blog/popular-living-room-colors"
                   >
-                    Spring Furniture Ideas
+                    Best Living Room Colors
                   </a>
                 </Link>
               </li>
               <li>
                 <Link
                   href={{
-                    pathname: '/interior-designs-blog',
+                    pathname: 'https://www.spacejoy.com/interior-designs-blog/best-comfortable-sectionals-to-watch-tv',
                     query: { slug: '13-clever-and-stylish-storage-ideas-for-any-room-in-your-home' },
                   }}
                   as="/interior-designs-blog/13-clever-and-stylish-storage-ideas-for-any-room-in-your-home"
                 >
                   <a
                     className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs-blog/13-clever-and-stylish-storage-ideas-for-any-room-in-your-home"
+                    href="https://www.spacejoy.com/interior-designs-blog/best-comfortable-sectionals-to-watch-tv"
                   >
-                    13 Clever Storage Ideas
+                    13 Best Sectional Sofas
                   </a>
                 </Link>
               </li>
               <li>
                 <Link
                   href={{
-                    pathname: '/interior-designs-blog',
+                    pathname:
+                      'https://www.spacejoy.com/interior-designs-blog/best-mid-century-modern-interior-design-style-furniture-to-buy',
                     query: { slug: 'gallery-wall-ideas-to-dress-up-your-walls' },
                   }}
                   as="/interior-designs-blog/gallery-wall-ideas-to-dress-up-your-walls"
                 >
                   <a
                     className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs-blog/gallery-wall-ideas-to-dress-up-your-walls"
+                    href="https://www.spacejoy.com/interior-designs-blog/best-mid-century-modern-interior-design-style-furniture-to-buy"
                   >
-                    Gallery Wall Ideas
+                    Mid Century Modern Furniture
                   </a>
                 </Link>
               </li>
               <li>
                 <Link
                   href={{
-                    pathname: '/interior-designs-blog',
+                    pathname: 'https://www.spacejoy.com/interior-designs-blog/farmhouse-style-design-rules',
                     query: { slug: 'simple-diy-decor-ideas-to-ring-in-spring' },
                   }}
                   as="/interior-designs-blog/simple-diy-decor-ideas-to-ring-in-spring"
                 >
                   <a
                     className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs-blog/simple-diy-decor-ideas-to-ring-in-spring"
+                    href="https://www.spacejoy.com/interior-designs-blog/farmhouse-style-design-rules"
                   >
-                    DIY Spring Decor Ideas
+                    Farmhouse Style Decor Ideas
                   </a>
                 </Link>
               </li>
               <li>
                 <Link
                   href={{
-                    pathname: '/interior-designs-blog',
+                    pathname: 'https://www.spacejoy.com/interior-designs-blog/small-living-room-insp-we-love',
                     query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
                   }}
                   as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
                 >
                   <a
                     className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
+                    href="https://www.spacejoy.com/interior-designs-blog/small-living-room-insp-we-love"
                   >
-                    Spring Wreath Ideas
+                    Small Living Room Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs-blog/how-to-decorate-your-living-room',
+                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
+                  }}
+                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs-blog/how-to-decorate-your-living-room"
+                  >
+                    6 Steps To Decorate Living Room
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs-blog/minimalist-home-decor-style-guide',
+                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
+                  }}
+                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs-blog/minimalist-home-decor-style-guide"
+                  >
+                    Minimalist Home Decor Ideas
                   </a>
                 </Link>
               </li>
@@ -166,55 +242,27 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Support</h3>
             <ul>
               <li>
-                <Link href="/help">
+                <Link href="https://www.spacejoy.com/help">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Help
+                    FAQs
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/terms">
-                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Privacy Policy
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms">
-                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Terms of Service
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/cookies">
-                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Cookie Statement
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/refund-policy" as="/refund-policy">
+                <Link href="https://www.spacejoy.com/refund-policy">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Refund Policy
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/sitemap" as="/sitemap">
-                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Sitemap
                   </a>
                 </Link>
               </li>
             </ul>
           </div>
           <div className="">
-            <h3 className="mb-2 px-1">Connect with us</h3>
+            <h3 className="px-1 mb-2">Connect with us</h3>
             <ul>
               <li>
                 <a
-                  className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                  className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                   href={`tel:${company.phone.support}`}
                   target="_top"
                 >
@@ -223,7 +271,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                  className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                   href={`mailto:${company.email.support}?Subject=Need%20Help`}
                   target="_top"
                 >
@@ -233,24 +281,440 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                  href={`mailto:${company.email.support}?Subject=Partner%20With%20Spacejoy`}
+                  href={`mailto:hello@spacejoy.com`}
                   target="_top"
                 >
                   Partner With Us
                 </a>
               </li>
+            </ul>
+          </div>
+        </div>
+        <div className="py-12 grid grid-cols-6 gap-2">
+          <div className="">
+            <h3 className="mb-2 px-1">Furniture & Decor Sets</h3>
+            <ul>
               <li>
-                <Link href="/career" as="/career">
+                <Link href="https://test.spacejoy.com/design-sets/room/living-room-design-sets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Careers
+                    Living Room Sets
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://test.spacejoy.com/design-sets/room/bedroom-design-sets">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Bedroom Sets
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://test.spacejoy.com/design-sets/room/dining-room-design-sets">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Dining Room Sets
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://test.spacejoy.com/design-sets/room/home-office-design-sets">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Home Office Sets
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://test.spacejoy.com/design-sets/room/entryway-design-sets">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Entryway Sets
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h3 className="mb-2 px-1">Design Styles</h3>
+            <ul>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/modern-style-ideas',
+                  }}
+                >
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Modern Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/eclectic-room-designs',
+                    query: { slug: 'for-a-year-round-spring-feel-light-and-airy-furniture' },
+                  }}
+                  // as="/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/eclectic-room-designs"
+                  >
+                    Eclectic Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/farmhouse-style-ideas',
+                    query: { slug: '13-clever-and-stylish-storage-ideas-for-any-room-in-your-home' },
+                  }}
+                  as="/interior-designs-blog/13-clever-and-stylish-storage-ideas-for-any-room-in-your-home"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/farmhouse-style-ideas"
+                  >
+                    Modern Farmhouse Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/industrial-room-designs',
+                    query: { slug: 'gallery-wall-ideas-to-dress-up-your-walls' },
+                  }}
+                  as="/interior-designs-blog/gallery-wall-ideas-to-dress-up-your-walls"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/industrial-room-designs"
+                  >
+                    Industrial Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/mid-century-modern-room-ideas',
+                    query: { slug: 'simple-diy-decor-ideas-to-ring-in-spring' },
+                  }}
+                  as="/interior-designs-blog/simple-diy-decor-ideas-to-ring-in-spring"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/mid-century-modern-room-ideas"
+                  >
+                    Mid-Century Modern Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/transitional-style-ideas',
+                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
+                  }}
+                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/transitional-style-ideas"
+                  >
+                    Transitional Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/classic-modern-design-ideas',
+                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
+                  }}
+                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/classic-modern-design-ideas"
+                  >
+                    Contempory Modern Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: 'https://www.spacejoy.com/interior-designs/coastal-design-ideas',
+                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
+                  }}
+                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
+                >
+                  <a
+                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    href="https://www.spacejoy.com/interior-designs/coastal-design-ideas"
+                  >
+                    Coastal Design Ideas
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h3 className="mb-2 px-1">Curated Collections</h3>
+            <ul>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/spring-2020-look-book-living-room-designs-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Spring Look Book Living Room Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://test.spacejoy.com/room-select">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Spring Look Book Bedroom Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/spring-2020-look-book-entryway-designs-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Spring Look Book Entryway Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/bohemian-living-room-design-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Bohemian Living Room Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/open-living-and-dining-room-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Open Living-Dining Room Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/small-living-room-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Small Living Room Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/glam-design-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Glam Design Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs/minimalist-living-room-design-ideas">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Minimalist Living Room Ideas
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h3 className="mb-2 px-1">Blog</h3>
+            <ul>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/popular-living-room-colors">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Best Living Room Colors
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/best-comfortable-sectionals-to-watch-tv">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    13 Best Sectional Sofas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/best-mid-century-modern-interior-design-style-furniture-to-buy">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Mid Century Modern Furniture
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/farmhouse-style-design-rules">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Farmhouse Style Decor Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/small-living-room-insp-we-love">
+                  <a className=" text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Small Living Room Ideas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/how-to-decorate-your-living-room">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    6 Steps To Decorate Living Room
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/interior-designs-blog/minimalist-home-decor-style-guide">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Minimalist Home Decor Ideas
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h3 className="mb-2 px-1">Products</h3>
+            <ul>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Furniture&subcategory=Sofas&discount=40%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Sofas
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Furniture&price=0%3A%3A5000&vertical=Coffee+Tables&subcategory=Tables&discount=50%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Coffee Tables
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Furniture&price=0%3A%3A5000&vertical=End+%26+Side+Tables&subcategory=Tables&discount=50%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Side Tables
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Furniture&price=0%3A%3A5000&vertical=Accent+Chairs&subcategory=Chairs&discount=55%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Accent Chairs
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Lighting&discount=10%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Lighting
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Decor&subcategory=Mirrors&discount=30%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Mirror
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Furnishings&subcategory=Rugs&discount=60%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Rugs
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?category=Decor&subcategory=Wall+Decor&vertical=Wall+Art&discount=55%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Storage & Organization
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h3 className="mb-2 px-1">Brands</h3>
+            <ul>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=Wayfair&discount=40%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Wayfair
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=West+Elm&discount=30%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    West Elm
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=CB2&discount=10%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    CB2
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=Pottery+Barn&discount=10%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Pottery
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=Target&discount=10%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Target
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=Crate+And+Barrel&discount=10%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Crate & Barrel
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.spacejoy.com/shop?retailer=Article&discount=10%3A%3A100">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Article
                   </a>
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-        <div className="text-center border-t border-gray-100 py-4">
-          <p className="text-xs text-gray-900 leading-7">
+        <div className="flex flex-row justify-center">
+          <div className='m-5'>
+            <Link href="https://www.spacejoy.com/cookies">
+              <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                Cookie Statement
+              </a>
+            </Link>
+          </div>
+          <div className='m-5'>
+            <Link href="https://www.spacejoy.com/terms">
+              <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                Terms Of Service
+              </a>
+            </Link>
+          </div>
+          <div className='m-5'>
+            <Link href="https://www.spacejoy.com/sitemap">
+              <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                Sitemap
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="py-4 text-center border-t border-gray-100">
+          <p className="text-xs leading-7 text-gray-900">
             &copy; {currentYear} Neo Design Labs Inc. All rights reserved.
           </p>
         </div>
