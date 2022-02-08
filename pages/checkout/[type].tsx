@@ -337,13 +337,34 @@ const Checkout = () => {
                     {Object.keys(cartData?.invoiceData)?.length === 0 ? (
                       <CartSummaryDimmer noBtn />
                     ) : (
-                      <CartSummary giftCards={giftCards} setShowGiftCardInput={setShowGiftCardInput} noBtn page="checkout" />
+                      <CartSummary
+                        giftCards={giftCards}
+                        setShowGiftCardInput={setShowGiftCardInput}
+                        noBtn
+                        page="checkout"
+                      />
                     )}
                   </div>
                 </div>
               </div>
             )}
-            {orderPlaced && <Success title="Order Placed Successfully" message="" />}
+            {orderPlaced && (
+              <Success
+                title="Order Placed Successfully"
+                message={
+                  <div>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.spacejoy.com/orders"
+                      className="px-4 py-2 border inline-block mb-2 border-black rounded-lg text-black"
+                    >
+                      <span className="">View product orders</span>
+                    </a>
+                  </div>
+                }
+              />
+            )}
           </div>
         </Layout.Body>
         <Layout.Footer />
