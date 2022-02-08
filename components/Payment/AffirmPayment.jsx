@@ -1,4 +1,5 @@
 // import { NotificationService } from '@components/NotificationMessage';
+import SVGLoader from '@components/Shared/SVGLoader';
 import affirm from '@utils/affirm';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
@@ -79,7 +80,7 @@ const Affirm = ({ cb }) => {
         className="px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm w-fit hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
         onClick={handleClick}
       >
-        Pay With Affirm
+        {submitInProgress ? <SVGLoader /> : <>Place your order</>}
       </button>
       <p className="mt-2 text-sm text-gray-500">With Affirm, you can buy now and pay monthly.</p>
     </>
