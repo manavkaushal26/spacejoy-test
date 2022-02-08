@@ -2,7 +2,7 @@ import { fetchAllFilters } from '@utils/shop/helpers';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-const ShopFilterContext = createContext({
+const ShopFilterContext = createContext<Record<any, any>>({
   filters: {
     retailer: [{ _id: '', name: '', selected: false }],
     subCategory: [{ _id: '', selected: false, verticals: [{ _id: '' }] }],
@@ -13,7 +13,7 @@ const ShopFilterContext = createContext({
   updateFilter: (id: string, type: string) => {
     return;
   },
-  addPriceFilter: ({}) => {
+  addArrayQueryParam: ({}) => {
     return;
   },
 });
@@ -47,6 +47,7 @@ interface FilterType {
   category: Array<CategoryType>;
   vertical: Array<VerticalType>;
   price: Array<number>;
+  discount?: Array<number>;
 }
 interface AssetFilterType {
   retailers: {
@@ -176,11 +177,23 @@ const ShopFilterContextProvider = ({ children }) => {
     );
   };
 
-  const addPriceFilter = ({ min, max }) => {
+  const addArrayQueryParam = ({ name, min, max, remove }) => {
     const currentQueryParam = router?.query;
+    let updatedQueryParam = {};
+    if (remove) {
+      updatedQueryParam = {
+        ...currentQueryParam,
+      };
+      delete updatedQueryParam[name];
+    } else {
+      updatedQueryParam = {
+        ...currentQueryParam,
+        [name]: `${min}::${max}`,
+      };
+    }
     router.push(
       {
-        query: { ...currentQueryParam, price: `${min}::${max}` },
+        query: updatedQueryParam,
         pathname: router?.pathname,
       },
       undefined,
@@ -193,7 +206,7 @@ const ShopFilterContextProvider = ({ children }) => {
       value={{
         filters,
         updateFilter,
-        addPriceFilter,
+        addArrayQueryParam,
       }}
     >
       {children}
