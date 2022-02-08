@@ -6,7 +6,9 @@ import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
@@ -18,6 +20,8 @@ interface CartSummaryInterface {
   noBtn?: boolean;
   page?: string;
 }
+
+const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 
 const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page }) => {
   const { cart, updateCart } = useStore(
@@ -64,6 +68,8 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
   };
 
   const isCouponApplied = cart?.invoiceData?.discount?.coupons.length ? true : false;
+  const router = useRouter();
+  const affirmFlow = router.pathname === '/cart' ? 'cart' : 'checkout';
 
   return (
     <section className="sticky top-24">
@@ -234,6 +240,10 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
           </div>
         ) : null}
       </dl>
+      <AffirmPrice totalAmount={cart?.invoiceData?.total} affirmType="as-low-as" flow={affirmFlow} />
+      <p className="text-xs mt-8 text-gray-500">
+        *Have a promo/coupon code from your favorite brand? Apply it during checkout
+      </p>
 
       {noBtn ? null : (
         <div className="mt-6">
