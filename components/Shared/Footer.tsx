@@ -241,7 +241,7 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Support</h3>
             <ul>
               <li>
-                <Link href="https://www.spacejoy.com/help">
+                <Link href="/help">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     FAQs
                   </a>
@@ -577,56 +577,56 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Products</h3>
             <ul>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Furniture&subcategory=Sofas&discount=40%3A%3A100">
+                <Link href="/shop?subcategory=Sofas">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Sofas
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Furniture&price=0%3A%3A5000&vertical=Coffee+Tables&subcategory=Tables&discount=50%3A%3A100">
+                <Link href="/shop?subcategory=Tables&vertical=Coffee+Tables">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Coffee Tables
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Furniture&price=0%3A%3A5000&vertical=End+%26+Side+Tables&subcategory=Tables&discount=50%3A%3A100">
+                <Link href="/shop?subcategory=Tables&vertical=End+%26+Side+Tables">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Side Tables
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Furniture&price=0%3A%3A5000&vertical=Accent+Chairs&subcategory=Chairs&discount=55%3A%3A100">
+                <Link href="/shop?subcategory=Chairs&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Accent Chairs
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Lighting&discount=10%3A%3A100">
+                <Link href="/shop?subcategory=Lights&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Lighting
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Decor&subcategory=Mirrors&discount=30%3A%3A100">
+                <Link href="/shop?subcategory=Mirrors&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Mirror
+                    Mirrors
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Furnishings&subcategory=Rugs&discount=60%3A%3A100">
+                <Link href="/shop?subcategory=Rugs&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting%3A%3ARunners%3A%3AOther+Rugs%3A%3AArea+Rugs">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Rugs
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?category=Decor&subcategory=Wall+Decor&vertical=Wall+Art&discount=55%3A%3A100">
+                <Link href="/shop?subcategory=Storage+Containers&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting%3A%3ARunners%3A%3AOther+Rugs%3A%3AArea+Rugs%3A%3ACrates%2C+Buckets+%26+Bins%3A%3ALaundry+Organization%3A%3AOther+Storage+Containers%3A%3ABaskets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Storage & Organization
                   </a>
@@ -638,49 +638,49 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Brands</h3>
             <ul>
               <li>
-                <Link href="https://www.spacejoy.com/shop?retailer=Wayfair&discount=40%3A%3A100">
+                <Link href="/shop?retailer=Wayfair">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Wayfair
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?retailer=West+Elm&discount=30%3A%3A100">
+                <Link href="/shop?retailer=West+Elm">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     West Elm
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?retailer=CB2&discount=10%3A%3A100">
+                <Link href="/shop?retailer=CB2">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     CB2
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?retailer=Pottery+Barn&discount=10%3A%3A100">
+                <Link href="/shop?retailer=Pottery+Barn">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Pottery
                   </a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="https://www.spacejoy.com/shop?retailer=Target&discount=10%3A%3A100">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Target
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="https://www.spacejoy.com/shop?retailer=Crate+And+Barrel&discount=10%3A%3A100">
+                <Link href="/shop?retailer=Crate+And+Barrel">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Crate & Barrel
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://www.spacejoy.com/shop?retailer=Article&discount=10%3A%3A100">
+                <Link href="/shop?retailer=Article">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Article
                   </a>
