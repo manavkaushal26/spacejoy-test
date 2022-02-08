@@ -46,6 +46,7 @@ const reducer = (state, action) => {
           },
         };
       }
+
       return { ...state };
     }
     default: {
@@ -59,7 +60,6 @@ const useRecommendations = (productId = '') => {
   const { recommendationsData, loading, error } = state;
 
   useEffect(() => {
-    console.log('in this value', productId);
     if (productId && (!state?.recommendationsData[productId] || state?.recommendationsData[productId]?.length === 0)) {
       dispatch({ type: 'SET_LOADING_ACTIVE' });
       fetchProductRecommendations(productId)

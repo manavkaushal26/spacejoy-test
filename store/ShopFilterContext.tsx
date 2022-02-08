@@ -10,7 +10,7 @@ const ShopFilterContext = createContext<Record<any, any>>({
     vertical: [{ _id: '', name: '', selected: false, subcategory: 'string' }],
     price: [0, 5000],
   },
-  updateFilter: (id: string, type: string) => {
+  updateFilter: (id: string, type: string, removeKeys?: string[]) => {
     return;
   },
   addArrayQueryParam: ({}) => {
@@ -141,7 +141,7 @@ const ShopFilterContextProvider = ({ children }) => {
     });
   }, [router?.query?.subcategory, router?.query?.vertical, router?.query?.retailer, shopFilters, router?.query?.price]);
 
-  const updateFilter = (itemId, type) => {
+  const updateFilter = (itemId, type, removeKeys = []) => {
     const chosenFilterObject = filters[type]?.filter((item) => item?._id === itemId);
     const filtersOfType = ((router?.query[type] || '') as string).split('::');
 
@@ -161,6 +161,8 @@ const ShopFilterContextProvider = ({ children }) => {
     const finalQuery = { ...router?.query, ...updatedQueryParam };
 
     const filterFields = ['category', 'subcategory', 'price', 'vertical', 'page'];
+    removeKeys.map((key) => delete finalQuery[key]);
+
     const updated = Object.keys(finalQuery)?.reduce((acc, curr) => {
       if (finalQuery[curr]?.length && filterFields?.indexOf(curr) > -1) {
         acc[curr] = finalQuery[curr];

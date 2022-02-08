@@ -13,7 +13,7 @@ import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 const ProductList = ({ list }) => {
   return (
@@ -37,6 +37,15 @@ const ProductList = ({ list }) => {
 
 export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Element => {
   const [currentFilters, setCurrentFilters] = useState({ ...defaultFilters, ...initialFilters });
+
+  const shopPageTopRef = useRef<HTMLDivElement>();
+
+  const onButtonClick = () => {
+    if (shopPageTopRef.current) {
+      shopPageTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const { currentRenderList, buttons, isFetching } = usePagination(
     {
       url: '/v1/assets/search',
@@ -54,7 +63,8 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
     internalPages?.Shop?.NUM_OF_BUTTONS,
     internalPages?.Shop?.DEFAULT_PAGE_SIZE,
     'hits',
-    initialFilters
+    initialFilters,
+    { onButtonClick: onButtonClick }
   );
   const {
     filters: { retailer: retailerList = [], subCategory, vertical, price },
@@ -113,7 +123,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
       {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
-        <div className="bg-gray-100 min-h-screen">
+        <div className="bg-gray-100 min-h-screen" ref={shopPageTopRef}>
           <div className="container p-4 mx-auto">
             <nav className="flex mb-4" aria-label="Breadcrumb">
               <ol role="list" className="flex items-center space-x-4">

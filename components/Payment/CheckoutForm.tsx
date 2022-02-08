@@ -136,6 +136,8 @@ function CheckoutForm({
       },
     };
 
+    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+
     const response = await fetcher({
       endPoint: getEndPoint(checkoutFlow, orderId),
       method: (paymentStatus === 'fail' || paymentError) && checkoutFlow === 'design' ? 'PUT' : 'POST',
@@ -202,12 +204,12 @@ function CheckoutForm({
 
   return (
     <div>
-      {(pageError || paymentError) && <div className="text-red-500 text-sm mb-2">{paymentError || pageError}</div>}
+      {(pageError || paymentError) && <div className="mb-2 text-sm text-red-500">{paymentError || pageError}</div>}
       {hideCardCapture ? (
         <>
           <div>No Credit Card Required</div>
           <button
-            className="w-full bg-gray-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+            className="w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
             onClick={() => handlePay(checkoutFlow === 'store' ? randomToken : null)}
           >
             {submitInProgress ? <SVGLoader /> : <>Place your order</>}
@@ -219,7 +221,7 @@ function CheckoutForm({
           <br />
           <button
             type="submit"
-            className="bg-gray-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 w-52 flex items-center justify-center"
+            className="flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 w-52"
           >
             {submitInProgress ? (
               <SVGLoader />

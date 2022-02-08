@@ -68,7 +68,6 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
       setHasNextPage(false);
       setCount(0);
     } else if (currentVerticalForRecommendations && selectedId) {
-      console.log(`here`);
       if (verticalRef?.current !== currentVerticalForRecommendations) {
         setFilters({ ...assetStoreInitialState, verticals: [currentVerticalForRecommendations] });
         verticalRef.current = currentVerticalForRecommendations;

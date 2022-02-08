@@ -8,7 +8,7 @@ import fetcher from '@utils/fetcher';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
 import { GetServerSidePropsContext, GetServerSidePropsResult, GetStaticPathsResult, NextPage } from 'next';
 import Head from 'next/head';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 interface CollageViewProps {
   feedData?: {
@@ -25,12 +25,6 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData, category, ini
   const name = useMemo(() => {
     return slug.split('-').join(' ');
   }, [slug]);
-
-  const [subCategoryList, setSubCategoryList] = useState(initialSubCategoryList);
-
-  const selectedSubCategoryList = useMemo(() => {
-    return subCategoryList?.filter((subCat) => subCat.selected);
-  }, [subCategoryList]);
 
   // const [bg, setBg] = useState(colorList[colorList?.length - 1]);
   // const selectBgColor = (color: ColorListType) => {
@@ -65,7 +59,7 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData, category, ini
   return (
     <Layout>
       <Head>
-        <title>{name} | Spacejoy</title>
+        <title>{`${name?.[0].toUpperCase()}${name?.slice(1)}`} | Spacejoy</title>
       </Head>
       <Layout.Header />
       <Layout.Body>

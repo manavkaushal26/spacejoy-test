@@ -89,7 +89,16 @@ const fetchMoreData = async (api, skip, limit, field) => {
   }
 };
 
-const usePagination = (api, initialData, totalRecords, paginationButtonCount, pageSize, flow, initialFilters) => {
+const usePagination = (
+  api,
+  initialData,
+  totalRecords,
+  paginationButtonCount,
+  pageSize,
+  flow,
+  initialFilters,
+  options
+) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [currentBtnWindow, setCurrentBtnWindow] = useState([]);
 
@@ -106,6 +115,9 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
   const paginationBtnNav = (buttonIndex) => {
     // button click updates router only
     const currentQueryParam = router.query;
+    if (options?.onButtonClick) {
+      options?.onButtonClick(buttonIndex);
+    }
     router.push(
       {
         pathname: router.pathname,

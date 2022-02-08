@@ -47,7 +47,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
   return (
     <Layout>
       <Head>
-        <title>{correctedCollageName} | Spacejoy</title>
+        <title>{`${correctedCollageName?.[0]?.toLocaleUpperCase()}${correctedCollageName?.slice(1)}`} | Spacejoy</title>
       </Head>
       <Layout.Header />
       <Layout.Body>

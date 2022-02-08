@@ -1,7 +1,5 @@
 import { useShopFilterContext } from '@store/ShopFilterContext';
 import React, { useMemo } from 'react';
-import Image from 'next/image';
-import { ArrowRightIcon } from '@heroicons/react/outline';
 
 const ShopCategories = ({ callback }) => {
   const {
@@ -22,7 +20,10 @@ const ShopCategories = ({ callback }) => {
   return (
     <>
       <div className="flex flex-row space-x-5">
-        <div className="flex h-full p-4 flex-col justify-end bg-gray-50 cursor-pointer hover:underline" onClick={()=>location.href="/shop"}>
+        <div
+          className="flex h-full p-4 flex-col justify-end bg-gray-50 cursor-pointer hover:underline"
+          onClick={() => (location.href = '/shop')}
+        >
           {/* <div className="text-left">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188232/spj-v2/3d-icons/spj-13_khzmql.png"
@@ -38,7 +39,10 @@ const ShopCategories = ({ callback }) => {
             {/* <ArrowRightIcon className="h-4 w-4" /> */}
           </div>
         </div>
-        <div className="flex h-full p-4 flex-col justify-end bg-gray-50 cursor-pointer hover:underline" onClick={()=>location.href="https://www.spacejoy.com/furniture-decor-shop"}>
+        <div
+          className="flex h-full p-4 flex-col justify-end bg-gray-50 cursor-pointer hover:underline"
+          onClick={() => (location.href = 'https://www.spacejoy.com/furniture-decor-shop')}
+        >
           {/* <div>
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188242/spj-v2/3d-icons/spj-25_dhewua.png"
@@ -73,7 +77,7 @@ const ShopCategories = ({ callback }) => {
                             <li
                               className="text-sm text-gray-700 cursor-pointer hover:underline capitalize"
                               onClick={() => {
-                                updateFilter(subCategory?._id, 'subCategory');
+                                updateFilter(subCategory?._id, 'subCategory', ['vertical']);
                                 callback && callback();
                               }}
                             >

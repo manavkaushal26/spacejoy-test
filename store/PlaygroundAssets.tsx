@@ -374,6 +374,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
             return { ...plAsset };
           });
           setPlaygroundAssets(updatedAssets);
+          toast.success('Product replaced successfully');
         } else {
           throw new Error();
         }
