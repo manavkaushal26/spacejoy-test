@@ -217,7 +217,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                         </Disclosure.Button>
 
                         <Disclosure.Panel>
-                          <div className="space-y-2 my-12 mt-4">
+                          <div className="space-y-2 my-8 mt-4">
                             <InputRange
                               min={min}
                               max={max}
