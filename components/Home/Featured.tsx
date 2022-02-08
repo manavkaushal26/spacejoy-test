@@ -8,7 +8,7 @@ const Featured: React.FC = () => {
   return (
     <>
       <SectionTitle
-        feature="Media"
+        feature=""
         title="Your favorites are talking about us"
         description=""
       />

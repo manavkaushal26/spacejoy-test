@@ -108,136 +108,6 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Blog</h3>
-            <ul>
-              <li>
-                <Link
-                  href={{
-                    pathname:
-                      'https://www.spacejoy.com/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture',
-                  }}
-                >
-                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Spring furniture ideas
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname: 'https://www.spacejoy.com/interior-designs-blog/popular-living-room-colors',
-                    query: { slug: 'for-a-year-round-spring-feel-light-and-airy-furniture' },
-                  }}
-                  // as="/interior-designs-blog/for-a-year-round-spring-feel-light-and-airy-furniture"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/popular-living-room-colors"
-                  >
-                    Best Living Room Colors
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname: 'https://www.spacejoy.com/interior-designs-blog/best-comfortable-sectionals-to-watch-tv',
-                    query: { slug: '13-clever-and-stylish-storage-ideas-for-any-room-in-your-home' },
-                  }}
-                  as="/interior-designs-blog/13-clever-and-stylish-storage-ideas-for-any-room-in-your-home"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/best-comfortable-sectionals-to-watch-tv"
-                  >
-                    13 Best Sectional Sofas
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname:
-                      'https://www.spacejoy.com/interior-designs-blog/best-mid-century-modern-interior-design-style-furniture-to-buy',
-                    query: { slug: 'gallery-wall-ideas-to-dress-up-your-walls' },
-                  }}
-                  as="/interior-designs-blog/gallery-wall-ideas-to-dress-up-your-walls"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/best-mid-century-modern-interior-design-style-furniture-to-buy"
-                  >
-                    Mid Century Modern Furniture
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname: 'https://www.spacejoy.com/interior-designs-blog/farmhouse-style-design-rules',
-                    query: { slug: 'simple-diy-decor-ideas-to-ring-in-spring' },
-                  }}
-                  as="/interior-designs-blog/simple-diy-decor-ideas-to-ring-in-spring"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/farmhouse-style-design-rules"
-                  >
-                    Farmhouse Style Decor Ideas
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname: 'https://www.spacejoy.com/interior-designs-blog/small-living-room-insp-we-love',
-                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
-                  }}
-                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/small-living-room-insp-we-love"
-                  >
-                    Small Living Room Ideas
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname: 'https://www.spacejoy.com/interior-designs-blog/how-to-decorate-your-living-room',
-                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
-                  }}
-                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/how-to-decorate-your-living-room"
-                  >
-                    6 Steps To Decorate Living Room
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={{
-                    pathname: 'https://www.spacejoy.com/interior-designs-blog/minimalist-home-decor-style-guide',
-                    query: { slug: 'colorful-wreath-ideas-that-go-beyond-the-front-door' },
-                  }}
-                  as="/interior-designs-blog/colorful-wreath-ideas-that-go-beyond-the-front-door"
-                >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="https://www.spacejoy.com/interior-designs-blog/minimalist-home-decor-style-guide"
-                  >
-                    Minimalist Home Decor Ideas
-                  </a>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="">
             <h3 className="mb-2 px-1">Support</h3>
             <ul>
               <li>
@@ -464,21 +334,21 @@ const Footer: React.FC = () => {
               <li>
                 <Link href="https://www.spacejoy.com/interior-designs/spring-2020-look-book-living-room-designs-ideas">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Spring Look Book Living Room Design Ideas
+                  Spring Living Room Designs
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/room-select">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Spring Look Book Bedroom Design Ideas
+                    Spring Bedroom Designs
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="https://www.spacejoy.com/interior-designs/spring-2020-look-book-entryway-designs-ideas">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Spring Look Book Entryway Design Ideas
+                  Spring Entryway Designs
                   </a>
                 </Link>
               </li>
@@ -661,7 +531,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href="/shop?retailer=Pottery+Barn">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Pottery
+                    Pottery Barn
                   </a>
                 </Link>
               </li>

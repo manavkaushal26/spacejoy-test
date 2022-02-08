@@ -48,6 +48,7 @@ const UserNav = () => {
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
+                      target="_blank"
                     >
                       My Design Orders
                     </NextLink>
@@ -61,6 +62,7 @@ const UserNav = () => {
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
+                      target="_blank"
                     >
                       My Product Orders
                     </NextLink>
@@ -74,6 +76,7 @@ const UserNav = () => {
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
+                      target="_blank"
                     >
                       My Referrals
                     </NextLink>
@@ -87,6 +90,7 @@ const UserNav = () => {
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
+                      target="_blank"
                     >
                       My Profile
                     </NextLink>
@@ -100,6 +104,8 @@ const UserNav = () => {
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
+                      target="_blank"
+                      
                     >
                       Check Card Balance
                     </NextLink>
