@@ -105,7 +105,7 @@ const UserNav = () => {
                     </NextLink>
                   )}
                 </Menu.Item>
-                <Menu.Item>
+                {/* <Menu.Item>
                   {({ active }) => (
                     <NextLink
                       href="/help"
@@ -117,7 +117,7 @@ const UserNav = () => {
                       Help
                     </NextLink>
                   )}
-                </Menu.Item>
+                </Menu.Item> */}
                 <Menu.Item>
                   {({ active }) => (
                     <button
