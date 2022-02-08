@@ -71,7 +71,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
     updateFilter,
     addArrayQueryParam,
   } = useShopFilterContext();
-  const [min = 0, max = 5000] = price;
+  const [min = 1, max = 5000] = price;
 
   const router = useRouter();
 

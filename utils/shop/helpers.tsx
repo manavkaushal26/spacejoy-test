@@ -4,7 +4,7 @@ import fetcher from '@utils/fetcher';
 const defaultFilters = {
   category: [],
   retailer: [],
-  price: [0, 5000],
+  price: [1, 5000],
   status: 'active',
   depth: [],
   height: [],
