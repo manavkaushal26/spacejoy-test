@@ -14,7 +14,7 @@ const LoginManager = ({ redirect = '/' }) => {
           return false;
         }}
       >
-        LOGIN
+        Login
       </a>
     </Link>
   );

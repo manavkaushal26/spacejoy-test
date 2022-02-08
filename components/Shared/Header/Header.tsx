@@ -180,7 +180,7 @@ const Header: React.FC = () => {
                   ) : null}
                 </a>
               </Link>
-              <Link href="/new-project">
+              <Link href="/room-select">
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700">
                   Design Your Space
                 </a>

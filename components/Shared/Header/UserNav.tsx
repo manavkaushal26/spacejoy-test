@@ -49,7 +49,72 @@ const UserNav = () => {
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
                     >
-                      Dashboard
+                      My Design Orders
+                    </NextLink>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <NextLink
+                      href="https://www.spacejoy.com/orders"
+                      className={`${
+                        active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      active
+                    >
+                      My Product Orders
+                    </NextLink>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <NextLink
+                      href="https://www.spacejoy.com/referrals"
+                      className={`${
+                        active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      active
+                    >
+                      My Referrals
+                    </NextLink>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <NextLink
+                      href="https://www.spacejoy.com/profile"
+                      className={`${
+                        active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      active
+                    >
+                      My Profile
+                    </NextLink>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <NextLink
+                      href="https://www.spacejoy.com/balance-check"
+                      className={`${
+                        active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      active
+                    >
+                      Check Card Balance
+                    </NextLink>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <NextLink
+                      href="/help"
+                      className={`${
+                        active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      active
+                    >
+                      Help
                     </NextLink>
                   )}
                 </Menu.Item>

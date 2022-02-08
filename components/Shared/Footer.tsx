@@ -35,8 +35,7 @@ const Footer: React.FC = () => {
           <div className="col-span-2 xl:w-3/4">
             <h3 className="mb-2">About Us</h3>
             <p className="text-sm leading-relaxed text-gray-600">
-              Spacejoy is an online interior design studio. See your room designed in 3D curated with handpicked
-              products that you shop right away from our platform.
+            Spacejoy is a design-led e-commerce platform that enables a superior shopping experience by instantly visualizing your space with the products you want to buy. As a one-stop shop, Spacejoy allows you to discover unlimited options from your favorite home brands to furnish your space with ease. With professionally arranged furniture sets, users with all different styles and budgets can personalize their space with products they want to shop for.
             </p>
             <SocialLinks />
           </div>
