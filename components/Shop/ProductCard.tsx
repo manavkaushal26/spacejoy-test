@@ -29,7 +29,11 @@ const ProductCard = ({ product }: ProductCardType) => (
 
           <div className="w-full mb-2 aspect-w-1 aspect-h-1">
             <Image
-              src={product?.cdn ? `${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}` : product?.imageUrl}
+              src={
+                product?.cdn
+                  ? `${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`
+                  : product?.imageUrl || blurredBgProduct
+              }
               // src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
               alt={product?.name}
               className="w-full h-full object-center object-contain"
