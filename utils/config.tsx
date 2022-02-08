@@ -40,6 +40,8 @@ const pinterestConfig = {
   redirect_uri: isProduction ? 'https://test.spacejoy.com' : 'http://localhost:3001',
 };
 
+const oldSpacejoyUrl = 'https://spacejoy.com';
+
 const company = {
   logo: 'w_200/v1578101355/shared/spacejoy-logo_ase39m.svg',
   name: 'Neo Design Labs Inc',
@@ -136,4 +138,4 @@ const affirm = {
   script: isProduction ? 'https://cdn1.affirm.com/js/v2/affirm.js' : 'https://sandbox.affirm.com/js/v2/affirm.js',
 };
 
-export { company, page, cloudinary, internalPages, affirm, pinterestConfig };
+export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl };

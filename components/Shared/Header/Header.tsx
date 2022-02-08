@@ -2,6 +2,7 @@ import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 import ShopCategories from '@components/Shared/ShopCategories';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import { oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -66,17 +67,17 @@ const Header: React.FC = () => {
   return (
     <>
       <a
-        className="text-sm py-2 px-5 bg-gray-50 rounded-lg absolute top-1 left-1 focus:z-50 focus:ring-1 focus:ring-gray-900 focus:outline-none"
+        className="absolute px-5 py-2 text-sm rounded-lg bg-gray-50 top-1 left-1 focus:z-50 focus:ring-1 focus:ring-gray-900 focus:outline-none"
         href="#main"
       >
         Skip to content
       </a>
       <header className={`bg-white sticky top-0 z-50`}>
         <div className="container px-4 mx-auto">
-          <div className="h-20 flex items-center">
+          <div className="flex items-center h-20">
             <Link href="/">
               <a
-                className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md pr-1 mr-10"
+                className="inline-block pr-1 mr-10 rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none"
                 aria-label="logo"
               >
                 <Image
@@ -86,12 +87,11 @@ const Header: React.FC = () => {
                   alt="Spacejoy Logo"
                   className="Logo__ImageStyled-sc-po3q2y-0 iZTGUF"
                 />
-                
               </a>
             </Link>
             <div className="flex-1 h-full">
               <nav aria-label="Primary" className="h-full">
-                <ul className="h-full flex items-center">
+                <ul className="flex items-center h-full">
                   <li className="inline-block">
                     <Link href="/room-select">
                       <a
@@ -104,10 +104,10 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                   <li className="inline-block">
-                    <Link href="https://www.spacejoy.com/online-interior-design">
+                    <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/pricing' ? 'text-red-600' : 'text-gray-900'
+                          router.asPath === '/online-interior-design' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         target="_blank"
                       >
@@ -116,7 +116,7 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                   <li
-                    className="flex h-full items-center"
+                    className="flex items-center h-full"
                     onClick={() => {
                       toggleSubNav();
                       setSubNavContent('shop');
@@ -166,13 +166,13 @@ const Header: React.FC = () => {
                   }`}
                 >
                   <span className="sr-only">Search</span>
-                  <SearchIcon className="inline h-4 w-4" />
+                  <SearchIcon className="inline w-4 h-4" />
                 </a>
               </Link>
               <Link href="/cart">
-                <a className="text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border border-transparent hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none relative ">
+                <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ">
                   <span className="sr-only">Shopping</span>
-                  <ShoppingBagIcon className="inline h-4 w-4" />
+                  <ShoppingBagIcon className="inline w-4 h-4" />
                   {cart?.count && cart?.count > 0 ? (
                     <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full">
                       {cart?.count || 0}
