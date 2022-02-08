@@ -59,7 +59,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
   const {
     filters: { retailer: retailerList = [], subCategory, vertical, price },
     updateFilter,
-    addPriceFilter,
+    addArrayQueryParam,
   } = useShopFilterContext();
   const [min = 0, max = 5000] = price;
 
@@ -94,6 +94,15 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
       }
     }
   }, [router?.query]);
+
+  const onSaleChecked = (e) => {
+    const { checked } = e.target;
+    if (checked) {
+      addArrayQueryParam({ name: 'discount', min: 10, max: 100 });
+    } else {
+      addArrayQueryParam({ name: 'discount', remove: true });
+    }
+  };
 
   return (
     <Layout>
@@ -203,9 +212,35 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                               min={min}
                               max={max}
                               onChangeCallback={(data) => {
-                                addPriceFilter(data);
+                                addArrayQueryParam({ name: 'price', ...data });
                               }}
                             />
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                  <Disclosure defaultOpen>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="w-full text-left flex justify-between items-center py-2 rounded-sm mb-2">
+                          <h3 className="text-gray-700">Offers</h3>
+                          <span className="ml-6 flex items-center">
+                            {open ? <MinusIcon className="h-3 w-3" /> : <PlusIcon className="h-3 w-3" />}
+                          </span>
+                        </Disclosure.Button>
+
+                        <Disclosure.Panel>
+                          <div className="mb-4 flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={currentFilters?.discount?.[0] > 0}
+                              onChange={onSaleChecked}
+                              className="h-4 w-4 border-gray-300 rounded text-gray-900 focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white cursor-pointer"
+                            />
+                            <label className="ml-3 text-sm mt-0 text-gray-900 cursor-pointer">
+                              <span className="font-medium">On Sale</span>
+                            </label>
                           </div>
                         </Disclosure.Panel>
                       </>

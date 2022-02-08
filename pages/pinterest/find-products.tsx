@@ -15,7 +15,7 @@ const FindProducts: NextPage<FindProductsProps> = ({ searchQuery, imgSrc, boardI
   return (
     <Layout>
       <Head>
-        <title>Pinterest| Spacejoy</title>
+        <title>Pinterest | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Header />

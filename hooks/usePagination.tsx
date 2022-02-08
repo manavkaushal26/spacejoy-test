@@ -142,7 +142,8 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
       !arraysEqual(api?.payload?.filters?.retailer || [], lastNewFilter?.current?.retailer || []) ||
       !arraysEqual(api?.payload?.filters?.subcategory || [], lastNewFilter?.current?.subcategory || []) ||
       !arraysEqual(api?.payload?.filters?.vertical || [], lastNewFilter?.current?.vertical || []) ||
-      !arraysEqual(api?.payload?.filters?.price || [], lastNewFilter?.current?.price || [])
+      !arraysEqual(api?.payload?.filters?.price || [], lastNewFilter?.current?.price || []) ||
+      !arraysEqual(api?.payload?.filters?.discount || [], lastNewFilter?.current?.discount || [])
     ) {
       dispatch({ type: 'SET_LOADING' });
       fetchData(api, currentPage * pageSize, pageSize, flow);

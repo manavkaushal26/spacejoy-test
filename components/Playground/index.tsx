@@ -1,8 +1,10 @@
 import { XIcon } from '@heroicons/react/outline';
 import { NavSelectContext } from '@store/NavSelect';
+import { publicRoutes } from '@utils/constants';
 import { off, on } from '@utils/events';
 import fetcher from '@utils/fetcher';
-import { downloadURI } from '@utils/helpers';
+import fetchWithFile from '@utils/fetchFile';
+import { b64toFile, downloadURI } from '@utils/helpers';
 import { KonvaEventObject } from 'konva/lib/Node';
 import { Shape, ShapeConfig } from 'konva/lib/Shape';
 import { Stage as StageType } from 'konva/lib/Stage';
@@ -540,6 +542,171 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
     setPlaygroundAssets(upatedAssetArray);
   };
 
+  const saveCollage = React.useCallback(
+    async (
+      { collageName, collageDescription, selectedTags, selectedThemes },
+      saveType: SAVE_TYPE = SAVE_TYPE.DESIGNER
+    ) => {
+      // if (stageRef.current?.find('.background-image')?.length) {
+      //   stageRef.current?.findOne('.background-image')?.hide();
+      // }
+      if (stageRef.current?.find('.background-color-wall')?.length) {
+        stageRef.current?.findOne('.background-color-wall')?.hide();
+      }
+      if (stageRef?.current?.find('Transformer')?.length) {
+        stageRef?.current?.findOne('Transformer').hide();
+      }
+      const uri = stageRef?.current?.toDataURL({
+        pixelRatio: 2, // or other value you need
+      });
+      // if (stageRef.current?.find('.background-image')?.length) {
+      //   stageRef.current?.findOne('.background-image')?.show();
+      // }
+      if (stageRef.current?.find('.background-color-wall')?.length) {
+        stageRef.current?.findOne('.background-color-wall')?.show();
+      }
+      if (stageRef?.current?.find('Transformer')?.length) {
+        stageRef?.current?.findOne('Transformer').show();
+      }
+      const fileRes = await b64toFile(uri);
+
+      const formatted = PlaygroundAssets.map((item) => {
+        if (item?.type === 'collage') {
+          return item?.data;
+        }
+
+        return { ...item };
+      });
+      const mergedArray = [].concat(...formatted);
+
+      const payload = mergedArray.map((asset) => {
+        return {
+          ...(asset?.playgroundHeight && {
+            playgroundScale: {
+              width: asset?.playgroundWidth * (asset?.currentScale || 1),
+              height: asset?.playgroundHeight * (asset?.currentScale || 1),
+            },
+          }),
+          translation: {
+            x: asset?.x,
+            y: asset?.y,
+          },
+          rotation: (asset?.rotationValue || 0).toString(),
+          scale: {
+            height: asset?.height,
+            width: asset?.width,
+          },
+          id: asset?.id,
+          product: asset?.assetId,
+          imgSrc: asset?.stitchedAssetImage,
+        };
+      });
+      try {
+        const formData = new FormData();
+        formData.append('file', fileRes, fileRes?.name);
+        formData.append(
+          'data',
+          JSON.stringify({
+            view: [...payload],
+            ...(bgType === 'bg-img' && bgValue && { background: bgValue }),
+            ...(playgroundTotal && { price: playgroundTotal }),
+            ...(collageName && collageName?.length && { name: collageName }),
+            ...(collageDescription && collageDescription?.length && { description: collageDescription }),
+            ...(selectedThemes && selectedThemes?.length && { themes: selectedThemes }),
+            ...(selectedTags && selectedTags?.length && { tags: selectedTags }),
+            ...(selectedSubCategoryId &&
+              selectedSubCategoryId?.length && { isActive: isCollageActive, categoryMap: selectedSubCategoryId }),
+          })
+        );
+
+        const endPoint =
+          activeCollages?.length === 1 && saveType === SAVE_TYPE.DESIGNER
+            ? `${publicRoutes?.collageBase}/${activeCollages[0]}`
+            : publicRoutes?.collageBase;
+
+        const res = await fetchWithFile({
+          endPoint,
+          method: 'POST',
+          body: formData,
+        });
+        const { data: savedCollageData, statusCode } = res;
+        if (statusCode > 300) {
+          throw new Error();
+        } else {
+          const successData = {
+            ...savedCollageData,
+            meta: {
+              ...savedCollageData?.meta,
+              view: [...savedCollageData?.meta?.view].map((object) => {
+                const {
+                  translation: {
+                    x: { $numberDecimal: xCoord } = { $numberDecimal: '' },
+                    y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
+                  } = {},
+                  scale: {
+                    height: { $numberDecimal: heightCoord = '' },
+                    width: { $numberDecimal: widthCoord = '' },
+                  },
+                  playgroundScale: {
+                    height: { $numberDecimal: actualHeightCoord = '' } = {},
+                    width: { $numberDecimal: actualWidthCoord = '' } = {},
+                  } = {},
+                  rotation = '0',
+                  imgSrc,
+                  id,
+                } = object;
+
+                return {
+                  translation: {
+                    x: xCoord,
+                    y: yCoord,
+                  },
+                  scale: {
+                    height: heightCoord,
+                    width: widthCoord,
+                  },
+                  ...(object?.playgroundScale && {
+                    playgroundScale: {
+                      height: actualHeightCoord,
+                      width: actualWidthCoord,
+                    },
+                  }),
+                  imgSrc,
+                  rotation,
+                  id,
+                  product: object?.product,
+                };
+              }),
+            },
+          };
+          setData([successData, ...data]);
+          if (saveType === SAVE_TYPE.DESIGNER) {
+            clearBoard();
+          } else {
+            return savedCollageData;
+          }
+
+          return data;
+        }
+      } catch {
+        throw new Error();
+      }
+    },
+    [
+      PlaygroundAssets,
+      isCollageActive,
+      selectedSubCategoryId,
+      data,
+      setData,
+      playgroundTotal,
+      activeCollages,
+      clearBoard,
+      bg,
+      bgType,
+      bgValue,
+    ]
+  );
+
   const initiateDownload = async (value: { name: string; email: string; collageName: string }) => {
     const collageInfo = {
       collageName: value.collageName,
@@ -548,9 +715,13 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
       selectedThemes: [],
     };
     toast.promise(
-      sendDownloadNotification(value, collageData?._id).then(() => {
-        download();
-      }),
+      saveCollage(collageInfo, SAVE_TYPE.USER)
+        .then(async (collageData) => {
+          await sendDownloadNotification(value, collageData?._id);
+        })
+        .then(() => {
+          download();
+        }),
       {
         error: 'Failed to download image',
         success: 'Downloaded image successfully',
