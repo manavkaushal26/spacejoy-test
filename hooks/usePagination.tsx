@@ -115,8 +115,8 @@ const usePagination = (
   const paginationBtnNav = (buttonIndex) => {
     // button click updates router only
     const currentQueryParam = router.query;
-    if (options.onButtonClick) {
-      options.onButtonClick(buttonIndex);
+    if (options?.onButtonClick) {
+      options?.onButtonClick(buttonIndex);
     }
     router.push(
       {

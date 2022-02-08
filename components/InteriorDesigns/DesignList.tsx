@@ -24,6 +24,7 @@ const DesignList: React.FC<DesignListInterface> = ({ feedData }) => {
     internalPages.InteriorDesigns.DEFAULT_PAGINATION_BUTTON_COUNT,
     internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE,
     'list',
+    {},
     {}
   );
 

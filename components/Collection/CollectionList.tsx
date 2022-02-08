@@ -74,6 +74,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
     internalPages.InteriorDesigns.DEFAULT_PAGINATION_BUTTON_COUNT,
     internalPages.Collection.DEFAULT_PAGE_SIZE,
     'data',
+    {},
     {}
   );
 
@@ -83,10 +84,12 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
         <div className="flex-1">
           <p className="text-gray-500">Our most popular design ideas handpicked for you</p>
           <h1 className="my-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Explore Curated Collections
+            Explore Curated Collections
           </h1>
           <p className="text-gray-800 max-w-3xl">
-          Take a look at the wide collection of interior design ideas curated by our design experts for special occasions and ever-evolving trends. Our collections will help you visualize your new room effortlessly and create a space that is best suited for your needs.
+            Take a look at the wide collection of interior design ideas curated by our design experts for special
+            occasions and ever-evolving trends. Our collections will help you visualize your new room effortlessly and
+            create a space that is best suited for your needs.
           </p>
         </div>
       </div>
