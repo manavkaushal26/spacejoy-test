@@ -184,6 +184,16 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
                 })}
               </ul>
             ) : null}
+            {cart?.invoiceData?.discount?.offerDiscount && cart?.invoiceData?.discount?.offerDiscount > 0 ? (
+              <ul className="px-4">
+                <li className="flex items-center justify-between pt-4 text-xs">
+                  <dt className="flex items-center text-sm text-gray-600">Brand offers</dt>
+                  <dd className="text-sm font-medium text-gray-900">
+                    -{priceToLocaleString(cart?.invoiceData?.discount?.offerDiscount)}
+                  </dd>
+                </li>
+              </ul>
+            ) : null}
           </div>
         ) : null}
 

@@ -1,35 +1,7 @@
+import { useStore } from '@lib/store';
 import fetcher from '@utils/fetcher';
-import { useEffect, useReducer, useState } from 'react';
-
-const initialState = {
-  product: {
-    coupons: [],
-  },
-  retailer: {
-    coupons: [],
-  },
-};
-
-const reducer = (state, action) => {
-  const { type } = action;
-  switch (type) {
-    case 'SAVE_COUPONS': {
-      const {
-        payload: { data, type: couponType },
-      } = action;
-
-      return {
-        ...state,
-        [couponType]: {
-          coupons: data,
-        },
-      };
-    }
-    default: {
-      return { ...state };
-    }
-  }
-};
+import { useEffect, useState } from 'react';
+import shallow from 'zustand/shallow';
 
 const getEndPoint = (couponType) => {
   switch (couponType) {
@@ -50,30 +22,39 @@ const fetchCoupons = async (couponType) => {
 };
 
 const useCoupons = (type) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const { offers, setProductOffers, setBrandOffers } = useStore(
+    (store) => ({
+      offers: store.offers,
+      setProductOffers: store.setProductOffers,
+      setBrandOffers: store.setBrandOffers,
+    }),
+    shallow
+  );
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!state?.product?.coupons?.length) {
+    if (!offers?.product?.coupons?.length) {
       setLoading(true);
       (async () => {
         const productCoupons = await fetchCoupons('product');
-        dispatch({ type: 'SAVE_COUPONS', payload: { data: productCoupons, type: 'product' } });
+        setProductOffers(productCoupons);
         setLoading(false);
       })();
     }
-    if (!state?.product?.retailer?.length) {
+    if (!offers?.product?.retailer?.length) {
       setLoading(true);
       (async () => {
         const brandCouponRes = await fetchCoupons('retailer');
-        dispatch({ type: 'SAVE_COUPONS', payload: { data: brandCouponRes?.data, type: 'retailer' } });
+        setBrandOffers(brandCouponRes?.data);
+
         setLoading(false);
       })();
     }
   }, []);
 
   return {
-    coupons: type ? state[type] : state,
+    coupons: type ? offers[type] : offers,
     loading,
   };
 };
