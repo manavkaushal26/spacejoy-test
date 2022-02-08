@@ -152,7 +152,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
                     aria-hidden="true"
                   />
                   <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
-                    Max applicable discount is $400
+                    Max applicable <strong>coupon</strong> discount is $400
                     <svg
                       className="absolute text-black h-2 w-full left-0 top-full"
                       x="0px"
