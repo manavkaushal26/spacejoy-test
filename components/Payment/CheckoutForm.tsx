@@ -1,4 +1,5 @@
 // import Button from '@components/Button';
+import SVGLoader from '@components/Shared/SVGLoader';
 import { useStore } from '@lib/store';
 // import Alert from '@sections/Checkout/Alert';
 // import themeConst from '@theme/index';
@@ -98,6 +99,7 @@ function CheckoutForm({
   }, [typeof window]);
 
   const handlePay = async (token) => {
+    setSubmitInProgress(true);
     const body = {
       store: {
         token: process.env.NODE_ENV === 'production' ? token : 'tok_br',
@@ -139,6 +141,7 @@ function CheckoutForm({
       method: (paymentStatus === 'fail' || paymentError) && checkoutFlow === 'design' ? 'PUT' : 'POST',
       body: body[checkoutFlow],
     });
+
     if (response.statusCode <= 300) {
       setSubmitInProgress(false);
       cb(true);
@@ -199,7 +202,7 @@ function CheckoutForm({
 
   return (
     <div>
-      {(pageError || paymentError) && <div>{paymentError || pageError}</div>}
+      {(pageError || paymentError) && <div className="text-red-500 text-sm mb-2">{paymentError || pageError}</div>}
       {hideCardCapture ? (
         <>
           <div>No Credit Card Required</div>
@@ -207,7 +210,7 @@ function CheckoutForm({
             className="w-full bg-gray-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
             onClick={() => handlePay(checkoutFlow === 'store' ? randomToken : null)}
           >
-            Place your order
+            {submitInProgress ? <SVGLoader /> : <>Place your order</>}
           </button>
         </>
       ) : (
@@ -216,9 +219,13 @@ function CheckoutForm({
           <br />
           <button
             type="submit"
-            className="bg-gray-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+            className="bg-gray-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 w-52 flex items-center justify-center"
           >
-            {paymentStatus === 'fail' || paymentError ? 'Please Retry' : 'Place your order'}
+            {submitInProgress ? (
+              <SVGLoader />
+            ) : (
+              <>{paymentStatus === 'fail' || paymentError ? 'Please Retry' : 'Place your order'}</>
+            )}
           </button>
         </form>
       )}

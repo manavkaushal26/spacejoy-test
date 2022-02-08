@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import useLocalStorageState from '@hooks/useLocalStorage';
 import fetcher from '@utils/fetcher';
 import { isDigit } from '@utils/helpers';
@@ -96,16 +97,16 @@ const DeliveryTimeline = ({ productId }) => {
     // <div id={!deliveryDetails?.status || errorMessage?.length > 0} className="flex items-center">
     <div className="text-sm space-y-4">
       <div className="flex items-center">
-        <div>
+        <div className="flex">
           <strong>Ship to: </strong>
-          <button className="expand-zipcode" onClick={toggleExpandZipCode}>
+          <button className="flex items-center justify-center" onClick={toggleExpandZipCode}>
             <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span>{' '}
-            <span className="icon-chevron-down" />
+            {!isExpanded ? <ChevronDownIcon className="h-4 w-4" /> : null}
           </button>
         </div>
         {isExpanded && (
           <div id="zipcode-input">
-            <div className="relative ">
+            <div className="relative ml-2">
               <input
                 type="text"
                 className="h-12 w-full pl-4 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"

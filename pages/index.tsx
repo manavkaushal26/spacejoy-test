@@ -89,7 +89,7 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
-              <a className="rounded-xl" href="https://diy.spacejoy.com/room-select">
+              <button className="rounded-xl" onClick={()=>location.href="/room-select"}>
                 <div className="relative aspect-w-3 aspect-h-4 rounded-xl bg-orange-300">
                   <div className="p-8 flex flex-col justify-between items-end">
                     <div className="bg-white rounded-full h-14 w-14 flex justify-center items-center">
@@ -100,7 +100,7 @@ export const Home = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           {/* Section Start */}
@@ -116,9 +116,9 @@ export const Home = (): JSX.Element => {
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
               </div>
-              <a
+              <button
                 className="w-1/4 rounded-xl border border-red-400 p-4 h-32"
-                href="https://diy.spacejoy.com/pinterest/search"
+                onClick={()=> location.href="/pinterest/search"}
               >
                 <div className="flex justify-between">
                   <div>
@@ -137,7 +137,7 @@ export const Home = (): JSX.Element => {
                   </div>
                 </div>
                 <h3 className="text-red-400 text-2xl mt-4">Connect Now!</h3>
-              </a>
+              </button>
             </div>
           </div>
           {/* Section Start */}
@@ -149,7 +149,7 @@ export const Home = (): JSX.Element => {
                     <div key={item.lastName}>
                       <div className="aspect-w-1 aspect-h-1 rounded-3xl">
                         <Image
-                          src={`https://res.cloudinary.com/spacejoy/${item.bg}`}
+                          src={`https://res.cloudinary.com/spacejoy/w_800/${item.bg}`}
                           alt="image 1"
                           className="w-full h-full object-center object-cover rounded-3xl"
                           layout="fill"
@@ -217,7 +217,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042846/web/homepage-v3/STITCH-SOFA_itimwx.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_300/v1644042846/web/homepage-v3/STITCH-SOFA_itimwx.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -240,7 +240,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643909403/web/homepage-v3/Timber-Charme-Chocolat-Chair_uvmvxg.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_300/v1643909403/web/homepage-v3/Timber-Charme-Chocolat-Chair_uvmvxg.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -264,7 +264,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042844/web/homepage-v3/Fargo-40-Round-Reclaimed-Wood-Coffee-Table_cwasso.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_300/v1644042844/web/homepage-v3/Fargo-40-Round-Reclaimed-Wood-Coffee-Table_cwasso.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"
@@ -287,7 +287,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042846/web/homepage-v3/Flange-King-Headboard-with-Batten-Plinth-Base-Be_hp_faxgqa.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_300/v1644042846/web/homepage-v3/Flange-King-Headboard-with-Batten-Plinth-Base-Be_hp_faxgqa.png"
                     alt="image 1"
                     className="w-full h-full object-center object-contain"
                     layout="fill"

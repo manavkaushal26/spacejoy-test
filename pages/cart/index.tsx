@@ -136,7 +136,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
                     product?.dimension?.width * 12
                   ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
                     product?.dimension?.height * 12
-                  ).toFixed(2)} H`}</span>
+                  ).toFixed(2)}"H`}</span>
                 </p>
               ) : null}
             </div>
