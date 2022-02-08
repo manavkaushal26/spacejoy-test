@@ -12,7 +12,7 @@ type DrawerProps = {
 export default function Drawer({ title = '', description = '', children, isOpen, setIsOpen }: DrawerProps) {
   return (
     <Transition show={isOpen} as={Fragment}>
-      <Dialog unmount={false} onClose={() => setIsOpen(false)} className="fixed z-50 inset-0 overflow-y-auto">
+      <Dialog unmount={false} onClose={() => setIsOpen(false)} className="fixed inset-0 z-50 overflow-y-auto">
         <div className="flex w-3/4 h-screen">
           <Transition.Child
             as={Fragment}
@@ -24,7 +24,7 @@ export default function Drawer({ title = '', description = '', children, isOpen,
             leaveFrom="opacity-30"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="z-40 fixed inset-0 bg-black" />
+            <Dialog.Overlay className="fixed inset-0 z-40 bg-black" />
           </Transition.Child>
 
           <Transition.Child
@@ -36,9 +36,9 @@ export default function Drawer({ title = '', description = '', children, isOpen,
             leaveFrom="-translate-x-0"
             leaveTo="translate-x-full"
           >
-            <div className="flex flex-col justify-between bg-white z-50 w-full max-w-lg p-6 overflow-hidden text-left align-middle shadow-xl border border-gray-50 absolute right-0 h-full">
+            <div className="absolute right-0 z-50 flex flex-col justify-between w-full h-full max-w-lg p-6 overflow-scroll text-left align-middle bg-white border shadow-xl border-gray-50">
               <div>
-                <Dialog.Title className="font-bold text-xl md:text-2xl text-gray-900">{title}</Dialog.Title>
+                <Dialog.Title className="text-xl font-bold text-gray-900 md:text-2xl">{title}</Dialog.Title>
                 <Dialog.Description>{description}</Dialog.Description>
                 {children}
               </div>

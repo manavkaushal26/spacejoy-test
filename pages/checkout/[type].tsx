@@ -337,7 +337,7 @@ const Checkout = () => {
                     {Object.keys(cartData?.invoiceData)?.length === 0 ? (
                       <CartSummaryDimmer noBtn />
                     ) : (
-                      <CartSummary giftCards={giftCards} setShowGiftCardInput={setShowGiftCardInput} noBtn />
+                      <CartSummary giftCards={giftCards} setShowGiftCardInput={setShowGiftCardInput} noBtn page="checkout" />
                     )}
                   </div>
                 </div>

@@ -4,7 +4,8 @@ import CartSummary from '@components/Cart/Summary';
 import EmptyState from '@components/Shared/EmptyState';
 import Layout from '@components/Shared/Layout';
 import LoadingState from '@components/Shared/LoadingState';
-import { TruckIcon, XIcon } from '@heroicons/react/solid';
+import { QuestionMarkCircleIcon, TruckIcon, XIcon } from '@heroicons/react/solid';
+import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
@@ -124,7 +125,10 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           <div>
             <div className="flex justify-between">
               <h3 className="text-sm capitalize">
-                <a href={`/product-view/${product._id}`} className="font-medium text-gray-700 hover:text-gray-800">
+                <a
+                  href={`/product-view/${product._id}`}
+                  className="capitalize font-medium text-gray-700 hover:text-gray-800"
+                >
                   {product.name}
                 </a>
               </h3>
@@ -156,7 +160,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
               value={product.quantity}
               onChange={(e) => updateCartItemQty(e?.target?.value)}
             >
-              {[...new Array(20)].map((item, index) => {
+              {[...new Array(100)].map((item, index) => {
                 return (
                   <option value={index + 1} key={`option-${index}`}>
                     {index + 1}
@@ -196,6 +200,7 @@ export default function Cart() {
     }),
     shallow
   );
+  const { coupons: { coupons = [] } = [] } = useCoupons('retailer');
 
   return (
     <>
@@ -225,15 +230,46 @@ export default function Cart() {
                     <>{loading ? <LoadingState /> : <EmptyState title="No items found" message={''} />}</>
                   )}
                   {Object.keys(cart?.cartItems)?.map((cItem) => {
+                    const offerItem = (coupons || [])?.filter(
+                      (item) => item?.retailer?._id === cart?.cartItems[cItem]?._id
+                    );
+
                     return (
                       <div key={cItem} className="mt-8">
                         <div className="flex justify-between">
-                          <p className="font-bold">{cart?.cartItems[cItem]?.name}</p>
+                          <p className="font-bold capitalize">{cart?.cartItems[cItem]?.name}</p>
                           <p className="text-sm">
                             <span className="font-bold">Estimated Shipping:</span> $
                             {cart?.cartItems[cItem]?.shippingCharge}
                           </p>
                         </div>
+                        {offerItem?.length ? (
+                          <section className="group cursor-pointer relative text-center flex items-center text-sm">
+                            <span>
+                              Save {offerItem[0]?.discount} {offerItem[0]?.discountType === 'percent' ? '%' : '$'}
+                            </span>
+                            <QuestionMarkCircleIcon
+                              className="group w-4 h-4 cursor-pointer relative inline-block ml-1"
+                              aria-hidden="true"
+                            />
+                            <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
+                              {offerItem[0]?.discountType === 'percent' ? (
+                                <span>{`Get ${offerItem[0]?.discount}% off on a minimum purchase of $${offerItem[0]?.constraints?.minAmount} from ${offerItem[0]?.retailer?.name}. Max discount $${offerItem[0]?.maxDiscount}`}</span>
+                              ) : (
+                                <span>{`Save $${offerItem[0]?.discount} on a minimum purchase of $${offerItem[0]?.constraints?.minAmount} from ${offerItem[0]?.retailer?.name}.`}</span>
+                              )}
+                              <svg
+                                className="absolute text-black h-2 w-full left-0 top-full"
+                                x="0px"
+                                y="0px"
+                                viewBox="0 0 255 255"
+                                xmlSpace="preserve"
+                              >
+                                <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+                              </svg>
+                            </div>
+                          </section>
+                        ) : null}
                         <ul role="list" className="border-b border-gray-200 divide-y divide-gray-200">
                           {Object.values(cart?.cartItems[cItem]?.products)?.map((product, productIdx) => {
                             return (
