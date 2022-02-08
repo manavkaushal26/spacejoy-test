@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/room-select">
+                <Link href="/room-select">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Furniture & Decor Sets
                   </a>
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/interior-designs">
+                <Link href="/interior-designs">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Interior Design Ideas
                   </a>
@@ -294,35 +294,35 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Furniture & Decor Sets</h3>
             <ul>
               <li>
-                <Link href="https://test.spacejoy.com/design-sets/room/living-room-design-sets">
+                <Link href="/design-sets/room/living-room-design-sets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Living Room Sets
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/design-sets/room/bedroom-design-sets">
+                <Link href="/design-sets/room/bedroom-design-sets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Bedroom Sets
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/design-sets/room/dining-room-design-sets">
+                <Link href="/design-sets/room/dining-room-design-sets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Dining Room Sets
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/design-sets/room/home-office-design-sets">
+                <Link href="/design-sets/room/home-office-design-sets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Home Office Sets
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/design-sets/room/entryway-design-sets">
+                <Link href="/design-sets/room/entryway-design-sets">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Entryway Sets
                   </a>
@@ -469,7 +469,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="https://test.spacejoy.com/room-select">
+                <Link href="/room-select">
                   <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Spring Look Book Bedroom Design Ideas
                   </a>

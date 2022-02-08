@@ -20,7 +20,7 @@ const ProductCard = ({ product }: ProductCardType) => (
           {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price ? (
             <>
               <div className="absolute z-10">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#F5296E] text-white animate-pulse">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#F5296E] text-white">
                   SALE
                 </span>
               </div>
