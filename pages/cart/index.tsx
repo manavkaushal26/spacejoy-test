@@ -124,7 +124,10 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           <div>
             <div className="flex justify-between">
               <h3 className="text-sm capitalize">
-                <a href={`/product-view/${product._id}`} className="font-medium text-gray-700 hover:text-gray-800">
+                <a
+                  href={`/product-view/${product._id}`}
+                  className="capitalize font-medium text-gray-700 hover:text-gray-800"
+                >
                   {product.name}
                 </a>
               </h3>
@@ -156,7 +159,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
               value={product.quantity}
               onChange={(e) => updateCartItemQty(e?.target?.value)}
             >
-              {[...new Array(20)].map((item, index) => {
+              {[...new Array(100)].map((item, index) => {
                 return (
                   <option value={index + 1} key={`option-${index}`}>
                     {index + 1}
@@ -228,7 +231,7 @@ export default function Cart() {
                     return (
                       <div key={cItem} className="mt-8">
                         <div className="flex justify-between">
-                          <p className="font-bold">{cart?.cartItems[cItem]?.name}</p>
+                          <p className="font-bold capitalize">{cart?.cartItems[cItem]?.name}</p>
                           <p className="text-sm">
                             <span className="font-bold">Estimated Shipping:</span> $
                             {cart?.cartItems[cItem]?.shippingCharge}

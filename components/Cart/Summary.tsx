@@ -49,8 +49,9 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
       setGiftCardLoader(false);
     }
   };
+
   const [isOpen, setIsOpen] = useState(false);
-  const { loading, coupons } = useCoupons('product');
+  const { loading, coupons } = useCoupons('');
 
   const couponSuccess = (successData) => {
     setIsOpen(false);
@@ -104,9 +105,16 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
                 />
                 <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
                   Standard shipping charges applied.
-                  <svg className="absolute text-black h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xmlSpace="preserve"><polygon className="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
+                  <svg
+                    className="absolute text-black h-2 w-full left-0 top-full"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 255 255"
+                    xmlSpace="preserve"
+                  >
+                    <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+                  </svg>
                 </div>
-                
               </div>
             </dt>
             <dd className="text-sm font-medium text-gray-900">
@@ -211,7 +219,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
       )}
       <>
         <Drawer isOpen={isOpen} setIsOpen={setIsOpen} title="Spacejoy Offers" description="">
-          <Coupons list={coupons} loading={loading} onSuccess={couponSuccess} onError={couponError} />
+          <Coupons loading={loading} onSuccess={couponSuccess} onError={couponError} coupons={coupons} />
         </Drawer>
       </>
     </section>

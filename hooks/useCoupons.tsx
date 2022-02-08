@@ -5,6 +5,9 @@ const initialState = {
   product: {
     coupons: [],
   },
+  retailer: {
+    coupons: [],
+  },
 };
 
 const reducer = (state, action) => {
@@ -33,7 +36,16 @@ const getEndPoint = (couponType) => {
     case 'product':
       return '/coupon/listings?type=product';
     default:
-      return '/coupon/listings';
+      return '/v1/offers/listing';
+  }
+};
+
+const fetchCoupons = async (couponType) => {
+  const { data, statusCode } = await fetcher({ endPoint: getEndPoint(couponType), method: 'GET' });
+  if (statusCode < 300) {
+    return data;
+  } else {
+    return [];
   }
 };
 
@@ -42,26 +54,26 @@ const useCoupons = (type) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!state[type]?.coupons?.length && type) {
-      try {
-        setLoading(true);
-        (async () => {
-          const couponRes = await fetcher({ endPoint: getEndPoint(type), method: 'GET' });
-          const { data, statusCode } = couponRes;
-
-          if (statusCode < 301) {
-            dispatch({ type: 'SAVE_COUPONS', payload: { data, type } });
-          }
-        })();
-      } catch {
-      } finally {
+    if (!state?.product?.coupons?.length) {
+      setLoading(true);
+      (async () => {
+        const productCoupons = await fetchCoupons('product');
+        dispatch({ type: 'SAVE_COUPONS', payload: { data: productCoupons, type: 'product' } });
         setLoading(false);
-      }
+      })();
     }
-  }, [type]);
+    if (!state?.product?.retailer?.length) {
+      setLoading(true);
+      (async () => {
+        const brandCouponRes = await fetchCoupons('retailer');
+        dispatch({ type: 'SAVE_COUPONS', payload: { data: brandCouponRes?.data, type: 'retailer' } });
+        setLoading(false);
+      })();
+    }
+  }, []);
 
   return {
-    coupons: state[type]?.coupons,
+    coupons: type ? state[type] : state,
     loading,
   };
 };
