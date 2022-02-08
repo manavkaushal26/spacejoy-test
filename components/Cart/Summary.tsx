@@ -16,9 +16,10 @@ interface CartSummaryInterface {
   giftCards?: { code: string; discount: number; type: string; _id: string }[];
   setShowGiftCardInput?: (boolean) => void;
   noBtn?: boolean;
+  page?: string;
 }
 
-const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShowGiftCardInput }) => {
+const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page }) => {
   const { cart, updateCart } = useStore(
     (store) => ({
       cart: store.cart,
@@ -28,6 +29,8 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
   );
   const [couponLoader, setCouponLoader] = useState(false);
   const [giftCardLoader, setGiftCardLoader] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const { loading, coupons } = useCoupons('');
 
   const removeCoupon = async (couponId, type) => {
     if (type === 'coupon') {
@@ -50,9 +53,6 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
     }
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const { loading, coupons } = useCoupons('');
-
   const couponSuccess = (successData) => {
     setIsOpen(false);
     updateCart(successData);
@@ -65,8 +65,6 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
 
   const isCouponApplied = cart?.invoiceData?.discount?.coupons.length ? true : false;
 
-  //todo remove log
-
   return (
     <section className="sticky top-24">
       <h2 id="summary-heading" className="text-lg font-medium text-gray-900">
@@ -75,7 +73,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
       {!isCouponApplied ? (
         <button
           type="button"
-          className="w-full px-4 py-3 text-base font-medium text-gray-900 bg-gray-50 border border-gray-900 rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 my-4 hover:text-white"
+          className="w-full px-4 py-3 my-4 text-base font-medium text-gray-900 border border-gray-900 rounded-md shadow-sm bg-gray-50 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 hover:text-white"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -83,6 +81,8 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
           Apply Coupons
         </button>
       ) : null}
+
+      {/* //todo loader here when cart updates */}
 
       <dl className="mt-6 space-y-4">
         {cart?.invoiceData?.productTotal ? (
@@ -98,15 +98,15 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
           <div className="flex items-center justify-between pt-4 border-t border-gray-200">
             <dt className="flex items-center text-sm text-gray-600">
               <span>Shipping estimate</span>
-              <div className="group cursor-pointer relative  text-center">
+              <div className="relative text-center cursor-pointer group">
                 <QuestionMarkCircleIcon
-                  className="group w-5 h-5 cursor-pointer relative inline-block"
+                  className="relative inline-block w-5 h-5 cursor-pointer group"
                   aria-hidden="true"
                 />
-                <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
+                <div className="absolute z-10 p-2 text-xs text-center text-white bg-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 bottom-full">
                   Standard shipping charges applied.
                   <svg
-                    className="absolute text-black h-2 w-full left-0 top-full"
+                    className="absolute left-0 w-full h-2 text-black top-full"
                     x="0px"
                     y="0px"
                     viewBox="0 0 255 255"
@@ -199,7 +199,8 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
 
         {cart?.invoiceData?.discount?.total !== 0 &&
           !!cart?.invoiceData?.discount?.type &&
-          cart?.invoiceData?.discount?.giftCards?.length && (
+          cart?.invoiceData?.discount?.giftCards?.length &&
+          page === 'checkout' && (
             <GiftCardSummary giftCardLoader={giftCardLoader} removeCoupon={removeCoupon} giftCards={giftCards} />
           )}
 
