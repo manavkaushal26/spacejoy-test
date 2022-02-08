@@ -218,27 +218,13 @@ const data = [
   
 ];
 
-// let tabs = {};
 const groupedData = data.reduce((acc, entry) => {
-  // if(entry.header){
     if (!acc[entry.tag]) {
       acc[entry.tag] = [entry];
-    }
-    acc[entry.tag].push(entry);
-  // }
-  // else{
-  //   if(!tabs[entry.tag]){
-  //     tabs[entry.tag] = [entry];
-  //   }
-  //   tabs[entry.tag].push(entry);
-  // }
+    }else acc[entry.tag].push(entry);
 
+    
   return acc;
 }, {});
-
-
-// tabs["Shopping"].push(groupedData);
-// console.log(groupedData);
-// console.log(tabs);
 
 export default groupedData;
