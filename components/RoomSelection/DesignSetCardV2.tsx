@@ -1,4 +1,5 @@
 import { CollagesListInterface } from '@components/Collages/interface';
+import { blurredBgProduct } from '@public/images/bg-base-64';
 import { priceToLocaleString } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,12 +36,14 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                 <Image
                   loading="eager"
                   className="z-10"
-                  src={`https://res.cloudinary.com/spacejoy/image/upload/ar_1.67,c_mpad,e_trim/fl_lossy,q_auto,ar_1.67,${
+                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/ar_1.67,c_mpad/${
                     large ? 'w_1400' : 'w_800'
-                  },c_pad,b_auto/${designData?.thumbnail}`}
+                  },c_pad/f_auto,q_auto/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
                   objectFit={'contain'}
+                  placeholder="blur"
+                  blurDataURL={blurredBgProduct}
                 />
               </div>
             </div>

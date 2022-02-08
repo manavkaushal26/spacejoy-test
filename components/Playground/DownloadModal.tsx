@@ -85,7 +85,7 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
                     Download
                   </Dialog.Title>
                   <p className="text-xs text-gray-400 pb-2">
-                    Enter your name, email and collage name to get instant access to your final design
+                    Enter your name, email and Design Set name to get instant access to your final design
                   </p>
                   <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit} ref={formRef}>
                     <label htmlFor="name" className="">
@@ -113,7 +113,7 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
                         type="text"
                         required
                         className="w-full border border-gray-200  rounded-lg p-2 placeholder-gray-400"
-                        placeholder="Collage Name"
+                        placeholder="Design Set Name"
                       />
                     </label>
                     <div className="mt-4 flex justify-end">

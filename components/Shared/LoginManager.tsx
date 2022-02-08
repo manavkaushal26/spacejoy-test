@@ -5,7 +5,7 @@ const LoginManager = ({ redirect = '/' }) => {
   return (
     <Link href="/auth/login">
       <a
-        className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50"
+        className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50 uppercase"
         href={`https://auth.spacejoy.com?redirect=${redirect}`}
         target="popup"
         onClick={() => {
