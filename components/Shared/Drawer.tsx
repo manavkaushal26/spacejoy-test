@@ -36,7 +36,7 @@ export default function Drawer({ title = '', description = '', children, isOpen,
             leaveFrom="-translate-x-0"
             leaveTo="translate-x-full"
           >
-            <div className="flex flex-col justify-between bg-white z-50 w-full max-w-lg p-6 overflow-hidden text-left align-middle shadow-xl border border-gray-50 absolute right-0 h-full">
+            <div className="flex flex-col justify-between bg-white z-50 w-full max-w-lg p-6 overflow-scroll text-left align-middle shadow-xl border border-gray-50 absolute right-0 h-full">
               <div>
                 <Dialog.Title className="font-bold text-xl md:text-2xl text-gray-900">{title}</Dialog.Title>
                 <Dialog.Description>{description}</Dialog.Description>
