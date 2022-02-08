@@ -138,7 +138,26 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
         {cart?.invoiceData?.discount && cart?.invoiceData?.discount?.total > 0 ? (
           <div>
             <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-              <dt className="text-sm text-gray-600">You save</dt>
+              <div className="flex items-center justify-center">
+                <dt className="text-sm text-gray-600">You save</dt>
+                <section className="group cursor-pointer relative  text-center">
+                  <QuestionMarkCircleIcon
+                    className="group w-4 h-4 cursor-pointer relative inline-block text-gray-600"
+                    aria-hidden="true"
+                  />
+                  <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
+                    Max applicable discount is $400
+                    <svg
+                      className="absolute text-black h-2 w-full left-0 top-full"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 255 255"
+                      xmlSpace="preserve"
+                    />
+                  </div>
+                </section>
+              </div>
+
               <dd className="text-sm font-medium text-gray-900">
                 - {priceToLocaleString(cart?.invoiceData?.discount?.total)}
               </dd>
@@ -177,7 +196,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, setShow
                         )}
                       </dt>
                       <dd className="text-sm font-medium text-gray-900">
-                        {priceToLocaleString(cart?.invoiceData?.discount?.couponDiscount)}
+                        -{priceToLocaleString(cart?.invoiceData?.discount?.couponDiscount)}
                       </dd>
                     </li>
                   );

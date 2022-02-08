@@ -159,8 +159,10 @@ const ShopFilterContextProvider = ({ children }) => {
       [queryType]: currentFiltersOfSameType.join('::'),
     };
     const finalQuery = { ...router?.query, ...updatedQueryParam };
+
+    const filterFields = ['category', 'subcategory', 'price', 'vertical', 'page'];
     const updated = Object.keys(finalQuery)?.reduce((acc, curr) => {
-      if (finalQuery[curr]?.length) {
+      if (finalQuery[curr]?.length && filterFields?.indexOf(curr) > -1) {
         acc[curr] = finalQuery[curr];
       }
 
