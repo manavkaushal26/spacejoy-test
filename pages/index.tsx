@@ -175,7 +175,7 @@ export const Home = (): JSX.Element => {
                     Spacejoy!
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
-                <Link href={`${oldSpacejoyUrl}/pricing`}>
+                <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                   <a target="_blank" rel="noopener noreferrer">
                     <button
                       type="button"

@@ -160,11 +160,9 @@ const SearchBox: React.FC = () => {
 
   return (
     <div className="col-span-3 lg:col-span-2">
-      <div className="flex flex-col gap-y-2 items-center px-8 py-12 text-center rounded-lg bg-spj-pinterest">
-        <div className="mb-2 text-xl font-bold">Shop home decor from your pins</div>
-        <div className="text-lg text-gray-500">
-        Choose a Pinterest board to select a pin
-        </div>
+      <div className="flex flex-col items-center px-8 py-12 text-center rounded-lg gap-y-2 bg-spj-pinterest">
+        <div className="mb-2 text-xl font-bold">Shop furniture &amp; decor products from your pins</div>
+        <div className="text-lg text-gray-500">Choose a Pinterest board and select any pin you like</div>
         <div>
           <a
             className="text-center text-white pinterest-login bg-[#e60023] p-2 gap-2 flex items-center justify-between transition-shadow  mt-4 rounded-lg hover:shadow-lg"

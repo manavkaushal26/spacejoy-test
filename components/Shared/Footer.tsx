@@ -350,14 +350,14 @@ const Footer: React.FC = () => {
                     className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
-                    Spring Look Book Living Room Design Ideas
+                    Spring Living Room Designs
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/room-select">
                   <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Spring Look Book Bedroom Design Ideas
+                    Spring Bedroom Designs
                   </a>
                 </Link>
               </li>
@@ -367,7 +367,7 @@ const Footer: React.FC = () => {
                     className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
-                    Spring Look Book Entryway Design Ideas
+                    Spring Entryway Designs
                   </a>
                 </Link>
               </li>

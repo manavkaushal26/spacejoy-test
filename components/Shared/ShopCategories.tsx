@@ -1,4 +1,5 @@
 import { useShopFilterContext } from '@store/ShopFilterContext';
+import { oldSpacejoyUrl } from '@utils/config';
 import React, { useMemo } from 'react';
 
 const ShopCategories = ({ callback }) => {
@@ -34,30 +35,19 @@ const ShopCategories = ({ callback }) => {
             />
           </div> */}
           <div>
-            <h5 className="mt-2 text-sm">All Categories</h5>
+            <h5 className="mt-2 text-sm">All Products</h5>
             {/* <p className="mb-2 text-sm">100% Happiness Delivered</p> */}
             {/* <ArrowRightIcon className="w-4 h-4" /> */}
           </div>
         </div>
-        {/* <div
-          className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline"
-          onClick={() => (location.href = `${oldSpacejoyUrl}/furniture-decor-shop`)}
-        >
-          <div>
-            <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188242/spj-v2/3d-icons/spj-25_dhewua.png"
-              alt="No markups"
-              height={'55'}
-              width={'75'}
-              layout="intrinsic"
-            />
-          </div>
-          <div>
-            <h5 className="mt-2 text-sm">Furniture Decor Shop</h5>
-            <p className="mb-2 text-sm">Tips & Guides</p>
-            <ArrowRightIcon className="w-4 h-4" />
-          </div>
-        </div> */}
+
+        <div className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline">
+          <a href={`${oldSpacejoyUrl}/trending-items`} target="_blank" rel="noreferrer">
+            <div>
+              <h5 className="mt-2 text-sm">Hot deals</h5>
+            </div>
+          </a>
+        </div>
       </div>
       <div className="grid grid-cols-7 gap-4">
         {splitCategories?.map((categorySet, index) => {
