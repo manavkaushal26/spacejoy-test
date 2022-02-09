@@ -1,5 +1,6 @@
 import { ExternalLinkIcon, SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { blurredProduct } from '@public/images/bg-base-64';
+import { oldSpacejoyUrl } from '@utils/config';
 import { priceToLocaleString } from '@utils/helpers';
 import AssetType from '@utils/types/AssetType';
 import Image from 'next/image';
@@ -101,7 +102,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({
         <small className="text-xs text-gray-500 capitalize">{product?.retailer}</small>
         <p className="h-10 text-sm line-clamp-2">{product?.name}</p>
         <div className="flex items-center justify-between mt-1">
-          <p className="text-sm font-medium text-gray-900 mt-1">
+          <p className="mt-1 text-sm font-medium text-gray-900">
             <span className="font-bold">
               {priceToLocaleString(parseFloat(product?.displayPrice) || product?.price)}
             </span>
@@ -109,7 +110,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({
           {!withShopNow && (
             <Link
               href={{
-                pathname: `https://www.spacejoy.com/product-view/${product?._id}`,
+                pathname: `${oldSpacejoyUrl}/product-view/${product?._id}`,
                 query: { ref: 'visual-board' },
               }}
               passHref
@@ -129,7 +130,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({
             <span>
               <Link
                 href={{
-                  pathname: `https://www.spacejoy.com/product-view/${product?._id}`,
+                  pathname: `${oldSpacejoyUrl}/product-view/${product?._id}`,
                   query: { ref: 'visual-board' },
                 }}
                 passHref

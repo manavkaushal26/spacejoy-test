@@ -21,7 +21,7 @@ module.exports = withPWA({
     runtimeCaching,
     buildExcludes: [/middleware-manifest.json$/],
     dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
+    disable: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
     fallbacks: {
       image: '/images/spj-happy-customer_ahkoxm.jpg',
       // document: '/other-offline',  // if you want to fallback to a custom page other than /_offline

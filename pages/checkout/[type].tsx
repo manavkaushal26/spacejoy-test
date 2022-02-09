@@ -7,6 +7,7 @@ import UserAddresses from '@components/User/Addresses';
 import { Disclosure, Transition } from '@headlessui/react';
 import { MinusIcon, PlusIcon, XIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import { oldSpacejoyUrl } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -350,14 +351,14 @@ const Checkout = () => {
             )}
             {orderPlaced && (
               <Success
-                title="Order Placed Successfully"
+                title="Woohoo! Your order was placed successfully"
                 message={
                   <div>
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://www.spacejoy.com/orders"
-                      className="px-4 py-2 border inline-block mb-2 border-black rounded-lg text-black"
+                      href={`${oldSpacejoyUrl}/orders`}
+                      className="inline-block px-4 py-2 mb-2 text-black border border-black rounded-lg"
                     >
                       <span className="">View product orders</span>
                     </a>

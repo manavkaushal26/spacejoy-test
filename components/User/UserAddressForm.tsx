@@ -62,9 +62,6 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
   };
 
   const handleFormInputChange = (e: any, field: string) => {
-    if (field === 'zipCode') {
-      setFormState({ ...formState, zipCode: { value: e.target.value?.trim()?.slice(0, 5), error: false } });
-    }
     setFormState({ ...formState, [field]: { value: e.target.value, error: false } });
   };
 
@@ -98,10 +95,6 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
       setErrorMessage(err);
     }
   };
-
-  // useEffect(() => {
-  //   console.log(formState);
-  // }, [formState]);
 
   return (
     <div className="pt-10 mt-10 border-t border-gray-200">
@@ -273,8 +266,8 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
                 type="text"
                 name="zipCode"
                 id="zipCode"
-                // pattern="[0-9]*"
                 autoComplete="postal-code"
+                maxLength={5}
                 value={formState.zipCode.value}
                 onChange={(e) => handleFormInputChange(e, 'zipCode')}
                 className={`block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}

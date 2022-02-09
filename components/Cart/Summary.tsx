@@ -6,7 +6,9 @@ import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
@@ -18,6 +20,8 @@ interface CartSummaryInterface {
   noBtn?: boolean;
   page?: string;
 }
+
+const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 
 const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page }) => {
   const { cart, updateCart } = useStore(
@@ -64,6 +68,8 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
   };
 
   const isCouponApplied = cart?.invoiceData?.discount?.coupons.length ? true : false;
+  const router = useRouter();
+  const affirmFlow = router.pathname === '/cart' ? 'cart' : 'checkout';
 
   return (
     <section className="sticky top-24">
@@ -138,7 +144,26 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
         {cart?.invoiceData?.discount && cart?.invoiceData?.discount?.total > 0 ? (
           <div>
             <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-              <dt className="text-sm text-gray-600">You save</dt>
+              <div className="flex items-center justify-center">
+                <dt className="text-sm text-gray-600">You save</dt>
+                <section className="group cursor-pointer relative  text-center">
+                  <QuestionMarkCircleIcon
+                    className="group w-4 h-4 cursor-pointer relative inline-block text-gray-600"
+                    aria-hidden="true"
+                  />
+                  <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
+                    Max applicable <strong>coupon</strong> discount is $400
+                    <svg
+                      className="absolute text-black h-2 w-full left-0 top-full"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 255 255"
+                      xmlSpace="preserve"
+                    />
+                  </div>
+                </section>
+              </div>
+
               <dd className="text-sm font-medium text-gray-900">
                 - {priceToLocaleString(cart?.invoiceData?.discount?.total)}
               </dd>
@@ -177,7 +202,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
                         )}
                       </dt>
                       <dd className="text-sm font-medium text-gray-900">
-                        {priceToLocaleString(cart?.invoiceData?.discount?.couponDiscount)}
+                        -{priceToLocaleString(cart?.invoiceData?.discount?.couponDiscount)}
                       </dd>
                     </li>
                   );
@@ -215,6 +240,13 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
           </div>
         ) : null}
       </dl>
+      <div className="text-xs mt-4">
+        <AffirmPrice totalAmount={cart?.invoiceData?.total} affirmType="as-low-as" flow={affirmFlow} />
+      </div>
+
+      <p className="text-xs mt-8 text-gray-500">
+        *Have a promo/coupon code from your favorite brand? Apply it during checkout
+      </p>
 
       {noBtn ? null : (
         <div className="mt-6">

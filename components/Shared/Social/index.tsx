@@ -1,4 +1,5 @@
 import { blurredBgImage } from '@public/images/bg-base-64';
+import { oldSpacejoyUrl } from '@utils/config';
 import { useRouter } from 'next/router';
 import React from 'react';
 import {
@@ -45,8 +46,7 @@ import {
   WorkplaceIcon,
   WorkplaceShareButton,
 } from 'react-share';
-const shareUrl =
-  'https://www.spacejoy.com/interior-designs/living-room-ideas/best-selling-home-decor-and-furniture-pieces-of-2021';
+const shareUrl = `${oldSpacejoyUrl}/interior-designs/living-room-ideas/best-selling-home-decor-and-furniture-pieces-of-2021`;
 const title = 'GitHub';
 
 const SocialShare = () => {

@@ -160,7 +160,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
               value={product.quantity}
               onChange={(e) => updateCartItemQty(e?.target?.value)}
             >
-              {[...new Array(100)].map((item, index) => {
+              {[...new Array(20)].map((item, index) => {
                 return (
                   <option value={index + 1} key={`option-${index}`}>
                     {index + 1}

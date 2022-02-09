@@ -1,4 +1,3 @@
-import InjectBanner from '@components/Career/InjectBanner';
 import Layout from '@components/Shared/Layout';
 import DesignTeam from '@components/Team/DesignTeam';
 import Head from 'next/head';
@@ -10,11 +9,9 @@ export const search = (): JSX.Element => (
       <title>Team | Spacejoy</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    {/* <Layout.Banner />  */}
     <Layout.Header />
     <Layout.Body>
       <DesignTeam />
-      <InjectBanner />
     </Layout.Body>
     <Layout.Footer />
   </Layout>

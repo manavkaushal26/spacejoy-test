@@ -1,4 +1,4 @@
-import { company } from '@utils/config';
+import { company, oldSpacejoyUrl } from '@utils/config';
 
 const data = [
   {
@@ -28,7 +28,8 @@ const data = [
   {
     tag: 'Shopping',
     header: 'Shopping',
-    question: 'If the prices on the retailer’s website and Spacejoy are different, will Spacejoy guarantee a price match?',
+    question:
+      'If the prices on the retailer’s website and Spacejoy are different, will Spacejoy guarantee a price match?',
     answer: `At Spacejoy, we are committed to finding you the best prices on products.. The prices on our site are updated regularly to reflect any offers and promotions offered by the retailers. Sometimes, there may be a price difference due to dynamic changes. You can rest assured that Spacejoy will offer a refund if the prices on the retailers' site are lower than what you paid on Spacejoy at the time of processing your order. Spacejoy never adds any overheads to the cost of the product. This is Spacejoy's Price Match Guarantee.`,
   },
   {
@@ -73,8 +74,7 @@ const data = [
     tag: 'Shopping',
     header: 'Cancellations and Returns',
     question: 'Can I initiate a return on Spacejoy?',
-    answer:
-      `You can make a return by going to your dashboard, under the 'My Product Orders' tab, select the product you want to initiate a return and click on return. Please make sure to have all the original packaging before you initiate a return request.<p>
+    answer: `You can make a return by going to your dashboard, under the 'My Product Orders' tab, select the product you want to initiate a return and click on return. Please make sure to have all the original packaging before you initiate a return request.<p>
       If the item is damaged, we require at least 3 reference photos to initiate your return with the vendor:
       <li> A photo of the entire item.</li>
       <li> A close-up photo of the damage.</li>
@@ -151,7 +151,7 @@ const data = [
   {
     tag: 'Services',
     question: 'How can I get in touch with Spacejoy’s design team?',
-    answer: `To get in touch with our design team, sign up for a design package <a style="color:blue;" href='https://www.spacejoy.com/pricing' target="_blank">package</a>! Once you’ve completed your purchase and design quiz, you’ll have access to your designers using the chat feature in your project dashboard. Please allow your designers 24-48 hours to respond. If you need to get in touch with your designer quicker, feel free to e-mail us at hello@spacejoy.com <a style="color:blue;" href="mailto:hello@spacejoy.com?subject=&body=">hello@spacejoy.com</a>
+    answer: `To get in touch with our design team, sign up for a design package <a style="color:blue;" href='${oldSpacejoyUrl}/pricing' target="_blank">package</a>! Once you’ve completed your purchase and design quiz, you’ll have access to your designers using the chat feature in your project dashboard. Please allow your designers 24-48 hours to respond. If you need to get in touch with your designer quicker, feel free to e-mail us at hello@spacejoy.com <a style="color:blue;" href="mailto:hello@spacejoy.com?subject=&body=">hello@spacejoy.com</a>
     `,
   },
   {
@@ -173,7 +173,7 @@ const data = [
   {
     tag: 'Services',
     question: 'How is the design service priced?',
-    answer: `There are 3 different design packages you can choose from. Find the details on our Pricing page (<a href="https://www.spacejoy.com/pricing" target="_blank" style="color:blue;">https://www.spacejoy.com/pricing</a>)`,
+    answer: `There are 3 different design packages you can choose from. Find the details on our Pricing page (<a href="${oldSpacejoyUrl}/pricing" target="_blank" style="color:blue;">${oldSpacejoyUrl}/pricing</a>)`,
   },
   {
     tag: 'Services',
@@ -183,62 +183,44 @@ const data = [
   },
   {
     tag: 'Services',
-    question:
-      'Can Spacejoy work within my budget?',
+    question: 'Can Spacejoy work within my budget?',
     answer:
-      "Yes, we can work within your budget. We believe quality design can happen at any price point, and our super curators will scout stores across the internet to ensure that your space gets the best makeover within your budget.",
+      'Yes, we can work within your budget. We believe quality design can happen at any price point, and our super curators will scout stores across the internet to ensure that your space gets the best makeover within your budget.',
   },
   {
     tag: 'Services',
-    question: "What If I am unhappy with my design?",
-    answer:
-      `Our designers are experts at translating your wants and needs into reality. In rare cases where we cannot deliver designs you love, our leadership team will reassign your project or refund your money. You can email us at <a href="mailto:hello@spacejoy.com?subject=&body=" style="color:blue;" target="_blank">hello@spacejoy.com</a>.`,
+    question: 'What If I am unhappy with my design?',
+    answer: `Our designers are experts at translating your wants and needs into reality. In rare cases where we cannot deliver designs you love, our leadership team will reassign your project or refund your money. You can email us at <a href="mailto:hello@spacejoy.com?subject=&body=" style="color:blue;" target="_blank">hello@spacejoy.com</a>.`,
   },
   {
     tag: 'About Us',
     question: 'What is Spacejoy?',
     answer:
-      "Spacejoy is a design-led e-commerce platform that enables a superior shopping experience by instantly visualizing your space with the products you want to buy. As a one-stop shop, Spacejoy allows you to discover unlimited options from your favorite home brands to furnish your space with ease. With professionally arranged furniture sets, users with all different styles and budgets can personalize their space with products they want to shop for.",
+      'Spacejoy is a design-led e-commerce platform that enables a superior shopping experience by instantly visualizing your space with the products you want to buy. As a one-stop shop, Spacejoy allows you to discover unlimited options from your favorite home brands to furnish your space with ease. With professionally arranged furniture sets, users with all different styles and budgets can personalize their space with products they want to shop for.',
   },
   {
     tag: 'About Us',
     question: 'Why Spacejoy?',
     answer:
-      "Spacejoy is on a mission to change the way people shop for their homes. We personalize the entire shopping experience by simplifying how you discover products and visualize them in a room. Shopping for home furnishings all in one place has never been easier, especially with Spacejoy’s integrated platform. Spacejoy is a great way to try different styles from multiple brands in a room before shopping. We offer the ultimate online home shopping experience. We make sure your purchase will be exactly what you want. Spacejoy gets you everything you want for your home.",
+      'Spacejoy is on a mission to change the way people shop for their homes. We personalize the entire shopping experience by simplifying how you discover products and visualize them in a room. Shopping for home furnishings all in one place has never been easier, especially with Spacejoy’s integrated platform. Spacejoy is a great way to try different styles from multiple brands in a room before shopping. We offer the ultimate online home shopping experience. We make sure your purchase will be exactly what you want. Spacejoy gets you everything you want for your home.',
   },
   {
     tag: 'About Us',
     question: 'Connect with us ',
-    answer:
-      `Write to us at 
+    answer: `Write to us at 
       <a style="color:blue;" href="mailto:hello@spacejoy.com?subject=&body=" target="_blank">hello@spacejoy.com</a> or schedule a call.
       Instagram <a style="color:blue;" href="https://www.instagram.com/spacejoyapp/" target="_blank">https://www.instagram.com/spacejoyapp/</a>
       Pinterest <a style="color:blue;" href="https://pinterest.com/spacejoyapp/" target="_blank">https://pinterest.com/spacejoyapp/</a>`,
   },
-  
 ];
 
-// let tabs = {};
 const groupedData = data.reduce((acc, entry) => {
-  // if(entry.header){
     if (!acc[entry.tag]) {
       acc[entry.tag] = [entry];
-    }
-    acc[entry.tag].push(entry);
-  // }
-  // else{
-  //   if(!tabs[entry.tag]){
-  //     tabs[entry.tag] = [entry];
-  //   }
-  //   tabs[entry.tag].push(entry);
-  // }
+    }else acc[entry.tag].push(entry);
 
+    
   return acc;
 }, {});
-
-
-// tabs["Shopping"].push(groupedData);
-// console.log(groupedData);
-// console.log(tabs);
 
 export default groupedData;

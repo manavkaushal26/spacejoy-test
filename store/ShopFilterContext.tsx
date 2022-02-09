@@ -160,10 +160,11 @@ const ShopFilterContextProvider = ({ children }) => {
     };
     const finalQuery = { ...router?.query, ...updatedQueryParam };
 
+    const filterFields = ['category', 'subcategory', 'price', 'vertical', 'page', 'retailer'];
     removeKeys.map((key) => delete finalQuery[key]);
 
     const updated = Object.keys(finalQuery)?.reduce((acc, curr) => {
-      if (finalQuery[curr]?.length) {
+      if (finalQuery[curr]?.length && filterFields?.indexOf(curr) > -1) {
         acc[curr] = finalQuery[curr];
       }
 

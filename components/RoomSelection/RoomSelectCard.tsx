@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -38,14 +39,29 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
     <AnimateBox index={index} className="inline-block">
       <Link href={`/design-sets/room/${cardData?.slug}`}>
         <a className="rounded-2xl  focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-700 focus:outline-none block">
-          <div className="group rounded-2xl relative overflow-hidden bg-gray-200 transition-all transform duration-300  border border-gray-300 aspect-[0.77]">
-            <Image
-              className="rounded-2xl"
-              alt={cardData?.name}
-              src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
-              layout="fill"
-              objectFit="cover"
-            />
+          <div className="group rounded relative overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-300">
+            {inset ? (
+              <Image
+                className="rounded object-cover"
+                alt={cardData?.name}
+                src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
+                height="600"
+                width="500"
+                placeholder="blur"
+                blurDataURL={blurredBgImage}
+              />
+            ) : (
+              <div className="w-full aspect-w-2 aspect-h-1">
+                <Image
+                  alt={cardData?.name}
+                  src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
+                  className="w-full h-full object-center object-cover"
+                  layout="fill"
+                  placeholder="blur"
+                  blurDataURL={blurredBgImage}
+                />
+              </div>
+            )}
             {inset && (
               <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-16 px-4">
                 <p className="text-xl font-bold text-white mb-1">

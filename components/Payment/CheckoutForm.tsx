@@ -102,7 +102,7 @@ function CheckoutForm({
     setSubmitInProgress(true);
     const body = {
       store: {
-        token: process.env.NODE_ENV === 'production' ? token : 'tok_br',
+        token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
         data: {
           comments: [
             {
@@ -117,10 +117,10 @@ function CheckoutForm({
         },
       },
       payment: {
-        token: process.env.NODE_ENV === 'production' ? token : 'tok_br',
+        token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
       },
       customPackage: {
-        token: process.env.NODE_ENV === 'production' ? token : 'tok_br',
+        token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
         data: {
           type: 'stripe',
         },
@@ -128,15 +128,13 @@ function CheckoutForm({
       design: {
         data: {
           projectId: pid,
-          token: process.env.NODE_ENV === 'production' ? token : 'tok_br',
+          token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
           packageName: plan,
           couponCode: coupon.code,
           isGiftCard: coupon.isGiftCard,
         },
       },
     };
-
-    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
 
     const response = await fetcher({
       endPoint: getEndPoint(checkoutFlow, orderId),

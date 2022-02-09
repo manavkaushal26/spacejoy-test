@@ -10,7 +10,7 @@ const data = [
     shortDescription:
       "I loved the design my designer created. It was warm and cozy all at once. I've already bought the table in the design.",
     description:
-    "I love how easily Spacejoy recreated my favorite living room design from Pinterest and showed me how it would look in my space. I'm in love with my new living room!"
+    "I loved that I could connect my Pinterest and find matching products from my favorite living room design. All the recommendations were so spot on, I was able to recreate that look within my budget!"
     ,
     before: {
       img: 'v1574266287/web/testimonial/Trinity_Before_wrtik7.jpg',
@@ -19,27 +19,6 @@ const data = [
     after: {
       img: 'v1574266288/web/testimonial/Trinity_After_l6cdjt.jpg',
       alt: "Master bedroom design for Trinity Harding by spacejoy's online interior designer",
-    },
-  },
-  {
-    id: '4',
-    name: 'Erica & Kaleb',
-    dp: 'v1574266287/web/testimonial/EricaKaleb_jpav9i.jpg',
-    address: 'Salt Lake City, Utah',
-    roomType: 'Nursery',
-    ratings: 5,
-    bg: 'yellow',
-    shortDescription: 'Next time you need a fresh new look or a total redesign you have to check out Spacejoy',
-    description:
-      "I'm never shopping anywhere else! I’d been second-guessing which sofa to buy. On Spacejoy I could see the sofas I liked in an actual room. It helped me choose the right one for my space. Amazing!",
-
-    before: {
-      img: 'v1574266309/web/testimonial/Erica_Before_t0jt6b.jpg',
-      alt: 'Spacejoy review of nursery design  by Kaleb and Erica',
-    },
-    after: {
-      img: 'v1574266298/web/testimonial/Erica_After_a8zyco.jpg',
-      alt: "Nursery design for Kaleb and Erica by spacejoy's online interior designer",
     },
   },
   {
@@ -53,7 +32,7 @@ const data = [
     shortDescription:
       'Will never paint or buy furnishing for another room without getting a design from Spacejoy first',
     description:
-      "My designer understood exactly what I wanted and brought it to life with her beautiful designs. And the 3D renders are so life-like, I was thrilled to see my space before it was done!",
+      "My Spacejoy designer understood exactly what I wanted and brought it to life with her beautiful designs. And the 3D renders are so life-like, I beyond was thrilled to see my space before it was done!",
     before: {
       img: 'v1580125373/web/testimonial/Chelsey-Before_fvrb3v.jpg',
       alt: 'Spacejoy review of living room design by chelsey soup',
@@ -74,7 +53,7 @@ const data = [
     shortDescription:
       "We decided to give Spacejoy a try and so glad we did. Couldn't be happier with how our room turned out.",
     description:
-      "The furniture sets are just WOW. I had a corner in my home that I didn’t know what to do with. Then I found the most amazing design set on Spacejoy. Personalized it to fit my budget and done. That awkward corner is my new favorite nook in the house!",
+      "The design sets are WOW. I had a corner that I didn’t know what to do with. Then I found the most amazing set, personalized it to fit my space and done. Awkward corner to reading nook in minutes!",
 
     before: {
       img: 'v1574864758/web/testimonial/Kimberly_Before_y275vw.jpg',
@@ -96,7 +75,7 @@ const data = [
     shortDescription:
       'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact products',
     description:
-      '“I LOVE Spacejoy! They have the widest selection of products from all the top brands. I found everything I needed for my home, all in one place! Plus they give extra discounts which means more savings!',
+      'I LOVE Spacejoy! They have the widest selection of products from top brands. I found everything I needed for my home, all in one place! Plus they give extra discounts which means more savings!',
     before: {
       img: 'v1595828656/web/testimonial/Kayla-Before_obtbsb.jpg',
       alt: 'Spacejoy review of living room design by Kayla',
@@ -104,6 +83,27 @@ const data = [
     after: {
       img: 'v1595828657/web/testimonial/Kayla-Render_euv1cj.jpg',
       alt: "Living room design for Kayla by Spacejoy's online interior designer ",
+    },
+  },
+  {
+    id: '4',
+    name: 'Erica & Kaleb',
+    dp: 'v1574266287/web/testimonial/EricaKaleb_jpav9i.jpg',
+    address: 'Salt Lake City, Utah',
+    roomType: 'Nursery',
+    ratings: 5,
+    bg: 'yellow',
+    shortDescription: 'Next time you need a fresh new look or a total redesign you have to check out Spacejoy',
+    description:
+      "I'm never shopping anywhere else! I’d been second-guessing which sofa to buy. On Spacejoy I could see the sofas I liked in an actual room. It helped me choose the right one for my space.",
+
+    before: {
+      img: 'v1574266309/web/testimonial/Erica_Before_t0jt6b.jpg',
+      alt: 'Spacejoy review of nursery design  by Kaleb and Erica',
+    },
+    after: {
+      img: 'v1574266298/web/testimonial/Erica_After_a8zyco.jpg',
+      alt: "Nursery design for Kaleb and Erica by spacejoy's online interior designer",
     },
   },
   {
@@ -116,7 +116,7 @@ const data = [
     bg: 'blue',
     shortDescription: 'We truly enjoyed working with the Spacejoy team',
     description:
-      'I have zero design skills so Spacejoy’s furniture and decor sets made it really easy for me to furnish my home. I’ve bought sets for my living room, bedroom and will be coming back to furnish my entryway next!',
+      'I have zero design skills so Spacejoy’s design sets made it really easy for me to furnish my home. I’ve bought sets for my living room, bedroom and will be coming back to furnish my entryway next!',
     before: {
       img: 'v1578230230/web/testimonial/Caroline-Before_pr4lym.jpg',
       alt: 'Spacejoy review of master bedroom room design by Caroline Stfanno ',

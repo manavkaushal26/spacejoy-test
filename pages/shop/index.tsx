@@ -25,8 +25,8 @@ const ProductList = ({ list }) => {
           ))}
         </>
       ) : (
-        <div className="col-span-5 bg-white rounded h-full relative">
-          <div className=" sticky top-0">
+        <div className="relative h-full col-span-5 bg-white rounded">
+          <div className="sticky top-0 ">
             <EmptyState title="No matching products found" message="Try changing the filters" />
           </div>
         </div>
@@ -71,7 +71,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
     updateFilter,
     addArrayQueryParam,
   } = useShopFilterContext();
-  const [min = 0, max = 5000] = price;
+  const [min = 1, max = 5000] = price;
 
   const router = useRouter();
 
@@ -123,7 +123,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
       {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
-        <div className="bg-gray-100 min-h-screen" ref={shopPageTopRef}>
+        <div className="min-h-screen bg-gray-100" ref={shopPageTopRef}>
           <div className="container p-4 mx-auto">
             <nav className="flex mb-4" aria-label="Breadcrumb">
               <ol role="list" className="flex items-center space-x-4">
@@ -160,15 +160,15 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
               </ol>
             </nav>
             <div className="grid grid-cols-5 gap-8">
-              <div className="col-span-1 bg-white rounded-lg p-4">
+              <div className="col-span-1 p-4 bg-white rounded-lg">
                 <form className="hidden lg:block">
                   {verticalList?.length !== 0 && (
                     <Disclosure defaultOpen>
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className="w-full text-left  flex justify-between items-center py-2 rounded-sm mb-2">
-                            <h3 className="text-gray-700">Filters</h3>
-                            {open ? <MinusIcon className="h-3 w-3" /> : <PlusIcon className="h-3 w-3" />}
+                          <Disclosure.Button className="flex items-center justify-between w-full py-2 mb-2 text-left rounded-sm">
+                            <h3 className="text-gray-700">Category</h3>
+                            {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
                           </Disclosure.Button>
                           <Disclosure.Panel className="mb-8">
                             <div className="space-y-2">
@@ -187,7 +187,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                                       name={`filter-category-${vertical?.name}`}
                                       value={vertical?.name}
                                       type="checkbox"
-                                      className="h-4 w-4 border-gray-300 rounded text-gray-900 focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white cursor-pointer"
+                                      className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
                                       checked={vertical?.selected}
                                       readOnly
                                     />
@@ -209,15 +209,15 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                   <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="w-full text-left flex justify-between items-center py-2 rounded-sm mb-2">
+                        <Disclosure.Button className="flex items-center justify-between w-full py-2 mb-2 text-left rounded-sm">
                           <h3 className="text-gray-700">Price</h3>
-                          <span className="ml-6 flex items-center">
-                            {open ? <MinusIcon className="h-3 w-3" /> : <PlusIcon className="h-3 w-3" />}
+                          <span className="flex items-center ml-6">
+                            {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
                           </span>
                         </Disclosure.Button>
 
                         <Disclosure.Panel>
-                          <div className="space-y-2 my-12 mt-4">
+                          <div className="my-8 mt-4 space-y-2">
                             <InputRange
                               min={min}
                               max={max}
@@ -233,22 +233,22 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                   <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="w-full text-left flex justify-between items-center py-2 rounded-sm mb-2">
+                        <Disclosure.Button className="flex items-center justify-between w-full py-2 mb-2 text-left rounded-sm">
                           <h3 className="text-gray-700">Offers</h3>
-                          <span className="ml-6 flex items-center">
-                            {open ? <MinusIcon className="h-3 w-3" /> : <PlusIcon className="h-3 w-3" />}
+                          <span className="flex items-center ml-6">
+                            {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
                           </span>
                         </Disclosure.Button>
 
                         <Disclosure.Panel>
-                          <div className="mb-4 flex items-center">
+                          <div className="flex items-center mb-4">
                             <input
                               type="checkbox"
                               checked={currentFilters?.discount?.[0] > 0}
                               onChange={onSaleChecked}
-                              className="h-4 w-4 border-gray-300 rounded text-gray-900 focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white cursor-pointer"
+                              className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
                             />
-                            <label className="ml-3 text-sm mt-0 text-gray-900 cursor-pointer">
+                            <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
                               <span className="font-medium">On Sale</span>
                             </label>
                           </div>
@@ -260,10 +260,10 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                     <Disclosure defaultOpen>
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className="w-full text-left flex justify-between items-center py-2 rounded-sm mb-2">
+                          <Disclosure.Button className="flex items-center justify-between w-full py-2 mb-2 text-left rounded-sm">
                             <h3 className="text-gray-700">Brands</h3>
-                            <span className="ml-6 flex items-center">
-                              {open ? <MinusIcon className="h-3 w-3" /> : <PlusIcon className="h-3 w-3" />}
+                            <span className="flex items-center ml-6">
+                              {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
                             </span>
                           </Disclosure.Button>
                           <Disclosure.Panel>
@@ -283,13 +283,13 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                                       name={`filter-category-${retailer?.name}`}
                                       value={retailer?._id}
                                       type="checkbox"
-                                      className="h-4 w-4 border-gray-300 rounded text-gray-900 focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white cursor-pointer"
+                                      className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
                                       checked={retailer?.selected}
                                       readOnly
                                     />
                                     <label
                                       htmlFor={`filter-category-${retailer?._id}`}
-                                      className="ml-3 text-sm text-gray-900 cursor-pointer capitalize"
+                                      className="ml-3 text-sm text-gray-900 capitalize cursor-pointer"
                                     >
                                       {retailer?.name}
                                     </label>
@@ -305,7 +305,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
                 </form>
               </div>
               <div className="col-span-4 rounded">
-                <div className="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1">
+                <div className="grid grid-cols-3 gap-1 xl:grid-cols-4 2xl:grid-cols-4">
                   {isFetching ? (
                     <>
                       {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
@@ -319,7 +319,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
               </div>
             </div>
             <div className="text-center my-14">
-              <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+              <nav className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
                 <Pagination buttonList={buttons} />
               </nav>
             </div>

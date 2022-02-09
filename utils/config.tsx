@@ -1,4 +1,4 @@
-const isProduction = process.env.NEXT_PUBLIC_ENV_HOST === 'production';
+const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
 const page = {
   appName: 'SpaceJoyWeb',
@@ -13,7 +13,6 @@ const page = {
   ga: 'UA-145327802-1',
   gtm: 'GTM-WC4HSB6',
   optimize: 'GTM-NDHKHGC',
-  stripe: isProduction ? 'pk_live_74NmugK4189bLTq0H74tvVz300grMkWE5n' : 'pk_test_YSErkwOc5SzDJ2TrWBuR4VWV00au48Fd7x',
   freshchatToken: '3c8c605c-62da-4127-868d-39387867f6ec',
   CLEVERTAP_ACCOUNT_ID: '69R-KW5-465Z',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.homefuly.idsuite.retail',
@@ -39,6 +38,8 @@ const pinterestConfig = {
   appId: 1473468,
   redirect_uri: isProduction ? 'https://www.spacejoy.com' : 'http://localhost:3001',
 };
+
+const oldSpacejoyUrl = 'https://designs.spacejoy.com';
 
 const company = {
   logo: 'w_200/v1578101355/shared/spacejoy-logo_ase39m.svg',
@@ -136,4 +137,4 @@ const affirm = {
   script: isProduction ? 'https://cdn1.affirm.com/js/v2/affirm.js' : 'https://sandbox.affirm.com/js/v2/affirm.js',
 };
 
-export { company, page, cloudinary, internalPages, affirm, pinterestConfig };
+export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl };
