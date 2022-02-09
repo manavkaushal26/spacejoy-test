@@ -1,4 +1,4 @@
-const isProduction = process.env.NEXT_PUBLIC_ENV_HOST === 'production';
+const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
 const page = {
   appName: 'SpaceJoyWeb',
