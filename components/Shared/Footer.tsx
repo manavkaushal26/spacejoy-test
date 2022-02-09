@@ -9,7 +9,7 @@ const currentYear = currentDate.getFullYear();
 
 const Footer: React.FC = () => {
   return (
-    <footer className="antialiased border-t border-gray-200">
+    <footer className="antialiased border-t border-gray-200 footer">
       <div className="container px-4 mx-auto">
         <div className="grid grid-cols-3 gap-6">
           {spacejoyPromiseData.map((promise) => (
@@ -42,18 +42,18 @@ const Footer: React.FC = () => {
             <SocialLinks />
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Quick Links</h3>
+            <h3 className="mb-2 ">Quick Links</h3>
             <ul>
               {/* <li>
                 <Link href="${oldSpacejoyUrl}/furniture-decor-shop">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Furniture & Decor Shop
                   </a>
                 </Link>
               </li> */}
               <li>
                 <Link href="/room-select">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Furniture & Decor Sets
                   </a>
                 </Link>
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Hire a Designer
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/customer-stories`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Customer Stories
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Interior Design Ideas
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/purchase-gift-card`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Gift Cards
@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/trending-items`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Deals Of The Day
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/style-quiz-intro`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Style Quiz
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/balance-check`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Check Card Balance
@@ -131,18 +131,18 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Support</h3>
+            <h3 className="mb-2 ">Support</h3>
             <ul>
               <li>
                 <Link href="/help">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     FAQs
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/refund-policy">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Refund Policy
                   </a>
                 </Link>
@@ -150,11 +150,11 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h3 className="px-1 mb-2">Connect with us</h3>
+            <h3 className="mb-2 ">Connect with us</h3>
             <ul>
               <li>
                 <a
-                  className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                  className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                   href={`tel:${company.phone.support}`}
                   target="_top"
                 >
@@ -163,7 +163,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                  className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                   href={`mailto:${company.email.support}?Subject=Need%20Help`}
                   target="_top"
                 >
@@ -172,7 +172,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                  className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                   href={`mailto:hello@spacejoy.com`}
                   target="_top"
                 >
@@ -184,39 +184,39 @@ const Footer: React.FC = () => {
         </div>
         <div className="grid grid-cols-6 gap-2 py-12">
           <div className="">
-            <h3 className="px-1 mb-2">Furniture & Decor Sets</h3>
+            <h3 className="mb-2 ">Furniture & Decor Sets</h3>
             <ul>
               <li>
                 <Link href="/design-sets/room/living-room-design-sets">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Living Room Sets
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/design-sets/room/bedroom-design-sets">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Bedroom Sets
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/design-sets/room/dining-room-design-sets">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Dining Room Sets
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/design-sets/room/home-office-design-sets">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Home Office Sets
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/design-sets/room/entryway-design-sets">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Entryway Sets
                   </a>
                 </Link>
@@ -224,7 +224,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Design Styles</h3>
+            <h3 className="mb-2 ">Design Styles</h3>
             <ul>
               <li>
                 <Link
@@ -233,7 +233,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Modern Design Ideas
@@ -247,7 +247,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Eclectic Design Ideas
@@ -261,7 +261,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Modern Farmhouse Ideas
@@ -275,7 +275,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Industrial Design Ideas
@@ -289,7 +289,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Mid-Century Modern Ideas
@@ -303,7 +303,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Transitional Design Ideas
@@ -317,7 +317,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Contempory Modern Ideas
@@ -331,7 +331,7 @@ const Footer: React.FC = () => {
                   }}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Coastal Design Ideas
@@ -341,12 +341,12 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Curated Collections</h3>
+            <h3 className="mb-2 ">Curated Collections</h3>
             <ul>
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/spring-2020-look-book-living-room-designs-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Spring Living Room Designs
@@ -355,7 +355,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link href="/room-select">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Spring Bedroom Designs
                   </a>
                 </Link>
@@ -363,7 +363,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/spring-2020-look-book-entryway-designs-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Spring Entryway Designs
@@ -373,7 +373,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/bohemian-living-room-design-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Bohemian Living Room Ideas
@@ -383,7 +383,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/open-living-and-dining-room-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Open Living-Dining Room Ideas
@@ -393,7 +393,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/small-living-room-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Small Living Room Design Ideas
@@ -403,7 +403,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/glam-design-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Glam Design Ideas
@@ -413,7 +413,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs/minimalist-living-room-design-ideas`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Minimalist Living Room Ideas
@@ -423,12 +423,12 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Blog</h3>
+            <h3 className="mb-2 ">Blog</h3>
             <ul>
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs-blog/popular-living-room-colors`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Best Living Room Colors
@@ -438,7 +438,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs-blog/best-comfortable-sectionals-to-watch-tv`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     13 Best Sectional Sofas
@@ -450,7 +450,7 @@ const Footer: React.FC = () => {
                   href={`${oldSpacejoyUrl}/interior-designs-blog/best-mid-century-modern-interior-design-style-furniture-to-buy`}
                 >
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Mid Century Modern Furniture
@@ -460,7 +460,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs-blog/farmhouse-style-design-rules`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Farmhouse Style Decor Ideas
@@ -480,7 +480,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs-blog/how-to-decorate-your-living-room`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     6 Steps To Decorate Living Room
@@ -490,7 +490,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link href={`${oldSpacejoyUrl}/interior-designs-blog/minimalist-home-decor-style-guide`}>
                   <a
-                    className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
                   >
                     Minimalist Home Decor Ideas
@@ -500,60 +500,60 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Products</h3>
+            <h3 className="mb-2 ">Products</h3>
             <ul>
               <li>
                 <Link href="/shop?subcategory=Sofas">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Sofas
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Tables&vertical=Coffee+Tables">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Coffee Tables
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Tables&vertical=End+%26+Side+Tables">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Side Tables
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Chairs&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Accent Chairs
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Lights&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Lighting
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Mirrors&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Mirrors
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Rugs&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting%3A%3ARunners%3A%3AOther+Rugs%3A%3AArea+Rugs">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Rugs
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?subcategory=Storage+Containers&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting%3A%3ARunners%3A%3AOther+Rugs%3A%3AArea+Rugs%3A%3ACrates%2C+Buckets+%26+Bins%3A%3ALaundry+Organization%3A%3AOther+Storage+Containers%3A%3ABaskets">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Storage & Organization
                   </a>
                 </Link>
@@ -561,53 +561,53 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="">
-            <h3 className="px-1 mb-2">Brands</h3>
+            <h3 className="mb-2 ">Brands</h3>
             <ul>
               <li>
                 <Link href="/shop?retailer=Wayfair">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Wayfair
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?retailer=West+Elm">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     West Elm
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?retailer=CB2">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     CB2
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?retailer=Pottery+Barn">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Pottery Barn
                   </a>
                 </Link>
               </li>
               {/* <li>
                 <Link href="${oldSpacejoyUrl}/shop?retailer=Target&discount=10%3A%3A100">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Target
                   </a>
                 </Link>
               </li> */}
               <li>
                 <Link href="/shop?retailer=Crate+And+Barrel">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Crate & Barrel
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/shop?retailer=Article">
-                  <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Article
                   </a>
                 </Link>
@@ -619,7 +619,7 @@ const Footer: React.FC = () => {
           <div className="m-5">
             <Link href={`${oldSpacejoyUrl}/cookies`}>
               <a
-                className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                 target="_blank"
               >
                 Cookie Statement
@@ -628,7 +628,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="m-5">
             <Link href="/terms">
-              <a className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+              <a className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                 Terms Of Service
               </a>
             </Link>
@@ -636,7 +636,7 @@ const Footer: React.FC = () => {
           <div className="m-5">
             <Link href={`${oldSpacejoyUrl}/sitemap`}>
               <a
-                className="px-1 text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                className="text-sm leading-7 text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                 target="_blank"
               >
                 Sitemap

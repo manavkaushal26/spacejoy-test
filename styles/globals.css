@@ -60,3 +60,12 @@ h3 {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
+footer li {
+  padding: 0 1px;
+  margin: 4px 0;
+}
+
+footer li a {
+  line-height: 0.75 !important;
+}
