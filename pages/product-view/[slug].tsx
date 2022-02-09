@@ -408,11 +408,11 @@ const ProductView = ({ product }): JSX.Element => {
                     </button> */}
                   </div>
                 </form>
-                {product?.price && (
+                {product?.price ? (
                   <div className="my-6 text-sm text-gray-700">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
-                )}
+                ) : null}
 
                 {finalArrayOfOffers.length !== 0 && (
                   <Disclosure defaultOpen>
