@@ -2,15 +2,16 @@ import Login from '@components/Shared/LoginManager';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { useSession } from '@store/AuthProvider';
+import { oldSpacejoyUrl } from '@utils/config';
 import Link from 'next/link';
 import React, { Fragment } from 'react';
 
 function NextLink(props) {
-  let { href, active, children, ...rest } = props;
+  let { href, active, oldLink, children, ...rest } = props;
 
   return (
     <Link href={href}>
-      <a className={`${active && 'bg-blue-500'}`} {...rest}>
+      <a className={`${active && 'bg-blue-500'}`} {...rest} target={oldLink ? '_blank' : ''}>
         {children}
       </a>
     </Link>
@@ -43,7 +44,7 @@ const UserNav = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
-                      href="https://www.spacejoy.com/dashboard"
+                      href={`${oldSpacejoyUrl}/dashboard`}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -57,7 +58,7 @@ const UserNav = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
-                      href="https://www.spacejoy.com/orders"
+                      href={`${oldSpacejoyUrl}/orders`}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -71,7 +72,7 @@ const UserNav = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
-                      href="https://www.spacejoy.com/referrals"
+                      href={`${oldSpacejoyUrl}/referrals`}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -85,7 +86,7 @@ const UserNav = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
-                      href="https://www.spacejoy.com/profile"
+                      href={`${oldSpacejoyUrl}/profile`}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -99,7 +100,7 @@ const UserNav = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
-                      href="https://www.spacejoy.com/balance-check"
+                      href={`${oldSpacejoyUrl}/balance-check`}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
