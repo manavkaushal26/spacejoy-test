@@ -7,14 +7,12 @@ import Link from 'next/link';
 import React, { Fragment } from 'react';
 
 function NextLink(props) {
-  let { href, active, oldLink, children, ...rest } = props;
+  let { href, active, children, ...rest } = props;
 
   return (
-    <Link href={href}>
-      <a className={`${active && 'bg-blue-500'}`} {...rest} target={oldLink ? '_blank' : ''}>
-        {children}
-      </a>
-    </Link>
+    <a href={href} className={`${active && 'bg-blue-500'}`} {...rest}>
+      {children}
+    </a>
   );
 }
 
@@ -106,7 +104,6 @@ const UserNav = () => {
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       active
                       target="_blank"
-                      
                     >
                       Check Card Balance
                     </NextLink>
