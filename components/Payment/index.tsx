@@ -1,5 +1,4 @@
 import CheckoutForm from '@components/Payment/CheckoutForm';
-import { page } from '@utils/config';
 import LoadScript from '@utils/LoadScript';
 import React, { useEffect, useState } from 'react';
 import { Elements, StripeProvider } from 'react-stripe-elements';
@@ -15,7 +14,7 @@ const Index = (props) => {
   return (
     <>
       {stripeReady ? (
-        <StripeProvider apiKey={page.stripe}>
+        <StripeProvider apiKey={process.env.NEXT_PUBLIC_STRIPE_KEY}>
           <Elements>
             <CheckoutForm {...props} />
           </Elements>

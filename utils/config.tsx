@@ -13,7 +13,6 @@ const page = {
   ga: 'UA-145327802-1',
   gtm: 'GTM-WC4HSB6',
   optimize: 'GTM-NDHKHGC',
-  stripe: isProduction ? 'pk_live_74NmugK4189bLTq0H74tvVz300grMkWE5n' : 'pk_test_YSErkwOc5SzDJ2TrWBuR4VWV00au48Fd7x',
   freshchatToken: '3c8c605c-62da-4127-868d-39387867f6ec',
   CLEVERTAP_ACCOUNT_ID: '69R-KW5-465Z',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.homefuly.idsuite.retail',
