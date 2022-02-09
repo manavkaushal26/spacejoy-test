@@ -36,8 +36,8 @@ const Featured: React.FC = () => {
                       <Image
                         src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/hgtv_fohatr.svg"
                         alt="spacejoy happy customer"
-                        height={'130'}
-                        width={'200'}
+                        height={'100'}
+                        width={'170'}
                         layout="intrinsic"
                       />
                     </div>
@@ -72,8 +72,8 @@ const Featured: React.FC = () => {
                       <Image
                         src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/forbes_ud5zvu.svg"
                         alt="spacejoy happy customer"
-                        height={'130'}
-                        width={'200'}
+                        height={'100'}
+                        width={'170'}
                         layout="intrinsic"
                       />
                     </div>
@@ -81,8 +81,8 @@ const Featured: React.FC = () => {
                       <Image
                         src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/cnn_xwsrzu.svg"
                         alt="spacejoy happy customer"
-                        height={'130'}
-                        width={'200'}
+                        height={'80'}
+                        width={'170'}
                         layout="intrinsic"
                       />
                     </div>
@@ -90,8 +90,8 @@ const Featured: React.FC = () => {
                       <Image
                         src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/businessInsider_pbxfnp.svg"
                         alt="spacejoy happy customer"
-                        height={'130'}
-                        width={'200'}
+                        height={'100'}
+                        width={'160'}
                         layout="intrinsic"
                       />
                     </div>
