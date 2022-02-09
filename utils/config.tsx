@@ -39,7 +39,7 @@ const pinterestConfig = {
   redirect_uri: isProduction ? 'https://test.spacejoy.com' : 'http://localhost:3001',
 };
 
-const oldSpacejoyUrl = 'https://spacejoy.com';
+const oldSpacejoyUrl = 'https://designs.spacejoy.com';
 
 const company = {
   logo: 'w_200/v1578101355/shared/spacejoy-logo_ase39m.svg',
