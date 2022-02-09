@@ -37,7 +37,7 @@ const cloudinary = {
 const pinterestConfig = {
   appName: 'SpaceJoyWeb',
   appId: 1473468,
-  redirect_uri: isProduction ? 'https://test.spacejoy.com' : 'http://localhost:3001',
+  redirect_uri: isProduction ? 'https://www.spacejoy.com' : 'http://localhost:3001',
 };
 
 const company = {
