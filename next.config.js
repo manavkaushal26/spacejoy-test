@@ -1,9 +1,24 @@
 /** @type {import('next').NextConfig} */
 
 const withPWA = require('next-pwa');
+const legacyRepo = 'https://designs.spacejoy.com';
 const runtimeCaching = require('next-pwa/cache');
 
 module.exports = withPWA({
+  async redirects() {
+    return [
+      {
+        source: '/pricing',
+        destination: `${legacyRepo}/pricing`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/customer-stories',
+        destination: `${legacyRepo}/customer-stories`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+    ];
+  },
   reactStrictMode: true,
   poweredByHeader: false,
   crossOrigin: 'anonymous',
