@@ -23,7 +23,7 @@ const ProductDesignSet = ({ productIds }) => {
       <div className="mt-4 grid grid-cols-3 xl:grid-cols-6 gap-4">
         {designs?.slice(0, 5)?.map((product) => {
           return (
-            <Link href={`/product-view/${product?._id}`} key={product?._id}>
+            <Link href={`/design-sets/${product?._id}`} key={product?._id}>
               <a className="group block">
                 <div className="bg-white aspect-w-3 aspect-h-2 rounded-lg group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-4">
                   <Image
