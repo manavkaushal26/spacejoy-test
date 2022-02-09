@@ -13,8 +13,49 @@ module.exports = withPWA({
         permanent: true,
       },
       {
-        source: '/customer-stories',
-        destination: `${legacyRepo}/customer-stories`, // Matched parameters can be used in the destination
+        source: '/customer-stories/:slug',
+        destination: `${legacyRepo}/customer-stories/:slug`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+
+      {
+        source: '/furniture-decor-shop',
+        destination: `${legacyRepo}/furniture-decor-shop`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/online-room-design',
+        destination: `${legacyRepo}/online-room-design`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/new-project',
+        destination: `${legacyRepo}/new-project`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/interior-designs-blog',
+        destination: `${legacyRepo}/interior-designs-blog`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/spacejoy-vs-modsy',
+        destination: `${legacyRepo}/spacejoy-vs-modsy`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/spacejoy-vs-havenly',
+        destination: `${legacyRepo}/spacejoy-vs-havenly`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/spacejoy-vs-decorist',
+        destination: `${legacyRepo}/spacejoy-vs-decorist`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/spacejoy-vs-others',
+        destination: `${legacyRepo}/spacejoy-vs-others`, // Matched parameters can be used in the destination
         permanent: true,
       },
     ];
