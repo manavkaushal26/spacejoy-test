@@ -13,11 +13,21 @@ module.exports = withPWA({
         permanent: true,
       },
       {
+        source: '/customer-stories',
+        destination: `${legacyRepo}/customer-stories`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
         source: '/customer-stories/:slug',
         destination: `${legacyRepo}/customer-stories/:slug`, // Matched parameters can be used in the destination
         permanent: true,
       },
 
+      {
+        source: '/furniture-decor-shop/:slug',
+        destination: `${legacyRepo}/furniture-decor-shop/:slug`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
       {
         source: '/furniture-decor-shop',
         destination: `${legacyRepo}/furniture-decor-shop`, // Matched parameters can be used in the destination
@@ -36,6 +46,11 @@ module.exports = withPWA({
       {
         source: '/interior-designs-blog',
         destination: `${legacyRepo}/interior-designs-blog`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/interior-designs-blog/:slug',
+        destination: `${legacyRepo}/interior-designs-blog/:slug`, // Matched parameters can be used in the destination
         permanent: true,
       },
       {
