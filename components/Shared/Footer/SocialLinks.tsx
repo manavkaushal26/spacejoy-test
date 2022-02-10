@@ -15,7 +15,7 @@ const SocialLinks: React.FC = () => {
       </a>
       <a
         href={company.social.sites.instagram}
-        className="p-2 text-gray-800 bg-gray-100 rounded hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+        className="p-2 text-gray-800 bg-gray-100 rounded hover:text-pink-300 focus:ring-1 focus:ring-gray-500 focus:outline-none"
       >
         <span className="sr-only">Instagram</span>
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">

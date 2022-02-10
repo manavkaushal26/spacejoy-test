@@ -46,7 +46,7 @@ export const Home = (): JSX.Element => {
               <div className="col-span-2 row-span-2">
                 <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1643956818/web/homepage-v3/Website_design_set_5_aswpri.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644479450/web/homepage-v3/explore-set-image_wxfnvr.jpg"
                     alt="image 1"
                     className="object-cover object-center w-full h-full rounded-xl"
                     layout="fill"
