@@ -698,7 +698,7 @@ export const getStaticProps = async ({ params }) => {
 
   const { data, statusCode } = response;
 
-  return statusCode < 300 ? { props: { product: data } } : { notFound: true };
+  return statusCode < 300 ? { props: { product: data }, revalidate: 10 } : { notFound: true };
 };
 
 export default ProductView;
