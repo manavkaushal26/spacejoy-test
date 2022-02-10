@@ -22,7 +22,11 @@ module.exports = withPWA({
         destination: `${legacyRepo}/customer-stories/:slug`, // Matched parameters can be used in the destination
         permanent: true,
       },
-
+      {
+        source: '/checkout/payment/:slug',
+        destination: `${legacyRepo}/checkout/payment/:slug`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
       {
         source: '/furniture-decor-shop/:slug',
         destination: `${legacyRepo}/furniture-decor-shop/:slug`, // Matched parameters can be used in the destination
@@ -36,6 +40,11 @@ module.exports = withPWA({
       {
         source: '/online-room-design',
         destination: `${legacyRepo}/online-room-design`, // Matched parameters can be used in the destination
+        permanent: true,
+      },
+      {
+        source: '/online-interior-design',
+        destination: `${legacyRepo}/online-interior-design`, // Matched parameters can be used in the destination
         permanent: true,
       },
       {
