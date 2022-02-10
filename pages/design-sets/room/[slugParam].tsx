@@ -6,7 +6,7 @@ import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
-import { GetServerSidePropsContext, GetServerSidePropsResult, GetStaticPathsResult, NextPage } from 'next';
+import { GetServerSidePropsContext, GetServerSidePropsResult, NextPage } from 'next';
 import Head from 'next/head';
 import React, { useMemo } from 'react';
 
@@ -89,33 +89,15 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData, category, ini
   );
 };
 
-export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const { data } = await fetcher({
-    endPoint: '/v1/collageCategories',
-    method: 'GET',
-  });
-
-  return {
-    paths: data?.map((entry) => {
-      const { displayName } = entry;
-      const slug = (displayName as string).split(' ').join('-').concat('-design-sets');
-
-      return { params: { slugParam: [slug] } };
-    }),
-    fallback: 'blocking',
-  };
-}
-
-export async function getStaticProps(
-  ctx: GetServerSidePropsContext<{ slugParam: string[] }>
+export async function getServerSideProps(
+  ctx: GetServerSidePropsContext<{ slugParam: string }>
 ): Promise<GetServerSidePropsResult<CollageViewProps>> {
   const { params } = ctx;
-  const { slugParam } = params;
-  const [slug] = slugParam;
+  const { slugParam: slug } = params;
   const enabledCollages = topCollages.list.filter((collage) => !collage.disabled).map((collage) => collage.slug);
 
-  if (enabledCollages.includes(slug)) {
-    const category = SlugToCategory[slug];
+  if (enabledCollages.includes(slug as string)) {
+    const category = SlugToCategory[slug as string];
     const { data } = await fetcher({ endPoint: publicRoutes?.collageCategoryRoute, method: 'GET' });
 
     const selectedCategory = data?.find((item) => item?.name === category);
