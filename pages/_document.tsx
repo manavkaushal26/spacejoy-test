@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="icon" href="favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          {prod && <script async defer dangerouslySetInnerHTML={{ __html: clarity }} />}
+          <script async defer dangerouslySetInnerHTML={{ __html: clarity }} />
         </Head>
         <body>
           <Main />
