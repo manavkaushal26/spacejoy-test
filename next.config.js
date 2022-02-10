@@ -10,109 +10,109 @@ module.exports = withPWA({
       {
         source: '/pricing',
         destination: `${legacyRepo}/pricing`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/customer-stories/:slug*',
         destination: `${legacyRepo}/customer-stories/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/checkout/payment/:slug*',
         destination: `${legacyRepo}/checkout/payment/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/furniture-decor-shop/:slug*',
         destination: `${legacyRepo}/furniture-decor-shop/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
 
       {
         source: '/online-room-design',
         destination: `${legacyRepo}/online-room-design`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/online-interior-design',
         destination: `${legacyRepo}/online-interior-design`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/new-project',
         destination: `${legacyRepo}/new-project`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/interior-designs-blog/:slug*',
         destination: `${legacyRepo}/interior-designs-blog/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/spacejoy-vs-modsy',
         destination: `${legacyRepo}/spacejoy-vs-modsy`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/spacejoy-vs-havenly',
         destination: `${legacyRepo}/spacejoy-vs-havenly`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/spacejoy-vs-decorist',
         destination: `${legacyRepo}/spacejoy-vs-decorist`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/spacejoy-vs-others',
         destination: `${legacyRepo}/spacejoy-vs-others`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
 
       {
         source: '/dashboard/:slug*',
         destination: `${legacyRepo}/dashboard/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/checkout/design-package',
         destination: `${legacyRepo}/checkout/design-package`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/style-quiz-intro',
         destination: `${legacyRepo}/style-quiz-intro`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/trending-items',
         destination: `${legacyRepo}/trending-items`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/interior-designs/:slug*',
         destination: `${legacyRepo}/interior-designs/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/referrals',
         destination: `${legacyRepo}/referrals`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/balance-check',
         destination: `${legacyRepo}/balance-check`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/profile',
         destination: `${legacyRepo}/profile`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/orders/:slug*',
         destination: `${legacyRepo}/orders/:slug*`, // Matched parameters can be used in the destination
-        permanent: true,
+        permanent: false,
       },
     ];
   },
