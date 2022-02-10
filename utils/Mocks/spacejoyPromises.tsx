@@ -1,6 +1,7 @@
 const spacejoyPromiseData = [
   {
     img: 'https://res.cloudinary.com/spacejoy/image/upload/v1644478601/web/spacejoy-promise/price_match_guarantee_qgp0se.svg',
+    title:"Price Match Guarantee",
     description:
       "Get better deals on your furniture with Spacejoy. We don't add any overheads, instead pass the savings to you. If you find a better price on the retailer's website, let us know and we'll match it!",
   },
