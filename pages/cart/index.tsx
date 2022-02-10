@@ -214,20 +214,21 @@ export default function Cart() {
           <div className="bg-white">
             <div className="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
               <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
+              {Object.keys(cart?.cartItems)?.length === 0 && (
+                <>{loading ? null : <EmptyState title="No items found" message={''} />}</>
+              )}
               <form className="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
                 <section aria-labelledby="cart-heading" className="lg:col-span-7">
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
                   </h2>
+
                   {loading && (
                     <>
                       {[...new Array(18)].map((_d, _i) => {
                         return <CartItemDimmer key={_i} />;
                       })}
                     </>
-                  )}
-                  {Object.keys(cart?.cartItems)?.length === 0 && (
-                    <>{loading ? <LoadingState /> : <EmptyState title="No items found" message={''} />}</>
                   )}
                   {Object.keys(cart?.cartItems)?.map((cItem) => {
                     const offerItem = (coupons || [])?.filter(
@@ -285,12 +286,6 @@ export default function Cart() {
                     );
                   })}
                 </section>
-
-                {/* Order summary */}
-                {/* <section
-                  aria-labelledby="summary-heading"
-                  className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
-                > */}
                 {loading && <CartSummaryDimmer />}
                 {!loading && cart?.count !== 0 && (
                   <section
@@ -300,7 +295,6 @@ export default function Cart() {
                     <CartSummary />
                   </section>
                 )}
-                {/* </section> */}
               </form>
             </div>
           </div>

@@ -112,10 +112,10 @@ const TopCollagesList: React.FC<DesignListInterface> = ({ feedData }) => {
               <h1 className="mt-2 text-3xl leading-8 tracking-loose text-gray-900 sm:text-4xl">
                 Which room do you want to furnish?
               </h1>
-              <p className="pt-4 text-xl">Pick one to get started</p>
+              <p className="py-4 text-xl">Pick one to get started</p>
             </div>
           </div>
-          <AnimateBox className="grid grid-cols-5 xl:grid-cols-5 gap-4 xl:gap-6 2xl:gap-8 gap-y-10">
+          <AnimateBox className="grid grid-cols-5 xl:grid-cols-5 gap-4 xl:gap-6 2xl:gap-8 gap-y-10 my-8">
             {/* <Slider {...settings} ref={ref}> */}
             {list.map((collection, i) => (
               <RoomSelectCard key={collection?._id} cardData={collection} inset index={i} />
