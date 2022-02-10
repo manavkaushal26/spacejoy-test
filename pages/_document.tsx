@@ -41,6 +41,8 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="icon" href="favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
+          {/* Bing webmaster verification */}
+          <meta name="msvalidate.01" content="90B5CCABB531B09607FDE6C5344FC8CF" />
           <script async defer dangerouslySetInnerHTML={{ __html: clarity }} />
         </Head>
         <body>
