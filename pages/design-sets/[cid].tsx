@@ -125,7 +125,18 @@ export const getStaticProps = async ({ params }) => {
             endPoint: '/v1/assets/getAssetsDetail',
             body: {
               assets: [...collageProductIds],
-              fields: ['price', 'name', 'renderImages', 'retailer', 'dimension', 'meta', 'imageUrl', 'cdn'],
+              fields: [
+                'price',
+                'name',
+                'renderImages',
+                'retailer',
+                'dimension',
+                'meta',
+                'imageUrl',
+                'cdn',
+                'inStock',
+                'status',
+              ],
             },
             method: 'POST',
           });

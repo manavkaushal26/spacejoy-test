@@ -80,6 +80,18 @@ const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
+
+  const itemStatus = useMemo(() => {
+    if (product?.status === 'discontinued') {
+      return 'Discontinued';
+    }
+    if (!product?.inStock) {
+      return 'Out of Stock';
+    }
+
+    return undefined;
+  }, [product]);
+
   const discountPercent = useMemo(() => {
     const discount =
       ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / (product?.msrp || product?.price);
@@ -218,8 +230,8 @@ const ProductView = ({ product }): JSX.Element => {
                 </li>
               </ol>
             </nav>
-            <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
-              <div className="sticky top-0">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
+              <div className="sticky top-0 ">
                 <AnimateBox className="p-4 bg-white rounded-lg lg:p-8 xl:20">
                   <div className="aspect-w-1 aspect-h-1">
                     <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
@@ -370,45 +382,57 @@ const ProductView = ({ product }): JSX.Element => {
                   </div>
                 ) : null}
 
-                <div className="my-5">
+                <div className="my-4">
                   <DeliveryTimeline productId={product?._id} />
                 </div>
 
-                <form className="mt-3">
-                  <div className="flex mt-10 space-x-4 sm:flex-col1">
-                    <button
-                      type="button"
-                      className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
-                      onClick={decrementQty}
-                    >
-                      <MinusSmIcon className="w-6 h-6" />
-                    </button>
-                    <p className="px-2 py-3">{localProductQuantity}</p>
-                    <button
-                      type="button"
-                      className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
-                      onClick={incrementQty}
-                    >
-                      <PlusSmIcon className="w-6 h-6" />
-                    </button>
-                    <button
-                      type="button"
-                      className="px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                      onClick={addToCart}
-                      disabled={addingToCart ? true : false}
-                    >
-                      {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
-                    </button>
-                    {/* <button
+                <form className="my-4">
+                  {itemStatus ? (
+                    <div className="flex my-8 space-x-4 sm:flex-col-1">
+                      <button
+                        type="button"
+                        className="px-12 py-3 text-base font-medium text-white cursor-not-allowed bg-gray-500 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        disabled={true}
+                      >
+                        <span>{itemStatus}</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex my-8 space-x-4 sm:flex-col-1">
+                      <button
+                        type="button"
+                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                        onClick={decrementQty}
+                      >
+                        <MinusSmIcon className="w-6 h-6" />
+                      </button>
+                      <p className="px-2 py-3">{localProductQuantity}</p>
+                      <button
+                        type="button"
+                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                        onClick={incrementQty}
+                      >
+                        <PlusSmIcon className="w-6 h-6" />
+                      </button>
+                      <button
+                        type="button"
+                        className="px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        onClick={addToCart}
+                        disabled={addingToCart ? true : false}
+                      >
+                        {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
+                      </button>
+                      {/* <button
                       type="button"
                       className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                     >
                       <HeartIcon className="w-6 h-6" />
                       <span className="sr-only">Add to favorites</span>
                     </button> */}
-                  </div>
+                    </div>
+                  )}
                 </form>
-                {product?.price ? (
+                {product?.price && !itemStatus ? (
                   <div className="my-6 text-sm text-gray-700">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>

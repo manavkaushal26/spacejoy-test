@@ -22,6 +22,8 @@ export interface AssetType {
     _id: string;
     name: string;
   };
+  inStock: boolean;
+  status: string;
   name: string;
   dimension: {
     height: number;
