@@ -76,7 +76,7 @@ const AuthProvider: React.FC = ({ children }) => {
           await fetchUser();
           await saveGuestCart();
           reactLocalStorage.setObject('userCart', {});
-          console.log('cart');
+
           window && window.location.reload();
 
           // const redirectPath = event?.data?.data?.redirect || '/';
