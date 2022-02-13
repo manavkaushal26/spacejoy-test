@@ -1,4 +1,4 @@
-import { useStore } from '@lib/store';
+import { useStore } from '@lib/offerStore';
 import fetcher from '@utils/fetcher';
 import { useEffect, useState } from 'react';
 import shallow from 'zustand/shallow';

@@ -14,6 +14,7 @@ import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import { priceToLocaleString } from '@utils/helpers';
+import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -121,10 +122,11 @@ const ProductView = ({ product }): JSX.Element => {
     setLocalProductQuantity(localProductQuantity ? (localProductQuantity - 1 === 0 ? 1 : localProductQuantity - 1) : 0);
   };
 
-  const { updateCart, cart } = useStore(
+  const { updateCart, cart, modifyCart } = useStore(
     (store) => ({
       updateCart: store.updateCart,
       cart: store.cart,
+      modifyCart: store.modifyCart,
     }),
     shallow
   );
@@ -132,51 +134,61 @@ const ProductView = ({ product }): JSX.Element => {
   const [addingToCart, isAddingToCart] = useState(false);
 
   const addToCart = async () => {
-    isAddingToCart(true);
-    try {
-      const {
-        _id,
-        retailer: { _id: brand },
-      } = product;
-      const { cartItems } = cart;
-      const quantity =
-        !cartItems[brand] || !cartItems[brand].products[product._id]
-          ? localProductQuantity
-          : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
+    const isUserAuthenticated = Cookies.get('token') ? true : false;
 
-      const { data: cartRes, statusCode } = await fetcher({
-        endPoint: '/v1/cart',
-        method: 'POST',
-        body: {
-          items: [
-            {
-              productId: product?._id,
-              quantity,
-              projectId: '',
-              designId: '',
-            },
-          ],
-        },
-      });
-      if (statusCode < 301) {
-        updateCart(cartRes);
-        toast.success('Added to bag successfully!');
-        setLocalProductQuantity(1);
-      } else {
-        if (statusCode === 403) {
-          throw new Error('unauthorized');
-        } else {
-          throw new Error('error');
-        }
-      }
-    } catch (e) {
-      if (e?.message === 'unauthorized') {
-        toast.error('Please Sign In to add items to bag');
-      } else {
-        toast.error('An error occurred while adding to bag');
-      }
-    } finally {
+    isAddingToCart(true);
+
+    const {
+      _id,
+      retailer: { _id: brand },
+    } = product;
+    const { cartItems } = cart;
+    const quantity =
+      !cartItems[brand] || !cartItems[brand].products[product._id]
+        ? localProductQuantity
+        : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
+
+    if (!isUserAuthenticated) {
+      modifyCart(product, quantity, 'add');
+      setLocalProductQuantity(1);
+      toast.success('Item added to bag!');
       isAddingToCart(false);
+    } else {
+      try {
+        const { data: cartRes, statusCode } = await fetcher({
+          endPoint: '/v1/cart',
+          method: 'POST',
+          body: {
+            items: [
+              {
+                productId: product?._id,
+                quantity,
+                projectId: '',
+                designId: '',
+              },
+            ],
+          },
+        });
+        if (statusCode < 301) {
+          updateCart(cartRes);
+          toast.success('Item added to bag!');
+          setLocalProductQuantity(1);
+        } else {
+          if (statusCode === 403) {
+            throw new Error('unauthorized');
+          } else {
+            throw new Error('error');
+          }
+        }
+      } catch (e) {
+        if (e?.message === 'unauthorized') {
+          toast.error('Please Sign In to add items to bag');
+        } else {
+          toast.error('An error occurred while adding to bag');
+        }
+      } finally {
+        isAddingToCart(false);
+      }
     }
   };
 
@@ -694,7 +706,7 @@ const ProductView = ({ product }): JSX.Element => {
 const getAllProducts = async () => {
   return {
     products: [
-      { slug: 'whitney-cabinet-oaax20kjeqnr7df9j6co' },
+      { slug: '6141bab5f39452001c11d319' },
       { slug: '61b4bc69e2f1a100374c62a9' },
       { slug: '61b4a65ab9c243001c2eb35f' },
       { slug: '61b37d7f8aa921001d8c7e3c' },

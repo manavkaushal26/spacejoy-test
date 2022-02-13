@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
 
-const LoginManager = ({ redirect = '/' }) => {
+const LoginManager = ({ redirect = '/', ctaText = 'Login', styles = '' }) => {
   return (
     <Link href="/auth/login">
       <a
-        className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50 "
+        className={
+          styles ? styles : 'text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50 '
+        }
         href={`https://auth.spacejoy.com?redirect=${redirect}`}
         target="popup"
         onClick={() => {
@@ -14,7 +16,7 @@ const LoginManager = ({ redirect = '/' }) => {
           return false;
         }}
       >
-        Login
+        {ctaText}
       </a>
     </Link>
   );

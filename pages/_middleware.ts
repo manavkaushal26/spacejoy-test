@@ -8,9 +8,9 @@ export function middleware(req: NextRequest) {
 
   const basicAuth = req.cookies['token'];
   const path = req.nextUrl.pathname;
-  const pathName = path === '/cart' ? 'Cart' : 'Checkout';
+  const pathName = 'Checkout';
 
-  if ((path === '/cart' || path === '/checkout/store')) {
+  if (path === '/checkout/store') {
     if (basicAuth && basicAuth?.length) {
       return NextResponse.next().cookie('redirect_path', pathName);
     }

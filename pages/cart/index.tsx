@@ -3,7 +3,6 @@ import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
 import CartSummary from '@components/Cart/Summary';
 import EmptyState from '@components/Shared/EmptyState';
 import Layout from '@components/Shared/Layout';
-import LoadingState from '@components/Shared/LoadingState';
 import { QuestionMarkCircleIcon, TruckIcon, XIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
@@ -11,6 +10,7 @@ import { blurredBgProduct } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
@@ -39,36 +39,43 @@ interface CartItemInterface {
   product: any;
 }
 const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
-  const { modifyCart, updateCart, setLoading } = useStore(
+  const { modifyCart, updateCart, setLoading, removeProductFromCart } = useStore(
     (store) => ({
       modifyCart: store.modifyCart,
       updateCart: store.updateCart,
       setLoading: store.setLoading,
+      removeProductFromCart: store.removeProductFromCart,
     }),
     shallow
   );
+
   const removeItem = async () => {
+    const isUserAuthenticated = Cookies.get('token') ? true : false;
     try {
       setLoading(true);
-      const { statusCode, data } = await fetcher({
-        endPoint: '/v1/cart',
-        method: 'POST',
-        body: {
-          items: [
-            {
-              productId: product?._id,
-              quantity: 0,
-              designId: '',
-              projectId: '',
-            },
-          ],
-        },
-      });
-      if (statusCode < 301) {
-        updateCart(data);
-        toast.success('Removed item successfully!');
+      if (!isUserAuthenticated) {
+        removeProductFromCart(product?._id, retailer?._id);
       } else {
-        throw new Error();
+        const { statusCode, data } = await fetcher({
+          endPoint: '/v1/cart',
+          method: 'POST',
+          body: {
+            items: [
+              {
+                productId: product?._id,
+                quantity: 0,
+                designId: '',
+                projectId: '',
+              },
+            ],
+          },
+        });
+        if (statusCode < 301) {
+          updateCart(data);
+          toast.success('Removed item successfully!');
+        } else {
+          throw new Error();
+        }
       }
     } catch {
       toast.error('Error in removing item');
@@ -77,29 +84,37 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
     }
   };
   const updateCartItemQty = async (quantity) => {
+    const isUserAuthenticated = Cookies.get('token') ? true : false;
     try {
       setLoading(true);
-      const { statusCode, data } = await fetcher({
-        endPoint: '/v1/cart',
-        method: 'POST',
-        body: {
-          items: [
-            {
-              productId: product?._id,
-              quantity,
-              designId: '',
-              projectId: '',
-            },
-          ],
-        },
-      });
-      if (statusCode < 301) {
-        updateCart(data);
+
+      if (!isUserAuthenticated) {
+        modifyCart({ ...product, retailer: { ...retailer } }, quantity, '');
         toast.success('Updated quantity successfully!');
       } else {
-        throw new Error();
+        const { statusCode, data } = await fetcher({
+          endPoint: '/v1/cart',
+          method: 'POST',
+          body: {
+            items: [
+              {
+                productId: product?._id,
+                quantity,
+                designId: '',
+                projectId: '',
+              },
+            ],
+          },
+        });
+        if (statusCode < 301) {
+          updateCart(data);
+          toast.success('Updated quantity successfully!');
+        } else {
+          throw new Error();
+        }
       }
-    } catch {
+    } catch (e) {
+      console.log(e.message);
       toast.error('Error in updating quantity');
     } finally {
       setLoading(false);
@@ -182,10 +197,12 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           </div>
         </div>
 
-        <p className="mt-4 flex text-sm text-gray-700 space-x-2">
-          <TruckIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />{' '}
-          <span>Shipping Method: {retailer?.shippingMethod}</span>
-        </p>
+        {typeof retailer?.shippingMethod !== 'undefined' ? (
+          <p className="mt-4 flex text-sm text-gray-700 space-x-2">
+            <TruckIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />{' '}
+            <span>Shipping Method: {retailer?.shippingMethod}</span>
+          </p>
+        ) : null}
       </div>
     </li>
   );
@@ -200,6 +217,7 @@ export default function Cart() {
     }),
     shallow
   );
+
   const { coupons: { coupons = [] } = [] } = useCoupons('retailer');
 
   return (
@@ -239,10 +257,12 @@ export default function Cart() {
                       <div key={cItem} className="mt-8">
                         <div className="flex justify-between">
                           <p className="font-bold capitalize">{cart?.cartItems[cItem]?.name}</p>
-                          <p className="text-sm">
-                            <span className="font-bold">Estimated Shipping:</span> $
-                            {cart?.cartItems[cItem]?.shippingCharge}
-                          </p>
+                          {typeof cart?.cartItems[cItem]?.shippingCharge !== 'undefined' ? (
+                            <p className="text-sm">
+                              <span className="font-bold">Estimated Shipping:</span> $
+                              {cart?.cartItems[cItem]?.shippingCharge}
+                            </p>
+                          ) : null}
                         </div>
                         {offerItem?.length ? (
                           <section className="group cursor-pointer relative text-center flex items-center text-sm">
