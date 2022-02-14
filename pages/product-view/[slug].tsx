@@ -134,7 +134,6 @@ const ProductView = ({ product }): JSX.Element => {
   const [addingToCart, isAddingToCart] = useState(false);
 
   const addToCart = async () => {
-    console.log('in this method');
     const isUserAuthenticated = Cookies.get('token') ? true : false;
 
     isAddingToCart(true);
