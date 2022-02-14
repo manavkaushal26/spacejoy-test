@@ -725,24 +725,34 @@ export const getStaticProps = async ({ params, res }) => {
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
 
   const { data, statusCode } = response;
+  console.log('data', data);
 
-  const { retailer: { preferred = false } = {} } = data;
-  if (!preferred) {
-    const {
-      meta: {
-        subcategory: { name: subCategoryName },
-      },
-    } = data;
+  if (statusCode <= 300) {
+    const { retailer: { preferred = false } = {} } = data;
+    if (!preferred) {
+      const {
+        meta: {
+          subcategory: { name: subCategoryName },
+        },
+      } = data;
+
+      return {
+        redirect: {
+          destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
+          permanent: true,
+        },
+      };
+    }
 
     return {
-      redirect: {
-        destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
-        permanent: true,
-      },
+      props: { product: data },
+      revalidate: 10,
+    };
+  } else {
+    return {
+      notFound: true,
     };
   }
-
-  return statusCode < 300 ? { props: { product: data }, revalidate: 10 } : { notFound: true };
 };
 
 export default ProductView;
