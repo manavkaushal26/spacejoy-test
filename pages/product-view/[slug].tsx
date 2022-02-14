@@ -285,14 +285,14 @@ const ProductView = ({ product }): JSX.Element => {
                     {productImages.map((image, idx) => (
                       <Tab.Panel key={idx}>
                         <Image
-                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
-                            alt="Angled front view with bag zipped and handles upright."
-                            className="object-contain object-center sm:rounded-lg bg-white"
-                            layout="fill"
-                            placeholder="blur"
-                            objectFit="contain"
-                            blurDataURL={blurredBgProduct}
-                          />
+                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
+                          alt="Angled front view with bag zipped and handles upright."
+                          className="object-contain object-center sm:rounded-lg bg-white"
+                          layout="fill"
+                          placeholder="blur"
+                          objectFit="contain"
+                          blurDataURL={blurredBgProduct}
+                        />
                       </Tab.Panel>
                     ))}
                   </Tab.Panels>
@@ -307,11 +307,15 @@ const ProductView = ({ product }): JSX.Element => {
                   <p className="text-3xl text-gray-900">
                     {priceToLocaleString(product?.displayPrice)}
                     {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
-                      <><small className="inline-block ml-2 text-sm text-gray-500 line-through">
-                        {priceToLocaleString(product?.msrp)}
-                      </small><small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">{discountPercent}</small></>
+                      <>
+                        <small className="inline-block ml-2 text-sm text-gray-500 line-through">
+                          {priceToLocaleString(product?.msrp)}
+                        </small>
+                        <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">
+                          {discountPercent}
+                        </small>
+                      </>
                     )}
-                    
                   </p>
                 </div>
                 {/* <div className="mt-3">
@@ -726,7 +730,6 @@ export const getStaticProps = async ({ params, res }) => {
   if (!preferred) {
     const {
       meta: {
-        category: { name: categoryName },
         subcategory: { name: subCategoryName },
       },
     } = data;
