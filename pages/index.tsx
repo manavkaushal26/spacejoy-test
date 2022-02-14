@@ -9,6 +9,7 @@ import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
+import { PushEvent } from '@utils/analyticsLogger';
 import { oldSpacejoyUrl } from '@utils/config';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
@@ -91,7 +92,17 @@ export const Home = (): JSX.Element => {
                   />
                 </div>
               </div>
-              <button className="rounded-xl" onClick={() => (location.href = '/room-select')}>
+              <button
+                className="rounded-xl"
+                onClick={() => {
+                  PushEvent({
+                    category: `Explore Sets`,
+                    action: `Go to Room Selection`,
+                    label: `HP Explore Sets`,
+                  });
+                  location.href = '/room-select';
+                }}
+              >
                 <div className="relative bg-orange-300 aspect-w-3 aspect-h-4 rounded-xl">
                   <div className="flex flex-col items-end justify-between p-8">
                     <div className="flex items-center justify-center bg-white rounded-full h-14 w-14">
@@ -120,7 +131,14 @@ export const Home = (): JSX.Element => {
               </div>
               <button
                 className="grid items-center w-1/4 h-32 grid-cols-10 p-4 border border-red-400 rounded-xl"
-                onClick={() => (location.href = '/pinterest/search')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Connect Pinterest`,
+                    action: `Go to Pinterest Connect`,
+                    label: `HP Connect Pinterest Button`,
+                  });
+                  location.href = '/pinterest/search';
+                }}
               >
                 <div className="col-span-2 justify-self-start">
                   <span className="sr-only">Pinterest</span>
@@ -180,6 +198,13 @@ export const Home = (): JSX.Element => {
                     <button
                       type="button"
                       className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      onClick={() => {
+                        PushEvent({
+                          category: `Hire a Designer`,
+                          action: `Go to Online Interior Designs`,
+                          label: `HP Connect Hire a Designer Button`,
+                        });
+                      }}
                     >
                       Hire a Designer
                     </button>
@@ -203,7 +228,14 @@ export const Home = (): JSX.Element => {
             <div className="flex space-x-8">
               <div
                 className="flex-1 p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
-                onClick={() => (location.href = '/shop?subcategory=Sofas')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Sofas List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Sofas';
+                }}
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -226,7 +258,14 @@ export const Home = (): JSX.Element => {
               </div>
               <div
                 className="flex-1 p-8 bg-red-100 rounded-xl hover:cursor-pointer"
-                onClick={() => (location.href = '/shop?subcategory=Chairs')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Chairs List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Chairs';
+                }}
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -250,7 +289,14 @@ export const Home = (): JSX.Element => {
               <div
                 className="flex-1 p-8 bg-blue-100 rounded-xl hover:cursor-pointer"
                 // onClick={() => (location.href = '/shop?subcategory=Beds')}
-                onClick={() => (location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Coffee Tables List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables';
+                }}
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -273,7 +319,14 @@ export const Home = (): JSX.Element => {
               </div>
               <div
                 className="flex-1 p-8 bg-teal-100 rounded-xl hover:cursor-pointer"
-                onClick={() => (location.href = '/shop?subcategory=Beds')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Beds List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Beds';
+                }}
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -299,7 +352,14 @@ export const Home = (): JSX.Element => {
               <button
                 type="button"
                 className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                onClick={() => (location.href = '/shop')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Shop All Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop';
+                }}
               >
                 Explore All
               </button>

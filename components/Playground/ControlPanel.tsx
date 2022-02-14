@@ -7,24 +7,43 @@ import {
 } from '@heroicons/react/outline';
 import { NavSelectContext } from '@store/NavSelect';
 import { SelectedIdContext } from '@store/SelectedId';
+import { PushEvent } from '@utils/analyticsLogger';
 import React, { useContext, useState } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 
-const ControlPanel = () => {
+const ControlPanel = ({ designSetId }) => {
   const { updateCurrentVerticalForRecommendation } = useContext(PlaygroundAssetsContext);
   const [nav, setNav] = useContext(NavSelectContext);
   const [selectedId, setSelectedId, { swapState, setSwapState }] = useContext(SelectedIdContext);
 
   const [expanded, setExpanded] = useState(false);
 
-  const handleExpand = () => setExpanded(!expanded);
+  const handleExpand = () => {
+    setExpanded(!expanded);
+    PushEvent({
+      category: `Click on Start Swapping`,
+      action: `Open Control Center | ${designSetId}`,
+      label: 'Engage with Design Set',
+    });
+  };
 
   const onSwap = (navSection) => {
     if (navSection === 'recommendations') {
+      PushEvent({
+        category: `Click on Swap(control center)`,
+        action: `Open Swap Menu | ${designSetId} | ${selectedId}`,
+        label: 'Engage with Design Set',
+      });
       updateCurrentVerticalForRecommendation(selectedId);
       setSwapState(true);
+    } else {
+      PushEvent({
+        category: `Click on Select Background`,
+        action: `Open Background Menu | ${designSetId}`,
+        label: 'Engage with Design Set',
+      });
+      setNav(navSection);
     }
-    setNav(navSection);
   };
 
   return (
@@ -39,12 +58,12 @@ const ControlPanel = () => {
         leaveTo="opacity-0"
         className="flex items-center justify-center divide-x"
       >
-        <div className="shadow-md  absolute bottom-4 right-4   flex">
+        <div className="absolute flex shadow-md bottom-4 right-4">
           <button
             onClick={handleExpand}
             className={`  bg-white z-10  flex flex-col items-center p-4 rounded-xl  transition-all `}
           >
-            <ArrowCircleLeftIcon className="h-8 w-8" />
+            <ArrowCircleLeftIcon className="w-8 h-8" />
             Start Swapping
           </button>
         </div>
@@ -59,9 +78,9 @@ const ControlPanel = () => {
         leaveFrom="opacity-100 "
         leaveTo="opacity-0 "
       >
-        <div className="shadow-md absolute bottom-4 right-4  flex  divide-x ">
+        <div className="absolute flex divide-x shadow-md bottom-4 right-4 ">
           <div className="relative group">
-            <div className="bg-black rounded-lg p-1 -top-8 absolute text-white opacity-0 duration-150 group-hover:-top-10 group-hover:opacity-100 whitespace-pre">
+            <div className="absolute p-1 text-white whitespace-pre duration-150 bg-black rounded-lg opacity-0 -top-8 group-hover:-top-10 group-hover:opacity-100">
               {!selectedId ? 'Select a product to swap' : 'Swap product for another'}
             </div>
             <button
@@ -70,19 +89,19 @@ const ControlPanel = () => {
                 !selectedId && 'pointer-events-none text-gray-400 cursor-not-allowed'
               } `}
             >
-              <SwitchHorizontalIcon className="h-8 w-8" />
+              <SwitchHorizontalIcon className="w-8 h-8" />
               Swap
             </button>
           </div>
           <div className="relative group">
-            <div className="bg-black rounded-lg p-1 -top-10 -left-2/4 absolute text-white opacity-0 duration-150 group-hover:-top-10 group-hover:opacity-100 whitespace-pre">
+            <div className="absolute p-1 text-white whitespace-pre duration-150 bg-black rounded-lg opacity-0 -top-10 -left-2/4 group-hover:-top-10 group-hover:opacity-100">
               Change Room background
             </div>
             <button
               onClick={() => onSwap('roomSelection')}
               className={`  bg-white   flex flex-col items-center p-4  rounded-r-xl transition-all `}
             >
-              <ColorSwatchIcon className="h-8 w-8" />
+              <ColorSwatchIcon className="w-8 h-8" />
               Room Selector
             </button>
           </div>
@@ -91,11 +110,11 @@ const ControlPanel = () => {
               onClick={() => onSwap('roomSelection')}
               className={`  bg-white z-10  flex flex-col items-center p-4  transition-all `}
             >
-              <SwitchHorizontalIcon className="h-8 w-8" />
+              <SwitchHorizontalIcon className="w-8 h-8" />
               Swap Set
             </button>
           </div> */}
-          <div className=" absolute -left-4 -top-4  rounded-full overflow-hidden transition-all">
+          <div className="absolute overflow-hidden transition-all rounded-full -left-4 -top-4">
             <button
               onClick={handleExpand}
               className={`  bg-white z-10 flex h-full  flex-col items-center justify-center transition-all `}

@@ -10,6 +10,7 @@ import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
+import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
@@ -19,7 +20,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
@@ -95,6 +96,7 @@ const ProductView = ({ product }): JSX.Element => {
 
     return undefined;
   }, [product]);
+  const [counter, setCounter] = useState(0);
 
   const discountPercent = useMemo(() => {
     const discount =
@@ -140,7 +142,11 @@ const ProductView = ({ product }): JSX.Element => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
 
     isAddingToCart(true);
-
+    PushEvent({
+      category: 'PDP Page - Add to Bag',
+      action: `Click on Add to Bag | ${product._id}}`,
+      label: `Add to Bag`,
+    });
     const {
       _id,
       retailer: { _id: brand },
@@ -200,6 +206,20 @@ const ProductView = ({ product }): JSX.Element => {
     fetchBrandOffers(setRetailerOffers, product?.retailer?._id);
   }, []);
 
+  // todo useRef
+  // const productDescriptionSectionClicks = (count, sectionName) => {
+  //   if (count < 1) {
+  //     setCounter(1);
+  //     PushEvent({
+  //       category: `PDP Page - ${sectionName}`,
+  //       action: `Expand the selection | ${product._id}`,
+  //       label: `${sectionName}`,
+  //     });
+  //   } else {
+  //     setCounter(0);
+  //   }
+  // };
+
   return (
     <Layout>
       <Head>
@@ -248,16 +268,16 @@ const ProductView = ({ product }): JSX.Element => {
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
               <div className="sticky top-0 ">
                 <Tab.Group as="div" className="flex flex-row space-x-4">
-                  <div className="hidden mt-6  mx-auto sm:block lg:max-w-none">
+                  <div className="hidden mx-auto mt-6 sm:block lg:max-w-none">
                     <Tab.List className="flex flex-col">
                       {productImages.map((image, idx) => (
                         <Tab
                           key={idx}
-                          className="relative my-2 w-12 h-12 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50"
+                          className="relative flex items-center justify-center w-12 h-12 my-2 text-sm font-medium text-gray-900 uppercase bg-white rounded-md cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50"
                         >
                           {({ selected }) => (
                             <>
-                              <span className="absolute inset-0 rounded-md overflow-hidden">
+                              <span className="absolute inset-0 overflow-hidden rounded-md">
                                 <Image
                                   src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_400/${image?.cdn}`}
                                   alt="Angled front view with bag zipped and handles upright."
@@ -287,7 +307,7 @@ const ProductView = ({ product }): JSX.Element => {
                         <Image
                           src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
                           alt="Angled front view with bag zipped and handles upright."
-                          className="object-contain object-center sm:rounded-lg bg-white"
+                          className="object-contain object-center bg-white sm:rounded-lg"
                           layout="fill"
                           placeholder="blur"
                           objectFit="contain"
@@ -298,7 +318,7 @@ const ProductView = ({ product }): JSX.Element => {
                   </Tab.Panels>
                 </Tab.Group>
               </div>
-              <div className=" absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
+              <div className="absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
               <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
                 <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
                 <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
@@ -389,13 +409,12 @@ const ProductView = ({ product }): JSX.Element => {
                     <DeliveryTimeline productId={product?._id} />
                   </div>
                 )}
-
                 <form className="my-4">
                   {itemStatus ? (
                     <div className="flex my-8 space-x-4 sm:flex-col-1">
                       <button
                         type="button"
-                        className="px-12 py-3 text-base font-medium text-white cursor-not-allowed bg-gray-500 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        className="px-12 py-3 text-base font-medium text-white bg-gray-500 shadow-xs cursor-not-allowed group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                         disabled={true}
                       >
                         <span>{itemStatus}</span>
@@ -448,7 +467,7 @@ const ProductView = ({ product }): JSX.Element => {
                       <>
                         <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
                           <div className="flex">
-                            <span className="mr-2 text-sm text-gray-900 font-bold">Available Offers</span>
+                            <span className="mr-2 text-sm font-bold text-gray-900">Available Offers</span>
                             <LottieAnimation animationData={offerLottie} height={20} width={20} />
                           </div>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
@@ -573,8 +592,10 @@ const ProductView = ({ product }): JSX.Element => {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                          <span className="text-sm text-gray-900 font-bold">Shipping Policy</span>
+                        <Disclosure.Button
+                          className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm"
+                        >
+                          <span className="text-sm font-bold text-gray-900">Shipping Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>
@@ -627,8 +648,10 @@ const ProductView = ({ product }): JSX.Element => {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
-                          <span className="text-sm text-gray-900 font-bold">Return Policy</span>
+                        <Disclosure.Button
+                          className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm"
+                        >
+                          <span className="text-sm font-bold text-gray-900">Return Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                         </Disclosure.Button>
                         <Disclosure.Panel>

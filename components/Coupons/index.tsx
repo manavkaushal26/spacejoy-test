@@ -1,6 +1,7 @@
 import CartItemDimmer from '@components/Cart/CartItemDimmer';
 import { CheckCircleIcon, QuestionMarkCircleIcon, TagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import { PushEvent } from '@utils/analyticsLogger';
 import fetcher from '@utils/fetcher';
 import React, { useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
@@ -35,6 +36,11 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
       if (statusCode > 301) {
         throw new Error(data);
       } else {
+        PushEvent({
+          category: 'Checkout - Apply Coupon In Modal',
+          action: `Apply Coupon Success | ${couponCode}`,
+          label: 'Apply',
+        });
         onSuccess(data);
       }
     } catch (e) {
@@ -62,7 +68,7 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
             <div className="relative mt-8">
               <input
                 type="text"
-                className="h-12 w-full pl-4 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                className="z-0 w-full h-12 pl-4 pr-20 rounded-lg focus:shadow focus:outline-none"
                 placeholder="Enter Coupon code"
                 value={currentCoupon}
                 onChange={(e) => {
@@ -71,12 +77,12 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
               />
               <div className="absolute top-2 right-2">
                 <button
-                  className="h-8 w-20 text-white text-xs rounded-lg bg-gray-900 text-center flex justify-center items-center"
+                  className="flex items-center justify-center w-20 h-8 text-xs text-center text-white bg-gray-900 rounded-lg"
                   onClick={() => applyCoupon(currentCoupon)}
                 >
                   {applyingCoupon ? (
                     <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      className="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -101,23 +107,23 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
               return (
                 <>
                   <div>
-                    <h3 className="space-y-2 mt-4">Spacejoy Offers</h3>
+                    <h3 className="mt-4 space-y-2">Spacejoy Offers</h3>
                     {offers?.map((couponItem) => {
                       return (
                         <div
                           key={couponItem?._id}
-                          className="mt-4 border-gray-300 relative bg-white border rounded-lg shadow-sm p-4  cursor-pointer focus:outline-none"
+                          className="relative p-4 mt-4 bg-white border border-gray-300 rounded-lg shadow-sm cursor-pointer focus:outline-none"
                         >
                           <div className="inline-block">
-                            <div className="border border-dashed border-gray-900 inline-block items-center justify-center p-1 flex">
-                              <TagIcon className="h-4 w-4" />{' '}
+                            <div className="flex items-center justify-center inline-block p-1 border border-gray-900 border-dashed">
+                              <TagIcon className="w-4 h-4" />{' '}
                               <span className="inline-block ml-2">{couponItem?.code?.toUpperCase()}</span>
                             </div>
                           </div>
-                          <p className="text-sm font-bold text-gray-900 mt-2">{couponItem?.title}</p>
-                          <p className="text-sm  text-gray-900 mt-1">{couponItem?.description}</p>
+                          <p className="mt-2 text-sm font-bold text-gray-900">{couponItem?.title}</p>
+                          <p className="mt-1 text-sm text-gray-900">{couponItem?.description}</p>
                           <button
-                            className="h-8 w-20 text-gray-900 text-xs rounded-xs bg-white border border-gray-900 mt-4 "
+                            className="w-20 h-8 mt-4 text-xs text-gray-900 bg-white border border-gray-900 rounded-xs "
                             onClick={() => applyCoupon(couponItem.code)}
                           >
                             Use
@@ -132,9 +138,9 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
               return (
                 <>
                   <div className="mt-8">
-                    <h3 className="space-y-2 mt-4">Spacejoy Brand Offers (Auto-appplied on your cart)</h3>
-                    <p className="text-gray-500 text-sm">Brought to you exclusively by Spacejoy</p>
-                    <ul className="mt-4 bg-gray-200 p-2 rounded-sm">
+                    <h3 className="mt-4 space-y-2">Spacejoy Brand Offers (Auto-appplied on your cart)</h3>
+                    <p className="text-sm text-gray-500">Brought to you exclusively by Spacejoy</p>
+                    <ul className="p-2 mt-4 bg-gray-200 rounded-sm">
                       {offers?.map((offer, index) => {
                         return (
                           <li
@@ -144,19 +150,19 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
                             }`}
                           >
                             <section className="flex items-center">
-                              <section className="group cursor-pointer relative  text-center">
+                              <section className="relative text-center cursor-pointer group">
                                 <QuestionMarkCircleIcon
-                                  className="group w-5 h-5 cursor-pointer relative inline-block"
+                                  className="relative inline-block w-5 h-5 cursor-pointer group"
                                   aria-hidden="true"
                                 />
-                                <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
+                                <div className="absolute z-10 p-2 text-xs text-center text-white bg-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 bottom-full w-28">
                                   {offer?.discountType === 'percent' ? (
                                     <span>{`Get ${offer?.discount}% off on a minimum purchase of $${offer?.constraints?.minAmount} from ${offer?.retailer?.name}. Max discount $${offer?.maxDiscount}`}</span>
                                   ) : (
                                     <span>{`Save $${offer?.discount} on a minimum purchase of $${offer?.constraints?.minAmount} from ${offer?.retailer?.name}.`}</span>
                                   )}
                                   <svg
-                                    className="absolute text-black h-2 w-full left-0 top-full"
+                                    className="absolute left-0 w-full h-2 text-black top-full"
                                     x="0px"
                                     y="0px"
                                     viewBox="0 0 255 255"
@@ -170,7 +176,7 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
                               <span className="inline-block ml-2">{offer?.retailer?.name}</span>
                               {retailersInCart?.indexOf(offer?.retailer?._id) > -1 ? (
                                 <CheckCircleIcon
-                                  className="group w-5 h-5  relative inline-block ml-2 text-green-500"
+                                  className="relative inline-block w-5 h-5 ml-2 text-green-500 group"
                                   aria-hidden="true"
                                 />
                               ) : null}
@@ -183,7 +189,7 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
                                     : 'border-gray-400'
                                 } inline-block items-center justify-center p-1 flex`}
                               >
-                                <TagIcon className="h-4 w-4" />{' '}
+                                <TagIcon className="w-4 h-4" />{' '}
                                 <span className="inline-block ml-2">
                                   SAVE {offer?.discount} {offer?.discountType === 'percent' ? '%' : ''}
                                 </span>

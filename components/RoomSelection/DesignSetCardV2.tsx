@@ -1,5 +1,6 @@
 import { CollagesListInterface } from '@components/Collages/interface';
 import { blurredBgProduct } from '@public/images/bg-base-64';
+import { PushEvent } from '@utils/analyticsLogger';
 import { priceToLocaleString } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,9 +30,16 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
           className={`grid grid-cols-4 border transition-all hover:shadow-lg rounded-xl overflow-hidden group  ${
             large ? 'aspect-[16/5]' : 'aspect-[16/8] '
           }`}
+          onClick={() => {
+            PushEvent({
+              category: `Select Design Set Card`,
+              action: `Go to Design Set PDP Page | ${designData?._id}`,
+              label: `Explore Design Set`,
+            });
+          }}
         >
           <div className={`relative overflow-hidden ${large ? 'col-span-3' : 'col-span-2'}`}>
-            <div className="p-4 z-10 h-full">
+            <div className="z-10 h-full p-4">
               <div className="relative h-full">
                 <Image
                   loading="eager"
@@ -62,24 +70,24 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                 {designData?.name.slice(0, -11)}
               </h2>
               {tagsInPills?.length > 0 && (
-                <div className="flex gap-1 mb-1 mt-1">
+                <div className="flex gap-1 mt-1 mb-1">
                   {tagsInPills.map((tag, index) => (
                     <span
                       key={`${tag}-${index}`}
-                      className="capitalize  border bg-gray-300 py-1 px-2 rounded-md text-xs"
+                      className="px-2 py-1 text-xs capitalize bg-gray-300 border rounded-md"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
               )}
-              <p className="line-clamp-3 text-gray-600 italic">{designData?.description}</p>
+              <p className="italic text-gray-600 line-clamp-3">{designData?.description}</p>
             </div>
             <div>
-              <div className="font-bold text-xl mt-2 mb-4">{priceToLocaleString(designData?.price)}</div>
+              <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div>
 
               <div className="flex gap-4">
-                <a className="px-4 py-2 border border-black rounded-lg transition-all group-hover:scale-105  hover:shadow-xl">
+                <a className="px-4 py-2 transition-all border border-black rounded-lg group-hover:scale-105 hover:shadow-xl">
                   Personalize
                 </a>
               </div>

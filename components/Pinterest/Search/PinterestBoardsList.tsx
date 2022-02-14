@@ -1,11 +1,11 @@
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import PinterestSearch from '@public/lotties/pinterest-loading.json';
+import { PushEvent } from '@utils/analyticsLogger';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useRef } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import styled, { keyframes } from 'styled-components';
 import { useFindYourInpirationContext } from '../usePinterestSearchContext';
-// import { PushEvent } from '@utils/analyticsLogger';
 
 const FadeInAnimation = keyframes`
     from {
@@ -98,11 +98,11 @@ const PinterestBoardsList: React.FC = () => {
   }, [error, pinList, isUnsupportedUrl]);
 
   const sendEventToGA = (pinterestUrl) => {
-    // PushEvent({
-    //   category: 'Click on Pinterest Pin - View Similar Products',
-    //   action: `Go to Similar Products PDP Page | ${pinterestUrl}`,
-    //   label: `Explore Similar Products | ${pinterestUrl}`,
-    // });
+    PushEvent({
+      category: 'Click on Pinterest Pin - Find Similar Products',
+      action: `Go to Product recommendations Page | ${pinterestUrl}`,
+      label: `Find Similar Products`,
+    });
   };
 
   useEffect(() => {

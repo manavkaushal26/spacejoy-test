@@ -1,4 +1,5 @@
 import { useShopFilterContext } from '@store/ShopFilterContext';
+import { PushEvent } from '@utils/analyticsLogger';
 import { oldSpacejoyUrl } from '@utils/config';
 import React, { useMemo } from 'react';
 
@@ -63,6 +64,13 @@ const ShopCategories = ({ callback }) => {
                           <a
                             className="block rounded pl-1 py-0.5 focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                             key={subCategory?._id}
+                            onClick={() => {
+                              PushEvent({
+                                category: `Top Nav - Shop by Sub-category`,
+                                action: `Go to ${subCategory?.name} List Page`,
+                                label: `Shop Now`,
+                              });
+                            }}
                           >
                             <li
                               className="text-sm text-gray-700 capitalize cursor-pointer hover:underline"

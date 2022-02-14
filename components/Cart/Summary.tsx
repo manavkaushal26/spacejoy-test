@@ -5,6 +5,7 @@ import { XCircleIcon } from '@heroicons/react/outline';
 import { QuestionMarkCircleIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
+import { PushEvent } from '@utils/analyticsLogger';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
 import Cookies from 'js-cookie';
@@ -151,15 +152,15 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div className="flex items-center justify-center">
                     <dt className="text-sm text-gray-600">You save</dt>
-                    <section className="group cursor-pointer relative  text-center">
+                    <section className="relative text-center cursor-pointer group">
                       <QuestionMarkCircleIcon
-                        className="group w-4 h-4 cursor-pointer relative inline-block text-gray-600"
+                        className="relative inline-block w-4 h-4 text-gray-600 cursor-pointer group"
                         aria-hidden="true"
                       />
-                      <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
+                      <div className="absolute z-10 p-2 text-xs text-center text-white bg-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 bottom-full w-28">
                         Max applicable <strong>coupon</strong> discount is $400
                         <svg
-                          className="absolute text-black h-2 w-full left-0 top-full"
+                          className="absolute left-0 w-full h-2 text-black top-full"
                           x="0px"
                           y="0px"
                           viewBox="0 0 255 255"
@@ -245,11 +246,11 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
               </div>
             ) : null}
           </dl>
-          <div className="text-xs mt-4">
+          <div className="mt-4 text-xs">
             <AffirmPrice totalAmount={cart?.invoiceData?.total} affirmType="as-low-as" flow={affirmFlow} />
           </div>
 
-          <p className="text-xs mt-8 text-gray-500">
+          <p className="mt-8 text-xs text-gray-500">
             *Have a promo/coupon code from your favorite brand? Apply it during checkout
           </p>
 

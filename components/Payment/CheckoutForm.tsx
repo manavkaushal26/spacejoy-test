@@ -1,9 +1,9 @@
 // import Button from '@components/Button';
 import SVGLoader from '@components/Shared/SVGLoader';
 import { useStore } from '@lib/store';
+import { PushEvent } from '@utils/analyticsLogger';
 // import Alert from '@sections/Checkout/Alert';
 // import themeConst from '@theme/index';
-// import { PushEvent } from '@utils/analyticsLogger';
 import fetcher from '@utils/fetcher';
 // import { reactLocalStorage } from '@utils/helper';
 // import { saveUtmClick } from '@utils/utmAnalytics';
@@ -160,6 +160,13 @@ function CheckoutForm({
           order_custom_val: plan,
         });
       }
+      PushEvent({
+        category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
+        action: `Place ${token ? 'Paid' : 'Free'} Order For - ${
+          checkoutFlow === 'store' ? cartData?.invoiceData?.total : plan
+        }`,
+        label: 'Place your order',
+      });
 
       if (checkoutFlow !== 'payment') {
         const { data: { order = '' } = {} } = response;
@@ -168,6 +175,11 @@ function CheckoutForm({
     } else {
       setSubmitInProgress(false);
       cb(false);
+      PushEvent({
+        category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
+        action: `Failed Paid Order For - ${checkoutFlow === 'store' ? cartData?.invoiceData?.total : plan}`,
+        label: `Place your order ${response.message}`,
+      });
       setPaymentError(checkoutFlow === 'store' ? response.data.message : response.message);
     }
   };
@@ -220,6 +232,13 @@ function CheckoutForm({
           <button
             type="submit"
             className="flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 w-52"
+            onClick={() => {
+              console.log({
+                category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
+                action: `Attempt to Order - ${plan}`,
+                label: 'Attempt to Place your order',
+              });
+            }}
           >
             {submitInProgress ? (
               <SVGLoader />

@@ -1,5 +1,6 @@
 import { XIcon } from '@heroicons/react/outline';
 import { NavSelectContext } from '@store/NavSelect';
+import { PushEvent } from '@utils/analyticsLogger';
 import { publicRoutes } from '@utils/constants';
 import { off, on } from '@utils/events';
 import fetcher from '@utils/fetcher';
@@ -155,9 +156,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
 
   const download = (): void => {
     // PushEvent({
-    //   category: `Download Design Set`,
+    //   category: `Click on Download`,
     //   action: `Download Design Set ${data[data.length - 1]?._id ? `| ${data[data.length - 1]?._id}` : ``}`,
-    //   label: 'Download Design Set',
+    //   label: 'Download Design',
     // });
     // toast.promise(
     // sendDownloadNotification(value).then(() => {
@@ -445,7 +446,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         data: { id, dimension, renderImages, displayPrice, retailer, name, price, vertical = '' },
       } = busData;
       const activeDesignSets = activeCollages?.length ? activeCollages?.join(',') : 'null';
-      // PushEvent({
+      // console.log({
       //   category: 'Main Menu - Product View',
       //   action: `Add New Product | ${activeDesignSets} | ${id}`,
       //   label: 'Load New Product',
@@ -861,8 +862,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         ref={stageParentRef}
       >
         {PlaygroundAssets?.length !== 0 && (
-          <div className="absolute left-4 top-4 z-10 flex flex-col space-y-2" id="canvas-download">
-            <DownloadModal onOk={initiateDownload} />
+          <div className="absolute z-10 flex flex-col space-y-2 left-4 top-4" id="canvas-download">
+            <DownloadModal onOk={initiateDownload} designSetId={collageData?.id} />
             {/* {currentMode && currentMode === 'edit' && (
               <UnitAction position="left" title="Save Collage" onClick={() => saveCollageWithNotification({})}>
                 <SaveIcon className="w-4 h-4" />
@@ -872,13 +873,13 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         )}
         {nav === 'recommendations' && swapState && (
           <div className="absolute inset-0">
-            <button className="absolute  w-full bg-black/30 z-20 h-full cursor-auto" onClick={() => setNav()} />
+            <button className="absolute z-20 w-full h-full cursor-auto bg-black/30" onClick={() => setNav()} />
             <div
               className={`absolute right-0 top-0 h-full z-20 bg-white w-1/3 shadow-inner transition-all  ${
                 selectedId ? '' : 'translate-x-full'
               }`}
             >
-              <button className="absolute right-2 top-2 cursor-pointer z-20 p-2" onClick={() => setSwapState(false)}>
+              <button className="absolute z-20 p-2 cursor-pointer right-2 top-2" onClick={() => setSwapState(false)}>
                 <XIcon className="w-6 h-6" />
               </button>
               <RecommendationsPanel />
@@ -887,16 +888,16 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         )}
         {nav === 'roomSelection' && (
           <div className="absolute inset-0">
-            <button className="absolute w-full h-full bg-black/30  z-20 cursor-auto" onClick={() => setNav()} />
-            <div className="overflow-scroll absolute z-20 right-0 top-0 bottom-0 w-1/3 h-full cursor-auto bg-white  shadow-md">
+            <button className="absolute z-20 w-full h-full cursor-auto bg-black/30" onClick={() => setNav()} />
+            <div className="absolute top-0 bottom-0 right-0 z-20 w-1/3 h-full overflow-scroll bg-white shadow-md cursor-auto">
               <BgSelector />
             </div>
           </div>
         )}
         {/* {nav === 'designSetSelection' && (
           <div className="absolute inset-0">
-            <button className="absolute w-full h-full bg-black/30  z-20 cursor-auto" onClick={() => setNav()}>
-              <div className="overflow-scroll absolute z-20 right-0 top-0 bottom-0 w-1/3 h-full cursor-auto bg-white  shadow-md">
+            <button className="absolute z-20 w-full h-full cursor-auto bg-black/30" onClick={() => setNav()}>
+              <div className="absolute top-0 bottom-0 right-0 z-20 w-1/3 h-full overflow-scroll bg-white shadow-md cursor-auto">
                 <RecommendationsPanel />
               </div>
             </button>

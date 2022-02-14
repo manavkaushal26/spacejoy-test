@@ -7,6 +7,7 @@ import { QuestionMarkCircleIcon, TruckIcon, XIcon } from '@heroicons/react/solid
 import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
+import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
@@ -53,36 +54,48 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
     try {
       setLoading(true);
-      if (!isUserAuthenticated) {
-        removeProductFromCart(product?._id, retailer?._id);
-      } else {
-        const { statusCode, data } = await fetcher({
-          endPoint: '/v1/cart',
-          method: 'POST',
-          body: {
-            items: [
-              {
-                productId: product?._id,
-                quantity: 0,
-                designId: '',
-                projectId: '',
-              },
-            ],
-          },
+      const { statusCode, data } = await fetcher({
+        endPoint: '/v1/cart',
+        method: 'POST',
+        body: {
+          items: [
+            {
+              productId: product?._id,
+              quantity: 0,
+              designId: '',
+              projectId: '',
+            },
+          ],
+        },
+      });
+      if (statusCode < 301) {
+        // todo - confirm this event
+        PushEvent({
+          category: `Cart`,
+          action: `Success! Product ${product?._id} removed from Cart!`,
+          label: `Cart Update`,
         });
-        if (statusCode < 301) {
-          updateCart(data);
-          toast.success('Removed item successfully!');
+        updateCart(data);
+        toast.success('Removed item successfully!');
+
+        if (!isUserAuthenticated) {
+          removeProductFromCart(product?._id, retailer?._id);
         } else {
+          PushEvent({
+            category: `Cart`,
+            action: `Failed!! Product ${product?._id} not removed from Cart!`,
+            label: `Cart Update`,
+          });
           throw new Error();
         }
       }
-    } catch {
+    }
+    catch {
       toast.error('Error in removing item');
     } finally {
       setLoading(false);
     }
-  };
+  } 
   const updateCartItemQty = async (quantity) => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
     try {
@@ -107,6 +120,11 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           },
         });
         if (statusCode < 301) {
+          PushEvent({
+            category: 'Cart',
+            action: `Success! Cart Quantity of ${product?._id} Updated to ${quantity}`,
+            label: `Cart Update`,
+          });
           updateCart(data);
           toast.success('Updated quantity successfully!');
         } else {
@@ -114,7 +132,11 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
         }
       }
     } catch (e) {
-      console.log(e.message);
+      PushEvent({
+        category: 'Cart',
+        action: `Failed!! Cart Quantity of ${product?._id} not Updated to ${quantity}`,
+        label: `Cart Update`,
+      });
       toast.error('Error in updating quantity');
     } finally {
       setLoading(false);
@@ -135,23 +157,23 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
         />
       </div>
 
-      <div className="ml-4 col-span-9 flex-1 flex flex-col justify-between sm:ml-6">
+      <div className="flex flex-col justify-between flex-1 col-span-9 ml-4 sm:ml-6">
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div>
             <div className="flex justify-between">
               <h3 className="text-sm capitalize">
                 <a
                   href={`/product-view/${product._id}`}
-                  className="capitalize font-medium text-gray-700 hover:text-gray-800"
+                  className="font-medium text-gray-700 capitalize hover:text-gray-800"
                 >
                   {product.name}
                 </a>
               </h3>
             </div>
-            <div className="mt-1 flex text-sm">
+            <div className="flex mt-1 text-sm">
               {product.dimension ? (
-                <p className="my-4 border-l border-gray-200 text-gray-500 flex text-xs">
-                  <span className="inline-block  text-sm text-gray-700 text-xs">{`${(
+                <p className="flex my-4 text-xs text-gray-500 border-l border-gray-200">
+                  <span className="inline-block text-xs text-sm text-gray-700">{`${(
                     product?.dimension?.width * 12
                   ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
                     product?.dimension?.height * 12
@@ -187,19 +209,19 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
             <div className="absolute top-0 right-0">
               <button
                 type="button"
-                className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500"
+                className="inline-flex p-2 -m-2 text-gray-400 hover:text-gray-500"
                 onClick={removeItem}
               >
                 <span className="sr-only">Remove</span>
-                <XIcon className="h-5 w-5" aria-hidden="true" />
+                <XIcon className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
           </div>
         </div>
 
         {typeof retailer?.shippingMethod !== 'undefined' ? (
-          <p className="mt-4 flex text-sm text-gray-700 space-x-2">
-            <TruckIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />{' '}
+          <p className="flex mt-4 space-x-2 text-sm text-gray-700">
+            <TruckIcon className="flex-shrink-0 w-5 h-5 text-gray-500" aria-hidden="true" />{' '}
             <span>Shipping Method: {retailer?.shippingMethod}</span>
           </p>
         ) : null}
@@ -230,7 +252,7 @@ export default function Cart() {
         <Layout.Header />
         <Layout.Body>
           <div className="bg-white">
-            <div className="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="max-w-2xl px-4 pt-16 pb-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
               <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
               {Object.keys(cart?.cartItems)?.length === 0 && (
                 <>{loading ? null : <EmptyState title="No items found" message={''} />}</>
@@ -265,22 +287,22 @@ export default function Cart() {
                           ) : null}
                         </div>
                         {offerItem?.length ? (
-                          <section className="group cursor-pointer relative text-center flex items-center text-sm">
+                          <section className="relative flex items-center text-sm text-center cursor-pointer group">
                             <span>
                               Save {offerItem[0]?.discount} {offerItem[0]?.discountType === 'percent' ? '%' : '$'}
                             </span>
                             <QuestionMarkCircleIcon
-                              className="group w-4 h-4 cursor-pointer relative inline-block ml-1"
+                              className="relative inline-block w-4 h-4 ml-1 cursor-pointer group"
                               aria-hidden="true"
                             />
-                            <div className="opacity-0  bg-black text-white text-center text-xs rounded-lg p-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none w-28">
+                            <div className="absolute z-10 p-2 text-xs text-center text-white bg-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 bottom-full w-28">
                               {offerItem[0]?.discountType === 'percent' ? (
                                 <span>{`Get ${offerItem[0]?.discount}% off on a minimum purchase of $${offerItem[0]?.constraints?.minAmount} from ${offerItem[0]?.retailer?.name}. Max discount $${offerItem[0]?.maxDiscount}`}</span>
                               ) : (
                                 <span>{`Save $${offerItem[0]?.discount} on a minimum purchase of $${offerItem[0]?.constraints?.minAmount} from ${offerItem[0]?.retailer?.name}.`}</span>
                               )}
                               <svg
-                                className="absolute text-black h-2 w-full left-0 top-full"
+                                className="absolute left-0 w-full h-2 text-black top-full"
                                 x="0px"
                                 y="0px"
                                 viewBox="0 0 255 255"
@@ -310,7 +332,7 @@ export default function Cart() {
                 {!loading && cart?.count !== 0 && (
                   <section
                     aria-labelledby="summary-heading"
-                    className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 sticky top-20"
+                    className="sticky px-4 py-6 mt-16 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 top-20"
                   >
                     <CartSummary />
                   </section>

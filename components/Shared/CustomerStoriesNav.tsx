@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import { PushEvent } from '@utils/analyticsLogger';
 import { oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +10,16 @@ const CustomerStoriesNav = () => {
     <div className="max-w-screen-xl min-h-[80vh]">
       <div className="grid grid-cols-4 gap-10">
         <Link href={`${oldSpacejoyUrl}/interior-designs`} passHref>
-          <a target="_blank">
+          <a
+            target="_blank"
+            onClick={() => {
+              PushEvent({
+                category: `Top Nav - Explore Ideas`,
+                action: `Go to Interior Designs`,
+                label: `Interior Designs`,
+              });
+            }}
+          >
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-green-50 hover:bg-green-100">
               <div className="relative w-full">
                 <Image
@@ -48,7 +58,16 @@ const CustomerStoriesNav = () => {
         </div> */}
 
         <Link href={`${oldSpacejoyUrl}/interior-designs-blog`} passHref>
-          <a target="_blank">
+          <a
+            target="_blank"
+            onClick={() => {
+              PushEvent({
+                category: `Top Nav - Explore Ideas`,
+                action: `Go to Tips & Guides`,
+                label: `Tips & Guides`,
+              });
+            }}
+          >
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-cyan-50 hover:bg-cyan-100">
               <div className="relative w-full">
                 <Image
@@ -68,7 +87,16 @@ const CustomerStoriesNav = () => {
         </Link>
 
         <Link href={`${oldSpacejoyUrl}/customer-stories`} passHref>
-          <a target="_blank">
+          <a
+            target="_blank"
+            onClick={() => {
+              PushEvent({
+                category: `Top Nav - Explore Ideas`,
+                action: `Go to Customer Stories`,
+                label: `Customer Stories`,
+              });
+            }}
+          >
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-yellow-50 hover:bg-yellow-100">
               <div className="relative w-full">
                 <Image

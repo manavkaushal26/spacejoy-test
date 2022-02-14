@@ -1,6 +1,6 @@
 import { XIcon } from '@heroicons/react/outline';
 import { NavSelectContext } from '@store/NavSelect';
-// import { PushEvent } from '@utils/analyticsLogger';
+import { PushEvent } from '@utils/analyticsLogger';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
@@ -429,16 +429,17 @@ const BgSelector: React.FC = () => {
     setBgImgUrl(valueString, type);
     const name = type === 'bg-img' ? 'room-image' : 'bg-color';
     const activeDesignSets = activeCollages?.length ? activeCollages?.join(',') : 'null';
-    // PushEvent({
-    //   category: 'Background Menu',
-    //   action: `Success | Change Background | ${activeDesignSets} | ${name}`,
-    //   label: 'Edit Design Set',
-    // });
+
+    PushEvent({
+      category: 'Room Background selected',
+      action: `Success | Change Background | ${activeDesignSets} | ${name}`,
+      label: 'Engage with Design Set',
+    });
   };
 
   return (
     <div className="grid-cols-1 p-4">
-      <div className="flex justify-between sticky top-0 z-10 py-2 bg-white">
+      <div className="sticky top-0 z-10 flex justify-between py-2 bg-white">
         <div className="text-xl font-bold">Select background</div>
         <button onClick={() => setNav('')}>
           <XIcon className="w-6 h-6" />
@@ -446,7 +447,7 @@ const BgSelector: React.FC = () => {
       </div>
       <div>
         <h2 className="mb-1 font-bold">Rooms</h2>
-        <div className="overflow-scroll grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 overflow-scroll">
           {RoomImageList.map((img) => {
             return (
               <div
@@ -464,13 +465,13 @@ const BgSelector: React.FC = () => {
       </div>
       <div className="mt-8">
         <h2 className="mb-1 font-normal">Colors</h2>
-        <div className="overflow-scroll grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 overflow-scroll">
           {colorList.map((item) => {
             return (
               <div
                 key={item?.id}
                 onClick={() => setBg(item?.colorHex, 'bg-color')}
-                className=" box-border flex-shrink-0 h-14 last:mr-0 relative cursor-pointer rounded border border-gray-200"
+                className="box-border relative flex-shrink-0 border border-gray-200 rounded cursor-pointer h-14 last:mr-0"
                 style={{ backgroundColor: `${item?.colorHex}` }}
                 title={item?.paintDetails}
               />

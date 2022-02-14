@@ -96,6 +96,16 @@ const WindowLocalStorage = function reactLocalStorage() {
 
 const reactLocalStorage = new (WindowLocalStorage as any)();
 
+const getParameterByName = (name, url = window?.location?.href) => {
+  name = name.replace(/[[\]]/g, '\\$&');
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+  const results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};
+
 const b64toFile = async (base64String) => {
   return fetch(base64String)
     .then((res) => res.blob())
@@ -115,4 +125,14 @@ function downloadURI(uri, name) {
   document.body.removeChild(link);
 }
 
-export { debounce, arraysEqual, isDigit, onlyUnique, priceToLocaleString, reactLocalStorage, b64toFile, downloadURI };
+export {
+  debounce,
+  arraysEqual,
+  isDigit,
+  onlyUnique,
+  priceToLocaleString,
+  reactLocalStorage,
+  getParameterByName,
+  b64toFile,
+  downloadURI,
+};

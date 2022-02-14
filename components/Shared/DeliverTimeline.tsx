@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import useLocalStorageState from '@hooks/useLocalStorage';
+import { PushEvent } from '@utils/analyticsLogger';
 import fetcher from '@utils/fetcher';
 import { isDigit } from '@utils/helpers';
 import PropTypes from 'prop-types';
@@ -51,20 +52,20 @@ const DeliveryTimeline = ({ productId }) => {
 
       if (response?.statusCode <= 300) {
         setDeliveryDetails(response.data);
-        // PushEvent({
-        // 	category: "Check Pincode",
-        // 	action: `Success | Check Pincode`,
-        // 	label: `Check Pincode`,
-        // });
+        PushEvent({
+          category: 'Check Pincode',
+          action: `Success | Check Pincode | ${zipCode}`,
+          label: `Check Pincode`,
+        });
         setIsExpanded(false);
       }
     } else {
       setErrorMessage('Please enter valid Zipcode');
-      // PushEvent({
-      // 	category: "Check Pincode",
-      // 	action: `Failure | Check Pincode`,
-      // 	label: `Check Pincode`,
-      // });
+      PushEvent({
+        category: 'Check Pincode',
+        action: `Failure | Check Pincode | ${zipCode}`,
+        label: `Check Pincode`,
+      });
     }
     setIsLoading(false);
   };
@@ -95,13 +96,13 @@ const DeliveryTimeline = ({ productId }) => {
 
   return isAvailableForRetailer ? (
     // <div id={!deliveryDetails?.status || errorMessage?.length > 0} className="flex items-center">
-    <div className="text-sm space-y-4">
+    <div className="space-y-4 text-sm">
       <div className="flex items-center">
         <div className="flex">
           <strong>Ship to: </strong>
           <button className="flex items-center justify-center" onClick={toggleExpandZipCode}>
-            <span className="zipcode underline underline-offset-2">{!isExpanded && zipCode}</span>{' '}
-            {!isExpanded ? <ChevronDownIcon className="h-4 w-4" /> : null}
+            <span className="underline zipcode underline-offset-2">{!isExpanded && zipCode}</span>{' '}
+            {!isExpanded ? <ChevronDownIcon className="w-4 h-4" /> : null}
           </button>
         </div>
         {isExpanded && (
@@ -109,7 +110,7 @@ const DeliveryTimeline = ({ productId }) => {
             <div className="relative ml-2">
               <input
                 type="text"
-                className="h-12 w-full pl-4 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                className="z-0 w-full h-12 pl-4 pr-20 rounded-lg focus:shadow focus:outline-none"
                 placeholder="Enter zip code"
                 value={zipCode}
                 onChange={onValueChange}
@@ -118,7 +119,7 @@ const DeliveryTimeline = ({ productId }) => {
                 <button
                   disabled={isCheckDisabled}
                   onClick={getDeliveryDetails}
-                  className="h-8 w-20 text-white rounded-lg bg-gray-900 flex justify-center items-center"
+                  className="flex items-center justify-center w-20 h-8 text-white bg-gray-900 rounded-lg"
                 >
                   {isLoading ? <SVGLoader /> : 'Check'}
                 </button>
@@ -129,7 +130,7 @@ const DeliveryTimeline = ({ productId }) => {
 
         {errorMessage.length > 0 && <p>{errorMessage}</p>}
       </div>
-      <p className="delivery-message font-bold">{deliveryDetails?.data?.estimation}</p>
+      <p className="font-bold delivery-message">{deliveryDetails?.data?.estimation}</p>
     </div>
   ) : (
     <></>

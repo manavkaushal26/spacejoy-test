@@ -73,7 +73,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             objectFit="contain"
                           /> */}
                           <PlaygroundWithNoSSR w={size[0]} h={size[1]} collageData={collageData} />
-                          <ControlPanel />
+                          <ControlPanel designSetId={collageData._id} />
                         </div>
                         <DesignSetDetails collageData={collageData} correctedCollageName={correctedCollageName} />
                       </div>

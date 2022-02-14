@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // import LottieAnimation from '@components/LottieAnimation';
 
-// import { PushEvent } from '@utils/analyticsLogger';
+import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary, pinterestConfig } from '@utils/config';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -126,11 +126,11 @@ const SearchBox: React.FC = () => {
           searchQuery,
         },
       });
-      // PushEvent({
-      //   category: 'Added Pinterest Link',
-      //   action: `Added Pinterest Link | ${searchQuery}`,
-      //   label: `Added Pinterest Link`,
-      // });
+      PushEvent({
+        category: 'Pinterest Search - Added Pinterest Link',
+        action: `Added Pinterest Link | ${searchQuery}`,
+        label: `Added Pinterest Link`,
+      });
       isClicked.current = true;
     }
   };
@@ -167,6 +167,13 @@ const SearchBox: React.FC = () => {
           <a
             className="text-center text-white pinterest-login bg-[#e60023] p-2 gap-2 flex items-center justify-between transition-shadow  mt-4 rounded-lg hover:shadow-lg"
             href={`https://www.pinterest.com/oauth/?client_id=${pinterestConfig.appId}&redirect_uri=${domain}/pinterest/oauth&response_type=code&scope=boards:read,pins:read,user_accounts:read`}
+            onClick={() => {
+              PushEvent({
+                category: 'Pinterest Search - Connect Your Board',
+                action: `Go to Pinterest Page`,
+                label: `Connect Your Board`,
+              });
+            }}
           >
             <div className="relative w-8 h-8 aspect-1">
               <Image

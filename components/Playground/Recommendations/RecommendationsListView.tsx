@@ -2,6 +2,7 @@ import EmptyState from '@components/Shared/EmptyState';
 import { PlaygroundAssetsContext } from '@store/PlaygroundAssets';
 import { useRecommendationsListContext } from '@store/RecommendationsList';
 import { SelectedIdContext } from '@store/SelectedId';
+import { PushEvent } from '@utils/analyticsLogger';
 import React, { CSSProperties, useContext, useEffect, useState } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid as Grid } from 'react-window';
@@ -42,16 +43,22 @@ const DesignCardRow: React.FC<{
           withShopNow={false}
           onClick={() => {
             fetchProductReplacement(productData?._id, productData);
+            // PushEvent({
+            //   category: `Product Swapped`,
+            //   action: `Product Swapped | {{current assetid}} > {{new assetid}}`,
+            //   label: 'Engage with Design Set',
+            // });
+
             // productSwapGA(productData?._id);
           }}
         />
       ) : (
-        <div className="bg-white p-4 w-full h-full">
+        <div className="w-full h-full p-4 bg-white">
           <div className="animate-pulse">
-            <div className="bg-gray-100 h-32 rounded" />
-            <div className="bg-gray-100 h-2 rounded mt-2 w-16" />
-            <div className="bg-gray-100 h-8 rounded mt-2" />
-            <div className="bg-gray-100 h-3 rounded mt-4 w-10 " />
+            <div className="h-32 bg-gray-100 rounded" />
+            <div className="w-16 h-2 mt-2 bg-gray-100 rounded" />
+            <div className="h-8 mt-2 bg-gray-100 rounded" />
+            <div className="w-10 h-3 mt-4 bg-gray-100 rounded " />
           </div>
         </div>
       )}
@@ -76,7 +83,7 @@ const RecommendationsListView: React.FC = () => {
   }, [gridRef, data?.length, loading]);
 
   return !loading && data?.length === 0 ? (
-    <div className="mt-8 px-2">
+    <div className="px-2 mt-8">
       <EmptyState
         title="Select any product from the canvas to swap!"
         message=""

@@ -1,14 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { DownloadIcon } from '@heroicons/react/outline';
-// import { PushEvent } from '@utils/analyticsLogger';
+import { PushEvent } from '@utils/analyticsLogger';
 import React, { Fragment, useRef, useState } from 'react';
 import UnitAction from './UnitAction';
 
 interface DownloadModalProps {
   onOk: (value: { name: string; email: string; collageName: string }) => void;
+  designSetId: string;
 }
 
-const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
+const DownloadModal: React.FC<DownloadModalProps> = ({ onOk, designSetId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -16,11 +17,11 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
   }
 
   function openModal() {
-    // PushEvent({
-    //   category: `Download Design Set`,
-    //   action: `Open Download Design Set Modal`,
-    //   label: 'Open Download Design Set Modal',
-    // });
+    PushEvent({
+      category: `Click on Download`,
+      action: `Open Download Modal | ${designSetId}`,
+      label: 'Download Design',
+    });
     setIsOpen(true);
   }
   const formRef = useRef<HTMLFormElement>();
@@ -72,28 +73,28 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block relative w-full max-w-md p-6 my-8  text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <div className="absolute bg-spj-yellow z-10 inset-0 w-1/2  -translate-y-2 -translate-x-1 rounded-2xl" />
-                <div className="absolute bg-spj-red z-10 inset-0 translate-y-1 translate-x-1 rounded-2xl" />
-                <div className="absolute bg-spj-yellow z-10 inset-0 w-1/2 -translate-y-1 -translate-x-1 rounded-2xl" />
-                <div className="absolute bg-spj-yellow z-10 inset-0 w-1/2 translate-y-1 -translate-x-1 rounded-2xl" />
+              <div className="relative inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <div className="absolute inset-0 z-10 w-1/2 -translate-x-1 -translate-y-2 bg-spj-yellow rounded-2xl" />
+                <div className="absolute inset-0 z-10 translate-x-1 translate-y-1 bg-spj-red rounded-2xl" />
+                <div className="absolute inset-0 z-10 w-1/2 -translate-x-1 -translate-y-1 bg-spj-yellow rounded-2xl" />
+                <div className="absolute inset-0 z-10 w-1/2 -translate-x-1 translate-y-1 bg-spj-yellow rounded-2xl" />
 
-                <div className="absolute bg-white z-10 inset-0  rounded-2xl" />
+                <div className="absolute inset-0 z-10 bg-white rounded-2xl" />
 
                 <div className="relative z-20">
-                  <Dialog.Title as="h3" className="text-lg mb-0 font-bold leading-6 text-gray-900 pb-1">
+                  <Dialog.Title as="h3" className="pb-1 mb-0 text-lg font-bold leading-6 text-gray-900">
                     Download
                   </Dialog.Title>
-                  <p className="text-xs text-gray-400 pb-2">
+                  <p className="pb-2 text-xs text-gray-400">
                     Enter your name, email and Design Set name to get instant access to your final design
                   </p>
-                  <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit} ref={formRef}>
+                  <form className="flex flex-col gap-2 mt-2" onSubmit={handleSubmit} ref={formRef}>
                     <label htmlFor="name" className="">
                       <input
                         name="name"
                         type="text"
                         required
-                        className="w-full border border-gray-200  rounded-lg p-2 placeholder-gray-400"
+                        className="w-full p-2 placeholder-gray-400 border border-gray-200 rounded-lg"
                         placeholder="Name"
                       />
                     </label>
@@ -103,7 +104,7 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
                         type="email"
                         required
                         enterKeyHint="next"
-                        className="w-full border border-gray-200 rounded-lg p-2 placeholder-gray-400"
+                        className="w-full p-2 placeholder-gray-400 border border-gray-200 rounded-lg"
                         placeholder="Email"
                       />
                     </label>
@@ -112,14 +113,14 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onOk }) => {
                         name="collage name"
                         type="text"
                         required
-                        className="w-full border border-gray-200  rounded-lg p-2 placeholder-gray-400"
+                        className="w-full p-2 placeholder-gray-400 border border-gray-200 rounded-lg"
                         placeholder="Design Set Name"
                       />
                     </label>
-                    <div className="mt-4 flex justify-end">
+                    <div className="flex justify-end mt-4">
                       <button
                         type="submit"
-                        className="inline-flex justify-center px-4 py-2 text-sm font-medium disabled:bg-bluegray-400 disabled:pointer-events-none text-white dis bg-black border border-transparent rounded-md hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-black"
+                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md disabled:bg-bluegray-400 disabled:pointer-events-none dis hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-black"
                         // onClick={closeModal}
                       >
                         Download Image

@@ -2,6 +2,7 @@ import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 import ShopCategories from '@components/Shared/ShopCategories';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import { PushEvent } from '@utils/analyticsLogger';
 import { oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -79,6 +80,13 @@ const Header: React.FC = () => {
               <a
                 className="inline-block pr-1 mr-10 rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none"
                 aria-label="logo"
+                onClick={() => {
+                  PushEvent({
+                    category: `Top Nav - Spacejoy Logo`,
+                    action: `Go to Spacejoy Home Page`,
+                    label: `Spacejoy Logo`,
+                  });
+                }}
               >
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
@@ -98,6 +106,13 @@ const Header: React.FC = () => {
                         className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                           router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
                         }`}
+                        onClick={() => {
+                          PushEvent({
+                            category: `Top Nav - Design your Space`,
+                            action: `Go to Room Select Page`,
+                            label: `Design your Space`,
+                          });
+                        }}
                       >
                         Design Your Space
                       </a>
@@ -110,6 +125,13 @@ const Header: React.FC = () => {
                           router.asPath === '/online-interior-design' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         target="_blank"
+                        onClick={() => {
+                          PushEvent({
+                            category: `Top Nav - Hire a Designer`,
+                            action: `Go to Online Interior Design Page`,
+                            label: `Hire a Designer`,
+                          });
+                        }}
                       >
                         Hire a Designer
                       </a>
@@ -127,6 +149,13 @@ const Header: React.FC = () => {
                       className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                         isOpenSubNav && subNavContent === 'shop' ? 'text-red-500' : 'text-gray-700'
                       }`}
+                      onClick={() => {
+                        PushEvent({
+                          category: `Top Nav - Shop`,
+                          action: `Open Shop Dropdown`,
+                          label: `Shop Button`,
+                        });
+                      }}
                     >
                       Shop{' '}
                       <ChevronDownIcon
@@ -145,6 +174,11 @@ const Header: React.FC = () => {
                       onClick={() => {
                         toggleSubNav();
                         setSubNavContent('stories');
+                        PushEvent({
+                          category: `Top Nav - Explore Ideas`,
+                          action: `Open Explore Ideas Dropdown`,
+                          label: `Explore Ideas`,
+                        });
                       }}
                     >
                       Explore Ideas{' '}

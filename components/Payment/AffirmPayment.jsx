@@ -1,6 +1,7 @@
 // import { NotificationService } from '@components/NotificationMessage';
 import SVGLoader from '@components/Shared/SVGLoader';
 import affirm from '@utils/affirm';
+import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import Image from 'next/image';
@@ -28,7 +29,11 @@ const Affirm = ({ cb }) => {
     });
     if (response.statusCode <= 300) {
       cb(true);
-
+      PushEvent({
+        category: 'Checkout',
+        action: `Success to Affirm with Spacejoy - ${data?.shipping?.name?.first} ${data?.shipping?.name?.last}`,
+        label: 'Success to Affirm with Spacejoy',
+      });
       // NotificationService.success({
       //   title: `Your order has been successfully placed`,
       //   timer: 2,
@@ -46,7 +51,11 @@ const Affirm = ({ cb }) => {
       affirm.checkout.open({
         onFail(e) {
           setSubmitInProgress(false);
-
+          PushEvent({
+            category: 'Checkout',
+            action: `Error in Affirm - ${data?.shipping?.name?.first} ${data?.shipping?.name?.last}`,
+            label: 'Error in Affirm',
+          });
           // NotificationService.error({
           //   title: 'Affirm checkout failed',
           //   timer: 2,
