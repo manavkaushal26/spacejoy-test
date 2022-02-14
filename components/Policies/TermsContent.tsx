@@ -759,7 +759,8 @@ const TermsContent: React.FC = () => {
               www.spacejoy.com
             </p>
           </div>
-          <div className="mt-6">
+
+          <div className="mt-6" id="data-deletion">
             <h2 className="text-lg mb-2">Termination of your Spacejoy account </h2>
             <p className="text-base text-gray-500">
               You have the right to terminate your Spacejoy account at any time by contacting us at hello@spacejoy.com.
