@@ -27,7 +27,7 @@ interface AssetType {
     }
   ];
   productImages: ImageType[];
-  status: Status;
+  status: Status | 'discontinued';
   inStock: boolean;
   shoppable: boolean;
   spatialData: {

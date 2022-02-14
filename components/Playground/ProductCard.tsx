@@ -1,9 +1,11 @@
 import { ExternalLinkIcon, SwitchHorizontalIcon } from '@heroicons/react/outline';
+import { blurredProduct } from '@public/images/bg-base-64';
 import { oldSpacejoyUrl } from '@utils/config';
 import { priceToLocaleString } from '@utils/helpers';
 import AssetType from '@utils/types/AssetType';
+import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { DataBusContext } from 'store';
 
 interface ProductCardInterface {
@@ -36,44 +38,60 @@ const ProductCard: React.FC<ProductCardInterface> = ({
     ...(isSwappable && { onMouseEnter: showOverlay, onMouseLeave: hideOverlay }),
   };
 
-  console.log('productThumbnail', product?.cdn);
+  const itemStatus = useMemo(() => {
+    if (product?.status === 'discontinued') {
+      return 'Discontinued';
+    }
+    if (!product?.inStock) {
+      return 'Out of Stock';
+    }
+
+    return undefined;
+  }, [product]);
 
   return (
     <div
       title={product?.name}
-      onClick={onClick}
       className={`relative group bg-white h-full rounded-sm overflow-hidden flex flex-col ${
         isDraggable ? 'cursor-move' : 'cursor-pointer'
-      }`}
+      } ${itemStatus && 'cursor-default'}`}
       {...hoverProps}
       draggable={isDraggable ? 'true' : 'false'}
-      onDragStart={() =>
-        setBusData({
-          id: product._id,
-          data: {
-            ...product,
-            vertical: product?.vertical || '',
-            dimension: {
-              height: product?.height,
-              width: product?.width,
-              depth: product?.depth,
+      {...(!itemStatus && {
+        onClick: onClick,
+        onDragStart: () =>
+          setBusData({
+            id: product._id,
+            data: {
+              ...product,
+              vertical: product?.vertical || '',
+              dimension: {
+                height: product?.height,
+                width: product?.width,
+                depth: product?.depth,
+              },
+              price: product?.price,
+              id: product?._id,
+              x: 0,
+              y: 0,
+              retailer: product?.retailer,
             },
-            price: product?.price,
-            id: product?._id,
-            x: 0,
-            y: 0,
-            retailer: product?.retailer,
-          },
-          type: 'asset',
-        })
-      }
+            type: 'asset',
+          }),
+      })}
     >
-      {isSwappable && isVisible && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center w-full h-full bg-white bg-opacity-75">
+      {isSwappable && isVisible && !itemStatus && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center w-full h-full bg-white bg-opacity-75">
           <p className="flex items-center">
             <SwitchHorizontalIcon className="w-4 h-4 mr-2" />
             Swap
           </p>
+        </div>
+      )}
+
+      {itemStatus && (
+        <div className="inset-0 absolute flex z-30 justify-center items-center bg-black/40">
+          <span className="text-white font-bold text-xl">{itemStatus}</span>
         </div>
       )}
 
@@ -85,14 +103,13 @@ const ProductCard: React.FC<ProductCardInterface> = ({
         </p>
       </div>
       <div className="p-4 aspect-square flex-1 relative">
-        <img
+        <Image
           src={`https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_300,ar_1,c_pad/${productThumbnail}`}
           alt={product?.name}
-          // layout="fill"
-          // objectFit="contain"
-          className="absolute inset-0"
-          // blurDataURL={blurredProduct}
-          // placeholder="blur"
+          layout="fill"
+          objectFit="contain"
+          blurDataURL={blurredProduct}
+          placeholder="blur"
         />
       </div>
       <div className="px-4">
