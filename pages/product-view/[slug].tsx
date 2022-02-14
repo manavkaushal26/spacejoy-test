@@ -1,10 +1,11 @@
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
+import Carousel, { position } from '@components/Shared/Carousel';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import SVGLoader from '@components/Shared/SVGLoader';
-import { Disclosure } from '@headlessui/react';
+import { Disclosure, Tab } from '@headlessui/react';
 import { ChevronRightIcon, HomeIcon, MinusIcon, MinusSmIcon, PlusIcon, PlusSmIcon } from '@heroicons/react/outline';
 import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
@@ -40,6 +41,9 @@ const AnimateBox = styled.div`
   transform: translateY(20px);
   animation-delay: 0ms;
 `;
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
 const renderFeatureSection = (description) => {
   const { type = '' } = description;
@@ -244,28 +248,45 @@ const ProductView = ({ product }): JSX.Element => {
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
               <div className="sticky top-0 ">
-                <AnimateBox className="p-4 bg-white rounded-lg lg:p-8 xl:20">
-                  <div className="aspect-w-1 aspect-h-1">
-                    <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
-                      <Image
-                        src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[0]?.cdn}`}
-                        alt="Angled front view with bag zipped and handles upright."
-                        className="object-contain object-center sm:rounded-lg"
-                        layout="fill"
-                        placeholder="blur"
-                        objectFit="contain"
-                        blurDataURL={blurredBgProduct}
-                      />
-                    </div>
+                <Tab.Group as="div" className="flex flex-row space-x-4">
+                  <div className="hidden mt-6  mx-auto sm:block lg:max-w-none">
+                    <Tab.List className="flex flex-col">
+                      {productImages.map((image, idx) => (
+                        <Tab
+                          key={idx}
+                          className="relative my-2 w-12 h-12 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50"
+                        >
+                          {({ selected }) => (
+                            <>
+                              <span className="absolute inset-0 rounded-md overflow-hidden">
+                                <Image
+                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
+                                  alt="Angled front view with bag zipped and handles upright."
+                                  className="object-contain object-center sm:rounded-lg"
+                                  layout="fill"
+                                  placeholder="blur"
+                                  objectFit="contain"
+                                  blurDataURL={blurredBgProduct}
+                                />
+                              </span>
+                              <span
+                                className={classNames(
+                                  selected ? 'ring-black' : 'ring-transparent',
+                                  'absolute inset-0 rounded-md ring-2 ring-offset-2 pointer-events-none'
+                                )}
+                                aria-hidden="true"
+                              />
+                            </>
+                          )}
+                        </Tab>
+                      ))}
+                    </Tab.List>
                   </div>
-                </AnimateBox>
-                <div className="grid grid-cols-3 gap-4 mt-4">
-                  {productImages[1] && (
-                    <div className="col-span-2 row-span-2 p-4 bg-white rounded">
-                      <div className="aspect-w-1 aspect-h-1">
-                        <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
-                          <Image
-                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[1]?.cdn}`}
+                  <Tab.Panels className="w-full aspect-w-1 aspect-h-1 grow">
+                    {productImages.map((image, idx) => (
+                      <Tab.Panel key={idx}>
+                        <Image
+                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
                             alt="Angled front view with bag zipped and handles upright."
                             className="object-contain object-center sm:rounded-lg"
                             layout="fill"
@@ -273,46 +294,12 @@ const ProductView = ({ product }): JSX.Element => {
                             objectFit="contain"
                             blurDataURL={blurredBgProduct}
                           />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  {productImages[2] && (
-                    <div className="p-4 bg-white rounded">
-                      <div className="aspect-w-1 aspect-h-1">
-                        <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
-                          <Image
-                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[2]?.cdn}`}
-                            alt="Angled front view with bag zipped and handles upright."
-                            className="object-cover object-center sm:rounded-lg"
-                            layout="fill"
-                            placeholder="blur"
-                            objectFit="contain"
-                            blurDataURL={blurredBgProduct}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  {productImages[3] && (
-                    <div className="p-4 bg-white rounded">
-                      <div className="aspect-w-1 aspect-h-1">
-                        <div aria-labelledby="tabs-1-tab-1" role="tabpanel" tabIndex={0}>
-                          <Image
-                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${productImages[3]?.cdn}`}
-                            alt="Angled front view with bag zipped and handles upright."
-                            className="object-cover object-center sm:rounded-lg"
-                            layout="fill"
-                            placeholder="blur"
-                            objectFit="contain"
-                            blurDataURL={blurredBgProduct}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                      </Tab.Panel>
+                    ))}
+                  </Tab.Panels>
+                </Tab.Group>
               </div>
+              <div className=" absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
               <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
                 <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
                 <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
