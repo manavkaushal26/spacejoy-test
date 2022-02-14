@@ -110,7 +110,7 @@ const ProductView = ({ product }): JSX.Element => {
   }, [couponList, retailerOffers]);
 
   const productImages = useMemo(() => {
-    return [...(product?.productImages || []), ...product?.renderImages];
+    return [...(product?.productImages || []), ...(product?.renderImages || [])];
   }, [product]);
 
   const [localProductQuantity, setLocalProductQuantity] = useState(1);
