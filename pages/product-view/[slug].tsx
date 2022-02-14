@@ -285,16 +285,6 @@ const ProductView = ({ product }): JSX.Element => {
                     {productImages.map((image, idx) => (
                       <Tab.Panel key={idx}>
                         <Image
-<<<<<<< HEAD
-                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
-                          alt="Angled front view with bag zipped and handles upright."
-                          className="object-contain object-center sm:rounded-lg"
-                          layout="fill"
-                          placeholder="blur"
-                          objectFit="contain"
-                          blurDataURL={blurredBgProduct}
-                        />
-=======
                             src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
                             alt="Angled front view with bag zipped and handles upright."
                             className="object-contain object-center sm:rounded-lg bg-white"
@@ -303,7 +293,6 @@ const ProductView = ({ product }): JSX.Element => {
                             objectFit="contain"
                             blurDataURL={blurredBgProduct}
                           />
->>>>>>> a740289 (changed pdp image bg to white)
                       </Tab.Panel>
                     ))}
                   </Tab.Panels>
