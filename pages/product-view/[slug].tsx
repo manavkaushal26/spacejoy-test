@@ -285,14 +285,14 @@ const ProductView = ({ product }): JSX.Element => {
                     {productImages.map((image, idx) => (
                       <Tab.Panel key={idx}>
                         <Image
-                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
-                          alt="Angled front view with bag zipped and handles upright."
-                          className="object-contain object-center sm:rounded-lg"
-                          layout="fill"
-                          placeholder="blur"
-                          objectFit="contain"
-                          blurDataURL={blurredBgProduct}
-                        />
+                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
+                            alt="Angled front view with bag zipped and handles upright."
+                            className="object-contain object-center sm:rounded-lg bg-white"
+                            layout="fill"
+                            placeholder="blur"
+                            objectFit="contain"
+                            blurDataURL={blurredBgProduct}
+                          />
                       </Tab.Panel>
                     ))}
                   </Tab.Panels>
