@@ -101,7 +101,7 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
         depth: filter.depth.map(convertToFeet),
         width: filter.width.map(convertToFeet),
         height: filter.height.map(convertToFeet),
-        status: '',
+        status: 'active',
         spriteAvailable: true,
       },
       spriteAvailable: true,

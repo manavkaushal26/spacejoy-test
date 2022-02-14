@@ -1,9 +1,7 @@
 import { ExternalLinkIcon, SwitchHorizontalIcon } from '@heroicons/react/outline';
-import { blurredProduct } from '@public/images/bg-base-64';
 import { oldSpacejoyUrl } from '@utils/config';
 import { priceToLocaleString } from '@utils/helpers';
 import AssetType from '@utils/types/AssetType';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 import { DataBusContext } from 'store';
@@ -25,9 +23,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({
   withShopNow,
 }) => {
   const { setBusData } = useContext(DataBusContext);
-  const productThumbnail = product?.renderImages
-    ? product?.renderImages[0]?.cdn
-    : 'v1623166775/Untitled-1-12_iah06e.jpg';
+  const productThumbnail = product?.cdn || product?.imageUrl || 'v1623166775/Untitled-1-12_iah06e.jpg';
   const [isVisible, setVisible] = useState(false);
 
   const hideOverlay = () => {
@@ -40,11 +36,13 @@ const ProductCard: React.FC<ProductCardInterface> = ({
     ...(isSwappable && { onMouseEnter: showOverlay, onMouseLeave: hideOverlay }),
   };
 
+  console.log('productThumbnail', product?.cdn);
+
   return (
     <div
       title={product?.name}
       onClick={onClick}
-      className={`relative group bg-white h-full rounded-sm overflow-hidden ${
+      className={`relative group bg-white h-full rounded-sm overflow-hidden flex flex-col ${
         isDraggable ? 'cursor-move' : 'cursor-pointer'
       }`}
       {...hoverProps}
@@ -86,16 +84,15 @@ const ProductCard: React.FC<ProductCardInterface> = ({
           ${((product?.depth || 0) * 12)?.toFixed(2).toString()}"`}
         </p>
       </div>
-      <div className="p-4 next-image-fix">
-        <Image
+      <div className="p-4 aspect-square flex-1 relative">
+        <img
           src={`https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_300,ar_1,c_pad/${productThumbnail}`}
-          width={150}
-          height={150}
           alt={product?.name}
-          className="object-contain"
-          draggable={false}
-          blurDataURL={blurredProduct}
-          placeholder="blur"
+          // layout="fill"
+          // objectFit="contain"
+          className="absolute inset-0"
+          // blurDataURL={blurredProduct}
+          // placeholder="blur"
         />
       </div>
       <div className="px-4">

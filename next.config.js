@@ -114,6 +114,11 @@ module.exports = withPWA({
         destination: `${legacyRepo}/orders/:slug*`, // Matched parameters can be used in the destination
         permanent: false,
       },
+      {
+        source: '/style-quiz/:slug*',
+        destination: `${legacyRepo}/style-quiz/:slug*`, // Matched parameters can be used in the destination
+        permanent: false,
+      },
     ];
   },
   reactStrictMode: true,

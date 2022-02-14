@@ -92,19 +92,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
 
 export default SingleCollageSet;
 
-export const getStaticPaths = async () => {
-  const { data } = await fetcher({
-    endPoint: '/v1/collages?skip=0&limit=100&isActive=true',
-    method: 'GET',
-  });
-
-  return {
-    paths: data?.data?.map((collage) => ({ params: { cid: collage?._id } })),
-    fallback: 'blocking',
-  };
-};
-
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   const { cid } = params;
   if (cid) {
     if (cid) {
@@ -226,7 +214,7 @@ export const getStaticProps = async ({ params }) => {
               assets: productData || [],
               groupedAssetList: groupedAssetList || {},
             },
-            revalidate: 1, //TODO: Recheck the doc Data Fetching
+            // revalidate: 1, //TODO: Recheck the doc Data Fetching
           };
         } else {
           throw new Error(statusCode);
