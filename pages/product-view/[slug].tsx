@@ -725,7 +725,6 @@ export const getStaticProps = async ({ params, res }) => {
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
 
   const { data, statusCode } = response;
-  console.log('data', data);
 
   if (statusCode <= 300) {
     const { retailer: { preferred = false } = {} } = data;
