@@ -394,9 +394,11 @@ const ProductView = ({ product }): JSX.Element => {
                   </div>
                 ) : null}
 
-                <div className="my-4">
-                  <DeliveryTimeline productId={product?._id} />
-                </div>
+                {!itemStatus && (
+                  <div className="my-4">
+                    <DeliveryTimeline productId={product?._id} />
+                  </div>
+                )}
 
                 <form className="my-4">
                   {itemStatus ? (
