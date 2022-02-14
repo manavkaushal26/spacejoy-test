@@ -1,6 +1,5 @@
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
-import Carousel, { position } from '@components/Shared/Carousel';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
@@ -286,14 +285,14 @@ const ProductView = ({ product }): JSX.Element => {
                     {productImages.map((image, idx) => (
                       <Tab.Panel key={idx}>
                         <Image
-                            src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
-                            alt="Angled front view with bag zipped and handles upright."
-                            className="object-contain object-center sm:rounded-lg"
-                            layout="fill"
-                            placeholder="blur"
-                            objectFit="contain"
-                            blurDataURL={blurredBgProduct}
-                          />
+                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
+                          alt="Angled front view with bag zipped and handles upright."
+                          className="object-contain object-center sm:rounded-lg"
+                          layout="fill"
+                          placeholder="blur"
+                          objectFit="contain"
+                          blurDataURL={blurredBgProduct}
+                        />
                       </Tab.Panel>
                     ))}
                   </Tab.Panels>
@@ -716,12 +715,29 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params, res }) => {
   const { slug } = params;
   // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
 
   const { data, statusCode } = response;
+
+  const { retailer: { preferred = false } = {} } = data;
+  if (!preferred) {
+    const {
+      meta: {
+        category: { name: categoryName },
+        subcategory: { name: subCategoryName },
+      },
+    } = data;
+
+    return {
+      redirect: {
+        destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
+        permanent: true,
+      },
+    };
+  }
 
   return statusCode < 300 ? { props: { product: data }, revalidate: 10 } : { notFound: true };
 };
