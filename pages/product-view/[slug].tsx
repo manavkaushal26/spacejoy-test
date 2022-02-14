@@ -134,6 +134,7 @@ const ProductView = ({ product }): JSX.Element => {
   const [addingToCart, isAddingToCart] = useState(false);
 
   const addToCart = async () => {
+    console.log('in this method');
     const isUserAuthenticated = Cookies.get('token') ? true : false;
 
     isAddingToCart(true);
@@ -149,7 +150,7 @@ const ProductView = ({ product }): JSX.Element => {
         : cartItems[brand].products[product._id]?.quantity + localProductQuantity;
 
     if (!isUserAuthenticated) {
-      modifyCart(product, quantity, 'add');
+      modifyCart(product, quantity, 'update');
       setLocalProductQuantity(1);
       toast.success('Item added to bag!');
       isAddingToCart(false);
