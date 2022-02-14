@@ -260,7 +260,7 @@ const ProductView = ({ product }): JSX.Element => {
                             <>
                               <span className="absolute inset-0 rounded-md overflow-hidden">
                                 <Image
-                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1600/${image?.cdn}`}
+                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_400/${image?.cdn}`}
                                   alt="Angled front view with bag zipped and handles upright."
                                   className="object-contain object-center sm:rounded-lg"
                                   layout="fill"
@@ -308,11 +308,11 @@ const ProductView = ({ product }): JSX.Element => {
                   <p className="text-3xl text-gray-900">
                     {priceToLocaleString(product?.displayPrice)}
                     {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
-                      <small className="inline-block ml-2 text-sm text-gray-500 line-through">
+                      <><small className="inline-block ml-2 text-sm text-gray-500 line-through">
                         {priceToLocaleString(product?.msrp)}
-                      </small>
+                      </small><small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">{discountPercent}</small></>
                     )}
-                    <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">{discountPercent}</small>
+                    
                   </p>
                 </div>
                 {/* <div className="mt-3">
