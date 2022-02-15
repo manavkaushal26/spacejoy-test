@@ -722,6 +722,19 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         })
         .then(() => {
           download();
+          PushEvent({
+            category: 'Click on Download in Modal',
+            action: `Download Successful | ${collageData?._id}`,
+            label: `Download Design`,
+          });
+        })
+        .catch(() => {
+          PushEvent({
+            category: 'Click on Download in Modal',
+            action: `Download Failed | ${collageData?._id}`,
+            label: `Download Design`,
+          });
+          throw new Error();
         }),
       {
         error: 'Failed to download image',

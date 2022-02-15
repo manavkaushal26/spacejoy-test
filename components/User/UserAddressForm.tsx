@@ -3,7 +3,7 @@ import fetcher from '@utils/fetcher';
 import React, { useEffect, useState } from 'react';
 
 const initialState = {
-  addressType: { value: 'Home', error: false },
+  addressType: { value: 'Other', error: false },
   title: { value: '', error: false },
   firstName: { value: '', error: false },
   lastName: { value: '', error: false },
@@ -101,7 +101,7 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
       <h2 className="text-lg font-medium text-gray-900">Shipping information</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 mt-4 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-          <div>
+          {/* <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">
               Address Title
             </label>
@@ -137,7 +137,7 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
                 <option value="Other">Other</option>
               </select>
             </div>
-          </div>
+          </div> */}
 
           <div>
             <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">

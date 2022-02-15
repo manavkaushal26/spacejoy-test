@@ -85,6 +85,7 @@ const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
+  const gaClickRef = useRef({});
 
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
@@ -96,7 +97,6 @@ const ProductView = ({ product }): JSX.Element => {
 
     return undefined;
   }, [product]);
-  const [counter, setCounter] = useState(0);
 
   const discountPercent = useMemo(() => {
     const discount =
@@ -206,19 +206,18 @@ const ProductView = ({ product }): JSX.Element => {
     fetchBrandOffers(setRetailerOffers, product?.retailer?._id);
   }, []);
 
-  // todo useRef
-  // const productDescriptionSectionClicks = (count, sectionName) => {
-  //   if (count < 1) {
-  //     setCounter(1);
-  //     PushEvent({
-  //       category: `PDP Page - ${sectionName}`,
-  //       action: `Expand the selection | ${product._id}`,
-  //       label: `${sectionName}`,
-  //     });
-  //   } else {
-  //     setCounter(0);
-  //   }
-  // };
+  const handleClick = (open, productId: string, sectionName: string) => {
+    if (!open) {
+      if (!gaClickRef?.current?.[sectionName]) {
+        gaClickRef.current[sectionName] = true;
+        PushEvent({
+          category: `PDP Page - ${sectionName}`,
+          action: `Expand the selection | ${productId}`,
+          label: `${sectionName}`,
+        });
+      }
+    }
+  };
 
   return (
     <Layout>
@@ -465,7 +464,10 @@ const ProductView = ({ product }): JSX.Element => {
                   <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                        <Disclosure.Button
+                          className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm"
+                          onClickCapture={() => handleClick(open, product?._id, 'Available Offers')}
+                        >
                           <div className="flex">
                             <span className="mr-2 text-sm font-bold text-gray-900">Available Offers</span>
                             <LottieAnimation animationData={offerLottie} height={20} width={20} />
@@ -594,6 +596,7 @@ const ProductView = ({ product }): JSX.Element => {
                       <>
                         <Disclosure.Button
                           className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm"
+                          onClickCapture={() => handleClick(open, product?._id, 'Shipping Policy')}
                         >
                           <span className="text-sm font-bold text-gray-900">Shipping Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
@@ -650,6 +653,7 @@ const ProductView = ({ product }): JSX.Element => {
                       <>
                         <Disclosure.Button
                           className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm"
+                          onClickCapture={() => handleClick(open, product?._id, 'Return Policy')}
                         >
                           <span className="text-sm font-bold text-gray-900">Return Policy</span>
                           {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}

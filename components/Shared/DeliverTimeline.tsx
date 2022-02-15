@@ -4,7 +4,7 @@ import { PushEvent } from '@utils/analyticsLogger';
 import fetcher from '@utils/fetcher';
 import { isDigit } from '@utils/helpers';
 import PropTypes from 'prop-types';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import SVGLoader from './SVGLoader';
 
 const domain = 'https://delivery.spacejoy.com/';
@@ -16,6 +16,7 @@ const DeliveryTimeline = ({ productId }) => {
   const [zipCode, setZipCode] = useLocalStorageState('zipCode', '91423');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const gaClickRef = useRef<boolean>();
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -52,20 +53,10 @@ const DeliveryTimeline = ({ productId }) => {
 
       if (response?.statusCode <= 300) {
         setDeliveryDetails(response.data);
-        PushEvent({
-          category: 'Check Pincode',
-          action: `Success | Check Pincode | ${zipCode}`,
-          label: `Check Pincode`,
-        });
         setIsExpanded(false);
       }
     } else {
       setErrorMessage('Please enter valid Zipcode');
-      PushEvent({
-        category: 'Check Pincode',
-        action: `Failure | Check Pincode | ${zipCode}`,
-        label: `Check Pincode`,
-      });
     }
     setIsLoading(false);
   };
@@ -80,13 +71,21 @@ const DeliveryTimeline = ({ productId }) => {
   }, [zipCode]);
 
   useEffect(() => {
+    if (zipCode.length === 5) {
+      if (gaClickRef?.current) {
+        PushEvent({
+          category: 'Check Pincode',
+          action: `Success | Check Pincode | ${zipCode}`,
+          label: `Check Pincode`,
+        });
+      }
+      gaClickRef.current = true;
+    }
+  }, [zipCode]);
+
+  useEffect(() => {
     if (isAvailableForRetailer && !isCheckDisabled) {
       getDeliveryDetails();
-      // PushEvent({
-      // 	category: "Added Pin Code",
-      // 	action: `Added Pin Code | ${zipCode}`,
-      // 	label: `Added Pin Code`,
-      // });
     }
   }, [isAvailableForRetailer, isCheckDisabled]);
 
