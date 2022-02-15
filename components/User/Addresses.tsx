@@ -43,7 +43,8 @@ const UserAddresses = () => {
       const res = await fetcher({ endPoint: '/v1/cart', method: 'GET' });
       if (res.statusCode < 301) {
         setCartData(res?.data);
-      }    } catch {
+      }
+    } catch {
       throw new Error();
     }
   };
@@ -182,7 +183,7 @@ const UserAddresses = () => {
                                       <LocationMarkerIcon className="w-4 h-4 mr-2" />
                                     )}
                                   </span>
-                                  <span>{shippingAddress.title}</span>
+                                  {/* <span>{shippingAddress.title}</span> */}
                                 </div>
                               </RadioGroup.Label>
                               <RadioGroup.Description

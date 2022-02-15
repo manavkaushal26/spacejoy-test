@@ -20,12 +20,12 @@ const DesignSetDetails = ({ correctedCollageName, collageData }) => {
 
   return (
     <div className="my-8 ">
-      <div className="grid border-x-2 border-t-2 border-gray-300 rounded-x-xl rounded-t-xl overflow-hidden  items-center grid-cols-12 gap-8 py-16 px-8">
+      <div className="grid items-center grid-cols-12 gap-8 px-8 py-16 overflow-hidden border-t-2 border-gray-300 border-x-2 rounded-x-xl rounded-t-xl">
         <div className="col-span-9 xs:col-span-2">
-          <h1 className=" text-3xl capitalize">{correctedCollageName}</h1>
-          {!!collageData?.description && <p className="text-lg mt-6">{collageData?.description}</p>}
+          <h1 className="text-3xl capitalize ">{correctedCollageName}</h1>
+          {!!collageData?.description && <p className="mt-6 text-lg">{collageData?.description}</p>}
         </div>
-        <div className="flex col-span-3 flex-col items-end justify-center  rounded-xl">
+        <div className="flex flex-col items-end justify-center col-span-3 rounded-xl">
           <h2 className="text-3xl">{priceToLocaleString(priceOfSet)}</h2>
           {/* <a
       href="#assets"
@@ -35,7 +35,7 @@ const DesignSetDetails = ({ correctedCollageName, collageData }) => {
     </a> */}
         </div>
       </div>
-      <PlaygroundAssetDisplay />
+      <PlaygroundAssetDisplay collageId={collageData?._id} />
     </div>
   );
 };

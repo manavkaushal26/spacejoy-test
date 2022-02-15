@@ -155,7 +155,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
   };
 
   const download = (): void => {
-    // PushEvent({
+    // console.log({
     //   category: `Click on Download`,
     //   action: `Download Design Set ${data[data.length - 1]?._id ? `| ${data[data.length - 1]?._id}` : ``}`,
     //   label: 'Download Design',
@@ -446,7 +446,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         data: { id, dimension, renderImages, displayPrice, retailer, name, price, vertical = '' },
       } = busData;
       const activeDesignSets = activeCollages?.length ? activeCollages?.join(',') : 'null';
-      // console.log({
+      // PushEvent({
       //   category: 'Main Menu - Product View',
       //   action: `Add New Product | ${activeDesignSets} | ${id}`,
       //   label: 'Load New Product',
@@ -722,6 +722,19 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         })
         .then(() => {
           download();
+          PushEvent({
+            category: 'Click on Download in Modal',
+            action: `Download Successful | ${collageData?._id}`,
+            label: `Download Design`,
+          });
+        })
+        .catch(() => {
+          PushEvent({
+            category: 'Click on Download in Modal',
+            action: `Download Failed | ${collageData?._id}`,
+            label: `Download Design`,
+          });
+          throw new Error();
         }),
       {
         error: 'Failed to download image',
@@ -978,7 +991,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                   image={playgroundItem}
                   rotationValue={getRotationValue(playgroundItem?.id)}
                   isSelected={playgroundItem.id === selectedId}
-                  onSelect={() => setSelectedId(playgroundItem.id)}
+                  onSelect={() => {
+                    PushEvent({
+                      category: 'Select a product',
+                      action: `Product selected | pid: ${playgroundItem.assetId} | did: ${collageData?.id}`,
+                      label: 'Engage with Design Set',
+                    });
+                    setSelectedId(playgroundItem.id);
+                  }}
                   onChange={(newAttrs): void => {
                     const tmp = [...PlaygroundAssets];
                     tmp[index] = newAttrs;

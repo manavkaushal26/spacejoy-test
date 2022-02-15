@@ -71,7 +71,7 @@ const logException = (description = '', fatal = false) => {
 const PushEvent = async (data) => {
   const { category, action, label, value } = data;
   const userFromLS = await reactLocalStorage.getObject('authVerification');
-  const categoryLabel = `Web${window.location.pathname} | ${category}`;
+  const categoryLabel = `Web-V2${window?.location?.pathname} | ${category}`;
   const labelWithUserData = `${label} | user Name - ${userFromLS.name || 'Guest'}`;
   dataToPush(data, EventName.click);
   logEvent(categoryLabel, action, labelWithUserData, value);

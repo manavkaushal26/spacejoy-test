@@ -1,4 +1,5 @@
 import { AssetType } from '@components/Collection/AssetType';
+import { PushEvent } from '@utils/analyticsLogger';
 import mainCategories from '@utils/constants/DesignSets/mainCategory';
 import { onlyUnique } from '@utils/helpers';
 import React, { useEffect, useState } from 'react';
@@ -27,6 +28,11 @@ const DesignSetAssetProvider: React.FC<DesignSetAssetProviderProps> = ({
 
   const replaceProduct = (newProductId: string, oldProductId: string, productData: AssetType) => {
     if (newProductId !== oldProductId) {
+      PushEvent({
+        category: 'Product Swapped',
+        action: `Product Swapped | ${oldProductId} > ${newProductId}`,
+        label: 'Engage with Design Set',
+      });
       const newAssets = { ...assets };
 
       newAssets[newProductId] = productData;

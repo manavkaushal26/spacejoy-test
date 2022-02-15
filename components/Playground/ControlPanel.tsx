@@ -8,21 +8,27 @@ import {
 import { NavSelectContext } from '@store/NavSelect';
 import { SelectedIdContext } from '@store/SelectedId';
 import { PushEvent } from '@utils/analyticsLogger';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 
 const ControlPanel = ({ designSetId }) => {
-  const { updateCurrentVerticalForRecommendation } = useContext(PlaygroundAssetsContext);
+  const { updateCurrentVerticalForRecommendation, PlaygroundAssets } = useContext(PlaygroundAssetsContext);
   const [nav, setNav] = useContext(NavSelectContext);
   const [selectedId, setSelectedId, { swapState, setSwapState }] = useContext(SelectedIdContext);
+  const [assetId, setAssetId] = useState('');
 
   const [expanded, setExpanded] = useState(true);
+
+  useEffect(() => {
+    const assetId = PlaygroundAssets.filter((item) => item.id === selectedId)[0]?.assetId;
+    setAssetId(assetId);
+  }, [selectedId]);
 
   const handleExpand = () => {
     setExpanded(!expanded);
     PushEvent({
       category: `Click on Start Swapping`,
-      action: `Open Control Center | ${designSetId}`,
+      action: `Open Control Center | did: ${designSetId}`,
       label: 'Engage with Design Set',
     });
   };
@@ -31,7 +37,7 @@ const ControlPanel = ({ designSetId }) => {
     if (navSection === 'recommendations') {
       PushEvent({
         category: `Click on Swap(control center)`,
-        action: `Open Swap Menu | ${designSetId} | ${selectedId}`,
+        action: `Open Swap Menu | pid: ${assetId} | did: ${designSetId}`,
         label: 'Engage with Design Set',
       });
       updateCurrentVerticalForRecommendation(selectedId);
@@ -39,7 +45,7 @@ const ControlPanel = ({ designSetId }) => {
     } else {
       PushEvent({
         category: `Click on Select Background`,
-        action: `Open Background Menu | ${designSetId}`,
+        action: `Open Background Menu | did: ${designSetId}`,
         label: 'Engage with Design Set',
       });
       setNav(navSection);
