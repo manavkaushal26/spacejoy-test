@@ -193,10 +193,10 @@ const Header: React.FC = () => {
               </nav>
             </div>
             <div className="w-2/5 text-right">
-              <Link href={`${oldSpacejoyUrl}/interior-designs`}>
+              <Link href="/search">
                 <a
                   className={`text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                    router.asPath === `${oldSpacejoyUrl}/interior-designs` ? 'border-gray-200 text-red-600' : 'border-transparent'
+                    router.asPath === '/search' ? 'border-gray-200 text-red-600' : 'border-transparent'
                   }`}
                 >
                   <span className="sr-only">Search</span>
