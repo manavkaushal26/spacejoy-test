@@ -1,3 +1,4 @@
+import { authUrl } from '@utils/config';
 import React from 'react';
 
 const SignupPage = () => {
@@ -10,10 +11,10 @@ const SignupPage = () => {
   return (
     <div className="h-screen">
       <a
-        href="https://auth.spacejoy.com"
+        href={`${authUrl}`}
         target="popup"
         onClick={() => {
-          window.open('https://auth.spacejoy.com', 'popup', 'width=1000,height=1000');
+          window.open(`${authUrl}`, 'popup', 'width=1000,height=1000');
 
           return false;
         }}

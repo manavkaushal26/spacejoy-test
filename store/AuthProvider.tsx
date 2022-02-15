@@ -1,3 +1,4 @@
+import { authUrl } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { reactLocalStorage } from '@utils/helpers';
 import useLocalStorage from '@utils/hooks/useLocalStorage';
@@ -21,7 +22,7 @@ const AuthProvider: React.FC = ({ children }) => {
   const fetchUser = useCallback(async () => {
     setLoading(true);
     try {
-      const user = await fetch('https://auth.spacejoy.com/api/auth/session', {
+      const user = await fetch(`${authUrl}/api/auth/session`, {
         method: 'GET',
         credentials: 'include',
       }).then((data) => {
@@ -71,7 +72,7 @@ const AuthProvider: React.FC = ({ children }) => {
     // listen to crossDocument message from an iframe
     //listen to message event
     const handleMessage = async (event) => {
-      if (event.origin === 'https://auth.spacejoy.com') {
+      if (event.origin === authUrl) {
         if (event.data.type === 'SIGN_IN_SUCCESS') {
           await fetchUser();
           await saveGuestCart();
@@ -94,11 +95,11 @@ const AuthProvider: React.FC = ({ children }) => {
   const logout = async () => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    const csrfToken = await fetch('https://auth.spacejoy.com/api/auth/csrf', {
+    const csrfToken = await fetch(`${authUrl}/api/auth/csrf`, {
       method: 'GET',
       credentials: 'include',
     }).then((data) => data.json());
-    const response = await fetch('https://auth.spacejoy.com/api/auth/signout', {
+    const response = await fetch(`${authUrl}/api/auth/signout`, {
       method: 'POST',
       headers,
       credentials: 'include',

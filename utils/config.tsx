@@ -1,5 +1,7 @@
 const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
+const authUrl = isProduction ? 'https://auth.spacejoy.com' : 'http://localhost:3000';
+
 const page = {
   appName: 'SpaceJoyWeb',
   apiBaseUrl: process.env.NEXT_PUBLIC_API_GATEWAY,
@@ -137,4 +139,4 @@ const affirm = {
   script: isProduction ? 'https://cdn1.affirm.com/js/v2/affirm.js' : 'https://sandbox.affirm.com/js/v2/affirm.js',
 };
 
-export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl };
+export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl, authUrl };
