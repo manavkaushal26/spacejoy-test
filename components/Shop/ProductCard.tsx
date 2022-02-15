@@ -10,9 +10,10 @@ type GenericObj = { _id: string; name: string };
 
 type ProductCardType = {
   product: Partial<AssetType> & { retailer: GenericObj | string };
+  showViewDetails?: boolean;
 };
 
-const ProductCard = ({ product }: ProductCardType) => {
+const ProductCard = ({ product, showViewDetails }: ProductCardType) => {
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -27,8 +28,8 @@ const ProductCard = ({ product }: ProductCardType) => {
   return (
     <div>
       <Link href={`/product-view/${product?._id}`}>
-        <a target="_blank">
-          <div className="bg-white p-4 2xl:p-8 rounded-lg h-full relative">
+        <a target="_blank" className="">
+          <div className="bg-white p-4 pb-8 2xl:p-8 rounded-lg h-full hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl">
             {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price ? (
               <>
                 <div className="absolute z-10">
@@ -77,6 +78,11 @@ const ProductCard = ({ product }: ProductCardType) => {
                 </>
               )}
             </p>
+            {showViewDetails && (
+              <div className="border-t border-b text-xs absolute bottom-0 w-full text-center text-gray-600 left-0 py-1 font-light">
+                View Details
+              </div>
+            )}
           </div>
         </a>
       </Link>

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 import { Circle, Sprite, Text, Transformer } from 'react-konva';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
@@ -66,6 +66,11 @@ const DragImage: React.FC<DragImageInterface> = ({
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
+  const [mouseInside, setMouseInside] = useState(false);
+
+  const changeSelectionState = (value: boolean) => {
+    setMouseInside(value);
+  };
 
   const [img, status] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
@@ -97,13 +102,13 @@ const DragImage: React.FC<DragImageInterface> = ({
   const animations = getAnimationObject(img?.width / image.count, img?.height);
 
   useEffect(() => {
-    if (trRef && trRef?.current && isSelected && AssetRef?.current) {
+    if (trRef && trRef?.current && (isSelected || mouseInside) && AssetRef?.current) {
       trRef?.current?.nodes([AssetRef.current]);
       trRef?.current?.getLayer().batchDraw();
     } else {
       trRef?.current?.nodes([]);
     }
-  }, [index, isSelected]);
+  }, [index, isSelected, mouseInside]);
 
   const onAssetChange = () => {
     // transformer is changing scale of the node
@@ -132,6 +137,8 @@ const DragImage: React.FC<DragImageInterface> = ({
     draggable: false,
     ...(!belongsToGroup && {
       onClick: onSelect,
+      onMouseEnter: () => changeSelectionState(true),
+      onMouseLeave: () => changeSelectionState(false),
       // onTap: onSelect,
       // onDragStart: () => dispatch({ type: 'DRAG_START', payload: { isDragging: true } }),
       // onDragEnd: (e) => {
@@ -171,13 +178,13 @@ const DragImage: React.FC<DragImageInterface> = ({
           scaleY={state?.playgroundHeight ? 1 : 0.5}
           width={width}
           height={height}
-          isSelected={isSelected}
+          isSelected={isSelected || mouseInside}
           animations={animations}
           animation={rotationValue as string}
         />
       )}
 
-      {isSelected && !belongsToGroup && (
+      {(isSelected || mouseInside) && !belongsToGroup && (
         <Transformer
           className="transform-boundary"
           ref={trRef}

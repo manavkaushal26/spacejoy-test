@@ -13,7 +13,7 @@ import RecommendationsListContextProvider from '@store/RecommendationsList';
 import { SelectedIdContextProvider } from '@store/SelectedId';
 import mainCategories from '@utils/constants/DesignSets/mainCategory';
 import fetcher from '@utils/fetcher';
-import { onlyUnique } from '@utils/helpers';
+import { onlyUnique, priceToLocaleString } from '@utils/helpers';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -31,11 +31,15 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
   const correctedCollageName = useMemo(() => {
     return collageData?.name?.split('-').join(' ').slice(0, -10);
   }, [collageData]);
-
+  const shopDetailsRef = useRef<HTMLDivElement>();
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState([0, 0]);
   const updateSize = () =>
     setSize([PlaygroundWrapperRef.current?.offsetWidth, PlaygroundWrapperRef.current?.offsetHeight]);
+
+  const onTotalClick = () => {
+    shopDetailsRef?.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     updateSize();
@@ -60,9 +64,15 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                     <CollageListContextProvider>
                       <div className="container px-4 m-auto">
                         <div
-                          className="bg-white  aspect-[16/8]  flex-1 rounded-xl overflow-hidden relative"
+                          className="bg-white  aspect-[16/8]   flex-1 rounded-xl overflow-hidden relative"
                           ref={PlaygroundWrapperRef}
                         >
+                          <button
+                            onClick={onTotalClick}
+                            className="mb-0 absolute top-4 right-4 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold"
+                          >
+                            Total: {priceToLocaleString(collageData?.price)}
+                          </button>
                           {/* // TODO This codeblock will be replaced with editor code */}
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           {/* <Image
@@ -73,9 +83,11 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             objectFit="contain"
                           /> */}
                           <PlaygroundWithNoSSR w={size[0]} h={size[1]} collageData={collageData} />
-                          <ControlPanel designSetId={collageData._id} />
+                          <ControlPanel designSetId={collageData?._id} />
                         </div>
-                        <DesignSetDetails collageData={collageData} correctedCollageName={correctedCollageName} />
+                        <div ref={shopDetailsRef}>
+                          <DesignSetDetails collageData={collageData} correctedCollageName={correctedCollageName} />
+                        </div>
                       </div>
                     </CollageListContextProvider>
                   </RecommendationsListContextProvider>

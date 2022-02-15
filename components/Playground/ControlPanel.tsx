@@ -16,7 +16,7 @@ const ControlPanel = ({ designSetId }) => {
   const [nav, setNav] = useContext(NavSelectContext);
   const [selectedId, setSelectedId, { swapState, setSwapState }] = useContext(SelectedIdContext);
 
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const handleExpand = () => {
     setExpanded(!expanded);
