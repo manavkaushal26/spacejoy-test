@@ -265,7 +265,7 @@ const ProductView = ({ product }): JSX.Element => {
               </ol>
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
-              <div className="sticky top-0 ">
+              <div className="lg:sticky top-0 ">
                 <Tab.Group as="div" className="flex flex-row space-x-4">
                   <div className="hidden mx-auto mt-6 sm:block lg:max-w-none">
                     <Tab.List className="flex flex-col">
