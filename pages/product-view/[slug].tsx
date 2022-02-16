@@ -278,7 +278,7 @@ const ProductView = ({ product }): JSX.Element => {
                             <>
                               <span className="absolute inset-0 overflow-hidden rounded-md">
                                 <Image
-                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_600/${image?.cdn}`}
+                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_50/${image?.cdn}`}
                                   alt="Angled front view with bag zipped and handles upright."
                                   className="object-contain object-center sm:rounded-lg"
                                   layout="fill"

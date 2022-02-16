@@ -81,7 +81,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                   ))}
                 </div>
               )}
-              <p className="italic text-gray-600 line-clamp-3">{designData?.description}</p>
+              <p className="text-gray-600 line-clamp-2">{designData?.description}</p>
             </div>
             <div>
               <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div>
