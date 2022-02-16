@@ -964,11 +964,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                           isSelected={item.id === selectedId}
                           onSelect={() => setSelectedId(item.id)}
                           belongsToGroup
-                          onChange={(newAttrs): void => {
-                            const tmp = [...PlaygroundAssets];
-                            tmp[i] = newAttrs;
-                            setPlaygroundAssets(tmp);
-                          }}
+                          // onChange={(newAttrs): void => {
+                          //   const tmp = [...PlaygroundAssets];
+                          //   tmp[i] = newAttrs;
+                          //   setPlaygroundAssets(tmp);
+                          // }}
                           onSpriteLoad={updateAssetLoad}
                           parentId={playgroundItem?.id}
                         />
@@ -999,11 +999,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                     });
                     setSelectedId(playgroundItem.id);
                   }}
-                  onChange={(newAttrs): void => {
-                    const tmp = [...PlaygroundAssets];
-                    tmp[index] = newAttrs;
-                    setPlaygroundAssets(tmp);
-                  }}
+                  // onChange={(newAttrs): void => {
+                  //   const tmp = [...PlaygroundAssets];
+                  //   tmp[index] = newAttrs;
+                  //   setPlaygroundAssets(tmp);
+                  // }}
                 />
               );
             })}

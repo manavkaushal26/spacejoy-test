@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react';
-import { Circle, Sprite, Text, Transformer } from 'react-konva';
+import { Circle, Sprite, Text } from 'react-konva';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
 
@@ -8,7 +8,7 @@ interface DragImageInterface {
   image: PlaygroundAssetType;
   isSelected: boolean;
   onSelect: () => void;
-  onChange: (newAttrs) => void;
+  // onChange: (newAttrs) => void;
   rotationValue?: number;
   belongsToGroup: boolean;
   onSpriteLoad?: (parentCollageId: string, assetId: string, loaded: boolean) => void;
@@ -57,7 +57,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   image,
   isSelected,
   onSelect,
-  onChange,
+  // onChange,
   rotationValue = '0',
   belongsToGroup,
   onSpriteLoad,
@@ -110,26 +110,26 @@ const DragImage: React.FC<DragImageInterface> = ({
     }
   }, [index, isSelected, mouseInside]);
 
-  const onAssetChange = () => {
-    // transformer is changing scale of the node
-    // and NOT its width or height
-    // but in the store we have only width and height
-    // to match the data better we will reset scale on transform end
-    const node = AssetRef.current;
-    const scaleX = node.scaleX();
-    const scaleY = node.scaleY();
-    // we will reset it back
+  // const onAssetChange = () => {
+  //   // transformer is changing scale of the node
+  //   // and NOT its width or height
+  //   // but in the store we have only width and height
+  //   // to match the data better we will reset scale on transform end
+  //   const node = AssetRef.current;
+  //   const scaleX = node.scaleX();
+  //   const scaleY = node.scaleY();
+  //   // we will reset it back
 
-    node.scaleX(scaleX);
-    node.scaleY(scaleY);
-    onChange({
-      ...image,
-      x: node.x(),
-      y: node.y(),
-      playgroundWidth: Math.max(node.width() * scaleX),
-      playgroundHeight: Math.max(node.height() * scaleY),
-    });
-  };
+  //   node.scaleX(scaleX);
+  //   node.scaleY(scaleY);
+  //   onChange({
+  //     ...image,
+  //     x: node.x(),
+  //     y: node.y(),
+  //     playgroundWidth: Math.max(node.width() * scaleX),
+  //     playgroundHeight: Math.max(node.height() * scaleY),
+  //   });
+  // };
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
@@ -169,6 +169,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           alt={state?.name}
           name="object"
           image={img}
+          {...(isSelected ? { strokeWidth: 2, stroke: '#F5296E' } : {})}
           id={state?.id}
           x={state?.x}
           y={state?.y}
@@ -183,7 +184,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           animation={rotationValue as string}
         />
       )}
-
+      {/* 
       {(isSelected || mouseInside) && !belongsToGroup && (
         <Transformer
           className="transform-boundary"
@@ -198,7 +199,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           borderDash={[3, 3]}
           boundBoxFunc={(oldBox, newBox) => ((newBox.width < 10 || newBox.height) < 10 ? oldBox : newBox)}
         />
-      )}
+      )} */}
     </>
   );
 };
