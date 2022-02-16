@@ -115,7 +115,7 @@ const ProductView = ({ product }): JSX.Element => {
   }, [couponList, retailerOffers]);
 
   const productImages = useMemo(() => {
-    return [...(product?.productImages || []), ...(product?.renderImages || [])];
+    return [...(product?.productImages || [])];
   }, [product]);
 
   const [localProductQuantity, setLocalProductQuantity] = useState(1);
@@ -278,7 +278,7 @@ const ProductView = ({ product }): JSX.Element => {
                             <>
                               <span className="absolute inset-0 overflow-hidden rounded-md">
                                 <Image
-                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_400/${image?.cdn}`}
+                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_600/${image?.cdn}`}
                                   alt="Angled front view with bag zipped and handles upright."
                                   className="object-contain object-center sm:rounded-lg"
                                   layout="fill"
