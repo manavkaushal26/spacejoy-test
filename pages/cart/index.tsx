@@ -89,13 +89,12 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           throw new Error();
         }
       }
-    }
-    catch {
+    } catch {
       toast.error('Error in removing item');
     } finally {
       setLoading(false);
     }
-  } 
+  };
   const updateCartItemQty = async (quantity) => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
     try {
@@ -181,8 +180,11 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
                 </p>
               ) : null}
             </div>
-            <p className="mt-1 text-sm font-medium text-gray-900">
-              {priceToLocaleString(product.displayPrice || product.price)}
+            <p className="mt-1 text-sm font-medium text-gray-900 flex justify-between	">
+              <span>{priceToLocaleString(product.displayPrice || product.price)}</span>
+              <span>
+                <strong>Total:</strong> {priceToLocaleString((product?.price || 0) * (product?.quantity || 1))}
+              </span>
             </p>
           </div>
 
