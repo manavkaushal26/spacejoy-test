@@ -961,7 +961,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                           key={item.id}
                           image={item}
                           rotationValue={getRotationValue(item?.id)}
-                          isSelected={item.id === selectedId}
+                          selectedId={selectedId}
+                          itemId={playgroundItem?.id}
                           onSelect={() => setSelectedId(item.id)}
                           belongsToGroup
                           // onChange={(newAttrs): void => {
@@ -989,8 +990,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                   belongsToGroup={false}
                   key={playgroundItem?.id}
                   image={playgroundItem}
+                  itemId={playgroundItem?.id}
+                  selectedId={selectedId}
                   rotationValue={getRotationValue(playgroundItem?.id)}
-                  isSelected={playgroundItem.id === selectedId}
                   onSelect={() => {
                     PushEvent({
                       category: 'Select a product',

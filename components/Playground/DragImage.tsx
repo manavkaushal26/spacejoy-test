@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Circle, Sprite, Text } from 'react-konva';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
@@ -6,7 +6,8 @@ import useImage from 'use-image';
 interface DragImageInterface {
   index: number;
   image: PlaygroundAssetType;
-  isSelected: boolean;
+  selectedId: string;
+  itemId: string;
   onSelect: () => void;
   // onChange: (newAttrs) => void;
   rotationValue?: number;
@@ -55,7 +56,8 @@ const getAnimationObject = (boxSize, boxHeight) => {
 const DragImage: React.FC<DragImageInterface> = ({
   index,
   image,
-  isSelected,
+  selectedId,
+  itemId,
   onSelect,
   // onChange,
   rotationValue = '0',
@@ -67,6 +69,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   const trRef = useRef(null);
   const AssetRef = useRef(null);
   const [mouseInside, setMouseInside] = useState(false);
+  const isSelected = useMemo(() => itemId === selectedId, [selectedId, itemId]);
 
   const changeSelectionState = (value: boolean) => {
     setMouseInside(value);
@@ -169,7 +172,8 @@ const DragImage: React.FC<DragImageInterface> = ({
           alt={state?.name}
           name="object"
           image={img}
-          {...(isSelected ? { strokeWidth: 2, stroke: '#F5296E' } : {})}
+          opacity={selectedId && !isSelected ? 0.4 : 1}
+          {...(isSelected || mouseInside ? { strokeWidth: 2, stroke: '#F5296E' } : {})}
           id={state?.id}
           x={state?.x}
           y={state?.y}
