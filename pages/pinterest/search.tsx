@@ -20,7 +20,18 @@ const RoomSelect: NextPage<RoomSelectProps> = ({ searchQuery }) => {
   return (
     <Layout>
       <Head>
-        <title>Pinterest | Spacejoy</title>
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
+        <title key="title">Connect Pinterest. Let's bring your home decor ideas to life</title>
+        <meta
+          key="description"
+          name="description"
+          content={`Pinterest board filled with interior design & home decor ideas? Connect it to discover products from your pins. Create that Pinterest-ready living room easily!`}
+        />
+        <meta
+          key="keywords"
+          name="keywords"
+          content="apartment ideas pinterest, pinterest home decor ideas, pinterest interior design, pinterest living room"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Header />

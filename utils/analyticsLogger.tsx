@@ -56,7 +56,7 @@ const logPageView = () => {
   }
 };
 
-const logEvent = (category = '', action = '', label = '', value = '') => {
+const logEvent = (category = '', action = '', label = '', value: any = 0) => {
   if (prod && category && action) {
     ReactGA.event({ category, action, label, value: parseInt(value, 10) });
   }

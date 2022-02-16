@@ -7,7 +7,12 @@ import React from 'react';
 export const search = (): JSX.Element => (
   <Layout>
     <Head>
-      <title>Help | Spacejoy</title>
+      <title key="title">FAQs | Spacejoy</title>
+      <meta
+        key="description"
+        name="description"
+        content={`Have doubts about product purchase, designs orders, or Sapcejoy? These Frequently Asked Questions will help clear most of your doubts.`}
+      />
       <link rel="icon" href="/favicon.ico" />
     </Head>
     {/* <Layout.Banner />  */}

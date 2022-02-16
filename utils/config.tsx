@@ -51,7 +51,7 @@ const company = {
   tagLine: 'Designing your imagination',
   url: '//spacejoy.com',
   country: 'us',
-  subject: 'Design your room online. Spacejoy, online home interior design software ',
+  subject: 'Design your room online. Spacejoy, online home interior design software',
   description:
     'Get online home interior designs in 3D of your living room, bedroom, home office room, dining room, nursery & kids room',
   Keywords: [

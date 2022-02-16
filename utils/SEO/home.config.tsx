@@ -1,6 +1,7 @@
 const HomePageBaseSEO = {
-  title: '#1 Automated Interior Design Solution by Spacejoy',
-  description: 'The best place to design and shop for your home',
+  title: 'Spacejoy: #1 store for shopping furniture & decor online',
+  description:
+    'Discover & personalize curated furniture & decor sets for every style, space and budget. Shop from 500+ brands & furnish any space in minutes - only on Spacejoy',
   additionalMetaTags: '',
   canonical: '',
   additionalLinkTags: [

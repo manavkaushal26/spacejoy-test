@@ -178,7 +178,7 @@ function CheckoutForm({
       PushEvent({
         category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
         action: `Failed Paid Order For - ${checkoutFlow === 'store' ? cartData?.invoiceData?.total : plan}`,
-        label: `Place your order ${response.message}`,
+        label: `Place your order | message: ${response.message}`,
       });
       setPaymentError(checkoutFlow === 'store' ? response.data.message : response.message);
     }
@@ -233,9 +233,9 @@ function CheckoutForm({
             type="submit"
             className="flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 w-52"
             onClick={() => {
-              console.log({
+              PushEvent({
                 category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
-                action: `Attempt to Order - ${plan}`,
+                action: `Attempt to Order ${plan ? ' - ' + plan : ''}`,
                 label: 'Attempt to Place your order',
               });
             }}

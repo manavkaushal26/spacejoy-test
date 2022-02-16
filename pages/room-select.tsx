@@ -8,7 +8,7 @@ const RoomSelect = (props) => {
   return (
     <Layout>
       <Head>
-        <title>Interior-Designs | Spacejoy</title>
+        <title>Furnish any room in minutes, only on Spacejoy. Get started!</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Header />

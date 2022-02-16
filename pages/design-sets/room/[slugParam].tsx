@@ -6,6 +6,7 @@ import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
+import { RoomSelectSEO } from '@utils/SEO/roomSelectSEO';
 import { GetServerSidePropsContext, GetServerSidePropsResult, NextPage } from 'next';
 import Head from 'next/head';
 import React, { useMemo } from 'react';
@@ -25,6 +26,10 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData, category, ini
   const name = useMemo(() => {
     return slug.split('-').join(' ');
   }, [slug]);
+
+  let metaSEO = useMemo(() => {
+    return RoomSelectSEO.find((item) => item?.slug === slug);
+  }, []);
 
   // const [bg, setBg] = useState(colorList[colorList?.length - 1]);
   // const selectBgColor = (color: ColorListType) => {
@@ -59,11 +64,14 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData, category, ini
   return (
     <Layout>
       <Head>
-        <title>{`${name?.[0].toUpperCase()}${name?.slice(1)}`} | Spacejoy</title>
+        {/* <title>{`${name?.[0].toUpperCase()}${name?.slice(1)}`} | Spacejoy</title> */}
+        <title key="title">{metaSEO.data.title}</title>
+        <meta key="description" name="description" content={metaSEO.data.description} />
+        <meta key="keywords" name="keywords" content={metaSEO.data.keywords} />
       </Head>
       <Layout.Header />
       <Layout.Body>
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <RoomPageHeader category={category} />
           <DesignSetGrid feedData={feedData} category={category} />
         </div>

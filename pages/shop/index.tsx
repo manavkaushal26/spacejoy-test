@@ -117,7 +117,17 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
   return (
     <Layout>
       <Head>
-        <title>Shop | Spacejoy</title>
+        <title>Spacejoy: The best online furniture and home decor store</title>
+        <meta
+          key="description"
+          name="description"
+          content={`Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!`}
+        />
+        <meta
+          key="keywords"
+          name="keywords"
+          content="best online furniture stores, online discount furniture stores, furniture sale, best home decor store"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Layout.Banner />  */}

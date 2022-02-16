@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import React from 'react';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
@@ -28,6 +29,9 @@ export const Home = (): JSX.Element => {
     <>
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
+        <Head>
+          <meta key="keywords" name="keywords" content="online furniture store, home decor store, home design diy" />
+        </Head>
         {/* <Layout.Banner />  */}
         <Layout.Header />
         <Layout.Body>
