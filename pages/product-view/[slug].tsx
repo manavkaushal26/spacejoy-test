@@ -325,7 +325,7 @@ const ProductView = ({ product }): JSX.Element => {
                 <div>
                 <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
 
-                {session?.user?.role !== 'customer' && (
+                {session?.user && session?.user?.role !== 'customer' && (
                   <a target="_blank"rel="noreferrer" href={product.retailLink}>
                     <ExternalLinkIcon className="space-x-2 inline h-4 w-4 transition group-hover:translate-x-1" />
                  
