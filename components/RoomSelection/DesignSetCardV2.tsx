@@ -28,7 +28,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
       <a>
         <div
           className={`grid grid-cols-4 border transition-all hover:shadow-lg rounded-xl overflow-hidden group  ${
-            large ? 'aspect-[16/5]' : 'aspect-[16/8] '
+            large ? 'aspect-[16/5]' : 'aspect-[16/11] lg:aspect-[16/9] xl:aspect-[16/8]'
           }`}
           onClick={() => {
             PushEvent({
