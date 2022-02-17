@@ -1,4 +1,6 @@
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
+import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { useSession } from '@store/AuthProvider';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
@@ -87,6 +89,7 @@ const ProductView = ({ product }): JSX.Element => {
   const [retailerOffers, setRetailerOffers] = useState([]);
   const gaClickRef = useRef({});
 
+  const { session } = useSession();
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -319,7 +322,17 @@ const ProductView = ({ product }): JSX.Element => {
               </div>
               <div className="absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
               <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
+                <div>
                 <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+
+                {session?.user?.role !== 'customer' && (
+                  <a target="_blank"rel="noreferrer" href={product.retailLink}>
+                    <ExternalLinkIcon className="space-x-2 inline h-4 w-4 transition group-hover:translate-x-1" />
+                 
+                  
+                  </a>
+                )}
+                </div>
                 <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
                 <div className="mt-3">
                   <h2 className="sr-only">Product information</h2>
