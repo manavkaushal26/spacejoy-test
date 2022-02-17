@@ -961,14 +961,15 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                           key={item.id}
                           image={item}
                           rotationValue={getRotationValue(item?.id)}
-                          isSelected={item.id === selectedId}
+                          selectedId={selectedId}
+                          itemId={playgroundItem?.id}
                           onSelect={() => setSelectedId(item.id)}
                           belongsToGroup
-                          onChange={(newAttrs): void => {
-                            const tmp = [...PlaygroundAssets];
-                            tmp[i] = newAttrs;
-                            setPlaygroundAssets(tmp);
-                          }}
+                          // onChange={(newAttrs): void => {
+                          //   const tmp = [...PlaygroundAssets];
+                          //   tmp[i] = newAttrs;
+                          //   setPlaygroundAssets(tmp);
+                          // }}
                           onSpriteLoad={updateAssetLoad}
                           parentId={playgroundItem?.id}
                         />
@@ -989,8 +990,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                   belongsToGroup={false}
                   key={playgroundItem?.id}
                   image={playgroundItem}
+                  itemId={playgroundItem?.id}
+                  selectedId={selectedId}
                   rotationValue={getRotationValue(playgroundItem?.id)}
-                  isSelected={playgroundItem.id === selectedId}
                   onSelect={() => {
                     PushEvent({
                       category: 'Select a product',
@@ -999,11 +1001,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
                     });
                     setSelectedId(playgroundItem.id);
                   }}
-                  onChange={(newAttrs): void => {
-                    const tmp = [...PlaygroundAssets];
-                    tmp[index] = newAttrs;
-                    setPlaygroundAssets(tmp);
-                  }}
+                  // onChange={(newAttrs): void => {
+                  //   const tmp = [...PlaygroundAssets];
+                  //   tmp[index] = newAttrs;
+                  //   setPlaygroundAssets(tmp);
+                  // }}
                 />
               );
             })}
