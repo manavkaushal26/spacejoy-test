@@ -65,9 +65,9 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData, category, ini
     <Layout>
       <Head>
         {/* <title>{`${name?.[0].toUpperCase()}${name?.slice(1)}`} | Spacejoy</title> */}
-        <title key="title">{metaSEO.data.title}</title>
-        <meta key="description" name="description" content={metaSEO.data.description} />
-        <meta key="keywords" name="keywords" content={metaSEO.data.keywords} />
+        <title key="title">{metaSEO?.data.title}</title>
+        <meta key="description" name="description" content={metaSEO?.data.description} />
+        <meta key="keywords" name="keywords" content={metaSEO?.data.keywords} />
       </Head>
       <Layout.Header />
       <Layout.Body>

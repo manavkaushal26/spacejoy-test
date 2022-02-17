@@ -1,4 +1,6 @@
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
+import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { useSession } from '@store/AuthProvider';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
@@ -87,6 +89,7 @@ const ProductView = ({ product }): JSX.Element => {
   const [retailerOffers, setRetailerOffers] = useState([]);
   const gaClickRef = useRef({});
 
+  const { session } = useSession();
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -265,7 +268,7 @@ const ProductView = ({ product }): JSX.Element => {
               </ol>
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
-              <div className="lg:sticky top-0 ">
+              <div className="top-0 lg:sticky ">
                 <Tab.Group as="div" className="flex flex-row space-x-4">
                   <div className="hidden mx-auto mt-6 sm:block lg:max-w-none">
                     <Tab.List className="flex flex-col">
@@ -319,7 +322,14 @@ const ProductView = ({ product }): JSX.Element => {
               </div>
               <div className="absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
               <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
-                <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+                <div className="flex space-x-2">
+                  <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+                  {session?.user && session?.user?.role !== 'customer' && (
+                    <a target="_blank" rel="noreferrer" href={product.retailLink}>
+                      <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
+                    </a>
+                  )}
+                </div>
                 <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
                 <div className="mt-3">
                   <h2 className="sr-only">Product information</h2>

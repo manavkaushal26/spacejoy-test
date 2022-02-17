@@ -7,7 +7,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 const AuthContext = React.createContext({
   session: {
-    user: { name: '', email: '', id: '' },
+    user: { name: '', email: '', id: '',role:'' },
     token: '',
   },
   loading: true,

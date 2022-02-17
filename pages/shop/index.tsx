@@ -21,7 +21,7 @@ const ProductList = ({ list }) => {
       {list?.length ? (
         <>
           {list?.map((item) => (
-            <ProductCard product={item} key={item._id} />
+            <ProductCard product={item} key={item._id} pageName="shop" />
           ))}
         </>
       ) : (
