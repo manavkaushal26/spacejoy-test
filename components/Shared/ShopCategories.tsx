@@ -75,7 +75,7 @@ const ShopCategories = ({ callback }) => {
                             <li
                               className="text-sm text-gray-700 capitalize cursor-pointer hover:underline"
                               onClick={() => {
-                                updateFilter(subCategory?._id, 'subCategory', ['vertical']);
+                                updateFilter(subCategory?._id, 'subCategory', ['vertical', 'page']);
                                 callback && callback();
                               }}
                             >

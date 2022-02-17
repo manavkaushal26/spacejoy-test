@@ -104,6 +104,7 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
         status: 'active',
         spriteAvailable: true,
       },
+      projectId: 'randomString',
       spriteAvailable: true,
     };
     const resData = await fetcher({
