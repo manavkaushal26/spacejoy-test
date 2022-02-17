@@ -72,7 +72,6 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
         },
       });
       if (statusCode < 301) {
-        // todo - confirm this event
         PushEvent({
           category: `Cart`,
           action: `Success! Product ${product?._id} removed from Cart!`,
@@ -91,7 +90,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           });
           throw new Error();
         }
-      }
+      } 
     } catch {
       toast.error('Error in removing item');
     } finally {
@@ -146,10 +145,10 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
   };
 
   return (
-    <Link key={product._id} href={`/product-view/${product._id}`} passHref>
-      <a href={`/product-view/${product._id}`} target="_blank" rel="noreferrer">
-        <li key={product._id} className="grid grid-cols-12 py-6 group sm:py-10">
-          <div className="col-span-3 mb-2 aspect-w-1 aspect-h-1">
+    <li key={product._id} className="grid grid-cols-12 py-6 group sm:py-10">
+      <div className="col-span-3 mb-2 aspect-w-1 aspect-h-1">
+        <Link key={product._id} href={`/product-view/${product._id}`} passHref>
+          <a href={`/product-view/${product._id}`} target="_blank" rel="noreferrer">
             <Image
               // src={product?.imageUrl}
               src={`${cloudinary.baseDeliveryURL}/w_400,ar_1,c_pad/${product?.cdn}`}
@@ -159,87 +158,93 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
               placeholder="blur"
               blurDataURL={blurredBgProduct}
             />
-          </div>
+          </a>
+        </Link>
+      </div>
 
-          <div className="flex flex-col justify-between flex-1 col-span-9 ml-4 sm:ml-6">
-            <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-              <div>
-                <div className="flex justify-between">
-                  <h3 className="text-sm capitalize group-hover:underline">
-                    <a
-                      href={`/product-view/${product._id}`}
-                      className="font-medium text-gray-700 capitalize hover:text-gray-800"
-                    >
-                      {product.name}
-                    </a>
-                  </h3>
-                </div>
-                <div className="flex mt-1 text-sm">
-                  {product.dimension ? (
-                    <p className="flex my-4 text-xs text-gray-500 border-l border-gray-200">
-                      <span className="inline-block text-xs text-sm text-gray-700">{`${(
-                        product?.dimension?.width * 12
-                      ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
-                        product?.dimension?.height * 12
-                      ).toFixed(2)}"H`}</span>
-                    </p>
-                  ) : null}
-                </div>
-                <p className="flex justify-between mt-1 text-sm font-medium text-gray-900 ">
-                  <span>{priceToLocaleString(product.displayPrice || product.price)}</span>
-                  {/* <span>
+      <div className="flex flex-col justify-between flex-1 col-span-9 ml-4 sm:ml-6">
+        <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+          <div>
+            <div className="flex justify-between">
+              <h3 className="text-sm capitalize group-hover:underline">
+                <a
+                  href={`/product-view/${product._id}`}
+                  className="font-medium text-gray-700 capitalize hover:text-gray-800"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {product.name}
+                </a>
+              </h3>
+            </div>
+            <div className="flex mt-1 text-sm">
+              {product.dimension ? (
+                <p className="flex my-4 text-xs text-gray-500 border-l border-gray-200">
+                  <span className="inline-block text-xs text-sm text-gray-700">{`${(
+                    product?.dimension?.width * 12
+                  ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
+                    product?.dimension?.height * 12
+                  ).toFixed(2)}"H`}</span>
+                </p>
+              ) : null}
+            </div>
+            <p className="flex justify-between mt-1 text-sm font-medium text-gray-900 ">
+              <span>{priceToLocaleString(product.displayPrice || product.price)}</span>
+              {/* <span>
                 <strong>Total:</strong> {priceToLocaleString((product?.price || 0) * (product?.quantity || 1))}
               </span> */}
-                </p>
-              </div>
-
-              <div className="mt-4 sm:mt-0 sm:pr-9">
-                <label htmlFor={`quantity-${key}`} className="sr-only">
-                  Quantity, {product.name}
-                </label>
-                <select
-                  id={`quantity-${key}`}
-                  name={`quantity-${key}`}
-                  className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-indigo-500 sm:text-sm"
-                  value={product.quantity}
-                  onChange={(e) => updateCartItemQty(e?.target?.value)}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                  }}
-                >
-                  {[...new Array(20)].map((item, index) => {
-                    return (
-                      <option value={index + 1} key={`option-${index}`}>
-                        {index + 1}
-                      </option>
-                    );
-                  })}
-                </select>
-
-                <div className="absolute top-0 right-0">
-                  <button
-                    type="button"
-                    className="inline-flex p-2 -m-2 text-gray-400 hover:text-gray-500"
-                    onClick={removeItem}
-                  >
-                    <span className="sr-only">Remove</span>
-                    <XIcon className="w-5 h-5" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {typeof retailer?.shippingMethod !== 'undefined' ? (
-              <p className="flex mt-4 space-x-2 text-sm text-gray-700">
-                <TruckIcon className="flex-shrink-0 w-5 h-5 text-gray-500" aria-hidden="true" />{' '}
-                <span>Shipping Method: {retailer?.shippingMethod}</span>
-              </p>
-            ) : null}
+            </p>
           </div>
-        </li>
-      </a>
-    </Link>
+
+          <div className="mt-4 sm:mt-0 sm:pr-9">
+            <label htmlFor={`quantity-${key}`} className="sr-only">
+              Quantity, {product.name}
+            </label>
+            <select
+              id={`quantity-${key}`}
+              name={`quantity-${key}`}
+              className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-indigo-500 sm:text-sm"
+              value={product.quantity}
+              onChange={(e) => updateCartItemQty(e?.target?.value)}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
+            >
+              {[...new Array(20)].map((item, index) => {
+                return (
+                  <option value={index + 1} key={`option-${index}`}>
+                    {index + 1}
+                  </option>
+                );
+              })}
+            </select>
+
+            <div className="absolute top-0 right-0">
+              <button
+                type="button"
+                className="inline-flex p-2 -m-2 text-gray-400 hover:text-gray-500"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  removeItem();
+                }}
+              >
+                <span className="sr-only">Remove</span>
+                <XIcon className="w-5 h-5" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {typeof retailer?.shippingMethod !== 'undefined' ? (
+          <p className="flex mt-4 space-x-2 text-sm text-gray-700">
+            <TruckIcon className="flex-shrink-0 w-5 h-5 text-gray-500" aria-hidden="true" />{' '}
+            <span>Shipping Method: {retailer?.shippingMethod}</span>
+          </p>
+        ) : null}
+      </div>
+    </li>
   );
 };
 
