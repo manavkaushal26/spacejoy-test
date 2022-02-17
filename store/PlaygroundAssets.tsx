@@ -348,7 +348,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
           endPoint: '/v1/assets/getAssetsDetail',
           body: {
             assets: [assetId],
-            fields: ['price', 'name', 'renderImages', 'retailer', 'dimension', 'meta', 'imageUrl', 'cdn'],
+            fields: ['price', 'name', 'renderImages', 'retailer', 'dimension', 'meta', 'imageUrl', 'cdn', 'inStock'],
           },
           method: 'POST',
         });
