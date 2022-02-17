@@ -72,7 +72,6 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
         },
       });
       if (statusCode < 301) {
-        // todo - confirm this event
         PushEvent({
           category: `Cart`,
           action: `Success! Product ${product?._id} removed from Cart!`,
@@ -221,7 +220,11 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
                   <button
                     type="button"
                     className="inline-flex p-2 -m-2 text-gray-400 hover:text-gray-500"
-                    onClick={removeItem}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      removeItem();
+                    }}
                   >
                     <span className="sr-only">Remove</span>
                     <XIcon className="w-5 h-5" aria-hidden="true" />
