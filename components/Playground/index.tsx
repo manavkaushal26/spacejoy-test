@@ -28,9 +28,8 @@ import RecommendationsPanel from './Recommendations';
 
 const sceneWidth = 1400;
 interface PlaygroundInterface {
-  w: number;
-  h: number;
   collageData?: PlaygroundAssetType;
+  playGroundRef: React.MutableRefObject<HTMLDivElement>;
 }
 
 enum SAVE_TYPE {
@@ -38,7 +37,7 @@ enum SAVE_TYPE {
   DESIGNER = 'designer',
 }
 
-const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
+const Playground: React.FC<PlaygroundInterface> = ({ collageData, playGroundRef: PlaygroundWrapperRef }) => {
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
@@ -46,6 +45,16 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
   const [currentMode] = useContext(ViewingModeContext);
   const router = useRouter();
   const { setCurrentCollageCategory } = useCollageListContext();
+  const [size, setSize] = useState([0, 0]);
+  const [w, h] = size;
+  const updateSize = () =>
+    setSize([PlaygroundWrapperRef.current?.offsetWidth, PlaygroundWrapperRef.current?.offsetHeight]);
+  useEffect(() => {
+    updateSize();
+    window.addEventListener('resize', updateSize);
+
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
 
   const {
     PlaygroundAssets,

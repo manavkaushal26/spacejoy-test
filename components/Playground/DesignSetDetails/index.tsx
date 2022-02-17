@@ -26,7 +26,7 @@ const DesignSetDetails = ({ correctedCollageName, collageData }) => {
           {!!collageData?.description && <p className="mt-6 text-lg">{collageData?.description}</p>}
         </div>
         <div className="flex flex-col items-end justify-center col-span-3 rounded-xl">
-          <h2 className="text-3xl">{priceToLocaleString(priceOfSet)}</h2>
+          <h2 className="text-3xl">{priceToLocaleString(collageData?.price)}</h2>
           {/* <a
       href="#assets"
       className="px-5 py-2 m-2 text-xl text-white bg-gray-900 border border-gray-900 rounded-lg hover:bg-gray-700"

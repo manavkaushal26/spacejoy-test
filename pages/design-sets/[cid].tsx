@@ -17,7 +17,7 @@ import { onlyUnique, priceToLocaleString } from '@utils/helpers';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef } from 'react';
 
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
 
@@ -33,23 +33,10 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
   }, [collageData]);
   const shopDetailsRef = useRef<HTMLDivElement>();
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState([0, 0]);
-  const updateSize = () =>
-    setSize([PlaygroundWrapperRef.current?.offsetWidth, PlaygroundWrapperRef.current?.offsetHeight]);
 
   const onTotalClick = () => {
     shopDetailsRef?.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const [loaded, setLoaded] = useState(false);
-
-  useLayoutEffect(() => {
-    updateSize();
-    window.addEventListener('resize', updateSize);
-    setLoaded(true);
-
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
 
   return (
     <Layout>
@@ -67,9 +54,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                     <CollageListContextProvider>
                       <div className="container px-4 m-auto">
                         <div
-                          className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative ${
-                            loaded ? 'opacity-100' : ' opacity-0'
-                          }`}
+                          className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative `}
                           ref={PlaygroundWrapperRef}
                         >
                           <button
@@ -87,7 +72,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             layout="fill"
                             objectFit="contain"
                           /> */}
-                          <PlaygroundWithNoSSR w={size[0]} h={size[1]} collageData={collageData} />
+                          <PlaygroundWithNoSSR collageData={collageData} playGroundRef={PlaygroundWrapperRef} />
                           <ControlPanel designSetId={collageData?._id} />
                         </div>
                         <div ref={shopDetailsRef}>
