@@ -7,7 +7,7 @@ import { oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
@@ -15,6 +15,7 @@ import UserNav from './UserNav';
 const Header: React.FC = () => {
   const router = useRouter();
 
+  const [refSource, setRefSource] = useState<any>('');
   const [subNavContent, setSubNavContent] = useState('stories');
 
   const isSubNavHover = useMemo(() => {
@@ -64,6 +65,15 @@ const Header: React.FC = () => {
       }
     }
   }, [subNavContent]);
+
+  useEffect(() => {
+    const {
+      query: { ref = '' },
+    } = router;
+    if (ref) {
+      setRefSource(ref);
+    }
+  }, [router]);
 
   return (
     <>
@@ -203,7 +213,7 @@ const Header: React.FC = () => {
                   <SearchIcon className="inline w-4 h-4" />
                 </a>
               </Link>
-              <Link href="/cart">
+              <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`}>
                 <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ">
                   <span className="sr-only">Shopping</span>
                   <ShoppingBagIcon className="inline w-4 h-4" />

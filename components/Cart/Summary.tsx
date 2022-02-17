@@ -22,11 +22,12 @@ interface CartSummaryInterface {
   setShowGiftCardInput?: (boolean) => void;
   noBtn?: boolean;
   page?: string;
+  source?: string;
 }
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 
-const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page }) => {
+const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, source }) => {
   const { cart, updateCart } = useStore(
     (store) => ({
       cart: store.cart,
@@ -256,7 +257,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page })
 
           {noBtn ? null : (
             <div className="mt-6">
-              <Link href="/checkout/store" passHref>
+              <Link href={`/checkout/store${source ? `?ref=${source}` : ''}`} passHref>
                 <button
                   type="button"
                   className="w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"

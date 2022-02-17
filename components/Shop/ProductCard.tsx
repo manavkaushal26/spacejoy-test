@@ -13,9 +13,10 @@ type ProductCardType = {
   product: Partial<AssetType> & { retailer: GenericObj | string };
   showViewDetails?: boolean;
   collageId?: string;
+  pageName?: string;
 };
 
-const ProductCard = ({ product, showViewDetails, collageId }: ProductCardType) => {
+const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductCardType) => {
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -29,7 +30,7 @@ const ProductCard = ({ product, showViewDetails, collageId }: ProductCardType) =
 
   return (
     <div>
-      <Link href={`/product-view/${product?._id}`}>
+      <Link href={`/product-view/${product?._id}${pageName ? `?ref=${pageName}` : ''}`}>
         <a
           target="_blank"
           onClick={() => {
