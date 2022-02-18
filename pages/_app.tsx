@@ -3,15 +3,14 @@ import { Provider as OfferProvider, useCreateStore as OfferStore } from '@lib/of
 import { Provider, useCreateStore } from '@lib/store';
 import AuthProvider from '@store/AuthProvider';
 import ShopFilterContextProvider from '@store/ShopFilterContext';
-import Router from 'next/router';
+import { trackUtmClick } from '@utils/affiseAffiliateTracking';
+import { initAnalytics, LandingPage, PwaInstalled, RouteChange } from '@utils/analyticsLogger';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { pageview } from 'react-ga';
 import { Toaster } from 'react-hot-toast';
-import { trackUtmClick } from '@utils/utmAnalytics';
-import { getParameterByName } from '@utils/helpers';
 import { ThemeProvider } from 'styled-components';
 import '../styles/globals.css';
-import { initAnalytics, LandingPage, PwaInstalled, RouteChange } from '@utils/analyticsLogger';
-import { pageview } from 'react-ga';
 // import { pageview } from '@lib/ga';
 
 declare global {
@@ -36,22 +35,22 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
   //   PwaInstalled({ evt });
   // };
 
+  const router = useRouter();
+
   useEffect(() => {
+    // Should only be run once on landing
     if (!window.GA_INITIALIZED) {
       initAnalytics();
       window.GA_INITIALIZED = true;
     }
-
     LandingPage({ route: window?.location?.pathname, utm_source: getUtmParam(window?.location?.href) });
 
-    trackUtmClick({ clickId: getParameterByName('utm_click', window?.location?.href) });
-
-    Router.router.events.on('routeChangeStart', (url) => {
+    router.events.on('routeChangeStart', (url) => {
       if (url.split('/')[1] !== 'playstore') {
         setLoading(true);
       }
     });
-    Router.router.events.on('routeChangeComplete', () => {
+    router.events.on('routeChangeComplete', () => {
       setLoading(false);
       window.scrollTo(0, 0);
       RouteChange({ route: window?.location?.pathname, utm_source: getUtmParam(window?.location?.href) });
@@ -62,19 +61,23 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
   }, []);
 
   useEffect(() => {
+    if (router?.query?.clickId) trackUtmClick({ clickId: router?.query?.clickId });
+  }, [router.query]);
+
+  useEffect(() => {
     const handleRouteChange = (url) => {
       pageview(url);
     };
     //When the component is mounted, subscribe to router changes
     //and log those page views
-    Router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     // If the component is unmounted, unsubscribe
     // from the event with the `off` method
     return () => {
-      Router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [Router.events]);
+  }, []);
 
   return (
     <>

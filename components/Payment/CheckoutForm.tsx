@@ -1,6 +1,7 @@
 // import Button from '@components/Button';
 import SVGLoader from '@components/Shared/SVGLoader';
 import { useStore } from '@lib/store';
+import { saveUtmClick } from '@utils/affiseAffiliateTracking';
 import { PushEvent } from '@utils/analyticsLogger';
 // import Alert from '@sections/Checkout/Alert';
 // import themeConst from '@theme/index';
@@ -144,8 +145,9 @@ function CheckoutForm({
 
     if (response.statusCode <= 300) {
       setSubmitInProgress(false);
-      cb(true);
       if (checkoutFlow === 'store') {
+        await saveUtmClick({ orderId: response.data.order, sum: response.data.amount });
+
         setCartData({
           cartItems: {},
           count: 0,
@@ -168,10 +170,11 @@ function CheckoutForm({
         label: 'Place your order',
       });
 
-      if (checkoutFlow !== 'payment') {
-        const { data: { order = '' } = {} } = response;
-        const orderTotal = checkoutFlow === 'store' ? cartData?.invoiceData?.total : totalAmount;
-      }
+      // if (checkoutFlow !== 'payment') {
+      //   const { data: { order = '' } = {} } = response;
+      //   const orderTotal = checkoutFlow === 'store' ? cartData?.invoiceData?.total : totalAmount;
+      // }
+      cb(true);
     } else {
       setSubmitInProgress(false);
       cb(false);

@@ -139,4 +139,4 @@ const affirm = {
   script: isProduction ? 'https://cdn1.affirm.com/js/v2/affirm.js' : 'https://sandbox.affirm.com/js/v2/affirm.js',
 };
 
-export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl, authUrl };
+export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl, authUrl, isProduction };
