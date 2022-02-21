@@ -47,7 +47,6 @@ const Pinterestoauth = ({ code }) => {
         hasBaseUrl: true,
         method: 'GET',
       });
-      console.log(response);
       if (response.data?.access_token) {
         cookie.set('pinterest_access_token', response.data?.access_token, {
           expires: response?.data?.expires_in / (60 * 60 * 24),

@@ -43,8 +43,8 @@ module.exports = withPWA({
         permanent: false,
       },
       {
-        source: '/new-project',
-        destination: `${legacyRepo}/new-project`, // Matched parameters can be used in the destination
+        source: '/new-project/:slug*',
+        destination: `${legacyRepo}/new-project/:slug*`, // Matched parameters can be used in the destination
         permanent: false,
       },
       {

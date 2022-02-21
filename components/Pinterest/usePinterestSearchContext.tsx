@@ -85,6 +85,7 @@ const FindYourInspirationContextProvider: React.FC<{ searchQuery: string }> = ({
     }
     setLoading(false);
   };
+
   useEffect(() => {
     if (searchText) {
       initiateSearch();

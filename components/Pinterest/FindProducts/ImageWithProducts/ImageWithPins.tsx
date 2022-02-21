@@ -4,6 +4,7 @@ import MachineLearning from '@public/lotties/machine-learning.json';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useSearchProductsWithImageContext } from '../UseSearchProductsFromImageProvider';
+
 const BoundingBox = styled.button<{
   hue: number;
   selected: boolean;
