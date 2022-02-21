@@ -92,7 +92,7 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
             </p>
             {showViewDetails && (
               <div className="absolute bottom-0 left-0 w-full py-1 text-xs font-light text-center text-gray-600 border-t border-b">
-                View Details
+                See Details
               </div>
             )}
           </div>

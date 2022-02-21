@@ -170,7 +170,7 @@ const initData: PlaygroundAssetType[] = [];
 
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState<PlaygroundAssetType[]>(initData);
-  const [selectedId, setSelectedId] = useContext(SelectedIdContext);
+  const [selectedId, setSelectedId, {setSwapState}] = useContext(SelectedIdContext);
   const [bgImgUrl, setBg] = useState({
     value: RoomImageList[27].url,
     type: 'bg-img',
@@ -374,7 +374,8 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
             return { ...plAsset };
           });
           setPlaygroundAssets(updatedAssets);
-          toast.success('Product replaced successfully');
+          setSwapState(false);
+          toast.success('Product replaced successfully', {autoClose:2000});
         } else {
           throw new Error();
         }
