@@ -86,11 +86,11 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
               <p className="text-gray-600 line-clamp-2">{designData?.description}</p>
             </div>
             <div>
-              <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div>
+              {/* <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div> */}
 
               <div className="flex gap-4">
                 <a className="px-4 py-2 transition-all border border-black rounded-lg group-hover:scale-105 hover:shadow-xl">
-                  Personalize
+                  Explore
                 </a>
               </div>
             </div>
