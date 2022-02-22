@@ -17,7 +17,6 @@ const trackUtmClick = (utmClickId) => {
   const { clickId = '' } = utmClickId;
   if (clickId && typeof window !== undefined) {
     const domain = window.location.host.split('.').splice(-2).join('.');
-    console.log(domain);
     Cookies.set('clickId', clickId, { expires: 30, domain: isProduction ? `.${domain}` : 'localhost' });
   }
 };

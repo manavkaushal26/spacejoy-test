@@ -61,7 +61,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
   }, []);
 
   useEffect(() => {
-    if (router?.query?.clickId) trackUtmClick({ clickId: router?.query?.clickid });
+    if (router?.query?.clickid) trackUtmClick({ clickId: router?.query?.clickid });
   }, [router.query]);
 
   useEffect(() => {
