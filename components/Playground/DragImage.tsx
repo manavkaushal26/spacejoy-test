@@ -172,7 +172,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           alt={state?.name}
           name="object"
           image={img}
-          opacity={selectedId && !isSelected ? 0.4 : 1}
+          // opacity={selectedId && !isSelected ? 0.4 : 1}
           {...(isSelected || mouseInside ? { strokeWidth: 2, stroke: '#F5296E' } : {})}
           id={state?.id}
           x={state?.x}

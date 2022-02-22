@@ -1,7 +1,6 @@
 import CartItemDimmer from '@components/Cart/CartItemDimmer';
 import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
 import CartSummary from '@components/Cart/Summary';
-import EmptyState from '@components/Shared/EmptyState';
 import Layout from '@components/Shared/Layout';
 import { QuestionMarkCircleIcon, TruckIcon, XIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
@@ -20,6 +19,7 @@ import toast from 'react-hot-toast';
 import Link from 'next/link';
 import shallow from 'zustand/shallow';
 import { useRef } from 'react';
+import EmptyCart from '@components/Cart/EmptyCart';
 interface CartItemInterface {
   key: number;
   retailer: {
@@ -282,9 +282,9 @@ export default function Cart() {
         <Layout.Body>
           <div className="bg-white">
             <div className="max-w-2xl px-4 pt-16 pb-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
-              <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
+              {!loading && cart?.count !== 0 && <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>}
               {Object.keys(cart?.cartItems)?.length === 0 && (
-                <>{loading ? null : <EmptyState title="No items found" message={''} />}</>
+                <>{loading ? null : <EmptyCart/>}</>
               )}
               <form className="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
                 <section aria-labelledby="cart-heading" className="lg:col-span-7">
