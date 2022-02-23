@@ -1,5 +1,6 @@
 import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 import ShopCategories from '@components/Shared/ShopCategories';
+import { Dialog } from '@headlessui/react';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { PushEvent } from '@utils/analyticsLogger';
@@ -25,6 +26,9 @@ const Header: React.FC = () => {
   const [isOpenSubNav, setIsOpenSubNav] = useState(false);
   const toggleSubNav = () => setIsOpenSubNav((prevState) => !prevState);
 
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const toggleMenu = () => setIsOpenMenu((prevState) => !prevState);
+
   const handleHover = (value) => {
     setIsOpenSubNav(value);
   };
@@ -45,6 +49,7 @@ const Header: React.FC = () => {
           return <CustomerStoriesNav />;
         case 'shop':
           return <ShopCategories callback={toggleSubNav} />;
+
         default:
           return null;
       }
@@ -84,7 +89,7 @@ const Header: React.FC = () => {
         Skip to content
       </a>
       <header className={`bg-white sticky top-0 z-50`}>
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 mx-auto overflow-hidden">
           <div className="flex items-center h-20">
             <Link href="/">
               <a
@@ -113,7 +118,7 @@ const Header: React.FC = () => {
                   <li className="inline-block">
                     <Link href="/room-select">
                       <a
-                        className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                           router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         onClick={() => {
@@ -131,7 +136,7 @@ const Header: React.FC = () => {
                   <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
-                        className={`text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                           router.asPath === '/online-interior-design' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         target="_blank"
@@ -148,7 +153,7 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                   <li
-                    className="flex items-center h-full"
+                    className="items-center h-full sm:hidden md:hidden lg:flex"
                     onClick={() => {
                       toggleSubNav();
                       setSubNavContent('shop');
@@ -175,10 +180,10 @@ const Header: React.FC = () => {
                       />
                     </button>
                   </li>
-                  <li className="flex">
+                  <li className="flex sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
-                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                      className={`whitespace-nowrap hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
                         isOpenSubNav && subNavContent === 'stories' ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
@@ -199,10 +204,18 @@ const Header: React.FC = () => {
                       />
                     </button>
                   </li>
+                  <li
+                    className="text-sm sm:inline-block md:inline-block lg:hidden cursor-pointer"
+                    onClick={() => {
+                      toggleMenu();
+                    }}
+                  >
+                    More
+                  </li>
                 </ul>
               </nav>
             </div>
-            <div className="w-2/5 text-right">
+            <div className="w-2/5 md:flex md:items-center md:justify-center lg:justify-end">
               <Link href="/search">
                 <a
                   className={`text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ${
@@ -225,7 +238,7 @@ const Header: React.FC = () => {
                 </a>
               </Link>
               <Link href="/room-select">
-                <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700">
+                <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap">
                   Design Your Space
                 </a>
               </Link>
@@ -243,6 +256,40 @@ const Header: React.FC = () => {
         <SubNav.Header>{getSubNavHeader()}</SubNav.Header>
         <SubNav.Body>{getSubNavContent()}</SubNav.Body>
       </SubNav>
+
+      <Dialog
+        open={isOpenMenu}
+        onClose={() => setIsOpenMenu(false)}
+        as="div"
+        className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+      >
+        <Dialog.Overlay />
+        <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl absolute top-10 left-1/3">
+          <Dialog.Title>More Options</Dialog.Title>
+          <ul>
+            <li
+              className="cursor-pointer"
+              onClick={() => {
+                setIsOpenMenu(false);
+                toggleSubNav();
+                setSubNavContent('shop');
+              }}
+            >
+              Shop
+            </li>
+            <li
+              className="cursor-pointer"
+              onClick={() => {
+                setIsOpenMenu(false);
+                toggleSubNav();
+                setSubNavContent('stories');
+              }}
+            >
+              Explore Ideas
+            </li>
+          </ul>
+        </div>
+      </Dialog>
     </>
   );
 };

@@ -50,6 +50,7 @@ const ShopCategories = ({ callback }) => {
           </a>
         </div>
       </div>
+      {console.log('categoryset', splitCategories)}
       <div className="grid grid-cols-7 gap-4">
         {splitCategories?.map((categorySet, index) => {
           return (

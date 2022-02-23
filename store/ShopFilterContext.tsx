@@ -81,6 +81,7 @@ const ShopFilterContextProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       const allFilters = await fetchAllFilters(false);
+
       setShopFilters(allFilters);
     })();
   }, []);
