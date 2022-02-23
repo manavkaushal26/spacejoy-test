@@ -70,7 +70,7 @@ const Featured: React.FC = () => {
                     </div>
                     <div className="col-span-1 flex justify-center py-4 px-8 rounded-md bg-white">
                       <Image
-                        src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/forbes_ud5zvu.svg"
+                        src="https://res.cloudinary.com/spacejoy/image/upload/w_30/v1644328123/shared/brandsLogo/forbes_ud5zvu.svg"
                         alt="spacejoy happy customer"
                         height={'100'}
                         width={'170'}
@@ -79,34 +79,22 @@ const Featured: React.FC = () => {
                     </div>
                     <div className="col-span-1 flex justify-center py-4 px-8 rounded-md bg-white">
                       <Image
-                        src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/cnn_xwsrzu.svg"
+                        src="https://res.cloudinary.com/spacejoy/image/upload/w_350/v1644328123/shared/brandsLogo/cnn_xwsrzu.svg"
                         alt="spacejoy happy customer"
                         height={'80'}
-                        width={'170'}
+                        width={'130'}
                         layout="intrinsic"
                       />
                     </div>
                     <div className="col-span-1 flex justify-center py-4 px-8 rounded-md bg-white">
                       <Image
-                        src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/businessInsider_pbxfnp.svg"
+                        src="https://res.cloudinary.com/spacejoy/image/upload/w_350/v1644328123/shared/brandsLogo/businessInsider_pbxfnp.svg"
                         alt="spacejoy happy customer"
                         height={'100'}
                         width={'160'}
                         layout="intrinsic"
                       />
                     </div>
-                    
-                  {/* {FeaturedData.map((item) => (
-                    <div className="col-span-1 flex justify-center py-4 px-8 rounded-md bg-white" key={item.id}>
-                      <Image
-                        src={item.logo}
-                        alt="spacejoy happy customer"
-                        height={'130'}
-                        width={'200'}
-                        layout="intrinsic"
-                      />
-                    </div>
-                  ))} */}
                 </Tween>
               </div>
             </ScrollTrigger>

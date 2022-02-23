@@ -63,7 +63,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042480/web/homepage-v3/Website-design-set-8_adkesj.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_600/v1644042480/web/homepage-v3/Website-design-set-8_adkesj.jpg"
                     alt="image 1"
                     className="object-cover object-center w-full h-full rounded-xl"
                     layout="fill"
@@ -75,7 +75,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042485/web/homepage-v3/Website_design_set_7_gumghq.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_600/v1644042485/web/homepage-v3/Website_design_set_7_gumghq.jpg"
                     alt="image 1"
                     className="object-cover object-center w-full h-full rounded-xl"
                     layout="fill"
@@ -87,7 +87,7 @@ export const Home = (): JSX.Element => {
               <div className="rounded-xl">
                 <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644042492/web/homepage-v3/Website-design-set-92_wymkdg.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/w_600/v1644042492/web/homepage-v3/Website-design-set-92_wymkdg.jpg"
                     alt="image 1"
                     className="object-cover object-center w-full h-full rounded-xl"
                     layout="fill"
@@ -251,7 +251,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1644386536/spj-v2/sofas_m12dj0.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386536/spj-v2/sofas_m12dj0.png"
                     alt="sofas"
                     className="object-contain object-center w-full h-full"
                     layout="fill"
@@ -281,7 +281,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1644386525/spj-v2/chairs_ycetok.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386525/spj-v2/chairs_ycetok.png"
                     alt="chairs"
                     className="object-contain object-center w-full h-full"
                     layout="fill"
@@ -312,7 +312,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1644386529/spj-v2/coffee_tables_vltvlc.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386529/spj-v2/coffee_tables_vltvlc.png"
                     alt="coffee tables"
                     className="object-contain object-center w-full h-full"
                     layout="fill"
@@ -342,7 +342,7 @@ export const Home = (): JSX.Element => {
                 </div>
                 <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1644386383/spj-v2/Beds_qrwweq.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386383/spj-v2/Beds_qrwweq.png"
                     alt="beds"
                     className="object-contain object-center w-full h-full"
                     layout="fill"
