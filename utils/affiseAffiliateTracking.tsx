@@ -9,7 +9,9 @@ const saveUtmClick = async (params = { orderId: '', sum: 0 }) => {
   if (utmClickId) {
     const { orderId, sum } = params;
     // Since this repo only contains the code for Ecommerce purchases
-    const endPoint = `https://offers-spacejoy.affise.com/postback?clickid=${utmClickId}&goal=${EcommGoalValue}&action_id=${orderId}&sum=${sum}`;
+    const endPoint = `https://offers-spacejoy.affise.com/postback?clickid=${utmClickId}&goal=${EcommGoalValue}&action_id=${orderId}&sum=${Math.floor(
+      sum
+    )}`;
     await fetch(endPoint, { method: 'GET' });
   }
 };
