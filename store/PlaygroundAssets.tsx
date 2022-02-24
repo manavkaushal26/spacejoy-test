@@ -375,6 +375,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
           });
           setPlaygroundAssets(updatedAssets);
           setSwapState(false);
+          setSelectedId(null);
           toast.success(
             <span>
               Great going!
