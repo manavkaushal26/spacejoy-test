@@ -55,33 +55,34 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
 
   const removeItem = async () => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
-    try {
-      setLoading(true);
-      const { statusCode, data } = await fetcher({
-        endPoint: '/v1/cart',
-        method: 'POST',
-        body: {
-          items: [
-            {
-              productId: product?._id,
-              quantity: 0,
-              designId: '',
-              projectId: '',
-            },
-          ],
-        },
-      });
-      if (statusCode < 301) {
-        PushEvent({
-          category: `Cart`,
-          action: `Success! Product ${product?._id} removed from Cart!`,
-          label: `Cart Update`,
+    if (!isUserAuthenticated) {
+      removeProductFromCart(product?._id, retailer?._id);
+      toast.success('Removed item successfully!');
+    } else
+      try {
+        setLoading(true);
+        const { statusCode, data } = await fetcher({
+          endPoint: '/v1/cart',
+          method: 'POST',
+          body: {
+            items: [
+              {
+                productId: product?._id,
+                quantity: 0,
+                designId: '',
+                projectId: '',
+              },
+            ],
+          },
         });
-        updateCart(data);
-        toast.success('Removed item successfully!');
-
-        if (!isUserAuthenticated) {
-          removeProductFromCart(product?._id, retailer?._id);
+        if (statusCode < 301) {
+          PushEvent({
+            category: `Cart`,
+            action: `Success! Product ${product?._id} removed from Cart!`,
+            label: `Cart Update`,
+          });
+          updateCart(data);
+          toast.success('Removed item successfully!');
         } else {
           PushEvent({
             category: `Cart`,
@@ -90,12 +91,11 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           });
           throw new Error();
         }
-      } 
-    } catch {
-      toast.error('Error in removing item');
-    } finally {
-      setLoading(false);
-    }
+      } catch {
+        toast.error('Error in removing item');
+      } finally {
+        setLoading(false);
+      }
   };
   const updateCartItemQty = async (quantity) => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
@@ -282,10 +282,10 @@ export default function Cart() {
         <Layout.Body>
           <div className="bg-white">
             <div className="max-w-2xl px-4 pt-16 pb-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
-              {!loading && cart?.count !== 0 && <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>}
-              {Object.keys(cart?.cartItems)?.length === 0 && (
-                <>{loading ? null : <EmptyCart/>}</>
+              {!loading && cart?.count !== 0 && (
+                <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
               )}
+              {Object.keys(cart?.cartItems)?.length === 0 && <>{loading ? null : <EmptyCart />}</>}
               <form className="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
                 <section aria-labelledby="cart-heading" className="lg:col-span-7">
                   <h2 id="cart-heading" className="sr-only">
