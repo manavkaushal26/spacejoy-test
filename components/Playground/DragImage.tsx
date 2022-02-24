@@ -140,6 +140,7 @@ const DragImage: React.FC<DragImageInterface> = ({
     draggable: false,
     ...(!belongsToGroup && {
       onClick: onSelect,
+      onTap: onSelect,
       onMouseEnter: () => changeSelectionState(true),
       onMouseLeave: () => changeSelectionState(false),
       // onTap: onSelect,
