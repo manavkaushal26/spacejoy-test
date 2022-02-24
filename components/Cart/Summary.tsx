@@ -41,7 +41,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, s
   const { loading, coupons } = useCoupons('');
 
   const removeCoupon = async (couponId, type) => {
-    if (type === 'coupon') {
+    if (type === 'Coupon') {
       setCouponLoader(true);
     } else {
       setGiftCardLoader(true);
@@ -50,9 +50,21 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, s
       const { statusCode, data } = await fetcher({ endPoint: `/v1/cartCoupons/${couponId}`, method: 'DELETE' });
       if (statusCode <= 301) {
         updateCart(data);
-        toast.success(`Removed coupon successfully`);
+        toast.success(
+          <span>
+            Success!
+            <br />
+            {`${type}`} discount removed from this order
+          </span>
+        );
       } else {
-        toast.error(`Error while removing coupon`);
+        toast.error(
+          <span>
+            Uh-oh!
+            <br />
+            {`${type}`} code not be removed. Please try again
+          </span>
+        );
       }
     } catch {
     } finally {
@@ -64,11 +76,23 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, s
   const couponSuccess = (successData) => {
     setIsOpen(false);
     updateCart(successData);
-    toast.success('Coupon Applied Successfully!');
+    toast.success(
+      <span>
+        Yay!
+        <br />
+        Coupon Applied Successfully
+      </span>
+    );
   };
   const couponError = () => {
     setIsOpen(false);
-    toast.error(`Error occurred while applying coupon.`);
+    toast.error(
+      <span>
+        Oops.
+        <br />
+        Coupon could not be applied to this order
+      </span>
+    );
   };
 
   const isCouponApplied = cart?.invoiceData?.discount?.coupons.length ? true : false;
@@ -203,7 +227,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, s
                               <XCircleIcon
                                 className="w-4 h-4 ml-2 cursor-pointer"
                                 onClick={() => {
-                                  removeCoupon(coupon?._id, 'coupon');
+                                  removeCoupon(coupon?._id, 'Coupon');
                                 }}
                               />
                             )}

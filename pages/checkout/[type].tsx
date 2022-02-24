@@ -44,9 +44,21 @@ const Checkout = () => {
     if (statusCode <= 301) {
       updateCart(data);
       setShowGiftCardInput(false);
-      toast.success(`Removed ${type} successfully`);
+      toast.success(
+        <span>
+          Success!
+          <br />
+          {`${type}`} discount has been removed from this order
+        </span>
+      );
     } else {
-      toast.error(`Error while removing ${type}`);
+      toast.error(
+        <span>
+          Something went wrong.
+          <br />
+          {`${type}`} could not be removed. Please try again
+        </span>
+      );
     }
   };
 
@@ -61,10 +73,22 @@ const Checkout = () => {
   };
   const giftCardSuccess = (successData) => {
     updateCart(successData);
-    toast.success('Gift card applied Successfully!');
+    toast.success(
+      <span>
+        Congrats!
+        <br />
+        Gift card applied successfully
+      </span>
+    );
   };
   const giftCardError = () => {
-    toast.error(`Error occurred while applying gift card.`);
+    toast.error(
+      <span>
+        Uh oh!
+        <br />
+        Gift card could not be applied. Please try again
+      </span>
+    );
   };
 
   useEffect(() => {
@@ -210,7 +234,7 @@ const Checkout = () => {
                                           <button
                                             className="w-4 h-4 ml-2 text-gray-900 transition duration-200 hover:text-red-500"
                                             onClick={() => {
-                                              removeCoupon(item?._id, 'gift card');
+                                              removeCoupon(item?._id, 'Gift card');
                                             }}
                                           >
                                             <XIcon />
