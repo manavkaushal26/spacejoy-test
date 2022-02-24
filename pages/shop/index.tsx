@@ -14,6 +14,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const ProductList = ({ list }) => {
   return (
@@ -35,9 +36,9 @@ const ProductList = ({ list }) => {
   );
 };
 
-export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Element => {
+export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives }): JSX.Element => {
   const [currentFilters, setCurrentFilters] = useState({ ...defaultFilters, ...initialFilters });
-
+  const [error, setError] = useState(false);
   const shopPageTopRef = useRef<HTMLDivElement>();
 
   const onButtonClick = () => {
@@ -45,6 +46,25 @@ export const Shop = ({ initialFilters, assetsList, searchText = '' }): JSX.Eleme
       shopPageTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  useEffect(() => {
+    if (alternatives) {
+      setError(true);
+    }
+  }, [alternatives]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(
+        <div className="flex flex-col justify-center items-center">
+          <p className="font-bold">We are sorry</p>
+          <p className="message-body text-sm text-gray-600 text-justify">
+            The product you were looking for is not available but we&apos;ve got similar products!
+          </p>
+        </div>
+      );
+    }
+  }, [error]);
 
   const { currentRenderList, buttons, isFetching } = usePagination(
     {
@@ -361,6 +381,7 @@ export async function getServerSideProps(context) {
     props: {
       initialFilters: payload,
       assetsList,
+      alternatives: !!query?.alternatives,
     },
   };
 }
