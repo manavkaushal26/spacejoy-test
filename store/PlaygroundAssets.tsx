@@ -170,7 +170,7 @@ const initData: PlaygroundAssetType[] = [];
 
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState<PlaygroundAssetType[]>(initData);
-  const [selectedId, setSelectedId, {setSwapState}] = useContext(SelectedIdContext);
+  const [selectedId, setSelectedId, { setSwapState }] = useContext(SelectedIdContext);
   const [bgImgUrl, setBg] = useState({
     value: RoomImageList[27].url,
     type: 'bg-img',
@@ -375,15 +375,29 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
           });
           setPlaygroundAssets(updatedAssets);
           setSwapState(false);
-          toast.success('Product replaced successfully', {autoClose:2000});
+          toast.success(
+            <span>
+              Great going!
+              <br />
+              Product replaced successfully
+            </span>,
+            { autoClose: 2000 }
+          );
         } else {
           throw new Error();
         }
       } catch {
-        toast('Error while swapping. Please try again ', { autoClose: false });
+        toast(
+          <span>
+            Oh no!
+            <br />
+            That didn&apos;t work. Please try swapping again
+          </span>,
+          { autoClose: false }
+        );
       }
     } else {
-      toast('Please select a product to swap ', { autoClose: false });
+      toast('Please select a product to swap', { autoClose: false });
     }
   };
 

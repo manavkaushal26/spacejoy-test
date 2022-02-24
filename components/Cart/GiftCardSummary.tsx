@@ -51,7 +51,7 @@ const GiftCardSummary = ({ giftCardLoader, removeCoupon, giftCards }) => {
                 <button
                   className="w-4 h-4 ml-2 text-gray-600 transition duration-200 hover:text-red-500"
                   onClick={() => {
-                    removeCoupon(giftCard?._id, 'gift card');
+                    removeCoupon(giftCard?._id, 'Gift card');
                   }}
                 >
                   <XCircleIcon className="w-4 h-4 cursor-pointer" />

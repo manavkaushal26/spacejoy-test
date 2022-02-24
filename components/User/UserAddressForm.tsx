@@ -52,11 +52,23 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
       },
     });
     if (response.statusCode <= 300) {
-      toast.success('Address added successfully!');
+      toast.success(
+        <span>
+          All done!
+          <br />
+          Address saved successfully
+        </span>
+      );
 
       return [null, response.data];
     }
-    toast.error('Address could not be added.');
+    toast.error(
+      <span>
+        Uh-oh!
+        <br />
+        Address could not be saved. Please try again
+      </span>
+    );
 
     return [response?.data?.message, null];
   };

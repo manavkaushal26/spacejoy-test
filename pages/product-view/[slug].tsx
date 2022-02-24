@@ -163,7 +163,13 @@ const ProductView = ({ product }): JSX.Element => {
     if (!isUserAuthenticated) {
       modifyCart(product, quantity, 'update');
       setLocalProductQuantity(1);
-      toast.success('Item added to bag!');
+      toast.success(
+        <span>
+          Yay!
+          <br />
+          Item added to bag successfully
+        </span>
+      );
       isAddingToCart(false);
     } else {
       try {
@@ -183,7 +189,13 @@ const ProductView = ({ product }): JSX.Element => {
         });
         if (statusCode < 301) {
           updateCart(cartRes);
-          toast.success('Item added to bag!');
+          toast.success(
+            <span>
+              Yay!
+              <br />
+              Item added to bag successfully
+            </span>
+          );
           setLocalProductQuantity(1);
         } else {
           if (statusCode === 403) {
@@ -194,9 +206,21 @@ const ProductView = ({ product }): JSX.Element => {
         }
       } catch (e) {
         if (e?.message === 'unauthorized') {
-          toast.error('Please Sign In to add items to bag');
+          toast.error(
+            <span>
+              Hey there!
+              <br />
+              Sign in to add items to your bag
+            </span>
+          );
         } else {
-          toast.error('An error occurred while adding to bag');
+          toast.error(
+            <span>
+              Oops.
+              <br />
+              Item could not be added to bag. Please try again
+            </span>
+          );
         }
       } finally {
         isAddingToCart(false);

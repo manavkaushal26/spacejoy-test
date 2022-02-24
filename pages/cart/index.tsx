@@ -57,7 +57,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
     const isUserAuthenticated = Cookies.get('token') ? true : false;
     if (!isUserAuthenticated) {
       removeProductFromCart(product?._id, retailer?._id);
-      toast.success('Removed item successfully!');
+      toast.success('Success! Item removed from cart');
     } else
       try {
         setLoading(true);
@@ -82,17 +82,17 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
             label: `Cart Update`,
           });
           updateCart(data);
-          toast.success('Removed item successfully!');
+          toast.success('Success! Item removed from cart');
         } else {
-          PushEvent({
-            category: `Cart`,
-            action: `Failed!! Product ${product?._id} not removed from Cart!`,
-            label: `Cart Update`,
-          });
           throw new Error();
         }
       } catch {
-        toast.error('Error in removing item');
+        PushEvent({
+          category: `Cart`,
+          action: `Failed!! Product ${product?._id} not removed from Cart!`,
+          label: `Cart Update`,
+        });
+        toast.error('Item could not be removed. Try again');
       } finally {
         setLoading(false);
       }
@@ -104,7 +104,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
 
       if (!isUserAuthenticated) {
         modifyCart({ ...product, retailer: { ...retailer } }, quantity, '');
-        toast.success('Updated quantity successfully!');
+        toast.success('Cart updated successfully');
       } else {
         const { statusCode, data } = await fetcher({
           endPoint: '/v1/cart',
@@ -127,7 +127,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
             label: `Cart Update`,
           });
           updateCart(data);
-          toast.success('Updated quantity successfully!');
+          toast.success('Cart updated successfully');
         } else {
           throw new Error();
         }
@@ -138,7 +138,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
         action: `Failed!! Cart Quantity of ${product?._id} not Updated to ${quantity}`,
         label: `Cart Update`,
       });
-      toast.error('Error in updating quantity');
+      toast.error('Cart could not be updated. Please try again');
     } finally {
       setLoading(false);
     }
