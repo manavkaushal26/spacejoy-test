@@ -1,3 +1,4 @@
+import AffirmCard from '@components/Shared/AffirmCards/AffirmCard';
 import EmptyState from '@components/Shared/EmptyState';
 import InputRange from '@components/Shared/InputRange';
 import Layout from '@components/Shared/Layout';
@@ -21,8 +22,11 @@ const ProductList = ({ list }) => {
     <>
       {list?.length ? (
         <>
-          {list?.map((item) => (
+          {list?.map((item, idx) => (
+            <>
+            {idx == 2 && <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_8shopAffirm_kmopay.svg" />}
             <ProductCard product={item} key={item._id} pageName="shop" />
+            </>
           ))}
         </>
       ) : (
@@ -335,7 +339,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                 </form>
               </div>
               <div className="col-span-4 rounded">
-                <div className="grid grid-cols-3 gap-1 xl:grid-cols-4 2xl:grid-cols-4">
+                <div className="grid grid-cols-3 gap-1 xl:grid-cols-3 2xl:grid-cols-3">
                   {isFetching ? (
                     <>
                       {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {

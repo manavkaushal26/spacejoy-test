@@ -15,7 +15,7 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
         return (
           groupData && (
             <div key={id} className="col-span-12 px-8 pt-8 mb-8 bg-gray-100 border-2 border-gray-300 rounded-b-xl">
-              <CollageProductList assets={groupedData?.[id]?.assets} collageId={collageId} />
+              <CollageProductList assets={groupedData?.[id]?.assets} collageId={collageId} showAffirmCard/>
             </div>
           )
         );
