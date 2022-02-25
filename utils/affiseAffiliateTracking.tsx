@@ -11,8 +11,9 @@ const saveUtmClick = async (params = { orderId: '', sum: 0 }) => {
     let sumValue = sum;
     if (typeof sumValue === 'string') {
       sumValue = parseFloat(sumValue);
-      sumValue = isNaN(sumValue) ? 0 : sumValue / 100;
     }
+    sumValue = isNaN(sumValue) ? 0 : sumValue / 100;
+
     // Since this repo only contains the code for Ecommerce purchases
     const endPoint = `https://offers-spacejoy.affise.com/postback?clickid=${utmClickId}&goal=${EcommGoalValue}&action_id=${orderId}&sum=${sumValue?.toFixed(
       2
