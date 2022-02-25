@@ -15,6 +15,7 @@ const v3 = () => {
           layout="fill"
           placeholder="blur"
           blurDataURL={blurredBgImage}
+          priority
         />
         {/* https://res.cloudinary.com/spacejoy/image/upload/v1643862497/web/homepage-v3/New_Website_Banner_-_2-1_ttykfb.jpg */}
       </div>

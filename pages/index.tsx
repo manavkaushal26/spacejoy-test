@@ -369,6 +369,39 @@ export const Home = (): JSX.Element => {
               </button>
             </div>
           </div>
+
+          {/* Section Start */}
+          <div className="container px-4 mx-auto my-10 grid grid-cols-4 gap-8">
+            <div className="col-span-3">
+              <Link href={`${oldSpacejoyUrl}/furniture-decor-shop`}>
+                <a target="_blank">
+                  <div className="relative rounded-xl ">
+                    <Image
+                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645696675/web/homepage-v3/Mask_Group_yc8rb5.svg"
+                      alt="offers"
+                      layout="responsive"
+                      height={300}
+                      width={1000}
+                      className="object-contain"
+                      placeholder="blur"
+                      blurDataURL={blurredBgProduct}
+                    />
+                  </div>
+                </a>
+              </Link>
+            </div>
+            <div className="relative rounded-xl">
+              <Image
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1645772874/web/homepage-v3/Group_8homePageAffirm_jprb6q.jpg"
+                alt="affirm"
+                layout="fill"
+                className="object-contain w-full h-full"
+                placeholder="blur"
+                blurDataURL={blurredBgProduct}
+              />
+            </div>
+          </div>
+
           <div className="container px-4 mx-auto mb-40">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
@@ -417,6 +450,7 @@ export const Home = (): JSX.Element => {
               </Carousel>
             </div>
           </div>
+
           {/* Section Start */}
           <div className="mt-32 mb-12">
             <HomeSectionTitle className="text-center">
