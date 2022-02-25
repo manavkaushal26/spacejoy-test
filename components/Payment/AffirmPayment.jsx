@@ -7,6 +7,7 @@ import fetcher from '@utils/fetcher';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Affirm = ({ cb }) => {
   const [submitInProgress, setSubmitInProgress] = useState(false);
@@ -44,7 +45,7 @@ const Affirm = ({ cb }) => {
   const handleClick = async () => {
     setSubmitInProgress(true);
     const res = await fetcher({ endPoint: '/v1/payments/affirmDetails', method: 'GET' });
-    res.data.total = Number(res.data.total.toFixed());
+    res.data.total = Number(res?.data?.total?.toFixed());
 
     if (res.statusCode <= 300) {
       affirm.checkout(res.data);
@@ -56,10 +57,6 @@ const Affirm = ({ cb }) => {
             action: `Error in Affirm - ${data?.shipping?.name?.first} ${data?.shipping?.name?.last}`,
             label: 'Error in Affirm',
           });
-          // NotificationService.error({
-          //   title: 'Affirm checkout failed',
-          //   timer: 2,
-          // });
         },
         onSuccess(a) {
           setSubmitInProgress(false);
@@ -68,11 +65,12 @@ const Affirm = ({ cb }) => {
       });
     } else {
       setSubmitInProgress(false);
-      // NotificationService.error({
-      //   title: 'Affirm checkout is not valid',
-      //   timer: 2,
-      // });
+      toast.error(res?.data?.message);
     }
+    //todo TEMP FIX --> NEED IMPROVEMENT
+    setTimeout(() => {
+      setSubmitInProgress(false);
+    }, 5000);
   };
 
   return (

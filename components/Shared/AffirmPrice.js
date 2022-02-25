@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const AffirmWrapper = styled.div`
-  font-size: 1rem;
+  font-size: 0.85rem;
   background-color: white;
   border-radius: 5px;
   padding: 24px 16px;
@@ -15,7 +15,7 @@ const AffirmWrapper = styled.div`
     transform: translate(0px, -6px);
     font-weight: bold;
     color: black;
-    border:1px solid black;
+    border: 1px solid black;
     border-radius: 5px;
     padding: 8px;
     text-transform: capitalize;
@@ -23,6 +23,9 @@ const AffirmWrapper = styled.div`
       text-decoration: underline;
     }
   }
+  @media (min-width: 991px) and (max-width: 1200px) {
+    font-size: 0.65rem;
+  } ;
 `;
 
 const AffirmCartPrice = ({ totalAmount, flow, affirmType }) => {
