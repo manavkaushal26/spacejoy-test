@@ -1,17 +1,24 @@
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
-import { ExternalLinkIcon } from '@heroicons/react/outline';
-import { useSession } from '@store/AuthProvider';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import SVGLoader from '@components/Shared/SVGLoader';
 import { Disclosure, Tab } from '@headlessui/react';
-import { ChevronRightIcon, HomeIcon, MinusIcon, MinusSmIcon, PlusIcon, PlusSmIcon } from '@heroicons/react/outline';
+import {
+  ChevronRightIcon,
+  ExternalLinkIcon,
+  HomeIcon,
+  MinusIcon,
+  MinusSmIcon,
+  PlusIcon,
+  PlusSmIcon,
+} from '@heroicons/react/outline';
 import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
+import { useSession } from '@store/AuthProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
@@ -245,11 +252,22 @@ const ProductView = ({ product }): JSX.Element => {
       }
     }
   };
+  const metaDescriptionColors =
+    product?.colors && product?.colors?.length && product?.colors[0].toLowerCase() !== 'n/a'
+      ? product?.colors?.join(',')
+      : '';
 
   return (
     <Layout>
       <Head>
-        <title>{product?.name} | Spacejoy</title>
+        <title>
+          Buy {product?.name} from {product?.retailer?.name} | Spacejoy
+        </title>
+        <meta
+          key="description"
+          name="description"
+          content={`${product?.retailer?.name}, ${metaDescriptionColors} + ${product?.meta?.vertical?.name}, ${product?.retailer?.name} + ${product?.meta?.subcategory?.name} , ${product?.retailer?.name} + ${product?.meta?.vertical?.name}, ${product?.meta?.vertical?.name}, Buy ${product?.meta?.vertical?.name}`}
+        />
         <base href="/" />
       </Head>
       {/* <Layout.Banner />  */}
