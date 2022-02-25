@@ -29,6 +29,7 @@ export interface CollagesListInterface {
   background: string;
   isActive: boolean;
   price: number;
+  bgType: string;
   name: string;
   collageId: string;
   category?: string;

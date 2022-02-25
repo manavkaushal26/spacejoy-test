@@ -82,7 +82,11 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             layout="fill"
                             objectFit="contain"
                           /> */}
-                          <PlaygroundWithNoSSR collageData={collageData} playGroundRef={PlaygroundWrapperRef} />
+                          <PlaygroundWithNoSSR
+                            collageData={collageData}
+                            playGroundRef={PlaygroundWrapperRef}
+                            bg={{ value: collageData?.background, type: collageData?.bgType }}
+                          />
                           <ControlPanel designSetId={collageData?._id} />
                         </div>
                         <div ref={shopDetailsRef}>
@@ -115,8 +119,7 @@ export const getServerSideProps = async ({ params }) => {
         });
         const { data = {}, statusCode } = collageRes;
         const {
-          data: { categoryMap },
-          background = '',
+          data: { categoryMap, background = '', bgType = '' },
         } = collageRes;
         const { category: { _id: categoryId = '' } = {} } = categoryMap || {};
         if (statusCode <= 301) {
@@ -222,6 +225,7 @@ export const getServerSideProps = async ({ params }) => {
                 ...collageDataWithProductData,
                 categoryId,
                 background,
+                bgType,
               },
               assets: productData || [],
               groupedAssetList: groupedAssetList || {},

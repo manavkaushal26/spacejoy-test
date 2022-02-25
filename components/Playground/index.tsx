@@ -30,6 +30,10 @@ const sceneWidth = 1400;
 interface PlaygroundInterface {
   collageData?: PlaygroundAssetType;
   playGroundRef: React.MutableRefObject<HTMLDivElement>;
+  bg: {
+    value: string;
+    type: string;
+  };
 }
 
 enum SAVE_TYPE {
@@ -37,7 +41,11 @@ enum SAVE_TYPE {
   DESIGNER = 'designer',
 }
 
-const Playground: React.FC<PlaygroundInterface> = ({ collageData, playGroundRef: PlaygroundWrapperRef }) => {
+const Playground: React.FC<PlaygroundInterface> = ({
+  collageData,
+  playGroundRef: PlaygroundWrapperRef,
+  bg: backgroundData,
+}) => {
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
@@ -128,6 +136,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ collageData, playGroundRef:
   const { setBgImgUrl } = bg;
   React.useEffect(() => {
     if (collageData) {
+      if (backgroundData?.value && backgroundData?.type) {
+        setBgImgUrl(backgroundData?.value, backgroundData?.type);
+      }
       const { categoryId = '', background } = collageData;
       setCurrentCollageCategory(categoryId);
       setActiveCollages([...activeCollages, collageData?.id]);
