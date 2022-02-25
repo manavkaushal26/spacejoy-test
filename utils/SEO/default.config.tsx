@@ -1,6 +1,6 @@
 import { company, page, cloudinary } from '@utils/config';
 
-const prod = process.env.NEXT_PUBLIC_ENV_HOST === 'production';
+const prod = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
