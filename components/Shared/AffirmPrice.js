@@ -5,12 +5,21 @@ import styled from 'styled-components';
 
 const AffirmWrapper = styled.div`
   font-size: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  padding: 24px 16px;
   .affirm-ala-price {
     font-weight: bold;
   }
   a {
+    position: absolute;
+    right: 24px;
+    transform: translate(0px, -6px);
     font-weight: bold;
     color: black;
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 8px;
     text-transform: capitalize;
     &:hover {
       text-decoration: underline;
