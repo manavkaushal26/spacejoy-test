@@ -24,7 +24,7 @@ const ProductList = ({ list }) => {
         <>
           {list?.map((item, idx) => (
             <>
-            {idx == 2 && <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_8shopAffirm_kmopay.svg" />}
+            {idx == 4 && <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />}
             <ProductCard product={item} key={item._id} pageName="shop" />
             </>
           ))}

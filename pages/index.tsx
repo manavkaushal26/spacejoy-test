@@ -375,14 +375,14 @@ export const Home = (): JSX.Element => {
             <div className="col-span-3">
               <Link href={`${oldSpacejoyUrl}/furniture-decor-shop`}>
                 <a target="_blank">
-                  <div className="relative rounded-xl ">
+                  <div className="relative">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645696675/web/homepage-v3/Mask_Group_yc8rb5.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645793144/web/homepage-v3/EEE25th_-_Month_End_Special-25_zy8krx.png"
                       alt="offers"
                       layout="responsive"
                       height={300}
                       width={1000}
-                      className="object-contain"
+                      className="object-contain "
                       placeholder="blur"
                       blurDataURL={blurredBgProduct}
                     />
@@ -390,9 +390,9 @@ export const Home = (): JSX.Element => {
                 </a>
               </Link>
             </div>
-            <div className="relative rounded-xl">
+            <div className="relative">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1645772874/web/homepage-v3/Group_8homePageAffirm_jprb6q.jpg"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1645766721/web/homepage-v3/Group_8homePageAffirm_dkndyv.svg"
                 alt="affirm"
                 layout="fill"
                 className="object-contain w-full h-full"
