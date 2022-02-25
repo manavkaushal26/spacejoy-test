@@ -12,8 +12,6 @@ const AffirmWrapper = styled.div`
     font-weight: bold;
   }
   a {
-    position: absolute;
-    right: 24px;
     transform: translate(0px, -6px);
     font-weight: bold;
     color: black;
