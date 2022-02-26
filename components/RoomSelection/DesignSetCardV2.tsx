@@ -1,7 +1,6 @@
 import { CollagesListInterface } from '@components/Collages/interface';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
-import { priceToLocaleString } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
@@ -20,8 +19,8 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
   }, [designData]);
 
   const bgClass = {
-    aspectRatio :`${designData.background !== '' ? (large ? 'ar_2.1,c_fill' : 'ar_2.1,c_fill') : 'ar_1.67,c_mpad'}`,
-    objectFit: `${designData.background === '' ? `objectFit={'cover'}` : `objectFit={'contain'}`}`
+    aspectRatio: `${designData.background !== '' ? (large ? 'ar_2.1,c_fill' : 'ar_2.1,c_fill') : 'ar_1.67,c_mpad'}`,
+    objectFit: `${designData.background === '' ? `objectFit={'cover'}` : `objectFit={'contain'}`}`,
   };
 
   return (
@@ -51,12 +50,12 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                 <Image
                   loading="eager"
                   className="z-10"
-                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/${bgClass.aspectRatio}/${
+                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/ar_1.67,c_mpad/${
                     large ? 'w_1400' : 'w_800'
                   },c_pad/f_auto,q_auto/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
-                  {...bgClass.objectFit}
+                  objectFit={'contain'}
                   placeholder="blur"
                   blurDataURL={blurredBgProduct}
                 />
