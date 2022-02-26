@@ -19,6 +19,11 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
     ];
   }, [designData]);
 
+  const bgClass = {
+    aspectRatio :`${designData.background !== '' ? (large ? 'ar_2.1,c_fill' : 'ar_2.1,c_fill') : 'ar_1.67,c_mpad'}`,
+    objectFit: `${designData.background === '' ? `objectFit={'cover'}` : `objectFit={'contain'}`}`
+  };
+
   return (
     <Link
       href={{
@@ -40,18 +45,18 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
             });
           }}
         >
-          <div className={`relative overflow-hidden ${large ? 'col-span-3' : 'col-span-2'}`}>
-            <div className="z-10 h-full p-4">
+          <div className={`relative overflow-hidden ${large ? 'col-span-3' : 'col-span-3'}`}>
+            <div className="z-10 h-full">
               <div className="relative h-full">
                 <Image
                   loading="eager"
                   className="z-10"
-                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/ar_1.67,c_mpad/${
+                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/${bgClass.aspectRatio}/${
                     large ? 'w_1400' : 'w_800'
                   },c_pad/f_auto,q_auto/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
-                  objectFit={'contain'}
+                  {...bgClass.objectFit}
                   placeholder="blur"
                   blurDataURL={blurredBgProduct}
                 />
@@ -65,7 +70,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
               objectFit="cover"
             /> */}
           </div>
-          <div className={`bg-gray-100  ${large ? 'col-span-1' : 'col-span-2'} p-8 flex flex-col justify-between`}>
+          <div className={`bg-gray-100  ${large ? 'col-span-1' : 'col-span-1'} p-8 flex flex-col justify-between`}>
             <div className="flex flex-col gap-2">
               <h2 className={`capitalize text-lg  line-clamp-2 font-bold tracking-normal`}>
                 {/* Change line-clamp-2 to line-clamp-1 if there is more data to be displayed */}
