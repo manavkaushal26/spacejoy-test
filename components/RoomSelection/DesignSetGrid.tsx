@@ -85,10 +85,10 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({ feedData, category = 
                 })}
               </>
             )}
-            
+
             {currentRenderList.map((design, index) => {
               // const large = index % 2 == 0 && index % 3 !== 2;
-              const large = index % 3 == 0;
+              const large = index % 5 == 0;
 
               return (
                 // <div
@@ -98,14 +98,24 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({ feedData, category = 
                 //   <DesignSetCard designData={design} large={large} />
                 // </div>
                 <>
-                {index == 6 && <div className={`relative border rounded-xl ${large ? 'col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]' : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'}`}><AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_9designsetBigAffirm_ayi0hz.svg" /></div>}
-                <div
-                  key={design?._id}
-                  className={`relative ${large ? 'col-span-4 row-span-2' : 'col-span-2 row-span-1'}`}
-                >
-                  
-                  <DesignSetCardV2 designData={design} large={large} />
-                </div></>
+                  {index == 5 && (
+                    <div
+                      className={`relative border rounded-xl ${
+                        large
+                          ? 'col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]'
+                          : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'
+                      }`}
+                    >
+                      <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_9designsetBigAffirm_ayi0hz.svg" />
+                    </div>
+                  )}
+                  <div
+                    key={design?._id}
+                    className={`relative ${large ? 'col-span-4 row-span-2' : 'col-span-2 row-span-1'}`}
+                  >
+                    <DesignSetCardV2 designData={design} large={large} />
+                  </div>
+                </>
               );
             })}
           </div>

@@ -129,7 +129,7 @@ const internalPages = {
     NUM_OF_BUTTONS: 7,
   },
   Collages: {
-    DEFAULT_PAGE_SIZE: 24,
+    DEFAULT_PAGE_SIZE: 25,
     DEFAULT_PAGINATION_BUTTON_COUNT: 5,
   },
 };
