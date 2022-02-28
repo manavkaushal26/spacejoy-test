@@ -47,7 +47,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                 className="z-10 rounded-lg overflow-hidden"
                 src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/${
                   large ? 'ar_2.32' : 'ar_2'
-                },c_fill/f_auto,q_auto/${designData?.thumbnail}`}
+                },c_fill/f_auto,q_auto,${large ? 'w_1200' : 'w_700'}/${designData?.thumbnail}`}
                 layout="fill"
                 alt={designData?.collageId}
                 objectFit={'contain'}
