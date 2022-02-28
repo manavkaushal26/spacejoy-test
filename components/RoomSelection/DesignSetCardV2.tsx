@@ -1,6 +1,6 @@
 import { CollagesListInterface } from '@components/Collages/interface';
+import { ArrowRightIcon } from '@heroicons/react/outline';
 import { blurredBgProduct } from '@public/images/bg-base-64';
-import { priceToLocaleString } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
@@ -25,22 +25,8 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
       }}
     >
       <a>
-        <div className="grid grid-cols-4 rounded-lg overflow-hidden border">
-          <div className="col-span-4">
-            {tagsInPills?.length > 0 && !large && (
-              <div className="flex gap-1 mt-1 mb-2 px-4 pt-4 pb-2">
-                {tagsInPills.map((tag, index) => (
-                  <span
-                    key={`${tag}-${index}`}
-                    className="px-2 py-1 text-xs capitalize bg-neutral-500 text-white  border rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className={`${large ? 'col-span-3' : 'col-span-4'} px-4 ${large && 'py-4'}`}>
+        <div className="grid grid-cols-4 rounded-lg overflow-hidden border bg-white">
+          <div className={`${large ? 'col-span-3' : 'col-span-4'} px-4 py-4`}>
             <div className={`relative ${large ? 'aspect-[2.32]' : 'aspect-[2]'} `}>
               <Image
                 loading="eager"
@@ -58,7 +44,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
           </div>
           <div className={`${large ? 'col-span-1' : 'col-span-4'}  p-4  `}>
             <div className="flex flex-col justify-between h-full">
-              {tagsInPills?.length > 0 && large && (
+              {tagsInPills?.length > 0 && (
                 <div className="flex gap-1 mt-1 mb-2">
                   {tagsInPills.map((tag, index) => (
                     <span
@@ -71,7 +57,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                 </div>
               )}
               <div>
-                <div className={'flex flex-col gap-2'}>
+                <div className={'flex flex-col gap-2 mb-2'}>
                   <h2 className={`capitalize text-lg  line-clamp-2  font-bold tracking-normal`}>
                     {/* Change line-clamp-2 to line-clamp-1 if there is more data to be displayed */}
                     {designData?.name.slice(0, -11)}
@@ -79,11 +65,11 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
                   {designData?.description && <p className="text-gray-600 line-clamp-2">{designData?.description}</p>}
                 </div>
                 <div>
-                  <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div>
+                  {/* <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div> */}
 
                   <div className="flex gap-4">
-                    <a className="px-4 py-2 transition-all border border-black rounded-lg group-hover:scale-105 hover:shadow-xl">
-                      Personalize
+                    <a className="px-4 py-2 transition-all border border-black flex items-center gap-2 rounded-lg group-hover:scale-105 hover:shadow-xl">
+                      Explore <ArrowRightIcon className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
