@@ -18,9 +18,17 @@ interface DesignSetGridInterface {
   // bg?: ColorListType;
   category?: string;
   selectedSubCategoryList?: CollageSubcategories[];
+  tagFilters?: Array<string>;
+  themeFilters?: Array<string>;
 }
 
-const DesignSetGrid: React.FC<DesignSetGridInterface> = ({ feedData, category = '', selectedSubCategoryList }) => {
+const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
+  feedData,
+  category = '',
+  selectedSubCategoryList,
+  tagFilters,
+  themeFilters = [],
+}) => {
   const ref = useRef<HTMLDivElement>();
   const onButtonClick = (pgNo: any) => {
     if (ref.current) {
@@ -45,12 +53,14 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({ feedData, category = 
             : {}),
           isActive: true,
           price: ['1', '500000'],
+          tags: [...tagFilters],
+          themes: [...themeFilters],
         },
         searchText: '',
         wildcard: true,
       },
     };
-  }, [category, selectedSubCategoryList]);
+  }, [category, selectedSubCategoryList, tagFilters, themeFilters]);
 
   const { currentRenderList, isFetching, buttons } = useGenericPagination(
     apiParams,
@@ -64,7 +74,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({ feedData, category = 
   const indexes = [0, 4, 6, 10, 12];
 
   return (
-    <div className="bg-white my-8" ref={ref}>
+    <div className="bg-gray-100" ref={ref}>
       <div className="container mx-auto ">
         <div className="grid grid-cols-12 gap-8">
           {/* Uncomment below code and chagne col-span-12 to col-span-9 in the next block to get sidebar */}

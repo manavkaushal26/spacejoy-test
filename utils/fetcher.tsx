@@ -21,10 +21,10 @@ const fetcher = async ({
   type = 'text',
   hasBaseUrl = false,
 }: FetcherArgs): Promise<Record<string, any>> => {
-  // const JWT =
-  //   Cookies.get('token') ||
-  //   'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjQzMzcwNjQ3LCJleHAiOjE2NTIwMTA2NDd9.FLR_6QNa7NZc1XlaHyRxAsS5ef5vavPdjL6X4Xfthwo';
-  const JWT = Cookies.get('token');
+  const JWT =
+    Cookies.get('token') ||
+    'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjQzMzcwNjQ3LCJleHAiOjE2NTIwMTA2NDd9.FLR_6QNa7NZc1XlaHyRxAsS5ef5vavPdjL6X4Xfthwo';
+  // const JWT = Cookies.get('token');
 
   const contentType = type === 'file' ? '' : 'application/json';
 
