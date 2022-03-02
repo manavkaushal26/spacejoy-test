@@ -371,18 +371,18 @@ export const Home = (): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="container px-4 mx-auto my-10 grid grid-cols-4 gap-8">
+          <div className="container grid grid-cols-4 gap-8 px-4 mx-auto my-10">
             <div className="col-span-3">
               <Link href={`${oldSpacejoyUrl}/furniture-decor-shop`}>
                 <a target="_blank">
                   <div className="relative">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645793144/web/homepage-v3/EEE25th_-_Month_End_Special-25_zy8krx.png"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/v1646227411/web/homepage-v3/Generic_Sale-03_copy_u3igju.jpg"
                       alt="offers"
                       layout="responsive"
                       height={300}
                       width={1000}
-                      className="object-contain "
+                      className="object-contain"
                       placeholder="blur"
                       blurDataURL={blurredBgProduct}
                     />
