@@ -46,6 +46,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           {/* Bing webmaster verification */}
           <meta name="msvalidate.01" content="90B5CCABB531B09607FDE6C5344FC8CF" />
+          <meta name="facebook-domain-verification" content="36rwmn2vpa1s55ovj31i21delhkcsm" />
           {prod && <script async defer dangerouslySetInnerHTML={{ __html: clarity }} />}
           {prod && <script async defer dangerouslySetInnerHTML={{ __html: gtm }} />}
         </Head>
