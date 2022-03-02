@@ -33,8 +33,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
+import ReactImageZoom from 'react-image-zoom';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
+
+const zoomProps = { width: '600' };
 const entry = keyframes`
 	from { 
 		opacity: 0;
@@ -310,7 +313,7 @@ const ProductView = ({ product }): JSX.Element => {
               </ol>
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
-              <div className="top-0 lg:sticky ">
+              <div className="top-0 lg:sticky z-10">
                 <Tab.Group as="div" className="flex flex-row space-x-4">
                   <div className="hidden mx-auto mt-6 sm:block lg:max-w-none">
                     <Tab.List className="flex flex-col">
@@ -348,14 +351,9 @@ const ProductView = ({ product }): JSX.Element => {
                   <Tab.Panels className="w-full aspect-w-1 aspect-h-1 grow">
                     {productImages.map((image, idx) => (
                       <Tab.Panel key={idx}>
-                        <Image
-                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1000/${image?.cdn}`}
-                          alt="Angled front view with bag zipped and handles upright."
-                          className="object-contain object-center bg-white sm:rounded-lg"
-                          layout="fill"
-                          placeholder="blur"
-                          objectFit="contain"
-                          blurDataURL={blurredBgProduct}
+                        <ReactImageZoom
+                          img={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1000/${image?.cdn}`}
+                          {...zoomProps}
                         />
                       </Tab.Panel>
                     ))}

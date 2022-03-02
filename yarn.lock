@@ -3706,6 +3706,11 @@ js-cookie@^3.0.1:
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
   integrity sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==
 
+js-image-zoom@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/js-image-zoom/-/js-image-zoom-0.7.0.tgz#9cea6e7a4da1feae99e7433dc58fdc31f05a977f"
+  integrity sha512-csvn2FmRLjVz5O9AtXGRPKy0Khfcf5n2Vuyg1NyOVylcjzJ6IKN60JmZ/d5rVQvMya9V6tqAaCqj/c20PlUYpQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -4862,6 +4867,14 @@ react-html-parser@^2.0.2:
   integrity sha512-XeerLwCVjTs3njZcgCOeDUqLgNIt/t+6Jgi5/qPsO/krUWl76kWKXMeVs2LhY2gwM6X378DkhLjur0zUQdpz0g==
   dependencies:
     htmlparser2 "^3.9.0"
+
+react-image-zoom@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-image-zoom/-/react-image-zoom-1.3.1.tgz#f0083dbab6d8bbb4687c1d53fa5b7b7a9ad1012d"
+  integrity sha512-RSw64hMnrnezokenByljfIWVJX5vJQiCirMBJxVqQ3rbQFXk0KGKsoMzdr7cc0/YYStrag3xK8UQZH8KdlTbYQ==
+  dependencies:
+    js-image-zoom "^0.7.0"
+    prop-types "^15.7.2"
 
 react-infinite-scroller@^1.2.4:
   version "1.2.4"
