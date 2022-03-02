@@ -41,7 +41,11 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
             });
           }}
         >
-          <div className="bg-white p-4 pb-4 2xl:p-4 rounded-lg h-full hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl">
+          <div
+            className={`bg-white p-4 ${
+              showViewDetails ? 'pb-8' : ''
+            } rounded-lg h-full hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl`}
+          >
             {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price ? (
               <>
                 <div className="absolute z-10">
