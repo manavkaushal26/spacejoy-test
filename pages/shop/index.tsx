@@ -8,26 +8,62 @@ import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
 import { Disclosure } from '@headlessui/react';
 import { ChevronRightIcon, HomeIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import usePagination from '@hooks/usePagination';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
-import { internalPages } from '@utils/config';
+import { cloudinary, internalPages } from '@utils/config';
 import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 const ProductList = ({ list }) => {
+  const { data } = useFirebaseContext();
+
   return (
     <>
       {list?.length ? (
         <>
-          {list?.map((item, idx) => (
-            <>
-            {idx == 4 && <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />}
-            <ProductCard product={item} key={item._id} pageName="shop" />
-            </>
-          ))}
+          {list?.map((item, idx) => {
+            if ((idx === 14 || idx === 30) && idx !== 0 && data?.injectBannerV2?.visible) {
+              return data?.injectBannerV2?.link !== undefined && data?.injectBannerV2?.link !== '' ? (
+               <div className='col-span-3'>
+                  <Link href={data?.injectBannerV2?.link}>
+                  <a>
+                    <div className="relative aspect-w-4 aspect-h-1">
+                      <Image
+                        src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
+                        alt="injectBanner"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                  </a>
+                </Link>
+               </div>
+              ) : (
+                <div className="relative aspect-w-3 aspect-h-1 col-span-3">
+                  <Image
+                    src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
+                    alt="injectBanner"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
+              );
+            }
+
+            return (
+              <>
+                {idx === 4 && (
+                  <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />
+                )}
+                <ProductCard product={item} key={item._id} pageName="shop" />
+              </>
+            );
+          })}
         </>
       ) : (
         <div className="relative h-full col-span-5 bg-white rounded">

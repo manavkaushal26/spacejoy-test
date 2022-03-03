@@ -10,7 +10,7 @@ import { StarIcon } from '@heroicons/react/solid';
 import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
-import { oldSpacejoyUrl } from '@utils/config';
+import { cloudinary, oldSpacejoyUrl } from '@utils/config';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import dynamic from 'next/dynamic';
@@ -19,11 +19,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import React from 'react';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
 export const Home = (): JSX.Element => {
   const router = useRouter();
+  const { data } = useFirebaseContext();
 
   return (
     <>
@@ -373,22 +375,33 @@ export const Home = (): JSX.Element => {
           {/* Section Start */}
           <div className="container grid grid-cols-4 gap-8 px-4 mx-auto my-10">
             <div className="col-span-3">
-              <Link href={`${oldSpacejoyUrl}/furniture-decor-shop`}>
-                <a target="_blank">
-                  <div className="relative">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1646227411/web/homepage-v3/Generic_Sale-03_copy_u3igju.jpg"
-                      alt="offers"
-                      layout="responsive"
-                      height={300}
-                      width={1000}
-                      className="object-contain"
-                      placeholder="blur"
-                      blurDataURL={blurredBgProduct}
-                    />
-                  </div>
-                </a>
-              </Link>
+              {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
+                <Link href={data?.homepageV2?.hp1Link}>
+                  <a target="_blank">
+                    <div className="relative aspect-w-4 aspect-h-1">
+                      <Image
+                        src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
+                        alt="offers"
+                        layout="fill"
+                        className="object-contain "
+                        placeholder="blur"
+                        blurDataURL={blurredBgProduct}
+                      />
+                    </div>
+                  </a>
+                </Link>
+              ) : (
+                <div className="relative aspect-w-4 aspect-h-1">
+                  <Image
+                    src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
+                    alt="offers"
+                    layout="fill"
+                    className="object-contain "
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              )}
             </div>
             <div className="relative">
               <Image

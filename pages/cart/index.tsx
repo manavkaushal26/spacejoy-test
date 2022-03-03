@@ -20,6 +20,7 @@ import Link from 'next/link';
 import shallow from 'zustand/shallow';
 import { useRef } from 'react';
 import EmptyCart from '@components/Cart/EmptyCart';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 interface CartItemInterface {
   key: number;
   retailer: {
@@ -249,6 +250,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
 };
 
 export default function Cart() {
+  const { data } = useFirebaseContext();
   const router = useRouter();
   const [checkoutRefSource, setCheckoutRefSource] = useState<any>('');
   const { cart, updateCart, loading } = useStore(
@@ -357,13 +359,40 @@ export default function Cart() {
                     );
                   })}
                 </section>
+
                 {loading && <CartSummaryDimmer />}
                 {!loading && cart?.count !== 0 && (
                   <section
                     aria-labelledby="summary-heading"
-                    className="sticky px-4 py-6 mt-16 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 top-20"
+                    className="sticky  lg:col-span-5 top-20 flex flex-col space-y-4"
                   >
-                    <CartSummary source={checkoutRefSource} />
+                    {data?.cartBannerV2?.visible &&
+                      (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
+                        <Link href={data?.cartBannerV2?.link}>
+                          <a>
+                            <div className="relative aspect-w-7 aspect-h-2">
+                              <Image
+                                src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                                alt="cartBanner"
+                                layout="fill"
+                                objectFit="contain"
+                              />
+                            </div>
+                          </a>
+                        </Link>
+                      ) : (
+                        <div className="relative aspect-w-7 aspect-h-2">
+                          <Image
+                            src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                            alt="cartBanner"
+                            layout="fill"
+                            objectFit="contain"
+                          />
+                        </div>
+                      ))}
+                    <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0">
+                      <CartSummary source={checkoutRefSource} />
+                    </div>
                   </section>
                 )}
               </form>

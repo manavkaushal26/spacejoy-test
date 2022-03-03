@@ -115,6 +115,18 @@ const company = {
   },
 };
 
+const firebaseConfig = {
+	apiKey: "AIzaSyC1Ak54VCskX74P9v0h8Mii5mP3e5hqRo0",
+	authDomain: "formal-envelope-244206.firebaseapp.com",
+	databaseURL: "https://formal-envelope-244206.firebaseio.com",
+	projectId: "formal-envelope-244206",
+	storageBucket: "formal-envelope-244206.appspot.com",
+	messagingSenderId: "628064588100",
+	appId: "1:628064588100:web:57b18ba0c19e9cea238711",
+	databaseId: isProduction ? "siteConfig" : "siteConfig-devStaging",
+	documentId: "main",
+};
+
 const internalPages = {
   InteriorDesigns: {
     DEFAULT_PAGE_SIZE: 18,
@@ -139,4 +151,4 @@ const affirm = {
   script: isProduction ? 'https://cdn1.affirm.com/js/v2/affirm.js' : 'https://sandbox.affirm.com/js/v2/affirm.js',
 };
 
-export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl, authUrl, isProduction };
+export { company, page, cloudinary, internalPages, affirm, pinterestConfig, oldSpacejoyUrl, authUrl, isProduction, firebaseConfig };

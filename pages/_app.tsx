@@ -2,6 +2,7 @@ import CommonSEO from '@components/Shared/SEO/DefaultSeo';
 import { Provider as OfferProvider, useCreateStore as OfferStore } from '@lib/offerStore';
 import { Provider, useCreateStore } from '@lib/store';
 import AuthProvider from '@store/AuthProvider';
+import FirebaseContextProvider from '@store/FirebaseContextProvider';
 import ShopFilterContextProvider from '@store/ShopFilterContext';
 import { trackUtmClick } from '@utils/affiseAffiliateTracking';
 import { initAnalytics, LandingPage, PwaInstalled, RouteChange } from '@utils/analyticsLogger';
@@ -81,26 +82,28 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
 
   return (
     <>
-      <AuthProvider>
-        {/* <SessionProvider session={session}> */}
-        <Provider createStore={createStore}>
-          <OfferProvider createStore={createOfferStore}>
-            <CommonSEO />
-            <ThemeProvider theme={{}}>
-              <ShopFilterContextProvider>
-                <Component {...pageProps} />
-                <Toaster
-                  position="top-center"
-                  toastOptions={{
-                    className: 'shadow-lg',
-                  }}
-                />
-              </ShopFilterContextProvider>
-            </ThemeProvider>
-          </OfferProvider>
-        </Provider>
-        {/* </SessionProvider> */}
-      </AuthProvider>
+      <FirebaseContextProvider>
+        <AuthProvider>
+          {/* <SessionProvider session={session}> */}
+          <Provider createStore={createStore}>
+            <OfferProvider createStore={createOfferStore}>
+              <CommonSEO />
+              <ThemeProvider theme={{}}>
+                <ShopFilterContextProvider>
+                  <Component {...pageProps} />
+                  <Toaster
+                    position="top-center"
+                    toastOptions={{
+                      className: 'shadow-lg',
+                    }}
+                  />
+                </ShopFilterContextProvider>
+              </ThemeProvider>
+            </OfferProvider>
+          </Provider>
+          {/* </SessionProvider> */}
+        </AuthProvider>
+      </FirebaseContextProvider>
     </>
   );
 };
