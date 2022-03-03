@@ -37,7 +37,11 @@ import ReactImageZoom from 'react-image-zoom';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 
-const zoomProps = { width: '600' };
+const zoomProps = {
+  width: 700,
+  zoomLensStyle: 'opacity: 0.4;background-color: #4c4c81;',
+  offset: { vertical: 0, horizontal: 10 },
+};
 const entry = keyframes`
 	from { 
 		opacity: 0;
@@ -348,11 +352,11 @@ const ProductView = ({ product }): JSX.Element => {
                       ))}
                     </Tab.List>
                   </div>
-                  <Tab.Panels className="w-full aspect-w-1 aspect-h-1 grow">
+                  <Tab.Panels className="w-full hover:cursor-crosshair">
                     {productImages.map((image, idx) => (
                       <Tab.Panel key={idx}>
                         <ReactImageZoom
-                          img={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,e_trim,w_1000/${image?.cdn}`}
+                          img={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_1000/${image?.cdn}`}
                           {...zoomProps}
                         />
                       </Tab.Panel>
