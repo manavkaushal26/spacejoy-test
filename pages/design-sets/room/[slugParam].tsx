@@ -78,7 +78,7 @@ const CollageView: NextPage<CollageViewProps> = ({
 
   const updateTags = (tagValue, type) => {
     const currentTags = type === 'tag' ? [...tagFilters] : [...themeFilters];
-    console.log('value', currentTags, tagValue, type);
+
     const indexOfChosenTag = currentTags?.indexOf(tagValue);
 
     if (indexOfChosenTag > -1) {
@@ -86,20 +86,10 @@ const CollageView: NextPage<CollageViewProps> = ({
     } else {
       currentTags.push(tagValue);
     }
-    console.log(currentTags);
+
     type === 'tag' ? setTagFilters(currentTags) : setThemeFilters(currentTags);
   };
   const router = useRouter();
-
-  useEffect(() => {
-    if (tagFilters?.length) {
-      router.query.tags = tagFilters?.join('::');
-    } else {
-      delete router?.query?.tags;
-    }
-    router.query.pathname = router?.pathname;
-    router.push(router, undefined, { shallow: true });
-  }, [tagFilters]);
 
   useEffect(() => {
     if (themeFilters?.length) {
@@ -107,9 +97,15 @@ const CollageView: NextPage<CollageViewProps> = ({
     } else {
       delete router?.query?.themes;
     }
+    if (tagFilters?.length) {
+      router.query.tags = tagFilters?.join('::');
+    } else {
+      delete router?.query?.tags;
+    }
     router.query.pathname = router?.pathname;
-    router.push(router, undefined, { shallow: true });
-  }, [themeFilters]);
+
+    router.replace(router, undefined, { shallow: true });
+  }, [themeFilters, tagFilters]);
 
   return (
     <Layout>
