@@ -95,8 +95,8 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
               )}
             </p>
             {showViewDetails && (
-              <div className="absolute bottom-0 left-0 w-full py-1 text-xs font-light text-center text-gray-600 border-t border-b">
-                See Details
+              <div className="absolute bg-gradient-to-r from-gray-200 to-white bottom-0 left-0 w-full py-1 text-sm font-bold text-center text-gray-600 border-t border-b">
+                Shop Now
               </div>
             )}
           </div>

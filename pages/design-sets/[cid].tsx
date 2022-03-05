@@ -71,7 +71,8 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             onClick={onTotalClick}
                             className="mb-0 absolute top-4 right-4 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold"
                           >
-                            Total: {priceToLocaleString(priceOfSet)}
+                            {/* Total: {priceToLocaleString(priceOfSet)} */}
+                            Shop Now
                           </button>
                           {/* // TODO This codeblock will be replaced with editor code */}
                           {/* eslint-disable-next-line @next/next/no-img-element */}
