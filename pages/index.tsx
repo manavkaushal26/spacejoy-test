@@ -191,15 +191,14 @@ export const Home = (): JSX.Element => {
               <div className="flex-1">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    Want us to do the heavy lifting? <br />{' '}
-                    <span className="text-[#F5296E]">Get paired with a Designer!</span>
+                  Want to give your home a designer touch for less? <br />{' '}
+                    <span className="text-[#F5296E]">Try our design sets!</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
-                    In just 7 days, get 3D Designs of your actual room with products you can shop right away on
-                    Spacejoy!
+                  Created by our team of talented designers, our furniture & decor sets will help you transform your space, without the stress!
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
-                <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
+                {/* <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                   <a target="_blank" rel="noopener noreferrer">
                     <button
                       type="button"
@@ -215,7 +214,7 @@ export const Home = (): JSX.Element => {
                       Hire a Designer
                     </button>
                   </a>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

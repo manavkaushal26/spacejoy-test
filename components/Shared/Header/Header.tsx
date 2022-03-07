@@ -133,7 +133,7 @@ const Header: React.FC = () => {
                       </a>
                     </Link>
                   </li>
-                  <li className="inline-block">
+                  {/* <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
                         className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
@@ -151,7 +151,7 @@ const Header: React.FC = () => {
                         Hire a Designer
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                   <li
                     className="items-center h-full sm:hidden md:hidden lg:flex"
                     onClick={() => {
@@ -180,7 +180,7 @@ const Header: React.FC = () => {
                       />
                     </button>
                   </li>
-                  <li className="flex sm:hidden md:hidden lg:flex">
+                  {/* <li className="flex sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
                       className={`whitespace-nowrap hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
@@ -203,7 +203,7 @@ const Header: React.FC = () => {
                         }`}
                       />
                     </button>
-                  </li>
+                  </li> */}
                   <li
                     className="text-sm sm:inline-block md:inline-block lg:hidden cursor-pointer"
                     onClick={() => {
