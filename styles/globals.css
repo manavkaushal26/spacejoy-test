@@ -6,7 +6,7 @@
 @import 'tailwindcss/utilities';
 
 body {
-  min-width: 1024px;
+  /* min-width: 1024px; */
   font-family: 'Poppins', sans-serif;
 }
 
@@ -68,4 +68,14 @@ footer li {
 
 footer li a {
   line-height: 0.75 !important;
+}
+
+.slick-slider {
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+.nav-slider .slick-slide.slick-active.slick-current img {
+  border: 2px solid black !important;
+  border-radius: 4px;
 }

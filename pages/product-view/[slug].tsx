@@ -1,10 +1,11 @@
+import Carousel from '@components/Carousel';
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import SVGLoader from '@components/Shared/SVGLoader';
-import { Disclosure, Tab } from '@headlessui/react';
+import { Disclosure } from '@headlessui/react';
 import {
   ChevronRightIcon,
   ExternalLinkIcon,
@@ -33,7 +34,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
-import ReactImageZoom from 'react-image-zoom';
 
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 
@@ -317,8 +317,27 @@ const ProductView = ({ product }): JSX.Element => {
               </ol>
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
-              <div className="top-0 lg:sticky z-10">
-                <Tab.Group as="div" className="flex flex-row space-x-4">
+              <div className="top-0 lg:sticky z-10 w-full relative">
+                <Carousel imageCount={productImages?.length || 0}>
+                  {productImages?.map((productImage) => {
+                    return (
+                      <div key={productImage}>
+                        <Image
+                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_1000/${productImage?.cdn}`}
+                          alt="Angled front view with bag zipped and handles upright."
+                          className="w-full object-contain object-center sm:rounded-lg w-full"
+                          width="450"
+                          height="450"
+                          layout="responsive"
+                          placeholder="blur"
+                          objectFit="contain"
+                          blurDataURL={blurredBgProduct}
+                        />
+                      </div>
+                    );
+                  })}
+                </Carousel>
+                {/* <Tab.Group as="div" className="flex flex-row space-x-4">
                   <div className="hidden mx-auto mt-6 sm:block lg:max-w-none">
                     <Tab.List className="flex flex-col">
                       {productImages.map((image, idx) => (
@@ -362,7 +381,7 @@ const ProductView = ({ product }): JSX.Element => {
                       </Tab.Panel>
                     ))}
                   </Tab.Panels>
-                </Tab.Group>
+                </Tab.Group> */}
               </div>
               <div className="absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
               <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">

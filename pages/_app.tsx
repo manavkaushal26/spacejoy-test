@@ -6,6 +6,7 @@ import FirebaseContextProvider from '@store/FirebaseContextProvider';
 import ShopFilterContextProvider from '@store/ShopFilterContext';
 import { trackUtmClick } from '@utils/affiseAffiliateTracking';
 import { initAnalytics, LandingPage, PwaInstalled, RouteChange } from '@utils/analyticsLogger';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { pageview } from 'react-ga';
@@ -82,6 +83,9 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <FirebaseContextProvider>
         <AuthProvider>
           {/* <SessionProvider session={session}> */}
