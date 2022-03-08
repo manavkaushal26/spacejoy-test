@@ -124,7 +124,7 @@ const CollageView: NextPage<CollageViewProps> = ({
                 <DesignFilters updateTags={updateTags} tagFilters={tagFilters} appliedThemeFilters={themeFilters} />
               </div>
               <div className="col-span-4 rounded">
-                {themeFilters?.length ? (
+                {themeFilters?.length || tagFilters?.length ? (
                   <div className="mb-4">
                     {themeFilters?.map((item, index) => {
                       return (
