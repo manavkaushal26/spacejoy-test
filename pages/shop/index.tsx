@@ -27,17 +27,17 @@ const ProductList = ({ list }) => {
       {list?.length ? (
         <>
           {list?.map((item, idx) => {
-            if ((idx === 14 || idx === 30) && idx !== 0 && data?.injectBannerV2?.visible) {
+            if ((idx === 12 || idx === 21) && idx !== 0 && data?.injectBannerV2?.visible) {
               return data?.injectBannerV2?.link !== undefined && data?.injectBannerV2?.link !== '' ? (
-               <div className='col-span-3'>
+               <div className='col-span-1'>
                   <Link href={data?.injectBannerV2?.link}>
                   <a>
-                    <div className="relative aspect-w-4 aspect-h-1">
+                    <div className="relative aspect-w-7 aspect-h-9">
                       <Image
                         src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
                         alt="injectBanner"
                         layout="fill"
-                        objectFit="contain"
+                        objectFit="cover"
                       />
                     </div>
                   </a>

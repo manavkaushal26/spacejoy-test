@@ -4,11 +4,14 @@ import AffirmCard from '@components/Shared/AffirmCards/AffirmCard';
 import EmptyState from '@components/Shared/EmptyState';
 import Pagination from '@components/Shared/Pagination/index';
 import useGenericPagination from '@hooks/useGenericPagination';
-import { internalPages } from '@utils/config';
+import { cloudinary, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
+import Link from 'next/link';
 // import { ColorListType } from '@utils/Mocks/Colors';
 import React, { useMemo, useRef } from 'react';
 import DesignSetCardV2 from './DesignSetCardV2';
+import Image from 'next/image';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 
 interface DesignSetGridInterface {
   feedData: {
@@ -73,6 +76,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
   );
 
   const indexes = [0, 4, 6, 10, 12];
+  const { data } = useFirebaseContext();
 
   return (
     <div className="bg-gray-100" ref={ref}>
@@ -102,39 +106,55 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
               </div>
             ) : (
               <>
-                {currentRenderList.map((design, index) => {
-                  // const large = index % 2 == 0 && index % 3 !== 2;
-                  const large = index % 5 == 0;
+              {currentRenderList.map((design, index) => {
+              // const large = index % 2 == 0 && index % 3 !== 2;
+              const large = index % 5 == 0;
 
-                  return (
-                    // <div
-                    //   key={design?._id}
-                    //   className={`relative ${large ? 'col-span-2 row-span-2' : 'col-span-2 row-span-1'}`}
-                    // >
-                    //   <DesignSetCard designData={design} large={large} />
-                    // </div>
-                    <>
-                      {index == 5 && (
-                        <div
-                          className={`relative border rounded-xl ${
-                            large
-                              ? 'col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]'
-                              : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'
-                          }`}
-                        >
-                          <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_9designsetBigAffirm_ayi0hz.svg" />
-                        </div>
+              return (
+                <>
+                  {index == 5 && (
+                    <div
+                      className={`relative rounded-xl ${
+                        large
+                          ? 'col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]'
+                          : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'
+                      }`}
+                    >
+                      <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_9designsetBigAffirm_ayi0hz.svg" />
+                    </div>
+                  )}
+                  {index == 6 && data?.designListingV2?.visible && (
+                    <div className="relative rounded-xl col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
+                      {data?.designListingV2?.link !== undefined && data?.designListingV2?.link !== '' ? (
+                        <Link href={data?.designListingV2?.link}>
+                          <a>
+                              <Image
+                                src={`${cloudinary.baseDeliveryURL}/${data?.designListingV2?.cdn}`}
+                                alt="designListBanner"
+                                layout="fill"
+                                objectFit="contain"
+                              />
+                          </a>
+                        </Link>
+                      ) : (
+                          <Image
+                            src={`${cloudinary.baseDeliveryURL}/${data?.designListingV2?.cdn}`}
+                            alt="designListBanner"
+                            layout="fill"
+                            objectFit="contain"
+                          />
                       )}
-                      <div
-                        key={design?._id}
-                        className={`relative ${large ? 'col-span-4 row-span-2' : 'col-span-2 row-span-1'}`}
-                      >
-                        <DesignSetCardV2 designData={design} large={large} />
-                      </div>
-                    </>
-                  );
-                })}
-              </>
+                    </div>
+                  )}
+                  <div
+                    key={design?._id}
+                    className={`relative ${large ? 'col-span-4 row-span-2' : 'col-span-2 row-span-1'}`}
+                  >
+                    <DesignSetCardV2 designData={design} large={large} />
+                  </div>
+                </>
+              );
+            })}</>
             )}
           </div>
         </div>

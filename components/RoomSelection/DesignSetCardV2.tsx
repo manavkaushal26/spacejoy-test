@@ -24,7 +24,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large }) 
         pathname: `/design-sets/${designData?._id}`,
       }}
     >
-      <a>
+      <a target="_blank">
         <div className="grid grid-cols-4 rounded-lg overflow-hidden border bg-white">
           <div className={`${large ? 'col-span-3' : 'col-span-4'} px-4 py-4`}>
             <div className={`relative ${large ? 'aspect-[2.32]' : 'aspect-[2]'} `}>

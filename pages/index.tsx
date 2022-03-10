@@ -374,7 +374,7 @@ export const Home = (): JSX.Element => {
           {/* Section Start */}
           <div className="container grid grid-cols-4 gap-8 px-4 mx-auto my-10">
             <div className="col-span-3">
-              {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
+              {data?.homepageV2?.hp1Link !== undefined && data?.homepageV2?.hp1Link !== '' ? (
                 <Link href={data?.homepageV2?.hp1Link}>
                   <a target="_blank">
                     <div className="relative aspect-w-4 aspect-h-1">

@@ -22,7 +22,7 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
                   <h3 className="text-2xl font-bold">{name}</h3>
                   {/* <span className="text-2xl font-bold">{priceToLocaleString(groupData?.price)}</span> */}
                 </div>
-                <CollageProductList assets={groupData?.assets} collageId={collageId} showAffirmCard/>
+                <CollageProductList assets={groupData?.assets} collageId={collageId} showAffirmCard showBannerCard/>
               </div>
             )
           );

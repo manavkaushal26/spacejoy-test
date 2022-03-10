@@ -10,7 +10,7 @@ const AffirmCard = ({ imgUrl }) => {
         src={imgUrl}
         alt="affirm"
         layout="fill"
-        className="object-contain rounded-xl"
+        className="object-contain rounded-2xl"
         placeholder="blur"
         blurDataURL={blurredBgProduct}
       />

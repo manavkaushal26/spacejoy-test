@@ -2,7 +2,7 @@ import fetcher from '@utils/fetcher';
 import { useEffect, useReducer } from 'react';
 
 const fetchProductRecommendations = async (assetId) => {
-  const endPoint = '/v1/assetAlternatives/predict';
+  const endPoint = 'https://recomender.spacejoy.com/v1/productalternatives/predict';
   const payload = {
     asset_id: assetId,
     min_price: 0,
@@ -11,7 +11,7 @@ const fetchProductRecommendations = async (assetId) => {
     inStock: true,
   };
   try {
-    const reecommedationsResponse = await fetcher({ endPoint, method: 'POST', body: payload });
+    const reecommedationsResponse = await fetcher({ endPoint, method: 'POST', body: payload, hasBaseUrl: true });
     const { data, statusCode } = reecommedationsResponse;
     if (statusCode <= 301) {
       return data?.topSimilarAssets;

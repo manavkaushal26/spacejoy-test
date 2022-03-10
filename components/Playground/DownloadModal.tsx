@@ -1,8 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { DownloadIcon } from '@heroicons/react/outline';
 import { PushEvent } from '@utils/analyticsLogger';
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useContext, useRef, useState } from 'react';
 import UnitAction from './UnitAction';
+import { SelectedIdContext } from '@store/SelectedId';
 
 interface DownloadModalProps {
   onOk: (value: { name: string; email: string; collageName: string }) => void;
@@ -11,12 +12,14 @@ interface DownloadModalProps {
 
 const DownloadModal: React.FC<DownloadModalProps> = ({ onOk, designSetId }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedId, setSelectedId] = useContext(SelectedIdContext);
 
   function closeModal() {
     setIsOpen(false);
   }
 
   function openModal() {
+    setSelectedId(null);
     PushEvent({
       category: `Click on Download`,
       action: `Open Download Modal | ${designSetId}`,
