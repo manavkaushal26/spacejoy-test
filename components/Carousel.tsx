@@ -1,11 +1,27 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import React, { useState } from 'react';
 import Slider from 'react-slick';
+import { SRLWrapper } from 'simple-react-lightbox';
 
 const MAX_NAV_IMAGES_DESKTOP = 6;
 const MAX_NAV_IMAGES_MOBILE = 4;
+const lightBoxOptions = {
+  settings: {
+    overlayColor: 'rgb(25, 136, 124)',
+    autoplaySpeed: 1500,
+    transitionSpeed: 900,
+    downloadedFileName: 'Buy from Spacejoy',
+  },
+  buttons: {
+    backgroundColor: '#1b5245',
+    iconColor: 'rgba(126, 172, 139, 0.8)',
+  },
+  caption: {
+    showCaption: false,
+  },
+};
 
-export default function Carousel({ children, imageCount }) {
+export default function Carousel({ children, imageCount, withLightBox = false }) {
   const [nav1, setNav1] = useState<any>();
   const [nav2, setNav2] = useState<any>();
 
@@ -53,9 +69,11 @@ export default function Carousel({ children, imageCount }) {
     <div className="w-full relative">
       <div className="ml-0 md:pl-24 w-full relative">
         {renderArrows()}
-        <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} arrows={false}>
-          {children}
-        </Slider>
+        <SRLWrapper {...lightBoxOptions}>
+          <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} arrows={false} infinite={false}>
+            {children}
+          </Slider>
+        </SRLWrapper>
       </div>
       <div className="relative w-full md:absolute md:w-16 top-0 nav-slider sm:mt-4 lg:mt-0">
         <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings}>

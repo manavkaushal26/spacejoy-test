@@ -34,7 +34,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
-
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
 
 const zoomProps = {
@@ -318,13 +317,13 @@ const ProductView = ({ product }): JSX.Element => {
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
               <div className="top-0 lg:sticky z-10 w-full relative">
-                <Carousel imageCount={productImages?.length || 0}>
+                <Carousel imageCount={productImages?.length || 0} withLightBox>
                   {productImages?.map((productImage) => {
                     return (
                       <div key={productImage}>
                         <Image
                           src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_1000/${productImage?.cdn}`}
-                          alt="Angled front view with bag zipped and handles upright."
+                          alt=""
                           className="w-full object-contain object-center sm:rounded-lg w-full"
                           width="450"
                           height="450"

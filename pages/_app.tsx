@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { pageview } from 'react-ga';
 import { Toaster } from 'react-hot-toast';
+import SimpleReactLightbox from 'simple-react-lightbox';
 import { ThemeProvider } from 'styled-components';
 import '../styles/globals.css';
 // import { pageview } from '@lib/ga';
@@ -94,7 +95,9 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
               <CommonSEO />
               <ThemeProvider theme={{}}>
                 <ShopFilterContextProvider>
-                  <Component {...pageProps} />
+                  <SimpleReactLightbox>
+                    <Component {...pageProps} />
+                  </SimpleReactLightbox>
                   <Toaster
                     position="top-center"
                     toastOptions={{
