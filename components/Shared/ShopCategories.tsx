@@ -21,36 +21,7 @@ const ShopCategories = ({ callback }) => {
 
   return (
     <>
-      <div className="flex flex-row space-x-5">
-        <div
-          className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline"
-          onClick={() => (location.href = '/shop')}
-        >
-          {/* <div className="text-left">
-            <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188232/spj-v2/3d-icons/spj-13_khzmql.png"
-              alt="No markups"
-              height={'75'}
-              width={'75'}
-              layout="intrinsic"
-            />
-          </div> */}
-          <div>
-            <h5 className="mt-2 text-sm">All Products</h5>
-            {/* <p className="mb-2 text-sm">100% Happiness Delivered</p> */}
-            {/* <ArrowRightIcon className="w-4 h-4" /> */}
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline">
-          <a href={`${oldSpacejoyUrl}/trending-items`} target="_blank" rel="noreferrer">
-            <div>
-              <h5 className="mt-2 text-sm">Hot deals</h5>
-            </div>
-          </a>
-        </div>
-      </div>
-      {console.log('categoryset', splitCategories)}
+      <h3 className="text-3xl mb-6">Shop By Category</h3>
       <div className="grid grid-cols-7 gap-4">
         {splitCategories?.map((categorySet, index) => {
           return (

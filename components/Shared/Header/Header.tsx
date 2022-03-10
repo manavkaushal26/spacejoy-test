@@ -64,7 +64,35 @@ const Header: React.FC = () => {
         case 'stories':
           return 'Explore';
         case 'shop':
-          return 'Shop By Category';
+          return (
+            <div className="flex flex-row space-x-5">
+              <div
+                className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline"
+                onClick={() => (location.href = '/shop')}
+              >
+                <div>
+                  <h5 className="mt-2 text-sm font-normal">All Products</h5>
+                </div>
+              </div>
+
+              <div
+                className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline"
+                onClick={() => (location.href = '/shop-furniture-decor')}
+              >
+                <div>
+                  <h5 className="mt-2 text-sm font-normal">All Offers</h5>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline">
+                <a href={`${oldSpacejoyUrl}/trending-items`} target="_blank" rel="noreferrer">
+                  <div>
+                    <h5 className="mt-2 text-sm font-normal">Hot Deals</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+          );
         default:
           return null;
       }

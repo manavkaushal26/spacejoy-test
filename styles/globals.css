@@ -79,3 +79,10 @@ footer li a {
   border: 2px solid black !important;
   border-radius: 4px;
 }
+
+.brand-card-color-1 {
+  background-color: #ffeef4;
+}
+.brand-card-color-2 {
+  background-color: #fcf0ee;
+}

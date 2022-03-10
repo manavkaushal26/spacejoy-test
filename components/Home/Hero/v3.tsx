@@ -10,7 +10,7 @@ const v3 = () => {
       <div className="absolute inset-0">
         <Image
           className="object-cover rounded-lg"
-          src="https://res.cloudinary.com/spacejoy/image/upload/v1643862255/web/homepage-v3/New-Website-Banner_1_neufwx.jpg"
+          src="https://res.cloudinary.com/spacejoy/image/upload/v1646914328/web/homepage-v3/Hero_Banner_Render_V3-min_tkefad.jpg"
           alt="home banner"
           layout="fill"
           placeholder="blur"
