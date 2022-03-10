@@ -19,8 +19,13 @@ const AffirmWrapper = styled.div`
     border-radius: 5px;
     padding: 8px;
     text-transform: capitalize;
+
     &:hover {
       text-decoration: underline;
+    }
+    @media (max-width: 767px) {
+      display: inline-block;
+      margin-top: 12px;
     }
   }
   @media (min-width: 991px) and (max-width: 1200px) {

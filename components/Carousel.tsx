@@ -13,7 +13,7 @@ export default function Carousel({ children, imageCount }) {
     return (
       <div className="slider-arrow">
         <div
-          className="absolute top-1/2 left-32 z-10 h-8 w-8 rounded-full border border-gray-900 flex items-center justify-center bg-white bg-opacity-25 -translate-y-1/2 -translate-x-1/2 cursor-pointer"
+          className="absolute top-1/2 left-8 md:left-32 z-10 h-8 w-8 rounded-full border border-gray-900 flex items-center justify-center bg-white bg-opacity-25 -translate-y-1/2 -translate-x-1/2 cursor-pointer"
           onClick={() => nav1 && nav1?.slickPrev()}
         >
           <ChevronLeftIcon className="h-5 w-5" />
@@ -37,7 +37,7 @@ export default function Carousel({ children, imageCount }) {
     arrows: false,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 767,
         settings: {
           slidesToShow: imageCount > MAX_NAV_IMAGES_MOBILE ? MAX_NAV_IMAGES_MOBILE : imageCount,
           slidesToScroll: 1,
@@ -57,7 +57,7 @@ export default function Carousel({ children, imageCount }) {
           {children}
         </Slider>
       </div>
-      <div className="relative w-full md:absolute md:w-16 top-0 nav-slider">
+      <div className="relative w-full md:absolute md:w-16 top-0 nav-slider sm:mt-4 lg:mt-0">
         <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings}>
           {children}
         </Slider>

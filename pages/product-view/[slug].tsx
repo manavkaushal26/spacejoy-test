@@ -511,19 +511,12 @@ const ProductView = ({ product }): JSX.Element => {
                       </button>
                       <button
                         type="button"
-                        className="px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                         onClick={addToCart}
                         disabled={addingToCart ? true : false}
                       >
                         {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
                       </button>
-                      {/* <button
-                      type="button"
-                      className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
-                    >
-                      <HeartIcon className="w-6 h-6" />
-                      <span className="sr-only">Add to favorites</span>
-                    </button> */}
                     </div>
                   )}
                 </form>
