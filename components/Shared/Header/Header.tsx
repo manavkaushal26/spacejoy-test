@@ -147,7 +147,7 @@ const Header: React.FC = () => {
                     <Link href="/room-select">
                       <a
                         className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/interior-designs' ? 'text-red-600' : 'text-gray-900'
+                          router.asPath === '/room-select' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         onClick={() => {
                           PushEvent({
@@ -161,7 +161,7 @@ const Header: React.FC = () => {
                       </a>
                     </Link>
                   </li>
-                  {/* <li className="inline-block">
+                  <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
                         className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
@@ -179,7 +179,7 @@ const Header: React.FC = () => {
                         Hire a Designer
                       </a>
                     </Link>
-                  </li> */}
+                  </li>
                   <li
                     className="items-center h-full sm:hidden md:hidden lg:flex"
                     onClick={() => {

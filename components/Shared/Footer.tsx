@@ -34,7 +34,9 @@ const Footer: React.FC = () => {
           <div className="col-span-2 xl:w-3/4">
             <h3 className="mb-2">About Spacejoy</h3>
             <p className="text-xs leading-relaxed text-gray-600">
-            Spacejoy allows you to discover and furnish your space with furniture/decor sets crafted by designers. Try on different styles in any budget and personalize the sets by swapping it with your inspiration saved on Pinterest and shop directly from the platform.
+              Spacejoy allows you to discover and furnish your space with furniture/decor sets crafted by designers. Try
+              on different styles in any budget and personalize the sets by swapping it with your inspiration saved on
+              Pinterest and shop directly from the platform.
             </p>
             <SocialLinks />
           </div>
@@ -55,7 +57,7 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                   <a
                     className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
@@ -64,7 +66,7 @@ const Footer: React.FC = () => {
                     Hire a Designer
                   </a>
                 </Link>
-              </li> */}
+              </li>
               <li>
                 <Link href={`${oldSpacejoyUrl}/customer-stories`}>
                   <a
