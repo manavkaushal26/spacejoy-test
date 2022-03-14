@@ -10,6 +10,7 @@ interface FeedObject {
   slug: string;
   cdnThumbnail: string;
   metaTitle: string;
+  disabled: boolean;
 }
 
 interface DesignListInterface {
@@ -118,7 +119,7 @@ const TopCollagesList: React.FC<DesignListInterface> = ({ feedData }) => {
           <AnimateBox className="grid grid-cols-5 xl:grid-cols-5 gap-4 xl:gap-6 2xl:gap-8 gap-y-10 my-8">
             {/* <Slider {...settings} ref={ref}> */}
             {list.map((collection, i) => (
-              <RoomSelectCard key={collection?._id} cardData={collection} inset index={i} />
+              <RoomSelectCard key={collection?._id} cardData={collection} inset index={i} disabled={collection.disabled} />
             ))}
             {/* </Slider> */}
           </AnimateBox>

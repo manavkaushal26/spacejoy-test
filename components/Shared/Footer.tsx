@@ -213,13 +213,13 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/design-sets/room/entryway-design-sets">
                   <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Entryway Sets
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="">

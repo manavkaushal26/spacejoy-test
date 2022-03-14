@@ -33,12 +33,14 @@ interface TopCollageCardInterface {
   };
   inset: boolean;
   index: number;
+  disabled: boolean;
 }
 
-const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, index }) => {
+const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, index, disabled }) => {
   return (
     <AnimateBox index={index} className="inline-block">
-      <Link href={`/design-sets/room/${cardData?.slug}`}>
+      {!disabled ?
+       <Link href={`/design-sets/room/${cardData?.slug}`}>
         <a
           className="block rounded-2xl focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-700 focus:outline-none"
           onClick={() => {
@@ -89,7 +91,46 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
             </div>
           )}
         </a>
-      </Link>
+      </Link> :
+      (
+        <a
+          // onMouseEnter={() => sendGAEvent()}
+          // onClick={() => sendGAEvent(true)}
+          className={`"block rounded-2xl focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-700 focus:outline-none${
+            disabled ? 'grayscale cursor-default' : ''
+          }`}
+        >
+          <div className="group next-image-fix rounded relative overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-300">
+            <Image
+              className="rounded object-cover"
+              alt={cardData?.name}
+              src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
+              height="600"
+              width="500"
+            />
+            {inset && (
+              <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-16 px-4">
+                <p className="text-xl font-bold text-white mb-1">
+                  {cardData?.name}{' '}
+                  <ArrowRightIcon className="transition-transform transform group-hover:translate-x-3 inline w-4 h-4" />
+                </p>
+                {/* <p className="text-gray-300 text-sm">{cardData?.metaTitle}</p> */}
+              </div>
+            )}
+            {disabled && (
+              <section className="absolute flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 w-full h-full top-0 left-0 text-white ">
+                <span className=" translate-y-1 group-hover:translate-y-0 transition-transform">Coming Soon!</span>
+              </section>
+            )}
+          </div>
+          {!inset && (
+            <div className="pt-4">
+              <p className="text-lg font-semibold">{cardData?.name}</p>
+              <p className="text-gray-500 text-sm">{cardData?.metaTitle}</p>
+            </div>
+          )}
+        </a>
+      )}
     </AnimateBox>
   );
 };
