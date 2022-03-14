@@ -198,23 +198,23 @@ export const Home = (): JSX.Element => {
                   Created by our team of talented designers, our furniture & decor sets will help you transform your space, without the stress!
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
-                {/* <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
+                <Link href="/room-select">
                   <a target="_blank" rel="noopener noreferrer">
                     <button
                       type="button"
                       className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                       onClick={() => {
                         PushEvent({
-                          category: `Hire a Designer`,
-                          action: `Go to Online Interior Designs`,
-                          label: `HP Connect Hire a Designer Button`,
+                          category: `Explore Sets`,
+                          action: `Go to Room Select`,
+                          label: `HP Connect Explore Sets Button`,
                         });
                       }}
                     >
-                      Hire a Designer
+                      Explore Sets
                     </button>
                   </a>
-                </Link> */}
+                </Link>
               </div>
             </div>
           </div>
