@@ -9,7 +9,7 @@ const ShopInjectBanner = ({ linkTo }) => {
         <Link href={linkTo || ''} passHref>
           <a target="_blank">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1645780796/web/furniture-decor-shop/Artboard_9_copy_2_2x-100_ifas07.jpg"
+              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1647428847/web/furniture-decor-shop/Happy_St._Patrick_s_Day-1-09_ynpigd.jpg"
               alt="Spacejoy exclusive offer"
               className={`${linkTo && 'cursor-pointer'}`}
               layout="fill"
@@ -18,11 +18,11 @@ const ShopInjectBanner = ({ linkTo }) => {
           </a>
         </Link>
       </div>
-      <div className="container max-w-screen-xl mx-auto mt-32 mb-6 sm:hidden relative aspect-[800/1293]">
+      <div className="container max-w-screen-xl mx-auto mt-32 mb-6 sm:hidden relative aspect-[80/99]">
         <Link href={linkTo || ''} passHref>
           <a>
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1645779585/web/homev3/Month_end_Clearance_Sale_-_HP-Mobile-05-min_uyyzpj.jpg"
+              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1647428159/web/homev3/Happy_St._Patrick_s_Day-05_f0cjl8.jpg"
               alt="Spacejoy exclusive offer"
               className={`${linkTo && 'cursor-pointer'}`}
               layout="fill"

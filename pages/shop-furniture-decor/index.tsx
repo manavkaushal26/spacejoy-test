@@ -3,7 +3,7 @@ import Layout from '@components/Shared/Layout';
 import { company, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import Head from 'next/head';
 import React from 'react';
-// import ShopInjectBanner from '@components/EcommercePage/ShopInjectBanner';
+import ShopInjectBanner from '@components/EcommercePage/ShopInjectBanner';
 import BrandsToShop from '@components/EcommercePage/BrandsToShop';
 import CategoryToShop from '@components/EcommercePage/CategoryToShop';
 import ShopBanner from '@components/EcommercePage/ShopReferralBanner';
@@ -14,6 +14,7 @@ import Cookies from 'js-cookie';
 
 const Index = () => {
   const mobile = Cookies.get('isMobile');
+  const showInjectBanner = true;
 
   return (
     <Layout>
@@ -38,8 +39,8 @@ const Index = () => {
           <BrandsToShop mobile={mobile} />
           {pinterestConfig.enable === true && <PinterestBanner />}
           <CategoryToShop mobile={mobile} />
-          {/* <ShopInjectBanner linkTo="/shop" /> */}
-          <ShopBanner linkTo={`${oldSpacejoyUrl}/referrals`} shopInjectBanner={false} />
+          {showInjectBanner && <ShopInjectBanner linkTo="/shop" />}
+          <ShopBanner linkTo={`${oldSpacejoyUrl}/referrals`} shopInjectBanner={showInjectBanner} />
           <AffirmBanner />
           <FreeShipping />
         </div>

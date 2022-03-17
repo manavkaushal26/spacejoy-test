@@ -1,6 +1,6 @@
 const cloudinaryImageParams = 'fl_lossy,q_auto/w_450,ar_1:1,c_fill,g_auto';
-const Color1 = '#ffeef4';
-const Color2 = '#fcf0ee';
+const Color1 = '#f9f2e0';
+const Color2 = '#baceba';
 
 export const BrandDeals = [
   {

@@ -7,7 +7,7 @@ const AffirmBanner = () => {
     <div className="container max-w-screen-xl mx-auto mt-16 mb-6">
       <div className="relative hidden sm:block aspect-[483/113]">
         <Image
-          src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1646906285/web/homev3/affirm_desktop_banner_xm8hn8.jpg"
+          src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1647428160/web/homev3/Happy_St._Patrick_s_Day-07_ycee7y.jpg"
           alt="Affirm Banner"
           layout="fill"
           objectFit="contain"
@@ -16,7 +16,7 @@ const AffirmBanner = () => {
       </div>
       <div className="relative sm:hidden aspect-[160/119]">
         <Image
-          src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1646906286/web/homev3/affirm_mobilebanner_jodvli.jpg"
+          src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1647428160/web/homev3/Happy_St._Patrick_s_Day-06_xq2tgv.jpg"
           alt="Affirm Banner"
           layout="fill"
           objectFit="contain"
