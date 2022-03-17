@@ -434,7 +434,7 @@ export default function Cart() {
           {cart?.count ? (
             <StickyFooter show={!showCartFooter}>
               <div className="flex  space-x-4 sm:flex-col-1 addToCart px-4 my-2">
-                {!isUserAuthenticated ? (
+                {isUserAuthenticated ? (
                   <>
                     <p>
                       <span className="font-bold">Est. Total:</span>
