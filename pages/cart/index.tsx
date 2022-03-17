@@ -19,7 +19,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
@@ -451,10 +451,10 @@ export default function Cart() {
                   </>
                 ) : (
                   // <div className="text-center">
-                    <LoginManager
-                      ctaText="Sign up/Sign in"
-                      styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                    />
+                  <LoginManager
+                    ctaText="Checkout"
+                    styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                  />
                   // </div>
                 )}
               </div>
