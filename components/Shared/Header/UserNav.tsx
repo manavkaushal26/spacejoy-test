@@ -1,8 +1,9 @@
 import Login from '@components/Shared/LoginManager';
 import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, UserIcon } from '@heroicons/react/outline';
 import { useSession } from '@store/AuthProvider';
 import { oldSpacejoyUrl } from '@utils/config';
+import Cookies from 'js-cookie';
 import React, { Fragment } from 'react';
 
 function NextLink(props) {
@@ -16,6 +17,7 @@ function NextLink(props) {
 }
 
 const UserNav = () => {
+  const mobile = Cookies.get('isMobile') === 'true' ? true : false;
   const { session, loading, logout } = useSession();
 
   const PreAuthRenderUI = () => <Login />;
@@ -24,9 +26,16 @@ const UserNav = () => {
     return (
       <div className="relative inline-block">
         <Menu>
-          <Menu.Button className="text-gray-700 text-sm py-1.5 ml-2 rounded-lg hover:text-red-500">
-            {session?.user?.name} <ChevronDownIcon className="inline w-4 h-4" />
-          </Menu.Button>
+          {mobile ? (
+            <Menu.Button>
+              <UserIcon className="w-6 h-6 cursor-pointer" />
+            </Menu.Button>
+          ) : (
+            <Menu.Button className="text-gray-700 text-sm py-1.5 ml-2 rounded-lg hover:text-red-500">
+              {session?.user?.name} <ChevronDownIcon className="inline w-4 h-4" />
+            </Menu.Button>
+          )}
+
           <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
@@ -38,13 +47,18 @@ const UserNav = () => {
           >
             <Menu.Items className="fixed right-4 w-56 mt-6 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div>
+                {mobile && (
+                  <div className="w-full px-2 py-4 bg-gray-200 text-lg font-semibold rounded-md">
+                    {session?.user?.name}
+                  </div>
+                )}
                 <Menu.Item>
                   {({ active }) => (
                     <NextLink
                       href={`${oldSpacejoyUrl}/dashboard`}
                       className={`${
                         active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm ${mobile && 'mt-2'}`}
                       active
                       target="_blank"
                     >

@@ -2,7 +2,7 @@ import SectionTitle from '@components/Shared/SectionTitle';
 import { Disclosure, Tab } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import HelpData from '@mocks/HelpData';
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -47,14 +47,13 @@ function classNames(...classes) {
 }
 
 const Index = () => {
-
   return (
     <div className="bg-white">
       <div className="relative container mx-auto px-4 z-10">
         <SectionTitle feature="help" title="Frequently asked questions" />
         <Tab.Group>
           <div className="text-center relative z-10 -mb-6">
-            <Tab.List className="inline-flex p-1 space-x-1 rounded-xl border border-gray-400 shadow-2xl bg-white bg-opacity-50 backdrop-filter backdrop-blur firefox:bg-opacity-90">
+            <Tab.List className="w-full sm:w-auto inline-flex p-1 space-x-1 rounded-xl border border-gray-400 shadow-2xl bg-white bg-opacity-50 backdrop-filter backdrop-blur firefox:bg-opacity-90">
               {Object.keys(HelpData).map((category) => (
                 <Tab
                   key={category}
@@ -70,19 +69,23 @@ const Index = () => {
               ))}
             </Tab.List>
           </div>
-          <Tab.Panels className="pb-8">
+          <Tab.Panels className="pb-8 ring-0 focus:ring-0">
             {Object.values(HelpData).map((posts, idx) => (
               <Tab.Panel key={idx}>
                 <AnimateBox>
-                  <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+                  <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 ring-0 focus:ring-0">
                     <dl className="mt-6 space-y-6 divide-y divide-gray-200">
                       {Object.values(posts).map((faq) => (
                         <Disclosure as="div" key={faq.question} className="pt-6">
                           {({ open }) => (
                             <>
                               <dt className="text-lg">
-                                <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
-                                  <span className={`${open ? 'font-bold' : 'font-medium'} text-gray-900`}>
+                                <Disclosure.Button className="text-left w-full flex justify-between items-center text-gray-400">
+                                  <span
+                                    className={`${
+                                      open ? 'font-bold' : 'font-medium'
+                                    } text-gray-900 text-base sm:text-lg`}
+                                  >
                                     {faq.question}
                                   </span>
                                   <span className="ml-6 h-7 flex items-center">
@@ -97,7 +100,9 @@ const Index = () => {
                                 </Disclosure.Button>
                               </dt>
                               <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                                <p className="text-base text-gray-700"><div>{ ReactHtmlParser(faq.answer) }</div></p>
+                                <p className="text-sm sm:text-base text-gray-700">
+                                  <div>{ReactHtmlParser(faq.answer)}</div>
+                                </p>
                               </Disclosure.Panel>
                             </>
                           )}

@@ -1,5 +1,6 @@
 import AffirmCard from '@components/Shared/AffirmCards/AffirmCard';
 import EmptyState from '@components/Shared/EmptyState';
+import FilterDrawer from '@components/Shared/Filters/FilterDrawer';
 import InputRange from '@components/Shared/InputRange';
 import Layout from '@components/Shared/Layout';
 import Pagination from '@components/Shared/Pagination';
@@ -12,12 +13,13 @@ import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
 import { cloudinary, internalPages } from '@utils/config';
 import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import Image from 'next/image';
 
 const ProductList = ({ list }) => {
   const { data } = useFirebaseContext();
@@ -29,20 +31,20 @@ const ProductList = ({ list }) => {
           {list?.map((item, idx) => {
             if ((idx === 12 || idx === 21) && idx !== 0 && data?.injectBannerV2?.visible) {
               return data?.injectBannerV2?.link !== undefined && data?.injectBannerV2?.link !== '' ? (
-               <div className='col-span-1'>
+                <div className="col-span-1">
                   <Link href={data?.injectBannerV2?.link}>
-                  <a>
-                    <div className="relative aspect-w-7 aspect-h-9">
-                      <Image
-                        src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
-                        alt="injectBanner"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                  </a>
-                </Link>
-               </div>
+                    <a>
+                      <div className="relative aspect-w-7 aspect-h-9">
+                        <Image
+                          src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
+                          alt="injectBanner"
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </div>
+                    </a>
+                  </Link>
+                </div>
               ) : (
                 <div className="relative aspect-w-3 aspect-h-1 col-span-3">
                   <Image
@@ -78,6 +80,8 @@ const ProductList = ({ list }) => {
 
 export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives }): JSX.Element => {
   const [currentFilters, setCurrentFilters] = useState({ ...defaultFilters, ...initialFilters });
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile = Cookies.get('isMobile');
   const [error, setError] = useState(false);
   const shopPageTopRef = useRef<HTMLDivElement>();
 
@@ -195,42 +199,190 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
       <Layout.Body>
         <div className="min-h-screen bg-gray-100" ref={shopPageTopRef}>
           <div className="container p-4 mx-auto">
-            <nav className="flex mb-4" aria-label="Breadcrumb">
-              <ol role="list" className="flex items-center space-x-4">
-                <li>
-                  <div>
-                    <Link href="/">
-                      <a className="text-gray-400 hover:text-gray-500">
-                        <HomeIcon className="w-4 h-4" />
-                        <span className="sr-only">Home</span>
+            {isMobile !== 'true' && (
+              <nav className="flex mb-4" aria-label="Breadcrumb">
+                <ol role="list" className="flex items-center space-x-4">
+                  <li>
+                    <div>
+                      <Link href="/">
+                        <a className="text-gray-400 hover:text-gray-500">
+                          <HomeIcon className="w-4 h-4" />
+                          <span className="sr-only">Home</span>
+                        </a>
+                      </Link>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-center">
+                      <ChevronRightIcon className="w-4 h-4 text-gray-500" />
+                      <Link href="/shop">
+                        <a className="ml-2 text-xs font-medium text-gray-500 hover:text-gray-700">Shop</a>
+                      </Link>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-center">
+                      <ChevronRightIcon className="w-4 h-4 text-gray-500" />
+                      <a
+                        href="#"
+                        className="ml-2 text-xs font-medium text-gray-500 hover:text-gray-700"
+                        aria-current="page"
+                      >
+                        Listing
                       </a>
-                    </Link>
-                  </div>
-                </li>
-                <li>
-                  <div className="flex items-center">
-                    <ChevronRightIcon className="w-4 h-4 text-gray-500" />
-                    <Link href="/shop">
-                      <a className="ml-2 text-xs font-medium text-gray-500 hover:text-gray-700">Shop</a>
-                    </Link>
-                  </div>
-                </li>
-                <li>
-                  <div className="flex items-center">
-                    <ChevronRightIcon className="w-4 h-4 text-gray-500" />
-                    <a
-                      href="#"
-                      className="ml-2 text-xs font-medium text-gray-500 hover:text-gray-700"
-                      aria-current="page"
-                    >
-                      Listing
-                    </a>
-                  </div>
-                </li>
-              </ol>
-            </nav>
-            <div className="grid grid-cols-5 gap-8">
-              <div className="col-span-1 p-4 bg-white rounded-lg">
+                    </div>
+                  </li>
+                </ol>
+              </nav>
+            )}
+
+            {/* //TODO: Create separate component */}
+            {isMobile === 'true' && (
+              <FilterDrawer isOpen={isOpen} setIsOpen={setIsOpen} onClearCallback={() => {}} clearBtn={false}>
+                {verticalList?.length !== 0 && (
+                  <Disclosure defaultOpen>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left rounded-sm">
+                          <h3 className="text-gray-700">Category</h3>
+                          {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          <div className="my-5 space-y-2">
+                            {verticalList?.map((vertical) => {
+                              return (
+                                <div
+                                  className="flex items-center cursor-pointer"
+                                  key={vertical?._id}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    updateFilter(vertical?._id, 'vertical');
+                                  }}
+                                >
+                                  <input
+                                    id={`filter-category-${vertical?._id}`}
+                                    name={`filter-category-${vertical?.name}`}
+                                    value={vertical?.name}
+                                    type="checkbox"
+                                    className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                    checked={vertical?.selected}
+                                    readOnly
+                                  />
+                                  <label
+                                    htmlFor={`filter-category-${vertical?._id}`}
+                                    className="ml-3 text-sm text-gray-900 cursor-pointer"
+                                  >
+                                    {vertical?.name}
+                                  </label>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                )}
+                <Disclosure>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="flex items-center justify-between w-full border-0 py-4 text-left rounded-sm">
+                        <h3 className="text-gray-700">Price</h3>
+                        <span className="flex items-center ml-6">
+                          {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
+                        </span>
+                      </Disclosure.Button>
+
+                      <Disclosure.Panel>
+                        <div className="my-8 mt-6 space-y-2">
+                          <InputRange
+                            min={min}
+                            max={max}
+                            onChangeCallback={(data) => {
+                              addArrayQueryParam({ name: 'price', ...data });
+                            }}
+                          />
+                        </div>
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+                <Disclosure>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left rounded-sm">
+                        <h3 className="text-gray-700">Offers</h3>
+                        <span className="flex items-center ml-6">
+                          {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
+                        </span>
+                      </Disclosure.Button>
+
+                      <Disclosure.Panel>
+                        <div className="flex items-center my-5">
+                          <input
+                            type="checkbox"
+                            checked={currentFilters?.discount?.[0] > 0}
+                            onChange={onSaleChecked}
+                            className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                          />
+                          <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
+                            <span className="font-medium">On Sale</span>
+                          </label>
+                        </div>
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+                {retailerList?.length !== 0 && (
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left rounded-sm">
+                          <h3 className="text-gray-700">Brands</h3>
+                          <span className="flex items-center ml-6">
+                            {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
+                          </span>
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          <div className="my-5 space-y-2">
+                            {retailerList?.map((retailer) => {
+                              return (
+                                <div
+                                  className="flex items-center cursor-pointer"
+                                  key={retailer?._id}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    updateFilter(retailer?._id, 'retailer');
+                                  }}
+                                >
+                                  <input
+                                    id={`filter-category-${retailer?._id}`}
+                                    name={`filter-category-${retailer?.name}`}
+                                    value={retailer?._id}
+                                    type="checkbox"
+                                    className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                    checked={retailer?.selected}
+                                    readOnly
+                                  />
+                                  <label
+                                    htmlFor={`filter-category-${retailer?._id}`}
+                                    className="ml-3 text-sm text-gray-900 capitalize cursor-pointer"
+                                  >
+                                    {retailer?.name}
+                                  </label>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                )}
+              </FilterDrawer>
+            )}
+            <div className="grid grid-cols-4 lg:grid-cols-5 gap-8">
+              <div className="col-span-1 p-4 bg-white rounded-lg hidden lg:block">
                 <form className="hidden lg:block">
                   {verticalList?.length !== 0 && (
                     <Disclosure defaultOpen>
@@ -375,7 +527,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                 </form>
               </div>
               <div className="col-span-4 rounded">
-                <div className="grid grid-cols-3 gap-1 xl:grid-cols-3 2xl:grid-cols-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 xl:grid-cols-3 2xl:grid-cols-3">
                   {isFetching ? (
                     <>
                       {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
@@ -395,6 +547,33 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
             </div>
           </div>
         </div>
+
+        {isMobile === 'true' && (
+          <div className="pt-24">
+            <div className="fixed py-2 top-20 z-10 bg-gray-100 flex w-full justify-end">
+              <button
+                onClick={() => setIsOpen(true)}
+                className="flex w-1/4 items-center mx-4 justify-center space-x-2 px-4 py-2 text-base font-medium text-white bg-black shadow-xs cursor-not-allowed group hover:shadow-md rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                  />
+                </svg>
+                <span className="whitespace-nowrap text-ellipsis">Filters</span>
+              </button>
+            </div>
+          </div>
+        )}
       </Layout.Body>
       <Layout.Footer />
     </Layout>

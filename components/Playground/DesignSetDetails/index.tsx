@@ -18,10 +18,10 @@ const DesignSetDetails = ({ correctedCollageName, collageData }) => {
   }, []);
 
   return (
-    <div className="my-8 ">
-      <div className="grid items-center grid-cols-12 gap-8 px-8 py-16 overflow-hidden border-t-2 border-gray-300 border-x-2 rounded-x-xl rounded-t-xl">
+    <div className="my-8 bg-gray-100">
+      <div className="sm:grid items-center grid-cols-12 gap-8 p-0 sm:px-8 sm:py-16 overflow-hidden sm:border-t-2 border-gray-300 sm:border-x-2 rounded-x-xl rounded-t-xl">
         <div className="col-span-9 xs:col-span-2">
-          <h1 className="text-3xl capitalize ">{correctedCollageName}</h1>
+          <h1 className="text-2xl sm:text-3xl capitalize">{correctedCollageName}</h1>
           {!!collageData?.description && <p className="mt-6 text-lg">{collageData?.description}</p>}
         </div>
         <div className="flex flex-col items-end justify-center col-span-3 rounded-xl">

@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/outline';
 import { Fragment } from 'react';
 
 type DrawerProps = {
@@ -13,7 +14,7 @@ export default function Drawer({ title = '', description = '', children, isOpen,
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog unmount={false} onClose={() => setIsOpen(false)} className="fixed inset-0 z-50 overflow-y-auto">
-        <div className="flex w-3/4 h-screen">
+        <div className="flex  w-3/4 h-screen">
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-in duration-300"
@@ -38,7 +39,15 @@ export default function Drawer({ title = '', description = '', children, isOpen,
           >
             <div className="absolute right-0 z-50 flex flex-col justify-between w-full h-full max-w-lg p-6 overflow-scroll text-left align-middle bg-white border shadow-xl border-gray-50">
               <div>
-                <Dialog.Title className="text-xl font-bold text-gray-900 md:text-2xl">{title}</Dialog.Title>
+                <Dialog.Title className="text-xl font-bold text-gray-900 md:text-2xl">
+                  <div className="flex justify-between items-center">
+                    <span>{title}</span>
+
+                    <button onClick={() => setIsOpen(!isOpen)}>
+                      <XIcon className="h-6 w-6" />
+                    </button>
+                  </div>
+                </Dialog.Title>
                 <Dialog.Description>{description}</Dialog.Description>
                 {children}
               </div>

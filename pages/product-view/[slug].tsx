@@ -4,6 +4,7 @@ import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
+import StickyFooter from '@components/Shared/StickyFooter';
 import SVGLoader from '@components/Shared/SVGLoader';
 import { Disclosure } from '@headlessui/react';
 import {
@@ -100,7 +101,29 @@ const ProductView = ({ product }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
+  const [showCartFooter, setCartFooter] = useState(false);
   const gaClickRef = useRef({});
+
+  const addToCartBtnRef = React.useCallback((node) => {
+    if (node !== null) {
+      if (typeof window !== 'undefined' && node) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries?.forEach((entry) => {
+              if (entry?.target?.classList?.contains('addToCart')) {
+                setCartFooter(entry?.isIntersecting);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '15px',
+          }
+        );
+        observer?.observe(node);
+      }
+    }
+  }, []);
 
   const { session } = useSession();
   const itemStatus = useMemo(() => {
@@ -492,7 +515,7 @@ const ProductView = ({ product }): JSX.Element => {
                       </button>
                     </div>
                   ) : (
-                    <div className="flex my-8 space-x-4 sm:flex-col-1">
+                    <div className="flex my-8 space-x-4 sm:flex-col-1 addToCart" ref={addToCartBtnRef}>
                       <button
                         type="button"
                         className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
@@ -781,6 +804,34 @@ const ProductView = ({ product }): JSX.Element => {
             ) : null} */}
           </div>
         </div>
+
+        <StickyFooter show={!showCartFooter}>
+          <div className="flex  space-x-4 sm:flex-col-1 addToCart px-4 my-2">
+            <button
+              type="button"
+              className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+              onClick={decrementQty}
+            >
+              <MinusSmIcon className="w-6 h-6" />
+            </button>
+            <p className="px-2 py-3">{localProductQuantity}</p>
+            <button
+              type="button"
+              className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+              onClick={incrementQty}
+            >
+              <PlusSmIcon className="w-6 h-6" />
+            </button>
+            <button
+              type="button"
+              className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+              onClick={addToCart}
+              disabled={addingToCart ? true : false}
+            >
+              {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
+            </button>
+          </div>
+        </StickyFooter>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

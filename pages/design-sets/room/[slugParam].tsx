@@ -2,6 +2,7 @@ import { CollagesListInterface, CollageSubcategories } from '@components/Collage
 import DesignFilters from '@components/DeesignFIlters';
 import DesignSetGrid from '@components/RoomSelection/DesignSetGrid';
 import RoomPageHeader from '@components/RoomSelection/RoomPageHeader';
+import FilterDrawer from '@components/Shared/Filters/FilterDrawer';
 import Layout from '@components/Shared/Layout';
 import { XIcon } from '@heroicons/react/outline';
 import { internalPages } from '@utils/config';
@@ -9,6 +10,7 @@ import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
 import { RoomSelectSEO } from '@utils/SEO/roomSelectSEO';
+import Cookies from 'js-cookie';
 import { GetServerSidePropsContext, GetServerSidePropsResult, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -24,6 +26,7 @@ interface CollageViewProps {
   initialSubCategoryList?: CollageSubcategories[];
   tags: Array<string>;
   themes: Array<string>;
+  isMobile?:boolean;
 }
 
 const CollageView: NextPage<CollageViewProps> = ({
@@ -33,7 +36,9 @@ const CollageView: NextPage<CollageViewProps> = ({
   initialSubCategoryList,
   tags,
   themes,
+  isMobile,
 }): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false);
   const name = useMemo(() => {
     return slug.split('-').join(' ');
   }, [slug]);
@@ -41,6 +46,8 @@ const CollageView: NextPage<CollageViewProps> = ({
   let metaSEO = useMemo(() => {
     return RoomSelectSEO.find((item) => item?.slug === slug);
   }, []);
+
+  // const isMobile = Cookies.get('isMobile');
 
   // const [bg, setBg] = useState(colorList[colorList?.length - 1]);
   // const selectBgColor = (color: ColorListType) => {
@@ -73,6 +80,7 @@ const CollageView: NextPage<CollageViewProps> = ({
   // };
 
   const [tagFilters, setTagFilters] = useState([...tags]);
+  const [feedCategory, setFeedCategory] = useState(category);
 
   const [themeFilters, setThemeFilters] = useState([...themes]);
 
@@ -117,11 +125,33 @@ const CollageView: NextPage<CollageViewProps> = ({
       <Layout.Body>
         <div className="bg-gray-100">
           <div className="container mx-auto px-4">
-            <RoomPageHeader category={category} />
+            <RoomPageHeader
+              category={category}
+              onCategoryChange={(category) => {
+                setFeedCategory(category);
+              }}
+              setIsOpen={setIsOpen}
+              isHeaderMobile={isMobile}
+            />
             {/* <DesignSetBanner /> */}
-            <div className="grid grid-cols-5 gap-8">
-              <div className="col-span-1 p-4 bg-white rounded-lg border ">
+
+            {isMobile && (
+              <FilterDrawer
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                onClearCallback={() => {
+                  setTagFilters([]);
+                  setThemeFilters([]);
+                }}
+              >
                 <DesignFilters updateTags={updateTags} tagFilters={tagFilters} appliedThemeFilters={themeFilters} />
+              </FilterDrawer>
+            )}
+            <div className="grid sm:grid-cols-5 grid-cols-4 gap-8">
+              <div className="col-span-1 p-4 bg-white rounded-lg border hidden sm:block">
+                {!isMobile && (
+                  <DesignFilters updateTags={updateTags} tagFilters={tagFilters} appliedThemeFilters={themeFilters} />
+                )}
               </div>
               <div className="col-span-4 rounded">
                 {themeFilters?.length || tagFilters?.length ? (
@@ -129,7 +159,7 @@ const CollageView: NextPage<CollageViewProps> = ({
                     {themeFilters?.map((item, index) => {
                       return (
                         <button
-                          className={`bg-white text-gray-900  py-2 px-4 rounded-full capitalize text-sm text-gray-900 border inline-flex items-center justify-center ${
+                          className={`bg-white text-gray-900  py-2 px-4 rounded-full capitalize text-sm border inline-flex items-center justify-center ${
                             index > 0 ? 'ml-2' : ''
                           }`}
                           key={item}
@@ -144,7 +174,7 @@ const CollageView: NextPage<CollageViewProps> = ({
                     {tagFilters?.map((item, index) => {
                       return (
                         <button
-                          className={`bg-white text-gray-900  py-2 px-4 rounded-full capitalize text-sm text-gray-900 border inline-flex items-center justify-center ${
+                          className={`bg-white text-gray-900  py-2 px-4 rounded-full capitalize text-sm  border inline-flex items-center justify-center ${
                             index > 0 ? 'ml-2' : ''
                           }`}
                           key={item}
@@ -170,7 +200,7 @@ const CollageView: NextPage<CollageViewProps> = ({
 
                 <DesignSetGrid
                   feedData={feedData}
-                  category={category}
+                  category={feedCategory}
                   tagFilters={tagFilters}
                   themeFilters={themeFilters}
                 />
@@ -188,6 +218,7 @@ export async function getServerSideProps(
   ctx: GetServerSidePropsContext<{ slugParam: string }>
 ): Promise<GetServerSidePropsResult<CollageViewProps>> {
   const { params, query } = ctx;
+  const isMobile = ctx?.req?.cookies['isMobile'] === 'true' ? true : false;
 
   const { tags = [], themes = [] } = query;
 
@@ -230,6 +261,7 @@ export async function getServerSideProps(
             initialSubCategoryList,
             tags: [...tagList],
             themes: [...themesList],
+            isMobile,
           },
         };
       } else {
@@ -242,13 +274,14 @@ export async function getServerSideProps(
           slug: slug,
           tags: [],
           themes: [...themesList],
+          isMobile,
         },
       };
     }
   }
 
   return {
-    props: { slug: slug, tags: [...tagList], themes: [...themesList] },
+    props: { slug: slug, tags: [...tagList], themes: [...themesList], isMobile },
   };
 }
 export default CollageView;

@@ -271,7 +271,7 @@ const UserAddressForm = ({ callback, setShowForm, shippingAddresses, onCancelCal
 
           <div>
             <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700">
-              Postal code <span className="text-red-500">*</span>
+              Zip code <span className="text-red-500">*</span>
             </label>
             <div className="mt-1">
               <input

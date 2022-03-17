@@ -86,3 +86,20 @@ footer li a {
 .brand-card-color-2 {
   background-color: #fcf0ee;
 }
+.homepage-section_headings {
+  @apply text-3xl text-gray-900 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight;
+}
+
+.footer-item:not(:last-child):after {
+  content: '•';
+  display: inline-block;
+  margin: 0 8px;
+  color: #4b5563;
+}
+
+@media screen and (min-width: 640px) {
+  .footer-item:not(:last-child):after {
+    content: '';
+    display: none;
+  }
+}

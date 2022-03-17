@@ -1,7 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
 import { blurredBgProduct } from '@public/images/bg-base-64';
+import Image from 'next/image';
+import React from 'react';
 
 const AffirmCard = ({ imgUrl }) => {
   return (
@@ -10,7 +9,7 @@ const AffirmCard = ({ imgUrl }) => {
         src={imgUrl}
         alt="affirm"
         layout="fill"
-        className="object-contain rounded-2xl"
+        className="object-cover object-center rounded-2xl"
         placeholder="blur"
         blurDataURL={blurredBgProduct}
       />

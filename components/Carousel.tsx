@@ -35,7 +35,7 @@ export default function Carousel({ children, imageCount, withLightBox = false })
           <ChevronLeftIcon className="h-5 w-5" />
         </div>
         <div
-          className="absolute top-1/2 right-0 z-10 cursor-pointer h-8 w-8 rounded-full border border-gray-900 flex items-center justify-center bg-white bg-opacity-25 -translate-y-1/2 -translate-x-1/2 cursor-pointer"
+          className="absolute top-1/2 right-0 z-10 cursor-pointer h-8 w-8 rounded-full border border-gray-900 flex items-center justify-center bg-white bg-opacity-25 -translate-y-1/2 -translate-x-1/2"
           onClick={() => nav1 && nav1.slickNext()}
         >
           <ChevronRightIcon className="h-5 w-5" />
@@ -60,6 +60,13 @@ export default function Carousel({ children, imageCount, withLightBox = false })
           vertical: false,
           verticalSwiping: false,
           centerPadding: '100px',
+          dots: true,
+          appendDots: (dots) => <ul>{dots}</ul>,
+          customPaging: (i) => (
+            <div className="ft-slick__dots--custom">
+              <div className="loading" />
+            </div>
+          ),
         },
       },
     ],
@@ -68,18 +75,20 @@ export default function Carousel({ children, imageCount, withLightBox = false })
   return (
     <div className="w-full relative">
       <div className="ml-0 md:pl-24 w-full relative">
-        {renderArrows()}
+        {imageCount > 1 ? renderArrows() : null}
         <SRLWrapper {...lightBoxOptions}>
           <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} arrows={false} infinite={false}>
             {children}
           </Slider>
         </SRLWrapper>
       </div>
-      <div className="relative w-full md:absolute md:w-16 top-0 nav-slider sm:mt-4 lg:mt-0">
-        <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings}>
-          {children}
-        </Slider>
-      </div>
+      {imageCount > 1 && (
+        <div className="relative w-full md:absolute md:w-16 top-0 nav-slider sm:mt-4 lg:mt-0">
+          <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings} infinite={false}>
+            {children}
+          </Slider>
+        </div>
+      )}
     </div>
   );
 }

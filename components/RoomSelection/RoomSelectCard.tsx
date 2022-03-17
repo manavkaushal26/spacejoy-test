@@ -51,10 +51,10 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
             });
           }}
         >
-          <div className="relative overflow-hidden transition-all duration-300 transform bg-gray-200 border border-gray-300 rounded shadow-sm group hover:shadow-xl hover:-translate-y-1">
+          <div className="relative rounded-lg transition-all duration-300 transform bg-gray-200 border border-gray-300 shadow-sm group hover:shadow-xl hover:-translate-y-1">
             {inset ? (
               <Image
-                className="object-cover rounded"
+                className="object-cover rounded-lg"
                 alt={cardData?.name}
                 src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
                 height="600"
@@ -76,9 +76,9 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
             )}
             {inset && (
               <div className="absolute bottom-0 left-0 right-0 px-4 pt-16 pb-4 bg-gradient-to-t from-gray-900 to-transparent">
-                <p className="mb-1 text-xl font-bold text-white">
+                <p className="mb-1 text-2xl font-bold text-white">
                   {cardData?.name}{' '}
-                  <ArrowRightIcon className="inline w-4 h-4 transition-transform transform group-hover:translate-x-3" />
+                  <ArrowRightIcon className="inline w-5 h-5 transition-transform transform group-hover:translate-x-3" />
                 </p>
                 {/* <p className="text-sm text-gray-300">{cardData?.metaTitle}</p> */}
               </div>

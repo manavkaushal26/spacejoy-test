@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import SubNav from '../SubNav';
+import { TabOffers } from '../TabOffers';
 import UserNav from './UserNav';
 
 const Header: React.FC = () => {
@@ -64,35 +65,7 @@ const Header: React.FC = () => {
         case 'stories':
           return 'Explore';
         case 'shop':
-          return (
-            <div className="flex flex-row space-x-5">
-              <div
-                className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline"
-                onClick={() => (location.href = '/shop')}
-              >
-                <div>
-                  <h5 className="mt-2 text-sm font-normal">All Products</h5>
-                </div>
-              </div>
-
-              <div
-                className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline"
-                onClick={() => (location.href = '/shop-furniture-decor')}
-              >
-                <div>
-                  <h5 className="mt-2 text-sm font-normal">All Offers</h5>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-end h-full p-4 cursor-pointer bg-gray-50 hover:underline">
-                <a href={`${oldSpacejoyUrl}/trending-items`} target="_blank" rel="noreferrer">
-                  <div>
-                    <h5 className="mt-2 text-sm font-normal">Hot Deals</h5>
-                  </div>
-                </a>
-              </div>
-            </div>
-          );
+          return <TabOffers />;
         default:
           return null;
       }
@@ -110,15 +83,9 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <a
-        className="absolute px-5 py-2 text-sm rounded-lg bg-gray-50 top-1 left-1 focus:z-50 focus:ring-1 focus:ring-gray-900 focus:outline-none"
-        href="#main"
-      >
-        Skip to content
-      </a>
       <header className={`bg-white sticky top-0 z-50`}>
         <div className="container px-4 mx-auto overflow-hidden">
-          <div className="flex items-center h-20">
+          <div className="lg:flex lg:items-center h-20 hidden">
             <Link href="/">
               <a
                 className="inline-block pr-1 mr-10 rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none"

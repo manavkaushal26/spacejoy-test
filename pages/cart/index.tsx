@@ -1,11 +1,14 @@
 import CartItemDimmer from '@components/Cart/CartItemDimmer';
 import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
+import EmptyCart from '@components/Cart/EmptyCart';
 import CartSummary from '@components/Cart/Summary';
 import Layout from '@components/Shared/Layout';
+import StickyFooter from '@components/Shared/StickyFooter';
 import { QuestionMarkCircleIcon, TruckIcon, XIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
@@ -13,14 +16,11 @@ import { priceToLocaleString } from '@utils/helpers';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
 import shallow from 'zustand/shallow';
-import { useRef } from 'react';
-import EmptyCart from '@components/Cart/EmptyCart';
-import { useFirebaseContext } from '@store/FirebaseContextProvider';
 interface CartItemInterface {
   key: number;
   retailer: {
@@ -144,12 +144,16 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
       setLoading(false);
     }
   };
+  const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
+  const linkProps = {
+    ...(!isMobile && { target: '_blank', rel: 'noreferrer' }),
+  };
 
   return (
     <li key={product._id} className="grid grid-cols-12 py-6 group sm:py-10">
       <div className="col-span-3 mb-2 aspect-w-1 aspect-h-1">
         <Link key={product._id} href={`/product-view/${product._id}`} passHref>
-          <a href={`/product-view/${product._id}`} target="_blank" rel="noreferrer">
+          <a href={`/product-view/${product._id}`} {...linkProps}>
             <Image
               // src={product?.imageUrl}
               src={`${cloudinary.baseDeliveryURL}/w_400,ar_1,c_pad/${product?.cdn}`}
@@ -261,7 +265,32 @@ export default function Cart() {
     }),
     shallow
   );
+  const [showCartFooter, setCartFooter] = useState(false);
 
+  const elementRef = React.useCallback((node) => {
+    if (node !== null) {
+      if (typeof window !== 'undefined' && node) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries?.forEach((entry) => {
+              if (entry?.target?.classList?.contains('addToCart')) {
+                setCartFooter(entry?.isIntersecting);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '15px',
+          }
+        );
+        observer?.observe(node);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
+  }, []);
   useEffect(() => {
     const {
       query: { ref = '' },
@@ -288,7 +317,7 @@ export default function Cart() {
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
               )}
               {Object.keys(cart?.cartItems)?.length === 0 && <>{loading ? null : <EmptyCart />}</>}
-              <form className="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
+              <form className="mt-12 grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
                 <section aria-labelledby="cart-heading" className="lg:col-span-7">
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
@@ -364,7 +393,7 @@ export default function Cart() {
                 {!loading && cart?.count !== 0 && (
                   <section
                     aria-labelledby="summary-heading"
-                    className="sticky  lg:col-span-5 top-20 flex flex-col space-y-4"
+                    className="lg:sticky  lg:col-span-5 top-20 flex flex-col space-y-4 order-first lg:order-last"
                   >
                     {data?.cartBannerV2?.visible &&
                       (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
@@ -390,7 +419,7 @@ export default function Cart() {
                           />
                         </div>
                       ))}
-                    <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0">
+                    <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart" ref={elementRef}>
                       <CartSummary source={checkoutRefSource} />
                     </div>
                   </section>
@@ -398,6 +427,25 @@ export default function Cart() {
               </form>
             </div>
           </div>
+
+          {cart?.count ? (
+            <StickyFooter show={!showCartFooter}>
+              <div className="flex  space-x-4 sm:flex-col-1 addToCart px-4 my-2">
+                <p>
+                  <span className="font-bold">Est. Total:</span>
+                  <span>&nbsp;&nbsp;&nbsp;${cart?.invoiceData?.total}</span>
+                </p>
+                <Link href="/checkout/store" passHref>
+                  <button
+                    type="button"
+                    className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                  >
+                    Checkout
+                  </button>
+                </Link>
+              </div>
+            </StickyFooter>
+          ) : null}
         </Layout.Body>
         <Layout.Footer />
       </Layout>

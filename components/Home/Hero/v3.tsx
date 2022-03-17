@@ -21,8 +21,12 @@ const v3 = () => {
       </div>
       <div className="flex flex-col min-h-[700px] justify-center items-center relative z-10">
         <div className="absolute top-20">
-          <h1 className="text-5xl leading-normal text-center">Home decorating, simplified</h1>
-          <h4 className="text-xl leading-normal text-center">See it. Try it. Buy it. It’s that easy!</h4>
+          <h1 className="mb-1 text-4xl leading-normal text-center md:text-5xl md:leading-normal">
+            Home decorating, simplified
+          </h1>
+          <h4 className="text-lg leading-normal text-center sm:text-xl sm:leading-normal">
+            See it. Try it. Buy it. It’s that easy!
+          </h4>
         </div>
 
         <Link href="/room-select" passHref>

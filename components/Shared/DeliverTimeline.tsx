@@ -97,7 +97,7 @@ const DeliveryTimeline = ({ productId }) => {
     // <div id={!deliveryDetails?.status || errorMessage?.length > 0} className="flex items-center">
     <div className="space-y-4 text-sm">
       <div className="flex items-center">
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 whitespace-nowrap">
           <strong>Ship to: </strong>
           <button className="flex items-center justify-center space-x-1" onClick={toggleExpandZipCode}>
             <span className="underline zipcode underline-offset-2">{!isExpanded && zipCode}</span>{' '}

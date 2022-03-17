@@ -1,10 +1,64 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/outline';
 import useDesignSetTags from '@hooks/useDesignSetTags';
-import React from 'react';
+import React, { useState } from 'react';
 
 const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
   const { tagTypes, loading, updateActiveTagType, themeFilters, fetchThemeFilters } = useDesignSetTags('');
+  //TODO: expanded optimization
+  const [designStylesExpanded, setDesignStylesExpanded] = useState(false);
+  const [functionality, setFunctionality] = useState(false);
+  const [colorP, setColorP] = useState(false);
+  const [capacity, setCapacity] = useState(false);
+  const [speciality, setSpeciality] = useState(false);
+
+  const updateCollapseState = (type) => {
+    switch (type) {
+      case 'designStyles':
+        setDesignStylesExpanded(!designStylesExpanded)
+      case 'functionality':
+        setFunctionality(!functionality)
+      case 'color palette':
+        setColorP(!colorP)
+      case 'seating capacity':
+        setCapacity(!capacity)
+      case 'specialty':
+        setSpeciality(!speciality)
+    }
+  }
+  const getCollapseState = (type) => {
+    switch (type) {
+      case 'designStyles':
+        return designStylesExpanded;
+      case 'functionality':
+        return functionality;
+      case 'color palette':
+        return colorP;
+      case 'seating capacity':
+        return capacity;
+      case 'specialty':
+        return speciality;
+      default:
+        return false;
+    }
+  }
+
+  function sliceList(type, list) {
+    switch (type) {
+      case 'designStyles':
+        return designStylesExpanded ? list : list?.slice(0, 5);
+      case 'functionality':
+        return functionality ? list : list?.slice(0, 5);
+      case 'color palette':
+        return colorP ? list : list?.slice(0, 5);
+      case 'seating capacity':
+        return capacity ? list : list?.slice(0, 5);
+      case 'specialty':
+        return speciality ? list : list?.slice(0, 5);
+      default:
+        return list;
+    }
+  }
 
   const { themes = [] } = themeFilters;
 
@@ -49,7 +103,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                         </>
                       ) : (
                         <>
-                          {themes?.map((item) => {
+                          {sliceList('designStyles', themes)?.map((item) => {
                             return (
                               <>
                                 <div
@@ -79,6 +133,11 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                               </>
                             );
                           })}
+                          <div className="my-3 text-sm text-[#F5296E] capitalize cursor-pointer">
+                            <button type="button" onClick={() => setDesignStylesExpanded(!designStylesExpanded)}>
+                              {designStylesExpanded ? 'Show Less' : `+${themes.length - 5} More`}
+                            </button>
+                          </div>
                         </>
                       )}
                     </>
@@ -128,7 +187,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                           </>
                         ) : (
                           <>
-                            {tagObject?.tags?.map((item) => {
+                            {sliceList(tagObject?.name, tagObject?.tags)?.map((item) => {
                               return (
                                 <>
                                   <div
@@ -161,6 +220,11 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                 </>
                               );
                             })}
+                            <div  className='my-3 text-sm text-[#F5296E] capitalize cursor-pointer'>
+                            <button type="button" onClick={() => updateCollapseState(tagObject?.name)}>
+                              {getCollapseState(tagObject?.name) ? 'Show Less' : `+${tagObject?.tags?.length - 5} More`}
+                            </button>
+                            </div>
                           </>
                         )}
                       </>

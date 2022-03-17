@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { oldSpacejoyUrl } from '@utils/config';
-import shoppingBagIcon from '@public/images/empty-bag.svg'
+import shoppingBagIcon from '@public/images/empty-bag.svg';
 
 const EmptyCart = () => {
   return (
@@ -23,7 +23,7 @@ const EmptyCart = () => {
         </div>
         <div className="flex flex-col items-center space-y-4">
           <h2 className="text-xl">Here are a few suggestions curated for you:</h2>
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
             <Link href="/room-select" passHref>
               <a
                 onClick={() => {

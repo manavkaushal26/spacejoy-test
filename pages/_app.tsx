@@ -8,13 +8,13 @@ import { trackUtmClick } from '@utils/affiseAffiliateTracking';
 import { initAnalytics, LandingPage, PwaInstalled, RouteChange } from '@utils/analyticsLogger';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import NextNProgress from 'nextjs-progressbar';
 import React, { useEffect, useState } from 'react';
 import { pageview } from 'react-ga';
 import { Toaster } from 'react-hot-toast';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { ThemeProvider } from 'styled-components';
 import '../styles/globals.css';
-// import { pageview } from '@lib/ga';
 
 declare global {
   interface Window {
@@ -96,6 +96,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
               <ThemeProvider theme={{}}>
                 <ShopFilterContextProvider>
                   <SimpleReactLightbox>
+                    <NextNProgress options={{ showSpinner: false }} />
                     <Component {...pageProps} />
                   </SimpleReactLightbox>
                   <Toaster

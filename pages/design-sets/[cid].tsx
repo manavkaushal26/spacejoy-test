@@ -11,12 +11,16 @@ import { NavSelectContextProvider } from '@store/NavSelect';
 import { PlaygroundAssetsContextProvider } from '@store/PlaygroundAssets';
 import RecommendationsListContextProvider from '@store/RecommendationsList';
 import { SelectedIdContextProvider } from '@store/SelectedId';
+import { cloudinary } from '@utils/config';
 import mainCategories from '@utils/constants/DesignSets/mainCategory';
 import fetcher from '@utils/fetcher';
 import { onlyUnique, priceToLocaleString } from '@utils/helpers';
+import Cookies from 'js-cookie';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useMemo, useRef } from 'react';
 
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
@@ -33,6 +37,8 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
   }, [collageData]);
   const shopDetailsRef = useRef<HTMLDivElement>();
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
+
+  const isMobile = Cookies.get('isMobile');
 
   const onTotalClick = () => {
     shopDetailsRef?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -63,33 +69,56 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                   <RecommendationsListContextProvider>
                     <CollageListContextProvider>
                       <div className="container px-4 m-auto">
-                        <div
-                          className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative `}
-                          ref={PlaygroundWrapperRef}
-                        >
-                          <button
-                            onClick={onTotalClick}
-                            className="mb-0 absolute top-4 right-4 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold"
+                        {isMobile === 'true' ? (
+                          <div className='space-y-4'>
+                            <div className="relative aspect-2">
+                              <Image
+                                src={`${cloudinary.baseDeliveryURL}/${collageData.thumbnail}`}
+                                alt=""
+                                layout="fill"
+                                className="rounded-lg"
+                              />
+                            </div>
+                            <div className="bg-[#F6EEEB]">
+                              <p>
+                                If you wish to explore this design set, please explore it on your desktop, it isn&apos;t
+                                currently available for mobile devices.
+                              </p>
+
+                              <div>
+                                Copy Link: <p className='text-[#F5296E]'>{`https://www.spacejoy.com/design-sets/${collageData._id}`}</p>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div
+                            className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative `}
+                            ref={PlaygroundWrapperRef}
                           >
-                            {/* Total: {priceToLocaleString(priceOfSet)} */}
-                            Shop Now
-                          </button>
-                          {/* // TODO This codeblock will be replaced with editor code */}
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          {/* <Image
+                            <button
+                              onClick={onTotalClick}
+                              className="mb-0 absolute top-4 right-4 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold"
+                            >
+                              {/* Total: {priceToLocaleString(priceOfSet)} */}
+                              Shop Now
+                            </button>
+                            {/* // TODO This codeblock will be replaced with editor code */}
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            {/* <Image
                             src={`${cloudinary.baseDeliveryURL}/e_trim,q_auto,ar_1.5,c_pad/${collageData?.thumbnail}`}
                             alt={correctedCollageName}
                             className="rounded-xl"
                             layout="fill"
                             objectFit="contain"
                           /> */}
-                          <PlaygroundWithNoSSR
-                            collageData={collageData}
-                            playGroundRef={PlaygroundWrapperRef}
-                            bg={{ value: collageData?.background, type: collageData?.bgType }}
-                          />
-                          <ControlPanel designSetId={collageData?._id} />
-                        </div>
+                            <PlaygroundWithNoSSR
+                              collageData={collageData}
+                              playGroundRef={PlaygroundWrapperRef}
+                              bg={{ value: collageData?.background, type: collageData?.bgType }}
+                            />
+                            <ControlPanel designSetId={collageData?._id} />
+                          </div>
+                        )}
                         <div ref={shopDetailsRef}>
                           <DesignSetDetails collageData={collageData} correctedCollageName={correctedCollageName} />
                         </div>

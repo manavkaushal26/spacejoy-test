@@ -16,7 +16,7 @@ const CollageProductList: React.FC<{ assets: AssetType[]; collageId?: string; sh
   return (
     <div className="bg-gray-100 ">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 gap-1 pb-8 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-1 pb-8 lg:grid-cols-3 xl:grid-cols-4">
           {assets.map((asset, idx) => {
             return (
               <>

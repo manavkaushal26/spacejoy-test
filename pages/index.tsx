@@ -9,23 +9,25 @@ import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary, oldSpacejoyUrl } from '@utils/config';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
+import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import React from 'react';
-import { useFirebaseContext } from '@store/FirebaseContextProvider';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
 export const Home = (): JSX.Element => {
   const router = useRouter();
   const { data } = useFirebaseContext();
+  const isMobile = Cookies.get('isMobile');
 
   return (
     <>
@@ -38,19 +40,18 @@ export const Home = (): JSX.Element => {
         <Layout.Header />
         <Layout.Body>
           <Hero3 />
-          <div className="mt-32 mb-12">
-            <HomeSectionTitle className="text-center">
+          <div className="container px-4 mx-auto mt-32 mb-12">
+            <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>Shop curated furniture & decor sets</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
                 Choose from thousands of sets perfect for your style, space and budget.
               </HomeSectionTitle.Description>
             </HomeSectionTitle>
           </div>
-
           {/* Section Start */}
           <div className="container px-4 mx-auto mb-10">
-            <div className="grid grid-cols-4 gap-8">
-              <div className="col-span-2 row-span-2">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 sm:grid-cols-4 xl:gap-8">
+              <div className="col-span-1 row-span-1 sm:row-span-2 sm:col-span-2">
                 <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1644479450/web/homepage-v3/explore-set-image_wxfnvr.jpg"
@@ -99,7 +100,7 @@ export const Home = (): JSX.Element => {
                 </div>
               </div>
               <button
-                className="rounded-xl"
+                className="col-span-2 rounded-xl sm:col-span-1"
                 onClick={() => {
                   PushEvent({
                     category: `Explore Sets`,
@@ -109,26 +110,30 @@ export const Home = (): JSX.Element => {
                   location.href = '/room-select';
                 }}
               >
-                <div className="relative bg-orange-300 aspect-w-3 aspect-h-4 rounded-xl">
-                  <div className="flex flex-col items-end justify-between p-8">
+                <div className="relative bg-orange-300 aspect-w-2 aspect-h-1 sm:aspect-w-3 sm:aspect-h-4 rounded-xl">
+                  <div className="flex flex-col items-end justify-between p-6 sm:p-4 md:p-8">
                     <div className="flex items-center justify-center bg-white rounded-full h-14 w-14">
                       <ArrowRightIcon className="inline w-6 h-6" />
                     </div>
-                    <div>
-                      <h3 className="text-5xl leading-snug text-orange-800">Explore Sets</h3>
+                    <div className="w-full text-left sm:text-center">
+                      <h3 className="text-3xl leading-snug text-orange-800 sm:text-2xl md:text-3xl xl:leading-snug xl:text-5xl">
+                        Explore Sets
+                      </h3>
                     </div>
                   </div>
                 </div>
               </button>
             </div>
           </div>
+
           {/* Section Start */}
-          <div className="container px-20 mx-auto my-40">
-            <div className="flex">
-              <div className="w-3/4">
+          <div className="container px-4 mx-auto my-28 xl:my-40 xl:px-20">
+            <div className="flex flex-col xl:flex-row">
+              <div className="w-full mb-6 xl:mb-0 xl:w-3/4">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    From Pinterest to <span className="text-[#F5296E]">your home</span>
+                    From Pinterest to{isMobile === 'true' ? <br /> : ' '}
+                    <span className="text-[#F5296E]">your home</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left">
                     Inspiration tucked away in Pinterest Boards? Connect and shop everything you love from your pins.
@@ -136,7 +141,7 @@ export const Home = (): JSX.Element => {
                 </HomeSectionTitle>
               </div>
               <button
-                className="grid items-center w-1/4 h-32 grid-cols-10 p-4 border border-red-400 rounded-xl"
+                className="flex items-center w-full h-32 p-4 border border-red-400  rounded-xl max-w-[375px]"
                 onClick={() => {
                   PushEvent({
                     category: `Connect Pinterest`,
@@ -146,38 +151,42 @@ export const Home = (): JSX.Element => {
                   location.href = '/pinterest/search';
                 }}
               >
-                <div className="col-span-2 justify-self-start">
+                <div className="flex-grow-0">
                   <span className="sr-only">Pinterest</span>
                   <svg className="text-red-400 h-11 w-11" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
                     <path d="M256.05 32c-123.7 0-224 100.3-224 224 0 91.7 55.2 170.5 134.1 205.2-.6-15.6-.1-34.4 3.9-51.4l28.8-122.1s-7.2-14.3-7.2-35.4c0-33.2 19.2-58 43.2-58 20.4 0 30.2 15.3 30.2 33.6 0 20.5-13.1 51.1-19.8 79.5-5.6 23.8 11.9 43.1 35.4 43.1 42.4 0 71-54.5 71-119.1 0-49.1-33.1-85.8-93.2-85.8-67.9 0-110.3 50.7-110.3 107.3 0 19.5 5.8 33.3 14.8 43.9 4.1 4.9 4.7 6.9 3.2 12.5l-4.6 18c-1.5 5.7-6.1 7.7-11.2 5.6-31.3-12.8-45.9-47-45.9-85.6 0-63.6 53.7-139.9 160.1-139.9 85.5 0 141.8 61.9 141.8 128.3 0 87.9-48.9 153.5-120.9 153.5-24.2 0-46.9-13.1-54.7-27.9l-15.8 61.6c-4.7 17.3-14 34.5-22.5 48a225.13 225.13 0 0 0 63.5 9.2c123.7 0 224-100.3 224-224S379.75 32 256.05 32z" />
                   </svg>
                 </div>
-                <h3 className="col-span-6 mt-4 text-2xl text-red-400 justify-self-center">Connect Now!</h3>
+                <div className="flex-grow text-left">
+                  <h3 className="text-2xl text-red-400 ml-2">Connect Now!</h3>
+                </div>
                 <div className="flex items-center justify-center w-10 h-10 col-span-2 bg-red-400 rounded-full justify-self-end">
                   <ArrowRightIcon className="inline w-4 h-4 text-white" />
                 </div>
               </button>
             </div>
           </div>
+
           {/* Section Start */}
-          <div className="container px-20 mx-auto my-40">
-            <div className="flex items-center justify-between">
-              <div className="relative w-1/2 mr-32">
+          <div className="container px-4 mx-auto xl:my-40 my-28 xl:px-20">
+            <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
+              <div className="relative w-full mx-auto  md:w-1/2">
                 <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
                   {TeamData.map((item) => (
                     <div key={item.lastName}>
-                      <div className="aspect-w-1 aspect-h-1 rounded-3xl">
+                      <div className="relative aspect-[3/4] sm:aspect-[1] md:aspect-[3/4] lg:aspect-[1] rounded-3xl">
                         <Image
                           src={`https://res.cloudinary.com/spacejoy/w_800/${item.bg}`}
                           alt="image 1"
                           className="object-cover object-center w-full h-full rounded-3xl"
                           layout="fill"
+                          objectFit="cover"
                           placeholder="blur"
                           blurDataURL={blurredBgImage}
                         />
-                        <div className="top-auto flex items-end justify-center bottom-28">
+                        <div className="absolute top-auto flex items-end justify-center -translate-x-1/2 bottom-28 left-1/2">
                           <div className="text-center">
-                            <h2 className="text-2xl font-bold text-gray-50">
+                            <h2 className="text-2xl font-bold whitespace-pre text-gray-50">
                               {item.firstName} {item.lastName}
                             </h2>
                             <p className="mt-2 text-white">Design Expert</p>
@@ -188,17 +197,19 @@ export const Home = (): JSX.Element => {
                   ))}
                 </Carousel>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                  Want to give your home a designer touch for less? <br />{' '}
-                    <span className="text-[#F5296E]">Try our design sets!</span>
+                    Want us to do the heavy lifting?
+                    <br />
+                    <span className="text-[#F5296E]">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
                   <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
-                  Created by our team of talented designers, our furniture & decor sets will help you transform your space, without the stress!
+                    In just 7 days, get 3D Designs of your actual room with products you can shop right away on
+                    Spacejoy!
                   </HomeSectionTitle.Description>
                 </HomeSectionTitle>
-                <Link href="/room-select">
+                <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
                   <a target="_blank" rel="noopener noreferrer">
                     <button
                       type="button"
@@ -211,16 +222,17 @@ export const Home = (): JSX.Element => {
                         });
                       }}
                     >
-                      Explore Sets
+                      Hire a Designer
                     </button>
                   </a>
                 </Link>
               </div>
             </div>
           </div>
+
           {/* Section Start */}
-          <div className="mt-32 mb-12">
-            <HomeSectionTitle className="text-center">
+          <div className="container mx-auto px-4 mt-32 mb-8">
+            <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>
                 Shop all things home in <span className="text-[#F5296E]">one place</span>
               </HomeSectionTitle.MainTitle>
@@ -230,9 +242,9 @@ export const Home = (): JSX.Element => {
             </HomeSectionTitle>
           </div>
           <div className="container px-4 mx-auto mb-20">
-            <div className="flex space-x-8">
+            <div className="grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4">
               <div
-                className="flex-1 p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
+                className="flex-1 p-4 lg:p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
                 onClick={() => {
                   PushEvent({
                     category: `Shop by Category`,
@@ -242,11 +254,11 @@ export const Home = (): JSX.Element => {
                   location.href = '/shop?subcategory=Sofas';
                 }}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-xl">Sofas</h3>
+                    <h3 className="text-lg lg:text-xl">Sofas</h3>
                   </div>
-                  <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full">
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
                     <ArrowRightIcon className="inline w-4 h-4" />
                   </div>
                 </div>
@@ -262,7 +274,7 @@ export const Home = (): JSX.Element => {
                 </div>
               </div>
               <div
-                className="flex-1 p-8 bg-red-100 rounded-xl hover:cursor-pointer"
+                className="flex-1 p-4 bg-red-100 lg:p-8 rounded-xl hover:cursor-pointer"
                 onClick={() => {
                   PushEvent({
                     category: `Shop by Category`,
@@ -272,11 +284,11 @@ export const Home = (): JSX.Element => {
                   location.href = '/shop?subcategory=Chairs';
                 }}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-xl">Chairs</h3>
+                    <h3 className="text-lg lg:text-xl">Chairs</h3>
                   </div>
-                  <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full">
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
                     <ArrowRightIcon className="inline w-4 h-4" />
                   </div>
                 </div>
@@ -292,7 +304,7 @@ export const Home = (): JSX.Element => {
                 </div>
               </div>
               <div
-                className="flex-1 p-8 bg-blue-100 rounded-xl hover:cursor-pointer"
+                className="flex-1 p-4 bg-blue-100 lg:p-8 rounded-xl hover:cursor-pointer"
                 // onClick={() => (location.href = '/shop?subcategory=Beds')}
                 onClick={() => {
                   PushEvent({
@@ -303,11 +315,11 @@ export const Home = (): JSX.Element => {
                   location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables';
                 }}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-xl">Coffee Tables</h3>
+                    <h3 className="text-lg leading-tight lg:text-xl lg:leading-tight w-min lg:w-full">Coffee Tables</h3>
                   </div>
-                  <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full">
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
                     <ArrowRightIcon className="inline w-4 h-4" />
                   </div>
                 </div>
@@ -323,7 +335,7 @@ export const Home = (): JSX.Element => {
                 </div>
               </div>
               <div
-                className="flex-1 p-8 bg-teal-100 rounded-xl hover:cursor-pointer"
+                className="flex-1 p-4 bg-teal-100 lg:p-8 rounded-xl hover:cursor-pointer"
                 onClick={() => {
                   PushEvent({
                     category: `Shop by Category`,
@@ -333,11 +345,11 @@ export const Home = (): JSX.Element => {
                   location.href = '/shop?subcategory=Beds';
                 }}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-xl">Beds</h3>
+                    <h3 className="text-lg lg:text-xl">Beds</h3>
                   </div>
-                  <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full">
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
                     <ArrowRightIcon className="inline w-4 h-4" />
                   </div>
                 </div>
@@ -372,17 +384,17 @@ export const Home = (): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="container grid grid-cols-4 gap-8 px-4 mx-auto my-10">
-            <div className="col-span-3">
-              {data?.homepageV2?.hp1Link !== undefined && data?.homepageV2?.hp1Link !== '' ? (
+          <div className="container grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto my-10">
+            <div className="col-span-1 sm:col-span-3">
+              {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
                 <Link href={data?.homepageV2?.hp1Link}>
                   <a target="_blank">
-                    <div className="relative aspect-w-4 aspect-h-1">
+                    <div className="relative aspect-[77/18]">
                       <Image
                         src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
                         alt="offers"
                         layout="fill"
-                        className="object-contain "
+                        className="object-contain rounded-xl"
                         placeholder="blur"
                         blurDataURL={blurredBgProduct}
                       />
@@ -390,38 +402,39 @@ export const Home = (): JSX.Element => {
                   </a>
                 </Link>
               ) : (
-                <div className="relative aspect-w-4 aspect-h-1">
+                <div className="relative aspect-[77/18]">
                   <Image
                     src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
                     alt="offers"
                     layout="fill"
-                    className="object-contain "
+                    className="object-contain rounded-xl"
                     placeholder="blur"
                     blurDataURL={blurredBgProduct}
                   />
                 </div>
               )}
             </div>
-            <div className="relative">
+            <div className="relative aspect-[287/215] col-span-1 rounded-xl">
               <Image
                 src="https://res.cloudinary.com/spacejoy/image/upload/v1645766721/web/homepage-v3/Group_8homePageAffirm_dkndyv.svg"
                 alt="affirm"
                 layout="fill"
-                className="object-contain w-full h-full"
+                objectFit="contain"
                 placeholder="blur"
                 blurDataURL={blurredBgProduct}
+                className="rounded-xl"
               />
             </div>
           </div>
 
-          <div className="container px-4 mx-auto mb-40">
-            <HomeSectionTitle className="text-center">
+          <div className="container px-4 mx-auto mt-32 mb-40">
+            <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>
                 <span className="text-[#F5296E]">Why</span> Spacejoy?
               </HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
             </HomeSectionTitle>
-            <div className="mt-8">
+            <div className="mt-6">
               <Carousel centerPadding="0%" centerMode customButtons slidesToShow={4} position={position.outside}>
                 {TestimonialData.map((item) => (
                   <div key={item.id} className="h-full">
@@ -464,8 +477,8 @@ export const Home = (): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="mt-32 mb-12">
-            <HomeSectionTitle className="text-center">
+          <div className="container mx-auto px-4 mt-32 mb-12">
+            <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               <HomeSectionTitle.Description align="center">
                 From a corner to a whole room, see how our customers are transforming their homes

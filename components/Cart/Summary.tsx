@@ -5,7 +5,6 @@ import { XCircleIcon } from '@heroicons/react/outline';
 import { QuestionMarkCircleIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
 import { useStore } from '@lib/store';
-import { PushEvent } from '@utils/analyticsLogger';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
 import Cookies from 'js-cookie';
@@ -301,7 +300,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, s
         <div className="mt-6 text-center">
           <Login
             ctaText="Please sign up/sign in to checkout"
-            styles="w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+            styles="w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 block"
           />
         </div>
       )}

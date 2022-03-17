@@ -14,7 +14,7 @@ const SimilarProducts = ({ productId }) => {
     <div className="py-14">
       <h2 className="text-2xl tracking-wide">Similar Products</h2>
       <p className="mt-2 text-gray-700">Shop from a collection of similar products</p>
-      <div className="mt-4 grid grid-cols-3 xl:grid-cols-6 gap-4">
+      <div className="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
         {recommendationsData?.slice(0, 6)?.map((product) => {
           return <ProductCard product={product} key={product._id} />;
         })}

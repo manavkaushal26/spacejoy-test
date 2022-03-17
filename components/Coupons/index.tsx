@@ -137,69 +137,71 @@ const Coupons = ({ coupons, loading, onSuccess, onError }) => {
             } else if (couponType === 'retailer') {
               return (
                 <>
-                  <div className="mt-8">
-                    <h3 className="mt-4 space-y-2">Spacejoy Brand Offers (Auto-appplied on your cart)</h3>
-                    <p className="text-sm text-gray-500">Brought to you exclusively by Spacejoy</p>
-                    <ul className="p-2 mt-4 bg-gray-200 rounded-sm">
-                      {offers?.map((offer, index) => {
-                        return (
-                          <li
-                            key={offer?._id}
-                            className={`flex items-center justify-between mt-2 text-sm ${index !== 0 ? 'mt-2' : ''} ${
-                              retailersInCart?.indexOf(offer?.retailer?._id) > -1 ? 'text-gray-900' : 'text-gray-400'
-                            }`}
-                          >
-                            <section className="flex items-center">
-                              <section className="relative text-center cursor-pointer group">
-                                <QuestionMarkCircleIcon
-                                  className="relative inline-block w-5 h-5 cursor-pointer group"
-                                  aria-hidden="true"
-                                />
-                                <div className="absolute z-10 p-2 text-xs text-center text-white bg-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 bottom-full w-28">
-                                  {offer?.discountType === 'percent' ? (
-                                    <span>{`Get ${offer?.discount}% off on a minimum purchase of $${offer?.constraints?.minAmount} from ${offer?.retailer?.name}. Max discount $${offer?.maxDiscount}`}</span>
-                                  ) : (
-                                    <span>{`Save $${offer?.discount} on a minimum purchase of $${offer?.constraints?.minAmount} from ${offer?.retailer?.name}.`}</span>
-                                  )}
-                                  <svg
-                                    className="absolute left-0 w-full h-2 text-black top-full"
-                                    x="0px"
-                                    y="0px"
-                                    viewBox="0 0 255 255"
-                                    xmlSpace="preserve"
-                                  >
-                                    <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
-                                  </svg>
+                  {offers?.length ? (
+                    <div className="mt-8">
+                      <h3 className="mt-4 space-y-2">Spacejoy Brand Offers (Auto-appplied on your cart)</h3>
+                      <p className="text-sm text-gray-500">Brought to you exclusively by Spacejoy</p>
+                      <ul className="p-2 mt-4 bg-gray-200 rounded-sm">
+                        {offers?.map((offer, index) => {
+                          return (
+                            <li
+                              key={offer?._id}
+                              className={`flex items-center justify-between mt-2 text-sm ${index !== 0 ? 'mt-2' : ''} ${
+                                retailersInCart?.indexOf(offer?.retailer?._id) > -1 ? 'text-gray-900' : 'text-gray-400'
+                              }`}
+                            >
+                              <section className="flex items-center">
+                                <section className="relative text-center cursor-pointer group">
+                                  <QuestionMarkCircleIcon
+                                    className="relative inline-block w-5 h-5 cursor-pointer group"
+                                    aria-hidden="true"
+                                  />
+                                  <div className="absolute z-10 p-2 text-xs text-center text-white bg-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 bottom-full w-28">
+                                    {offer?.discountType === 'percent' ? (
+                                      <span>{`Get ${offer?.discount}% off on a minimum purchase of $${offer?.constraints?.minAmount} from ${offer?.retailer?.name}. Max discount $${offer?.maxDiscount}`}</span>
+                                    ) : (
+                                      <span>{`Save $${offer?.discount} on a minimum purchase of $${offer?.constraints?.minAmount} from ${offer?.retailer?.name}.`}</span>
+                                    )}
+                                    <svg
+                                      className="absolute left-0 w-full h-2 text-black top-full"
+                                      x="0px"
+                                      y="0px"
+                                      viewBox="0 0 255 255"
+                                      xmlSpace="preserve"
+                                    >
+                                      <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+                                    </svg>
+                                  </div>
+                                </section>
+
+                                <span className="inline-block ml-2">{offer?.retailer?.name}</span>
+                                {retailersInCart?.indexOf(offer?.retailer?._id) > -1 ? (
+                                  <CheckCircleIcon
+                                    className="relative inline-block w-5 h-5 ml-2 text-green-500 group"
+                                    aria-hidden="true"
+                                  />
+                                ) : null}
+                              </section>
+                              <section>
+                                <div
+                                  className={`border border-dashed ${
+                                    retailersInCart?.indexOf(offer?.retailer?._id) > -1
+                                      ? 'border-gray-900'
+                                      : 'border-gray-400'
+                                  } inline-block items-center justify-center p-1 flex`}
+                                >
+                                  <TagIcon className="w-4 h-4" />{' '}
+                                  <span className="inline-block ml-2">
+                                    SAVE {offer?.discount} {offer?.discountType === 'percent' ? '%' : ''}
+                                  </span>
                                 </div>
                               </section>
-
-                              <span className="inline-block ml-2">{offer?.retailer?.name}</span>
-                              {retailersInCart?.indexOf(offer?.retailer?._id) > -1 ? (
-                                <CheckCircleIcon
-                                  className="relative inline-block w-5 h-5 ml-2 text-green-500 group"
-                                  aria-hidden="true"
-                                />
-                              ) : null}
-                            </section>
-                            <section>
-                              <div
-                                className={`border border-dashed ${
-                                  retailersInCart?.indexOf(offer?.retailer?._id) > -1
-                                    ? 'border-gray-900'
-                                    : 'border-gray-400'
-                                } inline-block items-center justify-center p-1 flex`}
-                              >
-                                <TagIcon className="w-4 h-4" />{' '}
-                                <span className="inline-block ml-2">
-                                  SAVE {offer?.discount} {offer?.discountType === 'percent' ? '%' : ''}
-                                </span>
-                              </div>
-                            </section>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ) : null}
                 </>
               );
             }
