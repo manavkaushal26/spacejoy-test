@@ -1,5 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import { pinterestConfig } from '@utils/config';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
 import Cookies from 'js-cookie';
 import { NextPage } from 'next';
@@ -8,7 +9,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { Fragment, useState } from 'react';
 
-const RoomPageHeader: NextPage<{ category: string, onCategoryChange:any, setIsOpen:any, isHeaderMobile:boolean }> = ({ category, onCategoryChange = () => {}, setIsOpen, isHeaderMobile }) => {
+const RoomPageHeader: NextPage<{
+  category: string;
+  onCategoryChange: any;
+  setIsOpen: any;
+  isHeaderMobile: boolean;
+}> = ({ category, onCategoryChange = () => {}, setIsOpen, isHeaderMobile }) => {
   const router = useRouter();
   // console.log(isHeaderMobile);
   const [selectedRoomType, setSelectedRoomType] = useState(category);
@@ -36,10 +42,7 @@ const RoomPageHeader: NextPage<{ category: string, onCategoryChange:any, setIsOp
           <div>
             <Menu.Button className="inline-flex justify-between w-full px-4 py-2 text-sm capitalize font-medium bg-white rounded-md  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
               {selectedRoomType}
-              <ChevronDownIcon
-                className="w-5 h-5 ml-2 -mr-1 text-violet hover:text-violet-100"
-                aria-hidden="true"
-              />
+              <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1 text-violet hover:text-violet-100" aria-hidden="true" />
             </Menu.Button>
           </div>
           <Transition
@@ -75,7 +78,10 @@ const RoomPageHeader: NextPage<{ category: string, onCategoryChange:any, setIsOp
         </Menu>
       </div>
       <div className="rounded-3xl py-4 flex flex-col lg:flex-row gap-4 items-center justify-between">
-        <button onClick={() => setIsOpen(true)} className="flex flex-grow items-center space-x-2 px-4 py-2 text-base font-medium text-white bg-black shadow-xs cursor-not-allowed group hover:shadow-md rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="flex flex-grow items-center space-x-2 px-4 py-2 text-base font-medium text-white bg-black shadow-xs cursor-not-allowed group hover:shadow-md rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -95,30 +101,32 @@ const RoomPageHeader: NextPage<{ category: string, onCategoryChange:any, setIsOp
       </div>
     </div>
   ) : (
-    <div className="flex my-4 gap-4 items-center bg-gray-100">
+    <div className="flex my-4 gap-4 pt-6 pb-4 items-center bg-gray-100">
       <div className="w-1/3 lg:w-1/2 text-base lg:text-4xl xl:leading-snug">
         <span className="font-bold capitalize">{category} Sets</span>
       </div>
-      <div className="rounded-3xl py-4 px-6 flex flex-col lg:flex-row gap-4 items-center justify-between">
-        <div className="text-sm lg:text-xl text-bold flex-grow font-bold">
-          Shop products from your <br />
-          favorite pins
+      {pinterestConfig.enable === true && (
+        <div className="rounded-3xl py-4 px-6 flex flex-col lg:flex-row gap-4 items-center justify-between">
+          <div className="text-sm lg:text-xl text-bold flex-grow font-bold">
+            Shop products from your <br />
+            favorite pins
+          </div>
+          <Link href="/pinterest/search">
+            <a className=" flex-grow bg-red-600/75 px-3 py-3 rounded-full text-ellipsis overflow-hidden flex space-between text-xs lg:text-base items-center transition-all font-bold gap-4 text-white hover:shadow-lg ">
+              <Image
+                src={
+                  'https://res.cloudinary.com/spacejoy/image/upload/v1640335624/web/pinterest-integration/icons/badgeRGB-FFFFFF_iozyje.svg'
+                }
+                alt="pinterest logo"
+                className=" h-8 w-8"
+                width="64px"
+                height="64px"
+              />
+              <span className="whitespace-nowrap text-ellipsis">Connect to Pinterest</span>
+            </a>
+          </Link>
         </div>
-        <Link href="/pinterest/search">
-          <a className=" flex-grow bg-red-600/75 px-3 py-3 rounded-full text-ellipsis overflow-hidden flex space-between text-xs lg:text-base items-center transition-all font-bold gap-4 text-white hover:shadow-lg ">
-            <Image
-              src={
-                'https://res.cloudinary.com/spacejoy/image/upload/v1640335624/web/pinterest-integration/icons/badgeRGB-FFFFFF_iozyje.svg'
-              }
-              alt="pinterest logo"
-              className=" h-8 w-8"
-              width="64px"
-              height="64px"
-            />
-            <span className="whitespace-nowrap text-ellipsis">Connect to Pinterest</span>
-          </a>
-        </Link>
-      </div>
+      )}
     </div>
   );
 };

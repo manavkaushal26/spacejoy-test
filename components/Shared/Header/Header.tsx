@@ -88,7 +88,7 @@ const Header: React.FC = () => {
           <div className="lg:flex lg:items-center h-20 hidden">
             <Link href="/">
               <a
-                className="inline-block pr-1 mr-10 rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none"
+                className="inline-flex pr-1 mr-10 rounded-md focus:outline-none"
                 aria-label="logo"
                 onClick={() => {
                   PushEvent({
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                   <li className="inline-block">
                     <Link href="/room-select">
                       <a
-                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
                           router.asPath === '/room-select' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         onClick={() => {
@@ -131,7 +131,7 @@ const Header: React.FC = () => {
                   <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
-                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
                           router.asPath === '/online-interior-design' ? 'text-red-600' : 'text-gray-900'
                         }`}
                         target="_blank"
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
                   >
                     <button
                       type="button"
-                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
                         isOpenSubNav && subNavContent === 'shop' ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
@@ -178,7 +178,7 @@ const Header: React.FC = () => {
                   {/* <li className="flex sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
-                      className={`whitespace-nowrap hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                      className={`whitespace-nowrap hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
                         isOpenSubNav && subNavContent === 'stories' ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
@@ -213,7 +213,7 @@ const Header: React.FC = () => {
             <div className="w-2/5 md:flex md:items-center md:justify-center lg:justify-end">
               <Link href="/search">
                 <a
-                  className={`text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ${
+                  className={`text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border hover:shadow-xl hover:border-gray-200  focus:outline-none ${
                     router.asPath === '/search' ? 'border-gray-200 text-red-600' : 'border-transparent'
                   }`}
                 >
@@ -222,7 +222,7 @@ const Header: React.FC = () => {
                 </a>
               </Link>
               <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`}>
-                <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ">
+                <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200  focus:outline-none ">
                   <span className="sr-only">Shopping</span>
                   <ShoppingBagIcon className="inline w-4 h-4" />
                   {cart?.count && cart?.count > 0 ? (

@@ -1,6 +1,6 @@
 import HeroBanner from '@components/EcommercePage/HeroBanner';
 import Layout from '@components/Shared/Layout';
-import { company, oldSpacejoyUrl } from '@utils/config';
+import { company, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import Head from 'next/head';
 import React from 'react';
 // import ShopInjectBanner from '@components/EcommercePage/ShopInjectBanner';
@@ -36,7 +36,7 @@ const Index = () => {
         <div className="container px-4 mx-auto xl:p-0">
           <HeroBanner linkTo="/shop" />
           <BrandsToShop mobile={mobile} />
-          <PinterestBanner />
+          {pinterestConfig.enable === true && <PinterestBanner />}
           <CategoryToShop mobile={mobile} />
           {/* <ShopInjectBanner linkTo="/shop" /> */}
           <ShopBanner linkTo={`${oldSpacejoyUrl}/referrals`} shopInjectBanner={false} />
