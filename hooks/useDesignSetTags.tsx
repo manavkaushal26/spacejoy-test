@@ -61,6 +61,7 @@ const useDesignSetTags = (tagId = '') => {
           const formattedData = data?.filter(
             (item) =>
               [
+                'specialty',
                 'material',
                 'color',
                 'shape or form',

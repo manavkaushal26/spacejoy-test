@@ -3,58 +3,69 @@ import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/outline';
 import useDesignSetTags from '@hooks/useDesignSetTags';
 import React, { useState } from 'react';
 
+const SHOW_ITEMS_IN_ARRAY = 5;
+
 const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
   const { tagTypes, loading, updateActiveTagType, themeFilters, fetchThemeFilters } = useDesignSetTags('');
-  //TODO: expanded optimization
+  //TODO: expanded optimization, Create a dynamic show more component for array
   const [designStylesExpanded, setDesignStylesExpanded] = useState(false);
   const [functionality, setFunctionality] = useState(false);
   const [colorP, setColorP] = useState(false);
   const [capacity, setCapacity] = useState(false);
   const [speciality, setSpeciality] = useState(false);
 
-  const updateCollapseState = (type) => {
+  const updateCollapseState = (type, action) => {
     switch (type) {
       case 'designStyles':
-        setDesignStylesExpanded(!designStylesExpanded)
+        switch(action){
+          case 'get state':
+            return designStylesExpanded;
+          case 'set state':
+            setDesignStylesExpanded(!designStylesExpanded);
+        }
       case 'functionality':
-        setFunctionality(!functionality)
+        switch(action){
+          case 'get state':
+            return functionality;
+          case 'set state':
+            setFunctionality(!functionality);
+        }
       case 'color palette':
-        setColorP(!colorP)
+        switch(action){
+          case 'get state':
+            return colorP;
+          case 'set state':
+            setColorP(!colorP);
+        }
       case 'seating capacity':
-        setCapacity(!capacity)
+        switch(action){
+          case 'get state':
+            return capacity;
+          case 'set state':
+            setCapacity(!capacity);
+        }
       case 'specialty':
-        setSpeciality(!speciality)
-    }
-  }
-  const getCollapseState = (type) => {
-    switch (type) {
-      case 'designStyles':
-        return designStylesExpanded;
-      case 'functionality':
-        return functionality;
-      case 'color palette':
-        return colorP;
-      case 'seating capacity':
-        return capacity;
-      case 'specialty':
-        return speciality;
-      default:
-        return false;
+        switch(action){
+          case 'get state':
+            return speciality;
+          case 'set state':
+            setSpeciality(!speciality);
+        }
     }
   }
 
   function sliceList(type, list) {
     switch (type) {
       case 'designStyles':
-        return designStylesExpanded ? list : list?.slice(0, 5);
+        return designStylesExpanded ? list : list?.slice(0, SHOW_ITEMS_IN_ARRAY);
       case 'functionality':
-        return functionality ? list : list?.slice(0, 5);
+        return functionality ? list : list?.slice(0, SHOW_ITEMS_IN_ARRAY);
       case 'color palette':
-        return colorP ? list : list?.slice(0, 5);
+        return colorP ? list : list?.slice(0, SHOW_ITEMS_IN_ARRAY);
       case 'seating capacity':
-        return capacity ? list : list?.slice(0, 5);
+        return capacity ? list : list?.slice(0, SHOW_ITEMS_IN_ARRAY);
       case 'specialty':
-        return speciality ? list : list?.slice(0, 5);
+        return speciality ? list : list?.slice(0, SHOW_ITEMS_IN_ARRAY);
       default:
         return list;
     }
@@ -135,7 +146,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                           })}
                           <div className="my-3 text-sm text-[#F5296E] capitalize cursor-pointer">
                             <button type="button" onClick={() => setDesignStylesExpanded(!designStylesExpanded)}>
-                              {designStylesExpanded ? 'Show Less' : `+${themes.length - 5} More`}
+                              {designStylesExpanded ? 'Show Less' : `+${themes.length - SHOW_ITEMS_IN_ARRAY} More`}
                             </button>
                           </div>
                         </>
@@ -220,11 +231,11 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                 </>
                               );
                             })}
-                            <div  className='my-3 text-sm text-[#F5296E] capitalize cursor-pointer'>
-                            <button type="button" onClick={() => updateCollapseState(tagObject?.name)}>
-                              {getCollapseState(tagObject?.name) ? 'Show Less' : `+${tagObject?.tags?.length - 5} More`}
+                            {tagObject?.tags?.length >= SHOW_ITEMS_IN_ARRAY && <div  className='my-3 text-sm text-[#F5296E] capitalize cursor-pointer'>
+                            <button type="button" onClick={() => updateCollapseState(tagObject?.name, 'set state')}>
+                              {updateCollapseState(tagObject?.name, 'get state') ? 'Show Less' : `+${tagObject?.tags?.length - SHOW_ITEMS_IN_ARRAY} More`}
                             </button>
-                            </div>
+                            </div>}
                           </>
                         )}
                       </>

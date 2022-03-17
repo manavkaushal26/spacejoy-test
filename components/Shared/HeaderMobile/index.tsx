@@ -7,9 +7,9 @@ import { useRouter } from 'next/router';
 import shallow from 'zustand/shallow';
 import { useStore } from '@lib/store';
 import SidebarMenu from './SidebarMenu';
+import { oldSpacejoyUrl } from '@utils/config';
 import UserNav from '../Header/UserNav';
 import { splitCategories } from '@utils/Mocks/SplitCategoriesData';
-import { oldSpacejoyUrl } from '@utils/config';
 
 const menuData = [
   {

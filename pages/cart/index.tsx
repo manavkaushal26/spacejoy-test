@@ -3,6 +3,7 @@ import CartSummaryDimmer from '@components/Cart/CartSummaryDimmer';
 import EmptyCart from '@components/Cart/EmptyCart';
 import CartSummary from '@components/Cart/Summary';
 import Layout from '@components/Shared/Layout';
+import LoginManager from '@components/Shared/LoginManager';
 import StickyFooter from '@components/Shared/StickyFooter';
 import { QuestionMarkCircleIcon, TruckIcon, XIcon } from '@heroicons/react/solid';
 import useCoupons from '@hooks/useCoupons';
@@ -18,7 +19,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
@@ -255,6 +256,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
 
 export default function Cart() {
   const { data } = useFirebaseContext();
+  const isUserAuthenticated = Cookies.get('token') ? true : false;
   const router = useRouter();
   const [checkoutRefSource, setCheckoutRefSource] = useState<any>('');
   const { cart, updateCart, loading } = useStore(
@@ -265,6 +267,7 @@ export default function Cart() {
     }),
     shallow
   );
+
   const [showCartFooter, setCartFooter] = useState(false);
 
   const elementRef = React.useCallback((node) => {
@@ -431,18 +434,29 @@ export default function Cart() {
           {cart?.count ? (
             <StickyFooter show={!showCartFooter}>
               <div className="flex  space-x-4 sm:flex-col-1 addToCart px-4 my-2">
-                <p>
-                  <span className="font-bold">Est. Total:</span>
-                  <span>&nbsp;&nbsp;&nbsp;${cart?.invoiceData?.total}</span>
-                </p>
-                <Link href="/checkout/store" passHref>
-                  <button
-                    type="button"
-                    className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                  >
-                    Checkout
-                  </button>
-                </Link>
+                {!isUserAuthenticated ? (
+                  <>
+                    <p>
+                      <span className="font-bold">Est. Total:</span>
+                      <span>&nbsp;&nbsp;&nbsp;${cart?.invoiceData?.total}</span>
+                    </p>
+                    <Link href="/checkout/store" passHref>
+                      <button
+                        type="button"
+                        className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      >
+                        Checkout
+                      </button>
+                    </Link>
+                  </>
+                ) : (
+                  // <div className="text-center">
+                    <LoginManager
+                      ctaText="Sign up/Sign in"
+                      styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                    />
+                  // </div>
+                )}
               </div>
             </StickyFooter>
           ) : null}
