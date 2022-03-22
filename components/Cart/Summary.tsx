@@ -299,7 +299,7 @@ const CartSummary: React.FC<CartSummaryInterface> = ({ giftCards, noBtn, page, s
       ) : (
         <div className="mt-6 text-center">
           <Login
-            ctaText="Please sign up/sign in to checkout"
+            ctaText="Checkout"
             styles="w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 block"
           />
         </div>
