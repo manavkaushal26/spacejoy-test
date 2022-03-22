@@ -234,7 +234,7 @@ function CheckoutForm({
           <br />
           <button
             type="submit"
-            className="flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 w-52"
+            className="w-full flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 lg:w-52"
             onClick={() => {
               PushEvent({
                 category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',

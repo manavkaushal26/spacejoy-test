@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="mb-2">Quick Links</h3>
-            <ul>
+            <ul className="space-y-1 sm:space-y-0">
               {/* <li>
                 <Link href="${oldSpacejoyUrl}/furniture-decor-shop">
                   <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className="">
+          <div>
             <h3 className="mb-2 ">Support</h3>
             <ul className="flex items-center flex-wrap sm:block sm:space-x-0">
               <li className="footer-item">
@@ -180,7 +180,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="mb-2 ">Connect with us</h3>
-            <ul>
+            <ul className="space-y-1 sm:space-y-0">
               <li>
                 <a
                   className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
@@ -216,7 +216,13 @@ const Footer: React.FC = () => {
           {CommonSeoLinks.map((commonLink) => (
             <div key={commonLink.title}>
               <h3 className="mb-2">{commonLink.title}</h3>
-              <ul className={commonLink.dots === true ? 'flex items-center flex-wrap sm:block sm:space-x-0' : null}>
+              <ul
+                className={
+                  commonLink.dots === true
+                    ? 'flex items-center flex-wrap sm:block sm:space-x-0'
+                    : 'space-y-1 sm:space-y-0'
+                }
+              >
                 {commonLink.list.map((link) => (
                   <li key={link.title} className={commonLink.dots ? 'footer-item' : null}>
                     <Link href={link.link}>

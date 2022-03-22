@@ -52,7 +52,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
             setSpeciality(!speciality);
         }
     }
-  }
+  };
 
   function sliceList(type, list) {
     switch (type) {
@@ -88,7 +88,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                     className="flex items-center justify-between w-full py-2  text-left rounded-sm border-b border-gray-300 text-sm"
                     onClick={fetchThemeFilters}
                   >
-                    <span className="text-gray-700 capitalize">Design Styles</span>
+                    <span className="text-gray-700 capitalize text-base">Design Styles</span>
                     <span className="flex items-center ml-6">
                       {open ? <ChevronUpIcon className="w-3 h-3" /> : <ChevronDownIcon className="w-3 h-3" />}
                     </span>
@@ -128,7 +128,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                     name={`filter-category-${item?.name}`}
                                     value={item?.name}
                                     type="checkbox"
-                                    className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                    className="w-6 h-6 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
                                     checked={appliedThemeFilters?.indexOf(item?.name?.toLowerCase()) > -1}
                                     // disabled
                                     readOnly
@@ -136,7 +136,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                   />
                                   <label
                                     htmlFor={`filter-category-${item?._id}`}
-                                    className="ml-3 text-sm text-gray-900 cursor-pointer capitalize"
+                                    className="ml-3 text-base text-gray-900 cursor-pointer capitalize"
                                   >
                                     {item?.name}
                                   </label>
@@ -169,7 +169,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                 <>
                   <Disclosure.Button className="flex items-center justify-between w-full py-2  text-left rounded-sm">
                     <div
-                      className="flex items-center justify-between w-full py-2  text-left rounded-sm border-b border-gray-300 text-sm"
+                      className="flex items-center justify-between w-full py-2  text-left rounded-sm border-b border-gray-300 text-base"
                       onClick={() => updateActiveTagType(tagObject?._id)}
                     >
                       <span className="text-gray-700 capitalize">{tagObject?.name}</span>
@@ -187,7 +187,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                             {[...new Array(10)]?.map((_d, _i) => {
                               return (
                                 <li className="flex py-2 sm:py-2  animate-pulse" key={`filter-dimmer${_i}`}>
-                                  <div className="w-1/6 bg-gray-200  rounded-md" />
+                                  <div className="w-1/6 bg-gray-200 rounded-md" />
                                   <div className="ml-1 flex-1 flex flex-col justify-between sm:ml-1">
                                     <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0" />
                                     <div className=" h-5 bg-gray-200 rounded-md" />
@@ -215,7 +215,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                       name={`filter-category-${item?.name}`}
                                       value={item?.name}
                                       type="checkbox"
-                                      className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                      className="w-6 h-6 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
                                       checked={tagFilters?.indexOf(item?.name?.toLowerCase()) > -1}
                                       // disabled
                                       readOnly
@@ -223,7 +223,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                     />
                                     <label
                                       htmlFor={`filter-category-${item?._id}`}
-                                      className="ml-3 text-sm text-gray-900 cursor-pointer capitalize"
+                                      className="ml-3 text-base text-gray-900 cursor-pointer capitalize"
                                     >
                                       {item?.name}
                                     </label>

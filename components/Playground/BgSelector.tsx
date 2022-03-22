@@ -277,6 +277,90 @@ export const RoomImageList = [
     thumbnailUrl:
       'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1634892048/spj-v2/DIY/room-bg/F_BR16_ibatbb.jpg',
   },
+  {
+    id: 51,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856123/web/Canvas/RoomBg/Template_7_v2_e122ro.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856123/web/Canvas/RoomBg/Template_7_v2_e122ro.jpg',
+  },
+  {
+    id: 52,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856124/web/Canvas/RoomBg/Template_8_v2_nmb3j5.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856124/web/Canvas/RoomBg/Template_8_v2_nmb3j5.jpg',
+  },
+  {
+    id: 53,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856124/web/Canvas/RoomBg/Template_12_v2_sb4z5j.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856124/web/Canvas/RoomBg/Template_12_v2_sb4z5j.jpg',
+  },
+  {
+    id: 54,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856123/web/Canvas/RoomBg/Template_10_v2_sig0w9.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856123/web/Canvas/RoomBg/Template_10_v2_sig0w9.jpg',
+  },
+  {
+    id: 55,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856124/web/Canvas/RoomBg/Template_11_v2_e1osvt.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856124/web/Canvas/RoomBg/Template_11_v2_e1osvt.jpg',
+  },
+  {
+    id: 56,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856123/web/Canvas/RoomBg/Template_9_v2_qbv78a.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856123/web/Canvas/RoomBg/Template_9_v2_qbv78a.jpg',
+  },
+  {
+    id: 57,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856123/web/Canvas/RoomBg/Template_6_v2_ufmji2.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856123/web/Canvas/RoomBg/Template_6_v2_ufmji2.jpg',
+  },
+  {
+    id: 58,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856121/web/Canvas/RoomBg/Template_2_v2_ddhsrs.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856121/web/Canvas/RoomBg/Template_2_v2_ddhsrs.jpg',
+  },
+  {
+    id: 59,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856121/web/Canvas/RoomBg/Template_3_v2_fdqfk7.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856121/web/Canvas/RoomBg/Template_3_v2_fdqfk7.jpg',
+  },
+  {
+    id: 60,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856121/web/Canvas/RoomBg/Template_15_v2_jbhc8p.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856121/web/Canvas/RoomBg/Template_15_v2_jbhc8p.jpg',
+  },
+  {
+    id: 61,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856121/web/Canvas/RoomBg/Template_1_v2_h5tnap.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856121/web/Canvas/RoomBg/Template_1_v2_h5tnap.jpg',
+  },
+  {
+    id: 62,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856121/web/Canvas/RoomBg/Template_4_v2_yhkyp6.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856121/web/Canvas/RoomBg/Template_4_v2_yhkyp6.jpg',
+  },
+  {
+    id: 63,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856121/web/Canvas/RoomBg/Template_5_v2_pxa1ed.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856121/web/Canvas/RoomBg/Template_5_v2_pxa1ed.jpg',
+  },
+  {
+    id: 64,
+    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1647856124/web/Canvas/RoomBg/Template_14_v2_kthr1k.jpg',
+    thumbnailUrl:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1647856124/web/Canvas/RoomBg/Template_14_v2_kthr1k.jpg',
+  },
 ];
 
 export interface ColorListType {

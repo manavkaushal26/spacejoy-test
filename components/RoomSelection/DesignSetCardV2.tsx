@@ -81,13 +81,13 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
           </div>
         ) : (
           <div className="grid grid-rows-12 rounded-lg border bg-white">
-            <div className={`px-4 py-4 row-span-8`}>
-              <div className={`relative ${large ? 'aspect-[2.32]' : 'aspect-[2]'} `}>
+            <div className={`sm:px-4 sm:py-4 row-span-8`}>
+              <div className={`relative ${large ? 'aspect-[2]' : 'aspect-[2]'} `}>
                 <Image
                   loading="eager"
                   className="z-10 rounded-lg overflow-hidden"
                   src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/${
-                    large ? 'ar_2.32' : 'ar_2'
+                    large ? 'ar_2' : 'ar_2'
                   },c_fill/f_auto,q_auto,${large ? 'w_1200' : 'w_700'}/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
@@ -114,7 +114,9 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                 <div>
                   <div className={'flex flex-col gap-2 mb-2'}>
                     <div className="flex space-x-10">
-                      <h2 className={`capitalize text-sm md:text-base line-clamp-2 font-semibold tracking-normal w-2/3`}>
+                      <h2
+                        className={`capitalize text-sm md:text-base line-clamp-2 font-semibold tracking-normal w-2/3`}
+                      >
                         {/* Change line-clamp-2 to line-clamp-1 if there is more data to be displayed */}
                         {designData?.name.slice(0, -11)}
                       </h2>

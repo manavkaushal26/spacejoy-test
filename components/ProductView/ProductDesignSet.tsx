@@ -17,9 +17,9 @@ const ProductDesignSet = ({ productIds }) => {
   if (designs?.length === 0) return null;
 
   return (
-    <div className="py-14">
-      <h2 className="text-2xl tracking-wide">Explore Design Sets</h2>
-      <p className="mt-2 text-gray-700">Remix design</p>
+    <div className="pt-8 pb-16">
+      <h2 className="text-2xl tracking-wide">See in a room</h2>
+      <p className="mt-2 text-gray-700">Mix and match</p>
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         {designs?.slice(0, 5)?.map((product) => {
           return (
