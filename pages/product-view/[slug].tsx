@@ -289,12 +289,15 @@ const ProductView = ({ product }): JSX.Element => {
   return (
     <Layout>
       <Head>
-        <title>
-          Buy {product?.name} from {product?.retailer?.name} | Spacejoy
-        </title>
+        <title>{product?.name}</title>
         <meta
           key="description"
           name="description"
+          content={`Buy ${product?.name} from ${product?.retailer?.name} | Spacejoy`}
+        />
+        <meta
+          key="keywords"
+          name="keywords"
           content={`${product?.retailer?.name}, ${metaDescriptionColors} + ${product?.meta?.vertical?.name}, ${product?.retailer?.name} + ${product?.meta?.subcategory?.name} , ${product?.retailer?.name} + ${product?.meta?.vertical?.name}, ${product?.meta?.vertical?.name}, Buy ${product?.meta?.vertical?.name}`}
         />
         <base href="/" />
