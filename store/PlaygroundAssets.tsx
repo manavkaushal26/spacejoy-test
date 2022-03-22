@@ -44,6 +44,7 @@ export interface PlaygroundAssetType {
   name?: string;
   vertical?: string;
   categoryId?: string;
+  onImgLoadCb?: boolean;
 }
 
 interface PlaygroundAssetContextType {
@@ -368,6 +369,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
                 stitchedAssetImage: originalCdn,
                 boxSize,
                 count,
+                onImgLoadCb: true,
               };
             }
 
@@ -376,14 +378,6 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
           setPlaygroundAssets(updatedAssets);
           setSwapState(false);
           setSelectedId(null);
-          toast.success(
-            <span>
-              Great going!
-              <br />
-              Product replaced successfully
-            </span>,
-            { autoClose: 2000 }
-          );
         } else {
           throw new Error();
         }

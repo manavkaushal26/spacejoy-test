@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Circle, Sprite, Text } from 'react-konva';
+import { toast } from 'react-toastify';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
 
@@ -98,6 +99,16 @@ const DragImage: React.FC<DragImageInterface> = ({
         trRef?.current?.getLayer().batchDraw();
       } else {
         trRef?.current?.nodes([]);
+      }
+      if (image?.onImgLoadCb) {
+        toast.success(
+          <span>
+            Great going!
+            <br />
+            Product replaced successfully
+          </span>,
+          { autoClose: 2000 }
+        );
       }
     }
   }, [status]);
