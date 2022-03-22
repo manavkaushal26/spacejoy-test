@@ -43,7 +43,7 @@ const topCollages = {
       slug: 'entryway-design-sets',
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/entryway_uki5z7.jpg',
       metaTitle: '2000+ 3D Renders',
-      disabled: true,
+      disabled: false,
     },
     // {
     //   _id: 5,

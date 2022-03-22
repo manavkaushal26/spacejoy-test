@@ -422,9 +422,9 @@ export default function Cart() {
                           />
                         </div>
                       ))}
-                    <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart" ref={elementRef}>
+                    {isUserAuthenticated && <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart" ref={elementRef}>
                       <CartSummary source={checkoutRefSource} />
-                    </div>
+                    </div>}
                   </section>
                 )}
               </form>

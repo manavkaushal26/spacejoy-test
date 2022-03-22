@@ -70,7 +70,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                     <CollageListContextProvider>
                       <div className="container px-4 m-auto">
                         {isMobile === 'true' ? (
-                          <div className='space-y-4'>
+                          <div className="space-y-4">
                             <div className="relative aspect-2">
                               <Image
                                 src={`${cloudinary.baseDeliveryURL}/${collageData.thumbnail}`}
@@ -79,16 +79,14 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                                 className="rounded-lg"
                               />
                             </div>
-                            {/* <div className="bg-[#F6EEEB]">
-                              <p>
-                                If you wish to explore this design set, please explore it on your desktop, it isn&apos;t
-                                currently available for mobile devices.
-                              </p>
+                            <div className="bg-[#ECC462] rounded-lg p-4 text-center font-semibold text-lg">
+                              <p>Please explore this design set on your desktop</p>
 
-                              <div>
-                                Copy Link: <p className='text-[#F5296E]'>{`https://www.spacejoy.com/design-sets/${collageData._id}`}</p>
-                              </div>
-                            </div> */}
+                              {/* <div>
+                                Copy Link:{' '}
+                                <p className="text-[#F5296E]">{`https://www.spacejoy.com/design-sets/${collageData._id}`}</p>
+                              </div> */}
+                            </div>
                           </div>
                         ) : (
                           <div
