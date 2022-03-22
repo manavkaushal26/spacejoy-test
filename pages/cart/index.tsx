@@ -422,9 +422,16 @@ export default function Cart() {
                           />
                         </div>
                       ))}
-                    {isUserAuthenticated && <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart" ref={elementRef}>
-                      <CartSummary source={checkoutRefSource} />
-                    </div>}
+                    {isUserAuthenticated ? (
+                      <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart" ref={elementRef}>
+                        <CartSummary source={checkoutRefSource} />
+                      </div>
+                    ) : (
+                      <LoginManager
+                        ctaText="Checkout"
+                        styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none hidden lg:block"
+                      />
+                    )}
                   </section>
                 )}
               </form>
