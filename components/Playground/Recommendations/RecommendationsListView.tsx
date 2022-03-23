@@ -2,7 +2,6 @@ import EmptyState from '@components/Shared/EmptyState';
 import { PlaygroundAssetsContext } from '@store/PlaygroundAssets';
 import { useRecommendationsListContext } from '@store/RecommendationsList';
 import { SelectedIdContext } from '@store/SelectedId';
-import { PushEvent } from '@utils/analyticsLogger';
 import React, { CSSProperties, useContext, useEffect, useState } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid as Grid } from 'react-window';

@@ -69,7 +69,12 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
       setCount(0);
     } else if (currentVerticalForRecommendations && selectedId) {
       if (verticalRef?.current !== currentVerticalForRecommendations) {
-        setFilters({ ...assetStoreInitialState, verticals: [currentVerticalForRecommendations] });
+        // setFilters({ ...assetStoreInitialState, verticals: [currentVerticalForRecommendations] });
+
+        setCount(50);
+        setData([]);
+        setHasNextPage(true);
+        loadMoreItems(0, 50);
         verticalRef.current = currentVerticalForRecommendations;
       }
     }
@@ -87,35 +92,44 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
     // }
 
     setLoading(true);
-    const endPoint = `/v1/assets/search?skip=${startIndex}&limit=${endIndex - startIndex + 1}`;
+    // const endPoint = `/v1/assets/search?skip=${startIndex}&limit=${endIndex - startIndex + 1}`;
+    // const body = {
+    //   searchText: '',
+    //   sort: 'createdAt',
+    //   wildcard: filter?.wildcard,
+    //   filters: {
+    //     retailer: filter.retailer,
+    //     category: filter.category,
+    //     subcategory: filter.subCategory,
+    //     vertical: filter.verticals,
+    //     price: filter.price,
+    //     depth: filter.depth.map(convertToFeet),
+    //     width: filter.width.map(convertToFeet),
+    //     height: filter.height.map(convertToFeet),
+    //     status: 'active',
+    //     spriteAvailable: true,
+    //   },
+    //   projectId: 'randomString',
+    //   spriteAvailable: true,
+    // };
+    const endPoint = 'https://recomender.spacejoy.com/v1/productalternatives/predict';
     const body = {
-      searchText: '',
-      sort: 'createdAt',
-      wildcard: filter?.wildcard,
-      filters: {
-        retailer: filter.retailer,
-        category: filter.category,
-        subcategory: filter.subCategory,
-        vertical: filter.verticals,
-        price: filter.price,
-        depth: filter.depth.map(convertToFeet),
-        width: filter.width.map(convertToFeet),
-        height: filter.height.map(convertToFeet),
-        status: 'active',
-        spriteAvailable: true,
-      },
-      projectId: 'randomString',
-      spriteAvailable: true,
+      asset_id: currentVerticalForRecommendations,
+      canvasAvailability: true,
     };
+
     const resData = await fetcher({
       endPoint,
       method: 'POST',
       body: body,
+      hasBaseUrl: true,
     });
     const copyData = [...data];
     if (resData.statusCode <= 300) {
-      const responseData = resData?.data?.hits || [];
-      setCount(resData?.data?.total as number);
+      // const responseData = resData?.data?.hits || [];
+      const responseData = resData?.data?.topSimilarAssets || [];
+
+      setCount((resData?.data?.total || 10) as number);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
         copyData[i] = responseData[j];
@@ -134,18 +148,18 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    const resetData = () => {
-      setCount(50);
-      setData([]);
-      setHasNextPage(true);
-      loadMoreItems(0, 50);
-    };
-    if (filter?.verticals?.length) {
-      resetData();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter?.verticals]);
+  // useEffect(() => {
+  //   const resetData = () => {
+  //     setCount(50);
+  //     setData([]);
+  //     setHasNextPage(true);
+  //     loadMoreItems(0, 50);
+  //   };
+  //   if (filter?.verticals?.length) {
+  //     resetData();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [filter?.verticals]);
 
   const setFilters = (filterValues) => {
     setFilter({

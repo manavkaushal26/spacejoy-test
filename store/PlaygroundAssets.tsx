@@ -194,7 +194,8 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
       setNav('recommendations');
       const currentProduct = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
       const { vertical = '', assetId = '' } = currentProduct;
-      setCurrentProductVertical(vertical);
+      // setCurrentProductVertical(vertical);
+      setCurrentProductVertical(assetId);
 
       // PushEvent({
       //   category: 'Action Menu - Swap Products',
@@ -353,6 +354,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
           },
           method: 'POST',
         });
+
         if (statusCode < 300) {
           const { count, boxSize, image: { originalCdn = '' } = {} } = data;
 
@@ -375,13 +377,14 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
 
             return { ...plAsset };
           });
+
           setPlaygroundAssets(updatedAssets);
           setSwapState(false);
           setSelectedId(null);
         } else {
           throw new Error();
         }
-      } catch {
+      } catch (e) {
         toast(
           <span>
             Oh no!
