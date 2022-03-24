@@ -63,13 +63,14 @@ const SearchBox: React.FC = () => {
   const clear = () => setSearchString('');
 
   //================================================PAGINATION============================================================
-  const perPage = 20;
+  const perPageDesigns = 21;
+  const perPageProducts = 20;
   //===========================================================/PRODUCTS\=============================================
   const payloadProducts = {
     filters: {
       category: [],
       retailer: [],
-      price: [],
+      price: [1, 50000],
       status: 'active',
       depth: [],
       vertical: [],
@@ -120,7 +121,7 @@ const SearchBox: React.FC = () => {
     
 
     async function fetchDesignsData() {
-      const endPoint = `${publicRoutes.designSetSearch}?skip=${pageOffsetDesigns * perPage}&limit=${perPage}`;
+      const endPoint = `${publicRoutes.designSetSearch}?skip=${pageOffsetDesigns * perPageDesigns}&limit=${perPageDesigns}`;
       setIsFetchingDesigns(true);
       const response = await fetcher({
         endPoint,
@@ -135,12 +136,12 @@ const SearchBox: React.FC = () => {
 
         return;
       }
-      const newPageCount = response?.data?.count / perPage;
+      const newPageCount = response?.data?.count / perPageDesigns;
       setDesignsResults(response.data?.data);
       setPageCountDesigns(newPageCount);
     }
     async function fetchProductsData() {
-      const endPoint = `${publicRoutes.productSearch}?skip=${pageOffsetProducts * perPage}&limit=${perPage}`;
+      const endPoint = `${publicRoutes.productSearch}?skip=${pageOffsetProducts * perPageProducts}&limit=${perPageProducts}`;
       setIsFetchingProducts(true);
       const response = await fetcher({
         endPoint,
@@ -155,7 +156,7 @@ const SearchBox: React.FC = () => {
 
         return;
       }
-      const newPageCount = response?.data?.total / perPage;
+      const newPageCount = response?.data?.total / perPageProducts;
       setProductsResults(response.data?.hits);
       setPageCountProducts(newPageCount);
     }
@@ -265,6 +266,7 @@ const SearchBox: React.FC = () => {
                       })}
                     </>)}
                     {productsResults?.map((searchItem) => (
+                      searchItem?.inStock && searchItem?.status !== "discontinued" &&
                       <ProductCard product={searchItem} key={searchItem._id} />
                     ))}
                   </div>
