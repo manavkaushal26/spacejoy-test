@@ -3,6 +3,39 @@ import fetcher from '@utils/fetcher';
 import { debounce } from '@utils/helpers';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
+import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
+
+const payloadProducts = {
+  filters: {
+    category: [],
+    retailer: [],
+    price: [],
+    status: 'active',
+    depth: [],
+    vertical: [],
+    height: [],
+    width: [],
+    subcategory: [],
+  },
+  searchText: '',
+  skipVal: 0,
+  wildcard: false,
+};
+
+const payloadDesigns = {
+  filters: {
+    category: true,
+    isActive: true,
+    retailer: [],
+    price: ['1', '500000'],
+    subcategory: [],
+    tags: [],
+    themes: [],
+    products: [],
+  },
+  searchText: '',
+  wildcard: false,
+};
 
 const getSearchRecommendations = async (searchQuery, cb) => {
   try {
@@ -11,6 +44,7 @@ const getSearchRecommendations = async (searchQuery, cb) => {
     const { data, statusCode } = autCompleteResponse;
     if (statusCode <= 301) {
       cb(data);
+
       return data;
     } else {
       throw new Error();
@@ -20,10 +54,22 @@ const getSearchRecommendations = async (searchQuery, cb) => {
   }
 };
 
-const getSearchResults = async (keywords) => {
+const getSearchResults = async (keywords, searchType) => {
   try {
-    const endPoint = `${publicRoutes.searchResultsRoute}?skip=0`;
-    const searchResults = await fetcher({ endPoint, method: 'POST', body: { keywords } });
+    let endPoint = '';
+    let searchResults: any = [];
+    switch (searchType) {
+      case 'design-sets':
+        endPoint = `${publicRoutes.designSetSearch}`;
+        searchResults = await fetcher({ endPoint, method: 'POST', body: { ...payloadDesigns, searchText: keywords } });
+        break;
+
+      case 'products':
+        endPoint = `${publicRoutes.productSearch}`;
+        searchResults = await fetcher({ endPoint, method: 'POST', body: { ...payloadProducts, searchText: keywords } });
+        break;
+    }
+
     const { data, statusCode } = searchResults;
 
     if (statusCode < 301) {
@@ -39,13 +85,18 @@ const getSearchResults = async (keywords) => {
 const searchResFetcher = debounce(getSearchRecommendations, 300);
 
 const useSearch = (): any => {
+  //search type
+  const [searchType, setSearchType] = useState<'products' | 'design-sets'>('products');
+
   // search string
   const [searchString, setSearchString] = useState('');
+
   // autcomplete
   const [searchAutoCompleteResult, setSearchAutoCompleteResult] = useState([]);
   const [, setAutoCompleteError] = useState(null);
   const [isFetching, setFetching] = useState(false);
   const [autoCompleteRaw, setAutoCompleteRaw] = useState([]);
+  
   // search results
   const [searchResultsList, setSearchResultsList] = useState([]);
   const [, setSearchError] = useState(null);
@@ -85,10 +136,16 @@ const useSearch = (): any => {
     const fetchSearchResults = async (keywords) => {
       try {
         setSearchLoading(true);
-        const searchResultsData = await getSearchResults(keywords);
-        const { hits: searchResultsList = [] } = searchResultsData;
-        initRef.current = null;
-        setSearchResultsList(searchResultsList);
+        const searchResultsData = await getSearchResults(keywords, searchType);
+        if (searchType === 'design-sets') {
+          const { data: searchResultsList = [] } = searchResultsData;
+          initRef.current = null;
+          setSearchResultsList(searchResultsList);
+        } else if (searchType === 'products') {
+          const { hits: searchResultsList = [] } = searchResultsData;
+          initRef.current = null;
+          setSearchResultsList(searchResultsList);
+        }
       } catch (e) {
         setSearchError(e.message);
         setSearchResultsList([]);
@@ -104,12 +161,12 @@ const useSearch = (): any => {
     if (q && q?.length) {
       const queryParam = decodeURIComponent(q as string);
       const queryKeywords = queryParam.split(',');
-      fetchSearchResults(queryKeywords);
+      fetchSearchResults(search);
     }
     if (search && search?.length) {
       setSearchString(search as string);
     }
-  }, [router]);
+  }, [router, searchType]);
 
   useEffect(() => {
     if (isSelected) {
@@ -177,6 +234,7 @@ const useSearch = (): any => {
     searchResultsList,
     searchString,
     setSearchString,
+    setSearchType,
     init: initRef.current,
   };
 };

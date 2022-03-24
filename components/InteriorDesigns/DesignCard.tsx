@@ -16,12 +16,12 @@ export interface DesignCardInterface {
   };
 }
 const correctedSlug = (slug:string) => {
-  return slug.split(' ').join('-');
+  return slug?.split(' ').join('-');
 }
 
 const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
   return (
-    <Link href={`/interior-designs/${correctedSlug(cardData.room.slug)}/${cardData?.slug}`}>
+    <Link href={`/interior-designs/${correctedSlug(cardData?.room?.slug)}/${cardData?.slug}`}>
       <a target="_blank">
         <div className="cursor-pointer group">
           <div className=" rounded overflow-hidden relative border border-gray-200 transition group-hover:shadow-md">

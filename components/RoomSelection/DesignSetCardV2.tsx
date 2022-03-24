@@ -14,8 +14,8 @@ interface DesignSetCardV2Props {
 const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, isMobile }) => {
   const tagsInPills = useMemo(() => {
     return [
-      ...(designData?.themes?.split(',')?.slice(0, 1) || []),
-      ...(designData?.tags?.split(',')?.slice(0, 1) || []),
+      ...(designData?.themes?.toString().split(',')?.slice(0, 1) || []),
+      ...(designData?.tags?.toString().split(',')?.slice(0, 1) || []),
     ];
   }, [designData]);
 

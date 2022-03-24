@@ -7,6 +7,8 @@ const searchResultsRoute = '/v1/seoKeywordDesignMappings/search';
 const collageBase = '/v1/collages';
 const collectionFeedV2 = '/v2/web/design-collections';
 const collageCategoryRoute = '/v1/collageCategories';
+const productSearch = '/v1/assets/search';
+const designSetSearch = '/v1/collages/search';
 
 const publicRoutes = {
   pricingRoute,
@@ -18,6 +20,8 @@ const publicRoutes = {
   collageBase,
   collectionFeedV2,
   collageCategoryRoute,
+  productSearch,
+  designSetSearch,
 };
 
 export default publicRoutes;

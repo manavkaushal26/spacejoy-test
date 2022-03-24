@@ -1,13 +1,22 @@
+import CollageCardDimmer from '@components/Collages/CollageCardDimmer';
 import DesignCard from '@components/InteriorDesigns/DesignCard';
+import DesignSetCardV2 from '@components/RoomSelection/DesignSetCardV2';
 import EmptyState from '@components/Shared/EmptyState';
+import ProductCard from '@components/Shop/ProductCard';
+import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
+import { Tab } from '@headlessui/react';
 import { RefreshIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
 import useSearch from '@hooks/useSearch';
+import { internalPages } from '@utils/config';
+import { publicRoutes } from '@utils/constants';
+import fetcher from '@utils/fetcher';
 import TopSearches from '@utils/Mocks/TopSearches';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Tween } from 'react-gsap';
+import ReactPaginate from 'react-paginate';
 import styled, { keyframes } from 'styled-components';
 import ListItem from './ListItem';
 
@@ -29,54 +38,23 @@ const AnimateBox = styled.div`
   }
 `;
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
 const SearchBox: React.FC = () => {
-  const downPress = useKeyPress('ArrowDown');
-  const upPress = useKeyPress('ArrowUp');
   const enterPress = useKeyPress('Enter');
   const escPress = useKeyPress('Escape');
-  const [cursor, setCursor] = useState(-1);
-  const [hovered, setHovered] = useState(undefined);
 
-  const {
-    autoCompleteResults,
-    setSelectedSearchQuery,
-    searchResultsList,
-    searchString,
-    setSearchString,
-    init,
-    isFetching,
-  } = useSearch();
+  const [searchString, setSearchString] = useState('');
+  const [lastSearchString, setLastSearchString] = useState('');
+  const [searchType, setSearchType] = useState<'products' | 'design-sets'>('products');
+  const [isFetchingDesigns, setIsFetchingDesigns] = useState(false);
+  const [isFetchingProducts, setIsFetchingProducts] = useState(false);
 
   const router = useRouter();
 
   const goBack = useCallback(() => router.back(), [router]);
-
-  useEffect(() => {
-    if (autoCompleteResults.length && downPress) {
-      setCursor((prevState) => (prevState < autoCompleteResults.length - 1 ? prevState + 1 : prevState));
-    }
-  }, [downPress, autoCompleteResults.length]);
-
-  useEffect(() => {
-    if (autoCompleteResults.length && upPress) {
-      setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
-    }
-  }, [upPress, autoCompleteResults.length]);
-
-  useEffect(() => {
-    if (autoCompleteResults?.length && enterPress) {
-      // setSelected(autoCompleteResults[cursor]);
-      const indexVal = cursor === -1 ? autoCompleteResults?.length - 1 : cursor;
-      setSelectedSearchQuery(autoCompleteResults[indexVal]);
-      setSearchString(autoCompleteResults[indexVal]?.value);
-    }
-  }, [cursor, enterPress, autoCompleteResults?.length, autoCompleteResults, setSelectedSearchQuery, setSearchString]);
-
-  useEffect(() => {
-    if (autoCompleteResults.length && hovered) {
-      setCursor(autoCompleteResults.indexOf(hovered));
-    }
-  }, [autoCompleteResults, hovered]);
 
   useEffect(() => {
     if (escPress) goBack();
@@ -84,28 +62,133 @@ const SearchBox: React.FC = () => {
 
   const clear = () => setSearchString('');
 
+  //================================================PAGINATION============================================================
+  const perPage = 20;
+  //===========================================================/PRODUCTS\=============================================
+  const payloadProducts = {
+    filters: {
+      category: [],
+      retailer: [],
+      price: [],
+      status: 'active',
+      depth: [],
+      vertical: [],
+      height: [],
+      width: [],
+      subcategory: [],
+    },
+    searchText: '',
+    skipVal: 0,
+    wildcard: false,
+  };
+
+  const [productsResults, setProductsResults] = useState([]);
+  const [pageOffsetProducts, setPageOffsetProducts] = useState(0);
+  const [pageCountProducts, setPageCountProducts] = useState(0);
+  const [apiErrorProducts, setApiErrorProducts] = useState(null);
+
+
+  const handlePageChangeProducts = (event) => {
+    setPageOffsetProducts(event.selected);
+  };
+  //=====================================================DESIGN-SETS====================================================
+  const payloadDesigns = {
+    filters: {
+      category: true,
+      isActive: true,
+      retailer: [],
+      price: ['1', '500000'],
+      subcategory: [],
+      tags: [],
+      themes: [],
+      products: [],
+    },
+    searchText: '',
+    wildcard: false,
+  };
+  const [designsResults, setDesignsResults] = useState([]);
+  const [pageOffsetDesigns, setPageOffsetDesigns] = useState(0);
+  const [pageCountDesigns, setPageCountDesigns] = useState(0);
+  const [apiErrorDesigns, setApiErrorDesigns] = useState(null);
+
+  useEffect(() => {
+    if(lastSearchString !== searchString){
+      setPageOffsetDesigns(0);
+      setPageOffsetProducts(0);
+      setLastSearchString(searchString);
+    }
+    
+
+    async function fetchDesignsData() {
+      const endPoint = `${publicRoutes.designSetSearch}?skip=${pageOffsetDesigns * perPage}&limit=${perPage}`;
+      setIsFetchingDesigns(true);
+      const response = await fetcher({
+        endPoint,
+        method: 'POST',
+        body: { ...payloadDesigns, searchText: searchString },
+      });
+      setIsFetchingDesigns(false);
+      if (response.statusCode > 300) {
+        setApiErrorDesigns(response.message);
+        setDesignsResults([]);
+        setPageCountDesigns(0);
+
+        return;
+      }
+      const newPageCount = response?.data?.count / perPage;
+      setDesignsResults(response.data?.data);
+      setPageCountDesigns(newPageCount);
+    }
+    async function fetchProductsData() {
+      const endPoint = `${publicRoutes.productSearch}?skip=${pageOffsetProducts * perPage}&limit=${perPage}`;
+      setIsFetchingProducts(true);
+      const response = await fetcher({
+        endPoint,
+        method: 'POST',
+        body: { ...payloadProducts, searchText: searchString },
+      });
+      setIsFetchingProducts(false);
+      if (response.statusCode > 300) {
+        setApiErrorProducts(response.message);
+        setProductsResults([]);
+        setPageCountProducts(0);
+
+        return;
+      }
+      const newPageCount = response?.data?.total / perPage;
+      setProductsResults(response.data?.hits);
+      setPageCountProducts(newPageCount);
+    }
+    searchType === 'design-sets' ? fetchDesignsData() : fetchProductsData();
+  }, [pageOffsetDesigns, pageOffsetProducts, enterPress, searchType]);
+
+  const handlePageChangeDesigns = (event) => {
+    setPageOffsetDesigns(event.selected);
+  };
+  //============================================================================================================
+  const onChangeSearchText = (e) => {
+    setSearchString(e?.target?.value);
+  }
+
   return (
     <div className="relative min-h-free bg-gray-100">
-      <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
-        <AnimateBox className="entry">
+      <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto py-5 px-4 sm:px-6 lg:pt-8 lg:px-8 flex space-x-4 align-middle">
+        <AnimateBox className="entry grow shadow-lg">
           <div className="relative">
             <div className="absolute left-6 inset-y-0 flex justify-center items-center">
               <SearchIcon className="w-4 h-4 text-gray-900" />
             </div>
             <input
               autoFocus
-              onChange={(e) => setSearchString(e?.target?.value)}
+              onChange={(e) => {onChangeSearchText(e)}}
               type="text"
               name="first_name"
               id="first_name"
               autoComplete="off"
-              placeholder="Start typing to view inspiring designs"
+              placeholder="Start Typing to View Products and Designs sets"
               value={searchString}
               className="py-5 pl-14 pr-28 outline-none block w-full caret-yellow-500 shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
             />
-            <div className="absolute right-20 inset-y-0 flex justify-center items-center">
-              {isFetching && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
-            </div>
             <button
               className="absolute right-0 inset-y-0 text-gray-500 hover:text-yellow-500 w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl focus:ring-1 focus:ring-gray-600 focus:outline-none"
               onClick={clear}
@@ -114,87 +197,144 @@ const SearchBox: React.FC = () => {
             </button>
           </div>
         </AnimateBox>
-        <div className="relative">
-          <div className="inset-0 absolute z-10">
-            {!!autoCompleteResults?.length && (
-              <AnimateBox className={`${searchString && 'entry'}`}>
-                <ul className="w-full bg-white border border-gray-100 mt-2 p-4 shadow-sm rounded-xl overflow-hidden">
-                  {autoCompleteResults.map((item, i) => (
-                    <ListItem
-                      key={item.id}
-                      active={i === cursor}
-                      item={item}
-                      setSelected={setSelectedSearchQuery}
-                      setHovered={setHovered}
-                      setSearchString={setSearchString}
-                    />
-                  ))}
-                </ul>
-              </AnimateBox>
-            )}
-          </div>
-        </div>
+        <button
+          className="w-16 h-16 text-center text-gray-400 hover:text-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+          onClick={goBack}
+        >
+          <XIcon className="inline w-8 h-8" />
+        </button>
       </div>
-      {searchResultsList && searchResultsList?.length === 0 ? (
-        <>
-          {init === 'init' ? (
-            <div className="max-w-md text-center mx-auto px-4">
-              <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={1} ease="back.out(1.7)">
-                <p className="text-gray-500">Most popular searches</p>
-              </Tween>
-              <div className="grid grid-cols-4 gap-x-4 mt-4">
-                <Tween
-                  from={{ opacity: 0, y: 50 }}
-                  to={{ opacity: 1, y: 0 }}
-                  duration={2}
-                  ease="back.out(1.7)"
-                  stagger={0.25}
-                  delay={0.25}
-                >
-                  {TopSearches?.map((searchItem) => {
-                    return (
-                      <div key={searchItem?.id} onClick={() => setSelectedSearchQuery(searchItem?.meta)}>
-                        <div className="overflow-hidden shadow-md hover:shadow-xl  rounded-xl cursor-pointer border border-gray-300 transition hover:-translate-y-1">
-                          <Image
-                            src={searchItem?.img}
-                            className="object-cover"
-                            alt="spacejoy happy customer"
-                            height="124"
-                            width="124"
-                            layout="responsive"
-                          />
-                        </div>
-                        <small className="capitalize mt-6 text-gray-500">{searchItem?.title}</small>
-                      </div>
-                    );
-                  })}
-                </Tween>
-              </div>
+
+      <div className="relative mx-5">
+        <Tab.Group
+          defaultIndex={0}
+          onChange={(index) => {
+            switch (index) {
+              case 0:
+                setSearchType('products');
+                break;
+              case 1:
+                setSearchType('design-sets');
+                break;
+              default:
+                setSearchType('products');
+                break;
+            }
+          }}
+        >
+          <Tab.List className="flex rounded-xl justify-center mt-4">
+            <div className="bg-white rounded-xl p-1 border border-[#9CA3AF] space-x-2">
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-8',
+                    'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-white ring-white ring-opacity-60',
+                    selected ? 'bg-black text-white shadow' : 'text-black bg-gray-100'
+                  )
+                }
+              >
+                Products
+              </Tab>
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-8',
+                    'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-white ring-white ring-opacity-60',
+                    selected ? 'bg-black text-white shadow' : 'text-black bg-gray-100'
+                  )
+                }
+              >
+                Design Sets
+              </Tab>
             </div>
-          ) : (
-            <EmptyState
-              title="No results"
-              message="Oops! No results match your search criteria. Please try again with different keywords."
-            />
-          )}
-        </>
-      ) : (
-        <div className="container mx-auto px-4 pb-40">
-          <p className="text-gray-400 text-xl mb-5 capitalize">Search Results</p>
-          <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
-            {searchResultsList?.map((searchItem) => (
-              <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
-            ))}
-          </div>
-        </div>
-      )}
-      <button
-        className="absolute right-0 inset-y-0 w-16 h-16 text-center text-gray-400 hover:text-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-        onClick={goBack}
-      >
-        <XIcon className="inline w-6 h-6" />
-        <p className="text-xs mt-1">esc</p>
-      </button>
+          </Tab.List>
+          <Tab.Panels className="mt-5">
+            <Tab.Panel className={classNames('bg-gray-100 rounded-xl py-3')}>
+              <div className="container pb-4">
+              
+                {!productsResults?.length ? (
+                  <div className="col-span-12">
+                    <EmptyState title="No matching design sets found" message="" />
+                  </div>
+                ) : (
+                  <div className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1 lg:gap-2 xl:grid-cols-5 xl:gap-3 grid">
+                    {isFetchingProducts && (
+                    <>
+                      {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
+                        return <ProductCardDimmer key={_i} />;
+                      })}
+                    </>)}
+                    {productsResults?.map((searchItem) => (
+                      <ProductCard product={searchItem} key={searchItem._id} />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="my-4">
+                <ReactPaginate
+                  previousLabel={'<'}
+                  nextLabel={'>'}
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  pageCount={pageCountProducts}
+                  marginPagesDisplayed={1}
+                  pageRangeDisplayed={3}
+                  onPageChange={handlePageChangeProducts}
+                  containerClassName={'pagination'}
+                  // subContainerClassName={"pages pagination"}
+                  activeClassName={'active'}
+                  forcePage={pageOffsetProducts}
+                />
+              </div>
+            </Tab.Panel>
+            <Tab.Panel className={classNames('bg-gray-100 rounded-xl p-3')}>
+              <div className="container mx-auto sm:px-4 pb-40">
+              {isFetchingDesigns && (
+              <>
+                {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
+                
+                  return (
+                    <div key={_d} className={`relative col-span-2 row-span-1`}>
+                      <CollageCardDimmer />
+                    </div>
+                  );
+                })}
+              </>
+            )}
+                {!designsResults?.length ? (
+                  <div className="col-span-12">
+                    <EmptyState title="No matching design sets found" message="" />
+                  </div>
+                ) : (
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
+                    {designsResults?.map((searchItem) => (
+                      <DesignSetCardV2 designData={searchItem} large={false} isMobile key={searchItem?._id} />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="my-4">
+                <ReactPaginate
+                  previousLabel={'<'}
+                  nextLabel={'>'}
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  pageCount={pageCountDesigns}
+                  marginPagesDisplayed={1}
+                  pageRangeDisplayed={3}
+                  onPageChange={handlePageChangeDesigns}
+                  containerClassName={'pagination'}
+                  // subContainerClassName={"pages pagination"}
+                  activeClassName={'active'}
+                  forcePage={pageOffsetDesigns}
+                />
+              </div>
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
+      </div>
+
+      
     </div>
   );
 };
