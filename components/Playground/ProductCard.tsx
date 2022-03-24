@@ -104,7 +104,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({
       </div>
       <div className="p-4 aspect-square flex-1 relative">
         <Image
-          src={`https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_300,ar_1,c_pad/${productThumbnail}`}
+          src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_300,ar_1,c_pad/${productThumbnail}`}
           alt={product?.name}
           layout="fill"
           objectFit="contain"

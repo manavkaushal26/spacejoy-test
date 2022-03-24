@@ -79,7 +79,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   const [img, status] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
       state?.playgroundWidth
-        ? Math.ceil(state?.playgroundWidth * state.count * (state?.currentScale || 1))
+        ? Math.ceil(state?.playgroundWidth * 2 * state.count * (state?.currentScale || 1))
         : Math.ceil(state?.width) * state?.count * 175 * (state?.currentScale || 1)
     }/${state?.stitchedAssetImage}`,
     'anonymous'
@@ -191,8 +191,8 @@ const DragImage: React.FC<DragImageInterface> = ({
           y={state?.y}
           offsetX={width ? width / 2 : 0}
           offsetY={height ? height / 2 : 0}
-          scaleX={state?.playgroundWidth ? 1 : 0.5}
-          scaleY={state?.playgroundHeight ? 1 : 0.5}
+          scaleX={state?.playgroundWidth ? 0.5 : 0.5}
+          scaleY={state?.playgroundHeight ? 0.5 : 0.5}
           width={width}
           height={height}
           isSelected={isSelected || mouseInside}
