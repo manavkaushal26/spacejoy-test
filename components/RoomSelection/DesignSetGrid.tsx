@@ -115,7 +115,31 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
 
                   return (
                     <>
-                      {index == 5 && (
+                    {index == 5 && (
+                        <div
+                          className={`relative rounded-xl ${
+                            large
+                              ? 'col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]'
+                              : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'
+                          }`}
+                        >
+                          <Link href="https://form.typeform.com/to/V1SWVv3c">
+                          <a target="_blank">
+                          <div className="container rounded-lg w-full h-full relative">
+                            <Image
+                              src="https://res.cloudinary.com/spacejoy/image/upload/v1648116380/web/webengagebanners/Talk-to-a-designer-2_gia0rc.gif"
+                              alt="affirm"
+                              layout="fill"
+                              className="object-contain rounded-2xl"
+                              placeholder="blur"
+                              blurDataURL={blurredBgProduct}
+                            />
+                          </div>
+                          </a>
+                          </Link>
+                        </div>
+                      )}
+                      {index == 10 && (
                         <div
                           className={`relative rounded-xl ${
                             large
