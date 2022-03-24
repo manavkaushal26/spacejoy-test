@@ -250,9 +250,9 @@ const SearchBox: React.FC = () => {
           </Tab.List>
           <Tab.Panels className="mt-5">
             <Tab.Panel className={classNames('bg-gray-100 rounded-xl py-3')}>
-              <div className="container pb-4">
+              <div className="pb-4">
               
-                {!productsResults?.length ? (
+                {!isFetchingProducts && !productsResults?.length ? (
                   <div className="col-span-12">
                     <EmptyState title="No matching design sets found" message="" />
                   </div>
