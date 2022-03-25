@@ -841,31 +841,31 @@ const ProductView = ({ product }): JSX.Element => {
   );
 };
 
-// const getAllProducts = async () => {
-//   return {
-//     products: [
-//       { slug: '6141bab5f39452001c11d319' },
-//       { slug: '61b4bc69e2f1a100374c62a9' },
-//       { slug: '61b4a65ab9c243001c2eb35f' },
-//       { slug: '61b37d7f8aa921001d8c7e3c' },
-//     ],
-//   };
-// };
+const getAllProducts = async () => {
+  return {
+    products: [
+      { slug: '6141bab5f39452001c11d319' },
+      { slug: '61b4bc69e2f1a100374c62a9' },
+      { slug: '61b4a65ab9c243001c2eb35f' },
+      { slug: '61b37d7f8aa921001d8c7e3c' },
+    ],
+  };
+};
 
-// export async function getStaticPaths() {
-//   // get all product paths
-//   const { products } = await getAllProducts();
-//   const paths = products.map((product) => ({
-//     params: { slug: product?.slug },
-//   }));
+export async function getStaticPaths() {
+  // get all product paths
+  const { products } = await getAllProducts();
+  const paths = products.map((product) => ({
+    params: { slug: product?.slug },
+  }));
 
-//   return {
-//     paths,
-//     fallback: 'blocking',
-//   };
-// }
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+}
 
-export const getServerSideProps = async ({ params, res }) => {
+export const getStaticProps = async ({ params, res }) => {
   const { slug } = params;
   // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
@@ -884,13 +884,13 @@ export const getServerSideProps = async ({ params, res }) => {
       return {
         redirect: {
           destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
-          permanent: true,
+          permanent: false,
         },
       };
     }
 
     return {
-      props: { product: data },
+      props: { product: data, revalidate: 1 },
     };
   } else {
     return {
