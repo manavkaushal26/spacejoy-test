@@ -527,32 +527,32 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                 </form>
               </div>
               <div className="col-span-4 rounded">
-              {isMobile === 'true' && (
-                      <div className="sticky top-20 z-20 mb-4">
-                        <div className=" bg-gray-100 py-1 flex w-full justify-end">
-                          <button
-                            onClick={() => setIsOpen(true)}
-                            className="flex w-1/4 items-center  justify-center space-x-2 p-2 text-base font-medium text-white bg-black shadow-xs cursor-not-allowed group hover:shadow-md rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-5 w-5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-                              />
-                            </svg>
-                            <span className="whitespace-nowrap text-ellipsis">Filters</span>
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                {isMobile === 'true' && (
+                  <div className="sticky top-20 z-20 mb-4">
+                    <div className=" bg-gray-100 py-1 flex w-full justify-end">
+                      <button
+                        onClick={() => setIsOpen(true)}
+                        className="flex w-1/4 items-center  justify-center space-x-2 p-2 text-base font-medium text-white bg-black shadow-xs cursor-not-allowed group hover:shadow-md rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                          />
+                        </svg>
+                        <span className="whitespace-nowrap text-ellipsis">Filters</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 xl:grid-cols-3 2xl:grid-cols-3">
                   {isFetching ? (
                     <>
@@ -560,9 +560,9 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                         return <ProductCardDimmer key={_i} />;
                       })}
                     </>
-                  ) :
+                  ) : (
                     <ProductList list={currentRenderList} />
-                    }
+                  )}
                 </div>
               </div>
             </div>
@@ -573,8 +573,6 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
             </div>
           </div>
         </div>
-
-
       </Layout.Body>
       <Layout.Footer />
     </Layout>
@@ -582,6 +580,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
 };
 export async function getServerSideProps(context) {
   const { query = {} } = context || {};
+  context.res.setHeader('Cache-Control', 'public, s-maxage=0');
   //TODO: Add page number support
   const payload = Object.keys(query).reduce((acc, item) => {
     if (item !== 'page') {
