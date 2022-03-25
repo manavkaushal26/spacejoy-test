@@ -580,7 +580,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
 };
 export async function getServerSideProps(context) {
   const { query = {} } = context || {};
-  context.res.setHeader('Cache-Control', 'public, s-maxage=0');
+
   //TODO: Add page number support
   const payload = Object.keys(query).reduce((acc, item) => {
     if (item !== 'page') {

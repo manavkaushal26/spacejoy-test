@@ -4,7 +4,7 @@ const withPWA = require('next-pwa');
 const legacyRepo = 'https://designs.spacejoy.com';
 const runtimeCaching = require('next-pwa/cache');
 
-module.exports = {
+module.exports = withPWA({
   async redirects() {
     return [
       {
@@ -146,4 +146,4 @@ module.exports = {
       // video: ...,
     },
   },
-};
+});
