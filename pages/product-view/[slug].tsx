@@ -865,7 +865,7 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProducts = async ({ params, res }) => {
+export const getStaticProps = async ({ params, res }) => {
   const { slug } = params;
   // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
