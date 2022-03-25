@@ -880,13 +880,13 @@ export const getServerSideProps = async ({ params, res }) => {
           subcategory: { name: subCategoryName },
         },
       } = data;
-
-      return {
-        redirect: {
-          destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
-          permanent: false,
-        },
-      };
+      res.writeHead(301, { location: `/shop?subcategory=${subCategoryName}&alternatives=true` });
+      // return {
+      //   redirect: {
+      //     destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
+      //     permanent: false,
+      //   },
+      // };
     }
 
     return {
