@@ -143,7 +143,7 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
 
   return (
     <div>
-      <Link href={`/product-view/${product?._id}${pageName ? `?ref=${pageName}` : ''}`} passHref>
+      <Link href={`/product-view/${product?._id}${pageName ? `?ref=${pageName}` : ''}`} passHref prefetch={false}>
         <a
           onClick={() => {
             PushEvent({
