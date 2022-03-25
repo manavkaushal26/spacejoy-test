@@ -869,7 +869,7 @@ export const getServerSideProps = async ({ params, res }) => {
   const { slug } = params;
   // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
-  res.setHeader('Cache-Control', 'public, s-maxage=0');
+  res.setHeader('Cache-Control', 'no-store');
   const { data, statusCode } = response;
 
   if (statusCode <= 300) {
@@ -881,7 +881,6 @@ export const getServerSideProps = async ({ params, res }) => {
         },
       } = data;
 
-      // res.writeHead(301, { location: `/shop?subcategory=${subCategoryName}&alternatives=true` });
       return {
         redirect: {
           destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
