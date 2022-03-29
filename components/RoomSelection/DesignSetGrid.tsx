@@ -126,8 +126,8 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                           <Link href="https://form.typeform.com/to/V1SWVv3c">
                           <a target="_blank">
                           <div className="container rounded-lg w-full h-full relative">
-                            <Image
-                              src="https://res.cloudinary.com/spacejoy/image/upload/v1648116380/web/webengagebanners/Talk-to-a-designer-2_gia0rc.gif"
+                          <Image
+                              src="https://res.cloudinary.com/spacejoy/image/upload/v1648536337/web/webengagebanners/Big-Card_vxtxup.gif"
                               alt="affirm"
                               layout="fill"
                               className="object-contain rounded-2xl"

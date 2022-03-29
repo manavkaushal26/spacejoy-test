@@ -73,6 +73,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
 
   const { themes = [] } = themeFilters;
 
+
   return (
     <div className="design-filter">
       <div className="mb-4">
@@ -114,7 +115,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                         </>
                       ) : (
                         <>
-                          {sliceList('designStyles', themes)?.map((item) => {
+                          {sliceList('designStyles', themes?.sort((a, b) => a['name']?.localeCompare(b['name'])))?.map((item) => {
                             return (
                               <>
                                 <div
@@ -198,7 +199,7 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                           </>
                         ) : (
                           <>
-                            {sliceList(tagObject?.name, tagObject?.tags)?.map((item) => {
+                            {sliceList(tagObject?.name, tagObject?.tags?.sort((a, b) => a['name']?.localeCompare(b['name'])))?.map((item) => {
                               return (
                                 <>
                                   <div

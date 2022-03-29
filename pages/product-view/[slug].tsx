@@ -418,10 +418,10 @@ const ProductView = ({ product }): JSX.Element => {
                     </a>
                   )}
                 </div>
-                <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
+                <h1 className="mt-1 sm:text-3xl text-xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
                 <div className="mt-3">
                   <h2 className="sr-only">Product information</h2>
-                  <p className="text-3xl text-gray-900">
+                  <p className="sm:text-3xl text-xl text-gray-900">
                     {priceToLocaleString(product?.displayPrice)}
                     {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
                       <>
