@@ -424,12 +424,12 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
                   )}
                 </div>
 
-                <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900 ">
+                <h1 className="mt-1 text-xl sm:text-3xl font-extrabold tracking-tight text-gray-900 ">
                   {product?.name}
                   {discountPercent && discountPercent?.length ? <DiscountTag /> : null}
                 </h1>
                 <h2 className="sr-only">Product information</h2>
-                <p className="text-3xl text-gray-900 my-4">
+                <p className="text-xl sm:text-3xl text-gray-900 my-4">
                   {priceToLocaleString(product?.displayPrice)}
                   {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
                     <>
