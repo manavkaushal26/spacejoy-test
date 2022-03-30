@@ -15,10 +15,11 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
         const groupData = groupedData?.[id];
 
         return (
-          groupData && (
+          groupData && groupData?.price && (
             <div key={id} className="col-span-12 ">
               <div className="flex justify-center sm:justify-between my-4 py-4 bg-gray-300 rounded-md sm:bg-inherit sm:rounded-none  sm:my-0 sm:py-8">
                   <h3 className="text-xl sm:text-2xl font-bold">Furniture</h3>
+                  <span className="text-2xl text-[#C8C8C8] font-poppins font-bold">{priceToLocaleString(groupData?.price)}</span>
                 </div>
               <CollageProductList assets={groupedData?.[id]?.assets} collageId={collageId} showAppointmentCard/>
             </div>

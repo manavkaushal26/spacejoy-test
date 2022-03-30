@@ -1,15 +1,19 @@
 import Carousel from '@components/Carousel';
+import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
+import Reviews from '@components/ProductView/Reviews';
 import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
+import DiscountTag from '@components/Shared/DiscountTag';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import StickyFooter from '@components/Shared/StickyFooter';
 import SVGLoader from '@components/Shared/SVGLoader';
-import { Disclosure } from '@headlessui/react';
+import { Disclosure, Tab } from '@headlessui/react';
 import {
   ChevronRightIcon,
   ExternalLinkIcon,
+  EyeIcon,
   HomeIcon,
   MinusIcon,
   MinusSmIcon,
@@ -26,6 +30,8 @@ import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import { priceToLocaleString } from '@utils/helpers';
+import SpjShoppingAdvantage from '@utils/Mocks/Shopping';
+import spacejoyPromiseData from '@utils/Mocks/spacejoyPromises';
 import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -33,6 +39,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import StarRatings from 'react-star-ratings';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
 const AffirmPrice = dynamic(() => import('@components/Shared/AffirmPrice'), { ssr: false });
@@ -97,7 +104,7 @@ const renderFeatureSection = (description) => {
   }
 };
 
-const ProductView = ({ product }): JSX.Element => {
+const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
@@ -140,7 +147,7 @@ const ProductView = ({ product }): JSX.Element => {
   const discountPercent = useMemo(() => {
     const discount =
       ((parseFloat(product?.msrp || product?.price) - product?.price) * 100) / (product?.msrp || product?.price);
-    if (discount === 0) {
+    if (discount === 0 || discount < 0) {
       return '';
     } else if (discount < 1 && discount > 0) {
       return `${discount.toFixed(2)}% Off`;
@@ -264,6 +271,70 @@ const ProductView = ({ product }): JSX.Element => {
     }
   };
 
+  const productFeaturesList = useMemo(() => {
+    const metaArray = [];
+    const descriptionObject = {
+      id: 1,
+      title: 'Product Description',
+      content: (
+        <>
+          {product?.metDetails?.description ? (
+            <>
+              {product?.metaDetails?.description?.map((item, index) => {
+                return (
+                  <div key={`desc-${index}`} className="mt-4 text-sm prose text-gray-700">
+                    {renderMetaSection(item)}
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <div>{product?.description}</div>
+          )}
+        </>
+      ),
+    };
+    metaArray.push(descriptionObject);
+    if (product?.metaDetails?.care) {
+      const careObject = {
+        id: 2,
+        title: 'Care',
+        content: (
+          <>
+            {product?.metaDetails?.care?.map((item, index) => {
+              return (
+                <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
+                  {renderMetaSection(item)}
+                </div>
+              );
+            })}
+          </>
+        ),
+      };
+      metaArray?.push(careObject);
+    }
+    if (product?.metaDetails?.specification) {
+      const careObject = {
+        id: 3,
+        title: 'Product Specifications',
+        content: (
+          <>
+            {product?.metaDetails?.specification?.map((item, index) => {
+              return (
+                <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
+                  {renderMetaSection(item)}
+                </div>
+              );
+            })}
+          </>
+        ),
+      };
+      metaArray?.push(careObject);
+    }
+
+    return metaArray;
+  }, [product]);
+
   useEffect(() => {
     getCouponsList(setCouponList);
     fetchBrandOffers(setRetailerOffers, product?.retailer?._id);
@@ -281,6 +352,7 @@ const ProductView = ({ product }): JSX.Element => {
       }
     }
   };
+
   const metaDescriptionColors =
     product?.colors && product?.colors?.length && product?.colors[0].toLowerCase() !== 'n/a'
       ? product?.colors?.join(',')
@@ -305,7 +377,7 @@ const ProductView = ({ product }): JSX.Element => {
       {/* <Layout.Banner />  */}
       <Layout.Header />
       <Layout.Body>
-        <div className="bg-gray-100">
+        <div className="bg-white">
           <div className="container p-4 mx-auto">
             <nav className="flex mb-4" aria-label="Breadcrumb">
               <ol role="list" className="flex items-center space-x-4">
@@ -342,8 +414,55 @@ const ProductView = ({ product }): JSX.Element => {
               </ol>
             </nav>
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
-              <div className="top-0 lg:sticky z-10 w-full relative">
-                <Carousel imageCount={productImages?.length || 0} withLightBox>
+              <div className="mt-3 lg:hidden">
+                <div className="flex space-x-2">
+                  <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+                  {session?.user && session?.user?.role !== 'customer' && (
+                    <a target="_blank" rel="noreferrer" href={product.retailLink}>
+                      <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
+                    </a>
+                  )}
+                </div>
+
+                <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-gray-900 ">
+                  {product?.name}
+                  {discountPercent && discountPercent?.length ? <DiscountTag /> : null}
+                </h1>
+                <h2 className="sr-only">Product information</h2>
+                <p className="text-3xl text-gray-900 my-4">
+                  {priceToLocaleString(product?.displayPrice)}
+                  {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
+                    <>
+                      <small className="inline-block ml-2 text-sm text-gray-500 line-through">
+                        {priceToLocaleString(product?.msrp)}
+                      </small>
+                      <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">
+                        {discountPercent}
+                      </small>
+                    </>
+                  )}
+                </p>
+                {product?.metaDetails?.rating ? (
+                  <div>
+                    <StarRatings
+                      rating={product?.metaDetails?.rating}
+                      starRatedColor="black"
+                      numberOfStars={5}
+                      starDimension="16px"
+                      starSpacing="3px"
+                      name="rating"
+                    />
+                    <span className="ml-4">{product?.metaDetails?.rating.toFixed(2)}</span>
+                  </div>
+                ) : null}
+                <div className="mt-2 flex">
+                  <EyeIcon className="h-6 w-6 text-red-500" />
+                  <span className="text-sm ml-1">Currently viewing: </span>
+                  <span className="text-sm ml-1">{currentlyViewing} </span>
+                </div>
+              </div>
+              <div className="top-0 lg:sticky z-10 w-full relative mt-8">
+                <Carousel imageCount={productImages?.length || 0} withLightBox withNav>
                   {productImages?.map((productImage) => {
                     return (
                       <div key={productImage}>
@@ -362,145 +481,57 @@ const ProductView = ({ product }): JSX.Element => {
                     );
                   })}
                 </Carousel>
-                {/* <Tab.Group as="div" className="flex flex-row space-x-4">
-                  <div className="hidden mx-auto mt-6 sm:block lg:max-w-none">
-                    <Tab.List className="flex flex-col">
-                      {productImages.map((image, idx) => (
-                        <Tab
-                          key={idx}
-                          className="relative flex items-center justify-center w-12 h-12 my-2 text-sm font-medium text-gray-900 uppercase bg-white rounded-md cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50"
-                        >
-                          {({ selected }) => (
-                            <>
-                              <span className="absolute inset-0 overflow-hidden rounded-md">
-                                <Image
-                                  src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_50/${image?.cdn}`}
-                                  alt="Angled front view with bag zipped and handles upright."
-                                  className="object-contain object-center sm:rounded-lg"
-                                  layout="fill"
-                                  placeholder="blur"
-                                  objectFit="contain"
-                                  blurDataURL={blurredBgProduct}
-                                />
-                              </span>
-                              <span
-                                className={classNames(
-                                  selected ? 'ring-black' : 'ring-transparent',
-                                  'absolute inset-0 rounded-md ring-2 ring-offset-2 pointer-events-none'
-                                )}
-                                aria-hidden="true"
-                              />
-                            </>
-                          )}
-                        </Tab>
-                      ))}
-                    </Tab.List>
-                  </div>
-                  <Tab.Panels className="w-full hover:cursor-crosshair">
-                    {productImages.map((image, idx) => (
-                      <Tab.Panel key={idx}>
-                        <ReactImageZoom
-                          img={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_1000/${image?.cdn}`}
-                          {...zoomProps}
-                        />
-                      </Tab.Panel>
-                    ))}
-                  </Tab.Panels>
-                </Tab.Group> */}
               </div>
               <div className="absolute z-10 px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0" id="magnifyPortal" />
-              <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
-                <div className="flex space-x-2">
-                  <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
-                  {session?.user && session?.user?.role !== 'customer' && (
-                    <a target="_blank" rel="noreferrer" href={product.retailLink}>
-                      <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
-                    </a>
-                  )}
-                </div>
-                <h1 className="mt-1 sm:text-3xl text-xl font-extrabold tracking-tight text-gray-900">{product?.name}</h1>
-                <div className="mt-3">
-                  <h2 className="sr-only">Product information</h2>
-                  <p className="sm:text-3xl text-xl text-gray-900">
-                    {priceToLocaleString(product?.displayPrice)}
-                    {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
-                      <>
-                        <small className="inline-block ml-2 text-sm text-gray-500 line-through">
-                          {priceToLocaleString(product?.msrp)}
-                        </small>
-                        <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">
-                          {discountPercent}
-                        </small>
-                      </>
+              <div className="mt-10 sm:px-0 sm:mt-16 lg:mt-0">
+                <div className="hidden lg:block">
+                  <div className="flex space-x-2">
+                    <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+                    {session?.user && session?.user?.role !== 'customer' && (
+                      <a target="_blank" rel="noreferrer" href={product.retailLink}>
+                        <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
+                      </a>
                     )}
-                  </p>
-                </div>
-                {/* <div className="mt-3">
-                  <h3 className="sr-only">Reviews</h3>
-                  {product?.metaDetails ? (
-                    <div className="flex items-center">
-                      <StarRatings
-                        rating={product?.metaDetails?.rating}
-                        starRatedColor="black"
-                        numberOfStars={5}
-                        name="productRating"
-                        starDimension="20px"
-                        starSpacing="5px"
-                        isAggregateRating
-                      />
-                      <p className="sr-only">{product?.metaDetails?.rating} out of 5 stars</p>
-                      <div className="flex ml-4">
-                        <ReactScroll.Link
-                          to="reviewsSection"
-                          spy={true}
-                          smooth={true}
-                          className="text-sm hover:cursor-pointer hover:text-red-500"
-                        >
-                          See top reviews
-                        </ReactScroll.Link>
+                  </div>
+                  <h1 className="mt-1 sm:text-3xl text-xl font-extrabold tracking-tight text-gray-900">
+                    {product?.name}
+                    {discountPercent && discountPercent?.length ? <DiscountTag /> : null}
+                  </h1>
+                  <div className="mt-3">
+                    <h2 className="sr-only">Product information</h2>
+                    <p className="sm:text-3xl text-xl text-gray-900">
+                      {priceToLocaleString(product?.displayPrice)}
+                      {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
+                        <>
+                          <small className="inline-block ml-2 text-sm text-gray-500 line-through">
+                            {priceToLocaleString(product?.msrp)}
+                          </small>
+                          <small className="inline-block ml-2 text-md text-gray-500 text-[#F5296E]">
+                            {discountPercent}
+                          </small>
+                        </>
+                      )}
+                    </p>
+                    {product?.metaDetails?.rating ? (
+                      <div className="flex">
+                        <StarRatings
+                          rating={product?.metaDetails?.rating}
+                          starRatedColor="black"
+                          numberOfStars={5}
+                          starDimension="16px"
+                          starSpacing="3px"
+                          name="rating"
+                        />
+                        <span className="ml-4">{product?.metaDetails?.rating.toFixed(2)}</span>
                       </div>
+                    ) : null}
+                    <div className="mt-2 flex">
+                      <EyeIcon className="h-6 w-6 text-red-500" />
+                      <span className="text-sm ml-1">Currently viewing: </span>
+                      <span className="text-sm ml-1">{currentlyViewing} </span>
                     </div>
-                  ) : null}
-                </div> */}
-                <div className="mt-3">
-                  <h3 className="sr-only">Description</h3>
-                  <div className="text-sm">
-                    <p className={`${!value && 'line-clamp-3'} text-gray-700`}>{product?.description}</p>
-                    <button className="my-0.5 text-gray-500" onClick={toggle}>
-                      {!value ? '... read more' : 'hide'}
-                    </button>
                   </div>
                 </div>
-                <div className="mt-3">
-                  <span className="text-sm font-bold">Dimensions: </span>
-                  <span className="inline-block ml-2 text-sm text-gray-700">{`${(
-                    product?.dimension?.width * 12
-                  ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
-                    product?.dimension?.height * 12
-                  ).toFixed(2)}"H`}</span>
-                </div>
-                {product?.material && product?.material?.toLowerCase() !== 'n/a' ? (
-                  <div className="mt-3">
-                    <span className="text-sm font-bold">Material: </span>
-                    <span className="inline-block ml-2 text-sm text-gray-700 capitalize">{product?.material}</span>
-                  </div>
-                ) : null}
-                {product?.colors && product?.colors?.length && product?.colors[0].toLowerCase() !== 'n/a' ? (
-                  <div className="mt-3">
-                    <span className="text-sm font-bold text-gray-900">Color:</span>
-                    <span className="inline-block ml-2 text-sm text-gray-700">
-                      {product?.colors?.map((color, index) => {
-                        return (
-                          <span className="text-sm capitalize" key={color}>
-                            {color}
-                            {index === product?.colors?.length - 1 ? '' : ', '}
-                          </span>
-                        );
-                      })}
-                    </span>
-                  </div>
-                ) : null}
-
                 {!itemStatus && (
                   <div className="my-4">
                     <DeliveryTimeline productId={product?._id} />
@@ -521,7 +552,7 @@ const ProductView = ({ product }): JSX.Element => {
                     <div className="flex my-8 space-x-4 sm:flex-col-1 addToCart" ref={addToCartBtnRef}>
                       <button
                         type="button"
-                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none border border-gray-500"
                         onClick={decrementQty}
                       >
                         <MinusSmIcon className="w-6 h-6" />
@@ -529,7 +560,7 @@ const ProductView = ({ product }): JSX.Element => {
                       <p className="px-2 py-3">{localProductQuantity}</p>
                       <button
                         type="button"
-                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
+                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none border border-gray-500"
                         onClick={incrementQty}
                       >
                         <PlusSmIcon className="w-6 h-6" />
@@ -546,13 +577,98 @@ const ProductView = ({ product }): JSX.Element => {
                   )}
                 </form>
                 {product?.price && !itemStatus ? (
-                  <div className="my-6 text-sm text-gray-700">
+                  <div className="my-2 lg:my-0 text-sm text-gray-700 text-center lg:text-left">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
                 ) : null}
+                <div className="bg-gray-100 -mx-4 p-4 lg:mx-0">
+                  <h2>Product Information</h2>
+                  <div className="mt-3">
+                    <span className="text-sm font-bold">Name: </span>
+                    <span className="text-sm">&nbsp;{product?.name}</span>
+                  </div>
+                  <div className="mt-3">
+                    <span className="text-sm font-bold">Dimensions: </span>
+                    <span className="inline-block ml-2 text-sm text-gray-700">{`${(
+                      product?.dimension?.width * 12
+                    ).toFixed(2)}"W X ${(product?.dimension?.depth * 12).toFixed(2)}"D X ${(
+                      product?.dimension?.height * 12
+                    ).toFixed(2)}"H`}</span>
+                  </div>
+                  {product?.material && product?.material?.toLowerCase() !== 'n/a' ? (
+                    <div className="mt-3">
+                      <span className="text-sm font-bold">Material: </span>
+                      <span className="inline-block ml-2 text-sm text-gray-700 capitalize">{product?.material}</span>
+                    </div>
+                  ) : null}
+                  {product?.colors && product?.colors?.length && product?.colors[0].toLowerCase() !== 'n/a' ? (
+                    <div className="mt-3">
+                      <span className="text-sm font-bold text-gray-900">Color:</span>
+                      <span className="inline-block ml-2 text-sm text-gray-700">
+                        {product?.colors?.map((color, index) => {
+                          return (
+                            <span className="text-sm capitalize" key={color}>
+                              {color}
+                              {index === product?.colors?.length - 1 ? '' : ', '}
+                            </span>
+                          );
+                        })}
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+                {/* <div className="mt-3">
+                  <h3 className="sr-only">Description</h3>
+                  <div className="text-sm">
+                    <p className={`${!value && 'line-clamp-3'} text-gray-700`}>{product?.description}</p>
+                    <button className="my-0.5 text-gray-500" onClick={toggle}>
+                      {!value ? '... read more' : 'hide'}
+                    </button>
+                  </div>
+                </div> */}
+
+                <Disclosure defaultOpen>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                        <span className="text-sm font-bold text-gray-900">{spacejoyPromiseData[0]?.title}</span>
+                        {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="mt-4">
+                        <Image
+                          src={spacejoyPromiseData[0]?.img}
+                          height="80"
+                          width="80"
+                          alt="Spacejoy Price Match Guarantee"
+                          className="mt-4"
+                        />
+                        <div className="mt-4 text-sm text-gray-700">{spacejoyPromiseData[0]?.description}</div>
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+                <div className="block lg:hidden">
+                  {productFeaturesList?.map((feature) => {
+                    return (
+                      <Disclosure key={feature?.id}>
+                        {({ open }) => (
+                          <>
+                            <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                              <span className="text-sm font-bold text-gray-900">{feature?.title}</span>
+                              {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                            </Disclosure.Button>
+                            <Disclosure.Panel>
+                              <div className="mt-4 text-sm text-gray-700">{feature?.content}</div>
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
+                    );
+                  })}
+                </div>
 
                 {finalArrayOfOffers.length !== 0 && (
-                  <Disclosure defaultOpen>
+                  <Disclosure>
                     {({ open }) => (
                       <>
                         <Disclosure.Button
@@ -797,14 +913,80 @@ const ProductView = ({ product }): JSX.Element => {
               </div>
             </div>
           </div>
+          <div className="border-t border-gray-300 hidden lg:block container mx-auto py-8 my-8 px-32">
+            {
+              <Tab.Group>
+                <Tab.List className={`grid grid-cols-3 border-b-2 justify-cente`}>
+                  {productFeaturesList.map((promise) => (
+                    <Tab
+                      key={promise.id}
+                      className={({ selected }) => (selected ? 'border-b-2 border-b-black focus:outline-none' : 'py-2')}
+                    >
+                      {promise?.title}
+                    </Tab>
+                  ))}
+                </Tab.List>
+                <Tab.Panels className="mt-4">
+                  {productFeaturesList.map((promise) => (
+                    <Tab.Panel key={promise.id}>
+                      <div className=" mx-auto">
+                        <h3 className="mt-2 mb-1">{promise.title}</h3>
+                        <p className="text-sm leading-relaxed text-gray-600">{promise.content}</p>
+                      </div>
+                    </Tab.Panel>
+                  ))}
+                </Tab.Panels>
+              </Tab.Group>
+            }
+          </div>
           <div className="container px-4 mx-auto">
-            <SimilarProducts productId={product?._id} />
             <ProductDesignSet productIds={[product?._id]} />
-            {/* {product?.metaDetails ? (
-              <div id="reviewsSection">
+            <div className="">
+              <SimilarProducts productId={product?._id} />
+            </div>
+
+            <div className="mt-8 block lg:hidden">
+              <h2 className="text-2xl tracking-wide border-b border-gray-300 pb-2">Why buy from Spacejoy?</h2>
+              {SpjShoppingAdvantage?.map((item, index) => {
+                return (
+                  <Disclosure key={item?.id} defaultOpen={index === 0}>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm font-bold text-gray-900">{item?.title}</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="mt-2">
+                          <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
+                          <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                );
+              })}
+            </div>
+
+            <div className="my-12 hidden lg:block">
+              <h2 className="text-2xl tracking-wide  pb-2">Why buy from Spacejoy?</h2>
+              <div className="my-8 hidden lg:grid lg:grid-cols-4 lg:gap-12 bg-white ">
+                {SpjShoppingAdvantage?.map((item, index) => {
+                  return (
+                    <div key={item?.id}>
+                      <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
+                      <p className="text-md font-bold text-gray-900 mt-4">{item?.title}</p>
+                      <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {product?.metaDetails?.reviews && product?.metaDetails?.reviews?.length ? (
+              <div id="reviewsSection" className="bg-gray-100 py-8 -mx-4 px-4 lg:px-28 lg:-mx-28 xl:-mx-32 xl:p-32">
                 <Reviews rating={product?.metaDetails?.rating} reviews={product?.metaDetails?.reviews} />
               </div>
-            ) : null} */}
+            ) : null}
           </div>
         </div>
 
@@ -865,8 +1047,9 @@ const ProductView = ({ product }): JSX.Element => {
 //   };
 // }
 
-export const getServerSideProps = async ({ params, res }) => {
+export const getServerSideProps = async ({ params, res, req }) => {
   const { slug } = params;
+  const { cookies: { isMobile = 'false' } = {} } = req;
   // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
   const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
   res.setHeader('Cache-Control', 'no-store');
@@ -888,9 +1071,10 @@ export const getServerSideProps = async ({ params, res }) => {
         },
       };
     }
+    const currentlyViewing = Math.floor(Math.random() * (80 - 10 + 10) + 10);
 
     return {
-      props: { product: data, revalidate: 1 },
+      props: { product: data, revalidate: 1, isMobile: isMobile === 'true' ? true : false, currentlyViewing },
     };
   } else {
     return {
@@ -899,4 +1083,4 @@ export const getServerSideProps = async ({ params, res }) => {
   }
 };
 
-export default ProductView;
+export default React.memo(ProductView);

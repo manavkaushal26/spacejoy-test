@@ -19,7 +19,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import shallow from 'zustand/shallow';
 interface CartItemInterface {
@@ -255,6 +255,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
 };
 
 export default function Cart() {
+  const [guestTotal, setGuestTotal] = useState(0);
   const { data } = useFirebaseContext();
   const isUserAuthenticated = Cookies.get('token') ? true : false;
   const router = useRouter();
@@ -267,6 +268,19 @@ export default function Cart() {
     }),
     shallow
   );
+  const calculateGuestTotal = () => {
+    let sum = 0;
+    Object.entries(cart?.cartItems).forEach((retailer) => {
+      Object.entries(retailer[1]['products']).forEach((product) => {
+        sum += product[1]['msrp'] * product[1]['quantity'];
+      });
+    });
+
+    return sum;
+  };
+  useEffect(() => {
+    !isUserAuthenticated && setGuestTotal(calculateGuestTotal);
+  }, [cart, updateCart]);
 
   const [showCartFooter, setCartFooter] = useState(false);
 
@@ -325,7 +339,32 @@ export default function Cart() {
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
                   </h2>
-
+                  <div className="hidden lg:block">
+                    {data?.cartBannerV2?.visible &&
+                      (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
+                        <Link href={data?.cartBannerV2?.link}>
+                          <a>
+                            <div className="relative aspect-w-7 aspect-h-2">
+                              <Image
+                                src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                                alt="cartBanner"
+                                layout="fill"
+                                objectFit="contain"
+                              />
+                            </div>
+                          </a>
+                        </Link>
+                      ) : (
+                        <div className="relative aspect-w-7 aspect-h-2">
+                          <Image
+                            src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                            alt="cartBanner"
+                            layout="fill"
+                            objectFit="contain"
+                          />
+                        </div>
+                      ))}
+                  </div>
                   {loading && (
                     <>
                       {[...new Array(18)].map((_d, _i) => {
@@ -398,39 +437,50 @@ export default function Cart() {
                     aria-labelledby="summary-heading"
                     className="lg:sticky  lg:col-span-5 top-20 flex flex-col space-y-4 order-first lg:order-last"
                   >
-                    {data?.cartBannerV2?.visible &&
-                      (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
-                        <Link href={data?.cartBannerV2?.link}>
-                          <a>
-                            <div className="relative aspect-w-7 aspect-h-2">
-                              <Image
-                                src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
-                                alt="cartBanner"
-                                layout="fill"
-                                objectFit="contain"
-                              />
-                            </div>
-                          </a>
-                        </Link>
-                      ) : (
-                        <div className="relative aspect-w-7 aspect-h-2">
-                          <Image
-                            src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
-                            alt="cartBanner"
-                            layout="fill"
-                            objectFit="contain"
-                          />
-                        </div>
-                      ))}
+                    <div className="block lg:hidden">
+                      {data?.cartBannerV2?.visible &&
+                        (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
+                          <Link href={data?.cartBannerV2?.link}>
+                            <a>
+                              <div className="relative aspect-w-7 aspect-h-2">
+                                <Image
+                                  src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                                  alt="cartBanner"
+                                  layout="fill"
+                                  objectFit="contain"
+                                />
+                              </div>
+                            </a>
+                          </Link>
+                        ) : (
+                          <div className="relative aspect-w-7 aspect-h-2">
+                            <Image
+                              src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                              alt="cartBanner"
+                              layout="fill"
+                              objectFit="contain"
+                            />
+                          </div>
+                        ))}
+                    </div>
                     {isUserAuthenticated ? (
                       <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart" ref={elementRef}>
                         <CartSummary source={checkoutRefSource} />
                       </div>
                     ) : (
-                      <LoginManager
-                        ctaText="Checkout"
-                        styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none hidden lg:block"
-                      />
+                      <>
+                        <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart">
+                          <h2 className="text-center text-lg font-bold text-gray-900 pb-6">Order summary</h2>
+                          <p className="flex justify-between">
+                            <span className=" font-medium">Shopping Total:</span>
+                            <span>&nbsp;&nbsp;&nbsp;${guestTotal}</span>
+                          </p>
+                        </div>
+                        <LoginManager
+                          ctaText="Checkout"
+                          styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none hidden lg:block"
+                        />
+                      </>
                     )}
                   </section>
                 )}
@@ -458,10 +508,12 @@ export default function Cart() {
                   </>
                 ) : (
                   // <div className="text-center">
-                  <LoginManager
-                    ctaText="Checkout"
-                    styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                  />
+                  <>
+                    <LoginManager
+                      ctaText="Checkout"
+                      styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                    />
+                  </>
                   // </div>
                 )}
               </div>

@@ -7,7 +7,10 @@ const AffirmWrapper = styled.div`
   font-size: 0.85rem;
   background-color: white;
   border-radius: 5px;
-  padding: 24px 16px;
+  padding: 24px 0px;
+  @media (max-width: 767px) {
+    padding: 24px 16px;
+  }
   .affirm-ala-price {
     font-weight: bold;
   }

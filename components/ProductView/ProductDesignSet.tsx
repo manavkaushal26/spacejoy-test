@@ -1,8 +1,6 @@
+import Carousel from '@components/Carousel';
+import DesignSetCardV2 from '@components/RoomSelection/DesignSetCardV2';
 import useProductDesignSets from '@hooks/useProductDesignSets';
-import { blurredBgImage } from '@public/images/bg-base-64';
-import { cloudinary } from '@utils/config';
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 const ProductDesignSet = ({ productIds }) => {
@@ -16,30 +14,25 @@ const ProductDesignSet = ({ productIds }) => {
 
   if (designs?.length === 0) return null;
 
+  const responsive = {
+    dots: true,
+    arrows: false,
+    slidesToShow: 1,
+    className: 'responsive',
+  };
+
+  const imageCount = Math.min(designs?.length, 3);
+
   return (
-    <div className="pt-8 pb-16">
+    <div className="py-4 bg-gray-100 -mx-4 px-4 lg:-mx-36 lg:px-36">
       <h2 className="text-2xl tracking-wide">See in a room</h2>
       <p className="mt-2 text-gray-700">Mix and match</p>
-      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-        {designs?.slice(0, 5)?.map((product) => {
-          return (
-            <Link href={`/design-sets/${product?._id}`} key={product?._id}>
-              <a className="group block">
-                <div className="bg-white aspect-w-3 aspect-h-2 rounded-lg group-hover:opacity-75 lg:aspect-w-2 lg:aspect-h-1">
-                  <Image
-                    src={`${cloudinary.baseDeliveryURL}/q_auto,f_auto,w_600/${product?.thumbnail}`}
-                    alt="Brown leather key ring with brass metal loops and rivets on wood table."
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgImage}
-                    objectFit={'cover'}
-                  />
-                </div>
-                <h3 className="mt-4 text-sm text-gray-700 font-normal capitalize">{product?.name?.slice(0, -10)}</h3>
-              </a>
-            </Link>
-          );
-        })}
+      <div className="mt-4 grid grid-cols-1 gap-4">
+        <Carousel imageCount={imageCount} withNav={false} responsive={responsive} slidesToShow={3}>
+          {designs?.slice(0, 4)?.map((product) => {
+            return <DesignSetCardV2 designData={product} isMobile={true} key={product?._id} large={false} />;
+          })}
+        </Carousel>
       </div>
     </div>
   );
