@@ -116,7 +116,7 @@ const TopCollagesList: React.FC<DesignListInterface> = ({ feedData }) => {
               <p className="py-4 text-xl">Pick one to get started</p>
             </div>
           </div>
-          <AnimateBox className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 xl:gap-6 2xl:gap-8 gap-y-10 my-8">
+          <AnimateBox className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6 2xl:gap-8 gap-y-10 my-8">
             {/* <Slider {...settings} ref={ref}> */}
             {list.map((collection, i) => (
               <RoomSelectCard key={collection?._id} cardData={collection} inset index={i} disabled={collection.disabled} />

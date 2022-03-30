@@ -98,7 +98,7 @@ const useDesignSetTags = (tagId = '') => {
     if (!themes?.length) {
       try {
         setLoading(true);
-        const { data, statusCode } = await fetcher({ endPoint: '/v1/themes/suggestions', method: 'GET' });
+        const { data, statusCode } = await fetcher({ endPoint: '/v1/themes/suggestions?isPublic=true', method: 'GET' });
         if (statusCode < 300) {
           saveThemeFilters(data);
         } else {

@@ -45,6 +45,15 @@ const topCollages = {
       metaTitle: '2000+ 3D Renders',
       disabled: false,
     },
+    {
+      _id: 7,
+      name: "Kid's Room",
+      metaDescription: '2000+ 3D Renders',
+      slug: "kid's-room-design-sets",
+      cdnThumbnail: 'v1648637765/spj-v2/room-types/cropped/kids_room_mgjygc.png',
+      metaTitle: '2000+ 3D Renders',
+      disabled: false,
+    },
     // {
     //   _id: 5,
     //   name: 'Nursery',
@@ -74,6 +83,7 @@ export const SlugToCategory = {
   // 'nursery-design-sets': 'nursery',
   'holiday-design-sets': 'holiday',
   'dining-room-design-sets': 'dining room',
+  "kid's-room-design-sets": "kid's room"
 };
 
 export default topCollages;
