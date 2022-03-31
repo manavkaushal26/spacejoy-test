@@ -10,6 +10,7 @@ import LottieAnimation from '@components/Shared/LottieAnimation';
 import StickyFooter from '@components/Shared/StickyFooter';
 import SVGLoader from '@components/Shared/SVGLoader';
 import { Disclosure, Tab } from '@headlessui/react';
+import ReactScroll from 'react-scroll';
 import {
   ChevronRightIcon,
   ExternalLinkIcon,
@@ -455,6 +456,17 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
                     <span className="ml-4">{product?.metaDetails?.rating.toFixed(2)}</span>
                   </div>
                 ) : null}
+                {product?.metaDetails?.reviews && product?.metaDetails?.reviews?.length ? (
+                  <ReactScroll.Link
+                    to="reviewsSection"
+                    spy={true}
+                    smooth={true}
+                    className="my-4 text-sm underline underline-offset-2 hover:cursor-pointer hover:text-gray-500"
+                  >
+                    See reviews
+                  </ReactScroll.Link>
+                ) : null}
+
                 <div className="mt-2 flex">
                   <EyeIcon className="h-6 w-6 text-red-500" />
                   <span className="text-sm ml-1">Currently viewing: </span>
@@ -523,8 +535,19 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
                           name="rating"
                         />
                         <span className="ml-4">{product?.metaDetails?.rating.toFixed(2)}</span>
+                        {product?.metaDetails?.reviews && product?.metaDetails?.reviews?.length ? (
+                          <ReactScroll.Link
+                            to="reviewsSection"
+                            spy={true}
+                            smooth={true}
+                            className="ml-4 text-sm underline underline-offset-2 hover:cursor-pointer hover:text-gray-500"
+                          >
+                            See reviews
+                          </ReactScroll.Link>
+                        ) : null}
                       </div>
                     ) : null}
+
                     <div className="mt-2 flex">
                       <EyeIcon className="h-6 w-6 text-red-500" />
                       <span className="text-sm ml-1">Currently viewing: </span>

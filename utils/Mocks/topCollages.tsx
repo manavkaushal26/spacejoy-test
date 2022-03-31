@@ -50,7 +50,7 @@ const topCollages = {
       name: "Kid's Room",
       metaDescription: '2000+ 3D Renders',
       slug: "kid's-room-design-sets",
-      cdnThumbnail: 'v1648637765/spj-v2/room-types/cropped/kids_room_mgjygc.png',
+      cdnThumbnail: 'w_444/v1648705428/spj-v2/room-types/cropped/kids_room_1_fw6ido.png',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
     },

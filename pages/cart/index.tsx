@@ -329,12 +329,12 @@ export default function Cart() {
         <Layout.Header />
         <Layout.Body>
           <div className="bg-white">
-            <div className="max-w-2xl px-4 pt-16 pb-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="max-w-2xl px-4 pt-8 pb-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
               {!loading && cart?.count !== 0 && (
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
               )}
               {Object.keys(cart?.cartItems)?.length === 0 && <>{loading ? null : <EmptyCart />}</>}
-              <form className="mt-12 grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
+              <form className="mt-4 grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
                 <section aria-labelledby="cart-heading" className="lg:col-span-7">
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart

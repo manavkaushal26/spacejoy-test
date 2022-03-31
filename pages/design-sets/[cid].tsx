@@ -79,14 +79,6 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                                 className="rounded-lg"
                               />
                             </div>
-                            <div className="bg-[#ECC462] rounded-lg p-4 text-center font-semibold text-lg">
-                              <p>Please explore this design set on your desktop</p>
-
-                              {/* <div>
-                                Copy Link:{' '}
-                                <p className="text-[#F5296E]">{`https://www.spacejoy.com/design-sets/${collageData._id}`}</p>
-                              </div> */}
-                            </div>
                           </div>
                         ) : (
                           <div

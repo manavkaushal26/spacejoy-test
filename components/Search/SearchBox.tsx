@@ -8,6 +8,7 @@ import { Tab } from '@headlessui/react';
 import { RefreshIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
 import useSearch from '@hooks/useSearch';
+import { useShopFilterContext } from '@store/ShopFilterContext';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
@@ -52,6 +53,12 @@ const SearchBox: React.FC = () => {
   const [isFetchingDesigns, setIsFetchingDesigns] = useState(false);
   const [isFetchingProducts, setIsFetchingProducts] = useState(false);
 
+  const {
+    filters: { retailer: preferredRetailers = []}
+  } = useShopFilterContext();
+
+  const preferredRetailerNames = preferredRetailers?.map((item)=>{return item?.name}) || [];
+
   const router = useRouter();
 
   const goBack = useCallback(() => router.back(), [router]);
@@ -70,13 +77,14 @@ const SearchBox: React.FC = () => {
     filters: {
       category: [],
       retailer: [],
-      price: [1, 50000],
+      price: [1, 5000],
       status: 'active',
       depth: [],
       vertical: [],
       height: [],
       width: [],
       subcategory: [],
+      shoppable: true,
     },
     searchText: '',
     skipVal: 0,
@@ -255,7 +263,7 @@ const SearchBox: React.FC = () => {
               
                 {!isFetchingProducts && !productsResults?.length ? (
                   <div className="col-span-12">
-                    <EmptyState title="No matching design sets found" message="" />
+                    <EmptyState title="No matching products found" message="" />
                   </div>
                 ) : (
                   <div className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1 lg:gap-2 xl:grid-cols-5 xl:gap-3 grid">
@@ -266,7 +274,7 @@ const SearchBox: React.FC = () => {
                       })}
                     </>)}
                     {productsResults?.map((searchItem) => (
-                      searchItem?.inStock && searchItem?.status !== "discontinued" &&
+                      searchItem?.inStock && searchItem?.status !== "discontinued" && preferredRetailerNames?.includes(searchItem?.retailer) &&
                       <ProductCard product={searchItem} key={searchItem._id} />
                     ))}
                   </div>
