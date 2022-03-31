@@ -1,25 +1,20 @@
 import CollageCardDimmer from '@components/Collages/CollageCardDimmer';
-import DesignCard from '@components/InteriorDesigns/DesignCard';
 import DesignSetCardV2 from '@components/RoomSelection/DesignSetCardV2';
 import EmptyState from '@components/Shared/EmptyState';
 import ProductCard from '@components/Shop/ProductCard';
 import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
 import { Tab } from '@headlessui/react';
-import { RefreshIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
+import { SearchIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
 import useSearch from '@hooks/useSearch';
 import { useShopFilterContext } from '@store/ShopFilterContext';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
-import TopSearches from '@utils/Mocks/TopSearches';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useState } from 'react';
-import { Tween } from 'react-gsap';
+import { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import styled, { keyframes } from 'styled-components';
-import ListItem from './ListItem';
 
 const entry = keyframes`
 	from { 
@@ -96,7 +91,6 @@ const SearchBox: React.FC = () => {
   const [pageCountProducts, setPageCountProducts] = useState(0);
   const [apiErrorProducts, setApiErrorProducts] = useState(null);
 
-
   const handlePageChangeProducts = (event) => {
     setPageOffsetProducts(event.selected);
   };
@@ -121,15 +115,16 @@ const SearchBox: React.FC = () => {
   const [apiErrorDesigns, setApiErrorDesigns] = useState(null);
 
   useEffect(() => {
-    if(lastSearchString !== searchString){
+    if (lastSearchString !== searchString) {
       setPageOffsetDesigns(0);
       setPageOffsetProducts(0);
       setLastSearchString(searchString);
     }
-    
 
     async function fetchDesignsData() {
-      const endPoint = `${publicRoutes.designSetSearch}?skip=${pageOffsetDesigns * perPageDesigns}&limit=${perPageDesigns}`;
+      const endPoint = `${publicRoutes.designSetSearch}?skip=${
+        pageOffsetDesigns * perPageDesigns
+      }&limit=${perPageDesigns}`;
       setIsFetchingDesigns(true);
       const response = await fetcher({
         endPoint,
@@ -149,7 +144,9 @@ const SearchBox: React.FC = () => {
       setPageCountDesigns(newPageCount);
     }
     async function fetchProductsData() {
-      const endPoint = `${publicRoutes.productSearch}?skip=${pageOffsetProducts * perPageProducts}&limit=${perPageProducts}`;
+      const endPoint = `${publicRoutes.productSearch}?skip=${
+        pageOffsetProducts * perPageProducts
+      }&limit=${perPageProducts}`;
       setIsFetchingProducts(true);
       const response = await fetcher({
         endPoint,
@@ -177,7 +174,7 @@ const SearchBox: React.FC = () => {
   //============================================================================================================
   const onChangeSearchText = (e) => {
     setSearchString(e?.target?.value);
-  }
+  };
 
   return (
     <div className="relative min-h-free bg-gray-100">
@@ -189,7 +186,9 @@ const SearchBox: React.FC = () => {
             </div>
             <input
               autoFocus
-              onChange={(e) => {onChangeSearchText(e)}}
+              onChange={(e) => {
+                onChangeSearchText(e);
+              }}
               type="text"
               name="first_name"
               id="first_name"
@@ -260,7 +259,6 @@ const SearchBox: React.FC = () => {
           <Tab.Panels className="mt-5">
             <Tab.Panel className={classNames('bg-gray-100 rounded-xl py-3')}>
               <div className="pb-4">
-              
                 {!isFetchingProducts && !productsResults?.length ? (
                   <div className="col-span-12">
                     <EmptyState title="No matching products found" message="" />
@@ -299,18 +297,17 @@ const SearchBox: React.FC = () => {
             </Tab.Panel>
             <Tab.Panel className={classNames('bg-gray-100 rounded-xl p-3')}>
               <div className="container mx-auto sm:px-4 pb-40">
-              {isFetchingDesigns && (
-              <>
-                {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
-                
-                  return (
-                    <div key={_d} className={`relative col-span-2 row-span-1`}>
-                      <CollageCardDimmer />
-                    </div>
-                  );
-                })}
-              </>
-            )}
+                {isFetchingDesigns && (
+                  <>
+                    {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
+                      return (
+                        <div key={_d} className={`relative col-span-2 row-span-1`}>
+                          <CollageCardDimmer />
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
                 {!designsResults?.length ? (
                   <div className="col-span-12">
                     <EmptyState title="No matching design sets found" message="" />
@@ -318,7 +315,13 @@ const SearchBox: React.FC = () => {
                 ) : (
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
                     {designsResults?.map((searchItem) => (
-                      <DesignSetCardV2 designData={searchItem} large={false} isMobile key={searchItem?._id} />
+                      <DesignSetCardV2
+                        designData={searchItem}
+                        large={false}
+                        isMobile
+                        key={searchItem?._id}
+                        pageRef="Search Page"
+                      />
                     ))}
                   </div>
                 )}
@@ -343,8 +346,6 @@ const SearchBox: React.FC = () => {
           </Tab.Panels>
         </Tab.Group>
       </div>
-
-      
     </div>
   );
 };

@@ -962,7 +962,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
               </Tab.Group>
             }
           </div>
-          <div className="container px-4 mx-auto">
+          <div className="container px-4 mx-auto overflow-hidden">
             <ProductDesignSet productIds={[product?._id]} />
             <div className="">
               <SimilarProducts productId={product?._id} />

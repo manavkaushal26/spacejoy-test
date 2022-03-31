@@ -199,7 +199,12 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                         key={design?._id}
                         className={`relative ${large ? 'col-span-4 row-span-2' : 'col-span-2 row-span-1'}`}
                       >
-                        <DesignSetCardV2 designData={design} large={large} isMobile={isMobile} />
+                        <DesignSetCardV2
+                          designData={design}
+                          large={large}
+                          isMobile={isMobile}
+                          pageRef="Design Sets Page"
+                        />
                       </div>
                     </>
                   );

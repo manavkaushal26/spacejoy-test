@@ -30,7 +30,15 @@ const ProductDesignSet = ({ productIds }) => {
       <div className="mt-4 grid grid-cols-1 gap-4">
         <Carousel imageCount={imageCount} withNav={false} responsive={responsive} slidesToShow={3}>
           {designs?.slice(0, 4)?.map((product) => {
-            return <DesignSetCardV2 designData={product} isMobile={true} key={product?._id} large={false} />;
+            return (
+              <DesignSetCardV2
+                designData={product}
+                isMobile={true}
+                key={product?._id}
+                large={false}
+                pageRef="Similar Design Sets"
+              />
+            );
           })}
         </Carousel>
       </div>

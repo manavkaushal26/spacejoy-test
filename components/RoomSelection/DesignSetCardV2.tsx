@@ -1,6 +1,8 @@
 import { CollagesListInterface } from '@components/Collages/interface';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { blurredBgProduct } from '@public/images/bg-base-64';
+import { PushEvent } from '@utils/analyticsLogger';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
@@ -8,10 +10,13 @@ import React, { useMemo } from 'react';
 interface DesignSetCardV2Props {
   designData: CollagesListInterface;
   large: boolean;
+  pageRef: string;
   isMobile?: boolean;
 }
 
-const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, isMobile }) => {
+const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, isMobile, pageRef }) => {
+  const mobile = Cookies.get('isMobile') === 'true' ? true : false;
+
   const tagsInPills = useMemo(() => {
     return [
       ...(designData?.themes?.toString().split(',')?.slice(0, 1) || []),
@@ -25,7 +30,16 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
         pathname: `/design-sets/${designData?._id}`,
       }}
     >
-      <a>
+      <a
+        target={!mobile ? '_blank' : null}
+        onClick={() => {
+          PushEvent({
+            category: `Click on Design Set Card | ${pageRef}`,
+            action: `Go To design set viewer page | did: ${designData?._id}`,
+            label: `Explore Design Set`,
+          });
+        }}
+      >
         {!isMobile ? (
           <div className="grid grid-cols-4 rounded-lg overflow-hidden border bg-white">
             <div className={`${large ? 'col-span-3' : 'col-span-4'} px-4 py-4`}>
