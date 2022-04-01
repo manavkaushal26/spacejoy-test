@@ -8,8 +8,10 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { PushEvent } from '@utils/analyticsLogger';
 import { TabOffers } from '../TabOffers';
+import { HireADesignerHeader } from '../HireADesignerHeader';
 
 export default function MobileSidebar({ data, open, setOpen }) {
+  const topLevelCategories = data?.map((item)=> item?.name);
   const router = useRouter();
   // const {
   //   filters: { category = [] },
@@ -17,6 +19,7 @@ export default function MobileSidebar({ data, open, setOpen }) {
   // } = useShopFilterContext();
   const [currentMenus, setCurrentMenus] = useState(data);
   const [previousStack, setPreviousStack] = useState([]);
+  const [activeTopLevelCategory, setActiveTopLevelCategory] = useState('');
 
   const renderMenuItems = (data) => {
     return data?.map((item) =>
@@ -26,6 +29,9 @@ export default function MobileSidebar({ data, open, setOpen }) {
             previousStack.push(data);
             setPreviousStack(previousStack);
             setCurrentMenus(item.children);
+            if(topLevelCategories.includes(item?.name)){
+              setActiveTopLevelCategory(item?.name);
+            }
           }}
           className="px-4 sm:px-6 flex items-center justify-between active:bg-gray-100 py-2"
         >
@@ -135,20 +141,20 @@ export default function MobileSidebar({ data, open, setOpen }) {
                               ) : null}
 
                               {/* Only for Shop Nav in navigation */}
-                              {previousStack[0]?.map(
-                                (item) =>
-                                  item?.name === 'Shop' && (
-                                    <div className="pt-4 px-4 sm:px-6 space-y-6">
-                                      <div>
-                                        <TabOffers />
-                                      </div>
-                                      <div>
-                                        <h3 className="text-lg">Shop By Categories</h3>
-                                      </div>
+                              {/* {previousStack[0]?.map(
+                                (item) => */}
+                                
+                                {activeTopLevelCategory === 'Shop' && (
+                                  <div className="pt-4 px-4 sm:px-6 space-y-6">
+                                    <div>
+                                      <TabOffers />
                                     </div>
-                                  )
-                              )}
-
+                                    <div>
+                                      <h3 className="text-lg">Shop By Categories</h3>
+                                    </div>
+                                  </div>
+                                )}
+                              {/* )} */}
                               {renderMenuItems(currentMenus)}
                             </>
                           </div>

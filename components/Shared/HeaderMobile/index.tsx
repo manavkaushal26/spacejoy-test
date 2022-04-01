@@ -9,7 +9,7 @@ import { useStore } from '@lib/store';
 import SidebarMenu from './SidebarMenu';
 import { oldSpacejoyUrl } from '@utils/config';
 import UserNav from '../Header/UserNav';
-import { splitCategories } from '@utils/Mocks/SplitCategoriesData';
+import { splitCategories, hireADesignerCat } from '@utils/Mocks/SplitCategoriesData';
 
 const menuData = [
   {
@@ -18,7 +18,9 @@ const menuData = [
   },
   {
     name: 'Hire a Designer',
-    url: `${oldSpacejoyUrl}/online-interior-design`,
+    title: 'Designs',
+    categories: hireADesignerCat,
+
   },
   {
     name: 'Shop',
@@ -26,6 +28,7 @@ const menuData = [
     categories: splitCategories,
   },
 ];
+
 
 const HeaderMobile: React.FC = () => {
   const router = useRouter();

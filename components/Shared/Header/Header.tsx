@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
+import { HireADesignerHeader } from '../HireADesignerHeader';
 import SubNav from '../SubNav';
 import { TabOffers } from '../TabOffers';
 import UserNav from './UserNav';
@@ -50,6 +51,8 @@ const Header: React.FC = () => {
           return <CustomerStoriesNav />;
         case 'shop':
           return <ShopCategories callback={toggleSubNav} />;
+        // case 'hire a designer':
+        //   return <CustomerStoriesNav />;
 
         default:
           return null;
@@ -66,6 +69,9 @@ const Header: React.FC = () => {
           return 'Explore';
         case 'shop':
           return <TabOffers />;
+
+        case 'hire a designer':
+          return <HireADesignerHeader />;
         default:
           return null;
       }
@@ -128,7 +134,7 @@ const Header: React.FC = () => {
                       </a>
                     </Link>
                   </li>
-                  <li className="inline-block">
+                  {/* <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
                         className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
@@ -146,6 +152,27 @@ const Header: React.FC = () => {
                         Hire a Designer
                       </a>
                     </Link>
+                  </li> */}
+                  <li
+                    className="items-center h-full sm:hidden md:hidden lg:flex"
+                    onClick={() => {
+                      toggleSubNav();
+                      setSubNavContent('hire a designer');
+                    }}
+                  >
+                    <button
+                      type="button"
+                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
+                        isOpenSubNav && subNavContent === 'hire a designer' ? 'text-red-500' : 'text-gray-700'
+                      }`}
+                    >
+                      Hire a designer{' '}
+                      <ChevronDownIcon
+                        className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
+                          isOpenSubNav && subNavContent === 'hire a designer' ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
                   </li>
                   <li
                     className="items-center h-full sm:hidden md:hidden lg:flex"

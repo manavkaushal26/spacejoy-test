@@ -1,3 +1,5 @@
+import { oldSpacejoyUrl } from '@utils/config';
+
 export const splitCategories = [
   {
     _id: '5d9b10ee40295b004dde4cca',
@@ -2208,5 +2210,25 @@ export const splitCategories = [
       },
     ],
     type: 'category',
+  },
+];
+
+export const hireADesignerCat = [
+  {
+    name: 'Online Interior Design',
+    // subCategories: [{  }],
+    url: `${oldSpacejoyUrl}/online-interior-design`
+  },
+  {
+    name: 'Pricing',
+    url: `${oldSpacejoyUrl}/pricing`,
+  },
+  {
+    name: 'Tips and Guides',
+    url: `${oldSpacejoyUrl}/interior-designs-blog`,
+  },
+  {
+    name: 'Customer Stories',
+    url: `${oldSpacejoyUrl}/customer-stories`,
   },
 ];

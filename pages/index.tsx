@@ -5,6 +5,7 @@ import Carousel, { position } from '@components/Shared/Carousel';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
+import TopBarMobile from '@components/Shared/TopBarMobile';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import TeamData from '@mocks/DesignTeamData';
@@ -20,7 +21,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import useWindowSize from "@utils/useWindowSize";
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
@@ -28,6 +30,8 @@ export const Home = (): JSX.Element => {
   const router = useRouter();
   const { data } = useFirebaseContext();
   const isMobile = Cookies.get('isMobile');
+  const { width } = useWindowSize();
+	const isScreenSmall = useMemo(() => width <= 992, [width]);
 
   return (
     <>
@@ -39,89 +43,119 @@ export const Home = (): JSX.Element => {
         {/* <Layout.Banner />  */}
         <Layout.Header />
         <Layout.Body>
+          {isScreenSmall && (
+            <div className="mb-4 px-4">
+              <TopBarMobile />
+            </div>
+            
+          )}
           <Hero3 />
           <div className="container px-4 mx-auto mt-32 mb-12">
-            <HomeSectionTitle className="text-left sm:text-center">
-              <HomeSectionTitle.MainTitle>Shop curated furniture & decor sets</HomeSectionTitle.MainTitle>
-              <HomeSectionTitle.Description align="center">
-                Choose from thousands of sets perfect for your style, space and budget.
-              </HomeSectionTitle.Description>
+            <HomeSectionTitle className="text-left">
+              <HomeSectionTitle.MainTitle>
+                Add this, <span className="text-[#F5296E]">swap that</span>
+              </HomeSectionTitle.MainTitle>
+              {isMobile !== 'true' && (
+                <HomeSectionTitle.Description align="left">
+                  Meet our style sets. Curated by us and Personalized by you. <br />
+                  Your whole room perfected in a single click.
+                </HomeSectionTitle.Description>
+              )}
             </HomeSectionTitle>
           </div>
           {/* Section Start */}
-          <div className="container px-4 mx-auto mb-10">
-            <div className="grid grid-cols-2 gap-2 sm:gap-4 sm:grid-cols-4 xl:gap-8">
-              <div className="col-span-1 row-span-1 sm:row-span-2 sm:col-span-2">
-                <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
+          <div className="container px-4 mx-auto mb-20">
+            <div className="grid grid-cols-1 gap-2 md:gap-8 md:grid-cols-3">
+              <div
+                className="flex-1 space-y-4 p-4  rounded-xl hover:cursor-pointer"
+                onClick={() => {
+                  location.href = '/design-sets/room/living-room-design-sets';
+                }}
+              >
+                <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1644479450/web/homepage-v3/explore-set-image_wxfnvr.jpg"
-                    alt="image 1"
-                    className="object-cover object-center w-full h-full rounded-xl"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648817963/web/homepage-v3/Image_02_qqdwnv.jpg"
+                    alt="sofas"
+                    className="object-cover object-center w-full h-full rounded-lg"
                     layout="fill"
                     placeholder="blur"
                     blurDataURL={blurredBgProduct}
                   />
                 </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg lg:text-xl">Living Room Styles</h3>
+                  </div>
+                  <div className="flex items-center justify-center w-8 h-8 bg-black rounded-full lg:w-10 lg:h-10">
+                    <ArrowRightIcon className="inline w-4 h-4 text-white" />
+                  </div>
+                </div>
               </div>
-              <div className="rounded-xl">
-                <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
+              <div
+                className="flex-1 space-y-4 p-4  rounded-xl hover:cursor-pointer"
+                onClick={() => {
+                  location.href = '/design-sets/room/dining-room-design-sets';
+                }}
+              >
+                <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/w_600/v1644042480/web/homepage-v3/Website-design-set-8_adkesj.jpg"
-                    alt="image 1"
-                    className="object-cover object-center w-full h-full rounded-xl"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648817963/web/homepage-v3/IMG_1404_bpldad.png"
+                    alt="sofas"
+                    className="object-cover object-center w-full h-full rounded-lg"
                     layout="fill"
                     placeholder="blur"
                     blurDataURL={blurredBgProduct}
                   />
                 </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg lg:text-xl">Dining Room Styles</h3>
+                  </div>
+                  <div className="flex items-center justify-center w-8 h-8 bg-black rounded-full lg:w-10 lg:h-10">
+                    <ArrowRightIcon className="inline w-4 h-4 text-white" />
+                  </div>
+                </div>
               </div>
-              <div className="rounded-xl">
-                <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
+              <div
+                className="flex-1 space-y-4 p-4  rounded-xl hover:cursor-pointer"
+                onClick={() => {
+                  location.href = '/design-sets/room/bedroom-design-sets';
+                }}
+              >
+                <div className="aspect-w-2 aspect-h-1">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/w_600/v1644042485/web/homepage-v3/Website_design_set_7_gumghq.jpg"
-                    alt="image 1"
-                    className="object-cover object-center w-full h-full rounded-xl"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648817967/web/homepage-v3/Spring_Women_Day_Set_Three_Look_1_kajgr8.png"
+                    alt="sofas"
+                    className="object-cover object-center w-full h-full rounded-lg"
                     layout="fill"
                     placeholder="blur"
                     blurDataURL={blurredBgProduct}
                   />
                 </div>
-              </div>
-              <div className="rounded-xl">
-                <div className="bg-gray-100 aspect-w-3 aspect-h-4 rounded-xl">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/w_600/v1644042492/web/homepage-v3/Website-design-set-92_wymkdg.jpg"
-                    alt="image 1"
-                    className="object-cover object-center w-full h-full rounded-xl"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg lg:text-xl">Bedroom Styles</h3>
+                  </div>
+                  <div className="flex items-center justify-center w-8 h-8 bg-black rounded-full lg:w-10 lg:h-10">
+                    <ArrowRightIcon className="inline w-4 h-4 text-white" />
+                  </div>
                 </div>
               </div>
+            </div>
+            <div className="mt-4 text-center">
               <button
-                className="col-span-2 rounded-xl sm:col-span-1"
+                type="button"
+                className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                 onClick={() => {
                   PushEvent({
-                    category: `Explore Sets`,
-                    action: `Go to Room Selection`,
-                    label: `HP Explore Sets`,
+                    category: `Shop by Category`,
+                    action: `Go to Shop All Page`,
+                    label: `Shop Now`,
                   });
                   location.href = '/room-select';
                 }}
               >
-                <div className="relative bg-orange-300 aspect-w-2 aspect-h-1 sm:aspect-w-3 sm:aspect-h-4 rounded-xl">
-                  <div className="flex flex-col items-end justify-between p-6 sm:p-4 md:p-8">
-                    <div className="flex items-center justify-center bg-white rounded-full h-14 w-14">
-                      <ArrowRightIcon className="inline w-6 h-6" />
-                    </div>
-                    <div className="w-full text-left sm:text-center">
-                      <h3 className="text-3xl leading-snug text-orange-800 sm:text-2xl md:text-3xl xl:leading-snug xl:text-5xl">
-                        Explore Sets
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                Explore All Styles
               </button>
             </div>
           </div>
@@ -136,9 +170,12 @@ export const Home = (): JSX.Element => {
                       From Pinterest to{isMobile === 'true' ? <br /> : ' '}
                       <span className="text-[#F5296E]">your home</span>
                     </HomeSectionTitle.MainTitle>
-                    <HomeSectionTitle.Description align="left">
-                      Inspiration tucked away in Pinterest Boards? Connect and shop everything you love from your pins.
-                    </HomeSectionTitle.Description>
+                    {isMobile !== 'true' && (
+                      <HomeSectionTitle.Description align="left">
+                        Inspiration tucked away in Pinterest Boards? Connect and shop everything you love from your
+                        pins.
+                      </HomeSectionTitle.Description>
+                    )}
                   </HomeSectionTitle>
                 </div>
                 <button
@@ -173,6 +210,132 @@ export const Home = (): JSX.Element => {
               </div>
             </div>
           )}
+
+          {/* Section Start */}
+          <div className="container mx-auto px-4 mt-32 mb-8">
+            <HomeSectionTitle className="text-left sm:text-center">
+              <HomeSectionTitle.MainTitle>
+                Shop all things home in <span className="text-[#F5296E]">one place</span>
+              </HomeSectionTitle.MainTitle>
+              {isMobile !== 'true' && (
+                <HomeSectionTitle.Description align="center">
+                  Discover thousands of products from all your favorite brands in a single click!
+                </HomeSectionTitle.Description>
+              )}
+            </HomeSectionTitle>
+          </div>
+          <div className="container px-4 mx-auto mb-20">
+            <div className="grid grid-cols-1 gap-4 md:gap-4 md:grid-cols-3">
+              <div
+                className="flex-1 p-4 lg:p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Sofas List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Sofas';
+                }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg lg:text-xl">Sofas</h3>
+                  </div>
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
+                    <ArrowRightIcon className="inline w-4 h-4" />
+                  </div>
+                </div>
+                <div className="aspect-w-2 aspect-h-1 w-full">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386536/spj-v2/sofas_m12dj0.png"
+                    alt="sofas"
+                    className="object-contain object-center w-full h-full"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+
+              <div
+                className="flex-1 p-4 bg-blue-100 lg:p-8 rounded-xl hover:cursor-pointer"
+                // onClick={() => (location.href = '/shop?subcategory=Beds')}
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Coffee Tables List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables';
+                }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg leading-tight lg:text-xl lg:leading-tight w-min lg:w-full">Coffee Tables</h3>
+                  </div>
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
+                    <ArrowRightIcon className="inline w-4 h-4" />
+                  </div>
+                </div>
+                <div className="aspect-w-2 aspect-h-1 w-full">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386529/spj-v2/coffee_tables_vltvlc.png"
+                    alt="coffee tables"
+                    className="object-contain object-center w-full h-full"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+              <div
+                className="flex-1 p-4 bg-teal-100 lg:p-8 rounded-xl hover:cursor-pointer"
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Beds List Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop?subcategory=Beds';
+                }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg lg:text-xl">Beds</h3>
+                  </div>
+                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
+                    <ArrowRightIcon className="inline w-4 h-4" />
+                  </div>
+                </div>
+                <div className="aspect-w-2 aspect-h-1 w-full">
+                  <Image
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386383/spj-v2/Beds_qrwweq.png"
+                    alt="beds"
+                    className="object-contain object-center w-full h-full"
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={blurredBgProduct}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <button
+                type="button"
+                className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop by Category`,
+                    action: `Go to Shop All Page`,
+                    label: `Shop Now`,
+                  });
+                  location.href = '/shop';
+                }}
+              >
+                Explore All
+              </button>
+            </div>
+          </div>
 
           {/* Section Start */}
           <div className="container px-4 mx-auto xl:my-40 my-32 xl:px-20">
@@ -211,10 +374,12 @@ export const Home = (): JSX.Element => {
                     <br />
                     <span className="text-[#F5296E]">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
-                  <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
-                    In just 7 days, get 3D Designs of your actual room with products you can shop right away on
-                    Spacejoy!
-                  </HomeSectionTitle.Description>
+                  {isMobile !== 'true' && (
+                    <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
+                      In just 7 days, get 3D Designs of your actual room with products you can shop right away on
+                      Spacejoy!
+                    </HomeSectionTitle.Description>
+                  )}
                 </HomeSectionTitle>
                 <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
                   <a target="_blank" rel="noopener noreferrer">
@@ -234,159 +399,6 @@ export const Home = (): JSX.Element => {
                   </a>
                 </Link>
               </div>
-            </div>
-          </div>
-
-          {/* Section Start */}
-          <div className="container mx-auto px-4 mt-32 mb-8">
-            <HomeSectionTitle className="text-left sm:text-center">
-              <HomeSectionTitle.MainTitle>
-                Shop all things home in <span className="text-[#F5296E]">one place</span>
-              </HomeSectionTitle.MainTitle>
-              <HomeSectionTitle.Description align="center">
-                Discover thousands of products from all your favorite brands in a single click!
-              </HomeSectionTitle.Description>
-            </HomeSectionTitle>
-          </div>
-          <div className="container px-4 mx-auto mb-20">
-            <div className="grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4">
-              <div
-                className="flex-1 p-4 lg:p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Sofas List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Sofas';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Sofas</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386536/spj-v2/sofas_m12dj0.png"
-                    alt="sofas"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div
-                className="flex-1 p-4 bg-red-100 lg:p-8 rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Chairs List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Chairs';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Chairs</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386525/spj-v2/chairs_ycetok.png"
-                    alt="chairs"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div
-                className="flex-1 p-4 bg-blue-100 lg:p-8 rounded-xl hover:cursor-pointer"
-                // onClick={() => (location.href = '/shop?subcategory=Beds')}
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Coffee Tables List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg leading-tight lg:text-xl lg:leading-tight w-min lg:w-full">Coffee Tables</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386529/spj-v2/coffee_tables_vltvlc.png"
-                    alt="coffee tables"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div
-                className="flex-1 p-4 bg-teal-100 lg:p-8 rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Beds List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Beds';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Beds</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386383/spj-v2/Beds_qrwweq.png"
-                    alt="beds"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="mt-4 text-center">
-              <button
-                type="button"
-                className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Shop All Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop';
-                }}
-              >
-                Explore All
-              </button>
             </div>
           </div>
 
@@ -439,7 +451,9 @@ export const Home = (): JSX.Element => {
               <HomeSectionTitle.MainTitle>
                 <span className="text-[#F5296E]">Why</span> Spacejoy?
               </HomeSectionTitle.MainTitle>
-              <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
+              {isMobile !== 'true' && (
+                <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
+              )}
             </HomeSectionTitle>
             <div className="mt-6">
               <Carousel centerPadding="0%" centerMode customButtons slidesToShow={4} position={position.outside}>
@@ -487,9 +501,11 @@ export const Home = (): JSX.Element => {
           <div className="container mx-auto px-4 mt-32 mb-12">
             <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
-              <HomeSectionTitle.Description align="center">
-                From a corner to a whole room, see how our customers are transforming their homes
-              </HomeSectionTitle.Description>
+              {isMobile !== 'true' && (
+                <HomeSectionTitle.Description align="center">
+                  From a corner to a whole room, see how our customers are transforming their homes
+                </HomeSectionTitle.Description>
+              )}
             </HomeSectionTitle>
           </div>
           <OutputGallery />
@@ -508,3 +524,4 @@ export const Home = (): JSX.Element => {
 };
 
 export default React.memo(Home);
+
