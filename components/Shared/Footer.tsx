@@ -252,6 +252,13 @@ const Footer: React.FC = () => {
             </Link>
           </div>
           <div className="my-2 sm:m-5">
+            <Link href={`/privacy-policy`}>
+              <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                Privacy Policy
+              </a>
+            </Link>
+          </div>
+          <div className="my-2 sm:m-5">
             <Link href="/terms">
               <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                 Terms Of Service

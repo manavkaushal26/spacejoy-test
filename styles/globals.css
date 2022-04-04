@@ -180,3 +180,14 @@ footer li a {
 .with-space .slick-list {
   margin: 0 -10px;
 }
+
+.privacy-policy ol,
+.privacy-policy ul {
+  /* list-style: lower-alpha; */
+  /* margin: 0; */
+  padding-left: 40px;
+}
+
+.privacy-policy a {
+  @apply text-blue-500 break-words;
+}

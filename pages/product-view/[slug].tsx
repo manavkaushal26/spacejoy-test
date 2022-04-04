@@ -691,7 +691,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
                 </div>
 
                 {finalArrayOfOffers.length !== 0 && (
-                  <Disclosure>
+                  <Disclosure defaultOpen>
                     {({ open }) => (
                       <>
                         <Disclosure.Button
