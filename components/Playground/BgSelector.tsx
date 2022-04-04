@@ -1,165 +1,202 @@
 import { XIcon } from '@heroicons/react/outline';
 import { NavSelectContext } from '@store/NavSelect';
 import { PushEvent } from '@utils/analyticsLogger';
+import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 
 export const RoomImageList = [
+  //ENTRYWAY
   {
     id: 1,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648034023/spj-v2/DIY/room-bg/EW10_tc34ed.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648034023/spj-v2/DIY/room-bg/EW10_tc34ed.jpg",
+    url: 'v1648034023/spj-v2/DIY/room-bg/EW10_tc34ed.jpg',
   },
   {
     id: 2,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648034024/spj-v2/DIY/room-bg/EW3_ytx2tk.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648034024/spj-v2/DIY/room-bg/EW3_ytx2tk.jpg",
+    url: 'v1648034024/spj-v2/DIY/room-bg/EW3_ytx2tk.jpg',
   },
   {
     id: 3,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648034024/spj-v2/DIY/room-bg/EW1_rcocoe.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648034024/spj-v2/DIY/room-bg/EW1_rcocoe.jpg",
+    url: 'v1648034024/spj-v2/DIY/room-bg/EW1_rcocoe.jpg',
+  },
+  //LIVING ROOMS
+  {
+    id: 1,
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room9_bnln6g.png',
+  },
+  {
+    id: 2,
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room17_avlidb.png',
+  },
+  {
+    id: 3,
+    url: 'v1648548470/spj-v2/DIY/room-bg/Room12_aibivq.png',
   },
   {
     id: 4,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589614/spj-v2/DIY/room-bg/final_BR1_ioyrvq.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589614/spj-v2/DIY/room-bg/final_BR1_ioyrvq.jpg",
+    url: 'v1648548470/spj-v2/DIY/room-bg/Room8_okmnyt.png',
   },
   {
     id: 5,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589614/spj-v2/DIY/room-bg/Final_BR4_wqo2xq.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589614/spj-v2/DIY/room-bg/Final_BR4_wqo2xq.jpg",
+    url: 'v1648548470/spj-v2/DIY/room-bg/Room13_arqozg.png',
   },
   {
     id: 6,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589615/spj-v2/DIY/room-bg/Final_BR6_tiacpn.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589615/spj-v2/DIY/room-bg/Final_BR6_tiacpn.jpg",
+    url: 'v1648548470/spj-v2/DIY/room-bg/Room11_ctmtgz.png',
   },
   {
     id: 7,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589615/spj-v2/DIY/room-bg/Final_BR5_fx1qbt.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589615/spj-v2/DIY/room-bg/Final_BR5_fx1qbt.jpg",
+    url: 'v1648548470/spj-v2/DIY/room-bg/Room16_z7buqz.png',
   },
   {
     id: 8,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589615/spj-v2/DIY/room-bg/Final_BR3_qzgn0f.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589615/spj-v2/DIY/room-bg/Final_BR3_qzgn0f.jpg",
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room10_zriqch.png',
   },
   {
     id: 9,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589615/spj-v2/DIY/room-bg/Final_BR2_jromrv.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589615/spj-v2/DIY/room-bg/Final_BR2_jromrv.jpg",
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room18_zdynir.png',
   },
   {
     id: 10,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589615/spj-v2/DIY/room-bg/Final_BR8_gdtlsu.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589615/spj-v2/DIY/room-bg/Final_BR8_gdtlsu.jpg",
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room9_bnln6g.png',
   },
   {
     id: 11,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589616/spj-v2/DIY/room-bg/Final_BR9_ubb1k5.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589616/spj-v2/DIY/room-bg/Final_BR9_ubb1k5.jpg",
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room7_axv8dr.png',
   },
   {
     id: 12,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589616/spj-v2/DIY/room-bg/Final_BR10_kdm1zu.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589616/spj-v2/DIY/room-bg/Final_BR10_kdm1zu.jpg",
+    url: 'v1648548469/spj-v2/DIY/room-bg/Room17_avlidb.png',
   },
   {
     id: 13,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589615/spj-v2/DIY/room-bg/Final_BR7_ykbwg1.jpg',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1633589615/spj-v2/DIY/room-bg/Final_BR7_ykbwg1.jpg",
+    url: 'v1648548468/spj-v2/DIY/room-bg/Room1_amt0gy.png',
   },
   {
     id: 14,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room9_bnln6g.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room9_bnln6g.png",
+    url: 'v1648548468/spj-v2/DIY/room-bg/Room4_ppv1sy.png',
   },
   {
     id: 15,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room17_avlidb.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room17_avlidb.png",
+    url: 'v1648548468/spj-v2/DIY/room-bg/Room15_ay5boz.png',
   },
   {
     id: 16,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548470/spj-v2/DIY/room-bg/Room12_aibivq.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548470/spj-v2/DIY/room-bg/Room12_aibivq.png",
+    url: 'v1648548468/spj-v2/DIY/room-bg/Room2_je5g4d.png',
   },
   {
     id: 17,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548470/spj-v2/DIY/room-bg/Room8_okmnyt.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548470/spj-v2/DIY/room-bg/Room8_okmnyt.png",
+    url: 'v1648548468/spj-v2/DIY/room-bg/Room5_c7lggw.png',
   },
   {
     id: 18,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548470/spj-v2/DIY/room-bg/Room13_arqozg.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548470/spj-v2/DIY/room-bg/Room13_arqozg.png",
+    url: 'v1648548468/spj-v2/DIY/room-bg/Room6_lmntau.png',
   },
   {
     id: 19,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548470/spj-v2/DIY/room-bg/Room11_ctmtgz.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548470/spj-v2/DIY/room-bg/Room11_ctmtgz.png",
+    url: 'v1649067740/spj-v2/DIY/room-bg/2022-new-room-templates/living-room/Layout_3_LR_final_qqnpzu.jpg',
   },
   {
     id: 20,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548470/spj-v2/DIY/room-bg/Room16_z7buqz.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548470/spj-v2/DIY/room-bg/Room16_z7buqz.png",
+    url: 'v1649067740/spj-v2/DIY/room-bg/2022-new-room-templates/living-room/Layout_4_LR_final_vqd8ri.jpg',
   },
   {
     id: 21,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room10_zriqch.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room10_zriqch.png",
+    url: 'v1649067740/spj-v2/DIY/room-bg/2022-new-room-templates/living-room/Layout_1_LR_final_zo3uzl.jpg',
   },
   {
     id: 22,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room18_zdynir.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room18_zdynir.png",
+    url: 'v1649067740/spj-v2/DIY/room-bg/2022-new-room-templates/living-room/Layout_2_LR_final_o9nwla.jpg',
+  },
+  //BEDROOMS
+  {
+    id: 1,
+    url: 'v1649063366/spj-v2/DIY/room-bg/Bedroom/BR_5_s0lvee.jpg',
   },
   {
-    id: 23,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room9_bnln6g.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room9_bnln6g.png",
+    id: 2,
+    url: 'v1649063365/spj-v2/DIY/room-bg/Bedroom/BR_8_y05co1.jpg',
   },
   {
-    id: 24,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room7_axv8dr.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room7_axv8dr.png",
+    id: 3,
+    url: 'v1649063365/spj-v2/DIY/room-bg/Bedroom/BR_9_cibscy.jpg',
   },
   {
-    id: 25,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548469/spj-v2/DIY/room-bg/Room17_avlidb.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548469/spj-v2/DIY/room-bg/Room17_avlidb.png",
+    id: 4,
+    url: 'v1649063365/spj-v2/DIY/room-bg/Bedroom/BR_7_nf3kdq.jpg',
   },
   {
-    id: 26,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548468/spj-v2/DIY/room-bg/Room1_amt0gy.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548468/spj-v2/DIY/room-bg/Room1_amt0gy.png",
+    id: 5,
+    url: 'v1649063365/spj-v2/DIY/room-bg/Bedroom/BR_6_vu7rqo.jpg',
   },
   {
-    id: 27,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548468/spj-v2/DIY/room-bg/Room4_ppv1sy.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548468/spj-v2/DIY/room-bg/Room4_ppv1sy.png",
+    id: 6,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_4_tklyih.jpg',
   },
   {
-    id: 28,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548468/spj-v2/DIY/room-bg/Room15_ay5boz.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548468/spj-v2/DIY/room-bg/Room15_ay5boz.png",
+    id: 7,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_3_mplqcx.jpg',
   },
   {
-    id: 29,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548468/spj-v2/DIY/room-bg/Room2_je5g4d.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548468/spj-v2/DIY/room-bg/Room2_je5g4d.png",
+    id: 8,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_21_rico80.jpg',
   },
   {
-    id: 30,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548468/spj-v2/DIY/room-bg/Room5_c7lggw.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548468/spj-v2/DIY/room-bg/Room5_c7lggw.png",
+    id: 9,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_20_ummpaz.jpg',
   },
   {
-    id: 31,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/v1648548468/spj-v2/DIY/room-bg/Room6_lmntau.png',
-    thumbnailUrl:"https://res.cloudinary.com/spacejoy/image/upload/w_400,f_auto,q_auto/v1648548468/spj-v2/DIY/room-bg/Room6_lmntau.png",
+    id: 10,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_12_lxzcdo.jpg',
+  },
+  {
+    id: 11,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_2_yrljiw.jpg',
+  },
+  {
+    id: 12,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_19_b0fb5x.jpg',
+  },
+  {
+    id: 13,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_18_limsdq.jpg',
+  },
+  {
+    id: 14,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_17_minm8r.jpg',
+  },
+  {
+    id: 15,
+    url: 'v1649063364/spj-v2/DIY/room-bg/Bedroom/BR_16_wntj5a.jpg',
+  },
+  {
+    id: 16,
+    url: 'v1649063363/spj-v2/DIY/room-bg/Bedroom/BR_13_bdhvr6.jpg',
+  },
+  {
+    id: 17,
+    url: 'v1649063363/spj-v2/DIY/room-bg/Bedroom/BR_14_hxw3uk.jpg',
+  },
+  {
+    id: 18,
+    url: 'v1649063363/spj-v2/DIY/room-bg/Bedroom/BR_15_vpyk7n.jpg',
+  },
+  {
+    id: 19,
+    url: 'v1649063363/spj-v2/DIY/room-bg/Bedroom/BR_10_qht1tc.jpg',
+  },
+  {
+    id: 20,
+    url: 'v1649063363/spj-v2/DIY/room-bg/Bedroom/BR_1_bqkmvi.jpg',
+  },
+  {
+    id: 21,
+    url: 'v1649067743/spj-v2/DIY/room-bg/2022-new-room-templates/bedroom/Layout_2_BR_Final_ebdlt9.png',
+  },
+  {
+    id: 22,
+    url: 'v1649067742/spj-v2/DIY/room-bg/2022-new-room-templates/bedroom/Layout_1_BR_Final_ita0qt.png',
   },
 
 ];
@@ -333,16 +370,16 @@ const BgSelector: React.FC = () => {
       <div>
         <h2 className="mb-1 font-bold">Rooms</h2>
         <div className="grid grid-cols-3 gap-4 overflow-scroll">
-          {RoomImageList.map((img) => {
+          {RoomImageList.map((img, idx) => {
             return (
               <div
-                onClick={() => setBg(img.url, 'bg-img')}
-                key={img.id}
+                onClick={() => setBg(`${cloudinary.baseDeliveryURL}/${img?.url}`, 'bg-img')}
+                key={idx}
                 className={`border-2 border-transparent rounded box-border flex-shrink-0 h-24 last:mr-0 relative cursor-pointer overflow-hidden ${
-                  bg?.bgImgUrl?.value === img.url && 'border-black'
+                  bg?.bgImgUrl?.value === `${cloudinary.baseDeliveryURL}/${img?.url}` && 'border-black'
                 }`}
               >
-                <Image src={img.thumbnailUrl} layout="fill" alt={img?.url} objectFit="cover" quality={100} />
+                <Image src={`${cloudinary.baseDeliveryURL}/w_400,f_auto,q_auto/${img.url}`} layout="fill" alt={`${cloudinary.baseDeliveryURL}/${img?.url}`} objectFit="cover" quality={100} />
               </div>
             );
           })}
