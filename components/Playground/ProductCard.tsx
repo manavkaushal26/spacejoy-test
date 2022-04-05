@@ -88,6 +88,15 @@ const ProductCard: React.FC<ProductCardInterface> = ({
           </p>
         </div>
       )}
+      {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price ? (
+        <>
+          <div className="absolute z-10 top-2 left-2">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#F5296E] text-white">
+              SALE
+            </span>
+          </div>
+        </>
+      ) : null}
 
       {itemStatus && (
         <div className="inset-0 absolute flex z-30 justify-center items-center bg-black/40">
@@ -120,6 +129,16 @@ const ProductCard: React.FC<ProductCardInterface> = ({
             <span className="font-bold">
               {priceToLocaleString(parseFloat(product?.displayPrice) || product?.price)}
             </span>
+            {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price && (
+              <>
+                <small className="inline-block ml-2 text-sm text-gray-500 line-through">
+                  {priceToLocaleString(product?.msrp)}
+                </small>
+                <small className="text-xs text-[#F5296E] inline-block ml-2">
+                  {(((product.msrp - product.price) / product.msrp) * 100).toFixed(0)}% OFF
+                </small>
+              </>
+            )}
           </p>
           {!withShopNow && (
             <Link
