@@ -40,7 +40,7 @@ export const Home = (): JSX.Element => {
         <Head>
           <meta key="keywords" name="keywords" content="online furniture store, home decor store, home design diy" />
         </Head>
-        {/* <Layout.Banner />  */}
+        <Layout.Banner /> 
         <Layout.Header />
         <Layout.Body>
           {isScreenSmall && (
