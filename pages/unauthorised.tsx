@@ -17,7 +17,7 @@ const UnAuthorised: React.FC<ComponentInterface> = ({ title }) => {
         <title>{title} | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Layout.Banner />  */}
+      <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
         <EmptyState

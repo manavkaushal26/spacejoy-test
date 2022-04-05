@@ -32,6 +32,7 @@ const Index = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="container px-4 mx-auto xl:p-0">

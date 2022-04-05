@@ -59,6 +59,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
       <Head>
         <title>{`${correctedCollageName?.[0]?.toLocaleUpperCase()}${correctedCollageName?.slice(1)}`} | Spacejoy</title>
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <NavSelectContextProvider>

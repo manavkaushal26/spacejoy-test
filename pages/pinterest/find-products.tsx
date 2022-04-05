@@ -18,6 +18,7 @@ const FindProducts: NextPage<FindProductsProps> = ({ searchQuery, imgSrc, boardI
         <title>Pinterest | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="container mx-auto px-4">

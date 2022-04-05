@@ -34,7 +34,7 @@ const getExternalLinks = () => {
 const SiteMap: React.FC = () => {
   return (
     <Layout>
-      {/* <Layout.Banner />  */}
+      <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
         <div className="container relative py-16 mx-auto px-4">

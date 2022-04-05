@@ -28,7 +28,7 @@ const V3 = () => {
       </div>
       <div className="flex flex-col min-h-[700px] justify-center items-center relative z-10">
         <div
-          className={`bg-white bg-opacity-70 rounded-xl py-6 px-14 absolute sm:mx-0 sm:top-10 sm:right-10 opacity-2 space-y-4 ${
+          className={`bg-white bg-opacity-70 rounded-xl py-6 px-14 absolute sm:mx-0 sm:top-15 sm:right-10 opacity-2 space-y-4 ${
             isScreenSmall ? 'bottom-10' : ''
           }`}
         >

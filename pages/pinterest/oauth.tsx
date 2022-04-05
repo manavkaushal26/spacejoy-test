@@ -94,6 +94,7 @@ const Pinterestoauth = ({ code }) => {
       <Head>
         <title key="title">Pinterest | {company.product}</title>
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="container mx-auto flex flex-col justify-center	items-center min-h-screen">

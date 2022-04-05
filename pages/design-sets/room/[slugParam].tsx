@@ -121,6 +121,7 @@ const CollageView: NextPage<CollageViewProps> = ({
         <title>{`${name?.[0].toUpperCase()}${name?.slice(1)}`} | Spacejoy</title>
         <base href="/" />
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="bg-gray-100">

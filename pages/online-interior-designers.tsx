@@ -9,6 +9,7 @@ export const search = (): JSX.Element => (
       <title>Team | Spacejoy</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
+    <Layout.Banner />
     <Layout.Header />
     <Layout.Body>
       <DesignTeam />

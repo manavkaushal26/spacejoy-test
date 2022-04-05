@@ -11,6 +11,7 @@ const RoomSelect = (props) => {
         <title>Furnish any room in minutes, only on Spacejoy. Get started!</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <RoomSelectionList feedData={topCollages} />

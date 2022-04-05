@@ -29,6 +29,7 @@ const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured
 export const Home = (): JSX.Element => {
   const router = useRouter();
   const { data } = useFirebaseContext();
+  const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
   const isMobile = Cookies.get('isMobile');
   const { width } = useWindowSize();
 	const isScreenSmall = useMemo(() => width <= 992, [width]);
@@ -40,11 +41,11 @@ export const Home = (): JSX.Element => {
         <Head>
           <meta key="keywords" name="keywords" content="online furniture store, home decor store, home design diy" />
         </Head>
-        <Layout.Banner /> 
+        <Layout.Banner />
         <Layout.Header />
         <Layout.Body>
           {isScreenSmall && (
-            <div className="mb-4 px-4">
+            <div className={`px-4 ${isBroadcastVisible ? 'relative top-6 mb-12' : 'mb-4'}`}>
               <TopBarMobile />
             </div>
             

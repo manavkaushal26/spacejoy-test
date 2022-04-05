@@ -34,6 +34,7 @@ const RoomSelect: NextPage<RoomSelectProps> = ({ searchQuery }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <FindYourInspirationContextProvider searchQuery={searchQuery}>

@@ -11,7 +11,7 @@ const Error = ({ statusCode }: { statusCode: number }): JSX.Element => {
         <title>Help | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Layout.Banner />  */}
+      <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
         <ErrorState status={statusCode} />

@@ -375,7 +375,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
         />
         <base href="/" />
       </Head>
-      {/* <Layout.Banner />  */}
+      <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
         <div className="bg-white">

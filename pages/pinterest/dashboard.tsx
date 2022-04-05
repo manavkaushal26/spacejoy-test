@@ -78,6 +78,7 @@ const Dashboard: NextPage<DashboardProps> = ({ token, refreshToken, boardId }) =
       <Head>
         <title>Pinterest dashboard | Spacejoy</title>
       </Head>
+      <Layout.Banner />
       <Layout.Header />
 
       <Layout.Body>

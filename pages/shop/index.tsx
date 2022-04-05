@@ -194,7 +194,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Layout.Banner />  */}
+      <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
         <div className="min-h-screen bg-gray-100" ref={shopPageTopRef}>

@@ -3,6 +3,7 @@ import ShopCategories from '@components/Shared/ShopCategories';
 import { Dialog } from '@headlessui/react';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
@@ -17,6 +18,8 @@ import UserNav from './UserNav';
 
 const Header: React.FC = () => {
   const router = useRouter();
+  const { data } = useFirebaseContext();
+  const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
 
   const [refSource, setRefSource] = useState<any>('');
   const [subNavContent, setSubNavContent] = useState('stories');
@@ -30,6 +33,7 @@ const Header: React.FC = () => {
 
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const toggleMenu = () => setIsOpenMenu((prevState) => !prevState);
+  
 
   const handleHover = (value) => {
     setIsOpenSubNav(value);
@@ -89,7 +93,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className={`bg-white sticky top-0 z-50`}>
+      <header className={`bg-white sticky ${isBroadcastVisible ? 'top-10 mb-10' : 'top-0'} z-50`}>
         <div className="container px-4 mx-auto overflow-hidden">
           <div className="lg:flex lg:items-center h-20 hidden">
             <Link href="/">
@@ -283,7 +287,7 @@ const Header: React.FC = () => {
         open={isOpenMenu}
         onClose={() => setIsOpenMenu(false)}
         as="div"
-        className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+        className={`fixed ${isBroadcastVisible ? 'top-10' : ''} bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
       >
         <Dialog.Overlay />
         <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl absolute top-10 left-1/3">

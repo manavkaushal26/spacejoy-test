@@ -6,7 +6,7 @@ import React from 'react';
 const TopBarMobile = () => {
 
   return (
-    <div className="flex space-x-2 overflow-x-auto justify-start">
+    <div className="flex space-x-2 overflow-x-auto hide-scrollbar justify-start">
       <div className="p-2 cursor-pointer bg-gray-100  rounded-md border-2 border-b-indigo-500 mb-2">
         <Link href={`/room-select`} passHref>
           <a rel="noreferrer">

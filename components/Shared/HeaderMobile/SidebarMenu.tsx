@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useMemo, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { PushEvent } from '@utils/analyticsLogger';
 import { TabOffers } from '../TabOffers';
-import { HireADesignerHeader } from '../HireADesignerHeader';
 
 export default function MobileSidebar({ data, open, setOpen }) {
   const topLevelCategories = data?.map((item)=> item?.name);
@@ -20,8 +19,22 @@ export default function MobileSidebar({ data, open, setOpen }) {
   const [currentMenus, setCurrentMenus] = useState(data);
   const [previousStack, setPreviousStack] = useState([]);
   const [activeTopLevelCategory, setActiveTopLevelCategory] = useState('');
+  const [menuItemNames, setMenuItemNames] = useState([]);
 
-  const renderMenuItems = (data) => {
+  
+  const RenderMenuItems = (data) => {
+
+    useMemo(()=>{
+      const menuNames = data?.reduce((acc, item)=>{
+        acc.push(item?.name);
+        
+        return acc;
+      }, []);
+      
+      setMenuItemNames(menuNames);
+    }, [data]);
+  
+  
     return data?.map((item) =>
       item?.children && item?.children.length ? (
         <div
@@ -143,8 +156,7 @@ export default function MobileSidebar({ data, open, setOpen }) {
                               {/* Only for Shop Nav in navigation */}
                               {/* {previousStack[0]?.map(
                                 (item) => */}
-                                
-                                {activeTopLevelCategory === 'Shop' && (
+                                {activeTopLevelCategory === 'Shop' && !menuItemNames.includes('Shop') && (
                                   <div className="pt-4 px-4 sm:px-6 space-y-6">
                                     <div>
                                       <TabOffers />
@@ -155,7 +167,7 @@ export default function MobileSidebar({ data, open, setOpen }) {
                                   </div>
                                 )}
                               {/* )} */}
-                              {renderMenuItems(currentMenus)}
+                              {RenderMenuItems(currentMenus)}
                             </>
                           </div>
                         )}

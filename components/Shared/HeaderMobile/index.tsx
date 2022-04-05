@@ -10,6 +10,7 @@ import SidebarMenu from './SidebarMenu';
 import { oldSpacejoyUrl } from '@utils/config';
 import UserNav from '../Header/UserNav';
 import { splitCategories, hireADesignerCat } from '@utils/Mocks/SplitCategoriesData';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 
 const menuData = [
   {
@@ -32,6 +33,7 @@ const menuData = [
 
 const HeaderMobile: React.FC = () => {
   const router = useRouter();
+  const { data } = useFirebaseContext();
   const [refSource, setRefSource] = useState<any>('');
   const [open, setOpen] = useState(false);
 
@@ -64,7 +66,7 @@ const HeaderMobile: React.FC = () => {
 
   return (
     <>
-      <div className={`bg-white sticky top-0 z-50`}>
+      <div className={`bg-white sticky ${data?.broadcastV2?.broadcaststripVisible ? 'top-10 mb-6' : 'top-0'} z-50`}>
         <div className="container px-4 mx-auto overflow-hidden">
           <div className="flex items-center h-20 lg:hidden">
             <div className="flex items-center space-x-3 flex-grow">

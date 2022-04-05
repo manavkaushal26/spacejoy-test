@@ -325,7 +325,7 @@ export default function Cart() {
         <title>Cart | Spacejoy</title>
       </Head>
       <Layout>
-        {/* <Layout.Banner />  */}
+        <Layout.Banner /> 
         <Layout.Header />
         <Layout.Body>
           <div className="bg-white">

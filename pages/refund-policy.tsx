@@ -15,7 +15,7 @@ const Terms: React.FC = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Layout.Banner />  */}
+      <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
         <RefundContent />

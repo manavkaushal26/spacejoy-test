@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import React, { Fragment } from 'react';
 
 interface StaticComponents {
@@ -21,11 +22,14 @@ const SubNav: React.FC<ModalProps> & StaticComponents = ({
   hoverNav,
   updateNavStatus,
 }) => {
+  const { data } = useFirebaseContext();
+  const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
+
   return (
     <Transition appear show={subNavState} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+        className={`fixed ${isBroadcastVisible ? 'top-10' : ''} bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
         onClose={() => {
           closeSubNav();
           onCloseCallback && onCloseCallback();
@@ -46,15 +50,15 @@ const SubNav: React.FC<ModalProps> & StaticComponents = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0" />
+            <Dialog.Overlay className={`fixed ${isBroadcastVisible ? 'top-10 mb-10' : ''} inset-0`} />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="opacity-0  -translate-y-60"
-            enterTo="opacity-100 translate-y-0"
+            enterTo={`opacity-100 ${isBroadcastVisible ? 'translate-y-10' : 'translate-y-0'}`}
             leave="transition ease-in-out duration-300 transform"
-            leaveFrom="opacity-100 translate-y-0"
+            leaveFrom={`opacity-100 ${isBroadcastVisible ? 'translate-y-10' : 'translate-y-0'}`}
             leaveTo="opacity-0 -translate-y-60"
           >
             <div className="container mx-auto overflow-hidden relative pt-24 pb-4 text-left bg-white shadow-xl rounded-b-lg">
