@@ -116,6 +116,8 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
     const body = {
       asset_id: currentVerticalForRecommendations,
       canvasAvailability: true,
+      inStock: true,
+      top_n: 20,
     };
 
     const resData = await fetcher({
