@@ -14,7 +14,7 @@ const WhyShopWithSpacejoy = [
   },
   {
     id: 3,
-    iconLink: 'https://res.cloudinary.com/spacejoy/image/upload/v1648482660/web/icons/Group_78_cpnmtm.svg',
+    iconLink: 'https://res.cloudinary.com/spacejoy/image/upload/v1649246109/web/icons/Icon-easy_returns_pan8co.svg',
     title: 'Easy Returns',
     content: 'Our team will handle all return and exchange requests across all brands.'
 
