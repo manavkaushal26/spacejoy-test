@@ -26,7 +26,7 @@ const data = [
   {
     firstName: 'Heather',
     lastName: 'Wise',
-    icon: 'v1611748547/web/designTime/10-Laura_Wright_f4ob5n.png',
+    icon: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
     isReversed: true,
     bg: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
     desc: 'Heather hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Heather loves mid-century modern, boho and eclectic spaces. ',
@@ -187,7 +187,7 @@ const data = [
   {
     firstName: 'Whitney',
     lastName: 'Marlatt',
-    icon: 'v1611748548/web/designTime/21-Lauren_Kokenes_ogfnde.png',
+    icon: 'v1643954917/web/homepage-v3/designers/Whitney_Marlatt_z49ftn.jpg',
     isReversed: false,
     bg: 'v1643954917/web/homepage-v3/designers/Whitney_Marlatt_z49ftn.jpg',
     desc: 'Whitney honed her eye for quality furnishings to produce truly unique, polished and highly functional spaces. With a client first approach, she creates stunning designs across all budgets, timelines, styles, and project requirements. ',

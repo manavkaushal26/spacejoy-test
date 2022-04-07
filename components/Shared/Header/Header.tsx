@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
+import { ExploreIdeasNav } from '../ExploreIdeasNav';
 import { HireADesignerHeader } from '../HireADesignerHeader';
 import SubNav from '../SubNav';
 import { TabOffers } from '../TabOffers';
@@ -76,6 +77,10 @@ const Header: React.FC = () => {
 
         case 'hire a designer':
           return <HireADesignerHeader />;
+
+        case 'explore ideas':
+        return <ExploreIdeasNav/>
+
         default:
           return null;
       }
@@ -206,15 +211,15 @@ const Header: React.FC = () => {
                       />
                     </button>
                   </li>
-                  {/* <li className="flex sm:hidden md:hidden lg:flex">
+                  <li className="flex sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
                       className={`whitespace-nowrap hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
-                        isOpenSubNav && subNavContent === 'stories' ? 'text-red-500' : 'text-gray-700'
+                        isOpenSubNav && subNavContent === 'explore ideas' ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
                         toggleSubNav();
-                        setSubNavContent('stories');
+                        setSubNavContent('explore ideas');
                         PushEvent({
                           category: `Top Nav - Explore Ideas`,
                           action: `Open Explore Ideas Dropdown`,
@@ -225,11 +230,11 @@ const Header: React.FC = () => {
                       Explore Ideas{' '}
                       <ChevronDownIcon
                         className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
-                          isOpenSubNav && subNavContent === 'stories' ? 'rotate-180' : ''
+                          isOpenSubNav && subNavContent === 'explore ideas' ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
-                  </li> */}
+                  </li>
                   <li
                     className="text-sm sm:inline-block md:inline-block lg:hidden cursor-pointer"
                     onClick={() => {

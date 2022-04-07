@@ -12,10 +12,10 @@ const Packages = ({ pricingData }: PricingProps): JSX.Element => {
     <div className="bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="sm:flex sm:flex-col sm:align-center">
+          <div className="mt-12 sm:mt-16 mb-8 sm:mb-16 sm:flex sm:flex-col sm:align-center">
             <SectionTitle
-              feature="Packages"
-              title="Packages Offered by Spacejoy"
+              feature="Unlock the best version of your room here"
+              title="Online Interior Design Packages"
               description="Pick from one of our three online interior design packages, custom-made keeping your budget, style and interior design needs in mind"
             />
           </div>

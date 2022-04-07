@@ -2214,14 +2214,17 @@ export const splitCategories = [
 ];
 
 export const hireADesignerCat = [
-  {
-    name: 'Online Interior Design',
-    // subCategories: [{  }],
-    url: `${oldSpacejoyUrl}/online-interior-design`
-  },
+  
   {
     name: 'Pricing',
-    url: `${oldSpacejoyUrl}/pricing`,
+    url: `/pricing`,
+  },
+];
+
+export const exploreIdeasCat = [
+  {
+    name: 'Online Interior Design',
+    url: `${oldSpacejoyUrl}/online-interior-design`
   },
   {
     name: 'Tips and Guides',
@@ -2230,5 +2233,13 @@ export const hireADesignerCat = [
   {
     name: 'Customer Stories',
     url: `${oldSpacejoyUrl}/customer-stories`,
+  },
+  {
+    name: 'Collection',
+    url: `/collection`,
+  },
+  {
+    name: 'Interior Designs',
+    url: `/interior-designs`,
   },
 ];

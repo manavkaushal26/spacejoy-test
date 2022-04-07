@@ -3,13 +3,12 @@ import React from 'react';
 
 const PackagesAdvantages: React.FC = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container my-20 mx-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          feature="Extra Benefits"
-          title="A better way to design home"
-          description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
-            accusamus quisquam."
+          feature="Why Spacejoy?"
+          title="A better way to create a home you'll love"
+          description="Spacejoy is the easiest, and the fastest way to design & decorate your home. From room makeovers to styling advice and product recommendations, our experts are here to help with it all!"
         />
         <div className="mt-10">
           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
@@ -17,26 +16,28 @@ const PackagesAdvantages: React.FC = () => {
               <dt>
                 <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600">
                   <svg
-                    className="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     aria-hidden="true"
                   >
+                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
                     />
                   </svg>
                 </div>
-                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Competitive exchange rates</p>
+                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Expert designs</p>
               </dt>
-              <dd className="mt-2 ml-16 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                iste dolor cupiditate blanditiis ratione.
+              <dd className="mt-2 ml-16 text-sm sm:text-base text-gray-500">
+                Love a little bit of this, a little bit of that? Our designers are ready to help you create your perfect
+                room
               </dd>
             </div>
             <div className="relative">
@@ -58,11 +59,10 @@ const PackagesAdvantages: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">No hidden fees</p>
+                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Life-like designs</p>
               </dt>
-              <dd className="mt-2 ml-16 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                iste dolor cupiditate blanditiis ratione.
+              <dd className="mt-2 ml-16 text-sm sm:text-base text-gray-500">
+                Skip the guess-work and see your designs as 3D renders that are so life-like, they could be photographs
               </dd>
             </div>
 
@@ -80,20 +80,20 @@ const PackagesAdvantages: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Transfers are instant</p>
+                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">No wait time</p>
               </dt>
-              <dd className="mt-2 ml-16 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                iste dolor cupiditate blanditiis ratione.
+              <dd className="mt-2 ml-16 text-sm sm:text-base text-gray-500">
+                Waiting sucks, we get it! That&apos;s why we deliver the final designs for your room in as little time
+                as possible!
               </dd>
             </div>
 
             <div className="relative">
               <dt>
                 <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600">
-                  <svg
-                    className="h-6 w-6"
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -103,15 +103,15 @@ const PackagesAdvantages: React.FC = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
                     />
                   </svg>
+                  
                 </div>
-                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Mobile notifications</p>
+                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Shopping made easy</p>
               </dt>
-              <dd className="mt-2 ml-16 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                iste dolor cupiditate blanditiis ratione.
+              <dd className="mt-2 ml-16 text-sm sm:text-base  text-gray-500">
+                Easily shop all the products in your design or find the perfect alternatives, right here on Spacejoy
               </dd>
             </div>
           </dl>

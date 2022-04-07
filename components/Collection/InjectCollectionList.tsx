@@ -83,21 +83,21 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
         <div className="container mx-auto px-4 pt-4">
           <div className="flex items-end">
             <div className="flex-1">
-              <p className="text-gray-500">Design ideas for every space</p>
-              <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              <p className="text-sm sm:text-base text-gray-500">Design ideas for every space</p>
+              <h1 className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Choose one to start exploring
               </h1>
             </div>
             <div className="text-right flex-1">
               <Link href="/collection">
-                <a className="text-sm hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1">
+                <a className="text-xs sm:text-sm hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1">
                   See All <ArrowRightIcon className="inline w-4 h-4" />
                 </a>
               </Link>
             </div>
           </div>
           <div className="relative">
-            <AnimateBox className="grid grid-cols-4 xl:grid-cols-6 gap-4 xl:gap-6 2xl:gap-8 my-4 2xl:my-6">
+            <AnimateBox className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 xl:gap-6 2xl:gap-8 my-4 2xl:my-6">
               {list.map((collection) => (
                 <CollectionCard key={collection?._id} cardData={collection} inset />
               ))}

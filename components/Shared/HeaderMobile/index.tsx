@@ -9,7 +9,7 @@ import { useStore } from '@lib/store';
 import SidebarMenu from './SidebarMenu';
 import { oldSpacejoyUrl } from '@utils/config';
 import UserNav from '../Header/UserNav';
-import { splitCategories, hireADesignerCat } from '@utils/Mocks/SplitCategoriesData';
+import { splitCategories, hireADesignerCat, exploreIdeasCat } from '@utils/Mocks/SplitCategoriesData';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 
 const menuData = [
@@ -27,6 +27,12 @@ const menuData = [
     name: 'Shop',
     title: 'Category',
     categories: splitCategories,
+  },
+  {
+    name: 'Explore Ideas',
+    title: 'Ideas',
+    categories: exploreIdeasCat,
+
   },
 ];
 
