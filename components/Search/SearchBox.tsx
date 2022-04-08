@@ -1,4 +1,6 @@
 import CollageCardDimmer from '@components/Collages/CollageCardDimmer';
+import CollectionCardDimmer from '@components/Collection/CollectionCardDimmer';
+import DesignCard from '@components/InteriorDesigns/DesignCard';
 import DesignSetCardV2 from '@components/RoomSelection/DesignSetCardV2';
 import EmptyState from '@components/Shared/EmptyState';
 import ProductCard from '@components/Shop/ProductCard';
@@ -6,7 +8,6 @@ import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
 import { Tab } from '@headlessui/react';
 import { SearchIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
-import useSearch from '@hooks/useSearch';
 import { useShopFilterContext } from '@store/ShopFilterContext';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
@@ -44,15 +45,19 @@ const SearchBox: React.FC = () => {
 
   const [searchString, setSearchString] = useState('');
   const [lastSearchString, setLastSearchString] = useState('');
-  const [searchType, setSearchType] = useState<'products' | 'design-sets'>('products');
+  const [searchType, setSearchType] = useState<'products' | 'design-sets' | 'design-ideas'>('products');
   const [isFetchingDesigns, setIsFetchingDesigns] = useState(false);
   const [isFetchingProducts, setIsFetchingProducts] = useState(false);
+  const [isFetchingDesignIdeas, setIsFetchingDesignIdeas] = useState(false);
 
   const {
-    filters: { retailer: preferredRetailers = []}
+    filters: { retailer: preferredRetailers = [] },
   } = useShopFilterContext();
 
-  const preferredRetailerNames = preferredRetailers?.map((item)=>{return item?.name}) || [];
+  const preferredRetailerNames =
+    preferredRetailers?.map((item) => {
+      return item?.name;
+    }) || [];
 
   const router = useRouter();
 
@@ -65,8 +70,9 @@ const SearchBox: React.FC = () => {
   const clear = () => setSearchString('');
 
   //================================================PAGINATION============================================================
-  const perPageDesigns = 21;
-  const perPageProducts = 20;
+  const perPageDesigns = 30;
+  const perPageProducts = 30;
+  const perPageDesignIdeas = 30;
   //===========================================================/PRODUCTS\=============================================
   const payloadProducts = {
     filters: {
@@ -114,10 +120,16 @@ const SearchBox: React.FC = () => {
   const [pageCountDesigns, setPageCountDesigns] = useState(0);
   const [apiErrorDesigns, setApiErrorDesigns] = useState(null);
 
+  const [designIdeasResults, setDesignIdeasResults] = useState([]);
+  const [pageOffsetDesignIdeas, setPageOffsetDesignIdeas] = useState(0);
+  const [pageCountDesignIdeas, setPageCountDesignIdeas] = useState(0);
+  const [apiErrorDesignIdeas, setApiErrorDesignIdeas] = useState(null);
+
   useEffect(() => {
     if (lastSearchString !== searchString) {
       setPageOffsetDesigns(0);
       setPageOffsetProducts(0);
+      setPageOffsetDesignIdeas(0);
       setLastSearchString(searchString);
     }
 
@@ -143,6 +155,30 @@ const SearchBox: React.FC = () => {
       setDesignsResults(response.data?.data);
       setPageCountDesigns(newPageCount);
     }
+
+    async function fetchDesignIdeasData(keywords) {
+      const endPoint = `${publicRoutes.searchResultsRoute}?skip=${
+        pageOffsetDesignIdeas * perPageDesignIdeas
+      }&limit=${perPageDesignIdeas}`;
+      setIsFetchingDesignIdeas(true);
+      const response = await fetcher({
+        endPoint,
+        method: 'POST',
+        body: { keywords },
+      });
+      setIsFetchingDesignIdeas(false);
+      if (response.statusCode > 300) {
+        setApiErrorDesignIdeas(response.message);
+        setDesignIdeasResults([]);
+        setPageCountDesignIdeas(0);
+
+        return;
+      }
+      const newPageCount = response?.data?.total / perPageDesignIdeas;
+      setDesignIdeasResults(response.data?.hits);
+      setPageCountDesignIdeas(newPageCount);
+    }
+
     async function fetchProductsData() {
       const endPoint = `${publicRoutes.productSearch}?skip=${
         pageOffsetProducts * perPageProducts
@@ -165,11 +201,28 @@ const SearchBox: React.FC = () => {
       setProductsResults(response.data?.hits);
       setPageCountProducts(newPageCount);
     }
-    searchType === 'design-sets' ? fetchDesignsData() : fetchProductsData();
-  }, [pageOffsetDesigns, pageOffsetProducts, enterPress, searchType]);
+    switch (searchType) {
+      case 'design-sets':
+        fetchDesignsData();
+        break;
+      case 'design-ideas':
+        const keywords = searchString?.split(' ');
+        fetchDesignIdeasData(keywords);
+        break;
+      case 'products':
+        fetchProductsData();
+        break;
+      default:
+        fetchProductsData();
+    }
+  }, [pageOffsetDesigns, pageOffsetDesignIdeas, pageOffsetProducts, enterPress, searchType]);
 
   const handlePageChangeDesigns = (event) => {
     setPageOffsetDesigns(event.selected);
+  };
+
+  const handlePageChangeDesignIdeas = (event) => {
+    setPageOffsetDesignIdeas(event.selected);
   };
   //============================================================================================================
   const onChangeSearchText = (e) => {
@@ -224,6 +277,9 @@ const SearchBox: React.FC = () => {
               case 1:
                 setSearchType('design-sets');
                 break;
+              case 2:
+                setSearchType('design-ideas');
+                break;
               default:
                 setSearchType('products');
                 break;
@@ -235,7 +291,7 @@ const SearchBox: React.FC = () => {
               <Tab
                 className={({ selected }) =>
                   classNames(
-                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-8',
+                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-2 sm:px-8',
                     'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-white ring-white ring-opacity-60',
                     selected ? 'bg-black text-white shadow' : 'text-black bg-gray-100'
                   )
@@ -246,13 +302,24 @@ const SearchBox: React.FC = () => {
               <Tab
                 className={({ selected }) =>
                   classNames(
-                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-8',
+                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-2 sm:px-8',
                     'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-white ring-white ring-opacity-60',
                     selected ? 'bg-black text-white shadow' : 'text-black bg-gray-100'
                   )
                 }
               >
                 Design Sets
+              </Tab>
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-2 sm:px-8',
+                    'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-white ring-white ring-opacity-60',
+                    selected ? 'bg-black text-white shadow' : 'text-black bg-gray-100'
+                  )
+                }
+              >
+                Design Ideas
               </Tab>
             </div>
           </Tab.List>
@@ -266,15 +333,20 @@ const SearchBox: React.FC = () => {
                 ) : (
                   <div className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1 lg:gap-2 xl:grid-cols-5 xl:gap-3 grid">
                     {isFetchingProducts && (
-                    <>
-                      {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
-                        return <ProductCardDimmer key={_i} />;
-                      })}
-                    </>)}
-                    {productsResults?.map((searchItem) => (
-                      searchItem?.inStock && searchItem?.status !== "discontinued" && preferredRetailerNames?.includes(searchItem?.retailer) &&
-                      <ProductCard product={searchItem} key={searchItem._id} />
-                    ))}
+                      <>
+                        {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
+                          return <ProductCardDimmer key={_i} />;
+                        })}
+                      </>
+                    )}
+                    {productsResults?.map(
+                      (searchItem) =>
+                        searchItem?.inStock &&
+                        searchItem?.status !== 'discontinued' &&
+                        preferredRetailerNames?.includes(searchItem?.retailer) && (
+                          <ProductCard product={searchItem} key={searchItem._id} />
+                        )
+                    )}
                   </div>
                 )}
               </div>
@@ -289,7 +361,6 @@ const SearchBox: React.FC = () => {
                   pageRangeDisplayed={3}
                   onPageChange={handlePageChangeProducts}
                   containerClassName={'pagination'}
-                  // subContainerClassName={"pages pagination"}
                   activeClassName={'active'}
                   forcePage={pageOffsetProducts}
                 />
@@ -297,23 +368,24 @@ const SearchBox: React.FC = () => {
             </Tab.Panel>
             <Tab.Panel className={classNames('bg-gray-100 rounded-xl p-3')}>
               <div className="container mx-auto sm:px-4 pb-40">
-                {isFetchingDesigns && (
+                
+                {!designsResults?.length && !isFetchingDesigns ? (
+                  <div className="col-span-12">
+                    <EmptyState title="No matching design sets found" message="" />
+                  </div>
+                ) : (
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
+                    {isFetchingDesigns && (
                   <>
                     {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
                       return (
-                        <div key={_d} className={`relative col-span-2 row-span-1`}>
+                        <div key={_d} >
                           <CollageCardDimmer />
                         </div>
                       );
                     })}
                   </>
                 )}
-                {!designsResults?.length ? (
-                  <div className="col-span-12">
-                    <EmptyState title="No matching design sets found" message="" />
-                  </div>
-                ) : (
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
                     {designsResults?.map((searchItem) => (
                       <DesignSetCardV2
                         designData={searchItem}
@@ -337,9 +409,50 @@ const SearchBox: React.FC = () => {
                   pageRangeDisplayed={3}
                   onPageChange={handlePageChangeDesigns}
                   containerClassName={'pagination'}
-                  // subContainerClassName={"pages pagination"}
                   activeClassName={'active'}
                   forcePage={pageOffsetDesigns}
+                />
+              </div>
+            </Tab.Panel>
+            <Tab.Panel className={classNames('bg-gray-100 rounded-xl p-3')}>
+              <div className="container mx-auto sm:px-4 pb-40">
+                
+                {!designIdeasResults?.length && !isFetchingDesignIdeas ? (
+                  <div className="col-span-12">
+                    <EmptyState title="No matching design ideas found" message="" />
+                  </div>
+                ) : (
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
+                    {isFetchingDesignIdeas && (
+                  <>
+                    {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
+                      return (
+                        <div key={_d}>
+                          <CollectionCardDimmer />
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
+                    {designIdeasResults?.map((searchItem) => (
+                      <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="my-4">
+                <ReactPaginate
+                  previousLabel={'<'}
+                  nextLabel={'>'}
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  pageCount={pageCountDesignIdeas}
+                  marginPagesDisplayed={1}
+                  pageRangeDisplayed={3}
+                  onPageChange={handlePageChangeDesignIdeas}
+                  containerClassName={'pagination'}
+                  activeClassName={'active'}
+                  forcePage={pageOffsetDesignIdeas}
                 />
               </div>
             </Tab.Panel>
