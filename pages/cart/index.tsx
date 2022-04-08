@@ -272,7 +272,7 @@ export default function Cart() {
     let sum = 0;
     Object.entries(cart?.cartItems).forEach((retailer) => {
       Object.entries(retailer[1]['products']).forEach((product) => {
-        sum += product[1]['msrp'] * product[1]['quantity'];
+        sum += product[1]['price'] * product[1]['quantity'];
       });
     });
 

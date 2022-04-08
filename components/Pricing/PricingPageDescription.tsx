@@ -4,12 +4,10 @@ import Link from 'next/link';
 import React from 'react';
 
 const PricingPageDescription = () => {
-  const isUserAuthenticated = Cookies.get('isMobile')==='true' ? true : false;
-
 
   return (
     <>
-      {isUserAuthenticated && <div className="m-4">
+      <div className="m-4">
         <Link href="https://spacejoy.com/new-project/bliss?quiz=start">
           <a className=" relative aspect-[3.5]">
             <Image
@@ -22,7 +20,7 @@ const PricingPageDescription = () => {
             />
           </a>
         </Link>
-      </div>}
+      </div>
       <div className="flex flex-col space-y-20 mx-4">
         <div className=" flex flex-col sm:flex-row sm:space-x-10 text-center justify-center">
           <div className="relative aspect-1 h-28 w-28 sm:h-24 sm:w-24 mx-auto sm:mx-0">

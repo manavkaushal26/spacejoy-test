@@ -127,10 +127,10 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
   };
 
   const itemStatus = useMemo(() => {
-    if (product?.status === 'discontinued') {
+    if ('status' in product && product?.status === 'discontinued') {
       return 'Discontinued';
     }
-    if (!product?.inStock) {
+    if ('inStock' in product && !product?.inStock) {
       return 'Out of Stock';
     }
 
