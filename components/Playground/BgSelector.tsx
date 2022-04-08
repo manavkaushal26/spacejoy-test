@@ -10,15 +10,39 @@ export const RoomImageList = [
   //ENTRYWAY
   {
     id: 1,
-    url: 'v1648034023/spj-v2/DIY/room-bg/EW10_tc34ed.jpg',
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_7_sknyh0.jpg',
   },
   {
     id: 2,
-    url: 'v1648034024/spj-v2/DIY/room-bg/EW3_ytx2tk.jpg',
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_8_mnjy6l.jpg',
   },
   {
     id: 3,
-    url: 'v1648034024/spj-v2/DIY/room-bg/EW1_rcocoe.jpg',
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_9_vcy0yo.jpg',
+  },
+  {
+    id: 4,
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_5_krv0sg.jpg',
+  },
+  {
+    id: 5,
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_3_oogqev.jpg',
+  },
+  {
+    id: 6,
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_6_helh6z.jpg',
+  },
+  {
+    id: 7,
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_2_o8ixkd.jpg',
+  },
+  {
+    id: 8,
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_1_pflmpl.jpg',
+  },
+  {
+    id: 9,
+    url: 'v1649398381/spj-v2/DIY/room-bg/Entryway/EN_10_iawjss.jpg',
   },
   //LIVING ROOMS
   {
