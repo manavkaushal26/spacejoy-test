@@ -1,10 +1,8 @@
-import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const PricingPageDescription = () => {
-
   return (
     <>
       <div className="m-4">
@@ -39,7 +37,7 @@ const PricingPageDescription = () => {
             </p>
           </div>
         </div>
-        <div className="text-sm sm:text-base flex flex-col space-y-5">
+        <div className="text-sm sm:text-base flex flex-col space-y-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p>
             There is something for everyone - on a budget! Today, access to interior designs online has never been
             easier, and all praise goes out to the number of available online design services out there. You can design
