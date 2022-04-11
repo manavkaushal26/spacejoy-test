@@ -7,11 +7,11 @@ const runtimeCaching = require('next-pwa/cache');
 module.exports = withPWA({
   async redirects() {
     return [
-      {
-        source: '/pricing',
-        destination: `${legacyRepo}/pricing`, // Matched parameters can be used in the destination
-        permanent: false,
-      },
+      // {
+      //   source: '/pricing',
+      //   destination: `${legacyRepo}/pricing`, // Matched parameters can be used in the destination
+      //   permanent: false,
+      // },
       {
         source: '/customer-stories/:slug*',
         destination: `${legacyRepo}/customer-stories/:slug*`, // Matched parameters can be used in the destination
@@ -27,11 +27,11 @@ module.exports = withPWA({
         destination: `${legacyRepo}/furniture-decor-shop/:slug*`, // Matched parameters can be used in the destination
         permanent: false,
       },
-      {
-        source: '/interior-designs/:slug*',
-        destination: `${legacyRepo}/interior-designs/:slug*`, // Matched parameters can be used in the destination
-        permanent: false,
-      },
+      // {
+      //   source: '/interior-designs/:slug*',
+      //   destination: `${legacyRepo}/interior-designs/:slug*`, // Matched parameters can be used in the destination
+      //   permanent: false,
+      // },
       {
         source: '/online-room-design',
         destination: `${legacyRepo}/online-room-design`, // Matched parameters can be used in the destination
