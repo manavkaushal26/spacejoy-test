@@ -2214,32 +2214,40 @@ export const splitCategories = [
 ];
 
 export const hireADesignerCat = [
-  
+  {
+    name: 'How It Works',
+    url: `${oldSpacejoyUrl}/online-room-design`,
+  },
   {
     name: 'Pricing',
     url: `/pricing`,
+  },
+  {
+    name: 'Style Quiz',
+    url: `${oldSpacejoyUrl}/style-quiz`,
+  },
+  {
+    name: 'Design Service FAQs',
+    url: `${oldSpacejoyUrl}/online-room-design#:~:text=FREQUENTLY%20ASKED%20QUESTIONS`,
   },
 ];
 
 export const exploreIdeasCat = [
   {
-    name: 'Online Interior Design',
-    url: `${oldSpacejoyUrl}/online-interior-design`
+    name: 'Design Ideas',
+    url: `/interior-designs`,
+  },
+  {
+    name: 'Popular Lookbooks',
+    url: `/collection`,
   },
   {
     name: 'Tips and Guides',
     url: `${oldSpacejoyUrl}/interior-designs-blog`,
   },
   {
-    name: 'Customer Stories',
+    name: 'Customer Stories & Reviews',
     url: `${oldSpacejoyUrl}/customer-stories`,
   },
-  {
-    name: 'Collection',
-    url: `/collection`,
-  },
-  {
-    name: 'Interior Designs',
-    url: `/interior-designs`,
-  },
+  
 ];

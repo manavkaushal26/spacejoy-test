@@ -22,7 +22,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
@@ -32,7 +32,9 @@ export const Home = (): JSX.Element => {
   const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
   const isMobile = Cookies.get('isMobile');
   const { width } = useWindowSize();
-  const isScreenSmall = useMemo(() => width <= 992, [width]);
+  const showTopNavTags = useMemo(() => width <= 992, [width]);
+  const isScreenMedium = useMemo(() => width < 768, [width]);
+
 
   return (
     <>
@@ -44,7 +46,7 @@ export const Home = (): JSX.Element => {
         <Layout.Banner />
         <Layout.Header />
         <Layout.Body>
-          {isScreenSmall && (
+          {showTopNavTags && (
             <div className={`px-4 ${isBroadcastVisible ? 'relative top-6 mb-12' : 'mb-4'}`}>
               <TopBarMobile />
             </div>
@@ -354,23 +356,16 @@ export const Home = (): JSX.Element => {
                     </HomeSectionTitle.Description>
                   )}
                 </HomeSectionTitle>
-                <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
+                {!isScreenMedium && <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
                   <a target="_blank" rel="noopener noreferrer">
                     <button
                       type="button"
                       className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                      onClick={() => {
-                        PushEvent({
-                          category: `Explore Sets`,
-                          action: `Go to Room Select`,
-                          label: `HP Connect Explore Sets Button`,
-                        });
-                      }}
                     >
                       Hire a Designer
                     </button>
                   </a>
-                </Link>
+                </Link>}
               </div>
               <div className="relative w-full mx-auto  md:w-1/2">
                 <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
@@ -399,6 +394,25 @@ export const Home = (): JSX.Element => {
                   ))}
                 </Carousel>
               </div>
+              {isScreenMedium && <div className="text-center">
+                <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
+                  <a target="_blank" rel="noopener noreferrer">
+                    <button
+                      type="button"
+                      className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      onClick={() => {
+                        PushEvent({
+                          category: `Explore Sets`,
+                          action: `Go to Room Select`,
+                          label: `HP Connect Explore Sets Button`,
+                        });
+                      }}
+                    >
+                      Hire a Designer
+                    </button>
+                  </a>
+                </Link>
+              </div>}
             </div>
           </div>
 
