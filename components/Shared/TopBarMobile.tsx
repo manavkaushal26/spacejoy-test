@@ -19,7 +19,7 @@ const TopBarMobile = () => {
                 height={50}
                 width={50}
               /></div>
-              <span className="text-sm my-auto whitespace-nowrap">Design Your Space</span>
+              <span className="text-[10px] my-auto whitespace-nowrap"><span className='text-xs font-bold'>Design</span><br/> Your Space</span>
             </div>
           </a>
         </Link>
@@ -36,7 +36,7 @@ const TopBarMobile = () => {
                 height={50}
                 width={50}
               /></div>
-              <span className="text-sm my-auto whitespace-nowrap">Hire a Designer</span>
+              <span className="text-[10px] my-auto whitespace-nowrap"><span className='text-xs font-bold'>Hire a</span><br/> Designer</span>
             </div>
           </a>
         </Link>
@@ -53,7 +53,7 @@ const TopBarMobile = () => {
                 height={50}
                 width={50}
               /></div>
-              <span className="text-sm my-auto whitespace-nowrap">Shop</span>
+              <span className="text-xs my-auto whitespace-nowrap"><span className=' font-bold'>Shop</span></span>
             </div>
           </a>
         </Link>

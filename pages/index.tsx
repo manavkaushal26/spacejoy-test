@@ -51,7 +51,7 @@ export const Home = (): JSX.Element => {
             
           )}
           <Hero3 />
-          <div className="container px-4 mx-auto mt-32 mb-12">
+          <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-6 sm:mb-12">
             <HomeSectionTitle className="text-left">
               <HomeSectionTitle.MainTitle>
                 Add this, <span className="text-[#F5296E]">swap that</span>
@@ -213,7 +213,7 @@ export const Home = (): JSX.Element => {
           )}
 
           {/* Section Start */}
-          <div className="container mx-auto px-4 mt-32 mb-8">
+          <div className="container mx-auto px-4 mt-16 sm:mt-32 mb-4 sm:mb-8">
             <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>
                 Shop all things home in <span className="text-[#F5296E]">one place</span>
@@ -225,7 +225,7 @@ export const Home = (): JSX.Element => {
               )}
             </HomeSectionTitle>
           </div>
-          <div className="container px-4 mx-auto mb-20">
+          <div className="container px-4 mx-auto mb-12 sm:mb-24">
             <div className="grid grid-cols-1 gap-4 md:gap-4 md:grid-cols-3">
               <div
                 className="flex-1 p-4 lg:p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
@@ -339,36 +339,9 @@ export const Home = (): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="container px-4 mx-auto xl:my-40 my-32 xl:px-20">
+          <div className="container px-4 mx-auto xl:my-40 my-16 sm:my-32 xl:px-20">
             <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
-              <div className="relative w-full mx-auto  md:w-1/2">
-                <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
-                  {TeamData.map((item) => (
-                    <div key={item.lastName}>
-                      <div className="relative aspect-[3/4] sm:aspect-[1] md:aspect-[3/4] lg:aspect-[1] rounded-3xl">
-                        <Image
-                          src={`https://res.cloudinary.com/spacejoy/w_800/${item.bg}`}
-                          alt="image 1"
-                          className="object-cover object-center w-full h-full rounded-3xl"
-                          layout="fill"
-                          objectFit="cover"
-                          placeholder="blur"
-                          blurDataURL={blurredBgImage}
-                        />
-                        <div className="absolute top-auto flex items-end justify-center -translate-x-1/2 bottom-28 left-1/2">
-                          <div className="text-center">
-                            <h2 className="text-2xl font-bold whitespace-pre text-gray-50">
-                              {item.firstName} {item.lastName}
-                            </h2>
-                            <p className="mt-2 text-white">Design Expert</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </Carousel>
-              </div>
-              <div className="flex-1 mt-6 sm:mt-0">
+            <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
                     Want us to do the heavy lifting?
@@ -400,6 +373,34 @@ export const Home = (): JSX.Element => {
                   </a>
                 </Link>
               </div>
+              <div className="relative w-full mx-auto  md:w-1/2">
+                <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
+                  {TeamData.map((item) => (
+                    <div key={item.lastName}>
+                      <div className="relative aspect-[3/4] sm:aspect-[1] md:aspect-[3/4] lg:aspect-[1] rounded-3xl">
+                        <Image
+                          src={`https://res.cloudinary.com/spacejoy/w_800/${item.bg}`}
+                          alt="image 1"
+                          className="object-cover object-center w-full h-full rounded-3xl"
+                          layout="fill"
+                          objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL={blurredBgImage}
+                        />
+                        <div className="absolute top-auto flex items-end justify-center -translate-x-1/2 bottom-28 left-1/2">
+                          <div className="text-center">
+                            <h2 className="text-2xl font-bold whitespace-pre text-gray-50">
+                              {item.firstName} {item.lastName}
+                            </h2>
+                            <p className="mt-2 text-white">Design Expert</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
+              
             </div>
           </div>
 
@@ -447,7 +448,7 @@ export const Home = (): JSX.Element => {
             </div>
           </div>
 
-          <div className="container px-4 mx-auto mt-32 mb-40">
+          <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-24 sm:mb-40">
             <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>
                 <span className="text-[#F5296E]">Why</span> Spacejoy?
@@ -499,7 +500,7 @@ export const Home = (): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="container mx-auto px-4 mt-32 mb-12">
+          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
             <HomeSectionTitle className="text-left sm:text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               {isMobile !== 'true' && (
@@ -511,7 +512,7 @@ export const Home = (): JSX.Element => {
           </div>
           <OutputGallery />
           {/* Section Start */}
-          <div className="mt-32 mb-12">
+          <div className="mt-16 sm:mt-32 mb-6 sm:mb-12">
             <DynamicFeaturedWithNoSSR />
           </div>
 

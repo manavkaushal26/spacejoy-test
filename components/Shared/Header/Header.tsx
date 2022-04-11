@@ -268,9 +268,9 @@ const Header: React.FC = () => {
                   ) : null}
                 </a>
               </Link>
-              <Link href="/room-select">
+              <Link href={`${oldSpacejoyUrl}/new-project`}>
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap">
-                  Design Your Space
+                  Start Your Project 
                 </a>
               </Link>
               <UserNav />
