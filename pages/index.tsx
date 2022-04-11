@@ -15,14 +15,14 @@ import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
+import useWindowSize from '@utils/useWindowSize';
 import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
-import useWindowSize from "@utils/useWindowSize";
+import React, { useMemo } from 'react';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
@@ -32,7 +32,7 @@ export const Home = (): JSX.Element => {
   const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
   const isMobile = Cookies.get('isMobile');
   const { width } = useWindowSize();
-	const isScreenSmall = useMemo(() => width <= 992, [width]);
+  const isScreenSmall = useMemo(() => width <= 992, [width]);
 
   return (
     <>
@@ -48,7 +48,6 @@ export const Home = (): JSX.Element => {
             <div className={`px-4 ${isBroadcastVisible ? 'relative top-6 mb-12' : 'mb-4'}`}>
               <TopBarMobile />
             </div>
-            
           )}
           <Hero3 />
           <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-6 sm:mb-12">
@@ -341,7 +340,7 @@ export const Home = (): JSX.Element => {
           {/* Section Start */}
           <div className="container px-4 mx-auto xl:my-40 my-16 sm:my-32 xl:px-20">
             <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
-            <div className="flex-1 mt-6 sm:mt-0">
+              <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
                     Want us to do the heavy lifting?
@@ -400,7 +399,6 @@ export const Home = (): JSX.Element => {
                   ))}
                 </Carousel>
               </div>
-              
             </div>
           </div>
 
@@ -526,4 +524,3 @@ export const Home = (): JSX.Element => {
 };
 
 export default React.memo(Home);
-
