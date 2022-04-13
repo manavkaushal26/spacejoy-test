@@ -74,33 +74,35 @@ const DesignView: React.FC<DesignViewInterface> = ({ design }) => {
 const getFirstSet = async () => {
   return {
     products: [
-      { slug: 'best-selling-home-decor-and-furniture-pieces-of-2021' },
-      { slug: 'make-your-entryway-more-welcoming-this-christmas' },
-      { slug: 'beautiful-and-bright-a-modern-rustic-dining-room' },
-      { slug: 'colorful-mid-century-modern-living-room-with-rattan-furniture' },
-      { slug: 'a-transitional-living-dining-room-with-rustic-accents' },
-      { slug: 'mid-century-modern-balcony-design-with-a-green-ceiling' },
-      { slug: 'mid-century-modern-coastal-living-room' },
-      { slug: 'pine-green-rustic-farmhouse-dining-room' },
-      { slug: 'modern-and-trendy-boho-living-room-with-japandi-decor' },
-      { slug: 'industrial-glam-living-room-with-mustard-accents' },
-      { slug: 'transitional-home-office-with-a-sleeper-sofa' },
-      { slug: 'an-art-deco-glam-bedroom-with-bold-walls-and-metallic-accents' },
-      { slug: 'urban-rustic-kids-bedroom-with-twin-beds' },
-      { slug: 'contemporary-transitional-open-concept-living-dining-room' },
-      { slug: 'white-and-beach-themed-modern-bedroom-decor' },
-      { slug: 'galaxy-themed-blue-childrens-room-with-star-bedding' },
-      { slug: 'mid-century-glam-living-dining-room-with-mettalic-accents' },
+      { slug: 'best-selling-home-decor-and-furniture-pieces-of-2021', collectionSlug: 'living-room-ideas' },
+      { slug: 'make-your-entryway-more-welcoming-this-christmas', collectionSlug: 'entryway-ideas'  },
+      { slug: 'beautiful-and-bright-a-modern-rustic-dining-room', collectionSlug: 'dining-room-ideas'  },
+      { slug: 'colorful-mid-century-modern-living-room-with-rattan-furniture', collectionSlug: 'living-room-ideas'  },
+      { slug: 'a-transitional-living-dining-room-with-rustic-accents', collectionSlug: 'open-living-and-dining-room-ideas'  },
+      { slug: 'mid-century-modern-balcony-design-with-a-green-ceiling', collectionSlug: 'entryway-ideas'  },
+      { slug: 'mid-century-modern-coastal-living-room', collectionSlug: 'living-room-ideas'  },
+      { slug: 'pine-green-rustic-farmhouse-dining-room', collectionSlug: 'dining-room-ideas'  },
+      { slug: 'modern-and-trendy-boho-living-room-with-japandi-decor', collectionSlug: 'living-room-ideas'  },
+      { slug: 'industrial-glam-living-room-with-mustard-accents', collectionSlug: 'living-room-ideas'  },
+      { slug: 'transitional-home-office-with-a-sleeper-sofa', collectionSlug: 'home-office-ideas'  },
+      { slug: 'an-art-deco-glam-bedroom-with-bold-walls-and-metallic-accents', collectionSlug: 'bedroom-ideas'  },
+      { slug: 'urban-rustic-kids-bedroom-with-twin-beds', collectionSlug: 'kids-room-ideas'  },
+      { slug: 'contemporary-transitional-open-concept-living-dining-room', collectionSlug: 'open-living-and-dining-room-ideas'  },
+      { slug: 'white-and-beach-themed-modern-bedroom-decor', collectionSlug: 'bedroom-ideas'  },
+      { slug: 'galaxy-themed-blue-childrens-room-with-star-bedding', collectionSlug: 'kids-room-ideas'  },
+      { slug: 'mid-century-glam-living-dining-room-with-mettalic-accents', collectionSlug: 'open-living-and-dining-room-ideas'  },
     ],
   };
 };
 
-export async function getStaticPaths() {
+export async function getStaticPaths({}) {
   // get all product paths
   const { products } = await getFirstSet();
   const paths = products.map((product) => ({
-    params: { slug: product?.slug },
+    params: { slug: product?.slug,
+    collectionSlug: product?.collectionSlug },
   }));
+
 
   return {
     paths,

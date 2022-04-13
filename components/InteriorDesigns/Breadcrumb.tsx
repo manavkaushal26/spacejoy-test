@@ -29,7 +29,7 @@ const Breadcrumb: React.FC<DesignViewInterface> = ({ design }) => {
           <li>
             <div className="flex items-center">
               <ChevronRightIcon className="w-4 h-4 text-gray-500" />
-              <Link href={`/collection/${design?.room?.slug}`}>
+              <Link href={`/interior-designs/${design?.room?.slug}`}>
                 <a className="ml-2 text-xs font-medium text-gray-500 hover:text-gray-700 capitalize">
                   {design?.room?.roomType}
                 </a>

@@ -21,7 +21,7 @@ const correctedSlug = (slug:string) => {
 
 const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
   return (
-    <Link href={`/interior-designs/${correctedSlug(cardData?.slug)}`}>
+    <Link href={`/interior-designs/${correctedSlug(cardData.room.slug)}/${cardData?.slug}`}>
       <a >
         <div className="cursor-pointer group">
           <div className=" rounded overflow-hidden relative border border-gray-200 transition group-hover:shadow-md">

@@ -11,7 +11,7 @@ export const ExploreIdeasNav = () => {
 
   return (
     <div className="">
-      <div className="flex space-x-10 justify-between">
+      <div className="flex space-x-10">
 
       <Link href="/interior-designs" passHref>
           <a
@@ -35,14 +35,14 @@ export const ExploreIdeasNav = () => {
                 />
               </div>
               <div className="flex justify-between p-4">
-                <h3 className="text-lg font-poppins">Design Ideas</h3>
+                <h3 className="text-base font-poppins">Design Ideas</h3>
                 <ArrowRightIcon className="w-9 h-9 p-[9px] text-white bg-black rounded-full" />
               </div>
             </div>
           </a>
         </Link>
 
-        <Link href="/collection" passHref>
+        {/* <Link href="/collection" passHref>
           <a>
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-orange-50 hover:bg-orange-100 hover:shadow-md">
               <div className="relative w-full">
@@ -61,7 +61,7 @@ export const ExploreIdeasNav = () => {
               </div>
             </div>
           </a>
-        </Link>
+        </Link> */}
         
         <Link href={`${oldSpacejoyUrl}/interior-designs-blog`} passHref>
           <a
@@ -86,7 +86,7 @@ export const ExploreIdeasNav = () => {
                 />
               </div>
               <div className="flex justify-between p-4">
-                <h3 className="text-lg font-poppins">Tips &amp; Guides</h3>
+                <h3 className="text-base font-poppins">Tips &amp; Guides</h3>
                 <ArrowRightIcon className="w-9 h-9 p-[9px] text-white bg-black rounded-full" />
               </div>
             </div>
@@ -116,7 +116,7 @@ export const ExploreIdeasNav = () => {
                 />
               </div>
               <div className="flex justify-between p-4">
-                <h3 className="text-lg font-poppins">Customer Stories & Reviews
+                <h3 className="text-base font-poppins">Customer Stories & Reviews
 </h3>
                 <ArrowRightIcon className="w-9 h-9 p-[9px] text-white bg-black rounded-full" />
               </div>

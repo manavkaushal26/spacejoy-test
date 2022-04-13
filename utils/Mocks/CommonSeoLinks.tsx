@@ -32,35 +32,35 @@ export const CommonSeoLinks = [
     list: [
       {
         title: 'Modern Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/modern-style-ideas`,
+        link: `/interior-designs/modern-style-ideas`,
       },
       {
         title: 'Eclectic Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/eclectic-room-designs`,
+        link: `/interior-designs/eclectic-room-designs`,
       },
       {
         title: 'Modern Farmhouse Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/farmhouse-style-ideas`,
+        link: `/interior-designs/farmhouse-style-ideas`,
       },
       {
         title: 'Industrial Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/industrial-room-designs`,
+        link: `/interior-designs/industrial-room-designs`,
       },
       {
         title: 'Mid-Century Modern Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/mid-century-modern-room-ideas`,
+        link: `/interior-designs/mid-century-modern-room-ideas`,
       },
       {
         title: 'Transitional Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/transitional-style-ideas`,
+        link: `/interior-designs/transitional-style-ideas`,
       },
       {
         title: 'Contempory Modern Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/classic-modern-design-ideas`,
+        link: `/interior-designs/classic-modern-design-ideas`,
       },
       {
         title: 'Coastal Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/coastal-design-ideas`,
+        link: `/interior-designs/coastal-design-ideas`,
       },
     ],
   },
@@ -69,35 +69,35 @@ export const CommonSeoLinks = [
     list: [
       {
         title: 'Spring Living Room Designs',
-        link: `${oldSpacejoyUrl}/interior-designs/spring-2020-look-book-living-room-designs-ideas`,
+        link: `/interior-designs/spring-2020-look-book-living-room-designs-ideas`,
       },
       {
         title: 'Spring Bedroom Designs',
-        link: '/',
+        link: '/interior-designs/spring-2020-look-book-bedroom-designs-ideas',
       },
       {
         title: 'Spring Entryway Designs',
-        link: `${oldSpacejoyUrl}/interior-designs/spring-2020-look-book-entryway-designs-ideas`,
+        link: `/interior-designs/spring-2020-look-book-entryway-designs-ideas`,
       },
       {
         title: 'Bohemian Living Room Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/bohemian-living-room-design-ideas`,
+        link: `/interior-designs/bohemian-living-room-design-ideas`,
       },
       {
         title: 'Open Living-Dining Room Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/open-living-and-dining-room-ideas`,
+        link: `/interior-designs/open-living-and-dining-room-ideas`,
       },
       {
         title: 'Small Living Room Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/small-living-room-ideas`,
+        link: `/interior-designs/small-living-room-ideas`,
       },
       {
         title: 'Glam Design Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/glam-design-ideas`,
+        link: `/interior-designs/glam-design-ideas`,
       },
       {
         title: 'Minimalist Living Room Ideas',
-        link: `${oldSpacejoyUrl}/interior-designs/minimalist-living-room-design-ideas`,
+        link: `/interior-designs/minimalist-living-room-design-ideas`,
       },
     ],
   },

@@ -15,7 +15,6 @@ const InteriorDesigns = ({ designFeedData }): JSX.Element => {
     <Layout>
       <Head>
         <title>Interior-Designs | Spacejoy</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Banner /> 
       <Layout.Header />
