@@ -2215,6 +2215,10 @@ export const splitCategories = [
 
 export const hireADesignerCat = [
   {
+    name: 'Get Started',
+    url: `${oldSpacejoyUrl}/new-project`,
+  },
+  {
     name: 'How It Works',
     url: `${oldSpacejoyUrl}/online-room-design`,
   },

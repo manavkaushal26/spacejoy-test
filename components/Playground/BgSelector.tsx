@@ -133,6 +133,10 @@ export const RoomImageList = [
     id: 22,
     url: 'v1649067740/spj-v2/DIY/room-bg/2022-new-room-templates/living-room/Layout_2_LR_final_o9nwla.jpg',
   },
+  {
+    id: 23,
+    url: 'v1649768393/spj-v2/DIY/room-bg/Layout_1_LR_final_2_wpofxr.png',
+  },
   //BEDROOMS
   {
     id: 1,
