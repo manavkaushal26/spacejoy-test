@@ -39,7 +39,7 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
       <Layout.Header />
       <Layout.Body>
         <CollectionBanner data={collectionData} />
-        <ListFilter />
+        {/* <ListFilter /> */}
         <DesignList feedData={designFeedData} />
         <PreFooter />
       </Layout.Body>

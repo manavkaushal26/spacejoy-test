@@ -20,7 +20,7 @@ const InteriorDesigns = ({ designFeedData }): JSX.Element => {
       <Layout.Header />
       <Layout.Body>
         <CollectionList feedData={topCollections} />
-        <ListFilter />
+        {/* <ListFilter /> */}
         <DesignList feedData={designFeedData} />
         <PreFooter />
       </Layout.Body>

@@ -42,7 +42,7 @@ export const ExploreIdeasNav = () => {
           </a>
         </Link>
 
-        {/* <Link href="/collection" passHref>
+        <Link href="/collection" passHref>
           <a>
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-orange-50 hover:bg-orange-100 hover:shadow-md">
               <div className="relative w-full">
@@ -61,7 +61,7 @@ export const ExploreIdeasNav = () => {
               </div>
             </div>
           </a>
-        </Link> */}
+        </Link>
         
         <Link href={`${oldSpacejoyUrl}/interior-designs-blog`} passHref>
           <a

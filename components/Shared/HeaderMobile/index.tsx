@@ -15,13 +15,12 @@ import { useFirebaseContext } from '@store/FirebaseContextProvider';
 const menuData = [
   {
     name: 'Design Your Space',
-    url: '/room-select',
-  },
-  {
-    name: 'Hire a Designer',
     title: 'Designs',
     categories: hireADesignerCat,
-
+  },
+  {
+    name: 'Shop Sets',
+    url: '/room-select',
   },
   {
     name: 'Shop',

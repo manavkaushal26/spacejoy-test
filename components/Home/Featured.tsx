@@ -95,10 +95,10 @@ const Featured: React.FC = () => {
               </div>
             </ScrollTrigger>
           </div>
-          <p className="max-w-3xl mx-auto mt-8 text-center text-gray-50">
+          {/* <p className="max-w-3xl mx-auto mt-8 text-center text-gray-50">
             Spacejoy is a great way to try different styles in a room before you shop. It&apos;s the ultimate online
             home shopping experience.
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="relative min-h-[300px] sm:min-h-[320px] xl:min-h-[360px]">

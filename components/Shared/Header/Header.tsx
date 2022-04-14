@@ -125,24 +125,7 @@ const Header: React.FC = () => {
             <div className="flex-1 h-full">
               <nav aria-label="Primary" className="h-full">
                 <ul className="flex items-center h-full">
-                  <li className="inline-block">
-                    <Link href="/room-select">
-                      <a
-                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
-                          router.asPath === '/room-select' ? 'text-red-600' : 'text-gray-900'
-                        }`}
-                        onClick={() => {
-                          PushEvent({
-                            category: `Top Nav - Design your Space`,
-                            action: `Go to Room Select Page`,
-                            label: `Design your Space`,
-                          });
-                        }}
-                      >
-                        Design Your Space
-                      </a>
-                    </Link>
-                  </li>
+                  
                   {/* <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
@@ -175,13 +158,31 @@ const Header: React.FC = () => {
                         isOpenSubNav && subNavContent === 'hire a designer' ? 'text-red-500' : 'text-gray-700'
                       }`}
                     >
-                      Hire a designer{' '}
+                      Design Your Space{' '}
                       <ChevronDownIcon
                         className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
                           isOpenSubNav && subNavContent === 'hire a designer' ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
+                  </li>
+                  <li className="inline-block">
+                    <Link href="/room-select">
+                      <a
+                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
+                          router.asPath === '/room-select' ? 'text-red-600' : 'text-gray-900'
+                        }`}
+                        onClick={() => {
+                          PushEvent({
+                            category: `Top Nav - Design your Space`,
+                            action: `Go to Room Select Page`,
+                            label: `Design your Space`,
+                          });
+                        }}
+                      >
+                        Shop Sets
+                      </a>
+                    </Link>
                   </li>
                   <li
                     className="items-center h-full sm:hidden md:hidden lg:flex"

@@ -55,12 +55,11 @@ export const Home = (): JSX.Element => {
           <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-6 sm:mb-12">
             <HomeSectionTitle className="text-left">
               <HomeSectionTitle.MainTitle>
-                Add this, <span className="text-[#F5296E]">swap that</span>
+                Meet Our <span className="text-[#F5296E]">Style Sets</span>
               </HomeSectionTitle.MainTitle>
               {isMobile !== 'true' && (
                 <HomeSectionTitle.Description align="left">
-                  Meet our style sets. Curated by us and Personalized by you. <br />
-                  Your whole room perfected in a single click.
+                  Curated by us, personalized by you.<br/> Perfect your whole room in a single click.
                 </HomeSectionTitle.Description>
               )}
             </HomeSectionTitle>
@@ -345,14 +344,13 @@ export const Home = (): JSX.Element => {
               <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    Want us to do the heavy lifting?
+                  7 days to a beautiful room!
                     <br />
                     <span className="text-[#F5296E]">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
                   {isMobile !== 'true' && (
                     <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
-                      In just 7 days, get 3D Designs of your actual room with products you can shop right away on
-                      Spacejoy!
+                      Let our experts design a space you&apos;ll love with products you can shop right away on Spacejoy!
                     </HomeSectionTitle.Description>
                   )}
                 </HomeSectionTitle>
