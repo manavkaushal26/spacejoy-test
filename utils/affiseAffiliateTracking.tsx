@@ -15,9 +15,12 @@ const saveUtmClick = async (params = { orderId: '', sum: 0 }) => {
     sumValue = isNaN(sumValue) ? 0 : sumValue / 100;
 
     // Since this repo only contains the code for Ecommerce purchases
-    const endPoint = `https://offers-spacejoy.affise.com/postback?clickid=${utmClickId}&goal=${EcommGoalValue}&action_id=${orderId}&sum=${sumValue?.toFixed(
+    // const endPoint = `https://offers-spacejoy.affise.com/postback?clickid=${utmClickId}&goal=${EcommGoalValue}&action_id=${orderId}&sum=${sumValue?.toFixed(
+    //   2
+    // )}`;
+    const endPoint = `https://psb1.reachaff.com/postbacks?clickid=${utmClickId}&goal=${EcommGoalValue}&action_id=${orderId}&sum=${sumValue?.toFixed(
       2
-    )}`;
+    )}&campaign_id=90`;
     await fetch(endPoint, { method: 'GET' });
   }
 };
