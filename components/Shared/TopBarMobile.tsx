@@ -8,7 +8,7 @@ const TopBarMobile = () => {
   return (
     <div className="flex space-x-2 overflow-x-auto hide-scrollbar justify-start">
       <div className="p-2 cursor-pointer bg-gray-100  rounded-md border-2 border-b-indigo-500 mb-2">
-        <Link href={`/room-select`} passHref>
+        <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
           <a rel="noreferrer">
             <div className="flex space-x-3">
               <div className='relative aspect-1 h-8 w-8'>
@@ -19,13 +19,13 @@ const TopBarMobile = () => {
                 height={50}
                 width={50}
               /></div>
-              <span className="text-[10px] my-auto whitespace-nowrap"><span className='text-xs font-bold'>Design</span><br/> Your Space</span>
+              <span className="text-[10px] my-auto whitespace-nowrap"><span className='text-xs font-bold'>Start</span><br/> Project</span>
             </div>
           </a>
         </Link>
       </div>
       <div className=" p-2 cursor-pointer bg-gray-100  rounded-md border-2 border-b-lime-400 mb-2">
-        <Link href={`${oldSpacejoyUrl}/new-project?quiz=1`} passHref>
+        <Link href={`/room-select`} passHref>
           <a rel="noreferrer">
           <div className="flex space-x-3">
               <div className='relative aspect-1 h-8 w-8'>
@@ -36,7 +36,7 @@ const TopBarMobile = () => {
                 height={50}
                 width={50}
               /></div>
-              <span className="text-[10px] my-auto whitespace-nowrap"><span className='text-xs font-bold'>Hire a</span><br/> Designer</span>
+              <span className="text-[10px] my-auto whitespace-nowrap"><span className='text-xs font-bold'>Shop</span><br/> Sets</span>
             </div>
           </a>
         </Link>
