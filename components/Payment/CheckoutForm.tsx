@@ -174,7 +174,7 @@ function CheckoutForm({
       //   const { data: { order = '' } = {} } = response;
       //   const orderTotal = checkoutFlow === 'store' ? cartData?.invoiceData?.total : totalAmount;
       // }
-      cb(true);
+      cb(true, { orderId: response.data.order, sum: response.data.amount });
     } else {
       setSubmitInProgress(false);
       cb(false);

@@ -96,14 +96,23 @@ const Checkout = () => {
   }, [cartData?.invoiceData?.discount?.giftCards]);
 
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [isShareSaleOpen, setShareSale] = useState(false);
+  const [orderDetails, setOrderDetails] = useState({
+    orderId: '',
+    sum: 0,
+  });
 
-  const postOrderActions = (orderPlacedValue) => {
+  const postOrderActions = (orderPlacedValue, orderObj) => {
     setOrderPlaced(orderPlacedValue);
     if (orderPlacedValue) {
       updateCart({
         cartItems: {},
         invoiceData: {},
       });
+    }
+    if (orderObj) {
+      setShareSale(true);
+      setOrderDetails(orderObj);
     }
   };
 
@@ -113,7 +122,7 @@ const Checkout = () => {
         <title>Secure Checkout | Spacejoy</title>
       </Head>
       <Layout>
-        <Layout.Banner /> 
+        <Layout.Banner />
         <Layout.Header />
         <Layout.Body>
           <div className="bg-gray-50">
@@ -394,6 +403,16 @@ const Checkout = () => {
         </Layout.Body>
         <Layout.Footer />
       </Layout>
+      {isShareSaleOpen && orderDetails?.orderId ? (
+        <>
+          <img
+            src={`https://www.shareasale.com/sale.cfm?tracking=${orderDetails?.orderId}&amount=${orderDetails?.sum}&merchantID=124928&transtype=sale`}
+            width="1"
+            height="1"
+          />
+          <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer />
+        </>
+      ) : null}
     </>
   );
 };
