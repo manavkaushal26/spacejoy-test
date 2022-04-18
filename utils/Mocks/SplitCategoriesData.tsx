@@ -2241,10 +2241,10 @@ export const exploreIdeasCat = [
     name: 'Design Ideas',
     url: `/interior-designs`,
   },
-  // {
-  //   name: 'Popular Lookbooks',
-  //   url: `/collection`,
-  // },
+  {
+    name: 'Popular Lookbooks',
+    url: `/collection`,
+  },
   {
     name: 'Tips and Guides',
     url: `${oldSpacejoyUrl}/interior-designs-blog`,

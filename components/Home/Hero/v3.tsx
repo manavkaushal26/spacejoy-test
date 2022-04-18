@@ -1,14 +1,37 @@
+import Carousel from '@components/Carousel';
 import { oldSpacejoyUrl } from '@utils/config';
 import useWindowSize from '@utils/useWindowSize';
+import Cookies from 'js-cookie';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
 import TextLoop from 'react-text-loop';
 
 const LOOP_CATEGORY = ["Kid's Room", 'Entryway', 'Dining Room', 'Home Office', 'Bedroom', 'Living Room', 'Imagination'];
+const responsive = {
+  dots: true,
+  arrows: false,
+  slidesToShow: 2,
+  className: 'responsive',
+  autoplay: true,
+  autoplaySpeed: 1000,
+};
+const bannerImages = [
+  {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1648726729/web/homepage-v3/jonathan-borba-COzqEKjaxqo-unsplash_1_u6m2q2.jpg',
+  },
+  {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650280910/web/homepage-v3/New_Banners-01_etuduf.jpg',
+  },
+  {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650280902/web/homepage-v3/New_Banners-02_km9jb6.jpg',
+  },
+];
 
 const V3 = () => {
   const { width } = useWindowSize();
   const isScreenSmall = useMemo(() => width <= 640, [width]);
+  const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
 
   return (
     <div className="container relative mx-auto">
@@ -32,7 +55,7 @@ const V3 = () => {
             <p className="font-bold text-2xl text-gray-900 mt-5 text-left">
               The best way to design and shop for your home
             </p>
-            <p className="mt-2 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl text-left">
+            <p className="mt-2 max-w-md text-lg text-gray-500 sm:text-base md:mt-5 md:max-w-3xl text-left">
               Create a stunning home with handpicked products from top brands that you can shop instantly
             </p>
             <div className="mt-10 ">
@@ -50,7 +73,7 @@ const V3 = () => {
                 <Link href={`${oldSpacejoyUrl}/interior-designs`} passHref>
                   <a
                     href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 border border-gray-900"
+                    className="w-full flex items-center justify-center px-8 py-3 border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 border border-gray-900"
                   >
                     Explore Design Ideas
                   </a>
@@ -59,13 +82,24 @@ const V3 = () => {
             </div>
           </div>
         </div>
-        <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 full">
-          <img
-            className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            src="https://res.cloudinary.com/spacejoy/image/upload/v1648726729/web/homepage-v3/jonathan-borba-COzqEKjaxqo-unsplash_1_u6m2q2.jpg"
-            alt=""
-          />
-        </div>
+        {!isMobile && <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 h-full">
+          <Carousel imageCount={bannerImages?.length || 0} responsive={responsive} autoplay autoplaySpeed={3000} infinite>
+            {bannerImages.map((bannerImage, idx) => {
+              return (
+                <div key={idx}>
+                  <Image
+                    className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                    src={bannerImage.src}
+                    alt=""
+                    height={660}
+                    width={1013}
+                    layout="responsive"
+                  />
+                </div>
+              );
+            })}
+          </Carousel>
+        </div>}
       </main>
     </div>
   );

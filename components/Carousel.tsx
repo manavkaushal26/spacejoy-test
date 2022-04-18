@@ -28,6 +28,9 @@ export default function Carousel({
   slidesToShow = 1,
   withNav = false,
   responsive = {},
+  autoplay = false,
+  autoplaySpeed = 2000,
+  infinite = false,
 }) {
   const [nav1, setNav1] = useState<any>();
   const [nav2, setNav2] = useState<any>();
@@ -39,6 +42,7 @@ export default function Carousel({
     swipeToSlide: true,
     focusOnSelect: true,
     arrows: false,
+    infinite: infinite,
     responsive: [
       {
         breakpoint: 767,
@@ -61,6 +65,8 @@ export default function Carousel({
     slidesToShow,
     className: 'with-space',
     mobileFirst: true,
+    autoplay: autoplay,
+    autoplaySpeed: autoplaySpeed,
     responsive: [
       {
         breakpoint: 992,
@@ -98,14 +104,14 @@ export default function Carousel({
             </Slider>
           </SRLWrapper>
         ) : (
-          <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings}>
+          <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings} infinite={infinite}>
             {children}
           </Slider>
         )}
       </div>
       {imageCount > 1 && withNav && (
         <div className="relative w-full md:absolute md:w-16 top-0 nav-slider sm:mt-4 lg:mt-0 hidden lg:block">
-          <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings} infinite={false}>
+          <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings} infinite={infinite}>
             {children}
           </Slider>
         </div>
