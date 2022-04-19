@@ -406,7 +406,9 @@ const Checkout = () => {
       {isShareSaleOpen && orderDetails?.orderId ? (
         <>
           <img
-            src={`https://www.shareasale.com/sale.cfm?tracking=${orderDetails?.orderId}&amount=${orderDetails?.sum}&merchantID=124928&transtype=sale`}
+            src={`https://www.shareasale.com/sale.cfm?tracking=${orderDetails?.orderId}&amount=${
+              orderDetails?.sum / 100
+            }&merchantID=124928&transtype=sale`}
             width="1"
             height="1"
           />
