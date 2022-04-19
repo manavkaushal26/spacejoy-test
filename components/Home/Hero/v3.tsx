@@ -18,13 +18,13 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1648726729/web/homepage-v3/jonathan-borba-COzqEKjaxqo-unsplash_1_u6m2q2.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650362377/web/homev3/jonathan-borba-COzqEKjaxqo-unsplash_1_u6m2q2_ccexpress_hetwp5.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650280910/web/homepage-v3/New_Banners-01_etuduf.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650361653/web/homev3/New_Banners-03_egfnjo.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650280902/web/homepage-v3/New_Banners-02_km9jb6.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650361653/web/homev3/New_Banners-05_l3ds6q.jpg',
   },
 ];
 
@@ -94,11 +94,11 @@ const V3 = () => {
               return (
                 <div key={idx}>
                   <Image
-                    className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                    className="absolute inset-0 w-full h-full object-contain rounded-lg"
                     src={bannerImage.src}
                     alt=""
                     height={660}
-                    width={1013}
+                    width={990}
                     layout="responsive"
                   />
                 </div>
