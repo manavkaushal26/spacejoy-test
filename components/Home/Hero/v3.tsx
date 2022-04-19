@@ -11,10 +11,10 @@ const LOOP_CATEGORY = ["Kid's Room", 'Entryway', 'Dining Room', 'Home Office', '
 const responsive = {
   dots: true,
   arrows: false,
-  slidesToShow: 2,
+  slidesToShow: 1,
   className: 'responsive',
   autoplay: true,
-  autoplaySpeed: 1000,
+  autoplaySpeed: 2000,
 };
 const bannerImages = [
   {
@@ -33,7 +33,7 @@ const V3 = () => {
   const isScreenSmall = useMemo(() => width <= 640, [width]);
   const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
 
-  return (
+  return isMobile === false ? (
     <div className="container relative mx-auto">
       <main className="lg:relative">
         <div className="max-w-7xl w-full pt-16 pb-20 text-center py-44 lg:text-left">
@@ -82,8 +82,14 @@ const V3 = () => {
             </div>
           </div>
         </div>
-        {!isMobile && <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 h-full">
-          <Carousel imageCount={bannerImages?.length || 0} responsive={responsive} autoplay autoplaySpeed={3000} infinite>
+        <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 h-full">
+          <Carousel
+            imageCount={bannerImages?.length || 0}
+            responsive={responsive}
+            autoplay
+            autoplaySpeed={3000}
+            infinite
+          >
             {bannerImages.map((bannerImage, idx) => {
               return (
                 <div key={idx}>
@@ -99,7 +105,75 @@ const V3 = () => {
               );
             })}
           </Carousel>
-        </div>}
+        </div>
+      </main>
+    </div>
+  ) : (
+    <div className="container relative mx-auto">
+      {' '}
+      <main>
+        {/* <div className="pb-12 py-0 text-center"> */}
+        <div className="py-0 my-0">
+          <h1 className="text-2xl text-left mb-1 px-4">
+            Design Your{' '}
+            <TextLoop mask>
+              {LOOP_CATEGORY.map((category, idx) => (
+                <span key={idx}>{category}</span>
+              ))}
+            </TextLoop>
+          </h1>
+          <p className="py-2 px-4 text-sm text-gray-500 sm:text-base md:mt-5 text-left">
+            Create a stunning home with handpicked products from top brands that you can shop instantly
+          </p>
+          <div className="relative pt-4">
+            <Carousel
+              imageCount={bannerImages?.length || 0}
+              responsive={responsive}
+              autoplay
+              autoplaySpeed={3000}
+              infinite
+              slidesToShow={1}
+            >
+              {bannerImages.map((bannerImage, idx) => {
+                return (
+                  <div key={idx}>
+                    <Image
+                      className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                      src={bannerImage.src}
+                      alt=""
+                      height={450}
+                      width={450}
+                      layout="responsive"
+                    />
+                  </div>
+                );
+              })}
+            </Carousel>
+          </div>
+          <div className="mt-10 px-4">
+            <div className="rounded-md shadow">
+              <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                <a
+                  href="#"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10"
+                >
+                  Start Your Project
+                </a>
+              </Link>
+            </div>
+            <div className="mt-4 rounded-md shadow ">
+              <Link href={`${oldSpacejoyUrl}/interior-designs`} passHref>
+                <a
+                  href="#"
+                  className="w-full flex items-center justify-center px-8 py-3 border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 border border-gray-900"
+                >
+                  Explore Design Ideas
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+        {/* </div> */}
       </main>
     </div>
   );

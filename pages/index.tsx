@@ -47,7 +47,7 @@ export const Home = (): JSX.Element => {
         <Layout.Header />
         <Layout.Body>
           {showTopNavTags && (
-            <div className={`px-4 ${isBroadcastVisible ? 'relative top-6 mb-12' : 'mb-4'}`}>
+            <div className={`px-4 ${isBroadcastVisible ? 'relative top-6 ' : ''}`}>
               <TopBarMobile />
             </div>
           )}
