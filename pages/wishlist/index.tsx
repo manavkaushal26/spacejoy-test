@@ -42,7 +42,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
             <CreateRoomBtn cb={updatedRoomCollection} />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 rounded-md">
             {listData && listData?.length ? (
               <>
                 {listData?.map((item) => (

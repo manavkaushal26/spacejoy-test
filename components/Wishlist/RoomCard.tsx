@@ -18,29 +18,31 @@ const RoomCard = ({ room }) => {
   };
 
   return (
-    <div className="mt-4">
-      <div className="max-w-sm rounded overflow-hidden relative w-full aspect-[1.5]">
-        <Image
-          src={imgUrl || defaultImgSrcCover}
-          alt="Sunset in the mountains"
-          layout="fill"
-          objectFit="contain"
-          className="rounded-md"
-        />
+    <Link href={`/wishlist/${room?._id}`} passHref>
+      <div className="mt-4 group hover:shadow-md rounded-md py-2 cursor-pointer">
+        <div className="max-w-sm rounded overflow-hidden relative w-full aspect-[1.5]">
+          <Image
+            src={imgUrl || defaultImgSrcCover}
+            alt="Sunset in the mountains"
+            layout="fill"
+            objectFit="contain"
+            className="rounded-md"
+          />
+        </div>
+        <div className=" py-4 px-4">
+          <div className="font-bold text-base mb-2">{room?.name}</div>
+          <Link href={`/wishlist/${room?._id}`}>
+            <a
+              href={`/wishlist/${room?._id}`}
+              className="text-base py-2 px-4 bg-gray-900 rounded-lg text-white mt-4"
+              onClick={() => analytics()}
+            >
+              Open Room
+            </a>
+          </Link>
+        </div>
       </div>
-      <div className=" py-4">
-        <div className="font-bold text-base mb-2">{room?.name}</div>
-        <Link href={`/wishlist/${room?._id}`}>
-          <a
-            href={`/wishlist/${room?._id}`}
-            className="text-base py-2 px-4 bg-gray-900 rounded-lg text-white mt-4"
-            onClick={() => analytics()}
-          >
-            Open Room
-          </a>
-        </Link>
-      </div>
-    </div>
+    </Link>
   );
 };
 
