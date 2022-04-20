@@ -108,6 +108,12 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
       });
 
       setUserWishlist(updatedUserWishlist);
+    } else {
+      const updatedUserWishlist = userWishlist.map((wishlist) => {
+        return { ...wishlist, selected: false };
+      });
+
+      setUserWishlist(updatedUserWishlist);
     }
   }, [wishlistsMappedToDocument]);
 
@@ -243,6 +249,7 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
       if (wishlists) {
         setWishlists(wishlists?.wishlists);
       }
+
       toast.success('Success! item removed from wishlist');
       PushEvent({
         category: `Item removed from wishlist`,
