@@ -65,7 +65,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
                     )
                   }
                 >
-                  Design Sets
+                  Products
                 </Tab>
                 <Tab
                   className={({ selected }) =>
@@ -76,25 +76,11 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
                     )
                   }
                 >
-                  Products
+                  Designs
                 </Tab>
               </div>
             </Tab.List>
-            <Tab.Panel>
-              {designSetsData?.length ? (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
-                  {designSetsData?.map((design) => (
-                    <div key={design?._id} onClick={() => analytics('design_set', design?._id)}>
-                      <DesignSetCardV2 designData={design?.document} isMobile={true} large={false} pageRef="Wishlist" />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="mt-4">
-                  <EmptyState title="You have no design sets in your wishlist" message="" />
-                </div>
-              )}
-            </Tab.Panel>
+
             <Tab.Panel>
               {assetsData?.length ? (
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
@@ -107,6 +93,21 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
               ) : (
                 <div className="mt-4">
                   <EmptyState title="You have no products in your wishlist" message="" />
+                </div>
+              )}
+            </Tab.Panel>
+            <Tab.Panel>
+              {designSetsData?.length ? (
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+                  {designSetsData?.map((design) => (
+                    <div key={design?._id} onClick={() => analytics('design_set', design?._id)}>
+                      <DesignSetCardV2 designData={design?.document} isMobile={true} large={false} pageRef="Wishlist" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-4">
+                  <EmptyState title="You have no design sets in your wishlist" message="" />
                 </div>
               )}
             </Tab.Panel>

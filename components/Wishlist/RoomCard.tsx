@@ -37,7 +37,7 @@ const RoomCard = ({ room }) => {
               className="text-base py-2 px-4 bg-gray-900 rounded-lg text-white mt-4"
               onClick={() => analytics()}
             >
-              Open Room
+              Open List
             </a>
           </Link>
         </div>

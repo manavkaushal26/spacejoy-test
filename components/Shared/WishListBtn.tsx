@@ -313,14 +313,14 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
             ) : null}
             <div className="flex items-center">
               <SolidHeart className="h-6 w-6 text-red-500" />
-              <h2 className="ml-2">My Rooms</h2>
+              <h2 className="ml-2">My Wishlists</h2>
             </div>
             <div className="mt-4 text-sm">
               <span className="font-bold"> Note:</span>
               <span className="ml-2">
-                Rooms are saved on your{' '}
+                You can access your wishlists{' '}
                 <Link href="/wishlist" passHref>
-                  <span className="underline cursor-pointer">dashboard</span>
+                  <span className="underline cursor-pointer">here</span>
                 </Link>
               </span>
             </div>

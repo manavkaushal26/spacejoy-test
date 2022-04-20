@@ -52,7 +52,7 @@ const CreateBtn = ({ open = false, cb = () => {} }) => {
         onClick={() => setIsOpen(true)}
       >
         <PlusIcon className="h-4 w-4" />
-        <span className="ml-2">Create Room</span>
+        <span className="ml-2">Create New Wishlist</span>
       </button>
       <WishListModal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
         <WishListModal.Header>

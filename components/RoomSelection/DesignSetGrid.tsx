@@ -123,7 +123,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                               : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'
                           }`}
                         >
-                          <Link href="https://form.typeform.com/to/V1SWVv3c">
+                          <Link href="https://designs.spacejoy.com/new-project">
                             <a target="_blank">
                               <div className="container rounded-lg w-full h-fit">
                                 {isMobile ? (
@@ -131,7 +131,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                                     src="https://res.cloudinary.com/spacejoy/image/upload/v1648718897/web/webengagebanners/Mobile-1_wwciov.gif"
                                     alt="affirm"
                                     height={300}
-                                    width= {358}
+                                    width={358}
                                     layout="responsive"
                                     // className="object-contain rounded-2xl"
                                     placeholder="blur"

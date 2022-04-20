@@ -3,13 +3,13 @@
 import { AssetType } from '@components/Collection/AssetType';
 import AffirmCard from '@components/Shared/AffirmCards/AffirmCard';
 import ProductCard from '@components/Shop/ProductCard';
+import { blurredBgProduct } from '@public/images/bg-base-64';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
+import { cloudinary } from '@utils/config';
+import Cookies from 'js-cookie';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image';
-import { cloudinary } from '@utils/config';
-import { useFirebaseContext } from '@store/FirebaseContextProvider';
-import { blurredBgProduct } from '@public/images/bg-base-64';
-import Cookies from 'js-cookie';
 
 const CollageProductList: React.FC<{
   assets: AssetType[];
@@ -32,10 +32,10 @@ const CollageProductList: React.FC<{
                   <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1646728697/web/homepage-v3/Card_yu5azf.svg" />
                 )}
                 {showAppointmentCard && idx === 2 && (
-                  <Link href="https://form.typeform.com/to/V1SWVv3c">
+                  <Link href="https://designs.spacejoy.com/new-project">
                     <a target="_blank">
                       <div className="container rounded-lg w-full h-full relative">
-                        {isMobile ?
+                        {isMobile ? (
                           <Image
                             src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Mobile_bwsdxy.gif"
                             alt="appointment"
@@ -43,8 +43,8 @@ const CollageProductList: React.FC<{
                             className="object-cover object-center rounded-2xl"
                             placeholder="blur"
                             blurDataURL={blurredBgProduct}
-                          /> 
-                          :
+                          />
+                        ) : (
                           <Image
                             src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Card_hjgdii.gif"
                             alt="appointment"
@@ -53,7 +53,7 @@ const CollageProductList: React.FC<{
                             placeholder="blur"
                             blurDataURL={blurredBgProduct}
                           />
-                        }
+                        )}
                       </div>
                     </a>
                   </Link>
