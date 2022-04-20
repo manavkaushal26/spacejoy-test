@@ -34,7 +34,6 @@ const Header: React.FC = () => {
 
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const toggleMenu = () => setIsOpenMenu((prevState) => !prevState);
-  
 
   const handleHover = (value) => {
     setIsOpenSubNav(value);
@@ -79,7 +78,7 @@ const Header: React.FC = () => {
           return <HireADesignerHeader />;
 
         case 'explore ideas':
-        return <ExploreIdeasNav/>
+          return <ExploreIdeasNav />;
 
         default:
           return null;
@@ -99,7 +98,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header className={`bg-white sticky ${isBroadcastVisible ? 'top-10 mb-10' : 'top-0'} z-50`}>
-        <div className="container px-4 mx-auto overflow-hidden">
+        <div className="container px-4 mx-auto">
           <div className="lg:flex lg:items-center h-20 hidden">
             <Link href="/">
               <a
@@ -125,7 +124,6 @@ const Header: React.FC = () => {
             <div className="flex-1 h-full">
               <nav aria-label="Primary" className="h-full">
                 <ul className="flex items-center h-full">
-                  
                   {/* <li className="inline-block">
                     <Link href={`${oldSpacejoyUrl}/online-interior-design`}>
                       <a
@@ -271,7 +269,7 @@ const Header: React.FC = () => {
               </Link>
               <Link href={`${oldSpacejoyUrl}/new-project`}>
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap">
-                  Start Your Project 
+                  Start Your Project
                 </a>
               </Link>
               <UserNav />
@@ -293,7 +291,9 @@ const Header: React.FC = () => {
         open={isOpenMenu}
         onClose={() => setIsOpenMenu(false)}
         as="div"
-        className={`fixed ${isBroadcastVisible ? 'top-10' : ''} bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
+        className={`fixed ${
+          isBroadcastVisible ? 'top-10' : ''
+        } bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
       >
         <Dialog.Overlay />
         <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl absolute top-10 left-1/3">

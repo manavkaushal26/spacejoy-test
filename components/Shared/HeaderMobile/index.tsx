@@ -1,16 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { PushEvent } from '@utils/analyticsLogger';
 import { MenuIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
-import { useRouter } from 'next/router';
-import shallow from 'zustand/shallow';
 import { useStore } from '@lib/store';
-import SidebarMenu from './SidebarMenu';
-import { oldSpacejoyUrl } from '@utils/config';
-import UserNav from '../Header/UserNav';
-import { splitCategories, hireADesignerCat, exploreIdeasCat } from '@utils/Mocks/SplitCategoriesData';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
+import { PushEvent } from '@utils/analyticsLogger';
+import { exploreIdeasCat, hireADesignerCat, splitCategories } from '@utils/Mocks/SplitCategoriesData';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useEffect, useMemo, useState } from 'react';
+import shallow from 'zustand/shallow';
+import UserNav from '../Header/UserNav';
+import SidebarMenu from './SidebarMenu';
 
 const menuData = [
   {
@@ -31,10 +30,8 @@ const menuData = [
     name: 'Explore Ideas',
     title: 'Ideas',
     categories: exploreIdeasCat,
-
   },
 ];
-
 
 const HeaderMobile: React.FC = () => {
   const router = useRouter();
@@ -72,7 +69,7 @@ const HeaderMobile: React.FC = () => {
   return (
     <>
       <div className={`bg-white sticky ${data?.broadcastV2?.broadcaststripVisible ? 'top-10 mb-6' : 'top-0'} z-50`}>
-        <div className="container px-4 mx-auto overflow-hidden">
+        <div className="container px-4 mx-auto">
           <div className="flex items-center h-20 lg:hidden">
             <div className="flex items-center space-x-3 flex-grow">
               <MenuIcon className="w-6 h-6" onClick={() => setOpen(true)} />
