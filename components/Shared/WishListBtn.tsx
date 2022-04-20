@@ -183,7 +183,7 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
         const [res, error] = await fetchWishList();
         if (res) {
           const filteredList = topCollages?.list?.filter(
-            (item) => item?.name.toLowerCase() !== data?.name?.toLowerCase()
+            (item) => !res.some((wl) => wl.name.toLowerCase() === item?.name.toLocaleLowerCase())
           );
 
           const consolidatedArray = [...res, ...filteredList];
