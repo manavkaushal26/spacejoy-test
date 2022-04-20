@@ -319,8 +319,8 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
               <span className="font-bold"> Note:</span>
               <span className="ml-2">
                 Rooms are saved on your{' '}
-                <Link href="/" passHref>
-                  <span className="underline">dashboard</span>
+                <Link href="/wishlist" passHref>
+                  <span className="underline cursor-pointer">dashboard</span>
                 </Link>
               </span>
             </div>
