@@ -1,4 +1,5 @@
 import CreateRoomBtn from '@components/Shared/CreateListBtn';
+import EmptyState from '@components/Shared/EmptyState';
 import Layout from '@components/Shared/Layout';
 import StickyFooter from '@components/Shared/StickyFooter';
 import { fetchWishList } from '@components/Shared/WishListBtn';
@@ -40,10 +41,19 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
           <div className="mb-4 hidden lg:block">
             <CreateRoomBtn cb={updatedRoomCollection} />
           </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-            {listData?.map((item) => (
-              <RoomCard room={item} key={item?._id} />
-            ))}
+            {listData && listData?.length ? (
+              <>
+                {listData?.map((item) => (
+                  <RoomCard room={item} key={item?._id} />
+                ))}
+              </>
+            ) : (
+              <div className="col-span-12">
+                <EmptyState title="You have no wishlists saved" message="Create a room to get started" />
+              </div>
+            )}
           </div>
         </div>
         <div className="block lg:hidden">
