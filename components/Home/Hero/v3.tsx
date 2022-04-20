@@ -18,13 +18,13 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650362377/web/homev3/jonathan-borba-COzqEKjaxqo-unsplash_1_u6m2q2_ccexpress_hetwp5.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650432082/Home-banner-spj_v0ublh.jpg',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650361653/web/homev3/New_Banners-03_egfnjo.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650361653/web/homev3/New_Banners-05_l3ds6q.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650430566/web/homepage-v3/New_Banners-14_v0rc9a.jpg',
   },
 ];
 
