@@ -86,7 +86,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative `}
                             ref={PlaygroundWrapperRef}
                           >
-                            <button className="mb-0 absolute top-0 right-28 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold">
+                            <button className="mb-0  absolute top-0 right-32 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold">
                               <WishListBtn type="Collage" documentId={collageData?._id} />
                             </button>
                             <button
