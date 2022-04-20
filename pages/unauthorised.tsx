@@ -17,16 +17,16 @@ const UnAuthorised: React.FC<ComponentInterface> = ({ title }) => {
         <title>{title} | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <EmptyState
           title="You are not Authorized to view this page"
-          message={`You need to login to view your ${title}`}
+          message={`Please login to view this page`}
           showButton={false}
         />
         <div className="flex justify-center -mt-20 mb-20">
-          <Login redirect={redirectUrl} />
+          <Login redirect={redirectUrl} ctaText={<span>Login</span>} />
         </div>
       </Layout.Body>
       <Layout.Footer />
