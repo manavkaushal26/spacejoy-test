@@ -139,7 +139,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                                   />
                                 ) : (
                                   <Image
-                                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648536337/web/webengagebanners/Big-Card_vxtxup.gif"
+                                    src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Inject_vlcgid.gif"
                                     alt="affirm"
                                     layout="fill"
                                     className="object-contain rounded-2xl"

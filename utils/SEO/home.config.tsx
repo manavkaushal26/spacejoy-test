@@ -1,7 +1,9 @@
+import { company } from "@utils/config";
+
 const HomePageBaseSEO = {
-  title: 'Spacejoy: #1 store for shopping furniture & decor online',
+  title: 'Spacejoy: The Best Online Interior Design Service For Your Home',
   description:
-    'Discover & personalize curated furniture & decor sets for every style, space and budget. Shop from 500+ brands & furnish any space in minutes - only on Spacejoy',
+    `Design a home you'll love with ${company.product}'s online interior design services. Work 1:1 with top interior designers and transform any space in just 7 days! Get started today.`,
   additionalMetaTags: '',
   canonical: '',
   additionalLinkTags: [

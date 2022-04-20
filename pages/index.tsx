@@ -42,7 +42,7 @@ export const Home = (): JSX.Element => {
       <Layout>
         <Head>
         <title key="title">
-        The Best Online Interior Design Service For Your Home
+        Spacejoy: The Best Online Interior Design Service For Your Home
 				</title>
 				<link rel="canonical" href="https://www.spacejoy.com" />
 				<meta

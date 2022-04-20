@@ -37,8 +37,8 @@ const CollageProductList: React.FC<{
                       <div className="container rounded-lg w-full h-full relative">
                         {isMobile ?
                           <Image
-                            src="https://res.cloudinary.com/spacejoy/image/upload/v1648546361/web/webengagebanners/M-canvas-1_rjdbzy.gif"
-                            alt="affirm"
+                            src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Mobile_bwsdxy.gif"
+                            alt="appointment"
                             layout="fill"
                             className="object-cover object-center rounded-2xl"
                             placeholder="blur"
@@ -46,8 +46,8 @@ const CollageProductList: React.FC<{
                           /> 
                           :
                           <Image
-                            src="https://res.cloudinary.com/spacejoy/image/upload/v1648536339/web/webengagebanners/Small-card_c80whx.gif"
-                            alt="affirm"
+                            src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Card_hjgdii.gif"
+                            alt="appointment"
                             layout="fill"
                             className="object-contain object-center rounded-2xl"
                             placeholder="blur"
