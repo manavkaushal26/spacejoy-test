@@ -7,8 +7,9 @@ import UserAddresses from '@components/User/Addresses';
 import { Disclosure, Transition } from '@headlessui/react';
 import { MinusIcon, PlusIcon, XIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
-import { oldSpacejoyUrl } from '@utils/config';
+import { company, oldSpacejoyUrl } from '@utils/config';
 import fetcher from '@utils/fetcher';
+import { IndexPageMeta } from '@utils/meta';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
@@ -119,7 +120,9 @@ const Checkout = () => {
   return (
     <>
       <Head>
-        <title>Secure Checkout | Spacejoy</title>
+      {IndexPageMeta}
+				<title key="title">Secure Checkout | {company.product}</title>
+				<link rel="canonical" href="https://www.spacejoy.com/checkout/store" />
       </Head>
       <Layout>
         <Layout.Banner />
