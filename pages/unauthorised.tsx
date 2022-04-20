@@ -14,7 +14,7 @@ const UnAuthorised: React.FC<ComponentInterface> = ({ title }) => {
   return (
     <Layout>
       <Head>
-        <title>{title} | Spacejoy</title>
+        <title>Login to continue | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Banner />
