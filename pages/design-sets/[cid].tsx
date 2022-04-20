@@ -72,7 +72,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                       <div className="container px-4 m-auto">
                         {isMobile === 'true' ? (
                           <div className="space-y-4">
-                            <div className="relative aspect-2 mt-4">
+                            <div className="relative aspect-2 mt-12">
                               <button className="mb-0  absolute top-0 right-0 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold">
                                 <WishListBtn type="Collage" documentId={collageData?._id} />
                               </button>
