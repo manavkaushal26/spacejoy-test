@@ -2,7 +2,7 @@ const topCollages = {
   list: [
     {
       _id: 1,
-      name: 'My Living Room',
+      name: 'My Living Room List',
       metaDescription: '2000+ 3D Renders',
       slug: 'living-room-design-sets',
       thumbnail: 'v1623902156/spj-v2/room-types/cropped/living-room_nj74mb.jpg',
@@ -13,7 +13,7 @@ const topCollages = {
     },
     {
       _id: 2,
-      name: 'My Bedroom',
+      name: 'My Bedroom List',
       metaDescription: '2000+ 3D Renders',
       slug: 'bedroom-design-sets',
       thumbnail: 'v1623902156/spj-v2/room-types/cropped/bedroom_u94fve.jpg',
@@ -24,7 +24,7 @@ const topCollages = {
     },
     {
       _id: 4,
-      name: 'My Home Office',
+      name: 'My Home Office List',
       metaDescription: '2000+ 3D Renders',
       slug: 'home-office-design-sets',
       thumbnail: 'v1623902156/spj-v2/room-types/cropped/home-office_cohlao.jpg',
@@ -35,7 +35,7 @@ const topCollages = {
     },
     {
       _id: 6,
-      name: 'My Dining Room',
+      name: 'My Dining Room List',
       metaDescription: '2000+ 3D Renders',
       slug: 'dining-room-design-sets',
       thumbnail: 'v1623902156/spj-v2/room-types/cropped/dining-room_v808nc.jpg',
@@ -46,7 +46,7 @@ const topCollages = {
     },
     {
       _id: 3,
-      name: 'My Entryway',
+      name: 'My Entryway List',
       metaDescription: '2000+ 3D Renders',
       slug: 'entryway-design-sets',
       thumbnail: 'v1623902156/spj-v2/room-types/cropped/entryway_uki5z7.jpg',
@@ -57,7 +57,7 @@ const topCollages = {
     },
     {
       _id: 7,
-      name: "My Kid's Room",
+      name: "My Kid's Room List",
       metaDescription: '2000+ 3D Renders',
       slug: "kid's-room-design-sets",
       thumbnail: 'w_444/v1648705428/spj-v2/room-types/cropped/kids_room_1_fw6ido.png',
