@@ -9,8 +9,8 @@ import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
 import StickyFooter from '@components/Shared/StickyFooter';
 import SVGLoader from '@components/Shared/SVGLoader';
+import WishListBtn from '@components/Shared/WishListBtn';
 import { Disclosure, Tab } from '@headlessui/react';
-import ReactScroll from 'react-scroll';
 import {
   ChevronRightIcon,
   ExternalLinkIcon,
@@ -40,6 +40,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import ReactScroll from 'react-scroll';
 import StarRatings from 'react-star-ratings';
 import styled, { keyframes } from 'styled-components';
 import shallow from 'zustand/shallow';
@@ -375,7 +376,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
         />
         <base href="/" />
       </Head>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="bg-white">
@@ -596,6 +597,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
                       >
                         {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
                       </button>
+                      <WishListBtn type="Asset" documentId={product?._id} />
                     </div>
                   )}
                 </form>

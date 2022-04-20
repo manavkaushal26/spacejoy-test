@@ -11,6 +11,7 @@ interface FetcherArgs {
   ctx?: NextPageContext | GetServerSidePropsContext;
   body?: any;
   hasBaseUrl?: boolean;
+  serverToken?: string;
 }
 
 const fetcher = async ({
@@ -20,8 +21,9 @@ const fetcher = async ({
   isSocket = false,
   type = 'text',
   hasBaseUrl = false,
+  serverToken = '',
 }: FetcherArgs): Promise<Record<string, any>> => {
-  const JWT = Cookies.get('token');
+  const JWT = serverToken || Cookies.get('token');
 
   const contentType = type === 'file' ? '' : 'application/json';
 

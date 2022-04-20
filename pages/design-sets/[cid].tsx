@@ -3,6 +3,7 @@ import { AssetType } from '@components/Collection/AssetType';
 import ControlPanel from '@components/Playground/ControlPanel';
 import DesignSetDetails from '@components/Playground/DesignSetDetails';
 import Layout from '@components/Shared/Layout';
+import WishListBtn from '@components/Shared/WishListBtn';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import CollageListContextProvider from '@store/CollageList';
 import { DataBusContextProvider } from '@store/DataBus';
@@ -14,13 +15,12 @@ import { SelectedIdContextProvider } from '@store/SelectedId';
 import { cloudinary } from '@utils/config';
 import mainCategories from '@utils/constants/DesignSets/mainCategory';
 import fetcher from '@utils/fetcher';
-import { onlyUnique, priceToLocaleString } from '@utils/helpers';
+import { onlyUnique } from '@utils/helpers';
 import Cookies from 'js-cookie';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useMemo, useRef } from 'react';
 
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
@@ -86,6 +86,9 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative `}
                             ref={PlaygroundWrapperRef}
                           >
+                            <button className="mb-0 absolute top-0 right-28 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold">
+                              <WishListBtn type="Collage" documentId={collageData?._id} />
+                            </button>
                             <button
                               onClick={onTotalClick}
                               className="mb-0 absolute top-4 right-4 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold"

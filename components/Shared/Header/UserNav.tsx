@@ -20,7 +20,7 @@ const UserNav = () => {
   const mobile = Cookies.get('isMobile') === 'true' ? true : false;
   const { session, loading, logout } = useSession();
 
-  const PreAuthRenderUI = () => <Login />;
+  const PreAuthRenderUI = () => <Login ctaText={<span>Login</span>} />;
 
   const PostAuthRenderUI = () => {
     return (
@@ -119,6 +119,19 @@ const UserNav = () => {
                       target="_blank"
                     >
                       Check Card Balance
+                    </NextLink>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <NextLink
+                      href="/wishlist"
+                      className={`${
+                        active ? 'bg-gray-50 text-gray-500' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      active
+                    >
+                      My Wishlist
                     </NextLink>
                   )}
                 </Menu.Item>

@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 
 const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
-const authUrl = isProduction ? 'https://auth.spacejoy.com' : 'http://localhost:3000';
+const authUrl = isProduction ? 'https://auth.spacejoy.com' : 'http://localhost:3001';
 
 const page = {
   appName: 'SpaceJoyWeb',

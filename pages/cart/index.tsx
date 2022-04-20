@@ -325,7 +325,7 @@ export default function Cart() {
         <title>Cart | Spacejoy</title>
       </Head>
       <Layout>
-        <Layout.Banner /> 
+        <Layout.Banner />
         <Layout.Header />
         <Layout.Body>
           <div className="bg-white">
@@ -477,7 +477,7 @@ export default function Cart() {
                           </p>
                         </div>
                         <LoginManager
-                          ctaText="Checkout"
+                          ctaText={<span>Checkout</span>}
                           styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none hidden lg:block"
                         />
                       </>
@@ -510,7 +510,7 @@ export default function Cart() {
                   // <div className="text-center">
                   <>
                     <LoginManager
-                      ctaText="Checkout"
+                      ctaText={<span>Checkout</span>}
                       styles="w-full md:w-auto p-0 md:px-12 py-3 text-center text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                     />
                   </>
