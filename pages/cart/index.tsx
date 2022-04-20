@@ -11,9 +11,10 @@ import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { cloudinary, company } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
+import { IndexPageMeta } from '@utils/meta';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -322,7 +323,9 @@ export default function Cart() {
   return (
     <>
       <Head>
-        <title>Cart | Spacejoy</title>
+      {IndexPageMeta}
+				<title key="title">Cart | {company.product}</title>
+				<link rel="canonical" href="https://www.spacejoy.com/cart" />
       </Head>
       <Layout>
         <Layout.Banner />
@@ -339,7 +342,7 @@ export default function Cart() {
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
                   </h2>
-                  <div className="hidden lg:block">
+                  {Object.keys(cart?.cartItems)?.length !== 0 && <div className="hidden lg:block">
                     {data?.cartBannerV2?.visible &&
                       (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
                         <Link href={data?.cartBannerV2?.link}>
@@ -364,7 +367,7 @@ export default function Cart() {
                           />
                         </div>
                       ))}
-                  </div>
+                  </div>}
                   {loading && (
                     <>
                       {[...new Array(18)].map((_d, _i) => {

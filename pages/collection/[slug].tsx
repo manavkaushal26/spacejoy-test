@@ -3,9 +3,10 @@ import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { internalPages } from '@utils/config';
+import { cloudinary, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
+import { CollectionPageMeta } from '@utils/meta';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
@@ -25,16 +26,48 @@ type CollectionPage = {
     status?: string;
     metaTitle?: string;
     metaDescription?: string;
+    cdnCover?:string;
   };
 };
 
 const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionData }) => {
   return (
     <Layout>
-      <Head>
-        <title>{collectionData?.name} | Spacejoy</title>
-        <base href="/" />
-      </Head>
+      {/* <Head>
+      {CollectionPageMeta}
+						{collectionData.metaTitle && <title key="title">{collectionData.metaTitle}</title>}
+						{collectionData.metaDescription && (
+							<meta key="description" name="description" content={collectionData.metaDescription} />
+						)}
+						{collectionData.slug && (
+							<link
+								key="canonical"
+								rel="canonical"
+								href={`https://www.spacejoy.com/interior-designs/${collectionData.slug}`}
+							/>
+						)}
+						<meta key="og-title" property="og:title" content={collectionData.metaTitle} />
+						<meta key="og-description" property="og:description" content={collectionData.metaDescription} />
+						<meta
+							key="og-url"
+							property="og:url"
+							content={`https://www.spacejoy.com/interior-designs/${collectionData.slug}`}
+						/>
+						<meta
+							key="og-image"
+							property="og:image"
+							content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_700/${collectionData.cdnCover}`}
+						/>
+						<meta key="og-image-width" property="og:image:width" content="700" />
+						<meta key="og-image-height" property="og:image:height" content="394" />
+						<meta key="twitter-title" name="twitter:title" content={collectionData.metaTitle} />
+						<meta key="twitter-description" name="twitter:description" content={collectionData.metaDescription} />
+						<meta
+							key="twitter-image"
+							name="twitter:image"
+							content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_700/${collectionData.cdnCover}`}
+						/>
+      </Head> */}
       <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>

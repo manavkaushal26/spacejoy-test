@@ -1,6 +1,8 @@
 import ErrorState from '@components/Shared/ErrorState';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
+import { company } from '@utils/config';
+import { IndexPageMeta } from '@utils/meta';
 import Head from 'next/head';
 import React from 'react';
 
@@ -8,8 +10,10 @@ const Error = ({ statusCode }: { statusCode: number }): JSX.Element => {
   return (
     <Layout>
       <Head>
-        <title>Help | Spacejoy</title>
-        <link rel="icon" href="/favicon.ico" />
+      {IndexPageMeta}
+					<title key="title">
+						{statusCode} | {company.product}
+					</title>
       </Head>
       <Layout.Banner /> 
       <Layout.Header />

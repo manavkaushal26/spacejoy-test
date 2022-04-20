@@ -12,7 +12,7 @@ import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
+import { cloudinary, company, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import useWindowSize from '@utils/useWindowSize';
@@ -41,7 +41,15 @@ export const Home = (): JSX.Element => {
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
         <Head>
-          <meta key="keywords" name="keywords" content="online furniture store, home decor store, home design diy" />
+        <title key="title">
+        The Best Online Interior Design Service For Your Home
+				</title>
+				<link rel="canonical" href="https://www.spacejoy.com" />
+				<meta
+					key="description"
+					name="description"
+					content={`Design a home you'll love with ${company.product}'s online interior design services. Work 1:1 with top interior designers and transform any space in just 7 days! Get started today.`}
+				/>
         </Head>
         <Layout.Banner />
         <Layout.Header />

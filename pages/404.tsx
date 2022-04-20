@@ -1,5 +1,7 @@
 import ErrorState from '@components/Shared/ErrorState';
 import Layout from '@components/Shared/Layout';
+import { company } from '@utils/config';
+import { IndexPageMeta } from '@utils/meta';
 import Head from 'next/head';
 import React from 'react';
 
@@ -7,8 +9,10 @@ const PageNotFound: React.FC = () => {
   return (
     <Layout>
       <Head>
-        <title>Page Not Found | Spacejoy</title>
-        <link rel="icon" href="/favicon.ico" />
+      {IndexPageMeta}
+				<title key="title">
+					404 | {company.product}
+				</title>
       </Head>
       <Layout.Banner /> 
       <Layout.Header />
