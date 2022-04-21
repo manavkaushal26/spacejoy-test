@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from '@heroicons/react/outline';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import { defaultImgSrcCover } from '@utils/Mocks/DefaultFavourites';
@@ -29,15 +30,17 @@ const RoomCard = ({ room }) => {
             className="rounded-md"
           />
         </div>
-        <div className=" py-4 px-4">
-          <div className="font-bold text-base mb-2">{room?.name}</div>
+        <div className="block p-6 rounded-lg  bg-white max-w-sm pt-2">
+          <h5 className="text-gray-900 text-lg font-bold leading-tight font-medium mb-6">{room?.name}</h5>
+
           <Link href={`/wishlist/${room?._id}`}>
             <a
               href={`/wishlist/${room?._id}`}
-              className="text-base py-2 px-4 bg-gray-900 rounded-lg text-white mt-4"
+              className="text-base py-2 px-4 bg-gray-900 rounded-lg text-white  text-md inline-flex items-center group"
               onClick={() => analytics()}
             >
               Open List
+              <ArrowRightIcon className="h-4 w-4 text-white ml-1 group-hover:translate-x-1 " />
             </a>
           </Link>
         </div>

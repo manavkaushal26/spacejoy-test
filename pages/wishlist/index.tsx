@@ -38,6 +38,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       <Layout.Header />
       <Layout.Body>
         <div className="container mx-auto px-4 py-4">
+          <h1 className="mt-2 text-3xl leading-8 tracking-loose text-gray-900 sm:text-4xl mb-12">Your wishlist </h1>
           <div className="mb-4 hidden lg:block">
             <CreateRoomBtn cb={updatedRoomCollection} />
           </div>
