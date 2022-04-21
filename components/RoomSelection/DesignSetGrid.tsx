@@ -128,7 +128,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                               <div className="container rounded-lg w-full h-fit">
                                 {isMobile ? (
                                   <Image
-                                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648718897/web/webengagebanners/Mobile-1_wwciov.gif"
+                                    src="https://res.cloudinary.com/spacejoy/image/upload/v1650517432/web/homepage-v3/Home-in-just-7-days-Mobile-Grid_vorssp.gif"
                                     alt="affirm"
                                     height={300}
                                     width={358}

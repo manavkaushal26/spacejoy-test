@@ -35,21 +35,34 @@ export const Home = (): JSX.Element => {
   const showTopNavTags = useMemo(() => width <= 992, [width]);
   const isScreenMedium = useMemo(() => width < 768, [width]);
 
-
   return (
     <>
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
         <Head>
-        <title key="title">
-        Spacejoy: The Best Online Interior Design Service For Your Home
-				</title>
-				<link rel="canonical" href="https://www.spacejoy.com" />
-				<meta
-					key="description"
-					name="description"
-					content={`Design a home you'll love with ${company.product}'s online interior design services. Work 1:1 with top interior designers and transform any space in just 7 days! Get started today.`}
-				/>
+          <title key="title">Spacejoy: The Best Online Interior Design Service For Your Home</title>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org/',
+                '@type': 'WebSite',
+                name: 'Spacejoy',
+                url: 'https://www.spacejoy.com/',
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: 'https://www.spacejoy.com/search?q={search_term_string}',
+                  'query-input': 'required name=search_term_string',
+                },
+              }),
+            }}
+          />
+          <link rel="canonical" href="https://www.spacejoy.com" />
+          <meta
+            key="description"
+            name="description"
+            content={`Design a home you'll love with ${company.product}'s online interior design services. Work 1:1 with top interior designers and transform any space in just 7 days! Get started today.`}
+          />
         </Head>
         <Layout.Banner />
         <Layout.Header />
@@ -67,7 +80,8 @@ export const Home = (): JSX.Element => {
               </HomeSectionTitle.MainTitle>
               {isMobile !== 'true' && (
                 <HomeSectionTitle.Description align="left">
-                  Curated by us, personalized by you.<br/> Perfect your whole room in a single click.
+                  Curated by us, personalized by you.
+                  <br /> Perfect your whole room in a single click.
                 </HomeSectionTitle.Description>
               )}
             </HomeSectionTitle>
@@ -352,7 +366,7 @@ export const Home = (): JSX.Element => {
               <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                  7 days to a beautiful room!
+                    7 days to a beautiful room!
                     <br />
                     <span className="text-[#F5296E]">Get paired with a Designer!</span>
                   </HomeSectionTitle.MainTitle>
@@ -362,16 +376,18 @@ export const Home = (): JSX.Element => {
                     </HomeSectionTitle.Description>
                   )}
                 </HomeSectionTitle>
-                {!isScreenMedium && <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
-                  <a target="_blank" rel="noopener noreferrer">
-                    <button
-                      type="button"
-                      className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                    >
-                      Hire a Designer
-                    </button>
-                  </a>
-                </Link>}
+                {!isScreenMedium && (
+                  <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
+                    <a target="_blank" rel="noopener noreferrer">
+                      <button
+                        type="button"
+                        className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                      >
+                        Hire a Designer
+                      </button>
+                    </a>
+                  </Link>
+                )}
               </div>
               <div className="relative w-full mx-auto  md:w-1/2">
                 <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
@@ -400,25 +416,27 @@ export const Home = (): JSX.Element => {
                   ))}
                 </Carousel>
               </div>
-              {isScreenMedium && <div className="text-center">
-                <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
-                  <a target="_blank" rel="noopener noreferrer">
-                    <button
-                      type="button"
-                      className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                      onClick={() => {
-                        PushEvent({
-                          category: `Explore Sets`,
-                          action: `Go to Room Select`,
-                          label: `HP Connect Explore Sets Button`,
-                        });
-                      }}
-                    >
-                      Hire a Designer
-                    </button>
-                  </a>
-                </Link>
-              </div>}
+              {isScreenMedium && (
+                <div className="text-center">
+                  <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
+                    <a target="_blank" rel="noopener noreferrer">
+                      <button
+                        type="button"
+                        className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        onClick={() => {
+                          PushEvent({
+                            category: `Explore Sets`,
+                            action: `Go to Room Select`,
+                            label: `HP Connect Explore Sets Button`,
+                          });
+                        }}
+                      >
+                        Hire a Designer
+                      </button>
+                    </a>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
 
