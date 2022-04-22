@@ -21,7 +21,7 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650432082/Home-banner-spj_v0ublh.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650361653/web/homev3/New_Banners-03_egfnjo.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650627638/web/homev3/New_Banners-11_ohlvyi.jpg',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650430566/web/homepage-v3/New_Banners-14_v0rc9a.jpg',
