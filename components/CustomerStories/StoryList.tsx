@@ -10,15 +10,15 @@ import { cloudinary, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import { StoriesList } from './StoriesListInterface';
 
-interface Props{
-  storiesFeedData:StoriesList;
+interface Props {
+  storiesFeedData: StoriesList;
 }
 
 const StoryList: React.FC<Props> = ({ storiesFeedData }) => {
-  const { data:firebaseData } = useFirebaseContext();
+  const { data: firebaseData } = useFirebaseContext();
   const { data, count: totalRecords } = storiesFeedData;
   const ref = useRef<HTMLDivElement>();
   const onButtonClick = (pgNo: any) => {
@@ -32,7 +32,6 @@ const StoryList: React.FC<Props> = ({ storiesFeedData }) => {
     });
   };
 
-  
   const { currentRenderList, isFetching, buttons } = usePagination(
     { url: publicRoutes.customerStoriesList, method: 'GET' },
     data,
@@ -56,36 +55,38 @@ const StoryList: React.FC<Props> = ({ storiesFeedData }) => {
             </>
           )}
           {currentRenderList.map((story, index) => (
-            <>{index !==0 && index % 9 === 0 && firebaseData?.designListingV2?.visible && (
-              <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
-                {firebaseData?.designListingV2?.link !== undefined && firebaseData?.designListingV2?.link !== '' ? (
-                  <Link href={firebaseData?.designListingV2?.link}>
-                    <a>
-                      <Image
-                        src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
-                        alt="designListBanner"
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </a>
-                  </Link>
-                ) : (
-                  <Image
-                    src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
-                    alt="designListBanner"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                )}
-              </div>
-            )}
-            <CustomerStoryCard data={story} key={story._id} /></>
+            <>
+              {index !== 0 && index % 9 === 0 && firebaseData?.designListingV2?.visible && (
+                <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
+                  {firebaseData?.designListingV2?.link !== undefined && firebaseData?.designListingV2?.link !== '' ? (
+                    <Link href={firebaseData?.designListingV2?.link}>
+                      <a>
+                        <Image
+                          src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
+                          alt="designListBanner"
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      </a>
+                    </Link>
+                  ) : (
+                    <Image
+                      src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
+                      alt="designListBanner"
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  )}
+                </div>
+              )}
+              <CustomerStoryCard data={story} key={story._id} />
+            </>
           ))}
         </div>
         <Pagination buttonList={buttons} />
       </div>
     </div>
   );
-}
+};
 
-export default StoryList
+export default StoryList;

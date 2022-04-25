@@ -18,7 +18,7 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650432082/Home-banner-spj_v0ublh.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650894979/web/homepage-v3/New-Website-Banner-1_1_rxuidx_qfxpvs.png',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650627638/web/homev3/New_Banners-11_ohlvyi.jpg',

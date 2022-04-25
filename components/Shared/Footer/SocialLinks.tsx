@@ -3,7 +3,7 @@ import React from 'react';
 
 const SocialLinks: React.FC = () => {
   return (
-    <div className="flex mt-6 space-x-3">
+    <div className="flex space-x-3 my-auto">
       <a
         href={company.social.sites.pinterest}
         className="p-2 text-gray-800 bg-gray-100 rounded hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"

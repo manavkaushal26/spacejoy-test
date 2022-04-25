@@ -2,14 +2,18 @@ import DesignCardDimmer from '@components/InteriorDesigns/DesignCardDimmer';
 import Pagination from '@components/Shared/Pagination';
 import useGenericPagination from '@hooks/useGenericPagination';
 import usePagination from '@hooks/usePagination';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { internalPages } from '@utils/config';
+import { cloudinary, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useRef } from 'react'
 import BlogCard from './BlogCard';
 import { BlogListInterface } from './BlogListInterface';
 
 const BlogList: React.FC<BlogListInterface> = ({ data }) => {
+  const { data: firebaseData } = useFirebaseContext();
   const ref = useRef<HTMLDivElement>();
   const onButtonClick = (pgNo: any) => {
     if (ref.current) {
@@ -46,8 +50,32 @@ const BlogList: React.FC<BlogListInterface> = ({ data }) => {
               ))}
             </>
           )}
-          {currentRenderList.map((blog) => (
-            <BlogCard cardData={blog} key={blog?._id} />
+          {currentRenderList.map((blog, index) => (
+            <>
+            {index !== 0 && index % 9 === 0 && firebaseData?.designListingV2?.visible && (
+              <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
+                {firebaseData?.designListingV2?.link !== undefined && firebaseData?.designListingV2?.link !== '' ? (
+                  <Link href={firebaseData?.designListingV2?.link}>
+                    <a>
+                      <Image
+                        src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
+                        alt="designListBanner"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </a>
+                  </Link>
+                ) : (
+                  <Image
+                    src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
+                    alt="designListBanner"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                )}
+              </div>
+            )}
+            <BlogCard cardData={blog} key={blog?._id} /></>
           ))}
         </div>
         <Pagination buttonList={buttons} />

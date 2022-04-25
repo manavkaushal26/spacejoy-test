@@ -11,9 +11,9 @@ import Head from 'next/head';
 import React from 'react';
 import parse from 'react-html-parser';
 import styled from 'styled-components';
-import {getEngagementsBlocks} from "@components/EngagementBlocks/Utils";
+import { getEngagementsBlocks } from '@components/EngagementBlocks/Utils';
 import CustomerStoriesCarousel from '@components/EngagementBlocks/CustomerStoriesCarousel';
-
+import PreFooter from '@components/Shared/PreFooter';
 
 const StoryBodyStyled = styled.div`
   img {
@@ -26,13 +26,47 @@ const StoryBodyStyled = styled.div`
     font-size: 14px !important ;
   }
   p {
-    margin: 8px 0px;
+    margin: 16px 0px;
   }
   p span a {
     color: #f5296e;
   }
   p a span {
     color: #f5296e;
+  }
+  p a strong {
+    font-size: 18px;
+    color: #f5296e;
+  }
+  p strong a{
+    font-size: 18px;
+    color: #f5296e;
+    
+  }
+  p strong{
+    font-size: 28px;
+  }
+  h1{
+    font-size: 22px;
+    margin: 50px 0px 10px 0px;
+  }
+  h2{
+    font-size: 22px;
+    margin: 50px 0px 10px 0px;
+  }
+  h2 strong a{
+    font-size: 18px;
+    color: #f5296e;
+  }
+  h2 a{
+    font-size: 18px;
+    color: #f5296e;
+  }
+  h2 strong{
+    font-size: 18px;
+  }
+  ul li{
+    margin: 0px 0px 10px 0px;
   }
 `;
 
@@ -86,29 +120,30 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="flex md:flex-row flex-col md:space-x-5 space-y-5">
-          <div className="p-5 md:basis-2/3">
-            <div className="mt-2 mb-8">
-              {data?.category.title && (
-                <h3 className=" text-2xl sm:text-4xl capitalize mb-1 sm:mb-2">{data?.category.title}</h3>
-              )}
-              <p className=" text-xs sm:text-sm">{data?.title}</p>
+        <div className="container">
+          <div className="flex md:flex-row flex-col md:space-x-5 space-y-5">
+            <div className="p-5 md:basis-2/3">
+              <div className="mt-2 mb-8">
+                {data?.category.title && (
+                  <h3 className=" text-2xl sm:text-4xl capitalize mb-1 sm:mb-2">{data?.category.title}</h3>
+                )}
+                <p className=" text-xs sm:text-base">{data?.title}</p>
+              </div>
+              <StoryBodyStyled>
+                {data?.blogType === 'full' ? children : <div className=" items-start">{children}</div>}
+              </StoryBodyStyled>
             </div>
-            <StoryBodyStyled>
-              {data?.blogType === 'full' ? children : <div className=" items-start">{children}</div>}
-            </StoryBodyStyled>
-          </div>
-          <div className="flex flex-col space-y-8 md:basis-1/3 m-5 h-fit">
-            <div>
-              {editorPickData.length && (
-                <div className="mt-3 p-5 shadow-none bg-[#f8f8f8] md:mr-5">
-                  <h2 className=" text-xl font-bold">Editors Pick</h2>
-                  <p className=" text-sm">Explore editors design</p>
-                  <EditorPick data={editorPickData} />
-                </div>
-              )}
-            </div>
-            <div className=" bg-[#fef7ef] md:mr-5">
+            <div className="flex flex-col space-y-8 md:basis-1/3 m-5 h-fit">
+              <div>
+                {editorPickData.length && (
+                  <div className="mt-3 p-5 shadow-none bg-[#f8f8f8] md:mr-5 rounded-lg">
+                    <h2 className=" text-xl font-bold">Editors Pick</h2>
+                    <p className=" text-sm">Explore editors design</p>
+                    <EditorPick data={editorPickData} />
+                  </div>
+                )}
+              </div>
+              {/* <div className=" bg-[#fef7ef] md:mr-5">
               {customerData.length && (
                 <div className="mt-3 p-5 shadow-none">
                   <h2 className=" text-xl font-bold">Customers Stories</h2>
@@ -116,18 +151,20 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
                   <CustomerStories data={customerData} />
                 </div>
               )}
+            </div> */}
             </div>
           </div>
         </div>
+        <div className=' container'>
         <div className=" bg-[#fef7ef] mt-8 rounded-lg">
-              {customerData.length && (
-                <div className="mt-3 p-5 shadow-none">
-                  <h2 className=" text-xl font-bold">Customer Stories</h2>
-                  <p className=" text-sm">Explore editors design</p>
-                  <CustomerStoriesCarousel data={customerData} />
-                </div>
-              )}
+          {customerData.length && (
+            <div className="mt-3 p-5 shadow-none">
+              <h2 className=" text-xl font-bold">Customer Stories</h2>
+              <p className=" text-sm">Explore editors design</p>
+              <CustomerStoriesCarousel data={customerData} />
             </div>
+          )}
+        </div>
         <div className=" bg-[#f8f8f8] mt-8">
           {categoryData.length && (
             <div className="mt-3 p-5 shadow-none">
@@ -136,6 +173,10 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
               <SimilarPicks data={categoryData} />
             </div>
           )}
+        </div>
+        </div>
+        <div className=' container'>
+        <PreFooter />
         </div>
       </Layout.Body>
       <Layout.Footer />

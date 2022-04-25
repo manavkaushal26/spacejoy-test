@@ -47,7 +47,6 @@ interface DesignData {
 }
 
 const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
-
   const { customerData, editorPickData, similarPicksData, categoryData } = engagementBlockData;
 
   return (
@@ -64,11 +63,20 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
             <h2 className="my-8 text-3xl tracking-wide">{design?.name}</h2>
             <ImageGrid images={design?.cdnRender} />
             <p className=" text-sm my-8">{design?.description}</p>
-            <SocialLinks />
+            <div className="flex justify-center space-x-5 sm:space-x-10 content-center">
+              <SocialLinks />
+              <div className="rounded-md shadow">
+                <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                  <a className="w-full flex items-center justify-center px-4 sm:px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10 text-center">
+                    Start Your Project
+                  </a>
+                </Link>
+              </div>
+            </div>
             <h3 className="text-2xl tracking-wide text-gray-700 mt-20 mb-8">Shop the products featured in this room</h3>
-            <div className="flex md:flex-row flex-col md:space-x-5 space-y-5 sm:space-y-0">
+            <div className="flex md:flex-row flex-col md:space-x-10 space-y-5 sm:space-y-0">
               <div className="sm:w-3/5 xl:w-3/4">
-                <div className="sticky top-24 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1">
+                <div className="sticky top-24 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1 sm:gap-3">
                   {design?.assets?.length === 0 ? (
                     <>
                       {[...Array(28)].map((_d, _i) => {
@@ -121,7 +129,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                         </div>
                       )}
                     </div>
-                    <div className=" bg-white md:mr-5 rounded-lg">
+                    {/* <div className=" bg-white md:mr-5 rounded-lg">
                       {customerData.length && (
                         <div className="p-5 shadow-none">
                           <h2 className=" text-xl font-bold">Customers Stories</h2>
@@ -129,7 +137,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                           <CustomerStories data={customerData} />
                         </div>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

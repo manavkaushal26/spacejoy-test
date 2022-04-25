@@ -23,7 +23,7 @@ const ImageGallaryGrid = ({ data }) => {
   }, [data]);
 
   return (
-    <div>
+    <div className='container'>
       
         <div className={`grid gap-1 ${getTemplate(trimmedData.length)}`}>
           {trimmedData.map((item, index) => (
@@ -44,13 +44,13 @@ const ImageGallaryGrid = ({ data }) => {
                               : 'col-span-1'
                           }`
                     }  `
-              } bg-[#F2F2F2] overflow-hidden min-h-[100px] cursor-pointer pt-[55%] relative `}
+              } bg-white overflow-hidden min-h-[100px] cursor-pointer pt-[55%] relative`}
               key={item._id}
             >
               <Image
                 src={`${cloudinary.baseDeliveryURL}/c_scale/${item.cdn}`}
                 alt=""
-                className=" absolute top-0 left-0 w-full h-full"
+                className=" object-cover absolute top-0 left-0 w-full h-full"
                 layout="fill"
               />
               <div className=" absolute top-1 right-1 opacity-0 hover:opacity-100">

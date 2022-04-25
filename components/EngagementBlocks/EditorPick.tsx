@@ -28,7 +28,7 @@ const EditorPickCard = ({ data }) => {
               placeholder="blur"
               blurDataURL={blurredBgImage}
             />
-            <div className="absolute rounded-full ring-2 ring-white bg-[#F39C12] h-14 w-14 top-5 right-5 -mb-1 border-1 border-white overflow-hidden">
+            <div className="absolute rounded-full ring-2 ring-white bg-[#F39C12] h-10 w-10 top-5 right-5 -mb-1 border-1 border-white overflow-hidden">
               <Image
                 src={RecommendedIcon}
                 alt={`${data.customerName}`}

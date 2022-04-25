@@ -18,6 +18,7 @@ import CustomerCard from '@components/CustomerStories/CustomerCard';
 import { lightBoxOptions } from '@components/Carousel';
 import { SRLWrapper } from 'simple-react-lightbox';
 import SimpleReactLightbox from 'simple-react-lightbox';
+import PreFooter from '@components/Shared/PreFooter';
 
 const StoryBodyStyled = styled.div`
   img {
@@ -273,7 +274,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div>
+        <div className="container">
           <SimpleReactLightbox>
             <SRLWrapper>
               <ImageGallaryGrid data={about?.afterImages} />
@@ -399,7 +400,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
                 {summary && summary?.assetList && summary?.assetList.length > 0 && (
                   <div className="m-5 mt-16 sm:mt-24 flex flex-col bg-gray-100 py-5 sm:p-5">
                     <h3 className="text-center text-2xl sm:text-4xl capitalize mb-8 sm:mb-8">Shopping List</h3>
-                    <div className="text-left grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-1">
+                    <div className="text-left grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-3">
                       {summary?.assetList &&
                         summary?.assetList.map((item) => {
                           return <Product asset={item?.asset} key={item._id} />;
@@ -411,6 +412,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
             </div>
           </div>
         </div>
+        <PreFooter />
       </Layout.Body>
       <Layout.Footer />
     </Layout>

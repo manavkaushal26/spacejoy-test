@@ -2,8 +2,11 @@ import DesignCard from '@components/InteriorDesigns/DesignCard';
 import DesignCardDimmer from '@components/InteriorDesigns/DesignCardDimmer';
 import Pagination from '@components/Shared/Pagination/index';
 import usePagination from '@hooks/usePagination';
-import { internalPages } from '@utils/config';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
+import { cloudinary, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 interface DesignListInterface {
@@ -15,6 +18,7 @@ interface DesignListInterface {
 }
 
 const DesignList: React.FC<DesignListInterface> = ({ feedData }) => {
+  const { data: firebaseData } = useFirebaseContext();
   const { filters = {} } = feedData || {};
 
   const { currentRenderList, isFetching, buttons } = usePagination(
@@ -39,8 +43,32 @@ const DesignList: React.FC<DesignListInterface> = ({ feedData }) => {
               ))}
             </>
           )}
-          {currentRenderList.map((design) => (
-            <DesignCard cardData={design} key={design?._id} />
+          {currentRenderList.map((design, index) => (
+            <>
+            {index !== 0 && index % 9 === 0 && firebaseData?.homepageV2?.hp1 && (
+              <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
+                {firebaseData?.homepageV2?.hp1Link !== undefined && firebaseData?.homepageV2?.hp1Link !== '' ? (
+                  <Link href={firebaseData?.homepageV2?.hp2Link}>
+                    <a>
+                      <Image
+                        src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp1}`}
+                        alt="designListBanner"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </a>
+                  </Link>
+                ) : (
+                  <Image
+                    src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp1}`}
+                    alt="designListBanner"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                )}
+              </div>
+            )}
+            <DesignCard cardData={design} key={design?._id} /></>
           ))}
         </div>
         <Pagination buttonList={buttons} />
