@@ -14,7 +14,7 @@ const correctedSlug = (slug: string) => {
 
 export const CustomerStoryCard = ({ data }) => {
   return (
-    <Link href={{ pathname: '/customer-stories', query: { slug: data.slug } }} as={`/customer-stories/${data.slug}`}>
+    <Link href={`/customer-stories/${data.slug}`}>
       <a>
         <div className="cursor-pointer sm:mt-8">
           <div className=" rounded relative border border-gray-200 transition group-hover:shadow-md">

@@ -65,7 +65,6 @@ export const ExploreIdeasNav = () => {
         
         <Link href={`/interior-designs-blog`} passHref>
           <a
-            target="_blank"
             onClick={() => {
               PushEvent({
                 category: `Top Nav - Explore Ideas`,
@@ -94,7 +93,6 @@ export const ExploreIdeasNav = () => {
 
         <Link href={`/customer-stories`} passHref>
           <a
-            target="_blank"
             onClick={() => {
               PushEvent({
                 category: `Top Nav - Explore Ideas`,

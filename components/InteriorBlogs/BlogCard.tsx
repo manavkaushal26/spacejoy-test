@@ -15,7 +15,7 @@ interface Props{
 const BlogCard: React.FC<Props> = ({cardData}) => {
 
   return (
-    <Link href={`/interior-designs-blogs/${cardData.slug}`}>
+    <Link href={`/interior-designs-blog/${cardData.slug}`}>
       <a >
         <div className="cursor-pointer group">
           <div className=" rounded overflow-hidden relative border border-gray-200 transition group-hover:shadow-xl">
