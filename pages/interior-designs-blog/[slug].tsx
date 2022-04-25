@@ -12,6 +12,7 @@ import React from 'react';
 import parse from 'react-html-parser';
 import styled from 'styled-components';
 import {getEngagementsBlocks} from "@components/EngagementBlocks/Utils";
+import CustomerStoriesCarousel from '@components/EngagementBlocks/CustomerStoriesCarousel';
 
 
 const StoryBodyStyled = styled.div`
@@ -118,15 +119,15 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
             </div>
           </div>
         </div>
-        <div className=" bg-[#fef7ef] mt-8">
-          {similarPicksData.length && (
-            <div className="mt-3 p-5 shadow-none">
-              <h2 className=" text-xl font-bold">Customers Stories</h2>
-              <p className=" text-sm">Explore customer designs</p>
-              <SimilarPicks data={similarPicksData} />
+        <div className=" bg-[#fef7ef] mt-8 rounded-lg">
+              {customerData.length && (
+                <div className="mt-3 p-5 shadow-none">
+                  <h2 className=" text-xl font-bold">Customer Stories</h2>
+                  <p className=" text-sm">Explore editors design</p>
+                  <CustomerStoriesCarousel data={customerData} />
+                </div>
+              )}
             </div>
-          )}
-        </div>
         <div className=" bg-[#f8f8f8] mt-8">
           {categoryData.length && (
             <div className="mt-3 p-5 shadow-none">
