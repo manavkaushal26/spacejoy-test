@@ -5,7 +5,7 @@ import { SRLWrapper } from 'simple-react-lightbox';
 
 const MAX_NAV_IMAGES_DESKTOP = 6;
 const MAX_NAV_IMAGES_MOBILE = 4;
-const lightBoxOptions = {
+export const lightBoxOptions = {
   settings: {
     overlayColor: 'rgb(25, 136, 124)',
     autoplaySpeed: 1500,

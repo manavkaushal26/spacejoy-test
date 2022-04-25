@@ -2247,11 +2247,11 @@ export const exploreIdeasCat = [
   },
   {
     name: 'Tips and Guides',
-    url: `${oldSpacejoyUrl}/interior-designs-blog`,
+    url: `/interior-designs-blog`,
   },
   {
     name: 'Customer Stories & Reviews',
-    url: `${oldSpacejoyUrl}/customer-stories`,
+    url: `/customer-stories`,
   },
   
 ];

@@ -35,6 +35,6 @@
     "components/Payment/AffirmPayment.jsx",
     "pages/api/auth/[...nextauth].js",
     "pages/cart/_middleware.ts"
-  ],
+, "components/Cards/Card.js"  ],
   "exclude": ["node_modules"]
 }

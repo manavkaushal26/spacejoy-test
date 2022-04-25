@@ -71,7 +71,7 @@ const fetchMoreData = async (api, skip, limit, field) => {
       } else {
         throw new Error();
       }
-    } else {
+    } else if(field === 'hits') {
       const {
         data: { hits = [] }, // TODO: Write processor
         statusCode,
@@ -79,6 +79,30 @@ const fetchMoreData = async (api, skip, limit, field) => {
 
       if (statusCode <= 301) {
         return hits;
+      } else {
+        throw new Error();
+      }
+    }
+    
+      else if(field === 'data') {
+        const {
+          data: { data = [] }, // TODO: Write processor
+          statusCode,
+        } = res;
+  
+        if (statusCode <= 301) {
+          return data;
+        } else {
+          throw new Error();
+        }}
+    else{
+      const {
+        data, // TODO: Write processor
+        statusCode,
+      } = res;
+
+      if (statusCode <= 301) {
+        return data;
       } else {
         throw new Error();
       }

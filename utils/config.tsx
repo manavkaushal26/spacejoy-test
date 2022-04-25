@@ -147,6 +147,14 @@ const internalPages = {
     DEFAULT_PAGE_SIZE: 25,
     DEFAULT_PAGINATION_BUTTON_COUNT: 5,
   },
+  InteriorDesignsBlog: {
+    DEFAULT_PAGE_SIZE: 18,
+    DEFAULT_PAGINATION_BUTTON_COUNT: Cookies.get('isMobile') === 'true' ? 5 : 7,
+  },
+  CustomerStories: {
+    DEFAULT_PAGE_SIZE: 30,
+    DEFAULT_PAGINATION_BUTTON_COUNT: Cookies.get('isMobile') === 'true' ? 5 : 7,
+  },
 };
 
 const affirm = {

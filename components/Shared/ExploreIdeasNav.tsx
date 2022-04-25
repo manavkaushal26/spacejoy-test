@@ -63,7 +63,7 @@ export const ExploreIdeasNav = () => {
           </a>
         </Link>
         
-        <Link href={`${oldSpacejoyUrl}/interior-designs-blog`} passHref>
+        <Link href={`/interior-designs-blog`} passHref>
           <a
             target="_blank"
             onClick={() => {
@@ -82,7 +82,6 @@ export const ExploreIdeasNav = () => {
                   width={300}
                   height={280}
                   className="rounded-tl-xl rounded-tr-xl "
-                  // objectFit='contain'
                 />
               </div>
               <div className="flex justify-between p-4">
@@ -93,7 +92,7 @@ export const ExploreIdeasNav = () => {
           </a>
         </Link>
 
-        <Link href={`${oldSpacejoyUrl}/customer-stories`} passHref>
+        <Link href={`/customer-stories`} passHref>
           <a
             target="_blank"
             onClick={() => {
