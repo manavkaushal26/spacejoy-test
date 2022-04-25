@@ -12,11 +12,11 @@ module.exports = withPWA({
       //   destination: `${legacyRepo}/pricing`, // Matched parameters can be used in the destination
       //   permanent: false,
       // },
-      {
-        source: '/customer-stories/:slug*',
-        destination: `${legacyRepo}/customer-stories/:slug*`, // Matched parameters can be used in the destination
-        permanent: false,
-      },
+      // {
+      //   source: '/customer-stories/:slug*',
+      //   destination: `/customer-stories/:slug*`, // Matched parameters can be used in the destination
+      //   permanent: false,
+      // },
       {
         source: '/checkout/payment/:slug*',
         destination: `${legacyRepo}/checkout/payment/:slug*`, // Matched parameters can be used in the destination
@@ -47,11 +47,11 @@ module.exports = withPWA({
         destination: `${legacyRepo}/new-project/:slug*`, // Matched parameters can be used in the destination
         permanent: false,
       },
-      {
-        source: '/interior-designs-blog/:slug*',
-        destination: `${legacyRepo}/interior-designs-blog/:slug*`, // Matched parameters can be used in the destination
-        permanent: false,
-      },
+      // {
+      //   source: '/interior-designs-blog/:slug*',
+      //   destination: `/interior-designs-blog/:slug*`, // Matched parameters can be used in the destination
+      //   permanent: false,
+      // },
       {
         source: '/spacejoy-vs-modsy',
         destination: `${legacyRepo}/spacejoy-vs-modsy`, // Matched parameters can be used in the destination
