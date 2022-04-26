@@ -21,10 +21,10 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650894979/web/homepage-v3/New-Website-Banner-1_1_rxuidx_qfxpvs.png',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650627638/web/homev3/New_Banners-11_ohlvyi.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650960309/web/homev3/26th-The_Happiness_Sale_-06_ijqnlm.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650430566/web/homepage-v3/New_Banners-14_v0rc9a.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650960312/web/homev3/26th-The_Happiness_Sale_-07_qekibu.jpg',
   },
 ];
 
