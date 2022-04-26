@@ -59,10 +59,12 @@ const InteriorDesigns = ({ designFeedData }): JSX.Element => {
       <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
+        <div className=' container lg:px-48'>
         <CollectionList feedData={topCollections} />
-        {/* <ListFilter /> */}
+        <ListFilter />
         <DesignList feedData={designFeedData} />
         <PreFooter />
+        </div>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

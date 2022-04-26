@@ -9,63 +9,64 @@ import fetcher from '@utils/fetcher';
 import topCollections from '@utils/Mocks/topCollections';
 import Head from 'next/head';
 import React from 'react';
-import { InteriorDesignBlogPageMeta } from "@utils/meta";
+import { InteriorDesignBlogPageMeta } from '@utils/meta';
 import BlogList from '@components/InteriorBlogs/BlogList';
 import { BlogListInterface } from '@components/InteriorBlogs/BlogListInterface';
 import BlogIntro from '@components/InteriorBlogs/BlogIntro';
 
 const InteriorDesignsBlogs = ({ blogFeedData }): JSX.Element => {
-  
   return (
     <Layout>
       <Head>
-      {InteriorDesignBlogPageMeta}
-				<title key="title">{company.product} Blog - Best and Latest Interior Designs, Home Decor Tips & Guides</title>
-				<meta
-					key="description"
-					name="description"
-					content={`Explore interior design tips, DIY decor, home decor guides & ideas on  ${company.product}. Follow our interior design blog to stay updated about the latest trends in interior designing`}
-				/>
-				<meta
-					key="og-title"
-					property="og:title"
-					content={`${company.product} Blog - Best and Latest Interior Designs, Home Decor Tips & Guides`}
-				/>
-				<meta
-					key="og-description"
-					property="og:description"
-					content={`Explore interior design tips, DIY decor, home decor guides & ideas on  ${company.product}. Follow our interior design blog to stay updated about the latest trends in interior designing`}
-				/>
-				<meta key="og-url" property="og:url" content="https://www.spacejoy.com/interior-designs-blog" />
-				<meta
-					key="og-image"
-					property="og:image"
-					content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
-				/>
-				<meta key="og-image-width" property="og:image:width" content="600" />
-				<meta key="og-image-height" property="og:image:height" content="600" />
-				<meta
-					key="twitter-title"
-					name="twitter:title"
-					content={`${company.product} Blog - Best and Latest Interior Designs, Home Decor Tips & Guides`}
-				/>
-				<meta
-					key="twitter-description"
-					name="twitter:description"
-					content={`Explore interior design tips, DIY decor, home decor guides & ideas on  ${company.product}. Follow our interior design blog to stay updated about the latest trends in interior designing`}
-				/>
-				<meta
-					key="twitter-image"
-					name="twitter:image"
-					content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
-				/>
+        {InteriorDesignBlogPageMeta}
+        <title key="title">{company.product} Blog - Best and Latest Interior Designs, Home Decor Tips & Guides</title>
+        <meta
+          key="description"
+          name="description"
+          content={`Explore interior design tips, DIY decor, home decor guides & ideas on  ${company.product}. Follow our interior design blog to stay updated about the latest trends in interior designing`}
+        />
+        <meta
+          key="og-title"
+          property="og:title"
+          content={`${company.product} Blog - Best and Latest Interior Designs, Home Decor Tips & Guides`}
+        />
+        <meta
+          key="og-description"
+          property="og:description"
+          content={`Explore interior design tips, DIY decor, home decor guides & ideas on  ${company.product}. Follow our interior design blog to stay updated about the latest trends in interior designing`}
+        />
+        <meta key="og-url" property="og:url" content="https://www.spacejoy.com/interior-designs-blog" />
+        <meta
+          key="og-image"
+          property="og:image"
+          content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
+        />
+        <meta key="og-image-width" property="og:image:width" content="600" />
+        <meta key="og-image-height" property="og:image:height" content="600" />
+        <meta
+          key="twitter-title"
+          name="twitter:title"
+          content={`${company.product} Blog - Best and Latest Interior Designs, Home Decor Tips & Guides`}
+        />
+        <meta
+          key="twitter-description"
+          name="twitter:description"
+          content={`Explore interior design tips, DIY decor, home decor guides & ideas on  ${company.product}. Follow our interior design blog to stay updated about the latest trends in interior designing`}
+        />
+        <meta
+          key="twitter-image"
+          name="twitter:image"
+          content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
+        />
       </Head>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <BlogIntro/>
-        <BlogList data={blogFeedData} />
-        <PreFooter />
+        <div className="container md:px-16 lg:px-48">
+          <BlogIntro />
+          <BlogList data={blogFeedData} />
+          <PreFooter />
+        </div>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

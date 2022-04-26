@@ -38,10 +38,11 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
       <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
+        <div className=' container lg:px-48'>
         <CollectionBanner data={collectionData} />
-        {/* <ListFilter /> */}
         <DesignList feedData={designFeedData} />
         <PreFooter />
+        </div>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

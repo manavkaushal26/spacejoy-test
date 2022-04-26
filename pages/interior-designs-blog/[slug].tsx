@@ -38,34 +38,33 @@ const StoryBodyStyled = styled.div`
     font-size: 18px;
     color: #f5296e;
   }
-  p strong a{
+  p strong a {
     font-size: 18px;
     color: #f5296e;
-    
   }
-  p strong{
+  p strong {
     font-size: 28px;
   }
-  h1{
+  h1 {
     font-size: 22px;
     margin: 50px 0px 10px 0px;
   }
-  h2{
+  h2 {
     font-size: 22px;
     margin: 50px 0px 10px 0px;
   }
-  h2 strong a{
+  h2 strong a {
     font-size: 18px;
     color: #f5296e;
   }
-  h2 a{
+  h2 a {
     font-size: 18px;
     color: #f5296e;
   }
-  h2 strong{
+  h2 strong {
     font-size: 18px;
   }
-  ul li{
+  ul li {
     margin: 0px 0px 10px 0px;
   }
 `;
@@ -120,7 +119,7 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container">
+        <div className="container lg:px-48">
           <div className="flex md:flex-row flex-col md:space-x-5 space-y-5">
             <div className="p-5 md:basis-2/3">
               <div className="mt-2 mb-8">
@@ -133,50 +132,41 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
                 {data?.blogType === 'full' ? children : <div className=" items-start">{children}</div>}
               </StoryBodyStyled>
             </div>
-            <div className="flex flex-col space-y-8 md:basis-1/3 m-5 h-fit">
+            <div className="sticky sm:top-24 flex flex-col space-y-8 md:basis-1/3 m-5 h-fit sm:shadow-2xl">
               <div>
                 {editorPickData.length && (
-                  <div className="mt-3 p-5 shadow-none bg-[#f8f8f8] md:mr-5 rounded-lg">
+                  <div className="mt-3 p-5 shadow-none  rounded-lg">
                     <h2 className=" text-xl font-bold">Editors Pick</h2>
                     <p className=" text-sm">Explore editors design</p>
                     <EditorPick data={editorPickData} />
                   </div>
                 )}
               </div>
-              {/* <div className=" bg-[#fef7ef] md:mr-5">
-              {customerData.length && (
-                <div className="mt-3 p-5 shadow-none">
-                  <h2 className=" text-xl font-bold">Customers Stories</h2>
-                  <p className=" text-sm">Explore customer designs</p>
-                  <CustomerStories data={customerData} />
-                </div>
-              )}
-            </div> */}
             </div>
           </div>
         </div>
-        <div className=' container'>
-        <div className=" bg-[#fef7ef] mt-8 rounded-lg">
-          {customerData.length && (
-            <div className="mt-3 p-5 shadow-none">
-              <h2 className=" text-xl font-bold">Customer Stories</h2>
-              <p className=" text-sm">Explore editors design</p>
-              <CustomerStoriesCarousel data={customerData} />
-            </div>
-          )}
+        <div className="container">
+          <div className=" bg-[#fef7ef] mt-8 rounded-lg md:mx-4">
+            {customerData.length && (
+              <div className="mt-3 p-5 shadow-none">
+                <h2 className=" text-xl font-bold">Customer Stories</h2>
+                <p className=" text-sm">Explore customers designs</p>
+                <CustomerStoriesCarousel data={customerData} />
+              </div>
+            )}
+          </div>
+          <div className=" bg-[#f8f8f8] mt-8 rounded-lg md:mx-4">
+            {categoryData.length && (
+              <div className="mt-3 p-5 shadow-none">
+                <h2 className=" text-xl font-bold">Categories</h2>
+                <p className=" text-sm">Explore other categories</p>
+                <SimilarPicks data={categoryData} />
+              </div>
+            )}
+          </div>
         </div>
-        <div className=" bg-[#f8f8f8] mt-8">
-          {categoryData.length && (
-            <div className="mt-3 p-5 shadow-none">
-              <h2 className=" text-xl font-bold">Categories</h2>
-              <p className=" text-sm">Explore other categories</p>
-              <SimilarPicks data={categoryData} />
-            </div>
-          )}
-        </div>
-        </div>
-        <div className=' container'>
-        <PreFooter />
+        <div className=" container lg:px-48">
+          <PreFooter />
         </div>
       </Layout.Body>
       <Layout.Footer />

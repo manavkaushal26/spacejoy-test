@@ -80,7 +80,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex items-end py-20">
+      <div className="flex items-end py-8">
         <div className="flex-1">
           <p className="text-gray-500">Our most popular design ideas handpicked for you</p>
           <h1 className="my-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">

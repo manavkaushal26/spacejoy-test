@@ -443,12 +443,12 @@ export const Home = (): JSX.Element => {
           {/* Section Start */}
           <div className="container grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto my-10">
             <div className="col-span-1 sm:col-span-3">
-              {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
-                <Link href={data?.homepageV2?.hp1Link}>
+              {data?.homepageV2?.hp2Link !== undefined && data?.cartBannerV2?.hp2Link !== '' ? (
+                <Link href={data?.homepageV2?.hp2Link}>
                   <a target="_blank">
                     <div className="relative aspect-[77/18]">
                       <Image
-                        src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
+                        src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp2}`}
                         alt="offers"
                         layout="fill"
                         className="object-contain rounded-xl"
@@ -461,7 +461,7 @@ export const Home = (): JSX.Element => {
               ) : (
                 <div className="relative aspect-[77/18]">
                   <Image
-                    src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
+                    src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp2}`}
                     alt="offers"
                     layout="fill"
                     className="object-contain rounded-xl"

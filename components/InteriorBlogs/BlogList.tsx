@@ -41,7 +41,7 @@ const BlogList: React.FC<BlogListInterface> = ({ data }) => {
 
   return (
     <div className="bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-0">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 xl:gap-6 2xl:gap-8 lg:gap-y-14 mb-14">
           {isFetching && (
             <>
@@ -52,13 +52,13 @@ const BlogList: React.FC<BlogListInterface> = ({ data }) => {
           )}
           {currentRenderList.map((blog, index) => (
             <>
-            {index !== 0 && index % 9 === 0 && firebaseData?.designListingV2?.visible && (
+            {index !== 0 && index % 9 === 0 && firebaseData?.homepageV2?.hp2 && (
               <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
-                {firebaseData?.designListingV2?.link !== undefined && firebaseData?.designListingV2?.link !== '' ? (
-                  <Link href={firebaseData?.designListingV2?.link}>
+                {firebaseData?.homepageV2?.hp2Link !== undefined && firebaseData?.homepageV2?.hp2Link !== '' ? (
+                  <Link href={firebaseData?.homepageV2?.hp2Link}>
                     <a>
                       <Image
-                        src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
+                        src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp2}`}
                         alt="designListBanner"
                         layout="fill"
                         objectFit="contain"
@@ -67,7 +67,7 @@ const BlogList: React.FC<BlogListInterface> = ({ data }) => {
                   </Link>
                 ) : (
                   <Image
-                    src={`${cloudinary.baseDeliveryURL}/${firebaseData?.designListingV2?.cdn}`}
+                    src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp2}`}
                     alt="designListBanner"
                     layout="fill"
                     objectFit="contain"

@@ -21,16 +21,18 @@ export default function TestimonialsMini() {
 					<div className=" flex flex-col space-y-4">
 						<h2 className=" text-xl">{Testimonials[randomTestimonial].shortDescription}</h2>
 						<p className=" text-sm">{Testimonials[randomTestimonial].description}</p>
-						<UserCard
+						<div className=" flex justify-between">
+            <UserCard
 							name={Testimonials[randomTestimonial].name}
 							address={Testimonials[randomTestimonial].address}
 							ratings={Testimonials[randomTestimonial].ratings}
 							align="left"
 						/>
 					</div>
-          <div className="absolute bottom-0 right-0 col-span-2  ring-2 ring-white h-32 w-32 -mb-1 border-1 border-white overflow-hidden">
+          <div className="absolute bottom-0 right-0 col-span-2  ring-2 ring-white h-24 w-24 -mb-1 border-1 border-white overflow-hidden">
           <Image src={`${cloudinary.baseDeliveryURL}/c_fill,g_faces,h_150,w_150/${Testimonials[randomTestimonial].dp}`} alt="" layout="fill" />
         </div>
+            </div>
 				</div>
 			</div>
 		</div>

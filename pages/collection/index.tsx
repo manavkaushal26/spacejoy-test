@@ -14,8 +14,10 @@ const collection: React.FC<CollectionListInterface> = ({ feedData }) => {
       <Layout.Banner /> 
       <Layout.Header />
       <Layout.Body>
+        <div className=' container lg:px-48'>
         <CollectionList feedData={feedData} />
         <PreFooter />
+        </div>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

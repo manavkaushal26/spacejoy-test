@@ -55,9 +55,9 @@ const SimilarPicks = ({ data }) => {
         responsive={responsive}
         imageCount={data.length}
         slidesToShow={3}
-        // autoplay
-        // autoplaySpeed={3000}
-        // infinite
+        autoplay
+        autoplaySpeed={3000}
+        infinite
       >
         {data.map((item) => {
           return item?.room && <SimilarPickCard data={item} key={item?._id} />;

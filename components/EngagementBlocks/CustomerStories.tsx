@@ -16,7 +16,7 @@ export const CustomerStoryCard = ({ data }) => {
   return (
     <Link href={`/customer-stories/${data.slug}`}>
       <a>
-        <div className="cursor-pointer sm:mt-8">
+        <div className="cursor-pointer">
           <div className=" rounded relative border border-gray-200 transition group-hover:shadow-md">
             <div className=' relative'>
             <div className="absolute inset-0" />

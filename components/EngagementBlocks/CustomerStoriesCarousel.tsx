@@ -66,6 +66,9 @@ const CustomerStoriesCarousel = ({ data }) => {
         responsive={responsive}
         imageCount={data.length}
         slidesToShow={3}
+        autoplay
+        autoplaySpeed={2500}
+        infinite
       >
         {data.map((item) => {
           return <CustomerStoriesCard data={item} key={item?._id} />;

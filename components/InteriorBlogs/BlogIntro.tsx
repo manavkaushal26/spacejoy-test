@@ -5,14 +5,14 @@ const BlogIntro = () => {
   const { value, toggle } = useBoolean(false);
 
   return (
-    <div className="flex flex-col space-y-5 bg-gray-100 p-5 my-8">
+    <div className="flex flex-col space-y-5 bg-gray-100 p-5 my-8 rounded-lg">
       <div className='flex flex-col space-y-2'>
       <h1 className="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
         Interior Design Blog
       </h1>
       <h4 className="text-gray-600 text-base">Online interior design tips, guides and more</h4>
       </div>
-      <div><p className={`${!value && 'line-clamp-3'} text-gray-700 text-sm`}>
+      <div><p className={`${!value && 'line-clamp-3'} text-gray-700 text-sm leading-normal`}>
         Get ready to envision your dream home in a photo-realistic 3D render. Spacejoy&apos;s blog brings you the most
         inspiring home decor ideas. From the living room to the dining room and the entryway. Discover beautiful
         designs, decor inspiration, and interior design tips to make your dream home come true alongside Spacejoy&apos;s

@@ -35,7 +35,7 @@ const BlogCard: React.FC<Props> = ({cardData}) => {
             <div className="flex-1 mr-2">
               <p className="text-gray-500 text-xs capitalize">{cardData?.category?.title}</p>
               <p className="text-gray-800 font-semibold mt-1 line-clamp-1 ">{cardData?.title}</p>
-              <p className="text-gray-800 mt-1 text-sm  line-clamp-2">{cardData?.description}</p>
+              <p className="text-gray-800 mt-1 text-xs  line-clamp-2">{cardData?.description}</p>
               <button className='flex align-middle py-2 text-sm transition group-hover:text-red-500'>Read Full Story <ChevronRightIcon className="h-4 w-4 pt-1" /></button>
             </div>
           </div>

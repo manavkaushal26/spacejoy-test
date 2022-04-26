@@ -18,7 +18,7 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650894979/web/homepage-v3/New-Website-Banner-1_1_rxuidx_qfxpvs.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650949830/web/homepage-v3/Homepage_xwarfz.png',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650960309/web/homev3/26th-The_Happiness_Sale_-06_ijqnlm.jpg',
