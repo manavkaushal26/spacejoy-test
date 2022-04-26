@@ -16,21 +16,20 @@ import { cloudinary, company, oldSpacejoyUrl, pinterestConfig } from '@utils/con
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import useWindowSize from '@utils/useWindowSize';
-import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 
-export const Home = (): JSX.Element => {
+export const Home = ({ isMobile }): JSX.Element => {
   const router = useRouter();
   const { data } = useFirebaseContext();
   const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
-  const isMobile = Cookies.get('isMobile');
+
   const { width } = useWindowSize();
   const showTopNavTags = useMemo(() => width <= 992, [width]);
   const isScreenMedium = useMemo(() => width < 768, [width]);
@@ -72,7 +71,7 @@ export const Home = (): JSX.Element => {
               <TopBarMobile />
             </div>
           )}
-          <Hero3 />
+          <Hero3 isMobile={isMobile} />
           <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-6 sm:mb-12">
             <HomeSectionTitle className="text-left">
               <HomeSectionTitle.MainTitle>
@@ -561,4 +560,13 @@ export const Home = (): JSX.Element => {
   );
 };
 
+export async function getServerSideProps(ctx) {
+  const isMobile = ctx?.req?.cookies['isMobile'] === 'true' ? true : false;
+
+  return {
+    props: {
+      isMobile,
+    },
+  };
+}
 export default React.memo(Home);

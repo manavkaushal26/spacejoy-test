@@ -1,7 +1,6 @@
 import Carousel from '@components/Carousel';
 import { oldSpacejoyUrl } from '@utils/config';
 import useWindowSize from '@utils/useWindowSize';
-import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
@@ -28,10 +27,10 @@ const bannerImages = [
   },
 ];
 
-const V3 = () => {
+const V3 = ({ isMobile }) => {
   const { width } = useWindowSize();
   const isScreenSmall = useMemo(() => width <= 640, [width]);
-  const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
+  // const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
 
   return isMobile === false ? (
     <div className="container relative mx-auto">
@@ -113,7 +112,7 @@ const V3 = () => {
       {' '}
       <main>
         {/* <div className="pb-12 py-0 text-center"> */}
-        <div className="py-0 my-0">
+        <div className="py-0 my-0 mt-12">
           <h1 className="text-2xl text-left mb-1 px-4">
             Design Your{' '}
             <TextLoop mask>
