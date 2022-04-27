@@ -38,13 +38,6 @@ const StoryBodyStyled = styled.div`
   }
 `;
 
-// const StepBounce = ({bg = theme.colors.black2, children}) =>{
-
-//   return (
-//     <div className={`bg-[${theme.colors[bg]}] text-center text-white py-1 px-1 sm:px-3 mt-20 min-w-[30px] before:content-none before:absolute before:top-0 before:h-full before:w-[1px] before:left-1/2 before:z-[1] after:content-none after:absolute after:top-20 after:w-4 after:h-4 after:bg-white after:rotate-45`}>{children}</div>
-//   )
-// }
-
 const StepBounce = styled.div`
   border-radius: 2px 0 0 2px;
   background-color: #060606;
@@ -157,14 +150,12 @@ const renderStep = (section) => {
       return (
         <StepBounce>
           <SVGIcon name="heart" width={16} height={16} fill="white" />
-          {/* <span className="icon-message-square" /> */}
         </StepBounce>
       );
     case 'render':
       return (
         <StepBounce>
           <SVGIcon name="tick" width={16} height={16} fill="white" />
-          {/* <span className="icon-check" /> */}
         </StepBounce>
       );
     default:
@@ -274,7 +265,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container lg:px-48">
+        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
           <SimpleReactLightbox>
             <SRLWrapper>
               <ImageGallaryGrid data={about?.afterImages} />
@@ -383,7 +374,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
                         <h3 className=" text-xl sm:text-2xl capitalize mb-1 sm:mb-2">{`This is what ${about.customerName} had to say on the final design`}</h3>
                         <p className=" text-sm  text-gray-500">Joyous Homes, Happy Customer</p>
                       </div>
-                      <p className=' sm:text-sm'>{summary?.testimonial}</p>
+                      <p className=" sm:text-sm">{summary?.testimonial}</p>
                       <UserCard
                         dp={about.customerAvatar}
                         name={about.customerName}
@@ -411,8 +402,8 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
               </div>
             </div>
           </div>
+          <PreFooter />
         </div>
-        <PreFooter />
       </Layout.Body>
       <Layout.Footer />
     </Layout>

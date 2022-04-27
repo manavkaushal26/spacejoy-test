@@ -1,5 +1,5 @@
 
-import CustomerStoryCard from '@components/Cards/CustomerStoryCard';
+import SimilarPickCard from '@components/Cards/SimilarPickCard';
 import Carousel from '@components/Carousel';
 import React from 'react';
 
@@ -15,7 +15,7 @@ const responsive = {
 
 
 
-const CustomerStoriesCarousel = ({ data }) => {
+const SimilarPicksCarousel = ({ data }) => {
   return (
     <>
       <Carousel
@@ -23,15 +23,15 @@ const CustomerStoriesCarousel = ({ data }) => {
         imageCount={data.length}
         slidesToShow={3}
         autoplay
-        autoplaySpeed={2500}
+        autoplaySpeed={3000}
         infinite
       >
         {data.map((item) => {
-          return <CustomerStoryCard data={item} key={item?._id} />;
+          return item?.room && <SimilarPickCard data={item} key={item?._id} />;
         })}
       </Carousel>
     </>
   );
 };
 
-export default React.memo(CustomerStoriesCarousel);
+export default React.memo(SimilarPicksCarousel);

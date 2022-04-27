@@ -1,4 +1,4 @@
-import { CustomerStoryCard } from '@components/EngagementBlocks/CustomerStories';
+import CustomerStoryCard from '@components/Cards/CustomerStoryCard';
 import DesignCardDimmer from '@components/InteriorDesigns/DesignCardDimmer';
 import index from '@components/Shared/Pagination';
 import Pagination from '@components/Shared/Pagination';

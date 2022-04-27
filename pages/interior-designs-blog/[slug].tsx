@@ -1,6 +1,6 @@
 import CustomerStories from '@components/EngagementBlocks/CustomerStories';
 import EditorPick from '@components/EngagementBlocks/EditorPick';
-import SimilarPicks from '@components/EngagementBlocks/SimilarPicks';
+import SimilarPicksCarousel from '@components/EngagementBlocks/SimilarPicksCarousel';
 import { Blog, BlogData } from '@components/InteriorBlogs/BlogInterface';
 import Layout from '@components/Shared/Layout';
 import { cloudinary, company } from '@utils/config';
@@ -119,7 +119,7 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container lg:px-48">
+        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
           <div className="flex md:flex-row flex-col md:space-x-5 space-y-5">
             <div className="p-5 md:basis-2/3">
               <div className="mt-2 mb-8">
@@ -132,7 +132,7 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
                 {data?.blogType === 'full' ? children : <div className=" items-start">{children}</div>}
               </StoryBodyStyled>
             </div>
-            <div className="sticky sm:top-24 flex flex-col space-y-8 md:basis-1/3 m-5 h-fit sm:shadow-2xl">
+            <div className="flex flex-col space-y-8 md:basis-1/3 m-5 h-fit sm:shadow-2xl">
               <div>
                 {editorPickData.length && (
                   <div className="mt-3 p-5 shadow-none  rounded-lg">
@@ -150,7 +150,7 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
             {customerData.length && (
               <div className="mt-3 p-5 shadow-none">
                 <h2 className=" text-xl font-bold">Customer Stories</h2>
-                <p className=" text-sm">Explore customers designs</p>
+                <p className=" text-sm mb-5">Explore customer designs</p>
                 <CustomerStoriesCarousel data={customerData} />
               </div>
             )}
@@ -160,14 +160,12 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
               <div className="mt-3 p-5 shadow-none">
                 <h2 className=" text-xl font-bold">Categories</h2>
                 <p className=" text-sm">Explore other categories</p>
-                <SimilarPicks data={categoryData} />
+                <SimilarPicksCarousel data={categoryData} />
               </div>
             )}
           </div>
         </div>
-        <div className=" container lg:px-48">
           <PreFooter />
-        </div>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

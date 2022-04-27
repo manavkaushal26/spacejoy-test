@@ -62,7 +62,7 @@ const InteriorDesignsBlogs = ({ blogFeedData }): JSX.Element => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container md:px-16 lg:px-48">
+        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
           <BlogIntro />
           <BlogList data={blogFeedData} />
           <PreFooter />

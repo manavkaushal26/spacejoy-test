@@ -79,10 +79,10 @@ const ProductList = ({ list }) => {
 };
 
 const priceRangeOptions = [
-  { label: '$1 to $99', min: 1, max: 99, isActive: false },
-  { label: '$100 to $499', min: 100, max: 499, isActive: false },
-  { label: '$500 to $1999', min: 500, max: 1999, isActive: false },
-  { label: '$2000 and more', min: 2000, max: 5000, isActive: false },
+  { label: '$1 to $99', min: 1, max: 99, selected: false },
+  { label: '$100 to $499', min: 100, max: 499, selected: false },
+  { label: '$500 to $1999', min: 500, max: 1999, selected: false },
+  { label: '$2000 and more', min: 2000, max: 5000, selected: false },
 ];
 
 export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives }): JSX.Element => {
@@ -96,12 +96,16 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
 
   const handleOnPriceRangeChange = (position) => {
     const updatedCheckedPriceRange = priceRange.map((item, index) =>
-      index === position ? (item.isActive ? { ...item, isActive: false } : { ...item, isActive: true }) : item
+      index === position
+        ? item.selected
+          ? { ...item, selected: false }
+          : { ...item, selected: true }
+        : { ...item, selected: false }
     );
 
     setPriceRange(updatedCheckedPriceRange);
 
-    const checkedRanges = updatedCheckedPriceRange.filter((item) => item.isActive);
+    const checkedRanges = updatedCheckedPriceRange.filter((item) => item.selected);
     if (checkedRanges && checkedRanges.length > 0) {
       const getMinRange = checkedRanges.reduce((prev, curr) => (curr.min < prev.min ? curr : prev), checkedRanges[0]);
       const getMaxRange = checkedRanges.reduce((prev, curr) => (curr.max > prev.max ? curr : prev), checkedRanges[0]);
@@ -320,21 +324,29 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                       </Disclosure.Button>
 
                       <Disclosure.Panel>
-                      {priceRange.map((range, index) => {
-                            return (
-                              <div className="flex items-center mb-4" key={index}>
-                                <input
-                                  type="checkbox"
-                                  checked={range.isActive}
-                                  onChange={() => handleOnPriceRangeChange(index)}
-                                  className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
-                                />
-                                <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
-                                  <span className="font-medium">{range.label}</span>
-                                </label>
-                              </div>
-                            );
-                          })}
+                        {priceRange.map((range, index) => {
+                          return (
+                            <button
+                              className="flex items-center mb-4"
+                              key={index}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleOnPriceRangeChange(index);
+                              }}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={range.selected}
+                                // onChange={() => handleOnPriceRangeChange(index)}
+                                className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                readOnly
+                              />
+                              <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
+                                <span className="font-medium">{range.label}</span>
+                              </label>
+                            </button>
+                          );
+                        })}
                       </Disclosure.Panel>
                     </>
                   )}
@@ -473,17 +485,25 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                         <Disclosure.Panel>
                           {priceRange.map((range, index) => {
                             return (
-                              <div className="flex items-center mb-4" key={index}>
+                              <button
+                                className="flex items-center mb-4"
+                                key={index}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleOnPriceRangeChange(index);
+                                }}
+                              >
                                 <input
                                   type="checkbox"
-                                  checked={range.isActive}
-                                  onChange={() => handleOnPriceRangeChange(index)}
+                                  checked={range.selected}
+                                  // onChange={() => handleOnPriceRangeChange(index)}
                                   className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                  readOnly
                                 />
                                 <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
                                   <span className="font-medium">{range.label}</span>
                                 </label>
-                              </div>
+                              </button>
                             );
                           })}
                         </Disclosure.Panel>

@@ -35,13 +35,13 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
         <title>{collectionData?.name} | Spacejoy</title>
         <base href="/" />
       </Head>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className=' container lg:px-48'>
-        <CollectionBanner data={collectionData} />
-        <DesignList feedData={designFeedData} />
-        <PreFooter />
+        <div className=" container lg:px-48">
+          <CollectionBanner data={collectionData} />
+          <DesignList feedData={designFeedData} />
+          <PreFooter />
         </div>
       </Layout.Body>
       <Layout.Footer />
@@ -59,12 +59,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     'nursery-ideas',
   ];
   const paths = slugs.map((slug) => ({
-    params: { collectionSlug:slug }
+    params: { collectionSlug: slug },
   }));
 
   return { paths, fallback: true };
 };
-
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const endPoint = `${publicRoutes.collectionData}/${params?.collectionSlug}`;

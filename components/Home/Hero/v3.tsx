@@ -81,7 +81,7 @@ const V3 = ({ isMobile }) => {
             </div>
           </div>
         </div>
-        <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 h-full">
+        <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 h-full px-5">
           <Carousel
             imageCount={bannerImages?.length || 0}
             responsive={responsive}
@@ -93,7 +93,7 @@ const V3 = ({ isMobile }) => {
               return (
                 <div key={idx}>
                   <Image
-                    className="absolute inset-0 w-full h-full object-contain rounded-lg"
+                    className="absolute inset-0 w-full h-full object-cover rounded-lg"
                     src={bannerImage.src}
                     alt=""
                     height={660}

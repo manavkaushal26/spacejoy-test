@@ -1,8 +1,9 @@
 import CustomerStories from '@components/EngagementBlocks/CustomerStories';
 import CustomerStoriesCarousel from '@components/EngagementBlocks/CustomerStoriesCarousel';
 import EditorPick from '@components/EngagementBlocks/EditorPick';
+import EditorPicksCarousel from '@components/EngagementBlocks/EditorPicksCarousel';
 import { EngagementBlockInterface } from '@components/EngagementBlocks/EngagementBlockInterface';
-import SimilarPicks from '@components/EngagementBlocks/SimilarPicks';
+import SimilarPicksCarousel from '@components/EngagementBlocks/SimilarPicksCarousel';
 import { getEngagementsBlocks } from '@components/EngagementBlocks/Utils';
 import Breadcrumb from '@components/InteriorDesigns/Breadcrumb';
 import ImageGrid from '@components/InteriorDesigns/ImageGrid';
@@ -59,15 +60,13 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container lg:px-48">
+        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
           <div className="container mx-auto px-4">
             <Breadcrumb design={design} />
             <h2 className="my-8 text-3xl tracking-wide">{design?.name}</h2>
             <ImageGrid images={design?.cdnRender} />
-            <div className=' text-sm my-8'>
-              <p className={`${!value && 'line-clamp-3'} leading-normal`}>
-                {design?.description}
-              </p>
+            <div className=" text-sm my-8">
+              <p className={`${!value && 'line-clamp-3'} leading-normal`}>{design?.description}</p>
               <button className="my-1 text-[#F5296E] text-sm" onClick={toggle}>
                 {!value ? '... read more' : 'hide'}
               </button>
@@ -82,10 +81,10 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                 </Link>
               </div>
             </div>
-            
+
             <div className="flex md:flex-row flex-col md:space-x-10 sm:mt-20">
               <div className="sm:w-2/3">
-              <h3 className="text-2xl tracking-wide text-gray-700 mb-8">Shop the products featured in this room</h3>
+                <h3 className="text-2xl tracking-wide text-gray-700 mb-8">Shop the products featured in this room</h3>
                 <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-1 sm:gap-3">
                   {design?.assets?.length === 0 ? (
                     <>
@@ -113,7 +112,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
               </div>
 
               <div className="sm:w-1/3">
-                <div className="sticky top-28 flex flex-col space-y-5 sm:shadow-2xl">
+                <div className="sticky top-28 flex flex-col space-y-5 sm:shadow-2xl rounded-lg">
                   <TestimonialsMini />
                   <div className="flex flex-col space-y-5 md:basis-1/3 h-fit">
                     <div className=" bg-white flex flex-col p-5 space-y-5 rounded-lg">
@@ -126,15 +125,6 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                         </Link>
                       </div>
                     </div>
-                    <div>
-                      {editorPickData.length && (
-                        <div className="p-5 shadow-none bg-gray-100 rounded-lg">
-                          <h2 className=" text-xl font-bold">Editors Pick</h2>
-                          <p className=" text-sm">Explore editors design</p>
-                          <EditorPick data={editorPickData} />
-                        </div>
-                      )}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -144,7 +134,16 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                 <div className="mt-3 p-5 shadow-none">
                   <h2 className=" text-xl font-bold">Similar Picks</h2>
                   <p className=" text-sm">Related designs for you</p>
-                  <SimilarPicks data={similarPicksData} />
+                  <SimilarPicksCarousel data={similarPicksData} />
+                </div>
+              )}
+            </div>
+            <div className=" bg-gray-100 mt-8 rounded-lg">
+              {editorPickData.length && (
+                <div className="mt-3 p-5 shadow-none">
+                  <h2 className=" text-xl font-bold">Editors Pick</h2>
+                  <p className=" text-sm">Explore editors design</p>
+                  <EditorPicksCarousel data={editorPickData} />
                 </div>
               )}
             </div>
@@ -152,7 +151,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
               {customerData.length && (
                 <div className="mt-3 p-5 shadow-none">
                   <h2 className=" text-xl font-bold">Customer Stories</h2>
-                  <p className=" text-sm">Explore customers designs</p>
+                  <p className=" text-sm mb-5">Explore customer designs</p>
                   <CustomerStoriesCarousel data={customerData} />
                 </div>
               )}
@@ -162,7 +161,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                 <div className="mt-3 p-5 shadow-none">
                   <h2 className=" text-xl font-bold">Categories</h2>
                   <p className=" text-sm">Explore other categories</p>
-                  <SimilarPicks data={categoryData} />
+                  <SimilarPicksCarousel data={categoryData} />
                 </div>
               )}
             </div>
