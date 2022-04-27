@@ -78,12 +78,38 @@ const ProductList = ({ list }) => {
   );
 };
 
+const priceRangeOptions = [
+  { label: '$1 to $99', min: 1, max: 99, isActive: false },
+  { label: '$100 to $499', min: 100, max: 499, isActive: false },
+  { label: '$500 to $1999', min: 500, max: 1999, isActive: false },
+  { label: '$2000 and more', min: 2000, max: 5000, isActive: false },
+];
+
 export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives }): JSX.Element => {
   const [currentFilters, setCurrentFilters] = useState({ ...defaultFilters, ...initialFilters });
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = Cookies.get('isMobile');
   const [error, setError] = useState(false);
   const shopPageTopRef = useRef<HTMLDivElement>();
+  const [priceRange, setPriceRange] = useState(priceRangeOptions);
+  const [minMaxPrice, setMinMaxPrice] = useState([1, 5000]);
+
+  const handleOnPriceRangeChange = (position) => {
+    const updatedCheckedPriceRange = priceRange.map((item, index) =>
+      index === position ? (item.isActive ? { ...item, isActive: false } : { ...item, isActive: true }) : item
+    );
+
+    setPriceRange(updatedCheckedPriceRange);
+
+    const checkedRanges = updatedCheckedPriceRange.filter((item) => item.isActive);
+    if (checkedRanges && checkedRanges.length > 0) {
+      const getMinRange = checkedRanges.reduce((prev, curr) => (curr.min < prev.min ? curr : prev), checkedRanges[0]);
+      const getMaxRange = checkedRanges.reduce((prev, curr) => (curr.max > prev.max ? curr : prev), checkedRanges[0]);
+      addArrayQueryParam({ name: 'price', min: getMinRange.min, max: getMaxRange.max });
+    } else {
+      addArrayQueryParam({ name: 'price', remove: true });
+    }
+  };
 
   const onButtonClick = () => {
     if (shopPageTopRef.current) {
@@ -194,7 +220,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="min-h-screen bg-gray-100" ref={shopPageTopRef}>
@@ -294,15 +320,21 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                       </Disclosure.Button>
 
                       <Disclosure.Panel>
-                        <div className="my-8 mt-6 space-y-2">
-                          <InputRange
-                            min={min}
-                            max={max}
-                            onChangeCallback={(data) => {
-                              addArrayQueryParam({ name: 'price', ...data });
-                            }}
-                          />
-                        </div>
+                      {priceRange.map((range, index) => {
+                            return (
+                              <div className="flex items-center mb-4" key={index}>
+                                <input
+                                  type="checkbox"
+                                  checked={range.isActive}
+                                  onChange={() => handleOnPriceRangeChange(index)}
+                                  className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                />
+                                <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
+                                  <span className="font-medium">{range.label}</span>
+                                </label>
+                              </div>
+                            );
+                          })}
                       </Disclosure.Panel>
                     </>
                   )}
@@ -439,15 +471,21 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                         </Disclosure.Button>
 
                         <Disclosure.Panel>
-                          <div className="my-8 mt-4 space-y-2">
-                            <InputRange
-                              min={min}
-                              max={max}
-                              onChangeCallback={(data) => {
-                                addArrayQueryParam({ name: 'price', ...data });
-                              }}
-                            />
-                          </div>
+                          {priceRange.map((range, index) => {
+                            return (
+                              <div className="flex items-center mb-4" key={index}>
+                                <input
+                                  type="checkbox"
+                                  checked={range.isActive}
+                                  onChange={() => handleOnPriceRangeChange(index)}
+                                  className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
+                                />
+                                <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
+                                  <span className="font-medium">{range.label}</span>
+                                </label>
+                              </div>
+                            );
+                          })}
                         </Disclosure.Panel>
                       </>
                     )}
