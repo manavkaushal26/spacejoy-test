@@ -23,7 +23,7 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650960309/web/homev3/26th-The_Happiness_Sale_-06_ijqnlm.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650960312/web/homev3/26th-The_Happiness_Sale_-07_qekibu.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651066369/web/homev3/EXTRA_5_OFF_on_100_f904z3.jpg',
   },
 ];
 

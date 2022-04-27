@@ -9,7 +9,7 @@ const HeroBanner = ({ linkTo }) => {
         <Link href={linkTo} passHref>
           <a target="_blank">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1650960466/web/furniture-decor-shop/26th-The_Happiness_Sale_-05_1_sgwaaa.jpg"
+              src="https://res.cloudinary.com/spacejoy/image/upload/v1651065985/web/furniture-decor-shop/26th-The_Happiness_Sale_-16_fqbvls.jpg"
               alt="Ecommerce shop page main banner"
               width={1561}
               height={500}
@@ -22,7 +22,7 @@ const HeroBanner = ({ linkTo }) => {
         <Link href={linkTo} passHref>
           <a>
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1650960469/web/furniture-decor-shop/26th-The_Happiness_Sale_-08_1_zgtzcs.jpg"
+              src="https://res.cloudinary.com/spacejoy/image/upload/v1651066002/web/furniture-decor-shop/26th-The_Happiness_Sale_-17_u2p1kg.jpg"
               alt="Ecommerce shop page main banner"
               width={800}
               height={934}
