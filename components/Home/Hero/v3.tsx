@@ -20,10 +20,10 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650949830/web/homepage-v3/Homepage_xwarfz.png',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651219593/web/homev3/Homepage_Carousel_-_2_g1yt2z.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651499775/web/homev3/Hello_Spring-21_cfpf8k.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651219592/web/homev3/Homepage_Carouse_-_3_i2ddvj.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651499776/web/homev3/Hello_Spring-22_mwcpfp.jpg',
   },
 ];
 
@@ -93,7 +93,7 @@ const V3 = ({ isMobile }) => {
               return (
                 <div key={idx}>
                   <Image
-                    className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                    className="absolute inset-0 w-full h-full object-contain rounded-lg"
                     src={bannerImage.src}
                     alt=""
                     height={660}
