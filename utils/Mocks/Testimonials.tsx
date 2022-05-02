@@ -8,10 +8,9 @@ const data = [
     ratings: 5,
     bg: 'red',
     shortDescription:
-      "I loved the design my designer created. It was warm and cozy all at once. I've already bought the table in the design.",
+      'I loved the design my designer created. It was warm and cozy all at once. I’ve already bought the table in the design.',
     description:
-    "I loved that I could connect my Pinterest and find matching products from my favorite living room design. All the recommendations were so spot on, I was able to recreate that look within my budget!"
-    ,
+      'I love my design! It feels warm and cozy even with the amount of grey that is currently in there. I’ve wanted that rug for a while sp seeing it used it in the design helped me make my mind up. I have already bought the coffee table and plan on buying the rest too. This design is everything I was looking for.',
     before: {
       img: 'v1574266287/web/testimonial/Trinity_Before_wrtik7.jpg',
       alt: 'Spacejoy review of master bedroom room design by Trinity Harding ',
@@ -32,7 +31,7 @@ const data = [
     shortDescription:
       'Will never paint or buy furnishing for another room without getting a design from Spacejoy first',
     description:
-      "My Spacejoy designer understood exactly what I wanted and brought it to life with her beautiful designs. And the 3D renders are so life-like, I beyond was thrilled to see my space before it was done!",
+      'My Spacejoy designer understood exactly what I wanted and brought it to life with her beautiful designs. My room looks amazing - It’s exactly the style we were going for but could never quite achieve. And the 3D renders are so life-like, I was beyond thrilled to see my space before it was done!',
     before: {
       img: 'v1580125373/web/testimonial/Chelsey-Before_fvrb3v.jpg',
       alt: 'Spacejoy review of living room design by chelsey soup',
@@ -51,9 +50,9 @@ const data = [
     ratings: 5,
     bg: 'green',
     shortDescription:
-      "We decided to give Spacejoy a try and so glad we did. Couldn't be happier with how our room turned out.",
+      'We decided to give Spacejoy a try and so glad we did. Couldn’t be happier with how our room turned out.',
     description:
-      "The design sets are WOW. I had a corner that I didn’t know what to do with. Then I found the most amazing set, personalized it to fit my space and done. Awkward corner to reading nook in minutes!",
+      'I absolutely loved working with Spacejoy! From the 3D renders to the personalized 1:1 moments working with my designer, the whole experience was great. My designer understood what I wanted and created a design that makes my space look amazing. Can’t wait to work with Spacejoy for the other rooms!',
 
     before: {
       img: 'v1574864758/web/testimonial/Kimberly_Before_y275vw.jpg',
@@ -73,9 +72,9 @@ const data = [
     ratings: 5,
     bg: 'red',
     shortDescription:
-      'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact products',
+      'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact pieces',
     description:
-      'I LOVE Spacejoy! They have the widest selection of products from top brands. I found everything I needed for my home, all in one place! Plus they give extra discounts which means more savings!',
+      'I LOVE Spacejoy! Not only are their designs absolutely stunning but they also have the widest selection of products from all the top brands. I found everything I needed for my home, all in one place! Plus they give extra discounts which means more savings! Win-win!',
     before: {
       img: 'v1595828656/web/testimonial/Kayla-Before_obtbsb.jpg',
       alt: 'Spacejoy review of living room design by Kayla',
@@ -93,9 +92,9 @@ const data = [
     roomType: 'Nursery',
     ratings: 5,
     bg: 'yellow',
-    shortDescription: 'Next time you need a fresh new look or a total redesign you have to check out Spacejoy',
+    shortDescription: 'Next time you need a fresh new look or a total redesign, go with Spacejoy!',
     description:
-      "I'm never shopping anywhere else! I’d been second-guessing which sofa to buy. On Spacejoy I could see the sofas I liked in an actual room. It helped me choose the right one for my space.",
+      'We wanted some ideas on designing and decorating our baby nursery! After researching, we decided to work with Spacejoy and boy! am I glad we did! The designer designed out entire space in 3D. We could see how the products looked in our space and what we didn’t like, the designer found alternatives for, all within our budget!',
 
     before: {
       img: 'v1574266309/web/testimonial/Erica_Before_t0jt6b.jpg',
@@ -114,9 +113,9 @@ const data = [
     roomType: 'Bedroom',
     ratings: 5,
     bg: 'blue',
-    shortDescription: 'We truly enjoyed working with the Spacejoy team',
+    shortDescription: 'We truly loved working with the Spacejoy team',
     description:
-      'I have zero design skills so Spacejoy’s design sets made it really easy for me to furnish my home. I’ve bought sets for my living room, bedroom and will be coming back to furnish my entryway next!',
+      'I have zero design skills so working with a top Spacejoy designer to transform our master bedroom was exactly what we needed. The designs were stunning and being able to see our room transformed in 3D made it so easy for us to decide what we wanted. Thank you Spacejoy for this wonderful experience!',
     before: {
       img: 'v1578230230/web/testimonial/Caroline-Before_pr4lym.jpg',
       alt: 'Spacejoy review of master bedroom room design by Caroline Stfanno ',

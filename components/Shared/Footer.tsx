@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href={`${oldSpacejoyUrl}/customer-stories`}>
+                <Link href={`/customer-stories`}>
                   <a
                     className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                     target="_blank"
