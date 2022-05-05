@@ -75,7 +75,7 @@ export default class MyDocument extends Document {
           {/* {prod && <script async defer dangerouslySetInnerHTML={{ __html: clarity }} />} */}
           {prod && <script async defer dangerouslySetInnerHTML={{ __html: fullStory }} />}
           {prod && <script async defer dangerouslySetInnerHTML={{ __html: gtm }} />}
-          {prod && <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer />}
+          {/* {prod && <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer />} */}
         </Head>
         <body>
           {prod && (

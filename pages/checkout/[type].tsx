@@ -120,9 +120,9 @@ const Checkout = () => {
   return (
     <>
       <Head>
-      {IndexPageMeta}
-				<title key="title">Secure Checkout | {company.product}</title>
-				<link rel="canonical" href="https://www.spacejoy.com/checkout/store" />
+        {IndexPageMeta}
+        <title key="title">Secure Checkout | {company.product}</title>
+        <link rel="canonical" href="https://www.spacejoy.com/checkout/store" />
       </Head>
       <Layout>
         <Layout.Banner />
@@ -406,7 +406,7 @@ const Checkout = () => {
         </Layout.Body>
         <Layout.Footer />
       </Layout>
-      {isShareSaleOpen && orderDetails?.orderId ? (
+      {/* {isShareSaleOpen && orderDetails?.orderId ? (
         <>
           <img
             src={`https://www.shareasale.com/sale.cfm?tracking=${orderDetails?.orderId}&amount=${
@@ -417,7 +417,7 @@ const Checkout = () => {
           />
           <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer />
         </>
-      ) : null}
+      ) : null} */}
     </>
   );
 };
