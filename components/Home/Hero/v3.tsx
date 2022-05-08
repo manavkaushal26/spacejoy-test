@@ -20,10 +20,10 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650949830/web/homepage-v3/Homepage_xwarfz.png',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651839254/web/homev3/Mothers_Day-21_gid6ny.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1652011258/web/furniture-decor-shop/Mothers_Day-24_fa1pvy.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1651839255/web/homev3/Mothers_Day-22_wdew1y.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1652011259/web/furniture-decor-shop/Mothers_Day-22_1_oh2rvv.jpg',
   },
 ];
 
