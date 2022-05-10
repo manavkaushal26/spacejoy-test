@@ -1,5 +1,6 @@
 import SectionTitle from '@components/Shared/SectionTitle';
 import { company } from '@utils/config';
+import Link from 'next/link';
 import React from 'react';
 
 const currentDate = new Date();
@@ -752,9 +753,9 @@ const TermsContent: React.FC = () => {
               stolen, or any unauthorized use of cards and unauthorized resale is prohibited. Acceptance of this card
               constitutes acceptance of these terms and conditions. Spacejoy reserves the right to change these terms
               and conditions at any time. To check your balance, visit this{' '}
-              <a className="text-red-500 hover:underline" href="/purchase-gift-card">
-                link
-              </a>{' '}
+              <Link href="/purchase-gift-card">
+                <a className="text-red-500 hover:underline">link</a>
+              </Link>{' '}
               or call <a href="tel:+13104837722">+1.310.483.7722</a> If redeemed, refer to refund and return policies at
               www.spacejoy.com
             </p>

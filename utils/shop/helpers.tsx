@@ -13,6 +13,7 @@ const defaultFilters = {
   subcategory: [],
   // discount: [0, 100],
   shoppable: true,
+  mix: '',
 };
 
 const fetchAllFilters = async (ctx) => {
@@ -47,6 +48,7 @@ const fetchAssetList = async (
       height: [],
       width: [],
       subcategory: [],
+      mix: '',
     },
     searchText = '',
     skipVal = 0,
@@ -66,6 +68,7 @@ const fetchAssetList = async (
     width = [],
     vertical = [],
     subcategory = [],
+    mix = '',
   } = filters;
 
   const payload = {
@@ -84,6 +87,7 @@ const fetchAssetList = async (
       width: [...width],
       vertical: [...vertical],
       subcategory: [...subcategory],
+      mix,
     },
   };
 

@@ -71,7 +71,7 @@ const fetchMoreData = async (api, skip, limit, field) => {
       } else {
         throw new Error();
       }
-    } else if(field === 'hits') {
+    } else if (field === 'hits') {
       const {
         data: { hits = [] }, // TODO: Write processor
         statusCode,
@@ -82,20 +82,18 @@ const fetchMoreData = async (api, skip, limit, field) => {
       } else {
         throw new Error();
       }
-    }
-    
-      else if(field === 'data') {
-        const {
-          data: { data = [] }, // TODO: Write processor
-          statusCode,
-        } = res;
-  
-        if (statusCode <= 301) {
-          return data;
-        } else {
-          throw new Error();
-        }}
-    else{
+    } else if (field === 'data') {
+      const {
+        data: { data = [] }, // TODO: Write processor
+        statusCode,
+      } = res;
+
+      if (statusCode <= 301) {
+        return data;
+      } else {
+        throw new Error();
+      }
+    } else {
       const {
         data, // TODO: Write processor
         statusCode,
@@ -179,7 +177,8 @@ const usePagination = (
       !arraysEqual(api?.payload?.filters?.subcategory || [], lastNewFilter?.current?.subcategory || []) ||
       !arraysEqual(api?.payload?.filters?.vertical || [], lastNewFilter?.current?.vertical || []) ||
       !arraysEqual(api?.payload?.filters?.price || [], lastNewFilter?.current?.price || []) ||
-      !arraysEqual(api?.payload?.filters?.discount || [], lastNewFilter?.current?.discount || [])
+      !arraysEqual(api?.payload?.filters?.discount || [], lastNewFilter?.current?.discount || []) ||
+      api?.payload?.filters?.mix !== lastNewFilter?.current?.mix
     ) {
       dispatch({ type: 'SET_LOADING' });
       fetchData(api, currentPage * pageSize, pageSize, flow);
@@ -191,6 +190,7 @@ const usePagination = (
     api?.payload?.filters?.discount,
     api?.payload?.filters?.vertical,
     api?.payload?.filters?.subcategory,
+    api?.payload?.filters?.mix,
   ]);
 
   useEffect(() => {

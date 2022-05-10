@@ -11,6 +11,8 @@ import usePagination from '@hooks/usePagination';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
 import { cloudinary, internalPages } from '@utils/config';
+import fetcher from '@utils/fetcher';
+import { convertUrlPathToFilter, titleCase } from '@utils/helpers';
 import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
@@ -84,6 +86,26 @@ const priceRangeOptions = [
   { label: '$2000 and more', min: 2000, max: 5000, selected: false },
 ];
 
+const getRanges = (min, max) => {
+  const diff = max - min;
+  const stepSize = Math.floor(diff / 4);
+  const values = [];
+  for (let i = 0; i < 4; i++) {
+    if (i === 0) {
+      values.push({ min: min, max: min + stepSize, selected: false, label: `$${min} to $${min + stepSize}` });
+    } else {
+      values.push({
+        min: i * stepSize,
+        max: i * stepSize + stepSize,
+        label: `$${i * stepSize} to $${i * stepSize + stepSize}`,
+        selected: false,
+      });
+    }
+  }
+
+  return values;
+};
+
 export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives }): JSX.Element => {
   const [currentFilters, setCurrentFilters] = useState({ ...defaultFilters, ...initialFilters });
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +114,6 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
   const shopPageTopRef = useRef<HTMLDivElement>();
   const [priceRange, setPriceRange] = useState(priceRangeOptions);
   const [minMaxPrice, setMinMaxPrice] = useState([1, 5000]);
-
   const handleOnPriceRangeChange = (position) => {
     const updatedCheckedPriceRange = priceRange.map((item, index) =>
       index === position
@@ -101,8 +122,6 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
           : { ...item, selected: true }
         : { ...item, selected: false }
     );
-
-    setPriceRange(updatedCheckedPriceRange);
 
     const checkedRanges = updatedCheckedPriceRange.filter((item) => item.selected);
     if (checkedRanges && checkedRanges.length > 0) {
@@ -139,6 +158,120 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
     }
   }, [error]);
 
+  const {
+    filters: { retailer: retailerList = [], subCategory, vertical, price, category },
+    updateFilter,
+    addArrayQueryParam,
+    filters,
+  } = useShopFilterContext();
+  const [min = 1, max = 5000] = price;
+
+  const router = useRouter();
+
+  const lastQueryItems = React.useRef(Object.keys(router?.query));
+
+  const verticalList = useMemo(() => {
+    const selectedSubCategories = subCategory?.filter((item) => item?.name?.toLowerCase() === currentFilters?.mix);
+
+    if (selectedSubCategories?.length) {
+      return vertical?.filter(
+        (item) => item?.subcategory === selectedSubCategories[selectedSubCategories?.length - 1]?._id
+      );
+    } else {
+      return [];
+    }
+  }, [subCategory, vertical, currentFilters?.mix]);
+
+  const [title, setTitle] = useState('Spacejoy: The best online furniture and home decor store');
+
+  //fetch price filters for category/subcategory
+  useEffect(() => {
+    const { shopParams = [] } = router?.query;
+
+    const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
+    const verticalName = shopParams && shopParams?.length > 1 ? convertUrlPathToFilter(shopParams[1]) : '';
+
+    const catTitle = `${catSubCat?.length ? `${catSubCat} |` : ''}`;
+    const verticalTitle = `${verticalName?.length ? `${verticalName} |` : ''}`;
+
+    setTitle(`${catTitle} ${verticalTitle}  Spacejoy`);
+
+    const type = category?.some((item) => item?.name?.toLowerCase() === catSubCat.toLowerCase())
+      ? 'category'
+      : 'subCategory';
+    const queryId = filters[type]?.filter((item) => item?.name?.toLowerCase() === catSubCat.toLowerCase())[0]?._id;
+
+    let verticalId = '';
+
+    const verticalObj = vertical?.filter((item) => item?.name?.toLowerCase() === verticalName?.toLowerCase());
+    if (verticalObj?.length) {
+      verticalId = verticalObj[0]?._id;
+    }
+
+    const payload = {
+      ...(type === 'category' ? { category: [queryId], subCategory: [] } : { category: [], subCategory: [queryId] }),
+      ...(verticalName && verticalId ? { vertical: [verticalId] } : { vertical: [] }),
+    };
+
+    //get price map
+    (async () => {
+      const { data, statusCode } = await fetcher({
+        endPoint: 'https://fn.spacejoy.com/v1/filter',
+        method: 'POST',
+        body: { ...payload },
+        hasBaseUrl: true,
+      });
+      const { price: { min = 0, max = 0 } = {} } = data;
+      const ranges = getRanges(min, max);
+
+      const { price = '0::0' } = router?.query;
+      const [minPrice, maxPrice] = (price as string)?.split('::');
+      const updatedPriceRange = ranges?.map((item) => {
+        if (item?.min === parseInt(minPrice) && item?.max === parseInt(maxPrice)) {
+          return { ...item, selected: true };
+        }
+
+        return { ...item };
+      });
+
+      setPriceRange(updatedPriceRange);
+    })();
+  }, [router?.query, category, filters, subCategory, vertical]);
+
+  useEffect(() => {
+    const queryItems = Object.keys(router?.query);
+    if (queryItems?.length) {
+      lastQueryItems.current = queryItems;
+      const appliedFilters = queryItems?.reduce((acc, currValue) => {
+        if (typeof router?.query[currValue] === 'string') {
+          acc[currValue] = (convertUrlPathToFilter(router?.query[currValue]) as string).split('::');
+        } else {
+          acc['mix'] = router?.query[currValue]?.length ? convertUrlPathToFilter(router?.query[currValue][0]) : '';
+          if (router?.query[currValue]?.length > 1) {
+            acc['vertical'] = [convertUrlPathToFilter(router?.query[currValue][1])];
+          }
+        }
+
+        return acc;
+      }, {});
+
+      setCurrentFilters({ ...defaultFilters, ...appliedFilters });
+    } else {
+      if (lastQueryItems?.current?.length) {
+        setCurrentFilters({ ...defaultFilters });
+      }
+    }
+  }, [router?.query]);
+
+  const onSaleChecked = (e) => {
+    const { checked } = e.target;
+    if (checked) {
+      addArrayQueryParam({ name: 'discount', min: 10, max: 100 });
+    } else {
+      addArrayQueryParam({ name: 'discount', remove: true });
+    }
+  };
+
   const { currentRenderList, buttons, isFetching } = usePagination(
     {
       url: '/v1/assets/search',
@@ -159,58 +292,11 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
     initialFilters,
     { onButtonClick: onButtonClick }
   );
-  const {
-    filters: { retailer: retailerList = [], subCategory, vertical, price },
-    updateFilter,
-    addArrayQueryParam,
-  } = useShopFilterContext();
-  const [min = 1, max = 5000] = price;
-
-  const router = useRouter();
-
-  const lastQueryItems = React.useRef(Object.keys(router?.query));
-
-  const verticalList = useMemo(() => {
-    const selectedSubCategories = subCategory?.filter((item) => item?.selected);
-    if (selectedSubCategories?.length) {
-      return vertical?.filter(
-        (item) => item?.subcategory === selectedSubCategories[selectedSubCategories?.length - 1]?._id
-      );
-    } else {
-      return [];
-    }
-  }, [subCategory, vertical]);
-
-  useEffect(() => {
-    const queryItems = Object.keys(router?.query);
-    if (queryItems?.length) {
-      lastQueryItems.current = queryItems;
-      const appliedFilters = queryItems?.reduce((acc, currValue) => {
-        acc[currValue] = (router?.query[currValue] as string).split('::');
-
-        return acc;
-      }, {});
-      setCurrentFilters({ ...defaultFilters, ...appliedFilters });
-    } else {
-      if (lastQueryItems?.current?.length) {
-        setCurrentFilters({ ...defaultFilters });
-      }
-    }
-  }, [router?.query]);
-
-  const onSaleChecked = (e) => {
-    const { checked } = e.target;
-    if (checked) {
-      addArrayQueryParam({ name: 'discount', min: 10, max: 100 });
-    } else {
-      addArrayQueryParam({ name: 'discount', remove: true });
-    }
-  };
 
   return (
     <Layout>
       <Head>
-        <title>Spacejoy: The best online furniture and home decor store</title>
+        <title>{titleCase(title || '')}</title>
         <meta
           key="description"
           name="description"
@@ -222,6 +308,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
           content="best online furniture stores, online discount furniture stores, furniture sale, best home decor store"
         />
         <link rel="icon" href="/favicon.ico" />
+        <base href="/" />
       </Head>
       <Layout.Banner />
       <Layout.Header />
@@ -336,9 +423,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                               <input
                                 type="checkbox"
                                 checked={range.selected}
-                                // onChange={() => handleOnPriceRangeChange(index)}
                                 className="w-4 h-4 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white"
-                                readOnly
                               />
                               <label className="mt-0 ml-3 text-sm text-gray-900 cursor-pointer">
                                 <span className="font-medium">{range.label}</span>
@@ -636,54 +721,41 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
   );
 };
 export async function getServerSideProps(context) {
-  const { query = {} } = context || {};
+  // get category and subcategory
+  const { query: { shopParams = [], ...otherParams } = {} } = context || {};
 
-  const { category = '', subcategory = '', vertical = '', ...otherFilters } = query;
-  let redirectPath = '';
-
-  if (subcategory?.length) {
-    redirectPath = !vertical?.length ? `/${subcategory?.split('::')[0]}` : `/${vertical?.split('::')[0]}`;
-  } else if (category.length) {
-    redirectPath = `/${category?.split('::')[0]}`;
-  }
-
-  if (redirectPath) {
-    let str;
-
-    for (let key in otherFilters) {
-      str = `${str || ''}${str || ''.length ? '&' : ''}${key}=${otherFilters[key]}`;
+  //TODO: Add page number support
+  const payload = Object.keys(otherParams).reduce((acc, item) => {
+    if (item !== 'page') {
+      if (item === 'searchText') {
+        acc[item] = otherParams[item];
+      } else {
+        acc[item] = otherParams[item].split('::');
+      }
     }
 
-    return {
-      redirect: {
-        destination: `/${redirectPath?.toLowerCase()}${str?.length ? `?${str?.toLowerCase()}` : ''}`,
-        permanent: true,
-      },
-    };
-  } else {
-    //TODO: Add page number support
-    const payload: any = Object.keys(query).reduce((acc, item) => {
-      if (item !== 'page') {
-        if (item === 'searchText') {
-          acc[item] = query[item];
-        } else {
-          acc[item] = query[item].split('::');
-        }
-      }
+    return acc;
+  }, {});
 
-      return acc;
-    }, {});
-    const { subcategory = [], category = [], vertical = [], ...otherFilters } = payload;
-    const allFilters = { ...defaultFilters, ...payload };
-    const assetsList = await fetchAssetList({ filters: { ...allFilters } }, context);
+  const allFilters = {
+    ...defaultFilters,
+    ...payload,
+    ...(shopParams && shopParams?.length > 1 && { vertical: [shopParams[1]] }),
+    ...(shopParams && shopParams?.length && { mix: shopParams[0] }),
+  };
 
-    return {
-      props: {
-        initialFilters: payload,
-        assetsList,
-        alternatives: !!query?.alternatives,
+  const assetsList = await fetchAssetList({ filters: { ...allFilters } }, context);
+
+  return {
+    props: {
+      initialFilters: {
+        ...payload,
+        ...(shopParams && shopParams?.length && { mix: shopParams[0] }),
+        ...(shopParams && shopParams?.length > 1 && { vertical: [shopParams[1]] }),
       },
-    };
-  }
+      assetsList,
+      alternatives: !!otherParams?.alternatives,
+    },
+  };
 }
 export default React.memo(Shop);

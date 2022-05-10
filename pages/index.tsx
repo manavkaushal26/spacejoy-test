@@ -62,6 +62,7 @@ export const Home = ({ isMobile }): JSX.Element => {
             name="description"
             content={`Design a home you'll love with ${company.product}'s online interior design services. Work 1:1 with top interior designers and transform any space in just 7 days! Get started today.`}
           />
+          <base href="/" />
         </Head>
         <Layout.Banner />
         <Layout.Header />
