@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 const AffirmBanner = () => {
   return (
-    <div className="container max-w-screen-xl mx-auto mt-16 mb-6">
-      <div className="relative hidden sm:block aspect-[483/113]">
+    <div className="container max-w-7xl mx-auto px-4 mt-20 mb-8">
+      <div className="relative hidden sm:block aspect-[200/47]">
         <Image
           src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1647428160/web/homev3/Happy_St._Patrick_s_Day-07_ycee7y.jpg"
           alt="Affirm Banner"

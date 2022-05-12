@@ -40,7 +40,7 @@ const topCollages = {
       _id: 3,
       name: 'Entryway',
       metaDescription: '2000+ 3D Renders',
-      slug: 'entryway-design-sets',
+      slug: 'Entryway-design-sets',
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/entryway_uki5z7.jpg',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
@@ -78,7 +78,7 @@ const topCollages = {
 export const SlugToCategory = {
   'living-room-design-sets': 'living room',
   'bedroom-design-sets': 'bedroom',
-  'entryway-design-sets': 'entry',
+  'Entryway-design-sets': 'entry',
   'home-office-design-sets': 'home office',
   // 'nursery-design-sets': 'nursery',
   'holiday-design-sets': 'holiday',

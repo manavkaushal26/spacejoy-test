@@ -1,21 +1,27 @@
-import HeroBanner from '@components/EcommercePage/HeroBanner';
 import Layout from '@components/Shared/Layout';
-import { company, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
+import { company, pinterestConfig } from '@utils/config';
 import Head from 'next/head';
 import React from 'react';
-import ShopInjectBanner from '@components/EcommercePage/ShopInjectBanner';
 import BrandsToShop from '@components/EcommercePage/BrandsToShop';
-import CategoryToShop from '@components/EcommercePage/CategoryToShop';
-import ShopBanner from '@components/EcommercePage/ShopReferralBanner';
 import PinterestBanner from '@components/EcommercePage/PinterestBanner';
-import FreeShipping from '@components/EcommercePage/FreeShipping';
+import HeroCarousel from '@components/EcommercePage/HeroCarousel';
+import HotDeals from '@components/EcommercePage/HotDeals';
+import NewCollection from '@components/EcommercePage/NewCollection';
+import PriceStore from '@components/EcommercePage/PriceStore';
+import TrendingItems from '@components/EcommercePage/TrendingItems';
+import FeaturedCategories from '@components/EcommercePage/FeaturedCategories';
+import TrendingStyles from '@components/EcommercePage/TrendingStyles';
+import SubscribeForm from '@components/EcommercePage/SubscribeForm';
+import Image from 'next/image';
+import WhyShopWithSpacejoy from '@utils/Mocks/Shopping';
+import SectionHeading from '@components/EcommercePage/SectionHeading';
+import MobileSidebar from '@components/Shared/HeaderMobile/SidebarMenu';
 import AffirmBanner from '@components/EcommercePage/AffirmBanner';
-import Cookies from 'js-cookie';
+import FreeShipping from '@components/EcommercePage/FreeShipping';
+import ShopInjectBanner from '@components/EcommercePage/ShopInjectBanner';
+import SpacejoyPicks from '@components/EcommercePage/SpacejoyPicks';
 
-const Index = () => {
-  const mobile = Cookies.get('isMobile');
-  const showInjectBanner = true;
-
+const Index = ({ isMobile }) => {
   return (
     <Layout>
       <Head>
@@ -35,20 +41,49 @@ const Index = () => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container px-4 mx-auto xl:p-0">
-          <HeroBanner linkTo="/shop" />
-          <BrandsToShop mobile={mobile} />
-          {pinterestConfig.enable === true && <PinterestBanner />}
-          <CategoryToShop mobile={mobile} />
-          {showInjectBanner && <ShopInjectBanner linkTo="/shop" />}
-          <ShopBanner linkTo={`${oldSpacejoyUrl}/referrals`} shopInjectBanner={showInjectBanner} />
-          <AffirmBanner />
-          <FreeShipping />
+        <HeroCarousel />
+        <TrendingItems mobile={isMobile} />
+        <NewCollection />
+        <PriceStore />
+        <BrandsToShop mobile={isMobile} />
+        <SpacejoyPicks mobile={isMobile} />
+        <FeaturedCategories mobile={isMobile} />
+        {pinterestConfig.enable === true && <PinterestBanner />}
+        <TrendingStyles mobile={isMobile} />
+        <SubscribeForm />
+        <AffirmBanner />
+        <FreeShipping mobile={isMobile} />
+        <ShopInjectBanner />
+        <div className="container max-w-7xl px-4 mx-auto">
+          <div className="mt-16 mb-16 block">
+            <SectionHeading title="Why buy from spacejoy?" />
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+              {WhyShopWithSpacejoy?.map((item) => {
+                return (
+                  <div key={item?.id} className="space-y-1 my-2">
+                    <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
+                    <p className="text-md font-bold text-gray-900">{item?.title}</p>
+                    <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Layout.Body>
       <Layout.Footer />
     </Layout>
   );
 };
+
+export async function getServerSideProps(ctx) {
+  const mobile = ctx.req.cookies['isMobile'];
+
+  return {
+    props: {
+      isMobile: mobile === 'true' ? true : false,
+    },
+  };
+}
 
 export default Index;

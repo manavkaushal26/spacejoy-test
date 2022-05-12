@@ -29,7 +29,9 @@ const SubNav: React.FC<ModalProps> & StaticComponents = ({
     <Transition appear show={subNavState} as={Fragment}>
       <Dialog
         as="div"
-        className={`fixed ${isBroadcastVisible ? 'top-10' : ''} bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
+        className={`fixed ${
+          isBroadcastVisible ? 'top-24' : ''
+        } bg-gray-900 bg-opacity-75 inset-0 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
         onClose={() => {
           closeSubNav();
           onCloseCallback && onCloseCallback();
@@ -61,7 +63,7 @@ const SubNav: React.FC<ModalProps> & StaticComponents = ({
             leaveFrom={`opacity-100 ${isBroadcastVisible ? 'translate-y-10' : 'translate-y-0'}`}
             leaveTo="opacity-0 -translate-y-60"
           >
-            <div className="container mx-auto overflow-hidden relative pt-24 pb-4 text-left bg-white shadow-xl rounded-b-lg">
+            <div className="container mx-auto overflow-hidden relative pt-8 pb-4 text-left bg-white shadow-xl rounded-b-lg">
               <div className="container mx-auto px-8">
                 <Dialog.Title as="h3" className="text-3xl mb-6">
                   {children[0]}

@@ -1,16 +1,16 @@
-import { BrandDeals } from '@utils/Mocks/EcommercePageData';
 import React from 'react';
 import Link from 'next/link';
 import BrandCard from './BrandCard';
 import { PushEvent } from '@utils/analyticsLogger';
 import SectionHeading from './SectionHeading';
+import { SpacejoyPicksData } from '@utils/Mocks/EcommercePageData';
 
-const BrandsToShop = ({ mobile }) => {
-  const data = mobile ? BrandDeals.slice(0, 4) : BrandDeals;
+const SpacejoyPicks = ({ mobile }) => {
+  const data = mobile ? SpacejoyPicksData.slice(0, 4) : SpacejoyPicksData;
 
   return (
     <div className="container max-w-7xl px-4 mx-auto">
-      <SectionHeading title="Discounts on top brands" />
+      <SectionHeading title="Spacejoy Picks" />
       <div className="grid grid-cols-2 gap-6 mx-auto md:grid-cols-3 lg:grid-cols-4">
         {data.map((brand, index) => (
           <Link
@@ -19,7 +19,6 @@ const BrandsToShop = ({ mobile }) => {
               pathname: `/shop`,
               query: {
                 retailer: `${brand.name}`,
-                discount: [`${brand.discount.start}`, `${brand.discount.upto}`].join('::'),
               },
             }}
             passHref
@@ -28,13 +27,13 @@ const BrandsToShop = ({ mobile }) => {
               target={!mobile ? '_blank' : ''}
               onClick={() => {
                 PushEvent({
-                  category: 'Shop Brand Offers',
-                  action: `Go to ${brand.name} List Page | ${brand.offer}% OFF`,
+                  category: 'Spacejoy Picks',
+                  action: `Go to ${brand.name} List Page`,
                   label: `Shop Now`,
                 });
               }}
             >
-              <BrandCard data={brand} />
+              <BrandCard data={brand} section="spacejoy picks" />
             </a>
           </Link>
         ))}
@@ -56,4 +55,4 @@ const BrandsToShop = ({ mobile }) => {
   );
 };
 
-export default BrandsToShop;
+export default SpacejoyPicks;

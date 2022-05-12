@@ -1,33 +1,58 @@
 import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
-import ShopCategories from '@components/Shared/ShopCategories';
-import { Dialog } from '@headlessui/react';
+// import ShopCategories from '@components/Shared/ShopCategories';
+import { Dialog, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { oldSpacejoyUrl } from '@utils/config';
+import { classNames, convertFilterToUrlPath } from '@utils/helpers';
+import { secondaryHeaderLocations } from '@utils/Mocks/HeaderLocations';
+import { menuData, navDataCategories } from '@utils/Mocks/MobileSidebar';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import { ExploreIdeasNav } from '../ExploreIdeasNav';
 import { HireADesignerHeader } from '../HireADesignerHeader';
 import SubNav from '../SubNav';
-import { TabOffers } from '../TabOffers';
 import UserNav from './UserNav';
 
-const Header: React.FC = () => {
+const HeaderDesktop: React.FC = () => {
+  const mobile = Cookies.get('isMobile');
   const router = useRouter();
+  const { pathname } = router;
+
   const { data } = useFirebaseContext();
   const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
-
+  const [selectedNavItem, setSelectedNavItem] = useState<any>([]);
   const [refSource, setRefSource] = useState<any>('');
   const [subNavContent, setSubNavContent] = useState('stories');
 
   const isSubNavHover = useMemo(() => {
     return subNavContent === 'shop' ? true : false;
   }, [subNavContent]);
+
+  const formattedMenuData = useMemo(() => {
+    return menuData.map((item) => {
+      return {
+        ...item,
+        children: item?.categories,
+      };
+    });
+  }, []);
+  const formattedNavData = useMemo(() => {
+    return navDataCategories.map((item) => {
+      return {
+        ...item,
+        children: item?.categories?.map((category) => {
+          return { ...category, children: category?.subCategories };
+        }),
+      };
+    });
+  }, []);
 
   const [isOpenSubNav, setIsOpenSubNav] = useState(false);
   const toggleSubNav = () => setIsOpenSubNav((prevState) => !prevState);
@@ -53,8 +78,8 @@ const Header: React.FC = () => {
       switch (subNavContent) {
         case 'stories':
           return <CustomerStoriesNav />;
-        case 'shop':
-          return <ShopCategories callback={toggleSubNav} />;
+        // case 'shop':
+        //   return <ShopCategories callback={toggleSubNav} />;
         // case 'hire a designer':
         //   return <CustomerStoriesNav />;
 
@@ -71,8 +96,8 @@ const Header: React.FC = () => {
       switch (subNavContent) {
         case 'stories':
           return 'Explore';
-        case 'shop':
-          return <TabOffers />;
+        // case 'shop':
+        //   return <TabOffers />;
 
         case 'hire a designer':
           return <HireADesignerHeader />;
@@ -90,6 +115,7 @@ const Header: React.FC = () => {
     const {
       query: { ref = '' },
     } = router;
+
     if (ref) {
       setRefSource(ref);
     }
@@ -99,7 +125,7 @@ const Header: React.FC = () => {
     <>
       <header className={`bg-white sticky ${isBroadcastVisible ? 'top-10 mb-10' : 'top-0'} z-50`}>
         <div className="container px-4 mx-auto">
-          <div className="lg:flex lg:items-center h-20 hidden">
+          <div className="hidden md:flex md:items-center h-16">
             <Link href="/">
               <a
                 className="inline-flex pr-1 mr-10 rounded-md focus:outline-none"
@@ -182,32 +208,22 @@ const Header: React.FC = () => {
                       </a>
                     </Link>
                   </li>
-                  <li
-                    className="items-center h-full sm:hidden md:hidden lg:flex"
-                    onClick={() => {
-                      toggleSubNav();
-                      setSubNavContent('shop');
-                    }}
-                  >
+                  <li className="items-center h-full sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
                       className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
-                        isOpenSubNav && subNavContent === 'shop' ? 'text-red-500' : 'text-gray-700'
+                        pathname === '/shop-furniture-decor' ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
+                        router.push({ pathname: '/shop-furniture-decor' });
                         PushEvent({
                           category: `Top Nav - Shop`,
-                          action: `Open Shop Dropdown`,
+                          action: `Open Shop Page`,
                           label: `Shop Button`,
                         });
                       }}
                     >
-                      Shop{' '}
-                      <ChevronDownIcon
-                        className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
-                          isOpenSubNav && subNavContent === 'shop' ? 'rotate-180' : ''
-                        }`}
-                      />
+                      Shop
                     </button>
                   </li>
                   <li className="flex sm:hidden md:hidden lg:flex">
@@ -276,7 +292,110 @@ const Header: React.FC = () => {
             </div>
           </div>
         </div>
+        <div>
+          {secondaryHeaderLocations.includes(pathname) && mobile === 'false' && (
+            <div className={`hide-scrollbar w-full z-50`}>
+              <div className="bg-gray-100 whitespace-nowrap hidden sm:block">
+                <div className="relative container p-4 py-3 flex items-center justify-center space-x-8 text-sm text-gray-700 mx-auto">
+                  <Popover.Group className="flex  flex-wrap">
+                    <Link href="/shop">
+                      <a>
+                        <p className="hover:text-red-500 transition duration-200 px-4 py-1 leading-relaxed">
+                          All Products
+                        </p>
+                      </a>
+                    </Link>
+                    {formattedNavData
+                      .filter((menu) => menu.name === 'Shop')[0]
+                      .children.map((category) => (
+                        <Popover key={category.name}>
+                          {({ open }) => (
+                            <>
+                              <Popover.Button
+                                key={category.name}
+                                className={classNames(
+                                  open ? 'text-red-500 underline' : '',
+                                  'group inline-flex items-center focus:outline-none focus:ring-none hover:text-red-500 transition duration-200 px-4 py-1 leading-relaxed'
+                                )}
+                                onClickCapture={() =>
+                                  setSelectedNavItem(
+                                    formattedNavData
+                                      .filter((menu) => menu.name === 'Shop')[0]
+                                      .children.filter((item) => item.name === category.name)
+                                  )
+                                }
+                              >
+                                <span>{category.name}</span>
+                              </Popover.Button>
+
+                              <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-200"
+                                enterFrom="opacity-0 -translate-y-1"
+                                enterTo="opacity-100 translate-y-0"
+                                leave="transition ease-in duration-150"
+                                leaveFrom="opacity-100 translate-y-0"
+                                leaveTo="opacity-0 -translate-y-1"
+                              >
+                                <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
+                                  {({ close }) => (
+                                    <div className="max-w-7xl mx-auto grid px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16gap-y-6">
+                                      <div>
+                                        <h3 className="font-semibold text-2xl">{selectedNavItem[0]?.name}</h3>
+                                        <div className="mt-2 space-y-2">
+                                          <p
+                                            onClick={() => {
+                                              router.push(`/shop`);
+                                              close();
+                                            }}
+                                            className="cursor-pointer text-gray-800 hover:text-red-500 transition duration-200 w-fit underline"
+                                          >
+                                            Shop All {selectedNavItem[0]?.name}
+                                          </p>
+                                          {selectedNavItem[0]?.children.map((item) => (
+                                            <p
+                                              key={item._id}
+                                              onClick={() => {
+                                                router.push(`/${convertFilterToUrlPath(item.name.toLowerCase())}`);
+                                                close();
+                                              }}
+                                              className="cursor-pointer text-gray-800 hover:text-red-500 transition duration-200 w-fit"
+                                            >
+                                              {item.name}
+                                            </p>
+                                          ))}
+                                        </div>
+                                      </div>
+                                      <div />
+                                      <div className="relative col-span-2 aspect-[2/1]">
+                                        <Image
+                                          src="https://res.cloudinary.com/spacejoy/image/upload/v1651220249/web/furniture-decor-shop/V2/navigation_banner_ucoshd.jpg"
+                                          alt=""
+                                          layout="fill"
+                                          objectFit="contain"
+                                        />
+                                      </div>
+                                    </div>
+                                  )}
+                                </Popover.Panel>
+                              </Transition>
+                            </>
+                          )}
+                        </Popover>
+                      ))}
+                    <Link href="/shop?discount=10%3A%3A100">
+                      <a>
+                        <p className="hover:text-red-500 transition duration-200 px-4 py-1 leading-relaxed">Sale</p>
+                      </a>
+                    </Link>
+                  </Popover.Group>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </header>
+
       <SubNav
         subNavState={isOpenSubNav}
         closeSubNav={toggleSubNav}
@@ -326,4 +445,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default HeaderDesktop;

@@ -15,6 +15,7 @@ h2,
 h3 {
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 .min-h-free {
@@ -81,10 +82,10 @@ footer li a {
 }
 
 .brand-card-color-1 {
-  background-color: #f9f2e0;
+  background-color: #f6eeeb;
 }
 .brand-card-color-2 {
-  background-color: #baceba;
+  background-color: #e6f4f4;
 }
 .homepage-section_headings {
   @apply text-3xl text-gray-900 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight;
@@ -199,6 +200,26 @@ footer li a {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+
+.collections-slider .slick-slide > div {
+  padding: 10px 10px 20px 0;
+}
+
+.collections-slider .slick-track {
+  display: flex !important;
+}
+
+.collections-slider .slick-slide {
+  height: inherit !important;
+}
+
+.collections-slider .slick-slide > div {
+  height: 100%;
+}
+
+/* .category-navbar::-webkit-scrollbar {
+  display: none;
+} */

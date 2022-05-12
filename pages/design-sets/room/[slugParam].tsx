@@ -26,7 +26,7 @@ interface CollageViewProps {
   initialSubCategoryList?: CollageSubcategories[];
   tags: Array<string>;
   themes: Array<string>;
-  isMobile?:boolean;
+  isMobile?: boolean;
 }
 
 const CollageView: NextPage<CollageViewProps> = ({
@@ -42,6 +42,9 @@ const CollageView: NextPage<CollageViewProps> = ({
   const name = useMemo(() => {
     return slug.split('-').join(' ');
   }, [slug]);
+  const formattedRoomName = useMemo(() => {
+    return name.slice(0, name.length - 12);
+  }, [name]);
 
   let metaSEO = useMemo(() => {
     return RoomSelectSEO.find((item) => item?.slug === slug);
@@ -145,13 +148,23 @@ const CollageView: NextPage<CollageViewProps> = ({
                   setThemeFilters([]);
                 }}
               >
-                <DesignFilters updateTags={updateTags} tagFilters={tagFilters} appliedThemeFilters={themeFilters} />
+                <DesignFilters
+                  updateTags={updateTags}
+                  tagFilters={tagFilters}
+                  appliedThemeFilters={themeFilters}
+                  roomType={formattedRoomName}
+                />
               </FilterDrawer>
             )}
             <div className="grid sm:grid-cols-5 grid-cols-4 gap-8">
               <div className="col-span-1 p-4 bg-white rounded-lg border hidden sm:block">
                 {!isMobile && (
-                  <DesignFilters updateTags={updateTags} tagFilters={tagFilters} appliedThemeFilters={themeFilters} />
+                  <DesignFilters
+                    updateTags={updateTags}
+                    tagFilters={tagFilters}
+                    appliedThemeFilters={themeFilters}
+                    roomType={formattedRoomName}
+                  />
                 )}
               </div>
               <div className="col-span-4 rounded">

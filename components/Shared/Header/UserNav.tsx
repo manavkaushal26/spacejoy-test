@@ -20,11 +20,11 @@ const UserNav = () => {
   const mobile = Cookies.get('isMobile') === 'true' ? true : false;
   const { session, loading, logout } = useSession();
 
-  const PreAuthRenderUI = () => <Login ctaText={<span>Login</span>} />;
+  const PreAuthRenderUI = () => <Login ctaText="Login" />;
 
   const PostAuthRenderUI = () => {
     return (
-      <div className="relative inline-block">
+      <div className="relative inline-flex">
         <Menu>
           {mobile ? (
             <Menu.Button>
@@ -45,7 +45,7 @@ const UserNav = () => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute top-6 right-4 w-56 mt-6 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute top-6 right-4 w-56 mt-6 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
               <div>
                 {mobile && (
                   <div className="w-full px-2 py-4 bg-gray-200 text-lg font-semibold rounded-md">

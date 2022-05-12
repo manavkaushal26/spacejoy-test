@@ -1,50 +1,45 @@
-import { MenuIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
+import { ChevronRightIcon, MenuIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { exploreIdeasCat, hireADesignerCat, splitCategories } from '@utils/Mocks/SplitCategoriesData';
+import { secondaryHeaderLocations } from '@utils/Mocks/HeaderLocations';
+import { menuData, navDataCategories } from '@utils/Mocks/MobileSidebar';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import UserNav from '../Header/UserNav';
+import MobileSidebar from './SidebarMenu';
 import SidebarMenu from './SidebarMenu';
 
-const menuData = [
-  {
-    name: 'Design Your Space',
-    title: 'Designs',
-    categories: hireADesignerCat,
-  },
-  {
-    name: 'Shop Sets',
-    url: '/room-select',
-  },
-  {
-    name: 'Shop',
-    title: 'Category',
-    categories: splitCategories,
-  },
-  {
-    name: 'Explore Ideas',
-    title: 'Ideas',
-    categories: exploreIdeasCat,
-  },
-];
-
-const HeaderMobile: React.FC = () => {
+const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
   const router = useRouter();
+  const { pathname } = router;
   const { data } = useFirebaseContext();
   const [refSource, setRefSource] = useState<any>('');
   const [open, setOpen] = useState(false);
+  const [categoriesMenuOpen, setCategoriesMenuOpen] = useState(false);
+  // const mobile = Cookies.get('isMobile') === 'true' ? true : false;
 
   const formattedMenuData = useMemo(() => {
-    return menuData.map((item) => {
+    return menuData
+      .filter((item) => item.active === true)
+      .map((item) => {
+        return {
+          ...item,
+          children: item?.categories,
+        };
+      });
+  }, []);
+
+  const formattedNavData = useMemo(() => {
+    return navDataCategories.map((item) => {
       return {
         ...item,
         children: item?.categories?.map((category) => {
-          return { ...category, children: category.subCategories };
+          return { ...category, children: category?.subCategories };
         }),
       };
     });
@@ -68,7 +63,11 @@ const HeaderMobile: React.FC = () => {
 
   return (
     <>
-      <div className={`bg-white sticky ${data?.broadcastV2?.broadcaststripVisible ? 'top-10 mb-6' : 'top-0'} z-50`}>
+      <div
+        className={`mobile-navbar bg-white sticky ${
+          data?.broadcastV2?.broadcaststripVisible ? 'top-10 mb-6' : 'top-0'
+        } z-50`}
+      >
         <div className="container px-4 mx-auto">
           <div className="flex items-center h-20 lg:hidden">
             <div className="flex items-center space-x-3 flex-grow">
@@ -128,8 +127,26 @@ const HeaderMobile: React.FC = () => {
             </div>
           </div>
         </div>
-        <SidebarMenu open={open} setOpen={setOpen} data={formattedMenuData} />
+        {secondaryHeaderLocations.includes(pathname) && mobile === true && (
+          <>
+            <div className="min-h-[40px] p-4 bg-gray-100 font-semibold" onClick={() => setCategoriesMenuOpen(true)}>
+              <div className="flex items-center justify-between container px-4 mx-auto">
+                <p>Shop By Categories</p>
+                <span>
+                  <ChevronRightIcon className="w-5 h-5" />
+                </span>
+              </div>
+            </div>
+          </>
+        )}
       </div>
+      <SidebarMenu open={open} setOpen={setOpen} data={formattedMenuData} />
+      {/* For Categories Menu on Shop-Furniture-Decor */}
+      <MobileSidebar
+        open={categoriesMenuOpen}
+        setOpen={setCategoriesMenuOpen}
+        data={formattedNavData.filter((menu) => menu.name === 'Shop')[0]?.children}
+      />
     </>
   );
 };

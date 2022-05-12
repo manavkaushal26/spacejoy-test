@@ -379,7 +379,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="bg-white">
+        <div className="bg-white mt-12 lg:mt-0">
           <div className="container p-4 mx-auto">
             <nav className="flex mb-4" aria-label="Breadcrumb">
               <ol role="list" className="flex items-center space-x-4">
@@ -1016,7 +1016,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
         </div>
 
         <StickyFooter show={!showCartFooter}>
-          <div className="flex  space-x-4 sm:flex-col-1 addToCart px-4 my-2">
+          <div className="flex space-x-4 sm:flex-col-1 addToCart px-4 my-2">
             <button
               type="button"
               className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"

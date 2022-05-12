@@ -10,10 +10,9 @@ export const ExploreIdeasNav = () => {
   const mobile = Cookies.get('isMobile') === 'true' ? true : false;
 
   return (
-    <div className="">
+    <div className="z-10">
       <div className="flex space-x-10">
-
-      <Link href="/interior-designs" passHref>
+        <Link href="/interior-designs" passHref>
           <a
             onClick={() => {
               PushEvent({
@@ -62,7 +61,7 @@ export const ExploreIdeasNav = () => {
             </div>
           </a>
         </Link>
-        
+
         <Link href={`/interior-designs-blog`} passHref>
           <a
             onClick={() => {
@@ -113,15 +112,12 @@ export const ExploreIdeasNav = () => {
                 />
               </div>
               <div className="flex justify-between p-4">
-                <h3 className="text-base font-poppins">Customer Stories & Reviews
-</h3>
+                <h3 className="text-base font-poppins">Customer Stories & Reviews</h3>
                 <ArrowRightIcon className="w-9 h-9 p-[9px] text-white bg-black rounded-full" />
               </div>
             </div>
           </a>
         </Link>
-
-        
       </div>
     </div>
   );

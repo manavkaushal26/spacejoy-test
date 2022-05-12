@@ -127,6 +127,7 @@ const firebaseConfig = {
   messagingSenderId: '628064588100',
   appId: '1:628064588100:web:57b18ba0c19e9cea238711',
   databaseId: isProduction ? 'siteConfig' : 'siteConfig-devStaging',
+  // databaseId: isProduction ? 'siteConfig' : 'siteConfig',
   documentId: 'main',
 };
 

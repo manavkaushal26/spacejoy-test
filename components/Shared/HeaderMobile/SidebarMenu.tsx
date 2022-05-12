@@ -8,9 +8,10 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { PushEvent } from '@utils/analyticsLogger';
 import { TabOffers } from '../TabOffers';
+import { convertFilterToUrlPath } from '@utils/helpers';
 
 export default function MobileSidebar({ data, open, setOpen }) {
-  const topLevelCategories = data?.map((item)=> item?.name);
+  const topLevelCategories = data?.map((item) => item?.name);
   const router = useRouter();
   // const {
   //   filters: { category = [] },
@@ -21,28 +22,26 @@ export default function MobileSidebar({ data, open, setOpen }) {
   const [activeTopLevelCategory, setActiveTopLevelCategory] = useState('');
   const [menuItemNames, setMenuItemNames] = useState([]);
 
-  
   const RenderMenuItems = (data) => {
-
-    useMemo(()=>{
-      const menuNames = data?.reduce((acc, item)=>{
+    useMemo(() => {
+      const menuNames = data?.reduce((acc, item) => {
         acc.push(item?.name);
-        
+
         return acc;
       }, []);
-      
+
       setMenuItemNames(menuNames);
     }, [data]);
-  
-  
+
     return data?.map((item) =>
       item?.children && item?.children.length ? (
         <div
+          key={item.name}
           onClick={(e) => {
             previousStack.push(data);
             setPreviousStack(previousStack);
             setCurrentMenus(item.children);
-            if(topLevelCategories.includes(item?.name)){
+            if (topLevelCategories.includes(item?.name)) {
               setActiveTopLevelCategory(item?.name);
             }
           }}
@@ -56,8 +55,13 @@ export default function MobileSidebar({ data, open, setOpen }) {
           <div
             className="px-4 sm:px-6 active:bg-gray-100 py-2"
             onClick={() => {
-              router.push(`${item.verticals ? `/shop?subcategory=${item.name}` : `${item.url}`}`);
-              // updateFilter(item?.verticals?.subCategory?._id, 'subCategory', ['vertical', 'page']);
+              if (item.url && item.name) {
+                router.push(`${item.url}`);
+              } else if (item.name) {
+                router.push(`/${convertFilterToUrlPath(item.name.toLowerCase())}`);
+              } else {
+                return null;
+              }
               setOpen(false);
             }}
           >
@@ -156,16 +160,16 @@ export default function MobileSidebar({ data, open, setOpen }) {
                               {/* Only for Shop Nav in navigation */}
                               {/* {previousStack[0]?.map(
                                 (item) => */}
-                                {activeTopLevelCategory === 'Shop' && !menuItemNames.includes('Shop') && (
-                                  <div className="pt-4 px-4 sm:px-6 space-y-6">
-                                    <div>
-                                      <TabOffers />
-                                    </div>
-                                    <div>
-                                      <h3 className="text-lg">Shop By Categories</h3>
-                                    </div>
+                              {activeTopLevelCategory === 'Shop' && !menuItemNames.includes('Shop') && (
+                                <div className="pt-4 px-4 sm:px-6 space-y-6">
+                                  <div>
+                                    <TabOffers />
                                   </div>
-                                )}
+                                  <div>
+                                    <h3 className="text-lg">Shop By Categories</h3>
+                                  </div>
+                                </div>
+                              )}
                               {/* )} */}
                               {RenderMenuItems(currentMenus)}
                             </>

@@ -24,6 +24,7 @@ export const lightBoxOptions = {
 export default function Carousel({
   children,
   imageCount,
+  arrows = true,
   withLightBox = false,
   slidesToShow = 1,
   withNav = false,
@@ -96,7 +97,7 @@ export default function Carousel({
   return (
     <div className="w-full relative">
       <div className={`ml-0 ${withNav ? 'md:pl-24' : ''} w-full relative`}>
-        {imageCount > 1 ? renderArrows() : null}
+        {imageCount > 1 && arrows === true ? renderArrows() : null}
         {withLightBox ? (
           <SRLWrapper {...lightBoxOptions}>
             <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings}>

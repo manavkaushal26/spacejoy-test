@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 
 const SHOW_ITEMS_IN_ARRAY = 5;
 
-const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
-  const { tagTypes, loading, updateActiveTagType, themeFilters, fetchThemeFilters } = useDesignSetTags('');
+const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters, roomType }) => {
+  const { tagTypes, loading, updateActiveTagType, themeFilters, fetchThemeFilters } = useDesignSetTags('', roomType);
   //TODO: expanded optimization, Create a dynamic show more component for array
   const [designStylesExpanded, setDesignStylesExpanded] = useState(false);
   const [functionality, setFunctionality] = useState(false);
@@ -17,35 +17,35 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
   const updateCollapseState = (type, action) => {
     switch (type) {
       case 'designStyles':
-        switch(action){
+        switch (action) {
           case 'get state':
             return designStylesExpanded;
           case 'set state':
             setDesignStylesExpanded(!designStylesExpanded);
         }
       case 'functionality':
-        switch(action){
+        switch (action) {
           case 'get state':
             return functionality;
           case 'set state':
             setFunctionality(!functionality);
         }
       case 'color palette':
-        switch(action){
+        switch (action) {
           case 'get state':
             return colorP;
           case 'set state':
             setColorP(!colorP);
         }
       case 'seating capacity':
-        switch(action){
+        switch (action) {
           case 'get state':
             return capacity;
           case 'set state':
             setCapacity(!capacity);
         }
       case 'specialty':
-        switch(action){
+        switch (action) {
           case 'get state':
             return speciality;
           case 'set state':
@@ -72,7 +72,6 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
   }
 
   const { themes = [] } = themeFilters;
-
 
   return (
     <div className="design-filter">
@@ -115,7 +114,10 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                         </>
                       ) : (
                         <>
-                          {sliceList('designStyles', themes?.sort((a, b) => a['name']?.localeCompare(b['name'])))?.map((item) => {
+                          {sliceList(
+                            'designStyles',
+                            themes?.sort((a, b) => a['name']?.localeCompare(b['name']))
+                          )?.map((item) => {
                             return (
                               <>
                                 <div
@@ -199,7 +201,10 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                           </>
                         ) : (
                           <>
-                            {sliceList(tagObject?.name, tagObject?.tags?.sort((a, b) => a['name']?.localeCompare(b['name'])))?.map((item) => {
+                            {sliceList(
+                              tagObject?.name,
+                              tagObject?.tags?.sort((a, b) => a['name']?.localeCompare(b['name']))
+                            )?.map((item) => {
                               return (
                                 <>
                                   <div
@@ -232,11 +237,15 @@ const DesignFilter = ({ updateTags, tagFilters, appliedThemeFilters }) => {
                                 </>
                               );
                             })}
-                            {tagObject?.tags?.length >= SHOW_ITEMS_IN_ARRAY && <div  className='my-3 text-sm text-[#F5296E] capitalize cursor-pointer'>
-                            <button type="button" onClick={() => updateCollapseState(tagObject?.name, 'set state')}>
-                              {updateCollapseState(tagObject?.name, 'get state') ? 'Show Less' : `+${tagObject?.tags?.length - SHOW_ITEMS_IN_ARRAY} More`}
-                            </button>
-                            </div>}
+                            {tagObject?.tags?.length >= SHOW_ITEMS_IN_ARRAY && (
+                              <div className="my-3 text-sm text-[#F5296E] capitalize cursor-pointer">
+                                <button type="button" onClick={() => updateCollapseState(tagObject?.name, 'set state')}>
+                                  {updateCollapseState(tagObject?.name, 'get state')
+                                    ? 'Show Less'
+                                    : `+${tagObject?.tags?.length - SHOW_ITEMS_IN_ARRAY} More`}
+                                </button>
+                              </div>
+                            )}
                           </>
                         )}
                       </>

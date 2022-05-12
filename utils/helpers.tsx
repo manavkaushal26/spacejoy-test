@@ -148,6 +148,10 @@ function titleCase(str) {
   return '';
 }
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
 export {
   debounce,
   arraysEqual,
@@ -161,4 +165,5 @@ export {
   convertUrlPathToFilter,
   convertFilterToUrlPath,
   titleCase,
+  classNames,
 };
