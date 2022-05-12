@@ -100,71 +100,6 @@ const FeaturedCategoriesGrid = styled.div`
   }
 `;
 
-const featuredCategories = [
-  {
-    id: 1,
-    imgSrc: 'https://res.cloudinary.com/spacejoy/image/upload/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg',
-    title: 'Sofas',
-    href: '/shop?subcategory=Sofas',
-    class: 'div1',
-  },
-  {
-    id: 2,
-    imgSrc: 'https://res.cloudinary.com/spacejoy/image/upload/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg',
-    title: 'Rugs',
-    href: '/shop?subcategory=Rugs',
-    class: 'div2',
-  },
-  {
-    id: 3,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg',
-    title: 'Lamps & Shades',
-    href: '/shop?subcategory=Beds',
-    class: 'div3',
-  },
-  {
-    id: 4,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg',
-    title: 'Chairs',
-    href: '/shop?subcategory=Chairs',
-    class: 'div4',
-  },
-  {
-    id: 5,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg',
-    title: 'TV Console',
-    href: '/shop?subcategory=Beds',
-    class: 'div5',
-  },
-  {
-    id: 6,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg',
-    title: 'Tables',
-    href: '/shop?subcategory=Tables',
-    class: 'div6',
-  },
-  {
-    id: 7,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg',
-    title: 'Storage and Organizers',
-    href: '/shop?subcategory=Storage+%26+Organizers',
-    class: 'div7',
-  },
-
-  {
-    id: 8,
-    imgSrc: 'https://res.cloudinary.com/spacejoy/image/upload/v1652192121/web/furniture-decor-shop/V2/Beds_wxnkdh.jpg',
-    title: 'Beds',
-    href: '/shop?subcategory=Beds',
-    class: 'div8',
-  },
-];
-
 const FeaturedCategories = ({ mobile }) => {
   return (
     <div className="container max-w-7xl px-4 mx-auto">
@@ -175,7 +110,7 @@ const FeaturedCategories = ({ mobile }) => {
             <Link href="shop?subcategory=Sofas" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg"
                   alt="Sofas"
                   layout="fill"
                   objectFit="cover"
@@ -192,7 +127,7 @@ const FeaturedCategories = ({ mobile }) => {
               <Link href="shop?subcategory=Chairs" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg"
                     alt="Chairs"
                     layout="fill"
                     objectFit="cover"
@@ -208,7 +143,7 @@ const FeaturedCategories = ({ mobile }) => {
               <Link href="/shop?subcategory=Media+Consoles" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg"
                     alt="TV Console"
                     layout="fill"
                     objectFit="cover"
@@ -226,7 +161,7 @@ const FeaturedCategories = ({ mobile }) => {
               <Link href="/shop?subcategory=Tables" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg"
                     alt="Tables"
                     layout="fill"
                     objectFit="cover"
@@ -242,7 +177,7 @@ const FeaturedCategories = ({ mobile }) => {
               <Link href="/shop?subcategory=Storage%20&%20Organizers" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg"
                     alt="Storage and Organizers"
                     layout="fill"
                     objectFit="cover"
@@ -259,7 +194,7 @@ const FeaturedCategories = ({ mobile }) => {
             <Link href="/shop?subcategory=Rugs" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg"
                   alt="Rugs"
                   layout="fill"
                   objectFit="cover"
@@ -275,7 +210,7 @@ const FeaturedCategories = ({ mobile }) => {
             <Link href="/shop?subcategory=Lamps%20&%20Shades" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg"
                   alt="Lamps & Shades"
                   layout="fill"
                   objectFit="cover"
@@ -291,7 +226,7 @@ const FeaturedCategories = ({ mobile }) => {
             <Link href="/shop?subcategory=Beds" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1652192121/web/furniture-decor-shop/V2/Beds_wxnkdh.jpg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192121/web/furniture-decor-shop/V2/Beds_wxnkdh.jpg"
                   alt="Beds"
                   layout="fill"
                   objectFit="cover"

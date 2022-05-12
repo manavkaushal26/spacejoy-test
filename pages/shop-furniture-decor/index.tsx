@@ -50,7 +50,7 @@ const Index = ({ isMobile }) => {
         <FeaturedCategories mobile={isMobile} />
         {pinterestConfig.enable === true && <PinterestBanner />}
         <TrendingStyles mobile={isMobile} />
-        <SubscribeForm />
+        {/* <SubscribeForm /> */}
         <AffirmBanner />
         <FreeShipping mobile={isMobile} />
         <ShopInjectBanner />

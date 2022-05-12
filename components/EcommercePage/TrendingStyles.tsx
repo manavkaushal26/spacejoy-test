@@ -12,7 +12,7 @@ const fakeCarouselData = [
       'https://res.cloudinary.com/spacejoy/image/upload/v1652219112/web/furniture-decor-shop/V2/trending_styles_a_y5fejh.jpg',
     title: 'Outdoor Furniture',
     bgColor: '#FFFAEC',
-    href: '/shop?subcategory=Outdoor+Furniture',
+    href: '/outdoor-furniture',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const fakeCarouselData = [
       'https://res.cloudinary.com/spacejoy/image/upload/v1652219114/web/furniture-decor-shop/V2/trending_styles_b_tstdvw.jpg',
     title: 'Outdoor Accessories',
     bgColor: '#F0FFF7',
-    href: '/shop?subcategory=Outdoor+Accessories',
+    href: '/outdoor-accessories',
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const fakeCarouselData = [
       'https://res.cloudinary.com/spacejoy/image/upload/v1652219115/web/furniture-decor-shop/V2/trending_styles_c_tkybdr.jpg',
     title: 'Outdoor Furnishings',
     bgColor: '#FFF6F3',
-    href: '/shop?subcategory=Outdoor+Furnishings',
+    href: '/outdoor-furnishings',
   },
 ];
 
