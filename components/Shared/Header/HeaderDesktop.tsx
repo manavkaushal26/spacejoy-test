@@ -345,7 +345,9 @@ const HeaderDesktop: React.FC = () => {
                                         <div className="mt-2 space-y-2">
                                           <p
                                             onClick={() => {
-                                              router.push(`/shop`);
+                                              router.push(
+                                                `/${convertFilterToUrlPath(selectedNavItem[0]?.name.toLowerCase())}`
+                                              );
                                               close();
                                             }}
                                             className="cursor-pointer text-gray-800 hover:text-red-500 transition duration-200 w-fit underline"
