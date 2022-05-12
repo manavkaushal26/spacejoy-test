@@ -642,7 +642,9 @@ export async function getServerSideProps(context) {
   let redirectPath = '';
 
   if (subcategory?.length) {
-    redirectPath = !vertical?.length ? `/${subcategory?.split('::')[0]}` : `/${vertical?.split('::')[0]}`;
+    redirectPath = !vertical?.length
+      ? `/${subcategory?.split('::')[0]}`
+      : `/${subcategory?.split('::')[0]}/${vertical?.split('::')[0]}`;
   } else if (category.length) {
     redirectPath = `/${category?.split('::')[0]}`;
   }
@@ -657,7 +659,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         destination: `/${redirectPath?.toLowerCase()}${str?.length ? `?${str?.toLowerCase()}` : ''}`,
-        permanent: true,
+        permanent: false,
       },
     };
   } else {
