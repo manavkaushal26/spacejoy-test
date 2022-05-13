@@ -20,6 +20,7 @@ import AffirmBanner from '@components/EcommercePage/AffirmBanner';
 import FreeShipping from '@components/EcommercePage/FreeShipping';
 import ShopInjectBanner from '@components/EcommercePage/ShopInjectBanner';
 import SpacejoyPicks from '@components/EcommercePage/SpacejoyPicks';
+import InjectBanner2 from '@components/EcommercePage/InjectBanner2';
 
 const Index = ({ isMobile }) => {
   return (
@@ -41,7 +42,7 @@ const Index = ({ isMobile }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <HeroCarousel />
+        <HeroCarousel mobile={isMobile} />
         <TrendingItems mobile={isMobile} />
         <NewCollection />
         <PriceStore />
@@ -52,6 +53,7 @@ const Index = ({ isMobile }) => {
         <TrendingStyles mobile={isMobile} />
         {/* <SubscribeForm /> */}
         <AffirmBanner />
+        <InjectBanner2 />
         <FreeShipping mobile={isMobile} />
         <ShopInjectBanner />
         <div className="container max-w-7xl px-4 mx-auto">

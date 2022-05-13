@@ -16,44 +16,58 @@ const data = [
   {
     id: 1,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652325140/web/furniture-decor-shop/V2/Hero_banner_1_mobile_bbkuiw.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652325140/web/furniture-decor-shop/V2/Hero_banner_1_mobile_bbkuiw.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652184958/web/furniture-decor-shop/V2/Banner_1_awmx87.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652184958/web/furniture-decor-shop/V2/Banner_1_awmx87.jpg',
     href: '/shop',
   },
   {
     id: 2,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652325141/web/furniture-decor-shop/V2/Hero_Banner_wouvnq.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652325141/web/furniture-decor-shop/V2/Hero_Banner_wouvnq.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652185012/web/furniture-decor-shop/V2/Banner_2_rgqgj6.jpg',
-    href: '',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652185012/web/furniture-decor-shop/V2/Banner_2_rgqgj6.jpg',
+    href: '/hot-deals',
   },
   {
     id: 3,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652325144/web/furniture-decor-shop/V2/Card_zjq1g2.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652325144/web/furniture-decor-shop/V2/Card_zjq1g2.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652185038/web/furniture-decor-shop/V2/Banner_3_uqqhjz.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652185038/web/furniture-decor-shop/V2/Banner_3_uqqhjz.jpg',
     href: '',
   },
 ];
 
-const HeroCarousel = () => {
+const HeroCarousel = ({ mobile }) => {
   return (
     <div className="max-w-7xl mx-auto">
       <Carousel imageCount={data?.length || 0} responsive={sliderSettings} autoplay infinite arrows={false}>
         {data.map((banner) => (
           <>
             <Link key={banner.id} href={banner.href} passHref>
-              <div className="relative aspect-[45/53] md:hidden">
-                <Image src={banner.imgSrcMob} alt={banner.imgSrcMob} layout="fill" objectFit="contain" />
-              </div>
-            </Link>
-            <Link key={banner.id} href={banner.href} passHref>
-              <div className="relative aspect-[1080/403] hidden md:block">
-                <Image src={banner.imgSrcDesk} alt={banner.imgSrcDesk} layout="fill" objectFit="contain" />
-              </div>
+              <a href={!mobile ? '_blank' : ''}>
+                <div className="relative aspect-[45/53] md:hidden">
+                  <Image
+                    src={banner.imgSrcMob}
+                    alt={banner.imgSrcMob}
+                    layout="fill"
+                    objectFit="contain"
+                    placeholder="blur"
+                    blurDataURL={banner.imgSrcMob}
+                  />
+                </div>
+                <div className="relative aspect-[1080/403] hidden md:block">
+                  <Image
+                    src={banner.imgSrcDesk}
+                    alt={banner.imgSrcDesk}
+                    layout="fill"
+                    objectFit="contain"
+                    placeholder="blur"
+                    blurDataURL={banner.imgSrcDesk}
+                  />
+                </div>
+              </a>
             </Link>
           </>
         ))}

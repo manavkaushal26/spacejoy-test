@@ -4,6 +4,7 @@ import Masonry from 'react-responsive-masonry';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { convertFilterToUrlPath, convertUrlPathToFilter } from '@utils/helpers';
 
 const FeaturedCategoriesGrid = styled.div`
   .grid {
@@ -107,7 +108,7 @@ const FeaturedCategories = ({ mobile }) => {
       <FeaturedCategoriesGrid>
         <div className="grid">
           <div className="div1 relative aspect-1">
-            <Link href="shop?subcategory=Sofas" passHref>
+            <Link href="shop?subcategory=sofas" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg"
@@ -124,7 +125,7 @@ const FeaturedCategories = ({ mobile }) => {
           </div>
           <div className="container1">
             <div className="div2 relative">
-              <Link href="shop?subcategory=Chairs" passHref>
+              <Link href="shop?subcategory=chairs" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg"
@@ -140,7 +141,7 @@ const FeaturedCategories = ({ mobile }) => {
               </Link>
             </div>
             <div className="div3 relative">
-              <Link href="/shop?subcategory=Media+Consoles" passHref>
+              <Link href="/media-consoles" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg"
@@ -158,7 +159,7 @@ const FeaturedCategories = ({ mobile }) => {
           </div>
           <div className="container2">
             <div className="div4 relative">
-              <Link href="/shop?subcategory=Tables" passHref>
+              <Link href="/shop?subcategory=tables" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg"
@@ -174,7 +175,7 @@ const FeaturedCategories = ({ mobile }) => {
               </Link>
             </div>
             <div className="div5 relative">
-              <Link href="/shop?subcategory=Storage%20&%20Organizers" passHref>
+              <Link href="/shop?subcategory=Storage-Organizers" passHref>
                 <a target={!mobile ? '_blank' : ''}>
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg"
@@ -191,7 +192,7 @@ const FeaturedCategories = ({ mobile }) => {
             </div>
           </div>
           <div className="div6 relative">
-            <Link href="/shop?subcategory=Rugs" passHref>
+            <Link href="/shop?subcategory=rugs" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg"
@@ -207,7 +208,7 @@ const FeaturedCategories = ({ mobile }) => {
             </Link>
           </div>
           <div className="div7 relative">
-            <Link href="/shop?subcategory=Lamps%20&%20Shades" passHref>
+            <Link href="/lamps-&-shades" passHref>
               <a target={!mobile ? '_blank' : ''}>
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg"
