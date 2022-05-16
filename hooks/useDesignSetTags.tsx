@@ -46,14 +46,11 @@ const useDesignSetTags = (tagId = '', roomType = '') => {
         .then((data) => {
           data?.forEach((res, i) => {
             const resData = res.filter(
-              (tag) => tag.isActive === true && tag.collageCategory.find((data) => data.name === roomType)
+              (tag) => tag.isActive === true && tag.collageCategory.find((data) => data.name === roomType.toLowerCase())
             );
 
             if (resData?.length > 0) {
-              updateTagData(
-                tagsToFetch[i],
-                res.filter((tag) => tag.isActive === true && tag.collageCategory.find((data) => data.name === roomType))
-              );
+              updateTagData(tagsToFetch[i], resData);
             } else {
               return;
             }
