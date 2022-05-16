@@ -16,9 +16,9 @@ const data = [
   {
     id: 1,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652325140/web/furniture-decor-shop/V2/Hero_banner_1_mobile_bbkuiw.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652697415/web/furniture-decor-shop/V2/Summer_Sale-07_aemsqq.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652184958/web/furniture-decor-shop/V2/Banner_1_awmx87.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652697415/web/furniture-decor-shop/V2/Summer_Sale-03_uowwkj.jpg',
     href: '/shop',
   },
   {
@@ -41,8 +41,15 @@ const data = [
 
 const HeroCarousel = ({ mobile }) => {
   return (
-    <div className="max-w-7xl mx-auto">
-      <Carousel imageCount={data?.length || 0} responsive={sliderSettings} autoplay infinite arrows={false}>
+    <div className="max-w-7xl mx-auto pt-6">
+      <Carousel
+        imageCount={data?.length || 0}
+        responsive={sliderSettings}
+        autoplay
+        autoplaySpeed={4000}
+        infinite
+        arrows={false}
+      >
         {data.map((banner) => (
           <>
             <Link key={banner.id} href={banner.href} passHref>
@@ -52,9 +59,10 @@ const HeroCarousel = ({ mobile }) => {
                     src={banner.imgSrcMob}
                     alt={banner.imgSrcMob}
                     layout="fill"
-                    objectFit="contain"
+                    objectFit="cover"
                     placeholder="blur"
                     blurDataURL={banner.imgSrcMob}
+                    className="rounded-lg"
                   />
                 </div>
                 <div className="relative aspect-[1080/403] hidden md:block">
@@ -62,9 +70,10 @@ const HeroCarousel = ({ mobile }) => {
                     src={banner.imgSrcDesk}
                     alt={banner.imgSrcDesk}
                     layout="fill"
-                    objectFit="contain"
+                    objectFit="cover"
                     placeholder="blur"
                     blurDataURL={banner.imgSrcDesk}
+                    className="rounded-lg"
                   />
                 </div>
               </a>

@@ -20,10 +20,10 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650949830/web/homepage-v3/Homepage_xwarfz.png',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1652442733/web/homev3/May_-_FLASH_SALE-32_oib7z6.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1652697330/web/homev3/Summer_Sale-15_p8torx.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1652174408/web/homev3/Summer_Sale-18_tnwmfo.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1652697329/web/homev3/Summer_Sale-16_hkupnx.jpg',
   },
 ];
 
