@@ -30,7 +30,7 @@ import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
-import { priceToLocaleString } from '@utils/helpers';
+import { convertFilterToUrlPath, priceToLocaleString } from '@utils/helpers';
 import SpjShoppingAdvantage from '@utils/Mocks/Shopping';
 import spacejoyPromiseData from '@utils/Mocks/spacejoyPromises';
 import Cookies from 'js-cookie';
@@ -1091,7 +1091,8 @@ export const getServerSideProps = async ({ params, res, req }) => {
 
       return {
         redirect: {
-          destination: `/shop?subcategory=${subCategoryName}&alternatives=true`,
+          destination: `/${convertFilterToUrlPath(subCategoryName)}?alternatives=true`,
+          // destination: `/shop?subcategory=${subCategoryName}alternatives=true`,
           permanent: false,
         },
       };
