@@ -15,6 +15,7 @@ import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary, company, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import TestimonialData from '@utils/Mocks/Testimonials';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
+import { SpacejoyMeta } from '@utils/SEO/metaInfo.config';
 import useWindowSize from '@utils/useWindowSize';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -39,7 +40,7 @@ export const Home = ({ isMobile }): JSX.Element => {
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
         <Head>
-          <title key="title">Spacejoy: The Best Online Interior Design Service For Your Home</title>
+          <title key="title">{SpacejoyMeta[0].title}</title>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -57,11 +58,8 @@ export const Home = ({ isMobile }): JSX.Element => {
             }}
           />
           <link rel="canonical" href="https://www.spacejoy.com" />
-          <meta
-            key="description"
-            name="description"
-            content={`Design a home you'll love with ${company.product}'s online interior design services. Work 1:1 with top interior designers and transform any space in just 7 days! Get started today.`}
-          />
+          <meta key="description" name="description" content={SpacejoyMeta[0].description} />
+          <meta key="keywords" name="keywords" content={SpacejoyMeta[0].keywords} />
           <base href="/" />
         </Head>
         <Layout.Banner />

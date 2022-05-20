@@ -10,10 +10,11 @@ import { ChevronRightIcon, HomeIcon, MinusIcon, PlusIcon } from '@heroicons/reac
 import usePagination from '@hooks/usePagination';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
-import { cloudinary, internalPages } from '@utils/config';
+import { cloudinary, company, internalPages } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { convertUrlPathToFilter, titleCase } from '@utils/helpers';
-import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
+import { SpacejoyMeta } from '@utils/SEO/metaInfo.config';
+import { defaultFilters, fetchAllFilters, fetchAssetList } from '@utils/shop/helpers';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -106,7 +107,7 @@ const getRanges = (min, max) => {
   return values;
 };
 
-export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives }): JSX.Element => {
+export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives, metaInfo }): JSX.Element => {
   const [currentFilters, setCurrentFilters] = useState({ ...defaultFilters, ...initialFilters });
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = Cookies.get('isMobile');
@@ -164,9 +165,11 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
     addArrayQueryParam,
     filters,
   } = useShopFilterContext();
+
   const [min = 1, max = 5000] = price;
 
   const router = useRouter();
+  const { shopParams = [] } = router?.query;
 
   const lastQueryItems = React.useRef(Object.keys(router?.query));
 
@@ -182,28 +185,21 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
     }
   }, [subCategory, vertical, currentFilters?.mix]);
 
-  const [title, setTitle] = useState('Spacejoy: The best online furniture and home decor store');
-
   //fetch price filters for category/subcategory
   useEffect(() => {
-    const { shopParams = [] } = router?.query;
-
     const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
     const verticalName = shopParams && shopParams?.length > 1 ? convertUrlPathToFilter(shopParams[1]) : '';
-
-    const catTitle = `${catSubCat?.length ? `${catSubCat} |` : ''}`;
-    const verticalTitle = `${verticalName?.length ? `${verticalName} |` : ''}`;
-
-    setTitle(`${catTitle} ${verticalTitle}  Spacejoy`);
 
     const type = category?.some((item) => item?.name?.toLowerCase() === catSubCat.toLowerCase())
       ? 'category'
       : 'subCategory';
+
     const queryId = filters[type]?.filter((item) => item?.name?.toLowerCase() === catSubCat.toLowerCase())[0]?._id;
 
     let verticalId = '';
 
     const verticalObj = vertical?.filter((item) => item?.name?.toLowerCase() === verticalName?.toLowerCase());
+
     if (verticalObj?.length) {
       verticalId = verticalObj[0]?._id;
     }
@@ -293,20 +289,78 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
     { onButtonClick: onButtonClick }
   );
 
+  const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
+  const verticalName = shopParams && shopParams?.length > 1 ? convertUrlPathToFilter(shopParams[1]) : '';
+  const catTitle = `${catSubCat?.length ? `${catSubCat} |` : ''}`;
+  const verticalTitle = `${verticalName?.length ? `${verticalName} |` : ''}`;
+
+  if (shopParams?.length < 2) {
+    metaInfo = SpacejoyMeta.find((item) => item.url === `/${catSubCat}`) || {};
+    metaInfo.title ? metaInfo.title : (metaInfo.title = `${catTitle} Spacejoy`);
+  } else {
+    metaInfo.title = `${verticalTitle} ${catTitle} Spacejoy`;
+  }
+
   return (
     <Layout>
       <Head>
-        <title>{titleCase(title || '')}</title>
+        <title>{titleCase(metaInfo?.title || 'Spacejoy: The best online furniture and home decor store')}</title>
+        {/* Primary Meta Tags  */}
+        <meta
+          name="title"
+          content={titleCase(metaInfo?.title || 'Spacejoy: The best online furniture and home decor store')}
+        />
         <meta
           key="description"
           name="description"
-          content={`Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!`}
+          content={
+            metaInfo?.description ||
+            "Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!"
+          }
         />
         <meta
           key="keywords"
           name="keywords"
-          content="best online furniture stores, online discount furniture stores, furniture sale, best home decor store"
+          content={
+            metaInfo?.keywords ||
+            'best online furniture stores, online discount furniture stores, furniture sale, best home decor store'
+          }
         />
+
+        {/* Open Graph / Facebook  */}
+        <meta property="og:type" content="website" />
+        <meta key="og-url" property="og:url" content={metaInfo?.metaUrl} />
+        <meta
+          key="og-title"
+          property="og:title"
+          content={titleCase(metaInfo?.title || 'Spacejoy: The best online furniture and home decor store')}
+        />
+        <meta
+          key="og-description"
+          property="og:description"
+          content={
+            metaInfo?.description ||
+            "Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!"
+          }
+        />
+        <meta key="og-image" property="og:image" content={metaInfo?.image} />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={metaInfo?.metaUrl} />
+        <meta
+          property="twitter:title"
+          content={titleCase(metaInfo?.title || 'Spacejoy: The best online furniture and home decor store')}
+        />
+        <meta
+          property="twitter:description"
+          content={
+            metaInfo?.description ||
+            "Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!"
+          }
+        />
+        <meta property="twitter:image" content={metaInfo?.image} />
+
         <link rel="icon" href="/favicon.ico" />
         <base href="/" />
       </Head>
@@ -722,7 +776,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
 };
 export async function getServerSideProps(context) {
   // get category and subcategory
-  const { query: { shopParams = [], ...otherParams } = {} } = context || {};
+  const { query: { shopParams = [], ...otherParams } = {}, resolvedUrl } = context || {};
 
   //TODO: Add page number support
   const payload = Object.keys(otherParams).reduce((acc, item) => {
@@ -744,7 +798,56 @@ export async function getServerSideProps(context) {
     ...(shopParams && shopParams?.length && { mix: shopParams[0] }),
   };
 
-  const assetsList = await fetchAssetList({ filters: { ...allFilters } }, context);
+  const response = await fetchAllFilters(false);
+  const categories = [...(response?.categoryTree || [])]
+    .filter((item) => item.isPublic)
+    .map((item) => {
+      return { ...item, type: 'category' };
+    });
+
+  const assetsList: any = await fetchAssetList({ filters: { ...allFilters } }, context);
+
+  // MetaInfo Code
+  let metaInfo: any = {};
+  const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
+  const verticalName = shopParams && shopParams?.length > 1 ? convertUrlPathToFilter(shopParams[1]) : '';
+  const catTitle = `${catSubCat?.length ? `${catSubCat} |` : ''}`;
+  const verticalTitle = `${verticalName?.length ? `${verticalName} |` : ''}`;
+  const type = categories?.some((item) => item?.name?.toLowerCase() === catSubCat.toLowerCase())
+    ? 'category'
+    : 'subCategory';
+
+  // case 1 --> if shopParams.length < 2
+  if (shopParams?.length < 2) {
+    // case1.a --> { shopParams: [ 'category'/'subCategory' ] }
+    metaInfo = SpacejoyMeta.find((item) => item.url === `/${shopParams[0]}`) || {};
+    metaInfo.image = `${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`;
+    metaInfo.metaUrl = `${company.url}${resolvedUrl}`;
+  } else {
+    // case2 --> if shopParams.length > 2
+    // case2.a --> { shopParams: [ 'category', 'vertical' ] }
+    if (type === 'category') {
+      metaInfo = SpacejoyMeta.find((item) => item?.name?.toLowerCase() === catSubCat) || {};
+      metaInfo.title = `${verticalTitle} ${catTitle} Spacejoy`;
+      metaInfo.description = `${
+        metaInfo?.verticalDescription?.prefix ? metaInfo?.verticalDescription?.prefix : ''
+      } ${verticalName} ${metaInfo?.verticalDescription?.suffix ? metaInfo?.verticalDescription?.suffix : ''}`;
+      metaInfo.image = `${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`;
+      metaInfo.metaUrl = `${company.url}${resolvedUrl}`;
+    } else {
+      // case2.b --> { shopParams: [ 'subCategory', 'vertical' ] }
+      const temp: any = categories?.filter((item) =>
+        item.subCategories.some((data) => data?.name?.toLowerCase() === catSubCat)
+      );
+      metaInfo = SpacejoyMeta.find((item) => item?.name === temp[0]?.name) || {};
+      metaInfo.title = `${verticalTitle} ${catTitle} Spacejoy`;
+      metaInfo.description = `${
+        metaInfo?.verticalDescription?.prefix ? metaInfo?.verticalDescription?.prefix : ''
+      } ${verticalName} ${metaInfo?.verticalDescription?.suffix ? metaInfo?.verticalDescription?.suffix : ''}`;
+      metaInfo.image = `${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`;
+      metaInfo.metaUrl = `${company.url}${resolvedUrl}`;
+    }
+  }
 
   return {
     props: {
@@ -755,6 +858,7 @@ export async function getServerSideProps(context) {
       },
       assetsList,
       alternatives: !!otherParams?.alternatives,
+      metaInfo,
     },
   };
 }
