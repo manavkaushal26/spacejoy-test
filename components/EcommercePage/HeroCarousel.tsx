@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Carousel from '@components/Carousel';
+import { oldSpacejoyUrl } from '@utils/config';
 
 const sliderSettings = {
   dots: true,
@@ -16,18 +17,18 @@ const data = [
   {
     id: 1,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652697415/web/furniture-decor-shop/V2/Summer_Sale-07_aemsqq.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1653308838/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-08_kgqbtl.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652697415/web/furniture-decor-shop/V2/Summer_Sale-03_uowwkj.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1653308840/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-07_hkpmko.jpg',
     href: '/shop',
   },
   {
     id: 2,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652325141/web/furniture-decor-shop/V2/Hero_Banner_wouvnq.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1653308916/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-29_kt8bbh.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652185012/web/furniture-decor-shop/V2/Banner_2_rgqgj6.jpg',
-    href: '/hot-deals',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1653308920/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-28_pfadfl.jpg',
+    href: `${oldSpacejoyUrl}/new-project`,
   },
   {
     id: 3,
@@ -59,18 +60,18 @@ const HeroCarousel = ({ mobile }) => {
                     src={banner.imgSrcMob}
                     alt={banner.imgSrcMob}
                     layout="fill"
-                    objectFit="cover"
+                    objectFit="contain"
                     placeholder="blur"
                     blurDataURL={banner.imgSrcMob}
                     className="rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[1080/403] hidden md:block">
+                <div className="relative aspect-[1561/500] hidden md:block">
                   <Image
                     src={banner.imgSrcDesk}
                     alt={banner.imgSrcDesk}
                     layout="fill"
-                    objectFit="cover"
+                    objectFit="contain"
                     placeholder="blur"
                     blurDataURL={banner.imgSrcDesk}
                     className="rounded-lg"
