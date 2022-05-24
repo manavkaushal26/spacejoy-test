@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import SectionHeading from './SectionHeading';
 import styled from 'styled-components';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const fakeCarouselData = [
   {
@@ -57,30 +58,40 @@ const TrendingStyles = ({ mobile }) => {
           slidesToShow={4}
         >
           {fakeCarouselData.map((style) => (
-            <div key={style.id} className="shadow-md rounded-xl transition duration-200 hover:shadow-lg">
-              <div className="relative aspect-[1/1]">
-                <Image
-                  src={style.imgSrc}
-                  alt={style.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-tr-lg rounded-tl-lg"
-                />
-              </div>
-              <TrendingStylesCardText bg={style.bgColor}>
-                <div className="p-5 space-y-4 rounded-bl-xl rounded-br-xl">
-                  <h3 className="text-xl">{style.title}</h3>
-                  <Link href={style.href}>
-                    <a
-                      target={!mobile ? '_blank' : ''}
-                      className="text-gray-700 text-sm font-semibold py-1.5 rounded-lg hover:bg-gray-50 px-5 border border-gray-600 flex items-center justify-center w-fit"
-                    >
-                      Shop Now
-                    </a>
-                  </Link>
+            <Link key={style.id} href={style.href}>
+              <a
+                target={!mobile ? '_blank' : ''}
+                rel="noopener noreferrer"
+                onClick={() => {
+                  PushEvent({
+                    category: `Shop Trending Styles - ${style.title}`,
+                    action: `Go to ${style.title} List Page`,
+                    label: `Shop Now`,
+                  });
+                }}
+              >
+                <div className="shadow-md rounded-xl transition duration-200 hover:shadow-lg">
+                  <div className="relative aspect-[1/1]">
+                    <Image
+                      src={style.imgSrc}
+                      alt={style.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-tr-lg rounded-tl-lg"
+                    />
+                  </div>
+                  <TrendingStylesCardText bg={style.bgColor}>
+                    <div className="p-5 space-y-4 rounded-bl-xl rounded-br-xl">
+                      <h3 className="text-xl">{style.title}</h3>
+
+                      <button className="text-gray-700 text-sm font-semibold py-1.5 rounded-lg hover:bg-gray-50 px-5 border border-gray-600 flex items-center justify-center w-fit">
+                        Shop Now
+                      </button>
+                    </div>
+                  </TrendingStylesCardText>
                 </div>
-              </TrendingStylesCardText>
-            </div>
+              </a>
+            </Link>
           ))}
         </Carousel>
       </div>

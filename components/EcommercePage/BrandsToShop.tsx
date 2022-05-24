@@ -39,19 +39,6 @@ const BrandsToShop = ({ mobile }) => {
           </Link>
         ))}
       </div>
-
-      {/* <div className="w-full pt-6 mx-auto text-center">
-        <Link href="/shop" passHref>
-          <a target={!mobile ? '_blank' : null}>
-            <button
-              type="button"
-              className="px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
-            >
-              Explore All
-            </button>
-          </a>
-        </Link>
-      </div> */}
     </div>
   );
 };

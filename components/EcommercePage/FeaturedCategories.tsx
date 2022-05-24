@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { convertFilterToUrlPath, convertUrlPathToFilter } from '@utils/helpers';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const FeaturedCategoriesGrid = styled.div`
   .grid {
@@ -109,7 +110,16 @@ const FeaturedCategories = ({ mobile }) => {
         <div className="grid">
           <div className="div1 relative aspect-1">
             <Link href="shop?subcategory=sofas" passHref>
-              <a target={!mobile ? '_blank' : ''}>
+              <a
+                target={!mobile ? '_blank' : ''}
+                onClick={() => {
+                  PushEvent({
+                    category: 'Shop Featured Categories - Sofas',
+                    action: `Go to Sofas List Page`,
+                    label: `Shop Now`,
+                  });
+                }}
+              >
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg"
                   alt="Sofas"
@@ -126,7 +136,16 @@ const FeaturedCategories = ({ mobile }) => {
           <div className="container1">
             <div className="div2 relative">
               <Link href="shop?subcategory=chairs" passHref>
-                <a target={!mobile ? '_blank' : ''}>
+                <a
+                  target={!mobile ? '_blank' : ''}
+                  onClick={() => {
+                    PushEvent({
+                      category: 'Shop Featured Categories - Chairs',
+                      action: `Go to Chairs List Page`,
+                      label: `Shop Now`,
+                    });
+                  }}
+                >
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg"
                     alt="Chairs"
@@ -142,7 +161,16 @@ const FeaturedCategories = ({ mobile }) => {
             </div>
             <div className="div3 relative">
               <Link href="/media-consoles" passHref>
-                <a target={!mobile ? '_blank' : ''}>
+                <a
+                  target={!mobile ? '_blank' : ''}
+                  onClick={() => {
+                    PushEvent({
+                      category: 'Shop Featured Categories - TV Consoles',
+                      action: `Go to TV Consoles List Page`,
+                      label: `Shop Now`,
+                    });
+                  }}
+                >
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg"
                     alt="TV Console"
@@ -160,7 +188,16 @@ const FeaturedCategories = ({ mobile }) => {
           <div className="container2">
             <div className="div4 relative">
               <Link href="/shop?subcategory=tables" passHref>
-                <a target={!mobile ? '_blank' : ''}>
+                <a
+                  target={!mobile ? '_blank' : ''}
+                  onClick={() => {
+                    PushEvent({
+                      category: 'Shop Featured Categories - Tables',
+                      action: `Go to Tables List Page`,
+                      label: `Shop Now`,
+                    });
+                  }}
+                >
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg"
                     alt="Tables"
@@ -176,7 +213,16 @@ const FeaturedCategories = ({ mobile }) => {
             </div>
             <div className="div5 relative">
               <Link href="/shop?subcategory=Storage-Organizers" passHref>
-                <a target={!mobile ? '_blank' : ''}>
+                <a
+                  target={!mobile ? '_blank' : ''}
+                  onClick={() => {
+                    PushEvent({
+                      category: 'Shop Featured Categories - Storage and Organizers',
+                      action: `Go to Storage and Organizers List Page`,
+                      label: `Shop Now`,
+                    });
+                  }}
+                >
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg"
                     alt="Storage and Organizers"
@@ -193,7 +239,16 @@ const FeaturedCategories = ({ mobile }) => {
           </div>
           <div className="div6 relative">
             <Link href="/shop?subcategory=rugs" passHref>
-              <a target={!mobile ? '_blank' : ''}>
+              <a
+                target={!mobile ? '_blank' : ''}
+                onClick={() => {
+                  PushEvent({
+                    category: 'Shop Featured Categories - Rugs',
+                    action: `Go to Rugs List Page`,
+                    label: `Shop Now`,
+                  });
+                }}
+              >
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg"
                   alt="Rugs"
@@ -209,7 +264,16 @@ const FeaturedCategories = ({ mobile }) => {
           </div>
           <div className="div7 relative">
             <Link href="/lamps-&-shades" passHref>
-              <a target={!mobile ? '_blank' : ''}>
+              <a
+                target={!mobile ? '_blank' : ''}
+                onClick={() => {
+                  PushEvent({
+                    category: 'Shop Featured Categories - Lamps & Shades',
+                    action: `Go to Lamps & Shades List Page`,
+                    label: `Shop Now`,
+                  });
+                }}
+              >
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg"
                   alt="Lamps & Shades"
@@ -225,7 +289,16 @@ const FeaturedCategories = ({ mobile }) => {
           </div>
           <div className="div8 relative aspect-1">
             <Link href="/shop?subcategory=Beds" passHref>
-              <a target={!mobile ? '_blank' : ''}>
+              <a
+                target={!mobile ? '_blank' : ''}
+                onClick={() => {
+                  PushEvent({
+                    category: 'Shop Featured Categories - Beds',
+                    action: `Go to Beds List Page`,
+                    label: `Shop Now`,
+                  });
+                }}
+              >
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192121/web/furniture-decor-shop/V2/Beds_wxnkdh.jpg"
                   alt="Beds"

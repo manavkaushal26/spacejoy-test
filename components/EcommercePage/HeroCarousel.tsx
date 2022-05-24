@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Carousel from '@components/Carousel';
 import { oldSpacejoyUrl } from '@utils/config';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const sliderSettings = {
   dots: true,
@@ -54,7 +55,17 @@ const HeroCarousel = ({ mobile }) => {
         {data.map((banner) => (
           <>
             <Link key={banner.id} href={banner.href} passHref>
-              <a href={!mobile ? '_blank' : ''}>
+              <a
+                href={!mobile ? '_blank' : ''}
+                onClick={() => {
+                  banner.href.length !== 0 &&
+                    PushEvent({
+                      category: `Hero Banner Click - Banner ${banner.id}`,
+                      action: `Go to -> ${banner.href}`,
+                      label: `Shop Now`,
+                    });
+                }}
+              >
                 <div className="relative aspect-[45/53] md:hidden">
                   <Image
                     src={banner.imgSrcMob}

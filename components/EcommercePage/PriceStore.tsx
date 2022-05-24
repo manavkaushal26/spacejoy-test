@@ -2,6 +2,7 @@ import React from 'react';
 import SectionHeading from './SectionHeading';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { PushEvent } from '@utils/analyticsLogger';
 
 interface BackgroundProps {
   readonly image: string;
@@ -64,37 +65,44 @@ const Background = styled.div<BackgroundProps>`
   } ;
 `;
 
-const PriceStore = () => {
+const PriceStore = ({ mobile }) => {
   return (
     <div className="container max-w-7xl px-4 mx-auto">
       <SectionHeading title="The price store" />
       <div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {bgData?.map((store) => (
-            <div
-              key={store.id}
-              className="w-full aspect-1 h-full rounded-md sm:aspect-[2/1.2] lg:aspect-1 xl:aspect-[2/1.2]"
-            >
-              <Background image={store.bgImage} color={store.bgColor} position={store.bgPosition}>
-                <div className="h-full flex flex-col items-center justify-center font-semibold">
-                  <p className="uppercase">{store.prefix}</p>
-                  <div className="my-2 text-center">
-                    <p className="text-5xl">
-                      <sup>$</sup>
-                      <span>{store.price}</span>
-                    </p>
-                    <p className="uppercase">STORE</p>
-                  </div>
-                  <Link href={store.href} passHref>
-                    <a target="_blank">
+            <Link key={store.id} href={store.href} passHref>
+              <a
+                target={!mobile ? '_blank' : ''}
+                onClick={() => {
+                  PushEvent({
+                    category: `Price Store Section Click - ${store.prefix} $${store.price}`,
+                    action: `Go to $${store.price} Shop Page`,
+                    label: `Shop Now`,
+                  });
+                }}
+              >
+                <div className="w-full aspect-1 h-full rounded-md sm:aspect-[2/1.2] lg:aspect-1 xl:aspect-[2/1.2]">
+                  <Background image={store.bgImage} color={store.bgColor} position={store.bgPosition}>
+                    <div className="h-full flex flex-col items-center justify-center font-semibold">
+                      <p className="uppercase">{store.prefix}</p>
+                      <div className="my-2 text-center">
+                        <p className="text-5xl">
+                          <sup>$</sup>
+                          <span>{store.price}</span>
+                        </p>
+                        <p className="uppercase">STORE</p>
+                      </div>
+
                       <button className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap uppercase">
                         Shop Now
                       </button>
-                    </a>
-                  </Link>
+                    </div>
+                  </Background>
                 </div>
-              </Background>
-            </div>
+              </a>
+            </Link>
           ))}
         </div>
       </div>

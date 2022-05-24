@@ -1,12 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const ShopInjectBanner = () => {
   return (
     <div className="container max-w-7xl px-4 mx-auto mt-20 mb-8">
       <Link href="/shop" passHref>
-        <a target="_blank">
+        <a
+          target="_blank"
+          onClick={() => {
+            PushEvent({
+              category: 'New User Banner Click',
+              action: `Go to Shop Page`,
+              label: `Shop Now`,
+            });
+          }}
+        >
           <div className="relative hidden sm:block aspect-[1080/311]">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1647428847/web/furniture-decor-shop/Happy_St._Patrick_s_Day-1-09_ynpigd.jpg"

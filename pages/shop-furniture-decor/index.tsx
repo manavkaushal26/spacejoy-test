@@ -43,9 +43,9 @@ const Index = ({ isMobile }) => {
       <Layout.Header />
       <Layout.Body>
         <HeroCarousel mobile={isMobile} />
-        <TrendingItems mobile={isMobile} />
         <NewCollection />
-        <PriceStore />
+        <PriceStore mobile={isMobile} />
+        <TrendingItems mobile={isMobile} />
         <BrandsToShop mobile={isMobile} />
         <SpacejoyPicks mobile={isMobile} />
         <FeaturedCategories mobile={isMobile} />

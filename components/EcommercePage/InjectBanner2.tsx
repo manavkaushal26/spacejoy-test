@@ -2,11 +2,23 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { oldSpacejoyUrl } from '@utils/config';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const InjectBanner2 = () => {
   return (
     <div className="container max-w-7xl mx-auto px-4 mt-16 mb-8">
-      <a href={`${oldSpacejoyUrl}/referrals`} target="_blank" rel="noreferrer">
+      <a
+        href={`${oldSpacejoyUrl}/referrals`}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() => {
+          PushEvent({
+            category: 'Referrals Banner Click',
+            action: `Go to Referrals Page`,
+            label: `Refer a Friend`,
+          });
+        }}
+      >
         <div className="relative hidden sm:block aspect-[80/23]">
           <Image
             src="https://res.cloudinary.com/spacejoy/image/upload/v1652365416/web/Cart_Banner_ixjnn6.jpg"

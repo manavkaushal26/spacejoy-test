@@ -7,6 +7,7 @@ import Carousel from '@components/Carousel';
 import SVGLoader from '@components/Shared/SVGLoader';
 import Link from 'next/link';
 import AssetType from '@utils/types/AssetType';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const sliderSettings = {
   dots: false,
@@ -56,18 +57,22 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
                 </div>
                 <div>
                   <div className="collections-slider">
-                    <Carousel
-                      imageCount={dataToDisplay?.length || 0}
-                      responsive={sliderSettings}
-                      autoplay={true}
-                      slidesToShow={4}
-                    >
+                    <Carousel imageCount={dataToDisplay?.length || 0} responsive={sliderSettings} slidesToShow={4}>
                       {dataToDisplay.map((product: any) => (
                         <ProductCard key={product._id} product={product} showViewDetails />
                       ))}
 
                       <Link href={'/hot-deals'}>
-                        <a target={!mobile ? '_blank' : ''}>
+                        <a
+                          target={!mobile ? '_blank' : ''}
+                          onClick={() => {
+                            PushEvent({
+                              category: `Hot Deals Section - See More Click`,
+                              action: `Go to Hot Deals Page`,
+                              label: `See More Deals`,
+                            });
+                          }}
+                        >
                           <div className="h-full bg-red-100 flex items-center justify-center rounded-lg hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl text-2xl font-semibold text-center">
                             See More
                             <br />

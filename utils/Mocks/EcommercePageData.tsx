@@ -93,7 +93,6 @@ export const BrandDeals = [
     name: 'Ballard Designs',
     logo: 'https://res.cloudinary.com/spacejoy/image/upload/ar_16:9,c_fill,g_center/v1646643348/shared/newBrandLogos/Ballard_designs-01_wboray.png',
     img: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1640855515/web/homev3/new-year-sale/New_Year_Sale_-_HP-12-min_n6zykx.jpg`,
-    shopLink: '',
     discount: {
       start: 10,
       upto: 100,
@@ -103,21 +102,20 @@ export const BrandDeals = [
     extraOffer: '',
     color: `#E6F4F4`,
   },
-  // {
-  //   id: 8,
-  //   name: 'JoyBird',
-  //   logo: 'https://res.cloudinary.com/spacejoy/image/upload/ar_16:9,c_fill,g_center/v1608543285/shared/newBrandLogos/BRAND_LOGOS-21_csf26j.png',
-  //   img: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1640855515/web/homev3/new-year-sale/New_Year_Sale_-_HP-13-min_vbpktl.jpg`,
-  //   shopLink: '',
-  //   discount: {
-  //     start: 10,
-  //     upto: 100,
-  //   },
-  //   offerPreText: 'Minimum ',
-  //   offer: 30,
-  //   extraOffer: '',
-  //   color: `#F6EEEB`,
-  // },
+  {
+    id: 8,
+    name: 'Lexmod',
+    logo: 'https://res.cloudinary.com/spacejoy/image/upload/ar_16:9,c_fill,g_center/v1608543283/shared/newBrandLogos/BRAND_LOGOS-02_n3b8vy.png',
+    img: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1640855515/web/homev3/new-year-sale/New_Year_Sale_-_HP-13-min_vbpktl.jpg`,
+    discount: {
+      start: 50,
+      upto: 100,
+    },
+    offerPreText: 'Minimum ',
+    offer: 50,
+    extraOffer: '',
+    color: `#F6EEEB`,
+  },
 ];
 
 export const SpacejoyPicksData = [
@@ -145,6 +143,21 @@ export const SpacejoyPicksData = [
     id: 5,
     name: `Moe's Home`,
     logo: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1608548501/shared/newBrandLogos/BRAND_LOGOS-34_a0a1vj.svg`,
+  },
+  {
+    id: 6,
+    name: `ruggable`,
+    logo: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1623826393/web/offers/summer-refresh-sale/All%20Brand%20Logos/Free%20shipping%20on%20your%20favorites/Untitled-3-25_fyydeo.svg`,
+  },
+  {
+    id: 7,
+    name: `Shades Of Light`,
+    logo: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1623826399/web/offers/summer-refresh-sale/All%20Brand%20Logos/Untitled-3-20_t5paib.svg`,
+  },
+  {
+    id: 8,
+    name: `McGee & Co`,
+    logo: `https://res.cloudinary.com/spacejoy/image/upload/${cloudinaryImageParams}/v1623826395/web/offers/summer-refresh-sale/All%20Brand%20Logos/Untitled-3-08_zn1c5t.svg`,
   },
 ];
 
