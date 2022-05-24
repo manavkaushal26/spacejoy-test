@@ -3,11 +3,12 @@ import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { internalPages } from '@utils/config';
+import { cloudinary, company, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 type CollectionPage = {
@@ -25,14 +26,43 @@ type CollectionPage = {
     status?: string;
     metaTitle?: string;
     metaDescription?: string;
+    cdnThumbnail?: string;
   };
 };
 
-const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionData }) => {
+const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionData }) => {
+  const router = useRouter();
+
   return (
     <Layout>
       <Head>
-        <title>{collectionData?.name} | Spacejoy</title>
+        <title>Explore {collectionData?.name} By Spacejoy</title>
+        {/* <!-- Primary Meta --> */}
+        <meta name="title" content={`Explore ${collectionData?.name} By Spacejoy`} />
+        <meta
+          name="description"
+          content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
+        />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${company.url}/${router.asPath}`} />
+        <meta property="og:title" content={`Explore ${collectionData?.name} By Spacejoy`} />
+        <meta
+          property="og:description"
+          content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
+        />
+        <meta property="og:image" content={`${cloudinary.baseDeliveryURL}/${collectionData?.coverImg}`} />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:url" content={`${company.url}/${router.asPath}`} />
+        <meta property="twitter:title" content={`Explore ${collectionData?.name} By Spacejoy | Spacejoy`} />
+        <meta
+          property="twitter:description"
+          content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
+        />
+        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${collectionData?.coverImg}`} />
+        <link rel="canonical" href={`${company.url}${router.asPath}`} />
         <base href="/" />
       </Head>
       <Layout.Banner />
@@ -57,6 +87,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
     'home-office-ideas',
     'kids-room-ideas',
     'nursery-ideas',
+    'dining-room-ideas',
+    'modern-style-ideas',
+    'eclectic-room-designs',
+    'farmhouse-style-ideas',
+    'industrial-room-designs',
+    'mid-century-modern-room-ideas',
+    'transitional-style-ideas',
+    'classic-modern-design-ideas',
+    'coastal-design-ideas',
+    'open-living-and-dining-room-ideas',
   ];
   const paths = slugs.map((slug) => ({
     params: { collectionSlug: slug },
@@ -92,6 +132,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             status: data?.status,
             metaTitle: data?.metaTitle,
             metaDescription: data?.metaDescription,
+            cdnThumbnail: data?.cdnThumbnail,
           },
         },
         revalidate: 1,
@@ -108,4 +149,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default React.memo(collectionView);
+export default React.memo(CollectionView);

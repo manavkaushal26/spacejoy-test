@@ -581,3 +581,26 @@ export const SpacejoyMeta = [
       "Spacejoy's experts interior designers will help you give your living room, dining room, bedroom, entryway, nursery, or home office a refresh or complete makeover with ease.",
   },
 ];
+
+export const interiorDesignsMeta = [
+  {
+    id: 1,
+    url: '/bedroom-ideas',
+    title: 'Explore Bedroom Design Ideas By Spacejoy',
+    description:
+      'Discover stunning Bedroom designs and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.',
+  },
+  { id: 2, url: '/living-room-ideas', title: '', description: '' },
+  { id: 3, url: '/entryway-ideas', title: '', description: '' },
+  { id: 4, url: '/home-office-ideas', title: '', description: '' },
+  { id: 5, url: '/nursery-ideas', title: '', description: '' },
+  { id: 6, url: '/dining-room-ideas', title: '', description: '' },
+  { id: 7, url: '/modern-style-ideas', title: '', description: '' },
+  { id: 8, url: '/eclectic-room-designs', title: '', description: '' },
+  { id: 9, url: '/farmhouse-style-ideas', title: '', description: '' },
+  { id: 10, url: '/industrial-room-designs', title: '', description: '' },
+  { id: 11, url: '/mid-century-modern-room-ideas', title: '', description: '' },
+  { id: 12, url: '/transitional-style-ideas', title: '', description: '' },
+  { id: 13, url: '/classic-modern-design-ideas', title: '', description: '' },
+  { id: 14, url: '/coastal-design-ideas', title: '', description: '' },
+];

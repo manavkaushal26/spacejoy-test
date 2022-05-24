@@ -52,7 +52,7 @@ const company = {
   product: 'Spacejoy',
   productWithTM: 'Spacejoy™',
   tagLine: 'Designing your imagination',
-  url: '//spacejoy.com',
+  url: 'https://www.spacejoy.com',
   country: 'us',
   subject: 'Design your room online. Spacejoy, online home interior design software',
   description:
