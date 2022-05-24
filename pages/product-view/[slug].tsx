@@ -1009,7 +1009,11 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
 
             {product?.metaDetails?.reviews && product?.metaDetails?.reviews?.length ? (
               <div id="reviewsSection" className="bg-gray-100 py-8 -mx-4 px-4 lg:px-28 lg:-mx-28 xl:-mx-32 xl:p-32">
-                <Reviews rating={product?.metaDetails?.rating} reviews={product?.metaDetails?.reviews} />
+                <Reviews
+                  rating={product?.metaDetails?.rating}
+                  reviews={product?.metaDetails?.reviews}
+                  retailer={product?.retailer?.name}
+                />
               </div>
             ) : null}
           </div>

@@ -18,11 +18,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example(props) {
+export default function Reviews(props) {
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-8 px-4  sm:px-6 lg:max-w-7xl  lg:px-8">
         <h2 className="text-black-500 text-xl  underline underline-offset-4">Ratings &amp; Reviews</h2>
+        <p className="mt-2 text-sm text-gray-400 font-medium">as seen on {props.retailer}</p>
         <div className="grid grid-cols-5">
           <div className="my-12 col-span-5 lg:col-span-2">
             <p className="text-center text-6xl font-bold lg:text-left">{props.rating.toFixed(2)}</p>
@@ -66,7 +67,7 @@ export default function Example(props) {
                       </div>
                     </div>
 
-                    <div>{new Date(review.date).toDateString()}</div>
+                    <div>{review.date ? new Date(review.date).toDateString() : null}</div>
                   </div>
                   <div className="mt-4 space-y-6 text-base italic">
                     <strong>{review.title}</strong>

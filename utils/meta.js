@@ -1,7 +1,7 @@
 import { cloudinary, company, page } from "@utils/config";
 import React from "react";
 
-const prod = process.env.NEXT_PUBLIC_ENV_HOST === "production";
+const prod = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
 const BaseMeta = [
 	<meta key="language" name="language" content="ES" />,
