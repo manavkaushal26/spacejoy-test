@@ -170,7 +170,12 @@ const renderStep = (section) => {
 const Product = ({ asset }) => {
   return (
     <div>
-      <Link href={`/product-view/${asset?._id}`} passHref>
+      <Link
+        href={`/product-view${asset.vertical ? `/${asset.vertical}` : '/product'}/${
+          asset?.slug ? asset.slug : asset?._id
+        }`}
+        passHref
+      >
         <a>
           <div className="flex flex-col bg-white justify-between rounded-lg h-full hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl">
             <div className="p-4">

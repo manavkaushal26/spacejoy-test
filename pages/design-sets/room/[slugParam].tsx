@@ -5,7 +5,7 @@ import RoomPageHeader from '@components/RoomSelection/RoomPageHeader';
 import FilterDrawer from '@components/Shared/Filters/FilterDrawer';
 import Layout from '@components/Shared/Layout';
 import { XIcon } from '@heroicons/react/outline';
-import { internalPages } from '@utils/config';
+import { company, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
@@ -122,6 +122,7 @@ const CollageView: NextPage<CollageViewProps> = ({
     <Layout>
       <Head>
         <title>{`${name?.[0].toUpperCase()}${name?.slice(1)}`} | Spacejoy</title>
+        <link rel="canonical" href={`${company.url}${router.asPath.split('?')[0]}`} />
         <base href="/" />
       </Head>
       <Layout.Banner />

@@ -125,7 +125,6 @@ export const getServerSideProps = async (ctx) => {
   const userToken = ctx?.req?.cookies['token'];
 
   const { data, statusCode } = await fetcher({ endPoint, method: 'GET', serverToken: userToken });
-  console.log('data', data);
   if (statusCode < 300) {
     return {
       props: {

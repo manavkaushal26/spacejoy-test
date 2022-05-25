@@ -46,7 +46,7 @@ const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${company.url}/${router.asPath}`} />
+        <meta property="og:url" content={`${company.url}${router.asPath}`} />
         <meta property="og:title" content={`Explore ${collectionData?.name} By Spacejoy`} />
         <meta
           property="og:description"
@@ -55,7 +55,7 @@ const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
         <meta property="og:image" content={`${cloudinary.baseDeliveryURL}/${collectionData?.coverImg}`} />
 
         {/* <!-- Twitter --> */}
-        <meta property="twitter:url" content={`${company.url}/${router.asPath}`} />
+        <meta property="twitter:url" content={`${company.url}${router.asPath}`} />
         <meta property="twitter:title" content={`Explore ${collectionData?.name} By Spacejoy | Spacejoy`} />
         <meta
           property="twitter:description"

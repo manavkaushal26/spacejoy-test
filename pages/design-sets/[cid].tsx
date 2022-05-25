@@ -58,6 +58,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
     <Layout>
       <Head>
         <title>{`${correctedCollageName?.[0]?.toLocaleUpperCase()}${correctedCollageName?.slice(1)}`} | Spacejoy</title>
+        <base href="/" />
       </Head>
       <Layout.Banner />
       <Layout.Header />
@@ -166,6 +167,7 @@ export const getServerSideProps = async ({ params }) => {
                 'cdn',
                 'inStock',
                 'status',
+                'slug',
               ],
             },
             method: 'POST',

@@ -35,5 +35,7 @@ export interface AssetType {
   imageUrl: string;
   msrp: number;
   displayPrice: number;
+  slug: string;
+  vertical?: string;
   recommendedQuantity: number;
 }

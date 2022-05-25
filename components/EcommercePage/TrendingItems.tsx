@@ -4,9 +4,7 @@ import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import SectionHeading from './SectionHeading';
 import fetcher from '@utils/fetcher';
 import Carousel from '@components/Carousel';
-import SVGLoader from '@components/Shared/SVGLoader';
 import Link from 'next/link';
-import AssetType from '@utils/types/AssetType';
 import { PushEvent } from '@utils/analyticsLogger';
 
 const sliderSettings = {
@@ -20,10 +18,15 @@ const sliderSettings = {
 
 const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, mobile }) => {
   const { data } = useFirebaseContext();
-  const [productsData, setProductsData] = useState({});
-  const productsDataArr = Object.values(productsData).slice(0, -1);
-
-  const dataToDisplay = page ? productsDataArr : productsDataArr.slice(0, 7);
+  const [productsData, setProductsData] = useState<any>({});
+  const productsDataArr: any = Object.values(productsData).slice(0, -1);
+  const dataToDisplay = useMemo(
+    () =>
+      page
+        ? productsDataArr.filter((item) => item.inStock === true)
+        : productsDataArr.slice(0, 12).filter((item) => item.inStock === true),
+    [productsDataArr]
+  );
 
   const fetchMultipleProducts = async () => {
     const res = await fetcher({
@@ -31,9 +34,10 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
       method: 'POST',
       body: {
         assets: data?.productSection?.listOfProducts,
-        fields: ['name', 'cdn', 'retailer', 'price', 'msrp'],
+        fields: ['name', 'cdn', 'retailer', 'price', 'msrp', 'slug', 'status', 'inStock'],
       },
     });
+
     if (res?.statusCode) {
       setProductsData(res.data);
     }
@@ -59,7 +63,7 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
                   <div className="collections-slider">
                     <Carousel imageCount={dataToDisplay?.length || 0} responsive={sliderSettings} slidesToShow={4}>
                       {dataToDisplay.map((product: any) => (
-                        <ProductCard key={product._id} product={product} showViewDetails />
+                        <ProductCard key={product._id} product={product} showViewDetails pageName="hot-deals" />
                       ))}
 
                       <Link href={'/hot-deals'}>

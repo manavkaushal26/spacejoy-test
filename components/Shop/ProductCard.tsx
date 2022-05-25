@@ -6,7 +6,7 @@ import { blurredBgProduct } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
-import { priceToLocaleString } from '@utils/helpers';
+import { priceToLocaleString, convertFilterToUrlPath } from '@utils/helpers';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -141,9 +141,19 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
     ...(!isMobile && { target: '_blank', rel: 'noreferrer' }),
   };
 
+  let productVertical =
+    product?.vertical || product?.meta?.vertical?.name
+      ? convertFilterToUrlPath(product?.vertical ? product?.vertical : product?.meta?.vertical?.name).toLowerCase()
+      : null;
+
   return (
     <div>
-      <Link href={`/product-view/${product?._id}${pageName ? `?ref=${pageName}` : ''}`} passHref>
+      <Link
+        href={`/product-view${productVertical ? `/${productVertical}` : '/product'}/${
+          product?.slug ? product.slug : product?._id
+        }${pageName ? `?ref=${pageName}` : ''}`}
+        passHref
+      >
         <a
           onClick={() => {
             PushEvent({

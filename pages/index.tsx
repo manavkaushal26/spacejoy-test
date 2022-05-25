@@ -40,7 +40,17 @@ export const Home = ({ isMobile }): JSX.Element => {
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
       <Layout>
         <Head>
-          <title key="title">{SpacejoyMeta[0].title}</title>
+          <title key="title">Spacejoy: The Best Online Interior Design Service For Your Home</title>
+          <meta
+            key="description"
+            name="description"
+            content="Design a home you'll love with Spacejoy's online home interior design services. Work 1:1 with top home interior designers and transform any space in just 7 days!"
+          />
+          <meta
+            key="keywords"
+            name="keywords"
+            content="home interior, online interior design, home interior decor, room design online, home design online, interior design services, design my room, virtual interior design, design your room, online interior design services, online design services, design your home, online interior decorator, virtual interior design services, design your room online, home design services, online interior designers, home decor services"
+          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -58,8 +68,6 @@ export const Home = ({ isMobile }): JSX.Element => {
             }}
           />
           <link rel="canonical" href="https://www.spacejoy.com" />
-          <meta key="description" name="description" content={SpacejoyMeta[0].description} />
-          <meta key="keywords" name="keywords" content={SpacejoyMeta[0].keywords} />
           <base href="/" />
         </Head>
         <Layout.Banner />

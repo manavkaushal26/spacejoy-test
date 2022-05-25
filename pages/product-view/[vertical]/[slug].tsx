@@ -27,7 +27,7 @@ import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
 import { useSession } from '@store/AuthProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { cloudinary, company } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import { convertFilterToUrlPath, priceToLocaleString } from '@utils/helpers';
@@ -38,6 +38,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import ReactScroll from 'react-scroll';
@@ -106,12 +107,13 @@ const renderFeatureSection = (description) => {
   }
 };
 
-const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
-  const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
+const ProductView = ({ product, currentlyViewing }): JSX.Element => {
+  // const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
   const [showCartFooter, setCartFooter] = useState(false);
   const gaClickRef = useRef({});
+  const router = useRouter();
 
   const addToCartBtnRef = React.useCallback((node) => {
     if (node !== null) {
@@ -364,6 +366,7 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
     <Layout>
       <Head>
         <title>{product?.name}</title>
+        {/* <-- Primary Meta --> */}
         <meta
           key="description"
           name="description"
@@ -374,6 +377,23 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
           name="keywords"
           content={`${product?.retailer?.name}, ${metaDescriptionColors} + ${product?.meta?.vertical?.name}, ${product?.retailer?.name} + ${product?.meta?.subcategory?.name} , ${product?.retailer?.name} + ${product?.meta?.vertical?.name}, ${product?.meta?.vertical?.name}, Buy ${product?.meta?.vertical?.name}`}
         />
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${company.url}${router.asPath}`} />
+        <meta property="og:title" content={product?.name} />
+        <meta property="og:description" content={`Buy ${product?.name} from ${product?.retailer?.name} | Spacejoy`} />
+        <meta property="og:image" content={`${cloudinary.baseDeliveryURL}/${product?.cdn}`} />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`${company.url}${router.asPath}`} />
+        <meta property="twitter:title" content={product?.name} />
+        <meta
+          property="twitter:description"
+          content={`Buy ${product?.name} from ${product?.retailer?.name} | Spacejoy`}
+        />
+        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${product?.cdn}`} />
+        <link rel="canonical" href={`${company.url}${router.asPath.split('?')[0]}`} />
         <base href="/" />
       </Head>
       <Layout.Banner />
@@ -1079,8 +1099,15 @@ const ProductView = ({ product, isMobile, currentlyViewing }): JSX.Element => {
 export const getServerSideProps = async ({ params, res, req }) => {
   const { slug } = params;
   const { cookies: { isMobile = 'false' } = {} } = req;
+  let formattedSlug = '';
+  if (slug.includes('-')) {
+    formattedSlug = slug.substring(slug.length - 24);
+  } else {
+    formattedSlug = slug;
+  }
+
   // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
-  const response = await fetcher({ endPoint: `/v2/asset/${slug}`, method: 'GET' });
+  const response = await fetcher({ endPoint: `/v2/asset/${formattedSlug}`, method: 'GET' });
   res.setHeader('Cache-Control', 'no-store');
   const { data, statusCode } = response;
 
