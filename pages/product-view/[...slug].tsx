@@ -107,6 +107,7 @@ const renderFeatureSection = (description) => {
 };
 
 const ProductView = ({ product, currentlyViewing }): JSX.Element => {
+  console.log('product', product);
   // const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
@@ -298,13 +299,14 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
       ),
     };
     metaArray.push(descriptionObject);
-    if (product?.metaDetails?.care) {
+
+    if (product?.metaDetails?.specification) {
       const careObject = {
-        id: 2,
-        title: 'Care',
+        id: 3,
+        title: 'Product Specifications',
         content: (
           <>
-            {product?.metaDetails?.care?.map((item, index) => {
+            {product?.metaDetails?.specification?.map((item, index) => {
               return (
                 <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
                   {renderMetaSection(item)}
@@ -316,13 +318,13 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
       };
       metaArray?.push(careObject);
     }
-    if (product?.metaDetails?.specification) {
+    if (product?.metaDetails?.care && product?.metaDetails?.care?.length > 0) {
       const careObject = {
-        id: 3,
-        title: 'Product Specifications',
+        id: 2,
+        title: 'Care',
         content: (
           <>
-            {product?.metaDetails?.specification?.map((item, index) => {
+            {product?.metaDetails?.care?.map((item, index) => {
               return (
                 <div key={`ship-${index}`} className="mt-4 text-sm prose text-gray-700">
                   {renderMetaSection(item)}
@@ -974,7 +976,6 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   {productFeaturesList.map((promise) => (
                     <Tab.Panel key={promise.id}>
                       <div className=" mx-auto">
-                        <h3 className="mt-2 mb-1">{promise.title}</h3>
                         <p className="text-sm leading-relaxed text-gray-600">{promise.content}</p>
                       </div>
                     </Tab.Panel>

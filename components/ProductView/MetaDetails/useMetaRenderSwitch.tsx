@@ -1,8 +1,7 @@
+import { Tab } from '@headlessui/react';
+import { useState } from 'react';
 
-import { useState } from 'react'
-import { Tab } from '@headlessui/react'
-
-export function MetaTable({headers, values}) {
+export function MetaTable({ headers, values }) {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -10,24 +9,25 @@ export function MetaTable({headers, values}) {
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
-              <tr>
-                {headers.map((header, idx) => (
-                  <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  key={idx}
-                >
-                  {header}
-                </th>
-                ))}
-                
+                <tr>
+                  {headers.map((header, idx) => (
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      key={idx}
+                    >
+                      {header}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
                 {values.map((value, idx) => (
                   <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     {value.map((str, strIdx) => (
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" key={strIdx}>{str}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" key={strIdx}>
+                        {str}
+                      </td>
                     ))}
                   </tr>
                 ))}
@@ -37,30 +37,39 @@ export function MetaTable({headers, values}) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export const MetaDataTable = ({values}) => {
+export const MetaDataTable = ({ values, title }) => {
   return (
-    <div>
-      {values !== null && values.length > 0
-        ? values.map((item, itemIndex) => (
-            <li key={itemIndex} className="my-5">
-              {"dt" in item ? <strong>{item.dt}: </strong> : null}
-              {item.dd}
-            </li>
-          ))
-        : null}
-    </div>
+    <>
+      {title ? <h3>{title}</h3> : null}
+      <div>
+        {values !== null && values.length > 0
+          ? values.map((item, itemIndex) => (
+              <>
+                {item?.dd && (
+                  <>
+                    <li key={itemIndex} className="my-5">
+                      {'dt' in item && item?.dt?.length ? <strong>{item?.dt}: </strong> : null}
+                      {item.dd}
+                    </li>
+                  </>
+                )}
+              </>
+            ))
+          : null}
+      </div>
+    </>
   );
 };
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
-export function MetaTab({values}) {
-  let [categories] = useState(values)
+export function MetaTab({ values }) {
+  let [categories] = useState(values);
 
   return (
     <div className="w-full max-w-md px-2 sm:px-0">
@@ -73,9 +82,7 @@ export function MetaTab({values}) {
                 classNames(
                   'w-full py-2.5 text-sm leading-5 font-medium text-blue-700 rounded-lg',
                   'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60',
-                  selected
-                    ? 'bg-white shadow'
-                    : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                  selected ? 'bg-white shadow' : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
                 )
               }
             >
@@ -85,21 +92,18 @@ export function MetaTab({values}) {
         </Tab.List>
         <Tab.Panels className="mt-2">
           {Object.values(values).map((value, idx) => (
-            <Tab.Panel
-              key={idx}
-              className='bg-white rounded-xl p-3'
-            >
+            <Tab.Panel key={idx} className="bg-white rounded-xl p-3">
               {renderMetaSection(value)}
             </Tab.Panel>
           ))}
         </Tab.Panels>
       </Tab.Group>
     </div>
-  )
+  );
 }
 
 export const renderMetaSection = (description) => {
-  const { type = '' } = description;
+  const { type = '', title = '' } = description;
   switch (type) {
     case 'string':
       return (
@@ -121,7 +125,7 @@ export const renderMetaSection = (description) => {
     case 'table':
       return <MetaTable headers={description.header} values={description.value} />;
     case 'dataTable':
-      return <MetaDataTable values={description.value} />;
+      return <MetaDataTable values={description.value} title={title} />;
     default:
       return null;
   }
