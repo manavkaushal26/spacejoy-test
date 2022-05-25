@@ -1115,7 +1115,7 @@ export const getServerSideProps = async ({ params, res, req }) => {
     if (slug?.length === 1) {
       return {
         redirect: {
-          permanent: false,
+          permanent: true,
           destination: `/product-view/${convertFilterToUrlPath(verticalName)}/${convertFilterToUrlPath(productName)}-${
             data?._id
           }`,
