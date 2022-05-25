@@ -281,7 +281,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
       title: 'Product Description',
       content: (
         <>
-          {product?.metDetails?.description ? (
+          {product?.metaDetails?.description ? (
             <>
               {product?.metaDetails?.description?.map((item, index) => {
                 return (
