@@ -21,7 +21,6 @@ import {
   PlusIcon,
   PlusSmIcon,
 } from '@heroicons/react/outline';
-import useBoolean from '@hooks/useBoolean';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
@@ -1098,41 +1097,44 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
 
 export const getServerSideProps = async ({ params, res, req }) => {
   const { slug } = params;
-  const { cookies: { isMobile = 'false' } = {} } = req;
-  let formattedSlug = '';
-  if (slug.includes('-')) {
-    formattedSlug = slug.substring(slug.length - 24);
-  } else {
-    formattedSlug = slug;
-  }
 
-  // const response = await fetcher({ endPoint: `/v1/assets/getAssetBySlug?slug=${slug}`, method: 'GET' });
-  const response = await fetcher({ endPoint: `/v2/asset/${formattedSlug}`, method: 'GET' });
+  // get product id
+  const productId = slug && slug?.length && slug?.length > 1 ? slug[1]?.split('-')?.pop() : slug[0];
+  const { data, statusCode } = await fetcher({ endPoint: `/v2/asset/${productId}`, method: 'GET' });
   res.setHeader('Cache-Control', 'no-store');
-  const { data, statusCode } = response;
 
-  if (statusCode <= 300) {
-    const { retailer: { preferred = false } = {} } = data;
-    if (!preferred) {
-      const {
-        meta: {
-          subcategory: { name: subCategoryName },
-        },
-      } = data;
+  const { cookies: { isMobile = 'false' } = {} } = req;
 
+  const {
+    meta: { vertical: { name: verticalName = '' } = {}, subcategory: { name: subCatName = '' } = {} } = {},
+    name: productName = '',
+    retailer: { preferred = false } = {},
+  } = data;
+
+  if (statusCode < 301) {
+    if (slug?.length === 1) {
       return {
         redirect: {
-          destination: `/${convertFilterToUrlPath(subCategoryName)}?alternatives=true`,
-          // destination: `/shop?subcategory=${subCategoryName}alternatives=true`,
+          permanent: false,
+          destination: `/product-view/${convertFilterToUrlPath(verticalName)}/${convertFilterToUrlPath(productName)}-${
+            data?._id
+          }`,
+        },
+      };
+    } else if (!preferred) {
+      return {
+        redirect: {
+          destination: `/${convertFilterToUrlPath(subCatName)}?alternatives=true`,
           permanent: false,
         },
       };
-    }
-    const currentlyViewing = Math.floor(Math.random() * (80 - 10 + 10) + 10);
+    } else {
+      const currentlyViewing = Math.floor(Math.random() * (80 - 10 + 10) + 10);
 
-    return {
-      props: { product: data, revalidate: 1, isMobile: isMobile === 'true' ? true : false, currentlyViewing },
-    };
+      return {
+        props: { product: data, revalidate: 1, isMobile: isMobile === 'true' ? true : false, currentlyViewing },
+      };
+    }
   } else {
     return {
       notFound: true,
