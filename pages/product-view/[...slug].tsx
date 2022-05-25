@@ -107,7 +107,6 @@ const renderFeatureSection = (description) => {
 };
 
 const ProductView = ({ product, currentlyViewing }): JSX.Element => {
-  console.log('product', product);
   // const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
