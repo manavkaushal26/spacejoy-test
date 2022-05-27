@@ -46,22 +46,22 @@ const organizationSchema = {
   ],
 };
 
-const openGraph = {
-  type: 'website',
-  locale: 'en_US',
-  url: 'https://www.spacejoy.com/',
-  title: `${company.product} - ${company.tagLine}`,
-  description: company.description,
-  images: [
-    {
-      url: `${cloudinary.baseDeliveryURL}/image/upload/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg`,
-      width: 118,
-      height: 25,
-      alt: 'Spacejoy',
-    },
-  ],
-  site_name: company?.url,
-};
+// const openGraph = {
+//   type: 'website',
+//   locale: 'en_US',
+//   url: 'https://www.spacejoy.com/',
+//   title: `${company.product} - ${company.tagLine}`,
+//   description: company.description,
+//   images: [
+//     {
+//       url: `${cloudinary.baseDeliveryURL}/image/upload/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg`,
+//       width: 118,
+//       height: 25,
+//       alt: 'Spacejoy',
+//     },
+//   ],
+//   site_name: company?.url,
+// };
 const twitter = {
   handle: company?.social?.handles?.twitter,
   site: company?.social?.handles?.twitter,
@@ -158,9 +158,7 @@ const additionalLinkTags = [
 const additionRobotsProps = {};
 
 const defaultSEO = {
-  openGraph,
   twitter,
-  title: 'Spacejoy',
   additionalMetaTags,
   additionalLinkTags,
   facebook,

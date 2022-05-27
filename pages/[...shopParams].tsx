@@ -295,7 +295,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
   const verticalTitle = `${verticalName?.length ? `${verticalName} |` : ''}`;
 
   if (shopParams?.length < 2) {
-    metaInfo = SpacejoyMeta.find((item) => item.url === `/${catSubCat}`) || {};
+    // metaInfo = SpacejoyMeta.find((item) => item.url === `/${catSubCat}`) || {};
     metaInfo.title ? metaInfo.title : (metaInfo.title = `${catTitle} Spacejoy`);
   } else {
     metaInfo.title = `${verticalTitle} ${catTitle} Spacejoy`;

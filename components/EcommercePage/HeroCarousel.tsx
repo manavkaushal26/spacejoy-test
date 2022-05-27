@@ -18,17 +18,17 @@ const data = [
   {
     id: 1,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1653308838/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-08_kgqbtl.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/v1653628443/web/furniture-decor-shop/Get_Ready_For_Memorial_Day_Sale-27_wovoci.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1653308840/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-07_hkpmko.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/v1653628441/web/furniture-decor-shop/Get_Ready_For_Memorial_Day_Sale-26_firyiu.jpg',
     href: '/shop',
   },
   {
     id: 2,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1653308916/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-29_kt8bbh.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/v1653630977/web/furniture-decor-shop/Get_Ready_For_Memorial_Day_Sale-33_sxhzxa.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1653308920/web/furniture-decor-shop/V2/Get_Ready_For_Memorial_Day_Sale-28_pfadfl.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/v1653630979/web/furniture-decor-shop/Get_Ready_For_Memorial_Day_Sale-32_zi8pql.jpg',
     href: `${oldSpacejoyUrl}/new-project`,
   },
   {

@@ -369,14 +369,17 @@ const HeaderDesktop: React.FC = () => {
                                         </div>
                                       </div>
                                       <div />
-                                      <div className="relative col-span-2 aspect-[2/1]">
-                                        <Image
-                                          src="https://res.cloudinary.com/spacejoy/image/upload/v1651220249/web/furniture-decor-shop/V2/navigation_banner_ucoshd.jpg"
-                                          alt=""
-                                          layout="fill"
-                                          objectFit="contain"
-                                        />
-                                      </div>
+                                      <Link href="/shop" passHref>
+                                        <div className="relative col-span-2 aspect-[2/1]">
+                                          <Image
+                                            src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1653633631/web/homev3/Get_Ready_For_Memorial_Day_Sale-09_d135r9.jpg"
+                                            alt=""
+                                            layout="fill"
+                                            objectFit="contain"
+                                            className="cursor-pointer"
+                                          />
+                                        </div>
+                                      </Link>
                                     </div>
                                   )}
                                 </Popover.Panel>
