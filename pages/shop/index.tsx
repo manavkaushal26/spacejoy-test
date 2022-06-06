@@ -10,7 +10,7 @@ import { ChevronRightIcon, HomeIcon, MinusIcon, PlusIcon } from '@heroicons/reac
 import usePagination from '@hooks/usePagination';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
-import { cloudinary, internalPages } from '@utils/config';
+import { cloudinary, company, internalPages } from '@utils/config';
 import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
@@ -211,6 +211,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
     <Layout>
       <Head>
         <title>Spacejoy: The best online furniture and home decor store</title>
+        <meta name="title" content="Spacejoy: The best online furniture and home decor store" />
         <meta
           key="description"
           name="description"
@@ -221,6 +222,31 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
           name="keywords"
           content="best online furniture stores, online discount furniture stores, furniture sale, best home decor store"
         />
+        <meta property="og:type" content="website" />
+        <meta key="og-url" property="og:url" content={`${company.url}${router.asPath.split('?')[0]}`} />
+        <meta key="og-title" property="og:title" content="Spacejoy: The best online furniture and home decor store" />
+        <meta
+          key="og-description"
+          property="og:description"
+          content={`Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!`}
+        />
+        <meta
+          key="og-image"
+          property="og:image"
+          content={`${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`}
+        />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`${company.url}${router.asPath.split('?')[0]}`} />
+        <meta property="twitter:title" content="Spacejoy: The best online furniture and home decor store" />
+        <meta
+          property="twitter:description"
+          content={`Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!`}
+        />
+        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`} />
+
+        <link rel="canonical" href="https://spacejoy.com/shop" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Banner />

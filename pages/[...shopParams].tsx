@@ -361,6 +361,10 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
         />
         <meta property="twitter:image" content={metaInfo?.image} />
 
+        <link
+          rel="canonical"
+          href={metaInfo?.metaUrl ? metaInfo.metaUrl.split('?')[0] : `${company.url}${router.asPath.split('?')[0]}`}
+        />
         <link rel="icon" href="/favicon.ico" />
         <base href="/" />
       </Head>

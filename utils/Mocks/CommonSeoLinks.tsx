@@ -140,35 +140,35 @@ export const CommonSeoLinks = [
     list: [
       {
         title: 'Sofas',
-        link: '/shop?subcategory=Sofas',
+        link: '/sofas',
       },
       {
         title: 'Coffee Tables',
-        link: '/shop?subcategory=Tables&vertical=Coffee+Tables',
+        link: '/tables/coffee-tables',
       },
       {
         title: 'Side Tables',
-        link: '/shop?subcategory=Tables&vertical=End+%26+Side+Tables',
+        link: '/tables/end-&-side-tables',
       },
       {
         title: 'Accent Chairs',
-        link: '/shop?subcategory=Chairs&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs',
+        link: '/chairs/accent-chairs',
       },
       {
         title: 'Lighting',
-        link: '/shop?subcategory=Lights&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting',
+        link: '/lighting',
       },
       {
         title: 'Mirrors',
-        link: '/shop?subcategory=Mirrors&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors',
+        link: '/mirrors',
       },
       {
         title: 'Rugs',
-        link: '/shop?subcategory=Rugs&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting%3A%3ARunners%3A%3AOther+Rugs%3A%3AArea+Rugs',
+        link: '/rugs',
       },
       {
         title: 'Storage & Organization',
-        link: '/shop?subcategory=Storage+Containers&vertical=End+%26+Side+Tables%3A%3AAccent+Chairs%3A%3ACeiling+Lights%3A%3AFloor+Mirrors%3A%3AMakeup+And+Table+Mirrors%3A%3AWall-mounted+Mirrors%3A%3AWall+Lights%3A%3ALanterns%3A%3ADecorative+Lighting%3A%3ASeasonal+Lighting%3A%3ATrack+Lighting%3A%3ARunners%3A%3AOther+Rugs%3A%3AArea+Rugs%3A%3ACrates%2C+Buckets+%26+Bins%3A%3ALaundry+Organization%3A%3AOther+Storage+Containers%3A%3ABaskets',
+        link: '/storage-&-organizers',
       },
     ],
   },
