@@ -46,6 +46,7 @@ interface CarouselInterface {
   position: position;
   customButtons: boolean;
   slidesToShow?: number;
+  buttons?: boolean;
 }
 
 const Carousel: React.FC<CarouselInterface> = ({
@@ -55,6 +56,7 @@ const Carousel: React.FC<CarouselInterface> = ({
   position,
   slidesToShow = 1,
   customButtons,
+  buttons = false,
 }) => {
   const sliderRef = useRef<Slider>(null);
 
@@ -85,7 +87,7 @@ const Carousel: React.FC<CarouselInterface> = ({
       <SliderWrapper className="overflow-hidden">
         <Slider
           {...settings}
-          arrows={!customButtons}
+          arrows={!customButtons && buttons}
           centerMode={centerMode}
           centerPadding={centerPadding}
           slidesToShow={slidesToShow}

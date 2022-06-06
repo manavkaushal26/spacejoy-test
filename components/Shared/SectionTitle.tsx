@@ -13,7 +13,7 @@ const SectionTitle = ({
 }): JSX.Element => {
   return (
     <div className="container px-4 mx-auto sm:px-28">
-      <div className="max-w-4xl mx-auto sm:text-center">
+      <div className="max-w-4xl mx-auto text-center">
         {feature && <p className="mb-2 font-semibold tracking-wide text-gray-500 uppercase">{feature}</p>}
         <h2
           className={`mt-2 text-3xl leading-tight font-extrabold tracking-normal md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight mb-5 ${

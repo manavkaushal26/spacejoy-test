@@ -15,6 +15,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/images/hero-pattern.png')",
+        'card-texture': "url('https://res.cloudinary.com/spacejoy/image/upload/v1652948828/Mesh_Bg_asjn3i.png')",
+        vector: "url('https://res.cloudinary.com/spacejoy/image/upload/v1653652981/Dotted_Vector_jcdmmi.svg')",
       },
       borderWidth: ['last', 'first'],
       colors: {
@@ -25,20 +27,20 @@ module.exports = {
         'spj-red': '0 2px 4px 0 #FFC6C6',
       },
       keyframes: {
-        'pulseDot': {
+        pulseDot: {
           '0%': {
-            opacity:'100',
-            transform: 'scale(0.5)'
+            opacity: '100',
+            transform: 'scale(0.5)',
           },
           '100%': {
-            opacity:'0',
-            transform: 'scale(1.5)'
+            opacity: '0',
+            transform: 'scale(1.5)',
           },
-        }
+        },
       },
       animation: {
-        'pulseDot': 'pulseDot 1s infinite',
-    }
+        pulseDot: 'pulseDot 1s infinite',
+      },
     },
   },
   variants: {

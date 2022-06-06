@@ -1,4 +1,3 @@
-import FeaturedData from '@mocks/FeaturedData';
 import Image from 'next/image';
 import React from 'react';
 import { ScrollTrigger, Tween } from 'react-gsap';

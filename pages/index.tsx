@@ -1,21 +1,28 @@
+import Slider from '@components/Carousel';
 import { Hero3 } from '@components/Home';
+import DesignerCard from '@components/Home/DesignerCard';
 import HomeSectionTitle from '@components/Home/Hero/HomeSectionTitle';
 import OutputGallery from '@components/Home/OutputGallery';
+import { PricingData } from '@components/Pricing/PricingTypes';
 import Carousel, { position } from '@components/Shared/Carousel';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
+import Pricing from '@components/Shared/PricingData';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import TopBarMobile from '@components/Shared/TopBarMobile';
-import { ArrowRightIcon } from '@heroicons/react/outline';
-import { StarIcon } from '@heroicons/react/solid';
+import { Disclosure } from '@headlessui/react';
+import { ArrowRightIcon, CheckIcon, ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, company, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
-import TestimonialData from '@utils/Mocks/Testimonials';
+import { cloudinary, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
+import { publicRoutes } from '@utils/constants';
+import fetcher from '@utils/fetcher';
+import faqs from '@utils/Mocks/HomepageFAQs';
+import { default as Testimonials } from '@utils/Mocks/HomeTestimonials';
+import SpjShoppingAdvantage from '@utils/Mocks/WhySpacejoy';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
-import { SpacejoyMeta } from '@utils/SEO/metaInfo.config';
 import useWindowSize from '@utils/useWindowSize';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -23,10 +30,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
 const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
+const features = [
+  'We are your single point of contact',
+  "We'll place and manage your orders across brands",
+  'Track your orders from any brand under one roof',
+  "It's easy to return and cancel one or more products",
+];
 
-export const Home = ({ isMobile }): JSX.Element => {
+const responsive = {
+  // dots: true,
+  // arrows: false,
+  // slidesToShow: 1.5,
+  // className: 'with-space',
+};
+export const Home = ({ isMobile, pricingData }): JSX.Element => {
   const router = useRouter();
   const { data } = useFirebaseContext();
   const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
@@ -79,113 +101,122 @@ export const Home = ({ isMobile }): JSX.Element => {
             </div>
           )}
           <Hero3 isMobile={isMobile} />
-          <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-6 sm:mb-12">
-            <HomeSectionTitle className="text-left">
+          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12 block lg:hidden mt-12">
+            <HomeSectionTitle className="text-center capitalize">
               <HomeSectionTitle.MainTitle>
-                Meet Our <span className="text-[#F5296E]">Style Sets</span>
+                <span className="capitalize">Bring your vision to life</span>
+                <br />
+                <span className="capitalize">in three simple steps</span>
               </HomeSectionTitle.MainTitle>
-              {isMobile !== 'true' && (
-                <HomeSectionTitle.Description align="left">
-                  Curated by us, personalized by you.
-                  <br /> Perfect your whole room in a single click.
-                </HomeSectionTitle.Description>
-              )}
             </HomeSectionTitle>
-          </div>
-          {/* Section Start */}
-          <div className="container px-4 mx-auto mb-20">
-            <div className="grid grid-cols-1 gap-2 md:gap-8 md:grid-cols-3">
-              <div
-                className="flex-1 space-y-4 p-4  rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  location.href = '/design-sets/room/living-room-design-sets';
-                }}
-              >
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648817963/web/homepage-v3/Image_02_qqdwnv.jpg"
-                    alt="sofas"
-                    className="object-cover object-center w-full h-full rounded-lg"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
+            <div className="mt-12">
+              <div className="step grid grid-cols-1 text-center">
+                <div className="h-[40px] w-[40px] bg-[#FFC1AD] font-bold rounded-full flex items-center justify-center mx-auto mb-2">
+                  1
                 </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Living Room Styles</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-black rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="flex-1 space-y-4 p-4  rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  location.href = '/design-sets/room/dining-room-design-sets';
-                }}
-              >
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648817963/web/homepage-v3/IMG_1404_bpldad.png"
-                    alt="sofas"
-                    className="object-cover object-center w-full h-full rounded-lg"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Dining Room Styles</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-black rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="flex-1 space-y-4 p-4  rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  location.href = '/design-sets/room/bedroom-design-sets';
-                }}
-              >
-                <div className="aspect-w-2 aspect-h-1">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1648817967/web/homepage-v3/Spring_Women_Day_Set_Three_Look_1_kajgr8.png"
-                    alt="sofas"
-                    className="object-cover object-center w-full h-full rounded-lg"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Bedroom Styles</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-black rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4 text-white" />
-                  </div>
+                <div className="col-span-3">
+                  <h2 className="capitalize text-xl text-center">Share your vision</h2>
+                  <p className="text-center mt-2">Upload photos of your home and tell us your needs.</p>
                 </div>
               </div>
             </div>
-            <div className="mt-4 text-center">
-              <button
-                type="button"
-                className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Shop All Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/room-select';
-                }}
-              >
-                Explore All Styles
-              </button>
+            <div className=" my-auto text-center">
+              <Image
+                height="200"
+                width="200"
+                alt="path"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1652948829/Vector_2_xztpty.svg"
+                className="rotate-270"
+              />
+            </div>
+            <div className="">
+              <div className="step grid grid-cols-1 text-center">
+                <div className="h-[40px] w-[40px] bg-[#FFC1AD] font-bold rounded-full flex items-center justify-center mx-auto mb-2">
+                  2
+                </div>
+                <div className="col-span-3">
+                  <h2 className="capitalize text-xl text-center">Get a personalized design</h2>
+                  <p className="text-center mt-2">
+                    Consult 1:1 with a professional designer to create spaces that match your vision.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 my-auto text-center">
+              <Image
+                height="200"
+                width="200"
+                alt="path"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1652948828/Vector_1_mxl10d.svg"
+                className="rotate-90"
+              />
+            </div>
+            <div className="mt-4">
+              <div className="step grid grid-cols-1 text-center">
+                <div className="h-[40px] w-[40px] bg-[#FFC1AD] font-bold rounded-full flex items-center justify-center mx-auto mb-2">
+                  3
+                </div>
+                <div className="col-span-3">
+                  <h2 className="capitalize text-xl text-center">Shop your favorites</h2>
+                  <p className="text-center mt-2">Our concierge team will place and manage all your product orders.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="container px-4 mx-auto xl:px-20 lg:mt-28 xl:mt-36 mb-6 sm:mb-12 hidden lg:block">
+            <div className="w-3/4 mx-auto">
+              <HomeSectionTitle className="text-center">
+                <HomeSectionTitle.MainTitle>
+                  <span className="">Bring your vision to life</span>
+                  <br />
+                  <span className="">in three simple steps</span>
+                </HomeSectionTitle.MainTitle>
+              </HomeSectionTitle>
+            </div>
+            <div className="w-full xl:w-3/4 bg-white flex justify-between h-[500px] mt-12 mx-auto bg-vector bg-contain bg-no-repeat bg-center grid grid-cols-4">
+              <div className="col-span-2 items-center flex justify-center">
+                <div className="flex max-w-[370px] py-2 bg-white translate-y-[40px]">
+                  <div className="basis-1/4">
+                    <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-[#FFC1AD] font-bold">
+                      1
+                    </div>
+                  </div>
+                  <div className="ml-2">
+                    <p className="text-2xl mb-2 font-bold">Share your vision</p>
+                    <p>Upload photos of your home and tell us your needs.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-2 flex items-center justify-center">
+                <div className="col-span-2 items-center flex justify-center">
+                  <div className="flex max-w-[370px] py-2 bg-white">
+                    <div className="basis-1/4">
+                      <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-[#FFC1AD] font-bold">
+                        2
+                      </div>
+                    </div>
+                    <div className="ml-2">
+                      <p className="text-2xl mb-2 font-bold">Get a personalized design</p>
+                      <p>Consult 1:1 with a professional designer to create spaces that match your vision.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-4 flex items-end justify-center">
+                <div className="col-span-2 items-center flex justify-center ">
+                  <div className="flex max-w-[370px] py-2 bg-white translate-y-[48px]">
+                    <div className="basis-1/4">
+                      <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-[#FFC1AD] font-bold ">
+                        3
+                      </div>
+                    </div>
+                    <div className="ml-2">
+                      <p className="text-2xl mb-2 font-bold">Shop your favorites</p>
+                      <p>Our concierge team will place and manage all your product orders.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -241,140 +272,14 @@ export const Home = ({ isMobile }): JSX.Element => {
           )}
 
           {/* Section Start */}
-          <div className="container mx-auto px-4 mt-16 sm:mt-32 mb-4 sm:mb-8">
-            <HomeSectionTitle className="text-left sm:text-center">
-              <HomeSectionTitle.MainTitle>
-                Shop all things home in <span className="text-[#F5296E]">one place</span>
-              </HomeSectionTitle.MainTitle>
-              {isMobile !== 'true' && (
-                <HomeSectionTitle.Description align="center">
-                  Discover thousands of products from all your favorite brands in a single click!
-                </HomeSectionTitle.Description>
-              )}
-            </HomeSectionTitle>
-          </div>
-          <div className="container px-4 mx-auto mb-12 sm:mb-24">
-            <div className="grid grid-cols-1 gap-4 md:gap-4 md:grid-cols-3">
-              <div
-                className="flex-1 p-4 lg:p-8 bg-violet-100 rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Sofas List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Sofas';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Sofas</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1 w-full">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386536/spj-v2/sofas_m12dj0.png"
-                    alt="sofas"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-
-              <div
-                className="flex-1 p-4 bg-blue-100 lg:p-8 rounded-xl hover:cursor-pointer"
-                // onClick={() => (location.href = '/shop?subcategory=Beds')}
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Coffee Tables List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Tables&vertical=Coffee+Tables';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg leading-tight lg:text-xl lg:leading-tight w-min lg:w-full">Coffee Tables</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1 w-full">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386529/spj-v2/coffee_tables_vltvlc.png"
-                    alt="coffee tables"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-              <div
-                className="flex-1 p-4 bg-teal-100 lg:p-8 rounded-xl hover:cursor-pointer"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Beds List Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop?subcategory=Beds';
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg lg:text-xl">Beds</h3>
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 bg-white rounded-full lg:w-10 lg:h-10">
-                    <ArrowRightIcon className="inline w-4 h-4" />
-                  </div>
-                </div>
-                <div className="aspect-w-2 aspect-h-1 w-full">
-                  <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_600/v1644386383/spj-v2/Beds_qrwweq.png"
-                    alt="beds"
-                    className="object-contain object-center w-full h-full"
-                    layout="fill"
-                    placeholder="blur"
-                    blurDataURL={blurredBgProduct}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="mt-4 text-center">
-              <button
-                type="button"
-                className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-                onClick={() => {
-                  PushEvent({
-                    category: `Shop by Category`,
-                    action: `Go to Shop All Page`,
-                    label: `Shop Now`,
-                  });
-                  location.href = '/shop';
-                }}
-              >
-                Explore All
-              </button>
-            </div>
-          </div>
-
-          {/* Section Start */}
-          <div className="container px-4 mx-auto xl:my-40 my-16 sm:my-32 xl:px-20">
+          <div className="container px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
             <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
               <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    7 days to a beautiful room!
+                    7 days to a beautiful room.
                     <br />
-                    <span className="text-[#F5296E]">Get paired with a Designer!</span>
+                    <span className="text-[#F5296E]">Get paired with a designer.</span>
                   </HomeSectionTitle.MainTitle>
                   {isMobile !== 'true' && (
                     <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
@@ -383,8 +288,8 @@ export const Home = ({ isMobile }): JSX.Element => {
                   )}
                 </HomeSectionTitle>
                 {!isScreenMedium && (
-                  <Link href={`${oldSpacejoyUrl}/online-interior-design`} passHref>
-                    <a target="_blank" rel="noopener noreferrer">
+                  <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                    <a rel="noopener noreferrer">
                       <button
                         type="button"
                         className="group overflow-hidden shadow-sm hover:shadow-lg text-lg text-white py-4 xl:py-6 px-4 xl:px-10 mt-4 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
@@ -396,7 +301,13 @@ export const Home = ({ isMobile }): JSX.Element => {
                 )}
               </div>
               <div className="relative w-full mx-auto  md:w-1/2">
-                <Carousel centerPadding="0%" centerMode customButtons position={position.bottom}>
+                <Carousel
+                  centerPadding="0%"
+                  centerMode
+                  customButtons={false}
+                  buttons={false}
+                  position={position.bottom}
+                >
                   {TeamData.map((item) => (
                     <div key={item.lastName}>
                       <div className="relative aspect-[3/4] sm:aspect-[1] md:aspect-[3/4] lg:aspect-[1] rounded-3xl">
@@ -446,8 +357,121 @@ export const Home = ({ isMobile }): JSX.Element => {
             </div>
           </div>
 
+          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+            <Pricing data={pricingData || []} />
+            <div className="text-center mt-4 flex justify-center">
+              <Link href="/pricing" passHref>
+                <button className="rounded-lg bg-gray-900 py-3 px-6 text-white flex items-center group">
+                  <span>Pricing</span>
+                  <ArrowRightIcon className="h-4 w-4 text-white ml-2 transition-transform transform group-hover:translate-x-2" />
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+            <div className="w-3/4 mx-auto">
+              <HomeSectionTitle className="text-center">
+                <HomeSectionTitle.MainTitle>
+                  <span> Create a stunning home with products from top brands</span>
+                </HomeSectionTitle.MainTitle>
+
+                <HomeSectionTitle.Description align="center">
+                  With additional exclusive discounts from Spacejoy
+                </HomeSectionTitle.Description>
+              </HomeSectionTitle>
+            </div>
+            <div className="pg relative mt-12">
+              <Image
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1652948829/Save_big_on_biy42h.png"
+                alt="shop with us"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+          </div>
+          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+            <HomeSectionTitle className="text-center">
+              <HomeSectionTitle.MainTitle>
+                <p>Get raving reviews from friends and family</p>
+              </HomeSectionTitle.MainTitle>
+
+              <HomeSectionTitle.Description align="center">
+                We&apos;ll take care of the heavylifting so you can sit back and enjoy the compliments
+              </HomeSectionTitle.Description>
+            </HomeSectionTitle>
+            <div className="mt-12">
+              {
+                <Slider imageCount={10} slidesToShow={1} withNav={false} responsive={responsive} arrows={false}>
+                  {Testimonials?.map((item) => {
+                    return <DesignerCard data={item} key={item?.id} />;
+                  })}
+                </Slider>
+              }
+            </div>
+          </div>
+          <div className="container mx-auto px-4 ">
+            <div className="w-3/4 mx-auto sm:mt-32 mb-6 sm:mb-12">
+              <HomeSectionTitle className="text-center">
+                <HomeSectionTitle.MainTitle>
+                  <span>It&apos;s a joy to shop on Spacejoy</span>
+                </HomeSectionTitle.MainTitle>
+
+                <HomeSectionTitle.Description align="center">
+                  Our concierge team will ensure it’s a hassle free shopping experience
+                </HomeSectionTitle.Description>
+              </HomeSectionTitle>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 mt-12">
+              <div className="p-golden relative">
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1652950083/Customer_care_image_gk1x5y.png"
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Customer Care"
+                  className="rounded-t-xl md:rounded-l-xl md:rounded-tr-sm"
+                />
+              </div>
+              <div
+                className="bg-[#FEF7F3] rounded-b-xl md:rounded-r-xl leading-10 p-12 text-lg flex
+               items-center "
+              >
+                <div>
+                  {features?.map((item) => {
+                    return (
+                      <p className="flex items-center" key={item}>
+                        <CheckIcon className="h-6 w-6 " />
+                        <span className="ml-2">{item}</span>
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="mt-12 bg-gray-100">
+            <div className="container mx-auto px-4 p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="px-4 lg:p-8">
+                  <h2 className="font-bold text-2xl">
+                    No spam! Only the latest deals and discounts delivered straight to your inbox
+                  </h2>
+                </div>
+                <div className="px-4 lg:p-8 inline-flex items-center">
+                  <input type="text" className="w-1/2 h-12 inline-block text-sm" placeholder="Email Address" />
+                  <LoginManager
+                    ctaText={<button className="bg-gray-900 text-white w-full">Sign Up</button>}
+                    redirect="/"
+                    styles="bg-gray-900 text-white p-4 w-1/2 rounded-md ml-2 flex text-sm h-12"
+                  />
+                </div>
+                <div />
+              </div>
+            </div>
+          </div> */}
+
           {/* Section Start */}
-          <div className="container grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto my-10">
+          <div className="container grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto mt-16 lg:mt-32 my-12">
             <div className="col-span-1 sm:col-span-3">
               {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
                 <Link href={data?.homepageV2?.hp1Link}>
@@ -489,61 +513,100 @@ export const Home = ({ isMobile }): JSX.Element => {
               />
             </div>
           </div>
-
-          <div className="container px-4 mx-auto mt-16 sm:mt-32 mb-24 sm:mb-40">
-            <HomeSectionTitle className="text-left sm:text-center">
+          <div className="container px-4 mx-auto sm:mt-32 mb-6 sm:mb-12">
+            <div className="mt-8 block lg:hidden">
               <HomeSectionTitle.MainTitle>
-                <span className="text-[#F5296E]">Why</span> Spacejoy?
+                <p className="text-center">Get the Spacejoy advantage</p>
               </HomeSectionTitle.MainTitle>
-              {isMobile !== 'true' && (
-                <HomeSectionTitle.Description align="center">Hear it from our customers</HomeSectionTitle.Description>
-              )}
-            </HomeSectionTitle>
-            <div className="mt-6">
-              <Carousel centerPadding="0%" centerMode customButtons slidesToShow={4} position={position.outside}>
-                {TestimonialData.map((item) => (
-                  <div key={item.id} className="h-full">
-                    <div className="h-full p-4 m-4 border border-gray-300 rounded-3xl 2xl:p-8">
-                      <div className="flex justify-between">
-                        <div className="flex">
-                          {[...new Array(5)].map((_d, i) => (
-                            <StarIcon key={`star-${i}`} className="w-6 h-6 text-gray-700" />
-                          ))}
-                        </div>
-                        {/* <div>
-                          <p>{item?.roomType}</p>
-                        </div> */}
-                      </div>
-                      <div className="my-8">
-                        <p className="text-sm leading-relaxed">{item?.description}</p>
-                      </div>
-                      <div className="flex items-center space-x-4">
-                        <div>
-                          <Image
-                            src={`https://res.cloudinary.com/spacejoy/${item?.dp}`}
-                            alt="image 1"
-                            className="object-cover object-center w-full h-full rounded-3xl"
-                            height={62}
-                            width={62}
-                            placeholder="blur"
-                            blurDataURL={blurredBgImage}
-                          />
-                        </div>
-                        <div>
-                          <h3>{item?.name}</h3>
-                          <p className="text-sm text-gray-400">{item?.address}</p>
-                        </div>
-                      </div>
+
+              {SpjShoppingAdvantage?.map((item, index) => {
+                return (
+                  <Disclosure key={item?.id} defaultOpen={index === 0}>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
+                          <span className="text-sm font-bold text-gray-900">{item?.title}</span>
+                          {open ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="mt-2">
+                          <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
+                          <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                );
+              })}
+            </div>
+
+            <div className="hidden lg:block sm:mt-32 mb-6 sm:mb-12">
+              <HomeSectionTitle className="text-center">
+                <HomeSectionTitle.MainTitle>Get the Spacejoy advantage</HomeSectionTitle.MainTitle>
+              </HomeSectionTitle>
+
+              <div className="my-8 hidden lg:grid lg:grid-cols-4 lg:gap-12 bg-white mt-12">
+                {SpjShoppingAdvantage?.map((item, index) => {
+                  return (
+                    <div key={item?.id}>
+                      <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
+                      <p className="text-md font-bold text-gray-900 mt-4">{item?.title}</p>
+                      <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
                     </div>
-                  </div>
-                ))}
-              </Carousel>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="bg-gray-100">
+            <div className="container mx-auto px-4 py-16 sm:mt-32 mb-6 sm:mb-12">
+              <div className="lg:grid lg:grid-cols-4 lg:gap-12">
+                <div className="col-span-2">
+                  <HomeSectionTitle className="text-center">
+                    <HomeSectionTitle.MainTitle>
+                      <span>Still have questions?</span>
+                    </HomeSectionTitle.MainTitle>
+
+                    <HomeSectionTitle.Description align="center">
+                      <span />
+                    </HomeSectionTitle.Description>
+                  </HomeSectionTitle>
+                  <p className=" text-[120px] md:text-[200px] text-gray-300 font-bold text-center">
+                    <span className="tracking-widest ">FAQ</span>
+                  </p>
+                </div>
+                <div className="mt-12 lg:mt-0 lg:col-span-2">
+                  <dl className="space-y-12 ">
+                    {faqs.map((faq) => (
+                      <Disclosure as="div" key={faq.question}>
+                        {({ open }) => (
+                          <div className="border-b border-gray-500 pb-4">
+                            <dt className="text-sm ">
+                              <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400 ">
+                                <span className="text-lg lg:text-md text-gray-900 font-bold">{faq.question}</span>
+                                <span className="ml-6 h-7 flex items-center">
+                                  <ChevronDownIcon
+                                    className={classNames(open ? '-rotate-180' : 'rotate-0', 'h-6 w-6 transform')}
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              </Disclosure.Button>
+                            </dt>
+                            <Disclosure.Panel as="dd" className="mt-2 pr-12 ">
+                              <p className="text-base text-gray-500">{faq.answer}</p>
+                            </Disclosure.Panel>
+                          </div>
+                        )}
+                      </Disclosure>
+                    ))}
+                  </dl>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Section Start */}
           <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
-            <HomeSectionTitle className="text-left sm:text-center">
+            <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               {isMobile !== 'true' && (
                 <HomeSectionTitle.Description align="center">
@@ -570,9 +633,28 @@ export const Home = ({ isMobile }): JSX.Element => {
 export async function getServerSideProps(ctx) {
   const isMobile = ctx?.req?.cookies['isMobile'] === 'true' ? true : false;
 
+  const res = await fetcher({ endPoint: publicRoutes.pricingRoute, method: 'GET' });
+  const {
+    data: { list = [] },
+  } = res;
+  const pricingData: PricingData[] = list?.map((item) => {
+    return {
+      features: item?.includedFeatures?.slice(0, 4),
+      excludedFeatures: item?.excludedFeatures,
+      price: item?.price,
+      salePrice: item?.salePrice,
+      name: item?.slug,
+      description: item?.description,
+      savings: item?.savings,
+      tags: item?.tags,
+      slug: item?.slug,
+    };
+  });
+
   return {
     props: {
       isMobile,
+      pricingData,
     },
   };
 }

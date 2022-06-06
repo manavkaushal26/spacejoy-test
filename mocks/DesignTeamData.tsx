@@ -79,15 +79,15 @@ const data = [
   //   bg: 'v1611749808/web/designTime/9_viwqu5.jpg',
   //   desc: 'Based in Florida, Shannon helps her clients pay attention to all of the details. A fan of modern design, her designs add in organic touches and take inspiration from nature. ',
   // },
-  {
-    firstName: 'Laura',
-    lastName: 'Wright',
-    icon: 'v1611748547/web/designTime/10-Laura_Wright_f4ob5n.png',
-    isReversed: true,
-    bg: '/v1643954978/web/homepage-v3/designers/Laura_Wright_db5qzc.jpg',
-    desc: 'Laura hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Laura loves mid-century modern, boho and eclectic spaces. ',
-  },
- 
+  // {
+  //   firstName: 'Laura',
+  //   lastName: 'Wright',
+  //   icon: 'v1611748547/web/designTime/10-Laura_Wright_f4ob5n.png',
+  //   isReversed: true,
+  //   bg: '/v1643954978/web/homepage-v3/designers/Laura_Wright_db5qzc.jpg',
+  //   desc: 'Laura hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Laura loves mid-century modern, boho and eclectic spaces. ',
+  // },
+
   {
     firstName: 'Kate',
     lastName: 'Harvey',
