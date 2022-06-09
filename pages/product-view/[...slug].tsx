@@ -438,11 +438,14 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start ">
               <div className="mt-3 lg:hidden">
                 <div className="flex space-x-2">
-                  <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
                   {session?.user && session?.user?.role !== 'customer' && (
-                    <a target="_blank" rel="noreferrer" href={product.retailLink}>
-                      <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
-                    </a>
+                    <div className="flex items-center">
+                      <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+
+                      <a target="_blank" rel="noreferrer" href={product.retailLink}>
+                        <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
+                      </a>
+                    </div>
                   )}
                 </div>
 

@@ -323,9 +323,9 @@ export default function Cart() {
   return (
     <>
       <Head>
-      {IndexPageMeta}
-				<title key="title">Cart | {company.product}</title>
-				<link rel="canonical" href="https://www.spacejoy.com/cart" />
+        {IndexPageMeta}
+        <title key="title">Cart | {company.product}</title>
+        <link rel="canonical" href="https://www.spacejoy.com/cart" />
       </Head>
       <Layout>
         <Layout.Banner />
@@ -342,32 +342,34 @@ export default function Cart() {
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
                   </h2>
-                  {Object.keys(cart?.cartItems)?.length !== 0 && <div className="hidden lg:block">
-                    {data?.cartBannerV2?.visible &&
-                      (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
-                        <Link href={data?.cartBannerV2?.link}>
-                          <a>
-                            <div className="relative aspect-w-7 aspect-h-2">
-                              <Image
-                                src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
-                                alt="cartBanner"
-                                layout="fill"
-                                objectFit="contain"
-                              />
-                            </div>
-                          </a>
-                        </Link>
-                      ) : (
-                        <div className="relative aspect-w-7 aspect-h-2">
-                          <Image
-                            src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
-                            alt="cartBanner"
-                            layout="fill"
-                            objectFit="contain"
-                          />
-                        </div>
-                      ))}
-                  </div>}
+                  {Object.keys(cart?.cartItems)?.length !== 0 && (
+                    <div className="hidden lg:block">
+                      {data?.cartBannerV2?.visible &&
+                        (data?.cartBannerV2?.link !== undefined && data?.cartBannerV2?.link !== '' ? (
+                          <Link href={data?.cartBannerV2?.link}>
+                            <a>
+                              <div className="relative aspect-w-7 aspect-h-2">
+                                <Image
+                                  src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                                  alt="cartBanner"
+                                  layout="fill"
+                                  objectFit="contain"
+                                />
+                              </div>
+                            </a>
+                          </Link>
+                        ) : (
+                          <div className="relative aspect-w-7 aspect-h-2">
+                            <Image
+                              src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                              alt="cartBanner"
+                              layout="fill"
+                              objectFit="contain"
+                            />
+                          </div>
+                        ))}
+                    </div>
+                  )}
                   {loading && (
                     <>
                       {[...new Array(18)].map((_d, _i) => {
@@ -383,7 +385,7 @@ export default function Cart() {
                     return (
                       <div key={cItem} className="mt-8">
                         <div className="flex justify-between">
-                          <p className="font-bold capitalize">{cart?.cartItems[cItem]?.name}</p>
+                          {/* <p className="font-bold capitalize">{cart?.cartItems[cItem]?.name}</p> */}
                           {typeof cart?.cartItems[cItem]?.shippingCharge !== 'undefined' ? (
                             <p className="text-sm">
                               <span className="font-bold">Estimated Shipping:</span> $
