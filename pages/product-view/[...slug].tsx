@@ -136,6 +136,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
   }, []);
 
   const { session } = useSession();
+  console.log('session', session);
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -522,11 +523,14 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
               <div className="mt-10 sm:px-0 sm:mt-16 lg:mt-0">
                 <div className="hidden lg:block">
                   <div className="flex space-x-2">
-                    <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
                     {session?.user && session?.user?.role !== 'customer' && (
-                      <a target="_blank" rel="noreferrer" href={product.retailLink}>
-                        <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
-                      </a>
+                      <div className="flex items-center">
+                        <small className="text-sm tracking-tight text-gray-500">{product?.retailer?.name}</small>
+
+                        <a target="_blank" rel="noreferrer" href={product.retailLink}>
+                          <ExternalLinkIcon className="w-4 h-4 text-gray-500 transition duration-200 hover:text-indigo-500" />
+                        </a>
+                      </div>
                     )}
                   </div>
                   <h1 className="mt-1 sm:text-3xl text-xl font-extrabold tracking-tight text-gray-900">
