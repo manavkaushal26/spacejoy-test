@@ -13,7 +13,7 @@ import TopBarMobile from '@components/Shared/TopBarMobile';
 import { Disclosure } from '@headlessui/react';
 import { ArrowRightIcon, CheckIcon, ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import TeamData from '@mocks/DesignTeamData';
-import { blurredBgImage, blurredBgProduct } from '@public/images/bg-base-64';
+import { blurredBgImage, blurredBgProduct, homePagePoster } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
@@ -271,6 +271,15 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
 
+          <div className="container px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
+            <video width="400" controls autoPlay className="w-full aspect-video" muted poster={homePagePoster}>
+              <source
+                src="https://res.cloudinary.com/spacejoy/video/upload/v1655110227/Untitled_1_vctwme.webm#t=0.1"
+                type="video/webm"
+              />
+              Your browser does not support HTML video.
+            </video>
+          </div>
           {/* Section Start */}
           <div className="container px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
             <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
