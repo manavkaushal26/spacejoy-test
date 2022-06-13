@@ -101,7 +101,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
           <Hero3 isMobile={isMobile} />
-          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12 block lg:hidden mt-12">
+          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12 block lg:hidden mt-12">
             <HomeSectionTitle className="text-center capitalize">
               <HomeSectionTitle.MainTitle>
                 <span className="capitalize">Bring your vision to life</span>
@@ -163,7 +163,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               </div>
             </div>
           </div>
-          <div className="container px-4 mx-auto xl:px-20 lg:mt-28 xl:mt-36 mb-6 sm:mb-12 hidden lg:block">
+          <div className="container mt-16 px-4 mx-auto xl:px-20 lg:mt-28 xl:mt-36 mb-6 sm:mb-12 hidden lg:block">
             <div className="w-3/4 mx-auto">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
@@ -222,7 +222,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
 
           {/* Section Start */}
           {pinterestConfig.enable === true && (
-            <div className="container px-4 mx-auto my-28 xl:my-40 xl:px-20">
+            <div className="container mt-16 px-4 mx-auto my-28 xl:my-40 xl:px-20">
               <div className="flex flex-col xl:flex-row">
                 <div className="w-full mb-6 xl:mb-0 xl:w-3/4">
                   <HomeSectionTitle className="text-left">
@@ -271,17 +271,17 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
 
-          <div className="container px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
             <video width="400" controls autoPlay className="w-full aspect-video" muted poster={homePagePoster}>
               <source
-                src="https://res.cloudinary.com/spacejoy/video/upload/v1655110227/Untitled_1_vctwme.webm#t=0.1"
+                src="https://res.cloudinary.com/spacejoy/video/upload/v1655115548/Comp_1_bumvd8.mp4"
                 type="video/webm"
               />
               Your browser does not support HTML video.
             </video>
           </div>
           {/* Section Start */}
-          <div className="container px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
             <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
               <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
@@ -366,7 +366,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           </div>
 
-          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
             <Pricing data={pricingData || []} />
             <div className="text-center mt-4 flex justify-center">
               <Link href="/pricing" passHref>
@@ -377,7 +377,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               </Link>
             </div>
           </div>
-          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
             <div className="w-3/4 mx-auto">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
@@ -399,7 +399,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               />
             </div>
           </div>
-          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
                 <p>Get raving reviews from friends and family</p>
@@ -419,7 +419,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               }
             </div>
           </div>
-          <div className="container mx-auto px-4 ">
+          <div className="container mt-16 mx-auto px-4 ">
             <div className="w-3/4 mx-auto sm:mt-32 mb-6 sm:mb-12">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
@@ -459,7 +459,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           </div>
           {/* <div className="mt-12 bg-gray-100">
-            <div className="container mx-auto px-4 p-8">
+            <div className="container mt-16 mx-auto px-4 p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="px-4 lg:p-8">
                   <h2 className="font-bold text-2xl">
@@ -480,7 +480,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div> */}
 
           {/* Section Start */}
-          <div className="container grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto mt-16 lg:mt-32 my-12">
+          <div className="container mt-16 grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto mt-16 lg:mt-32 my-12">
             <div className="col-span-1 sm:col-span-3">
               {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
                 <Link href={data?.homepageV2?.hp1Link}>
@@ -522,7 +522,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               />
             </div>
           </div>
-          <div className="container px-4 mx-auto sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 px-4 mx-auto sm:mt-32 mb-6 sm:mb-12">
             <div className="mt-8 block lg:hidden">
               <HomeSectionTitle.MainTitle>
                 <p className="text-center">Get the Spacejoy advantage</p>
@@ -567,7 +567,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           </div>
           <div className="bg-gray-100">
-            <div className="container mx-auto px-4 py-16 sm:mt-32 mb-6 sm:mb-12">
+            <div className="container mt-16 mx-auto px-4 py-16 sm:mt-32 mb-6 sm:mb-12">
               <div className="lg:grid lg:grid-cols-4 lg:gap-12">
                 <div className="col-span-2">
                   <HomeSectionTitle className="text-center">
@@ -614,7 +614,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="container mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               {isMobile !== 'true' && (
