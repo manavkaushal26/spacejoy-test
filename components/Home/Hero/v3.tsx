@@ -17,7 +17,7 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1650949830/web/homepage-v3/Homepage_xwarfz.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1655292133/New_Website_Banner_-_2_wxbfpj.jpg',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1655098113/web/homev3/Get_summer_ready_-07_1_xffiqn.jpg',
@@ -93,7 +93,7 @@ const V3 = ({ isMobile }) => {
               return (
                 <div key={idx}>
                   <Image
-                    className="absolute inset-0 w-full h-full object-contain rounded-lg"
+                    className="absolute inset-0 w-full h-full object-cover rounded-xl"
                     src={bannerImage.src}
                     alt=""
                     height={660}
