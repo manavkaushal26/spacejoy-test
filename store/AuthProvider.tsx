@@ -84,9 +84,9 @@ const AuthProvider: React.FC = ({ children }) => {
 
           console.log(event);
 
-          if (event?.data?.data?.redirect !== 'reload') {
-            window && window?.location?.reload();
-          }
+          // if (event?.data?.data?.redirect !== 'reload') {
+          //   window && window?.location?.reload();
+          // }
           // const redirectPath = event?.data?.data?.redirect || '/';
           // router.replace(redirectPath);
         }
