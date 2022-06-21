@@ -7,32 +7,15 @@ import fetcher from '@utils/fetcher';
 import { bgImages } from '@utils/Mocks/topCollages';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
-const Index = ({ data, pricingData }) => {
+const Index = ({ data, pricingData, coupons = [] }) => {
   const [couponText, setCouponText] = useState('');
   const [couponLoader, setCouponLoader] = useState(false);
-
-  const [availableCoupons, setAvailableCoupons] = useState([]);
+  const [availableCoupons, setAvailableCoupons] = useState(coupons);
 
   // fetch coupons
-  useEffect(() => {
-    (async () => {
-      setCouponLoader(true);
-      try {
-        const { statusCode, data } = await fetcher({ endPoint: '/v1/subscriptionCartCoupons', method: 'GET' });
-        if (statusCode <= 301) {
-          setAvailableCoupons(data);
-        } else {
-          throw new Error();
-        }
-      } catch {
-      } finally {
-        setCouponLoader(false);
-      }
-    })();
-  }, []);
 
   const [cart, setCart] = useState({
     loading: false,
@@ -196,7 +179,7 @@ const Index = ({ data, pricingData }) => {
                       {loading ? <SVGLoader /> : <span>Submit</span>}
                     </button>
                   </div>
-                  {!couponLoader && availableCoupons && availableCoupons?.length === 0 ? (
+                  {availableCoupons && availableCoupons?.length ? (
                     <div className="mt-8">
                       <h3>Active Coupons</h3>
                       <ul>
@@ -205,12 +188,12 @@ const Index = ({ data, pricingData }) => {
                             <li key={item?._id} className="flex justify-between items-center mt-2">
                               <span className="px-4 py-2 rounded-lg bg-[#FFDFB9] flex items-center text-[#CC914C] capitalize border-dotted border-[#CC914C]">
                                 <TagIcon className="w-4 h-4 text text-[#CC914C]" />
-                                <span className="ml-2">{item?.name}</span>
+                                <span className="ml-2">{item?.code}</span>
                               </span>
                               <button
                                 className="border border-gray-900 font-bold text-sm px-4 py-2 rounded-lg cursor-pointer"
                                 onClick={() => {
-                                  applyCoupon(item?.name);
+                                  applyCoupon(item?.code);
                                 }}
                               >
                                 {loading ? <SVGLoader /> : <span>Apply Coupon</span>}
