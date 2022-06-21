@@ -71,7 +71,7 @@ const Index = ({ stepName, pricingData }): JSX.Element => {
       await fetcher({ endPoint: '/v1/subscriptionCarts', body: payload, method: 'POST' });
       router.push({ pathname: '/design-cart' });
     } else {
-      window.open(`${authUrl}/signup?redirect=/`, 'popup', 'width=1200,height=830');
+      window.open(`${authUrl}/signup?redirect=reload`, 'popup', 'width=1200,height=830');
     }
   };
 
