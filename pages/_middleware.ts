@@ -10,7 +10,7 @@ export function middleware(req: NextRequest) {
 
   const isMobile = Boolean(userAgent?.ua?.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
 
-  if (path === '/checkout/store' || path === '/wishlist') {
+  if (path === '/checkout/store' || path === '/wishlist' || path === '/design-cart') {
     if (basicAuth && basicAuth?.length) {
       return NextResponse.next().cookie('isMobile', isMobile.toString());
     }

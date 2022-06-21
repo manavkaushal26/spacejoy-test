@@ -297,7 +297,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   )}
                 </HomeSectionTitle>
                 {!isScreenMedium && (
-                  <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                  <Link href={`/quiz/start-quiz`} passHref>
                     <a rel="noopener noreferrer">
                       <button
                         type="button"

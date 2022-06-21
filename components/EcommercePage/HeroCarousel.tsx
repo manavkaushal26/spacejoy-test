@@ -1,9 +1,8 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import Carousel from '@components/Carousel';
-import { oldSpacejoyUrl } from '@utils/config';
 import { PushEvent } from '@utils/analyticsLogger';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const sliderSettings = {
   dots: true,
@@ -29,7 +28,7 @@ const data = [
       'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1655262996/web/furniture-decor-shop/V2/Get_summer_ready_-27_igtqpv.jpg',
     imgSrcDesk:
       'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1655262999/web/furniture-decor-shop/V2/Get_summer_ready_-26_bj1bqe.jpg',
-    href: `${oldSpacejoyUrl}/new-project`,
+    href: `/quiz/start-quiz`,
   },
   {
     id: 3,

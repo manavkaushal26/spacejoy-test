@@ -6,7 +6,7 @@ const PricingPageDescription = () => {
   return (
     <>
       <div className="m-4">
-        <Link href="https://spacejoy.com/new-project/bliss?quiz=start">
+        <Link href="/quiz/start-quiz">
           <a className=" relative aspect-[3.5]">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/v1630686591/Wait_a_moment_inject_banner-2_itfloy.jpg"

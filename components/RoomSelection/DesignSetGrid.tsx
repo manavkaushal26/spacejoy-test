@@ -123,7 +123,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                               : 'col-span-2 row-span-1 aspect-[16/14] lg:aspect-[16/10] xl:aspect-[16/8]'
                           }`}
                         >
-                          <Link href="https://designs.spacejoy.com/new-project">
+                          <Link href="/quiz/start-quiz">
                             <a target="_blank">
                               <div className="container rounded-lg w-full h-fit">
                                 {isMobile ? (

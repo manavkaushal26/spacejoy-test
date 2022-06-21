@@ -8,6 +8,7 @@ const topCollages = {
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/living-room_nj74mb.jpg',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
+      selected: false,
     },
     {
       _id: 2,
@@ -17,6 +18,7 @@ const topCollages = {
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/bedroom_u94fve.jpg',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
+      selected: false,
     },
     {
       _id: 4,
@@ -26,6 +28,7 @@ const topCollages = {
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/home-office_cohlao.jpg',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
+      selected: false,
     },
     {
       _id: 6,
@@ -35,6 +38,7 @@ const topCollages = {
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/dining-room_v808nc.jpg',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
+      selected: false,
     },
     {
       _id: 3,
@@ -44,6 +48,7 @@ const topCollages = {
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/entryway_uki5z7.jpg',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
+      selected: false,
     },
     {
       _id: 7,
@@ -53,6 +58,7 @@ const topCollages = {
       cdnThumbnail: 'w_444/v1648705428/spj-v2/room-types/cropped/kids_room_1_fw6ido.png',
       metaTitle: '2000+ 3D Renders',
       disabled: false,
+      selected: false,
     },
     // {
     //   _id: 5,
@@ -84,6 +90,15 @@ export const SlugToCategory = {
   'holiday-design-sets': 'holiday',
   'dining-room-design-sets': 'dining room',
   "kid's-room-design-sets": "kid's room",
+};
+
+export const bgImages = {
+  bed: 'v1623902156/spj-v2/room-types/cropped/bedroom_u94fve.jpg',
+  liv: 'v1623902156/spj-v2/room-types/cropped/living-room_nj74mb.jpg',
+  hom: 'v1623902156/spj-v2/room-types/cropped/home-office_cohlao.jpg',
+  din: 'v1623902156/spj-v2/room-types/cropped/dining-room_v808nc.jpg',
+  ent: 'v1623902156/spj-v2/room-types/cropped/entryway_uki5z7.jpg',
+  Kid: 'w_444/v1648705428/spj-v2/room-types/cropped/kids_room_1_fw6ido.png',
 };
 
 export default topCollages;

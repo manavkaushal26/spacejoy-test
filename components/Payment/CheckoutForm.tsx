@@ -24,6 +24,8 @@ const storeCheckout = '/v1/orders/store/checkout';
 
 const customPackageCheckout = '/v1/subscriptionOrders/checkout';
 
+const subscriptionCart = '/v1/subscriptionOrders/checkout';
+
 const partCheckout = (orderId) => `/v1/payments/${orderId}/checkout`;
 
 const style = {
@@ -56,6 +58,8 @@ const getEndPoint = (checkoutFlow, orderId) => {
       return partCheckout(orderId);
     case 'customPackage':
       return customPackageCheckout;
+    case 'subscriptionCart':
+      return subscriptionCart;
     default:
       return designCheckout;
   }
@@ -98,7 +102,7 @@ function CheckoutForm({
       }
     }
   }, [typeof window]);
-
+  console.log(process.env.NEXT_PUBLIC_NODE_ENV);
   const handlePay = async (token) => {
     setSubmitInProgress(true);
     const body = {
@@ -121,6 +125,12 @@ function CheckoutForm({
         token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
       },
       customPackage: {
+        token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
+        data: {
+          type: 'stripe',
+        },
+      },
+      subscriptionCart: {
         token: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? token : 'tok_br',
         data: {
           type: 'stripe',
@@ -179,11 +189,14 @@ function CheckoutForm({
       setSubmitInProgress(false);
       cb(false);
       PushEvent({
-        category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
+        category:
+          checkoutFlow === 'store' || checkoutFlow === 'subscriptionCart' ? `${checkoutFlow} Checkout` : 'Checkout',
         action: `Failed Paid Order For - ${checkoutFlow === 'store' ? cartData?.invoiceData?.total : plan}`,
         label: `Place your order | message: ${response.message}`,
       });
-      setPaymentError(checkoutFlow === 'store' ? response.data.message : response.message);
+      setPaymentError(
+        checkoutFlow === 'store' || checkoutFlow === 'subscriptionCart' ? response.data.message : response.message
+      );
     }
   };
 

@@ -1,6 +1,4 @@
 import { PricingData } from '@components/Pricing/PricingTypes';
-import { oldSpacejoyUrl } from '@utils/config';
-import Cookies from 'js-cookie';
 import Link from 'next/link';
 import React from 'react';
 
@@ -9,12 +7,9 @@ interface PricingCardInterface {
 }
 const recommendedPackageName = 'bliss';
 
-
 const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
-
-
   return (
-    <div className=' overflow-hidden relative'>
+    <div className=" overflow-hidden relative">
       {pricingItem?.name === recommendedPackageName && (
         <div className="bg-white px-4 absolute -right-14 top-12 w-52 text-sm text-center text-[#F5296E] rotate-45">
           <div className=" uppercase">Recommended</div>
@@ -40,13 +35,10 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
             <span className="text-xl font-medium text-gray-500">/room</span>
           </p>
           <p className="mt-4 text-sm text-gray-500">Additional offers available at checkout</p>
-          <Link href={`${oldSpacejoyUrl}/new-project/delight?quiz=start`}>
-          <a
-            
-            className="mt-8 block w-full bg-gray-900 border border-gray-800 rounded-lg py-4 text-sm text-white text-center hover:bg-gray-900 capitalize"
-          >
-            Buy {pricingItem?.name}
-          </a>
+          <Link href={`/quiz/start-quiz`}>
+            <a className="mt-8 block w-full bg-gray-900 border border-gray-800 rounded-lg py-4 text-sm text-white text-center hover:bg-gray-900 capitalize">
+              Buy {pricingItem?.name}
+            </a>
           </Link>
         </div>
         <div className="pt-6 pb-8 px-6">

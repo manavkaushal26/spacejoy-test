@@ -59,7 +59,7 @@ const V3 = ({ isMobile }) => {
             </p>
             <div className="mt-10 ">
               <div className="rounded-md shadow">
-                <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                <Link href={`/quiz/start-quiz`} passHref>
                   <a
                     href="#"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10"
@@ -151,7 +151,7 @@ const V3 = ({ isMobile }) => {
           </div>
           <div className="mt-10 px-4">
             <div className="rounded-md shadow">
-              <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+              <Link href={`/quiz/start-quiz`} passHref>
                 <a
                   href="#"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10"

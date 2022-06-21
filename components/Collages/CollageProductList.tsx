@@ -32,7 +32,7 @@ const CollageProductList: React.FC<{
                   <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1646728697/web/homepage-v3/Card_yu5azf.svg" />
                 )}
                 {showAppointmentCard && idx === 2 && (
-                  <Link href="https://designs.spacejoy.com/new-project">
+                  <Link href="/quiz/start-quiz">
                     <a target="_blank">
                       <div className="container rounded-lg w-full h-full relative">
                         {isMobile ? (

@@ -1,6 +1,4 @@
-import CustomerStories from '@components/EngagementBlocks/CustomerStories';
 import CustomerStoriesCarousel from '@components/EngagementBlocks/CustomerStoriesCarousel';
-import EditorPick from '@components/EngagementBlocks/EditorPick';
 import EditorPicksCarousel from '@components/EngagementBlocks/EditorPicksCarousel';
 import { EngagementBlockInterface } from '@components/EngagementBlocks/EngagementBlockInterface';
 import SimilarPicksCarousel from '@components/EngagementBlocks/SimilarPicksCarousel';
@@ -8,15 +6,13 @@ import { getEngagementsBlocks } from '@components/EngagementBlocks/Utils';
 import Breadcrumb from '@components/InteriorDesigns/Breadcrumb';
 import ImageGrid from '@components/InteriorDesigns/ImageGrid';
 import TestimonialsMini from '@components/InteriorDesigns/TestimonialsMini';
-import { AssetInterface, DesignViewInterface } from '@components/InteriorDesigns/types';
-import DesignerCard from '@components/Shared/DesignerCard';
+import { AssetInterface } from '@components/InteriorDesigns/types';
 import SocialLinks from '@components/Shared/Footer/SocialLinks';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import ProductCard from '@components/Shop/ProductCard';
 import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
 import useBoolean from '@hooks/useBoolean';
-import { oldSpacejoyUrl } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -74,7 +70,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
             <div className="flex justify-center space-x-5 sm:space-x-10 content-center">
               <SocialLinks />
               <div className="rounded-md shadow">
-                <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                <Link href={`/quiz/start-quiz`} passHref>
                   <a className="w-full flex items-center justify-center px-4 sm:px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10 text-center">
                     Start Your Project
                   </a>
@@ -118,7 +114,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                     <div className=" bg-white flex flex-col p-5 space-y-5 rounded-lg">
                       <h3 className=" text-xl capitalize">Unlock The Best Version Of Your {design.room.roomType}</h3>
                       <div className="rounded-md shadow">
-                        <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+                        <Link href={`/quiz/start-quiz`} passHref>
                           <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10">
                             Start Your Project
                           </a>

@@ -2,6 +2,7 @@ import { page } from '@utils/config';
 import fetch from 'isomorphic-unfetch';
 import Cookies from 'js-cookie';
 import { GetServerSidePropsContext, NextPageContext } from 'next';
+import { reactLocalStorage } from './localstorage';
 
 interface FetcherArgs {
   endPoint: string;
@@ -23,7 +24,8 @@ const fetcher = async ({
   hasBaseUrl = false,
   serverToken = '',
 }: FetcherArgs): Promise<Record<string, any>> => {
-  const JWT = serverToken || Cookies.get('token');
+  const session = await reactLocalStorage.getObject('session', {});
+  const JWT = serverToken || Cookies.get('token') || session?.token;
 
   const contentType = type === 'file' ? '' : 'application/json';
 

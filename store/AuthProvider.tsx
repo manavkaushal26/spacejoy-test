@@ -1,4 +1,5 @@
 import { authUrl } from '@utils/config';
+import { trigger } from '@utils/events';
 import fetcher from '@utils/fetcher';
 import { reactLocalStorage } from '@utils/helpers';
 import useLocalStorage from '@utils/hooks/useLocalStorage';
@@ -7,7 +8,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 const AuthContext = React.createContext({
   session: {
-    user: { name: '', email: '', id: '',role:'' },
+    user: { name: '', email: '', id: '', role: '' },
     token: '',
   },
   loading: true,
@@ -41,6 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     fetchUser();
   }, []);
+
   const saveGuestCart = async () => {
     const userCart = await reactLocalStorage.getObject('userCart');
     const { cartItems = {} } = userCart;
@@ -71,20 +73,22 @@ const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     // listen to crossDocument message from an iframe
     //listen to message event
+
     const handleMessage = async (event) => {
       if (event.origin === authUrl) {
         if (event.data.type === 'SIGN_IN_SUCCESS') {
           await fetchUser();
           await saveGuestCart();
           reactLocalStorage.setObject('userCart', {});
-
-          window && window.location.reload();
+          trigger('login:success', {});
+          // window && window.location.reload();
 
           // const redirectPath = event?.data?.data?.redirect || '/';
           // router.replace(redirectPath);
         }
       }
     };
+
     window.addEventListener('message', handleMessage, false);
 
     return () => {

@@ -15,7 +15,7 @@ const PreFooter: React.FC = () => {
           <button
             type="button"
             className="px-12 py-3 text-base text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-            onClick={() => (location.href = '/new-project')}
+            onClick={() => (location.href = '/quiz/start-quiz')}
           >
             Start Your Project <ArrowNarrowRightIcon className="inline w-4 h-4 transition group-hover:translate-x-1" />
           </button>

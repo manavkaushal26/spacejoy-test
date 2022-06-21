@@ -5,7 +5,6 @@ import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/o
 import { useStore } from '@lib/store';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { oldSpacejoyUrl } from '@utils/config';
 import { classNames, convertFilterToUrlPath } from '@utils/helpers';
 import { secondaryHeaderLocations } from '@utils/Mocks/HeaderLocations';
 import { menuData, navDataCategories } from '@utils/Mocks/MobileSidebar';
@@ -283,7 +282,7 @@ const HeaderDesktop: React.FC = () => {
                   ) : null}
                 </a>
               </Link>
-              <Link href={`${oldSpacejoyUrl}/new-project`}>
+              <Link href={`/quiz/start-quiz`}>
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap">
                   Start Your Project
                 </a>

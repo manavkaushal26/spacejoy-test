@@ -2216,7 +2216,7 @@ export const splitCategories = [
 export const hireADesignerCat = [
   {
     name: 'Get Started',
-    url: `${oldSpacejoyUrl}/new-project`,
+    url: `/quiz/start-quiz`,
   },
   {
     name: 'How It Works',
@@ -2253,5 +2253,4 @@ export const exploreIdeasCat = [
     name: 'Customer Stories & Reviews',
     url: `/customer-stories`,
   },
-  
 ];
