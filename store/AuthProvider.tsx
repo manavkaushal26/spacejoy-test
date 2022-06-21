@@ -80,8 +80,9 @@ const AuthProvider: React.FC = ({ children }) => {
           await fetchUser();
           await saveGuestCart();
           reactLocalStorage.setObject('userCart', {});
-          trigger('login:success', {});
+
           window && window.location.reload();
+          trigger('login:success', {});
 
           // const redirectPath = event?.data?.data?.redirect || '/';
           // router.replace(redirectPath);
