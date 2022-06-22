@@ -28,14 +28,15 @@ const Index = ({ data, pricingData }) => {
     };
 
     fetchData()
-      .then((data) => {
-        const formatted = data?.map((item) => {
-          if (cart?.invoiceData?.discount?.coupons?.filter((coupon) => coupon?._id === item?._id)?.length) {
+      .then((cData) => {
+        const formatted = cData?.map((item) => {
+          if (data?.invoiceData?.discount?.coupons?.filter((coupon) => coupon?._id === item?._id)?.length) {
             return { ...item, isApplied: true };
           }
 
           return { ...item, isApplied: false };
         });
+        console.log('formatted', formatted);
         setAvailableCoupons(formatted);
       })
       .catch((e) => {});
