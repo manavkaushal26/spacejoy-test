@@ -254,10 +254,13 @@ const Index = ({ data, pricingData }) => {
               </div>
             </>
           </div>
-          <div className="mt-8 justify-between flex px-4">
-            <span className="font-bold text-gray-900">You save:</span>
-            <span className="font-bold text-gray-900">-${cart?.invoiceData?.discount?.total}</span>
-          </div>
+          {cart?.invoiceData?.discount?.total ? (
+            <div className="mt-8 justify-between flex px-4">
+              <span className="font-bold text-gray-900">You save:</span>
+              <span className="font-bold text-gray-900">-${cart?.invoiceData?.discount?.total}</span>
+            </div>
+          ) : null}
+
           <div className="mt-4 justify-between flex px-4">
             <span className="font-bold text-gray-900">Total:</span>
             <span className="font-bold text-gray-900">${finalTotal}</span>
