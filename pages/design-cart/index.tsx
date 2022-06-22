@@ -9,7 +9,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 
-const Index = ({ cartData, pricingData, coupons }): JSX.Element => {
+const Index = ({ cartData, pricingData }): JSX.Element => {
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ const Index = ({ cartData, pricingData, coupons }): JSX.Element => {
         <Layout.Header />
         <Layout.Body>
           <div className="container p-4 mx-auto">
-            <DesignCart data={cartData} pricingData={pricingData} coupons={coupons} />
+            <DesignCart data={cartData} pricingData={pricingData} />
           </div>
           <footer className="flex sticky bottom-0 justify-end container p-4 mx-auto bg-white">
             <Link href="/checkout/design" passHref>
@@ -48,10 +48,10 @@ export const getServerSideProps = async (ctx) => {
     return await Promise.all([
       fetcher({ endPoint: publicRoutes.pricingRoute, method: 'GET' }),
       fetcher({ endPoint, method: 'GET', serverToken: userToken }),
-      fetcher({ endPoint: '/coupon/listings', method: 'GET' }),
+      // fetcher({ endPoint: '/coupon/listings', method: 'GET' }),
     ])
       .then((data) => {
-        const [pricingData, cartData, couponData] = data;
+        const [pricingData, cartData] = data;
 
         const pricing: PricingData[] = pricingData?.data?.list.map((item) => {
           return {
@@ -71,7 +71,7 @@ export const getServerSideProps = async (ctx) => {
           props: {
             pricingData: pricing,
             cartData: cartData?.data,
-            coupons: couponData?.data,
+            // coupons: couponData?.data,
           },
         };
       })

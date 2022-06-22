@@ -1,27 +1,62 @@
 import PricingModal from '@components/Shared/PricingModal';
 import SVGLoader from '@components/Shared/SVGLoader';
-import { TagIcon, XCircleIcon } from '@heroicons/react/outline';
+import { TagIcon } from '@heroicons/react/outline';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { bgImages } from '@utils/Mocks/topCollages';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const Index = ({ data, pricingData, coupons = [] }) => {
+const Index = ({ data, pricingData }) => {
   const [couponText, setCouponText] = useState('');
   const [couponLoader, setCouponLoader] = useState(false);
-  const [availableCoupons, setAvailableCoupons] = useState(coupons);
+  const [availableCoupons, setAvailableCoupons] = useState([]);
+  const [giftCardCode, setGiftCardCode] = useState('');
 
   // fetch coupons
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, statusCode } = await fetcher({ endPoint: '/coupon/listings', method: 'GET' });
+      if (statusCode < 301) {
+        return data;
+      } else {
+        throw new Error();
+      }
+    };
+
+    fetchData()
+      .then((data) => {
+        const formatted = data?.map((item) => {
+          if (cart?.invoiceData?.discount?.coupons?.filter((coupon) => coupon?._id === item?._id)?.length) {
+            return { ...item, isApplied: true };
+          }
+
+          return { ...item, isApplied: false };
+        });
+        setAvailableCoupons(formatted);
+      })
+      .catch((e) => {});
+  }, []);
 
   const [cart, setCart] = useState({
     loading: false,
     cartItems: [],
     invoiceData: { discount: { coupons: [], total: 0 }, total: 0 },
   });
+
+  useEffect(() => {
+    const formatted = availableCoupons?.map((item) => {
+      if (cart?.invoiceData?.discount?.coupons?.filter((coupon) => coupon?._id === item?._id)?.length) {
+        return { ...item, isApplied: true };
+      }
+
+      return { ...item, isApplied: false };
+    });
+    setAvailableCoupons(formatted);
+  }, [cart]);
 
   const removeCoupon = async (couponId) => {
     setCouponLoader(true);
@@ -40,12 +75,12 @@ const Index = ({ data, pricingData, coupons = [] }) => {
   }, [data]);
   const { cartItems = [], invoiceData: { total: finalTotal = 0, discount } = {}, loading = false } = cart;
 
-  const applyCoupon = async (couponCode) => {
+  const applyCoupon = async (couponCode, type) => {
     setCart({ ...cart, loading: true });
     const endPoint = '/v1/subscriptionCartCoupons';
     const payload = {
       coupon: couponCode,
-      isGiftCard: false,
+      isGiftCard: type === 'giftCard',
     };
     try {
       const { data, statusCode } = await fetcher({ endPoint, method: 'POST', body: payload });
@@ -61,6 +96,12 @@ const Index = ({ data, pricingData, coupons = [] }) => {
     } catch {
       setCart({ ...cart, loading: false });
       toast.error('Error while applying coupon');
+    } finally {
+      if (type === 'giftCard') {
+        setGiftCardCode('');
+      } else {
+        setCouponText('');
+      }
     }
   };
 
@@ -131,84 +172,93 @@ const Index = ({ data, pricingData, coupons = [] }) => {
             );
           })}
           <div className="mt-8 p-8 bg-gray-100 rounded-lg">
-            {discount?.coupons?.length ? (
-              <div className="px-2">
-                <p className="text-md text-gray-900 flex justify-between font-bold">
-                  <span>You saved</span>
-                  <span>${discount?.total}</span>
-                </p>
-                <div className="mt-4">
-                  {discount?.coupons?.map((item) => {
-                    return (
-                      <div className="flex justify-between text-sm" key={item?._id}>
-                        <p className="flex items-center">
-                          {item?.code}
-                          {couponLoader ? (
-                            <SVGLoader />
-                          ) : (
-                            <XCircleIcon
-                              className="h-4 w-4 text-gray-500 ml-2 cursor-pointer"
-                              onClick={() => removeCoupon(item?._id)}
-                            />
-                          )}
-                        </p>
-                        <span>-$ {item?.discount}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ) : (
-              <>
-                <div>
-                  <p>Do you have a coupon code?</p>
-                  <div className="grid grid-cols-3 gap-8 mt-4">
-                    <input
-                      type="text"
-                      className="col-span-2 border border-gray-900 rounded-md text-sm"
-                      placeholder="Enter Coupon Code"
-                      value={couponText}
-                      onChange={(e) => setCouponText(e?.target?.value)}
-                    />
-                    <button
-                      className={`bg-gray-900 text-white capitalize rounded-md ${
-                        !couponText ? 'pointer-events-none	bg-gray-300' : 'pointer-events-auto	'
-                      }`}
-                      onClick={() => applyCoupon(couponText)}
-                    >
-                      {loading ? <SVGLoader /> : <span>Submit</span>}
-                    </button>
+            <>
+              <div>
+                <div className="border-dashed border-b border-gray-900 pb-8">
+                  <div>
+                    <p>Do you have a coupon code?</p>
+                    <div className="grid grid-cols-3 gap-8 mt-4">
+                      <input
+                        type="text"
+                        className="col-span-2 border border-gray-900 rounded-md text-sm"
+                        placeholder="Enter Coupon Code"
+                        value={couponText}
+                        onChange={(e) => setCouponText(e?.target?.value)}
+                      />
+                      <button
+                        className={`bg-gray-900 text-white capitalize rounded-md ${
+                          !couponText ? 'pointer-events-none	bg-gray-300' : 'pointer-events-auto	'
+                        }`}
+                        onClick={() => applyCoupon(couponText, 'coupon')}
+                      >
+                        {loading ? <SVGLoader /> : <span>Submit</span>}
+                      </button>
+                    </div>
                   </div>
-                  {availableCoupons && availableCoupons?.length ? (
-                    <div className="mt-8">
-                      <h3>Active Coupons</h3>
-                      <ul>
-                        {availableCoupons?.map((item) => {
-                          return (
-                            <li key={item?._id} className="flex justify-between items-center mt-2">
-                              <span className="px-4 py-2 rounded-lg bg-[#FFDFB9] flex items-center text-[#CC914C] capitalize border-dotted border-[#CC914C]">
+                  <div className="mt-4">
+                    <p>Enter your gift card code below</p>
+                    <div className="grid grid-cols-3 gap-8 mt-2">
+                      <input
+                        type="text"
+                        className="col-span-2 border border-gray-900 rounded-md text-sm"
+                        placeholder="Enter Coupon Code"
+                        value={giftCardCode}
+                        onChange={(e) => setGiftCardCode(e?.target?.value)}
+                      />
+                      <button
+                        className={`bg-gray-900 text-white capitalize rounded-md ${
+                          !giftCardCode ? 'pointer-events-none	bg-gray-300' : 'pointer-events-auto	'
+                        }`}
+                        onClick={() => applyCoupon(giftCardCode, 'giftCard')}
+                      >
+                        {loading ? <SVGLoader /> : <span>Submit</span>}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {availableCoupons && availableCoupons?.length ? (
+                  <div className="mt-8">
+                    <h3>Active Coupons</h3>
+                    <ul>
+                      {availableCoupons?.map((item) => {
+                        return (
+                          <li key={item?._id} className="mt-4">
+                            <div className="flex justify-between items-center">
+                              <span className="px-4 py-2 rounded-lg bg-[#FFDFB9] flex items-center text-[#CC914C] capitalize border-dotted border-2 border-[#CC914C]">
                                 <TagIcon className="w-4 h-4 text text-[#CC914C]" />
-                                <span className="ml-2">{item?.code}</span>
+                                <span className="ml-2">
+                                  {item?.code} {item?.isApplied && '  Applied!'}
+                                </span>
                               </span>
                               <button
                                 className="border border-gray-900 font-bold text-sm px-4 py-2 rounded-lg cursor-pointer"
                                 onClick={() => {
-                                  applyCoupon(item?.code);
+                                  item?.isApplied ? removeCoupon(item?._id) : applyCoupon(item?.code, 'coupon');
                                 }}
                               >
-                                {loading ? <SVGLoader /> : <span>Apply Coupon</span>}
+                                {loading || couponLoader ? (
+                                  <SVGLoader />
+                                ) : (
+                                  <span>{item?.isApplied ? 'Remove Coupon' : 'Apply Coupon'}</span>
+                                )}
                               </button>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
-              </>
-            )}
+                            </div>
+                            <p className="mt-2">{item?.title}</p>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            </>
           </div>
           <div className="mt-8 justify-between flex px-4">
+            <span className="font-bold text-gray-900">You save:</span>
+            <span className="font-bold text-gray-900">-${cart?.invoiceData?.discount?.total}</span>
+          </div>
+          <div className="mt-4 justify-between flex px-4">
             <span className="font-bold text-gray-900">Total:</span>
             <span className="font-bold text-gray-900">${finalTotal}</span>
           </div>
