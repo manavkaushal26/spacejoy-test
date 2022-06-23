@@ -202,7 +202,7 @@ const Index = ({ data, pricingData }) => {
                       <input
                         type="text"
                         className="col-span-2 border border-gray-900 rounded-md text-sm"
-                        placeholder="Enter Coupon Code"
+                        placeholder="Enter Gift Card Code"
                         value={giftCardCode}
                         onChange={(e) => setGiftCardCode(e?.target?.value)}
                       />
