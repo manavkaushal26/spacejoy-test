@@ -52,7 +52,7 @@ export const getServerSideProps = async (ctx) => {
     ])
       .then((data) => {
         const [pricingData, cartData] = data;
-
+        
         const pricing: PricingData[] = pricingData?.data?.list.map((item) => {
           return {
             features: item?.includedFeatures,
@@ -66,16 +66,22 @@ export const getServerSideProps = async (ctx) => {
             slug: item?.slug,
           };
         });
-
-        return {
-          props: {
-            pricingData: pricing,
-            cartData: cartData?.data,
-            // coupons: couponData?.data,
-          },
-        };
+        if (cartData?.statusCode < 301 && pricingData?.statusCode < 301) {
+          return {
+            props: {
+              pricingData: pricing,
+              cartData: cartData?.data,
+              // coupons: couponData?.data,
+            },
+          };
+        }
+        else {
+          throw new Error();
+        }
+        
       })
       .catch((e) => {
+        
         throw new Error();
       });
   } catch (e) {
