@@ -204,14 +204,6 @@ const Index = ({ stepName, pricingData }): JSX.Element => {
     </>
   );
 };
-export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = ['start-quiz', 'room-select', 'select-package'];
-  const paths = slugs.map((slug) => ({
-    params: { stepNumber: slug },
-  }));
-
-  return { paths, fallback: true };
-};
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const res = await fetcher({ endPoint: publicRoutes.pricingRoute, method: 'GET' });
