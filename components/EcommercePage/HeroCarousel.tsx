@@ -25,9 +25,9 @@ const data = [
   {
     id: 2,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1656319143/web/furniture-decor-shop/V2/July_4th_sale-15_sfwmhm.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/v1656590174/web/July_4th_Flash_sale-19_zh3lqi.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656319140/web/furniture-decor-shop/V2/July_4th_sale-14_pxxi5t.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/v1656590174/web/July_4th_Flash_sale-18_qulfnh.jpg',
     href: `/quiz/start-quiz`,
   },
   {
