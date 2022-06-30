@@ -14,7 +14,7 @@ import fetcher from '@utils/fetcher';
 import { IndexPageMeta } from '@utils/meta';
 import quizQuestions from '@utils/Mocks/quizQuestions';
 import Cookies from 'js-cookie';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
@@ -213,7 +213,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const res = await fetcher({ endPoint: publicRoutes.pricingRoute, method: 'GET' });
   const {
     data: { list = [] },
