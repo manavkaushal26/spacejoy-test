@@ -156,8 +156,9 @@ const Index = ({ data, pricingData }) => {
                   </div>
 
                   <div className="relative w-20 h-20">
+                    
                     <Image
-                      src={`${cloudinary.baseDeliveryURL}/${bgImages[item.name.substr(0, 3)?.toLowerCase()]}`}
+                      src={`${cloudinary.baseDeliveryURL}/${bgImages[item?.name?.substr(0, 3)?.toLowerCase()]}`}
                       alt={item?.name}
                       placeholder="blur"
                       blurDataURL={blurredBgImage}
