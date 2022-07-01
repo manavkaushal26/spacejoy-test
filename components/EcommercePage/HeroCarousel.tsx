@@ -17,17 +17,17 @@ const data = [
   {
     id: 1,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1656319061/web/furniture-decor-shop/V2/July_4th_sale-04_iltxyp.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1656665663/web/furniture-decor-shop/V2/July_4th_sale-34_oaux2c.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656319059/web/furniture-decor-shop/V2/July_4th_sale-03_nj9qpm.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656665658/web/furniture-decor-shop/V2/July_4th_sale-33_lrrtq3.jpg',
     href: '/shop',
   },
   {
     id: 2,
     imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1656590174/web/July_4th_Flash_sale-19_zh3lqi.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1656665838/web/furniture-decor-shop/V2/July_4th_sale-35_q1i9bd.jpg',
     imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1656590174/web/July_4th_Flash_sale-18_qulfnh.jpg',
+      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656665841/web/furniture-decor-shop/V2/July_4th_sale-36_nfjyua.jpg',
     href: `/quiz/start-quiz`,
   },
   {

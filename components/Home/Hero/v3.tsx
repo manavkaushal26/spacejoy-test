@@ -20,10 +20,10 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1655292133/New_Website_Banner_-_2_wxbfpj.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656590286/web/July_4th_sale-23_taomhz.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656665418/web/homev3/July_4th_sale-37_lhdtav.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656317406/web/homev3/July_4th_sale-07_ajkcze.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656665420/web/homev3/July_4th_sale-38_srdaku.jpg',
   },
 ];
 
