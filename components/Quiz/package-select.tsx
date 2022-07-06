@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 import shallow from 'zustand/shallow';
+import { PushEvent } from '@utils/analyticsLogger';
+import { useSession } from '@store/AuthProvider';
 
 const Index = ({ data }) => {
   const { addPackageToRoom, userRoomSelection } = useStore(
@@ -21,6 +23,7 @@ const Index = ({ data }) => {
     addPackageToRoom(router?.query?.roomId || '', item);
     router?.push('/quiz/order-summary');
   };
+  const { session } = useSession();
 
   return (
     <>
@@ -70,6 +73,11 @@ const Index = ({ data }) => {
                   className="bg-gray-900 text-white w-56 py-4 px-4 rounded-xl text-lg font-semibold"
                   onClick={() => {
                     onPackageSelect(item);
+                    PushEvent({
+                      category: 'Quiz',
+                      label: `Package Selected ${item?.name} | ${session?.user ? session?.user?.email : 'Guest'}`,
+                      action: 'Go to Next quiz from package select to room summary'
+                    });
                   }}
                 >
                   Select Package
@@ -80,6 +88,7 @@ const Index = ({ data }) => {
                     selectBtn
                     onCloseCb={onPackageSelect}
                     btnName={'View Package Details'}
+                    session={session}
                   />
                 </div>
               </div>

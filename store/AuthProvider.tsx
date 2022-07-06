@@ -113,6 +113,7 @@ const AuthProvider: React.FC = ({ children }) => {
     });
     if (response.ok) {
       setSession({});
+      await reactLocalStorage.setObject('session', {});
       Cookie.remove('token');
       window.location.reload();
     }

@@ -1,8 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
 import { Fragment, useState } from 'react';
+import { PushEvent } from '@utils/analyticsLogger';
 
-export default function MyModal({ pricingData, selectBtn, btnName = '', onCloseCb = (item: any) => {} }) {
+export default function MyModal({ session ,pricingData, selectBtn, btnName = '', onCloseCb = (item: any) => {} }) {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -89,6 +90,11 @@ export default function MyModal({ pricingData, selectBtn, btnName = '', onCloseC
                                   onClick={() => {
                                     onCloseCb(item);
                                     closeModal();
+                                    PushEvent({
+                                      category: 'Quiz',
+                                      label: `Package Selected ${item?.name} | ${session?.user ? session?.user?.email : 'Guest'}`,
+                                      action: 'Go to Next quiz from package select to room summary'
+                                    });
                                   }}
                                 >
                                   Select <span className="capitalize">{item?.name}</span>

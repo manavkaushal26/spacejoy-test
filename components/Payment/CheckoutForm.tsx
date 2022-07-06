@@ -102,7 +102,7 @@ function CheckoutForm({
       }
     }
   }, [typeof window]);
-  console.log(process.env.NEXT_PUBLIC_NODE_ENV);
+  
   const handlePay = async (token) => {
     setSubmitInProgress(true);
     const body = {
@@ -173,7 +173,7 @@ function CheckoutForm({
         });
       }
       PushEvent({
-        category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',
+        category: checkoutFlow === 'store' || checkoutFlow === 'subscriptionCart' ? `${checkoutFlow} Checkout` : 'Checkout',
         action: `Place ${token ? 'Paid' : 'Free'} Order For - ${
           checkoutFlow === 'store' ? cartData?.invoiceData?.total : plan
         }`,

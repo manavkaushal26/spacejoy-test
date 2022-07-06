@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const Index = ({ data, pricingData }) => {
   const [couponText, setCouponText] = useState('');
@@ -65,6 +66,11 @@ const Index = ({ data, pricingData }) => {
     const { data, statusCode } = await fetcher({ endPoint, method: 'DELETE' });
     if (statusCode < 301) {
       setCart(data);
+      PushEvent({
+        category: 'Quiz',
+        action: `Remove Coupon ${couponId}`,
+        label: 'Remove Coupon',
+      })
     } else {
       toast.error('Error while removing coupon');
     }
@@ -91,6 +97,11 @@ const Index = ({ data, pricingData }) => {
           loading: false,
         });
         toast.success('Yay! Coupon applied successfully');
+        PushEvent({
+          category: 'Quiz',
+          action: `Apply ${type} - ${couponCode}`,
+          label: `Apply ${type}` 
+        })
       } else {
         throw new Error();
       }
@@ -149,10 +160,10 @@ const Index = ({ data, pricingData }) => {
                 <div className="ml-auto flex items-center ">
                   {/* <div className="mr-4 text-sm text-[#EE2F70] font-bold">View Package</div> */}
                   <div className="text-sm mr-4 text-[#EE2F70] hidden md:block">
-                    <PricingModal btnName={'View Package'} selectBtn={false} pricingData={pricingData} />
+                    <PricingModal btnName={'View Package'} selectBtn={false} pricingData={pricingData} session={{}}/>
                   </div>
                   <div className="text-sm mr-4 text-[#EE2F70] md:hidden block">
-                    <PricingModal btnName={'View'} selectBtn={false} pricingData={pricingData} />
+                    <PricingModal btnName={'View'} selectBtn={false} pricingData={pricingData}  session={{}}/>
                   </div>
 
                   <div className="relative w-20 h-20">
@@ -191,7 +202,7 @@ const Index = ({ data, pricingData }) => {
                         className={`bg-gray-900 text-white capitalize rounded-md ${
                           !couponText ? 'pointer-events-none	bg-gray-300' : 'pointer-events-auto	'
                         }`}
-                        onClick={() => applyCoupon(couponText, 'coupon')}
+                        onClick={() => {applyCoupon(couponText, 'coupon');  PushEvent({category: 'Quiz', action: `coupon clicked ${couponText}`, label: 'Apply coupon'})}}
                       >
                         {loading ? <SVGLoader /> : <span>Submit</span>}
                       </button>

@@ -10,6 +10,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import shallow from 'zustand/shallow';
+import { useSession } from '@store/AuthProvider';
+import { PushEvent } from '@utils/analyticsLogger';
+
 
 const Index = () => {
   const { userRoomSelection, deleteRoom, getUserSelectionData } = useStore(
@@ -29,6 +32,7 @@ const Index = () => {
     await fetcher({ endPoint: '/v1/subscriptionCarts', body: payload, method: 'POST' });
     router.push({ pathname: '/design-cart' });
   };
+
 
   return (
     <>
@@ -142,7 +146,7 @@ const Index = () => {
 
           <div className="mt-8">
             <Link href="/quiz/room-select" passHref>
-              <button className="bg-gray-300 text-gray-900 flex items-center justify center rounded-lg px-12 py-6 text-xl w-full lg:w-auto">
+              <button onClick={() => PushEvent({category: 'Quiz', label: 'Add Another Room', action: 'Go from order summary to room select room'})} className="bg-gray-300 text-gray-900 flex items-center justify center rounded-lg px-12 py-6 text-xl w-full lg:w-auto" >
                 <PlusIcon className="h-4 w-4" />
                 <span className="ml-2">Add another room</span>
               </button>

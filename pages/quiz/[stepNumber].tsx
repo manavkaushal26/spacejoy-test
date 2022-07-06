@@ -19,6 +19,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import shallow from 'zustand/shallow';
+import { PushEvent } from '@utils/analyticsLogger';
 
 const steps = ['start-quiz', 'room-select', 'select-package', 'order-summary', 'questions'];
 
@@ -152,6 +153,11 @@ const Index = ({ stepName, pricingData }): JSX.Element => {
               <button
                 className="flex items-center mr-auto text-lg md:text-2xl"
                 onClick={() => {
+                  PushEvent({
+                    category: 'Quiz',
+                    action: `Go Back from ${stepName}`,
+                    label: "Go back"
+                  })
                   router?.back();
                 }}
               >
@@ -164,9 +170,17 @@ const Index = ({ stepName, pricingData }): JSX.Element => {
               <button
                 className="py-3 px-5 rounded-md text-white bg-gray-900 ml-auto text-lg md:text-2xl"
                 onClick={async () => {
-                  if (stepName === 'room-select') {
+                  if (stepName === 'start-quiz') {
+                    PushEvent({
+                      category: 'Quiz',
+                      action: 'Quiz Begin - V2',
+                      label: "Add room"
+                    })
+                  }
+                  else if (stepName === 'room-select') {
                     // create room and go to package selection
-                    createRoom();
+                    await createRoom();
+                    // get room without package
                     router?.push({ pathname: '/quiz/select-package' });
                   } else if (stepName === 'questions') {
                     const maxQuizStep = Math.max.apply(
