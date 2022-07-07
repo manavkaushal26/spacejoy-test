@@ -115,7 +115,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
 
                   return (
                     <>
-                      {index == 5 && (
+                      {/* {index == 5 && (
                         <div
                           className={`relative rounded-xl ${
                             large
@@ -151,7 +151,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                             </a>
                           </Link>
                         </div>
-                      )}
+                      )} */}
                       {index == 10 && (
                         <div
                           className={`relative rounded-xl ${

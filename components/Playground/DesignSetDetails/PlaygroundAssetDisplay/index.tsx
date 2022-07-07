@@ -9,23 +9,25 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
 
   return (
     <div className="overflow-hidden bode">
-      
       <div className="px-0 lg:px-8 overflow-hidden bg-gray-100 sm:border-2 border-gray-300 divide-y rounded-b-xl">
-      {mainCategories.slice(0, 1).map(({ id }) => {
-        const groupData = groupedData?.[id];
+        {mainCategories.slice(0, 1).map(({ id }) => {
+          const groupData = groupedData?.[id];
 
-        return (
-          groupData && groupData?.price && (
-            <div key={id} className="col-span-12 ">
-              <div className="flex justify-around sm:justify-between my-4 py-4 bg-gray-300 rounded-md sm:bg-inherit sm:rounded-none  sm:my-0 sm:py-8">
+          return (
+            groupData &&
+            groupData?.price && (
+              <div key={id} className="col-span-12 ">
+                <div className="flex justify-around sm:justify-between my-4 py-4 bg-gray-300 rounded-md sm:bg-inherit sm:rounded-none  sm:my-0 sm:py-8">
                   <h3 className="text-xl sm:text-2xl font-bold">Furniture</h3>
-                  <span className="text-2xl text-[#C8C8C8] font-poppins font-bold">{priceToLocaleString(groupData?.price)}</span>
+                  <span className="text-2xl text-[#C8C8C8] font-poppins font-bold">
+                    {priceToLocaleString(groupData?.price)}
+                  </span>
                 </div>
-              <CollageProductList assets={groupedData?.[id]?.assets} collageId={collageId} showAppointmentCard/>
-            </div>
-          )
-        );
-      })}
+                <CollageProductList assets={groupedData?.[id]?.assets} collageId={collageId} />
+              </div>
+            )
+          );
+        })}
         {mainCategories.slice(1, 2).map(({ id, name }) => {
           const groupData = groupedData?.[id];
 
@@ -37,7 +39,7 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
                   <h3 className="text-xl sm:text-2xl font-bold">{name}</h3>
                   {/* <span className="text-2xl font-bold">{priceToLocaleString(groupData?.price)}</span> */}
                 </div>
-                <CollageProductList assets={groupData?.assets} collageId={collageId} showBannerCard/>
+                <CollageProductList assets={groupData?.assets} collageId={collageId} showBannerCard />
               </div>
             )
           );
@@ -50,7 +52,7 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
               {/* <span className="text-2xl font-bold">{priceToLocaleString(groupedData?.['addOn']?.price)}</span> */}
             </div>
 
-            <CollageProductList assets={groupedData?.['addOn']?.assets} collageId={collageId} showAffirmCard/>
+            <CollageProductList assets={groupedData?.['addOn']?.assets} collageId={collageId} showAffirmCard />
           </div>
         )}
         {mainCategories.slice(2, 3).map(({ id, name }) => {
@@ -69,9 +71,7 @@ const PlaygroundAssetDisplay = ({ collageId }) => {
             )
           );
         })}
-        
       </div>
-      
     </div>
   );
 };

@@ -20,10 +20,10 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1657099794/web/homev3/Get_summer_ready_-07_qsygxa.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1657192491/web/homev3/Generic_Banners_Home_Page_Carousel_Card2_zbabfz.jpg',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1657099794/web/homev3/Get_summer_ready_-08_f2xeed.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1657192492/web/homev3/Generic_Banners_Home_Page_Carousel_Card3_kfiiru.jpg',
   },
 ];
 
