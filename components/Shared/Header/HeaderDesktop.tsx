@@ -271,7 +271,7 @@ const HeaderDesktop: React.FC = () => {
                   <SearchIcon className="inline w-4 h-4" />
                 </a>
               </Link>
-              <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`}>
+              {/* <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`}>
                 <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200  focus:outline-none ">
                   <span className="sr-only">Shopping</span>
                   <ShoppingBagIcon className="inline w-4 h-4" />
@@ -281,7 +281,7 @@ const HeaderDesktop: React.FC = () => {
                     </span>
                   ) : null}
                 </a>
-              </Link>
+              </Link> */}
               <Link href={`/quiz/start-quiz`}>
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap">
                   Start Your Project

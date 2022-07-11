@@ -59,7 +59,7 @@ const CollageProductList: React.FC<{
                   </Link>
                 )}
                 <ProductCard
-                  showViewDetails={true}
+                  showViewDetails={false}
                   product={asset}
                   key={asset?._id}
                   collageId={collageId}

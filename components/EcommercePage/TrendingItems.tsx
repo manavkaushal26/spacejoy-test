@@ -63,7 +63,7 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
                   <div className="collections-slider">
                     <Carousel imageCount={dataToDisplay?.length || 0} responsive={sliderSettings} slidesToShow={4}>
                       {dataToDisplay.map((product: any) => (
-                        <ProductCard key={product._id} product={product} showViewDetails pageName="hot-deals" />
+                        <ProductCard key={product._id} product={product} showViewDetails={false} pageName="hot-deals" />
                       ))}
 
                       <Link href={'/hot-deals'}>
@@ -91,7 +91,7 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
             ) : (
               <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4">
                 {dataToDisplay.map((product: any) => (
-                  <ProductCard key={product._id} product={product} showViewDetails={!page ? true : false} />
+                  <ProductCard key={product._id} product={product} showViewDetails={false} />
                 ))}
               </div>
             )}

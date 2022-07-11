@@ -107,6 +107,9 @@ const renderFeatureSection = (description) => {
 };
 
 const ProductView = ({ product, currentlyViewing }): JSX.Element => {
+
+
+  
   // const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
@@ -136,7 +139,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
   }, []);
 
   const { session } = useSession();
-  console.log('session', session);
+  
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -588,7 +591,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                     <DeliveryTimeline productId={product?._id} />
                   </div>
                 )}
-                <form className="my-4">
+                {/* <form className="my-4">
                   {itemStatus ? (
                     <div className="flex my-8 space-x-4 sm:flex-col-1">
                       <button
@@ -627,7 +630,20 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       <WishListBtn type="Asset" documentId={product?._id} />
                     </div>
                   )}
-                </form>
+                </form> */}
+                <div className='flex'>
+                  <Link href={product?.retailLink} passHref>
+                      <button
+                            type="button"
+                            className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none mr-4"
+                            
+                        >
+                         <span>Shop Now</span>
+                      </button>
+                      
+                  </Link>
+                  <WishListBtn type="Asset" documentId={product?._id} />
+                </div>
                 {product?.price && !itemStatus ? (
                   <div className="my-2 lg:my-0 text-sm text-gray-700 text-center lg:text-left">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />

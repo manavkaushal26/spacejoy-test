@@ -110,14 +110,14 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
               <div>
                 <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`} passHref>
                   <div className="relative cursor-pointer">
-                    <ShoppingBagIcon
+                    {/* <ShoppingBagIcon
                       className={`w-6 h-6 ${router.asPath === '/cart' ? 'text-red-600' : 'border-transparent'}`}
                     />
                     {cart?.count && cart?.count > 0 ? (
                       <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full">
                         {cart?.count || 0}
                       </span>
-                    ) : null}
+                    ) : null} */}
                   </div>
                 </Link>
               </div>
