@@ -52,11 +52,11 @@ const Index = ({ isMobile }) => {
         {pinterestConfig.enable === true && <PinterestBanner />}
         <TrendingStyles mobile={isMobile} />
         {/* <SubscribeForm /> */}
-        <AffirmBanner />
+        {/* <AffirmBanner /> */}
         <InjectBanner2 />
         <FreeShipping mobile={isMobile} />
-        <ShopInjectBanner />
-        <div className="container max-w-7xl px-4 mx-auto">
+        {/* <ShopInjectBanner /> */}
+        {/* <div className="container max-w-7xl px-4 mx-auto">
           <div className="mt-16 mb-16 block">
             <SectionHeading title="Why buy from spacejoy?" />
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
@@ -71,7 +71,7 @@ const Index = ({ isMobile }) => {
               })}
             </div>
           </div>
-        </div>
+        </div> */}
       </Layout.Body>
       <Layout.Footer />
     </Layout>
