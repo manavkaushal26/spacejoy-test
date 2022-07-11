@@ -419,7 +419,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               }
             </div>
           </div>
-          <div className="container mt-16 mx-auto px-4 ">
+          {/* <div className="container mt-16 mx-auto px-4 ">
             <div className="w-3/4 mx-auto sm:mt-32 mb-6 sm:mb-12">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
@@ -457,7 +457,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* <div className="mt-12 bg-gray-100">
             <div className="container mt-16 mx-auto px-4 p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -481,7 +481,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
 
           {/* Section Start */}
           <div className="container mt-16 grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto mt-16 lg:mt-32 my-12">
-            <div className="col-span-1 sm:col-span-3">
+            <div className="col-span-1 sm:col-span-4">
               {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
                 <Link href={data?.homepageV2?.hp1Link}>
                   <a target="_blank">
@@ -510,7 +510,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
               )}
             </div>
-            <div className="relative aspect-[287/215] col-span-1 rounded-xl">
+            {/* <div className="relative aspect-[287/215] col-span-1 rounded-xl">
               <Image
                 src="https://res.cloudinary.com/spacejoy/image/upload/v1645766721/web/homepage-v3/Group_8homePageAffirm_dkndyv.svg"
                 alt="affirm"
@@ -520,7 +520,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 blurDataURL={blurredBgProduct}
                 className="rounded-xl"
               />
-            </div>
+            </div> */}
           </div>
           <div className="container mt-16 px-4 mx-auto sm:mt-32 mb-6 sm:mb-12">
             <div className="mt-8 block lg:hidden">

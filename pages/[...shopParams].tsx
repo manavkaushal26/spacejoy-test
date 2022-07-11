@@ -30,40 +30,13 @@ const ProductList = ({ list }) => {
     <>
       {list?.length ? (
         <>
-          {list?.map((item, idx) => {
-            if ((idx === 12 || idx === 21) && idx !== 0 && data?.injectBannerV2?.visible) {
-              return data?.injectBannerV2?.link !== undefined && data?.injectBannerV2?.link !== '' ? (
-                <div className="col-span-1">
-                  <Link href={data?.injectBannerV2?.link}>
-                    <a>
-                      <div className="relative aspect-w-7 aspect-h-9">
-                        <Image
-                          src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
-                          alt="injectBanner"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      </div>
-                    </a>
-                  </Link>
-                </div>
-              ) : (
-                <div className="relative aspect-w-3 aspect-h-1 col-span-3">
-                  <Image
-                    src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
-                    alt="injectBanner"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              );
-            }
-
+          {list?.map((item) => {
+            
             return (
               <>
-                {idx === 4 && (
+                {/* {idx === 4 && (
                   <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />
-                )}
+                )} */}
                 <ProductCard product={item} key={item._id} pageName="shop" />
               </>
             );
