@@ -152,7 +152,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                           </Link>
                         </div>
                       )} */}
-                      {index == 10 && (
+                      {/* {index == 10 && (
                         <div
                           className={`relative rounded-xl ${
                             large
@@ -171,8 +171,8 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                             />
                           </div>
                         </div>
-                      )}
-                      {index == 6 && data?.designListingV2?.visible && (
+                      )} */}
+                      {/* {index == 6 && data?.designListingV2?.visible && (
                         <div className="relative rounded-xl col-span-4 row-span-2 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
                           {data?.designListingV2?.link !== undefined && data?.designListingV2?.link !== '' ? (
                             <Link href={data?.designListingV2?.link}>
@@ -194,7 +194,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                             />
                           )}
                         </div>
-                      )}
+                      )} */}
                       <div
                         key={design?._id}
                         className={`relative ${large ? 'col-span-4 row-span-2' : 'col-span-2 row-span-1'}`}
