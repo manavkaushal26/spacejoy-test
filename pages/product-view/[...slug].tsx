@@ -1061,7 +1061,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
           </div>
         </div>
 
-        <StickyFooter show={!showCartFooter}>
+        {/* <StickyFooter show={!showCartFooter}>
           <div className="flex space-x-4 sm:flex-col-1 addToCart px-4 my-2">
             <button
               type="button"
@@ -1087,7 +1087,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
               {addingToCart ? <SVGLoader /> : <span>Add to bag</span>}
             </button>
           </div>
-        </StickyFooter>
+        </StickyFooter> */}
       </Layout.Body>
       <Layout.Footer />
     </Layout>
