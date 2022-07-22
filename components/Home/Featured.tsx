@@ -74,7 +74,7 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/w_350/v1644328123/shared/brandsLogo/cnn_xwsrzu.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/v1658478094/shared/brandsLogo/logo-architectural-digest_no15yk.svg"
                       alt="spacejoy happy customer"
                       height={'80'}
                       width={'130'}

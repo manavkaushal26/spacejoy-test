@@ -158,7 +158,9 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
                 <div className="col-span-3">
                   <h2 className="capitalize text-xl text-center">Shop your favorites</h2>
-                  <p className="text-center mt-2">Our concierge team will place and manage all your product orders.</p>
+                  <p className="text-center mt-2">
+                    Get a comprehensive shopping list of all the products curated just for you.
+                  </p>
                 </div>
               </div>
             </div>
@@ -212,7 +214,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                     </div>
                     <div className="ml-2">
                       <p className="text-2xl mb-2 font-bold">Shop your favorites</p>
-                      <p>Our concierge team will place and manage all your product orders.</p>
+                      <p>Get a comprehensive shopping list of all the products curated just for you.</p>
                     </div>
                   </div>
                 </div>
@@ -385,7 +387,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </HomeSectionTitle.MainTitle>
 
                 <HomeSectionTitle.Description align="center">
-                  With additional exclusive discounts from Spacejoy
+                  With a comprehensive shopping list
                 </HomeSectionTitle.Description>
               </HomeSectionTitle>
             </div>
