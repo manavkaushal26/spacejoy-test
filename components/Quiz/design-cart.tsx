@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { PushEvent } from '@utils/analyticsLogger';
 
-const Index = ({ data, pricingData }) => {
+const Index = ({ data, pricingData, updateCart }) => {
   const [couponText, setCouponText] = useState('');
   const [couponLoader, setCouponLoader] = useState(false);
   const [availableCoupons, setAvailableCoupons] = useState([]);
@@ -37,7 +37,7 @@ const Index = ({ data, pricingData }) => {
 
           return { ...item, isApplied: false };
         });
-        console.log('formatted', formatted);
+        
         setAvailableCoupons(formatted);
       })
       .catch((e) => {});
@@ -66,6 +66,7 @@ const Index = ({ data, pricingData }) => {
     const { data, statusCode } = await fetcher({ endPoint, method: 'DELETE' });
     if (statusCode < 301) {
       setCart(data);
+      updateCart(data);
       PushEvent({
         category: 'Quiz',
         action: `Remove Coupon ${couponId}`,
@@ -96,6 +97,7 @@ const Index = ({ data, pricingData }) => {
           ...data,
           loading: false,
         });
+        updateCart(data);
         toast.success('Yay! Coupon applied successfully');
         PushEvent({
           category: 'Quiz',
@@ -107,6 +109,7 @@ const Index = ({ data, pricingData }) => {
       }
     } catch {
       setCart({ ...cart, loading: false });
+      
       toast.error('Error while applying coupon');
     } finally {
       if (type === 'giftCard') {
