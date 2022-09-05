@@ -181,7 +181,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="mb-2 ">Connect with us</h3>
             <ul className="space-y-1 sm:space-y-0">
-              <li>
+              {/* <li>
                 <a
                   className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                   href={`tel:${company.phone.support}`}
@@ -189,7 +189,7 @@ const Footer: React.FC = () => {
                 >
                   {company.phone.support}
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"

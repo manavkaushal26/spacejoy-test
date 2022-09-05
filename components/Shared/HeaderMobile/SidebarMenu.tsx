@@ -179,9 +179,9 @@ export default function MobileSidebar({ data, open, setOpen }) {
                       <div className="mt-16 py-4 px-4 space-y-4 border-t border-gray-200">
                         <div className="space-y-2">
                           <h3>Contact Us</h3>
-                          <a href={`tel:${company.phone.support}`}>
+                          {/* <a href={`tel:${company.phone.support}`}>
                             <p className="mt-2">{company.phone.support}</p>
-                          </a>
+                          </a> */}
                           <a href={`mailto:${company.email.support}`}>
                             <p className="mt-2">{company.email.support}</p>
                           </a>
