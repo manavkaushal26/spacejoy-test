@@ -107,9 +107,6 @@ const renderFeatureSection = (description) => {
 };
 
 const ProductView = ({ product, currentlyViewing }): JSX.Element => {
-
-
-  
   // const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
@@ -139,7 +136,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
   }, []);
 
   const { session } = useSession();
-  
+
   const itemStatus = useMemo(() => {
     if (product?.status === 'discontinued') {
       return 'Discontinued';
@@ -403,7 +400,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="bg-white mt-12 lg:mt-0">
+        <div className="mt-12 bg-white lg:mt-0">
           <div className="container p-4 mx-auto">
             <nav className="flex mb-4" aria-label="Breadcrumb">
               <ol role="list" className="flex items-center space-x-4">
@@ -453,12 +450,12 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   )}
                 </div>
 
-                <h1 className="mt-1 text-xl sm:text-3xl font-extrabold tracking-tight text-gray-900 ">
+                <h1 className="mt-1 text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl ">
                   {product?.name}
                   {discountPercent && discountPercent?.length ? <DiscountTag /> : null}
                 </h1>
                 <h2 className="sr-only">Product information</h2>
-                <p className="text-xl sm:text-3xl text-gray-900 my-4">
+                <p className="my-4 text-xl text-gray-900 sm:text-3xl">
                   {priceToLocaleString(product?.displayPrice)}
                   {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
                     <>
@@ -495,13 +492,13 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   </ReactScroll.Link>
                 ) : null}
 
-                <div className="mt-2 flex">
-                  <EyeIcon className="h-6 w-6 text-red-500" />
-                  <span className="text-sm ml-1">Currently viewing: </span>
-                  <span className="text-sm ml-1">{currentlyViewing} </span>
+                <div className="flex mt-2">
+                  <EyeIcon className="w-6 h-6 text-red-500" />
+                  <span className="ml-1 text-sm">Currently viewing: </span>
+                  <span className="ml-1 text-sm">{currentlyViewing} </span>
                 </div>
               </div>
-              <div className="top-0 lg:sticky z-10 w-full relative mt-8">
+              <div className="relative top-0 z-10 w-full mt-8 lg:sticky">
                 <Carousel imageCount={productImages?.length || 0} withLightBox withNav>
                   {productImages?.map((productImage) => {
                     return (
@@ -509,7 +506,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                         <Image
                           src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_1000/${productImage?.cdn}`}
                           alt=""
-                          className="w-full object-contain object-center sm:rounded-lg w-full"
+                          className="object-contain object-center w-full sm:rounded-lg"
                           width="450"
                           height="450"
                           layout="responsive"
@@ -536,13 +533,13 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       </div>
                     )}
                   </div>
-                  <h1 className="mt-1 sm:text-3xl text-xl font-extrabold tracking-tight text-gray-900">
+                  <h1 className="mt-1 text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
                     {product?.name}
                     {discountPercent && discountPercent?.length ? <DiscountTag /> : null}
                   </h1>
                   <div className="mt-3">
                     <h2 className="sr-only">Product information</h2>
-                    <p className="sm:text-3xl text-xl text-gray-900">
+                    <p className="text-xl text-gray-900 sm:text-3xl">
                       {priceToLocaleString(product?.displayPrice)}
                       {product?.msrp && parseFloat(product?.msrp) > 0 && parseFloat(product?.msrp) > product?.price && (
                         <>
@@ -579,10 +576,10 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       </div>
                     ) : null}
 
-                    <div className="mt-2 flex">
-                      <EyeIcon className="h-6 w-6 text-red-500" />
-                      <span className="text-sm ml-1">Currently viewing: </span>
-                      <span className="text-sm ml-1">{currentlyViewing} </span>
+                    <div className="flex mt-2">
+                      <EyeIcon className="w-6 h-6 text-red-500" />
+                      <span className="ml-1 text-sm">Currently viewing: </span>
+                      <span className="ml-1 text-sm">{currentlyViewing} </span>
                     </div>
                   </div>
                 </div>
@@ -606,7 +603,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                     <div className="flex my-8 space-x-4 sm:flex-col-1 addToCart" ref={addToCartBtnRef}>
                       <button
                         type="button"
-                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none border border-gray-500"
+                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white border border-gray-500 group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                         onClick={decrementQty}
                       >
                         <MinusSmIcon className="w-6 h-6" />
@@ -614,14 +611,14 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       <p className="px-2 py-3">{localProductQuantity}</p>
                       <button
                         type="button"
-                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none border border-gray-500"
+                        className="px-3 py-3 text-base font-medium text-gray-900 bg-white border border-gray-500 group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
                         onClick={incrementQty}
                       >
                         <PlusSmIcon className="w-6 h-6" />
                       </button>
                       <button
                         type="button"
-                        className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        className="w-full p-0 py-3 text-base font-medium text-white bg-gray-900 shadow-xs md:w-auto md:px-12 group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                         onClick={addToCart}
                         disabled={addingToCart ? true : false}
                       >
@@ -631,25 +628,23 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                     </div>
                   )}
                 </form> */}
-                <div className='flex'>
+                <div className="flex">
                   <Link href={product?.retailLink} passHref>
-                      <button
-                            type="button"
-                            className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none mr-4"
-                            
-                        >
-                         <span>Shop Now</span>
-                      </button>
-                      
+                    <button
+                      type="button"
+                      className="w-full p-0 py-3 mr-4 text-base font-medium text-white bg-gray-900 shadow-xs md:w-auto md:px-12 group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                    >
+                      <span>Shop Now</span>
+                    </button>
                   </Link>
                   <WishListBtn type="Asset" documentId={product?._id} />
                 </div>
                 {product?.price && !itemStatus ? (
-                  <div className="my-2 lg:my-0 text-sm text-gray-700 text-center lg:text-left">
+                  <div className="my-2 text-sm text-center text-gray-700 lg:my-0 lg:text-left">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
                 ) : null}
-                <div className="bg-gray-100 -mx-4 p-4 lg:mx-0">
+                <div className="p-4 -mx-4 bg-gray-100 lg:mx-0">
                   <h2>Product Information</h2>
                   <div className="mt-3">
                     <span className="text-sm font-bold">Name: </span>
@@ -981,7 +976,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-300 hidden lg:block container mx-auto py-8 my-8 px-32">
+          <div className="container hidden px-32 py-8 mx-auto my-8 border-t border-gray-300 lg:block">
             {
               <Tab.Group>
                 <Tab.List className={`grid grid-cols-3 border-b-2 justify-cente`}>
@@ -997,7 +992,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                 <Tab.Panels className="mt-4">
                   {productFeaturesList.map((promise) => (
                     <Tab.Panel key={promise.id}>
-                      <div className=" mx-auto">
+                      <div className="mx-auto ">
                         <p className="text-sm leading-relaxed text-gray-600">{promise.content}</p>
                       </div>
                     </Tab.Panel>
@@ -1008,12 +1003,12 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
           </div>
           <div className="container px-4 mx-auto overflow-hidden">
             <ProductDesignSet productIds={[product?._id]} />
-            <div className="">
+            {/* <div className="">
               <SimilarProducts productId={product?._id} />
-            </div>
+            </div> */}
 
-            <div className="mt-8 block lg:hidden">
-              <h2 className="text-2xl tracking-wide border-b border-gray-300 pb-2">Why buy from Spacejoy?</h2>
+            {/* <div className="block mt-8 lg:hidden">
+              <h2 className="pb-2 text-2xl tracking-wide border-b border-gray-300">Why buy from Spacejoy?</h2>
               {SpjShoppingAdvantage?.map((item, index) => {
                 return (
                   <Disclosure key={item?.id} defaultOpen={index === 0}>
@@ -1032,25 +1027,25 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   </Disclosure>
                 );
               })}
-            </div>
+            </div> */}
 
-            <div className="my-12 hidden lg:block">
-              <h2 className="text-2xl tracking-wide  pb-2">Why buy from Spacejoy?</h2>
-              <div className="my-8 hidden lg:grid lg:grid-cols-4 lg:gap-12 bg-white ">
+            {/* <div className="hidden my-12 lg:block">
+              <h2 className="pb-2 text-2xl tracking-wide">Why buy from Spacejoy?</h2>
+              <div className="hidden my-8 bg-white lg:grid lg:grid-cols-4 lg:gap-12 ">
                 {SpjShoppingAdvantage?.map((item, index) => {
                   return (
                     <div key={item?.id}>
                       <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
-                      <p className="text-md font-bold text-gray-900 mt-4">{item?.title}</p>
+                      <p className="mt-4 font-bold text-gray-900 text-md">{item?.title}</p>
                       <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
                     </div>
                   );
                 })}
               </div>
-            </div>
+            </div> */}
 
             {product?.metaDetails?.reviews && product?.metaDetails?.reviews?.length ? (
-              <div id="reviewsSection" className="bg-gray-100 py-8 -mx-4 px-4 lg:px-28 lg:-mx-28 xl:-mx-32 xl:p-32">
+              <div id="reviewsSection" className="px-4 py-8 -mx-4 bg-gray-100 lg:px-28 lg:-mx-28 xl:-mx-32 xl:p-32">
                 <Reviews
                   rating={product?.metaDetails?.rating}
                   reviews={product?.metaDetails?.reviews}
@@ -1062,7 +1057,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
         </div>
 
         {/* <StickyFooter show={!showCartFooter}>
-          <div className="flex space-x-4 sm:flex-col-1 addToCart px-4 my-2">
+          <div className="flex px-4 my-2 space-x-4 sm:flex-col-1 addToCart">
             <button
               type="button"
               className="px-3 py-3 text-base font-medium text-gray-900 bg-white group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
@@ -1080,7 +1075,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
             </button>
             <button
               type="button"
-              className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+              className="w-full p-0 py-3 text-base font-medium text-white bg-gray-900 shadow-xs md:w-auto md:px-12 group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
               onClick={addToCart}
               disabled={addingToCart ? true : false}
             >
