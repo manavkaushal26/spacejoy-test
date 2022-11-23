@@ -17,7 +17,7 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1669196222/spj-v2/25_Off_sale_vqncsd.png',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1658992093/web/homev3/Generic_Banners_Home_Page_Carousel_Card2_mlghpu.jpg',
@@ -35,15 +35,15 @@ const V3 = ({ isMobile }) => {
   return isMobile === false ? (
     <div className="container relative mx-auto">
       <main className="lg:relative">
-        <div className="max-w-7xl w-full pt-16 pb-20 text-center py-44 lg:text-left">
-          <div className="px-4 w-full lg:w-1/3 sm:px-8 xl:pr-16">
-            <h1 className="mb-1 text-4xl sm:leading-normal text-left md:text-4xl">
+        <div className="w-full pt-16 pb-20 text-center max-w-7xl py-44 lg:text-left">
+          <div className="w-full px-4 lg:w-1/3 sm:px-8 xl:pr-16">
+            <h1 className="mb-1 text-4xl text-left sm:leading-normal md:text-4xl">
               <span className=" whitespace-nowrap">
                 Design
                 <br /> Your
               </span>{' '}
               <br />
-              <span className="text-gray-900  whitespace-nowrap">
+              <span className="text-gray-900 whitespace-nowrap">
                 <TextLoop mask>
                   {LOOP_CATEGORY.map((category, idx) => (
                     <span key={idx}>{category}</span>
@@ -51,10 +51,10 @@ const V3 = ({ isMobile }) => {
                 </TextLoop>
               </span>
             </h1>
-            <p className="font-bold text-2xl text-gray-900 mt-5 text-left">
+            <p className="mt-5 text-2xl font-bold text-left text-gray-900">
               The best way to design and shop for your home
             </p>
-            <p className="mt-2 max-w-md text-lg text-gray-500 sm:text-base md:mt-5 md:max-w-3xl text-left">
+            <p className="max-w-md mt-2 text-lg text-left text-gray-500 sm:text-base md:mt-5 md:max-w-3xl">
               Create a stunning home with handpicked products from top brands that you can shop instantly
             </p>
             <div className="mt-10 ">
@@ -62,7 +62,7 @@ const V3 = ({ isMobile }) => {
                 <Link href={`/quiz/start-quiz`} passHref>
                   <a
                     href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10"
+                    className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10"
                   >
                     Start Your Project
                   </a>
@@ -72,7 +72,7 @@ const V3 = ({ isMobile }) => {
                 <Link href={`${oldSpacejoyUrl}/interior-designs`} passHref>
                   <a
                     href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 border border-gray-900"
+                    className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-gray-900 bg-white border border-transparent border-gray-900 rounded-md hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                   >
                     Explore Design Ideas
                   </a>
@@ -81,7 +81,7 @@ const V3 = ({ isMobile }) => {
             </div>
           </div>
         </div>
-        <div className="relative w-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3 h-full px-5">
+        <div className="relative w-full h-full px-5 lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3">
           <Carousel
             imageCount={bannerImages?.length || 0}
             responsive={responsive}
@@ -93,7 +93,7 @@ const V3 = ({ isMobile }) => {
               return (
                 <div key={idx}>
                   <Image
-                    className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                    className="absolute inset-0 object-cover w-full h-full rounded-xl"
                     src={bannerImage.src}
                     alt=""
                     height={660}
@@ -111,9 +111,9 @@ const V3 = ({ isMobile }) => {
     <div className="container relative mx-auto">
       {' '}
       <main>
-        {/* <div className="pb-12 py-0 text-center"> */}
+        {/* <div className="py-0 pb-12 text-center"> */}
         <div className="py-0 my-0 mt-12">
-          <h1 className="text-2xl text-left mb-1 px-4">
+          <h1 className="px-4 mb-1 text-2xl text-left">
             Design Your{' '}
             <TextLoop mask>
               {LOOP_CATEGORY.map((category, idx) => (
@@ -121,7 +121,7 @@ const V3 = ({ isMobile }) => {
               ))}
             </TextLoop>
           </h1>
-          <p className="py-2 px-4 text-sm text-gray-500 sm:text-base md:mt-5 text-left">
+          <p className="px-4 py-2 text-sm text-left text-gray-500 sm:text-base md:mt-5">
             Create a stunning home with handpicked products from top brands that you can shop instantly
           </p>
           <div className="relative pt-4">
@@ -137,7 +137,7 @@ const V3 = ({ isMobile }) => {
                 return (
                   <div key={idx}>
                     <Image
-                      className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                      className="absolute inset-0 object-cover w-full h-full rounded-lg"
                       src={bannerImage.src}
                       alt=""
                       height={450}
@@ -149,12 +149,12 @@ const V3 = ({ isMobile }) => {
               })}
             </Carousel>
           </div>
-          <div className="mt-10 px-4">
+          <div className="px-4 mt-10">
             <div className="rounded-md shadow">
               <Link href={`/quiz/start-quiz`} passHref>
                 <a
                   href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10"
+                  className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10"
                 >
                   Start Your Project
                 </a>
@@ -164,7 +164,7 @@ const V3 = ({ isMobile }) => {
               <Link href={`${oldSpacejoyUrl}/interior-designs`} passHref>
                 <a
                   href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 border border-gray-900"
+                  className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-gray-900 bg-white border border-transparent border-gray-900 rounded-md hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                 >
                   Explore Design Ideas
                 </a>
