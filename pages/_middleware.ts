@@ -18,5 +18,9 @@ export function middleware(req: NextRequest) {
     return NextResponse.rewrite('/unauthorised').cookie('isMobile', isMobile.toString());
   }
 
+  if (path.startsWith('/quiz')) {
+    return NextResponse.redirect('https://designs.spacejoy.com/new-project?quiz=start&plan=bliss');
+  }
+
   return NextResponse.next().cookie('isMobile', isMobile.toString());
 }
