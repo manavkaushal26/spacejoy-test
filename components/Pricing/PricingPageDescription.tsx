@@ -19,25 +19,28 @@ const PricingPageDescription = () => {
           </a>
         </Link>
       </div>
-      <div className="flex flex-col space-y-20 mx-4">
-        <div className=" flex flex-col sm:flex-row sm:space-x-10 text-center justify-center">
-          <div className="relative aspect-1 h-28 w-28 sm:h-24 sm:w-24 mx-auto sm:mx-0">
+      <div className="flex flex-col mx-4 space-y-20">
+        <div className="flex flex-col justify-center text-center sm:flex-row sm:space-x-10">
+          <div className="relative mx-auto aspect-1 h-28 w-28 sm:h-24 sm:w-24 sm:mx-0">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/v1577846283/web/Spacejoy-promise_pxbyfc.svg"
               alt="money-back badge"
               layout="fill"
-              className=" object-contain"
+              className="object-contain "
             />
           </div>
-          <div className="text-sm sm:text-base text-center sm:text-left my-auto mx-auto">
+          <div className="max-w-3xl mx-auto my-auto text-sm text-center sm:text-base sm:text-left">
             <p>
-              Joyous homes, happy customers is our motto.If your design experience with us hasn&apos; t been <br /> at
-              par to the promises made, we will try our best to rectify.If our attempts have not made a <br />{' '}
-              difference, then you are eligible for a refund
+              Joyous homes, happy customers is our motto. If your design experience with us is not up to par, we will do
+              our best to rectify it. If our attempts have not made a difference, connect with us at{' '}
+              <a href="mailto:hello@spacejoy.com" target="_blank" rel="noreferrer" className="text-blue-500">
+                hello@spacejoy.com
+              </a>{' '}
+              so we can find a resolution!
             </p>
           </div>
         </div>
-        <div className="text-sm sm:text-base flex flex-col space-y-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col px-4 mx-auto space-y-5 text-sm sm:text-base max-w-7xl sm:px-6 lg:px-8">
           <p>
             There is something for everyone - on a budget! Today, access to interior designs online has never been
             easier, and all praise goes out to the number of available online design services out there. You can design
@@ -54,7 +57,7 @@ const PricingPageDescription = () => {
           <p>
             The Interior design pricing packages at Spacejoy are reasonable and valuable. To help you get started, try
             the Delight package. The Bliss package is often the right one for most clients, and if you love a good deal
-            – the Euphoria package is a great option that features unlimited design revisions. Pick from one of our
+            – the Euphoria package is a great option that features an hour call with your designer. Pick from one of our
             three online interior design price packages that are custom-made, keeping your budget, style, and interior
             design needs in mind.
           </p>

@@ -6,10 +6,10 @@ const currentYear = currentDate.getFullYear();
 
 const RefundContent: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 mb-28 antialiased">
+    <div className="container px-4 mx-auto antialiased mb-28">
       <SectionTitle title="Spacejoy Refund Policy" feature={`Last Updated: Jan 02nd, ${currentYear}`} />
       <div className="mt-6">
-        <h1 className="text-xl mb-2">Hi There!</h1>
+        <h1 className="mb-2 text-xl">Hi There!</h1>
         <p className="text-base text-gray-500">
           Spacejoy is a small but dedicated team of interior designers, 3D artists, developers, and other superstars who
           handle several miscellaneous tasks. Our team is passionate about all things design, and we aim to offer the
@@ -23,7 +23,7 @@ const RefundContent: React.FC = () => {
         </p>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg mb-2">Didn&apos;t intend to place an order?</h3>
+        <h3 className="mb-2 text-lg">Didn&apos;t intend to place an order?</h3>
         <p className="text-base text-gray-500">
           If you placed an order for a design package on Spacejoy by mistake and are not ready to get started on your
           design yet, you&apos;re entitled to a full refund. Provided you request a refund within 48 hours of placing
@@ -34,22 +34,25 @@ const RefundContent: React.FC = () => {
         </p>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg mb-2">Not happy with your design concepts?</h3>
+        <h3 className="mb-2 text-lg">Not happy with your design concepts?</h3>
         <p className="text-base text-gray-500">
           Spacejoy&apos;s team of online interior designers are experts and absolute professionals, and as that, we take
-          a lot of pride in our design team. However, sometimes, we all have off days (happens to the best of us). If
-          you feel the final designs your designer delivered lacks the vision you have for your space, we can offer you
-          a full refund on your design fee. However before we refund, our claims team will get in touch with you to
-          understand what went wrong and will have the final authority on approving the claim. If your design is in the
-          re-design phase and you think there is a mismatch between you and your designer, we’ll try and match you with
-          a new designer to correct the course. If you don’t want to go down that route and simply want a refund, then
-          our claims team will verify and decide a fair percentage of your design fee that can be refunded. Please note
-          that the 100% money-back guarantee reimbursement will only apply for your Spacejoy design package within the
-          first thirty days of purchase.
+          a lot of pride in our design team. However, sometimes, we all have off days (happens to the best of us).
+          <br />
+          If you feel the final designs your designer delivered lacks the vision you have for your space, please reach
+          out to us at hello@spacejoy.com so we can find a resolution. If your design is in the re-design phase and you
+          think there is a mismatch between you and your designer, we&apos;ll try and match you with a new designer to
+          correct the course.
+          <br />
+          In the event that our team determines that your design project qualifies for a refund, our claims team will
+          get in touch with you to understand what went wrong and will have the final authority on approving the claim.
+          Full refunds only apply to projects that have not been started, or projects that have been delivered within
+          the last 30 days. If the project was delivered over 30 days ago, we can only offer a partial refund (to be
+          determined by the claims team).
         </p>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg mb-2">Inactivity Terms</h3>
+        <h3 className="mb-2 text-lg">Inactivity Terms</h3>
         <p className="text-base text-gray-500">
           In the scenario where you paid for a design package on Spacejoy and completely lost track of it because there
           were other pressing matters to tend to, don’t worry, your design credit is safe with us. You can choose to
@@ -67,7 +70,7 @@ const RefundContent: React.FC = () => {
         </p>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg mb-2">Redesign Terms</h3>
+        <h3 className="mb-2 text-lg">Redesign Terms</h3>
         <p className="text-base text-gray-500">
           We offer multiple redesigns to make sure you fall in love with your new space. Make sure to send in your
           feedback with design changes within 30 days of receiving your latest design concept. If we don&apos;t hear

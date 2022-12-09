@@ -17,13 +17,13 @@ const Footer: React.FC = () => {
         {/* Mobile */}
         <div className="w-full mt-6 md:hidden">
           <Tab.Group>
-            <Tab.List className={`grid grid-cols-3 border-b-2 justify-center`}>
+            <Tab.List className={`grid grid-cols-3 border-b-2 w-fit mx-auto justify-center`}>
               {spacejoyPromiseData.map((promise) => (
                 <Tab
                   key={promise.title}
                   className={({ selected }) => (selected ? 'border-b-2 border-b-black focus:outline-none' : '')}
                 >
-                  <div className="relative aspect-1 w-16 h-16 mb-2 mx-auto md:ml-3 lg:mb-0 lg:ml-0">
+                  <div className="relative w-16 h-16 mx-auto mb-2 aspect-1 md:ml-3 lg:mb-0 lg:ml-0">
                     <Image className="" src={promise.img} alt="" layout="fill" objectFit="contain" />
                   </div>
                 </Tab>
@@ -161,7 +161,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="mb-2 ">Support</h3>
-            <ul className="flex items-center flex-wrap sm:block sm:space-x-0">
+            <ul className="flex flex-wrap items-center sm:block sm:space-x-0">
               <li className="footer-item">
                 <Link href="/help">
                   <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
@@ -227,7 +227,7 @@ const Footer: React.FC = () => {
                   <li key={link.title} className={commonLink.dots ? 'footer-item' : null}>
                     <Link href={link.link}>
                       <a
-                        className="text-xs break-words leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                        className="text-xs leading-relaxed text-gray-600 break-words rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
                         target={link.link.startsWith('https://designs.spacejoy.com') ? '_blank' : ''}
                       >
                         {link.title}
@@ -240,7 +240,7 @@ const Footer: React.FC = () => {
           ))}
         </div>
 
-        <div className="flex flex-col flex-wrap items-start border-t border-gray-100 pt-4 justify-center mb-3 text-center sm:flex-row sm:items-center sm:border-none sm:pt-0">
+        <div className="flex flex-col flex-wrap items-start justify-center pt-4 mb-3 text-center border-t border-gray-100 sm:flex-row sm:items-center sm:border-none sm:pt-0">
           <div className="my-2 sm:m-5">
             <Link href={`${oldSpacejoyUrl}/cookies`}>
               <a
