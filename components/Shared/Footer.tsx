@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href={`${oldSpacejoyUrl}/trending-items`}>
                   <a
                     className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
                     Deals Of The Day
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href={`${oldSpacejoyUrl}/style-quiz-intro`}>
                   <a

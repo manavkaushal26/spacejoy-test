@@ -702,7 +702,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                           src={spacejoyPromiseData[0]?.img}
                           height="80"
                           width="80"
-                          alt="Spacejoy Price Match Guarantee"
+                          alt="Spacejoy"
                           className="mt-4"
                         />
                         <div className="mt-4 text-sm text-gray-700">{spacejoyPromiseData[0]?.description}</div>
