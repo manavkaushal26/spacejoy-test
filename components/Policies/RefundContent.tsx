@@ -55,18 +55,13 @@ const RefundContent: React.FC = () => {
         <h3 className="mb-2 text-lg">Inactivity Terms</h3>
         <p className="text-base text-gray-500">
           In the scenario where you paid for a design package on Spacejoy and completely lost track of it because there
-          were other pressing matters to tend to, don’t worry, your design credit is safe with us. You can choose to
-          come back and kickstart your project when you have the time at hand, within a year. We’ll also knock at your
-          door a month before your order expires on Spacejoy to check if you’re ready to design with us. If you’re still
-          not available, we’ll store it as store credits for you to redeem it on Spacejoy later.
-        </p>
-        <p className="text-base text-gray-500">
-          In the scenario where you started a project and forgot all about it before we were to deliver the final design
-          concepts, we will make several attempts to catch your attention and nudge you back to your project ( we
-          understand shiny object syndrome). However, if we don’t hear back from you, then in 30 days, your project will
-          be tagged inactive. Your order remains with us. You can come back at a later date and pick up where you left
-          off. Your designer, however, will move on to a different project because- duty beckons. When you decide to
-          restart, write to us at hello@spacejoy.com and we will re-assign your project to an expert designer.
+          were other pressing matters to tend to, don’t worry, you can choose to come back and kickstart your project
+          when you have the time at hand, within a year. If your project has passed the one year mark, reach out to us
+          at{' '}
+          <a href="mailto:hello@spacejoy.com" className="text-blue-500 hover:underline">
+            hello@spacejoy.com
+          </a>{' '}
+          so we can process your refund.
         </p>
       </div>
       <div className="mt-6">
