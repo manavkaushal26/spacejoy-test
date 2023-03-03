@@ -7,7 +7,7 @@ const currentYear = currentDate.getFullYear();
 const RefundContent: React.FC = () => {
   return (
     <div className="container px-4 mx-auto antialiased mb-28">
-      <SectionTitle title="Spacejoy Refund Policy" feature={`Last Updated: Jan 02nd, ${currentYear}`} />
+      <SectionTitle title="Spacejoy Refund Policy" feature={`Last Updated: Mar 02nd, ${currentYear}`} />
       <div className="mt-6">
         <h1 className="mb-2 text-xl">Hi There!</h1>
         <p className="text-base text-gray-500">
