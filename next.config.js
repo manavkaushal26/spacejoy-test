@@ -118,6 +118,16 @@ module.exports = withPWA({
         destination: `${legacyRepo}/style-quiz/:slug*`, // Matched parameters can be used in the destination
         permanent: false,
       },
+      {
+        source: '/frontdoor',
+        destination: `${legacyRepo}/frontdoor`, // Matched parameters can be used in the destination
+        permanent: false,
+      },
+      {
+        source: '/american-home-shield',
+        destination: `${legacyRepo}/american-home-shield`, // Matched parameters can be used in the destination
+        permanent: false,
+      },
     ];
   },
   reactStrictMode: true,
