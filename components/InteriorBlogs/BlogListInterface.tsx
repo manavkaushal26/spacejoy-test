@@ -14,6 +14,11 @@ export interface Author {
   id: string;
 }
 
+export interface BlogData {
+    count: Number,
+    blogs: BlogCardInterface[]
+}
+
 export interface BlogCardInterface {
   tags: string[];
   status: string;
@@ -32,7 +37,7 @@ export interface BlogCardInterface {
 export interface BlogListInterface {
   status?: string;
   statusCode?: number;
-  data: BlogCardInterface[];
+  data: BlogData;
   context?: string;
   message?: string;
   group?: string;
