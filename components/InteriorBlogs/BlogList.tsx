@@ -29,11 +29,11 @@ const BlogList: React.FC<BlogListInterface> = ({ data }) => {
   
   const { currentRenderList, isFetching, buttons } = usePagination(
     { url: publicRoutes.interiorDesignsBlogList, method: 'GET' },
-    data.blogs,
+    data.list,
     data?.count,
     internalPages.InteriorDesignsBlog.DEFAULT_PAGINATION_BUTTON_COUNT,
     internalPages.InteriorDesignsBlog.DEFAULT_PAGE_SIZE,
-    '',
+    'list',
     {},
     {}
   );

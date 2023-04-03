@@ -15,6 +15,7 @@ import { BlogListInterface } from '@components/InteriorBlogs/BlogListInterface';
 import BlogIntro from '@components/InteriorBlogs/BlogIntro';
 
 const InteriorDesignsBlogs = ({ blogFeedData }): JSX.Element => {
+
   return (
     <Layout>
       <Head>

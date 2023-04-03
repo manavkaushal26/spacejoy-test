@@ -16,7 +16,7 @@ export interface Author {
 
 export interface BlogData {
     count: Number,
-    blogs: BlogCardInterface[]
+    list: BlogCardInterface[]
 }
 
 export interface BlogCardInterface {
