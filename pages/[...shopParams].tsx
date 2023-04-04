@@ -787,6 +787,18 @@ export async function getServerSideProps(context) {
   // MetaInfo Code
   let metaInfo: any = {};
   const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
+
+  const isValidSub = categories.filter(c => c.name.toLowerCase() === catSubCat.toLowerCase());
+  if(isValidSub.length === 0){
+    return {
+        redirect: {
+          permanent: false,
+          destination: "/404",
+        },
+        props:{},
+      };
+  }
+
   const verticalName = shopParams && shopParams?.length > 1 ? convertUrlPathToFilter(shopParams[1]) : '';
   const catTitle = `${catSubCat?.length ? `${catSubCat} |` : ''}`;
   const verticalTitle = `${verticalName?.length ? `${verticalName} |` : ''}`;
