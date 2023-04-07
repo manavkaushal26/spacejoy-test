@@ -782,13 +782,20 @@ export async function getServerSideProps(context) {
       return { ...item, type: 'category' };
     });
 
+    const subCategories = [];
+    categories.forEach(c => {
+        c.subCategories.forEach(s => {
+            subCategories.push(s);
+        })
+    });
+
   const assetsList: any = await fetchAssetList({ filters: { ...allFilters } }, context);
 
   // MetaInfo Code
   let metaInfo: any = {};
   const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
 
-  const isValidSub = categories.filter(c => c.name.toLowerCase() === catSubCat.toLowerCase());
+  const isValidSub = subCategories.filter(c => c.name.toLowerCase() === catSubCat.toLowerCase());
   if(isValidSub.length === 0){
     return {
         redirect: {

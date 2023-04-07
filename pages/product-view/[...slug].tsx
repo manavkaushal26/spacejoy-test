@@ -629,14 +629,14 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   )}
                 </form> */}
                 <div className="flex">
-                  <Link href={product?.retailLink} passHref>
+                  <a href={product?.retailLink} target="_blank" rel="noreferrer">
                     <button
                       type="button"
                       className="w-full p-0 py-3 mr-4 text-base font-medium text-white bg-gray-900 shadow-xs md:w-auto md:px-12 group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                     >
                       <span>Shop Now</span>
                     </button>
-                  </Link>
+                  </a>
                   <WishListBtn type="Asset" documentId={product?._id} />
                 </div>
                 {product?.price && !itemStatus ? (
