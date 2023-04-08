@@ -62,7 +62,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
             <h2 className="my-8 text-3xl tracking-wide">{design?.name}</h2>
             <ImageGrid images={design?.cdnRender} />
             <div className=" text-sm my-8">
-              <p className={`${!value && 'line-clamp-3'} leading-normal`}>{design?.description}</p>
+              <p className={`${!value && 'line-clamp-3'} leading-normal whitespace-pre-line`}>{design?.description}</p>
               <button className="my-1 text-[#F5296E] text-sm" onClick={toggle}>
                 {!value ? '... read more' : 'hide'}
               </button>
