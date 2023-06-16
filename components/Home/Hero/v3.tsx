@@ -17,16 +17,16 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png'
   },
   {
-    src:'https://res.cloudinary.com/spacejoy/image/upload/v1686592821/web/homepage-bannerimages/Homepage_2_ejmaad.png'
+    src:'https://res.cloudinary.com/spacejoy/image/upload/v1686932157/web/homepage-bannerimages/image__2__yccenj.png'
   },
   {
     src:'https://res.cloudinary.com/spacejoy/image/upload/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png'
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1657192492/web/homev3/Generic_Banners_Home_Page_Carousel_Card3_kfiiru.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
   },
 ];
 
