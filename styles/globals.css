@@ -39,6 +39,9 @@ h3 {
 .checkout-textarea:-ms-input-placeholder {
   color: #bdbdbd;
 }
+.refund-text-add{
+  font-weight: bold;
+}
 
 .checkout-textarea::placeholder {
   color: #bdbdbd;
