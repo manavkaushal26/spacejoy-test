@@ -49,6 +49,8 @@ const RefundContent: React.FC = () => {
           Full refunds only apply to projects that have not been started, or projects that have been delivered within
           the last 30 days. If the project was delivered over 30 days ago, we can only offer a partial refund (to be
           determined by the claims team).
+          <br/>
+          <p className='refund-text-add'> Partial refunds will only be considered for those projects that have been delivered within 4 months of the project start date. After 4 months, no design refunds will be issued.</p>
         </p>
       </div>
       <div className="mt-6">
