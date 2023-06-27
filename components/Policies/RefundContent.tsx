@@ -39,18 +39,16 @@ const RefundContent: React.FC = () => {
           Spacejoy&apos;s team of online interior designers are experts and absolute professionals, and as that, we take
           a lot of pride in our design team. However, sometimes, we all have off days (happens to the best of us).
           <br />
-          If you feel the final designs your designer delivered lacks the vision you have for your space, please reach
-          out to us at hello@spacejoy.com so we can find a resolution. If your design is in the re-design phase and you
+          If your design is in the re-design phase and you
           think there is a mismatch between you and your designer, we&apos;ll try and match you with a new designer to
-          correct the course.
+          correct the course.If you feel the final designs your designer delivered lacks the vision you have for your space, please reach
+          out to us at hello@spacejoy.com so we can find a resolution.
           <br />
           In the event that our team determines that your design project qualifies for a refund, our claims team will
           get in touch with you to understand what went wrong and will have the final authority on approving the claim.
-          Full refunds only apply to projects that have not been started, or projects that have been delivered within
-          the last 30 days. If the project was delivered over 30 days ago, we can only offer a partial refund (to be
-          determined by the claims team).
+          Full refunds only apply to projects that have not been started.
           <br/>
-          <p className='refund-text-add'> Partial refunds will only be considered for those projects that have been delivered within 4 months of the project start date. After 4 months, no design refunds will be issued.</p>
+          <p> Partial refunds will only be considered for those projects that have been delivered within 4 months of the project start date. After 4 months, no design refunds will be issued.</p>
         </p>
       </div>
       <div className="mt-6">
