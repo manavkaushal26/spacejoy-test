@@ -20,7 +20,7 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png'
   },
   {
-    src:'https://res.cloudinary.com/spacejoy/image/upload/v1686932157/web/homepage-bannerimages/image__2__yccenj.png'
+    src:'https://res.cloudinary.com/spacejoy/image/upload/v1691694312/web/homepage-bannerimages/Home_page_image_EDITED_icqmod.png'
   },
   {
     src:'https://res.cloudinary.com/spacejoy/image/upload/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png'
