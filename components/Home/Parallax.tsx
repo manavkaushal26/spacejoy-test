@@ -1,3 +1,4 @@
+import { imageKit } from '@utils/config';
 import React from 'react';
 import { Timeline, Tween } from 'react-gsap';
 import { Controller, Scene } from 'react-scrollmagic';
@@ -31,9 +32,10 @@ const Parallax = () => (
               yPercent: 0,
             }}
           >
+            {/* fl_lossy,f_auto,q_auto,w_1600 */}
             <img
               className="w-full h-full object-cover"
-              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1600/v1622190830/spj-v2/spj-entry-way_h8ep62.jpg"
+              src={`${imageKit.baseDeliveryUrl}/v1622190830/spj-v2/spj-entry-way_h8ep62.jpg`}
               alt="spacejoy Output"
             />
           </Tween>

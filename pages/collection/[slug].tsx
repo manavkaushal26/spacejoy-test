@@ -26,7 +26,7 @@ type CollectionPage = {
     status?: string;
     metaTitle?: string;
     metaDescription?: string;
-    cdnCover?:string;
+    cdnCover?: string;
   };
 };
 
@@ -56,7 +56,7 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
 						<meta
 							key="og-image"
 							property="og:image"
-							content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_700/${collectionData.cdnCover}`}
+							content={`${imageKit.baseDeliveryUrl}/image/upload/c_scale,w_700/${collectionData.cdnCover}`}
 						/>
 						<meta key="og-image-width" property="og:image:width" content="700" />
 						<meta key="og-image-height" property="og:image:height" content="394" />
@@ -65,10 +65,10 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
 						<meta
 							key="twitter-image"
 							name="twitter:image"
-							content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_700/${collectionData.cdnCover}`}
+							content={`${imageKit.baseDeliveryUrl}/image/upload/c_scale,w_700/${collectionData.cdnCover}`}
 						/>
       </Head> */}
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <CollectionBanner data={collectionData} />

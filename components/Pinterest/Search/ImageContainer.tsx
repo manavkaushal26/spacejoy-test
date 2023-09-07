@@ -4,7 +4,7 @@ const ImageContainer: React.FC = () => {
   return (
     <div className="relative w-full h-full col-span-3 rounded-lg lg:col-span-1">
       {/* <Image
-        src={`${cloudinary.baseDeliveryURL}/w_1000/v1622011999/web/spj-living-room-min_y9ujxb.jpg`}
+        src={`${imageKit.baseDeliveryUrl}/w_1000/v1622011999/web/spj-living-room-min_y9ujxb.jpg`}
         alt=""
         layout="fill"
         objectFit="cover"

@@ -1,6 +1,6 @@
 import { useStore } from '@lib/offerStore';
 import { blurredBgImage } from '@public/images/bg-base-64';
-import { cloudinary, company } from '@utils/config';
+import { cloudinary, company, imageKit } from '@utils/config';
 import Head from 'next/head';
 import Image from 'next/image';
 import React, { useLayoutEffect } from 'react';
@@ -30,10 +30,10 @@ const Index = () => {
           content="Discover the design style you would prefer for your home with our style quiz. Get personalized results & create a home you love with our budget-friendly packages."
         />
       </Head>
-      <div className="grid grid-cols-1  gap-4 ">
+      <div className="grid grid-cols-1 gap-4 ">
         <div className="-mx-4">
           <div className="p-12 rounded-lg bg-[#FFF8F5]">
-            <h2 className="mb-3 homepage-section_headings font-semibold">
+            <h2 className="mb-3 font-semibold homepage-section_headings">
               <span className="text-[#EE2F70]">Add a new room</span>
 
               <span>&nbsp;to your package</span>
@@ -44,7 +44,7 @@ const Index = () => {
 
         <div className="pl-16" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-2">
         {rooms?.map((item) => {
           return (
             <div
@@ -60,11 +60,11 @@ const Index = () => {
                 checked={item?.selected}
                 className={`w-5 h-5 text-gray-900  cursor-pointer focus:ring-gray-500 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white `}
               />
-              <label className="ml-4 cursor-pointer capitalize text-xl lg:text-xl xl:text-2xl">{item?.name}</label>
-              <div className="ml-auto relative w-20 h-20 rounded-lg">
+              <label className="ml-4 text-xl capitalize cursor-pointer lg:text-xl xl:text-2xl">{item?.name}</label>
+              <div className="relative w-20 h-20 ml-auto rounded-lg">
                 <div>
                   <Image
-                    src={`${cloudinary.baseDeliveryURL}/${item?.cdnThumbnail}`}
+                    src={`${imageKit.baseDeliveryUrl}/${item?.cdnThumbnail}`}
                     alt={item?.name}
                     placeholder="blur"
                     blurDataURL={blurredBgImage}

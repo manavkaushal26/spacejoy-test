@@ -3,6 +3,7 @@ import SectionHeading from './SectionHeading';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 
 interface BackgroundProps {
   readonly image: string;
@@ -13,8 +14,7 @@ interface BackgroundProps {
 const bgData = [
   {
     id: 1,
-    bgImage:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1650958896/web/furniture-decor-shop/V2/pricestore_bg_a_ypa2ts.png',
+    bgImage: `${imageKit.baseDeliveryUrl}/v1650958896/web/furniture-decor-shop/V2/pricestore_bg_a_ypa2ts.png`,
     bgColor: '#FFF8F3',
     bgPosition: '0 0',
     prefix: 'UNDER',
@@ -23,8 +23,7 @@ const bgData = [
   },
   {
     id: 2,
-    bgImage:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1650957343/web/furniture-decor-shop/V2/pricestore_bg_b_mxwrsj.png',
+    bgImage: `${imageKit.baseDeliveryUrl}/v1650957343/web/furniture-decor-shop/V2/pricestore_bg_b_mxwrsj.png`,
     bgColor: '#F1FFF8',
     bgPosition: '100% 0',
     prefix: 'UNDER',
@@ -33,8 +32,7 @@ const bgData = [
   },
   {
     id: 3,
-    bgImage:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1650957347/web/furniture-decor-shop/V2/pricestore_bg_c_osfkog.png',
+    bgImage: `${imageKit.baseDeliveryUrl}/v1650957347/web/furniture-decor-shop/V2/pricestore_bg_c_osfkog.png`,
     bgColor: '#F2FFFF',
     bgPosition: '0 100%',
     prefix: 'UNDER',
@@ -43,8 +41,7 @@ const bgData = [
   },
   {
     id: 4,
-    bgImage:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1650957352/web/furniture-decor-shop/V2/pricestore_bg_d_erdwcv.png',
+    bgImage: `${imageKit.baseDeliveryUrl}/v1650957352/web/furniture-decor-shop/V2/pricestore_bg_d_erdwcv.png`,
     bgColor: '#FFFAEE',
     bgPosition: '100% 100%',
     prefix: 'UNDER',

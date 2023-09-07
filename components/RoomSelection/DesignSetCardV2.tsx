@@ -2,6 +2,7 @@ import { CollagesListInterface } from '@components/Collages/interface';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,15 +42,16 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
         }}
       >
         {!isMobile ? (
-          <div className="grid grid-cols-4 rounded-lg overflow-hidden border bg-white">
+          <div className="grid grid-cols-4 overflow-hidden bg-white border rounded-lg">
             <div className={`${large ? 'col-span-3' : 'col-span-4'} px-4 py-4`}>
               <div className={`relative ${large ? 'aspect-[2.32]' : 'aspect-[2]'} `}>
+                {/* e_trim/${
+                    large ? 'ar_2.32' : 'ar_2'
+                  },c_fill/f_auto,q_auto,${large ? 'w_1200' : 'w_700'} */}
                 <Image
                   loading="eager"
-                  className="z-10 rounded-lg overflow-hidden"
-                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/${
-                    large ? 'ar_2.32' : 'ar_2'
-                  },c_fill/f_auto,q_auto,${large ? 'w_1200' : 'w_700'}/${designData?.thumbnail}`}
+                  className="z-10 overflow-hidden rounded-lg"
+                  src={`${imageKit.baseDeliveryUrl}/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
                   objectFit={'contain'}
@@ -65,7 +67,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                     {tagsInPills.map((tag, index) => (
                       <span
                         key={`${tag}-${index}`}
-                        className="px-2 py-1 text-xs capitalize bg-neutral-500 text-white  border rounded-full"
+                        className="px-2 py-1 text-xs text-white capitalize border rounded-full bg-neutral-500"
                       >
                         {tag}
                       </span>
@@ -84,7 +86,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                     {/* <div className="mt-2 mb-4 text-xl font-bold">{priceToLocaleString(designData?.price)}</div> */}
 
                     <div className="flex gap-4">
-                      <a className="px-4 py-2 transition-all border border-black flex items-center gap-2 rounded-lg group-hover:scale-105 hover:shadow-xl">
+                      <a className="flex items-center gap-2 px-4 py-2 transition-all border border-black rounded-lg group-hover:scale-105 hover:shadow-xl">
                         Explore <ArrowRightIcon className="w-4 h-4" />
                       </a>
                     </div>
@@ -94,15 +96,16 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
             </div>
           </div>
         ) : (
-          <div className="grid grid-rows-12 rounded-lg border bg-white">
+          <div className="grid bg-white border rounded-lg grid-rows-12">
             <div className={`sm:px-4 sm:py-4 row-span-8`}>
               <div className={`relative ${large ? 'aspect-[2]' : 'aspect-[2]'} `}>
+                {/* /e_trim/${large ? 'ar_2' : 'ar_2'},c_fill/f_auto,q_auto,${
+                    large ? 'w_1200' : 'w_700'
+                  } */}
                 <Image
                   loading="eager"
-                  className="z-10 rounded-lg overflow-hidden"
-                  src={`https://res.cloudinary.com/spacejoy/image/upload/e_trim/${
-                    large ? 'ar_2' : 'ar_2'
-                  },c_fill/f_auto,q_auto,${large ? 'w_1200' : 'w_700'}/${designData?.thumbnail}`}
+                  className="z-10 overflow-hidden rounded-lg"
+                  src={`${imageKit.baseDeliveryUrl}/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
                   objectFit={'contain'}
@@ -118,7 +121,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                     {tagsInPills.map((tag, index) => (
                       <span
                         key={`${tag}-${index}`}
-                        className="px-2 py-1 text-xs capitalize bg-gray-100 text-black  border rounded-full"
+                        className="px-2 py-1 text-xs text-black capitalize bg-gray-100 border rounded-full"
                       >
                         {tag}
                       </span>
@@ -135,8 +138,8 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                         {designData?.name.slice(0, -11)}
                       </h2>
                       <div>
-                        <div className="flex gap-4 justify-center">
-                          <a className="px-4 py-2 transition-all border border-black flex items-center gap-2 rounded-md group-hover:scale-105 hover:shadow-xl">
+                        <div className="flex justify-center gap-4">
+                          <a className="flex items-center gap-2 px-4 py-2 transition-all border border-black rounded-md group-hover:scale-105 hover:shadow-xl">
                             Explore <ArrowRightIcon className="w-5 h-4" />
                           </a>
                         </div>

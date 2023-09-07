@@ -1,3 +1,4 @@
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -9,7 +10,7 @@ const PricingPageDescription = () => {
         <Link href="/quiz/start-quiz">
           <a className=" relative aspect-[3.5]">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1630686591/Wait_a_moment_inject_banner-2_itfloy.jpg"
+              src={`${imageKit.baseDeliveryUrl}/v1630686591/Wait_a_moment_inject_banner-2_itfloy.jpg`}
               alt="Wait a moment banner"
               layout="responsive"
               height={600}
@@ -23,7 +24,7 @@ const PricingPageDescription = () => {
         <div className="flex flex-col justify-center text-center sm:flex-row sm:space-x-10">
           <div className="relative mx-auto aspect-1 h-28 w-28 sm:h-24 sm:w-24 sm:mx-0">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1577846283/web/Spacejoy-promise_pxbyfc.svg"
+              src={`${imageKit.baseDeliveryUrl}/v1577846283/web/Spacejoy-promise_pxbyfc.svg`}
               alt="money-back badge"
               layout="fill"
               className="object-contain "

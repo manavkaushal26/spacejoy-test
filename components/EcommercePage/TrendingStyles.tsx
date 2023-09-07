@@ -5,28 +5,26 @@ import React from 'react';
 import SectionHeading from './SectionHeading';
 import styled from 'styled-components';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 
 const fakeCarouselData = [
   {
     id: 1,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652219112/web/furniture-decor-shop/V2/trending_styles_a_y5fejh.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652219112/web/furniture-decor-shop/V2/trending_styles_a_y5fejh.jpg`,
     title: 'Outdoor Furniture',
     bgColor: '#FFFAEC',
     href: '/outdoor-furniture',
   },
   {
     id: 2,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652219114/web/furniture-decor-shop/V2/trending_styles_b_tstdvw.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652219114/web/furniture-decor-shop/V2/trending_styles_b_tstdvw.jpg`,
     title: 'Outdoor Accessories',
     bgColor: '#F0FFF7',
     href: '/outdoor-accessories',
   },
   {
     id: 3,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652219115/web/furniture-decor-shop/V2/trending_styles_c_tkybdr.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652219115/web/furniture-decor-shop/V2/trending_styles_c_tkybdr.jpg`,
     title: 'Outdoor Furnishings',
     bgColor: '#FFF6F3',
     href: '/outdoor-furnishings',

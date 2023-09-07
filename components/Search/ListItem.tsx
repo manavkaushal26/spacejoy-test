@@ -1,4 +1,5 @@
 import { SearchIcon } from '@heroicons/react/outline';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
 
@@ -35,7 +36,7 @@ const ListItem: React.FC<ListItemInterface> = ({ item, active, setSelected, setH
   >
     {item?.type === 'keyword' ? (
       <Image
-        src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_700/v1621942704/server/designs/render/60ace1ad7c68df00239a02e0.png"
+        src={`${imageKit.baseDeliveryUrl}/fl_lossy,q_auto/w_700/v1621942704/server/designs/render/60ace1ad7c68df00239a02e0.png`}
         className="rounded-md"
         alt="placeholder"
         height="56"

@@ -19,6 +19,7 @@ import { HireADesignerHeader } from '../HireADesignerHeader';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
 import { newSpacejoyStoreUrl } from '@utils/config';
+import { imageKit } from '@utils/config';
 
 const HeaderDesktop: React.FC = () => {
   const mobile = Cookies.get('isMobile');
@@ -138,8 +139,9 @@ const HeaderDesktop: React.FC = () => {
                   });
                 }}
               >
+                {/* /fl_lossy,q_auto/w_200 */}
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
+                  src={`${imageKit.baseDeliveryUrl}/v1578101355/shared/spacejoy-logo_ase39m.svg`}
                   width={125}
                   height={25}
                   alt="Spacejoy Logo"
@@ -372,8 +374,9 @@ const HeaderDesktop: React.FC = () => {
                                       <div />
                                       <Link href="/shop" passHref>
                                         <div className="relative col-span-2 aspect-[2/1]">
+                                          {/* /fl_lossy,q_auto */}
                                           <Image
-                                            src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1653633631/web/homev3/Get_Ready_For_Memorial_Day_Sale-09_d135r9.jpg"
+                                            src={`${imageKit.baseDeliveryUrl}/v1653633631/web/homev3/Get_Ready_For_Memorial_Day_Sale-09_d135r9.jpg`}
                                             alt=""
                                             layout="fill"
                                             objectFit="contain"

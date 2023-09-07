@@ -17,7 +17,7 @@ import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct, homePagePoster } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
+import { cloudinary, imageKit, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import faqs from '@utils/Mocks/HomepageFAQs';
@@ -126,7 +126,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 height="200"
                 width="200"
                 alt="path"
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1652948829/Vector_2_xztpty.svg"
+                src={`${imageKit.baseDeliveryUrl}/v1652948829/Vector_2_xztpty.svg`}
                 className="rotate-270"
               />
             </div>
@@ -148,7 +148,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 height="200"
                 width="200"
                 alt="path"
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1652948828/Vector_1_mxl10d.svg"
+                src={`${imageKit.baseDeliveryUrl}/v1652948828/Vector_1_mxl10d.svg`}
                 className="rotate-90"
               />
             </div>
@@ -323,8 +323,9 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   {TeamData.map((item) => (
                     <div key={item.lastName}>
                       <div className="relative aspect-[3/4] sm:aspect-[1] md:aspect-[3/4] lg:aspect-[1] rounded-3xl">
+                        {/* /w_800 */}
                         <Image
-                          src={`https://res.cloudinary.com/spacejoy/w_800/${item.bg}`}
+                          src={`${imageKit.baseDeliveryUrl}/${item.bg}`}
                           alt="image 1"
                           className="object-cover object-center w-full h-full rounded-3xl"
                           layout="fill"
@@ -441,7 +442,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             <div className="grid grid-cols-1 mt-12 md:grid-cols-2">
               <div className="relative p-golden">
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1652950083/Customer_care_image_gk1x5y.png"
+                  src={`${imageKit.baseDeliveryUrl}/v1652950083/Customer_care_image_gk1x5y.png`}
                   layout="fill"
                   objectFit="cover"
                   alt="Customer Care"
@@ -494,7 +495,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   <a target="_blank">
                     <div className="relative aspect-[77/18]">
                       <Image
-                        src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
+                        src={`${imageKit.baseDeliveryUrl}/${data?.homepageV2?.hp1}`}
                         alt="offers"
                         layout="fill"
                         className="object-contain rounded-xl"
@@ -507,7 +508,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               ) : (
                 <div className="relative aspect-[77/18]">
                   <Image
-                    src={`${cloudinary.baseDeliveryURL}/${data?.homepageV2?.hp1}`}
+                    src={`${imageKit.baseDeliveryUrl}/${data?.homepageV2?.hp1}`}
                     alt="offers"
                     layout="fill"
                     className="object-contain rounded-xl"
@@ -519,7 +520,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
             {/* <div className="relative aspect-[287/215] col-span-1 rounded-xl">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1645766721/web/homepage-v3/Group_8homePageAffirm_dkndyv.svg"
+                src={`${imageKit.baseDeliveryUrl}/v1645766721/web/homepage-v3/Group_8homePageAffirm_dkndyv.svg`}
                 alt="affirm"
                 layout="fill"
                 objectFit="contain"

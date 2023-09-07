@@ -128,7 +128,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                               <div className="container rounded-lg w-full h-fit">
                                 {isMobile ? (
                                   <Image
-                                    src="https://res.cloudinary.com/spacejoy/image/upload/v1650517432/web/homepage-v3/Home-in-just-7-days-Mobile-Grid_vorssp.gif"
+                                    src={`${imageKit.baseDeliveryUrl}/v1650517432/web/homepage-v3/Home-in-just-7-days-Mobile-Grid_vorssp.gif`}
                                     alt="affirm"
                                     height={300}
                                     width={358}
@@ -139,7 +139,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                                   />
                                 ) : (
                                   <Image
-                                    src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Inject_vlcgid.gif"
+                                    src={`${imageKit.baseDeliveryUrl}/v1650456436/web/homepage-v3/Home-in-just-7-days-Inject_vlcgid.gif`}
                                     alt="affirm"
                                     layout="fill"
                                     className="object-contain rounded-2xl"
@@ -162,7 +162,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                         >
                           <div className="container rounded-lg w-full h-full relative">
                             <Image
-                              src="https://res.cloudinary.com/spacejoy/image/upload/v1645764975/web/homepage-v3/Group_9designsetBigAffirm_ayi0hz.svg"
+                              src={`${imageKit.baseDeliveryUrl}/v1645764975/web/homepage-v3/Group_9designsetBigAffirm_ayi0hz.svg`}
                               alt="affirm"
                               layout="fill"
                               className="object-contain rounded-2xl"
@@ -178,7 +178,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                             <Link href={data?.designListingV2?.link}>
                               <a>
                                 <Image
-                                  src={`${cloudinary.baseDeliveryURL}/${data?.designListingV2?.cdn}`}
+                                  src={`${imageKit.baseDeliveryUrl}/${data?.designListingV2?.cdn}`}
                                   alt="designListBanner"
                                   layout="fill"
                                   objectFit="contain"
@@ -187,7 +187,7 @@ const DesignSetGrid: React.FC<DesignSetGridInterface> = ({
                             </Link>
                           ) : (
                             <Image
-                              src={`${cloudinary.baseDeliveryURL}/${data?.designListingV2?.cdn}`}
+                              src={`${imageKit.baseDeliveryUrl}/${data?.designListingV2?.cdn}`}
                               alt="designListBanner"
                               layout="fill"
                               objectFit="contain"

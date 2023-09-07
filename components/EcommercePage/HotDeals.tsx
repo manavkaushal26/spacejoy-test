@@ -3,6 +3,7 @@ import SectionHeading from './SectionHeading';
 import Image from 'next/image';
 import Carousel from '../Carousel';
 import Link from 'next/link';
+import { imageKit } from '@utils/config';
 
 const sliderSettings = {
   dots: false,
@@ -15,10 +16,8 @@ const sliderSettings = {
 
 const fakeData = {
   id: 1,
-  img1Src:
-    'https://res.cloudinary.com/spacejoy/image/upload/v1650951859/web/furniture-decor-shop/V2/hot_deals_1_qoakb2.jpg',
-  img2Src:
-    'https://res.cloudinary.com/spacejoy/image/upload/v1651055776/web/furniture-decor-shop/V2/hot_deals_img2_yzqt3l.jpg',
+  img1Src: `${imageKit.baseDeliveryUrl}/v1650951859/web/furniture-decor-shop/V2/hot_deals_1_qoakb2.jpg`,
+  img2Src: `${imageKit.baseDeliveryUrl}/v1651055776/web/furniture-decor-shop/V2/hot_deals_img2_yzqt3l.jpg`,
   title: 'Up to 10% off on all Furniture and Decor',
   href: '',
 };

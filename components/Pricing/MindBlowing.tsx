@@ -1,5 +1,6 @@
 import SectionTitle from '@components/Shared/SectionTitle';
 import { blurredBgImage } from '@public/images/bg-base-64';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -60,7 +61,7 @@ const MindBlowing: React.FC = () => {
           <AnimateBox className="banner">
             <div>
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1622344281/spj-v2/spj-living-room_x9d25x.jpg"
+                src={`${imageKit.baseDeliveryUrl}/v1622344281/spj-v2/spj-living-room_x9d25x.jpg`}
                 alt="spacejoy awesome look"
                 width={'1000'}
                 height={'666'}

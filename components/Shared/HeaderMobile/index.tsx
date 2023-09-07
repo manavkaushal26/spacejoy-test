@@ -13,6 +13,7 @@ import shallow from 'zustand/shallow';
 import UserNav from '../Header/UserNav';
 import MobileSidebar from './SidebarMenu';
 import SidebarMenu from './SidebarMenu';
+import { imageKit } from '@utils/config';
 
 const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
   const router = useRouter();
@@ -85,8 +86,9 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
                       });
                     }}
                   >
+                    {/* /fl_lossy,q_auto/w_200 */}
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1578101355/shared/spacejoy-logo_ase39m.svg`}
                       width={125}
                       height={25}
                       alt="Spacejoy Logo"

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
 import Image from 'next/image';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 
 const UserCardWrapper = styled.div`
   display: flex;
@@ -26,12 +26,12 @@ function UserCard({ dp, name, address, ratings, align }) {
     <UserCardWrapper className={`text-${align}`}>
       {dp && (
         <div className="relative col-span-2 rounded-full ring-2 ring-white bg-[#F39C12] h-16 w-16 -mb-1 border-1 border-white overflow-hidden mr-8">
-          <Image src={`${cloudinary.baseDeliveryURL}/c_thumb,g_center,h_200,w_200/${dp}`} alt="" layout="fill" />
+          <Image src={`${imageKit.baseDeliveryUrl}/${dp}`} alt="" layout="fill" />
         </div>
       )}
-      <div className="details text-left">
+      <div className="text-left details">
         <h3>{name}</h3>
-        <p className='text-sm'>{address}</p>
+        <p className="text-sm">{address}</p>
         <StarRatings
           rating={5}
           starRatedColor="black"

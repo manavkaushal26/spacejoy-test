@@ -5,7 +5,7 @@ import AffirmCard from '@components/Shared/AffirmCards/AffirmCard';
 import ProductCard from '@components/Shop/ProductCard';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ const CollageProductList: React.FC<{
             return (
               <>
                 {showAffirmCard && idx == 3 && (
-                  <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1646728697/web/homepage-v3/Card_yu5azf.svg" />
+                  <AffirmCard imgUrl={`${imageKit.baseDeliveryUrl}/v1646728697/web/homepage-v3/Card_yu5azf.svg`} />
                 )}
                 {showAppointmentCard && idx === 2 && (
                   <Link href="/quiz/start-quiz">
@@ -37,7 +37,7 @@ const CollageProductList: React.FC<{
                       <div className="container rounded-lg w-full h-full relative">
                         {isMobile ? (
                           <Image
-                            src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Mobile_bwsdxy.gif"
+                            src={`${imageKit.baseDeliveryUrl}/v1650456436/web/homepage-v3/Home-in-just-7-days-Mobile_bwsdxy.gif`}
                             alt="appointment"
                             layout="fill"
                             className="object-cover object-center rounded-2xl"
@@ -46,7 +46,7 @@ const CollageProductList: React.FC<{
                           />
                         ) : (
                           <Image
-                            src="https://res.cloudinary.com/spacejoy/image/upload/v1650456436/web/homepage-v3/Home-in-just-7-days-Card_hjgdii.gif"
+                            src={`${imageKit.baseDeliveryUrl}/v1650456436/web/homepage-v3/Home-in-just-7-days-Card_hjgdii.gif`}
                             alt="appointment"
                             layout="fill"
                             className="object-contain object-center rounded-2xl"
@@ -69,7 +69,7 @@ const CollageProductList: React.FC<{
             );
           })}
           {showAffirmCard && assets.length <= 3 && (
-            <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1646728697/web/homepage-v3/Card_yu5azf.svg" />
+            <AffirmCard imgUrl={`${imageKit.baseDeliveryUrl}/v1646728697/web/homepage-v3/Card_yu5azf.svg`} />
           )}
           {showBannerCard && data?.designViewV2?.visible && (
             <div className="container rounded-lg w-full h-full relative">
@@ -77,7 +77,7 @@ const CollageProductList: React.FC<{
                 <Link href={data?.designViewV2?.link}>
                   <a>
                     <Image
-                      src={`${cloudinary.baseDeliveryURL}/${data?.designViewV2?.cdn}`}
+                      src={`${imageKit.baseDeliveryUrl}/${data?.designViewV2?.cdn}`}
                       alt="designViewBanner"
                       layout="fill"
                       objectFit="contain"
@@ -86,7 +86,7 @@ const CollageProductList: React.FC<{
                 </Link>
               ) : (
                 <Image
-                  src={`${cloudinary.baseDeliveryURL}/${data?.designViewV2?.cdn}`}
+                  src={`${imageKit.baseDeliveryUrl}/${data?.designViewV2?.cdn}`}
                   alt="designViewBanner"
                   layout="fill"
                   objectFit="contain"

@@ -68,7 +68,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
           property="og:title"
           content={`${correctedCollageName?.[0]?.toLocaleUpperCase()}${correctedCollageName?.slice(1)} | Spacejoy`}
         />
-        <meta property="og:image" content={`${cloudinary.baseDeliveryURL}/${collageData.thumbnail}`} />
+        <meta property="og:image" content={`${imageKit.baseDeliveryUrl}/${collageData.thumbnail}`} />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content={`${company.url}${router.asPath}`} />
@@ -76,7 +76,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
           property="twitter:title"
           content={`${correctedCollageName?.[0]?.toLocaleUpperCase()}${correctedCollageName?.slice(1)} | Spacejoy`}
         />
-        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${collageData.thumbnail}`} />
+        <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${collageData.thumbnail}`} />
 
         <link rel="canonical" href={`${company.url}${router.asPath.split('?')[0]}`} />
         <base href="/" />
@@ -99,7 +99,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                                 <WishListBtn type="Collage" documentId={collageData?._id} />
                               </button>
                               <Image
-                                src={`${cloudinary.baseDeliveryURL}/${collageData.thumbnail}`}
+                                src={`${imageKit.baseDeliveryUrl}/${collageData.thumbnail}`}
                                 alt=""
                                 layout="fill"
                                 className="rounded-lg"
@@ -124,7 +124,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             {/* // TODO This codeblock will be replaced with editor code */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             {/* <Image
-                            src={`${cloudinary.baseDeliveryURL}/e_trim,q_auto,ar_1.5,c_pad/${collageData?.thumbnail}`}
+                            src={`${imageKit.baseDeliveryUrl}/e_trim,q_auto,ar_1.5,c_pad/${collageData?.thumbnail}`}
                             alt={correctedCollageName}
                             className="rounded-xl"
                             layout="fill"

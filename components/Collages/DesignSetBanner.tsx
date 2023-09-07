@@ -1,5 +1,5 @@
 import { blurredBgImage } from '@public/images/bg-base-64';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import topCollages from '@utils/Mocks/topCollages';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -26,7 +26,7 @@ const DesignSetBanner = () => {
                 }`}
               >
                 <Image
-                  src={`${cloudinary.baseDeliveryURL}/${roomType?.cdnThumbnail}`}
+                  src={`${imageKit.baseDeliveryUrl}/${roomType?.cdnThumbnail}`}
                   alt={roomType?.name}
                   placeholder="blur"
                   blurDataURL={blurredBgImage}

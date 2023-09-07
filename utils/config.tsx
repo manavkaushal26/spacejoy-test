@@ -33,10 +33,12 @@ const cloudinary = {
   apiKey: '432541925957862',
   apiSecret: 'dhn4tENhmmFqoefnjWXtcjlkfUw',
   environmentVariable: 'CLOUDINARY_URL=cloudinary://432541925957862:dhn4tENhmmFqoefnjWXtcjlkfUw@spacejoy',
-  baseDeliveryURL: 'https://res.cloudinary.com/spacejoy',
+  baseDeliveryUrl: 'https://ik.imagekit.io/spacejoy',
   apiBaseURL: '//api.cloudinary.com/v1_1/spacejoy',
 };
-
+const imageKit = {
+  baseDeliveryUrl: 'https://ik.imagekit.io/spacejoy',
+};
 const pinterestConfig = {
   appName: 'SpaceJoyWeb',
   appId: 1473468,
@@ -177,4 +179,5 @@ export {
   isProduction,
   firebaseConfig,
   newSpacejoyStoreUrl,
+  imageKit,
 };

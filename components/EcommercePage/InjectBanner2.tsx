@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { oldSpacejoyUrl } from '@utils/config';
+import { imageKit, oldSpacejoyUrl } from '@utils/config';
 import { PushEvent } from '@utils/analyticsLogger';
 
 const InjectBanner2 = () => {
@@ -21,7 +21,7 @@ const InjectBanner2 = () => {
       >
         <div className="relative hidden sm:block aspect-[80/23]">
           <Image
-            src="https://res.cloudinary.com/spacejoy/image/upload/v1652365416/web/Cart_Banner_ixjnn6.jpg"
+            src={`${imageKit.baseDeliveryUrl}/v1652365416/web/Cart_Banner_ixjnn6.jpg`}
             alt="Affirm Banner"
             layout="fill"
             objectFit="contain"
@@ -30,7 +30,7 @@ const InjectBanner2 = () => {
         </div>
         <div className="relative sm:hidden aspect-[300/337]">
           <Image
-            src="https://res.cloudinary.com/spacejoy/image/upload/v1652437331/web/Referral_Banner_Mobile-min_kwdwea.jpg"
+            src={`${imageKit.baseDeliveryUrl}/v1652437331/web/Referral_Banner_Mobile-min_kwdwea.jpg`}
             alt="Affirm Banner"
             layout="fill"
             objectFit="contain"

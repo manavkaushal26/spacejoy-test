@@ -5,6 +5,7 @@ import React from 'react';
 import SectionHeading from './SectionHeading';
 import { titleCase } from '@utils/helpers';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 
 const sliderSettings = {
   dots: false,
@@ -18,32 +19,28 @@ const sliderSettings = {
 const fakeCollectionData = [
   {
     id: 1,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652186012/web/furniture-decor-shop/V2/collections_a_axnhzy.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652186012/web/furniture-decor-shop/V2/collections_a_axnhzy.jpg`,
     title: 'Accent Chairs From $99',
     description: 'Make every seat the best seat in your house',
     href: '/chairs/accent-chairs',
   },
   {
     id: 2,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652186013/web/furniture-decor-shop/V2/collections_b_fh8503.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652186013/web/furniture-decor-shop/V2/collections_b_fh8503.jpg`,
     title: 'Coffee Tables From $89',
     description: 'Find the table that anchors your living room effortlessly',
     href: '/tables/coffee-tables',
   },
   {
     id: 3,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652186013/web/furniture-decor-shop/V2/collections_c_gvpi0a.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652186013/web/furniture-decor-shop/V2/collections_c_gvpi0a.jpg`,
     title: 'Sectionals From $599',
     description: `Discover comfortable seating that's also stylish`,
     href: '/sofas/sectionals',
   },
   {
     id: 4,
-    imgSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1652186014/web/furniture-decor-shop/V2/collections_d_g4lzym.jpg',
+    imgSrc: `${imageKit.baseDeliveryUrl}/v1652186014/web/furniture-decor-shop/V2/collections_d_g4lzym.jpg`,
     title: 'Queen Beds From $149',
     description: 'Our very best picks for your space, rest assured',
     href: '/beds/queen-beds',
@@ -52,7 +49,7 @@ const fakeCollectionData = [
 
 const NewCollection = () => {
   return (
-    <div className="container max-w-7xl pl-4 mx-auto sm:px-4">
+    <div className="container pl-4 mx-auto max-w-7xl sm:px-4">
       <SectionHeading title="New Collections, awesome prices" />
       <div className="lg:hidden collections-slider">
         <Carousel imageCount={fakeCollectionData?.length || 0} responsive={sliderSettings} arrows={false}>
@@ -67,7 +64,7 @@ const NewCollection = () => {
                   });
                 }}
               >
-                <div className="shadow-md rounded-lg cursor-pointer">
+                <div className="rounded-lg shadow-md cursor-pointer">
                   <div className="relative aspect-[46/25]">
                     <Image
                       src={collection.imgSrc}
@@ -77,7 +74,7 @@ const NewCollection = () => {
                       className="rounded-tr-xl rounded-tl-xl"
                     />
                   </div>
-                  <div className="bg-white p-5 rounded-bl-xl rounded-br-xl">
+                  <div className="p-5 bg-white rounded-bl-xl rounded-br-xl">
                     <div className="mb-2">
                       <h3 className="text-lg">{collection.title}</h3>
                       <p className="line-clamp-2">{collection.description}</p>
@@ -92,7 +89,7 @@ const NewCollection = () => {
           ))}
         </Carousel>
       </div>
-      <div className="hidden lg:grid grid-cols-4 gap-6">
+      <div className="hidden grid-cols-4 gap-6 lg:grid">
         {fakeCollectionData.map((collection) => (
           <Link key={collection.id} href={collection.href}>
             <a
@@ -105,7 +102,7 @@ const NewCollection = () => {
                 });
               }}
             >
-              <div className="shadow-md rounded-xl transition duration-200 hover:shadow-lg cursor-pointer">
+              <div className="transition duration-200 shadow-md cursor-pointer rounded-xl hover:shadow-lg">
                 <div className="relative aspect-[46/25]">
                   <Image
                     src={collection.imgSrc}
@@ -115,7 +112,7 @@ const NewCollection = () => {
                     className="rounded-tr-xl rounded-tl-xl"
                   />
                 </div>
-                <div className="bg-white p-5 rounded-bl-xl rounded-br-xl">
+                <div className="p-5 bg-white rounded-bl-xl rounded-br-xl">
                   <div className="mb-2">
                     <h3 className="text-lg">{collection.title}</h3>
                     <p className="line-clamp-2">{collection.description}</p>

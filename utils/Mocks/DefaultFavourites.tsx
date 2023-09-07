@@ -1,3 +1,5 @@
+import { imageKit } from '@utils/config';
+
 const topCollages = {
   list: [
     {
@@ -87,8 +89,7 @@ const topCollages = {
   ],
 };
 
-export const defaultImgSrcThumbnail =
-  'https://res.cloudinary.com/spacejoy/image/upload/v1650375751/spj-v2/1-1_um1psv.png';
-export const defaultImgSrcCover = 'https://res.cloudinary.com/spacejoy/image/upload/v1650375751/spj-v2/16-9_r3zcn8.png';
+export const defaultImgSrcThumbnail = `${imageKit.baseDeliveryUrl}/v1650375751/spj-v2/1-1_um1psv.png`;
+export const defaultImgSrcCover = `${imageKit.baseDeliveryUrl}/v1650375751/spj-v2/16-9_r3zcn8.png`;
 
 export default topCollages;

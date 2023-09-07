@@ -6,6 +6,7 @@ import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import ProductCard from '@components/Shop/ProductCard';
 import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
+import { imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import Head from 'next/head';
 import React from 'react';
@@ -16,18 +17,18 @@ const DesignView = ({ design }) => {
       <Head>
         <title>{design?.name} | Spacejoy</title>
       </Head>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <div className="bg-gray-100">
-          <div className="container mx-auto px-4">
+          <div className="container px-4 mx-auto">
             {/* <Breadcrumb design={design} /> */}
             <h2 className="my-8 text-3xl tracking-wide">{design?.name}</h2>
             <ImageGrid images={design?.cdnRender} />
-            <h3 className="text-2xl tracking-wide text-gray-700 mt-20 mb-8">Shop the products featured in this room</h3>
-            <div className="my-8 flex flex-col sm:flex-row space-y-4 sm:space-x-4 2xl:space-x-8">
+            <h3 className="mt-20 mb-8 text-2xl tracking-wide text-gray-700">Shop the products featured in this room</h3>
+            <div className="flex flex-col my-8 space-y-4 sm:flex-row sm:space-x-4 2xl:space-x-8">
               <div className="sm:w-3/5 xl:w-3/4">
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1 h-full">
+                <div className="grid h-full grid-cols-2 gap-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
                   {design?.assets?.length === 0 ? (
                     <>
                       {[...Array(28)].map((_d, _i) => {
@@ -43,7 +44,7 @@ const DesignView = ({ design }) => {
                             product={{
                               ...asset?.asset,
                               msrp: asset?.asset?.price,
-                              imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${asset?.asset?.cdn}`,
+                              imageUrl: `${imageKit.baseDeliveryUrl}/${asset?.asset?.cdn}`,
                             }}
                           />
                         );
@@ -55,9 +56,9 @@ const DesignView = ({ design }) => {
               <div className="sm:w-2/5 xl:w-1/4">
                 <div className="sticky top-24 2xl:top-28">
                   {/* <DesignerCard /> */}
-                  <div className="bg-white rounded-lg p-4 2xl:p-8 mt-4 2xl:mt-8">
-                    <h3 className="text-lg mb-4">About the Design</h3>
-                    <p className="text-sm text-gray-500 mb-6">{design?.description}</p>
+                  <div className="p-4 mt-4 bg-white rounded-lg 2xl:p-8 2xl:mt-8">
+                    <h3 className="mb-4 text-lg">About the Design</h3>
+                    <p className="mb-6 text-sm text-gray-500">{design?.description}</p>
                   </div>
                 </div>
               </div>
@@ -94,6 +95,5 @@ const getFirstSet = async () => {
     ],
   };
 };
-
 
 export default DesignView;

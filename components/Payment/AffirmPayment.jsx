@@ -2,7 +2,7 @@
 import SVGLoader from '@components/Shared/SVGLoader';
 import affirm from '@utils/affirm';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
@@ -78,7 +78,7 @@ const Affirm = ({ cb }) => {
       <Image
         width="70px"
         height="30px"
-        src={`${cloudinary.baseDeliveryURL}/w_70/v1595658009/shared/affirm_bm4ocs.svg`}
+        src={`${imageKit.baseDeliveryUrl}/w_70/v1595658009/shared/affirm_bm4ocs.svg`}
         alt="affirm logo"
       />
       <h4 className="y-margin-0">Big purchase? No problem.</h4>

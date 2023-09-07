@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import { defaultImgSrcCover } from '@utils/Mocks/DefaultFavourites';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import React, { useMemo } from 'react';
 
 const RoomCard = ({ room }) => {
   const imgUrl = useMemo(() => {
-    return room?.thumbnail ? `${cloudinary.baseDeliveryURL}/${room?.thumbnail}` : null;
+    return room?.thumbnail ? `${imageKit.baseDeliveryUrl}/${room?.thumbnail}` : null;
   }, [room]);
   const analytics = () => {
     PushEvent({
@@ -20,27 +20,27 @@ const RoomCard = ({ room }) => {
 
   return (
     <Link href={`/wishlist/${room?._id}`} passHref>
-      <div className="mt-4 group hover:shadow-md rounded-md py-2 cursor-pointer">
+      <div className="py-2 mt-4 rounded-md cursor-pointer group hover:shadow-md">
         <div className="max-w-sm rounded overflow-hidden relative w-full aspect-[1.5]">
           <Image
             src={imgUrl || defaultImgSrcCover}
-            alt="Sunset in the mountains"
+            alt={room.name}
             layout="fill"
             objectFit="contain"
             className="rounded-md"
           />
         </div>
-        <div className="block p-6 rounded-lg  bg-white max-w-sm pt-2">
-          <h5 className="text-gray-900 text-lg font-bold leading-tight font-medium mb-6">{room?.name}</h5>
+        <div className="block max-w-sm p-6 pt-2 bg-white rounded-lg">
+          <h5 className="mb-6 text-lg font-medium font-bold leading-tight text-gray-900">{room?.name}</h5>
 
           <Link href={`/wishlist/${room?._id}`}>
             <a
               href={`/wishlist/${room?._id}`}
-              className="text-base py-2 px-4 bg-gray-900 rounded-lg text-white  text-md inline-flex items-center group"
+              className="inline-flex items-center px-4 py-2 text-base text-white bg-gray-900 rounded-lg text-md group"
               onClick={() => analytics()}
             >
               Open List
-              <ArrowRightIcon className="h-4 w-4 text-white ml-1 group-hover:translate-x-1 " />
+              <ArrowRightIcon className="w-4 h-4 ml-1 text-white group-hover:translate-x-1 " />
             </a>
           </Link>
         </div>

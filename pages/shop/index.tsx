@@ -10,7 +10,7 @@ import { ChevronRightIcon, HomeIcon, MinusIcon, PlusIcon } from '@heroicons/reac
 import usePagination from '@hooks/usePagination';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
-import { cloudinary, company, internalPages } from '@utils/config';
+import { cloudinary, company, imageKit, internalPages } from '@utils/config';
 import { defaultFilters, fetchAssetList } from '@utils/shop/helpers';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
@@ -35,7 +35,7 @@ const ProductList = ({ list }) => {
                     <a>
                       <div className="relative aspect-w-7 aspect-h-9">
                         <Image
-                          src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
+                          src={`${imageKit.baseDeliveryUrl}/${data?.injectBannerV2?.cdn}`}
                           alt="injectBanner"
                           layout="fill"
                           objectFit="cover"
@@ -45,9 +45,9 @@ const ProductList = ({ list }) => {
                   </Link>
                 </div>
               ) : (
-                <div className="relative aspect-w-3 aspect-h-1 col-span-3">
+                <div className="relative col-span-3 aspect-w-3 aspect-h-1">
                   <Image
-                    src={`${cloudinary.baseDeliveryURL}/${data?.injectBannerV2?.cdn}`}
+                    src={`${imageKit.baseDeliveryUrl}/${data?.injectBannerV2?.cdn}`}
                     alt="injectBanner"
                     layout="fill"
                     objectFit="contain"
@@ -59,7 +59,7 @@ const ProductList = ({ list }) => {
             return (
               <>
                 {idx === 4 && (
-                  <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />
+                  <AffirmCard imgUrl={`${imageKit.baseDeliveryUrl}/v1645792556/web/homepage-v3/Card_tjadyd.svg`} />
                 )}
                 <ProductCard product={item} key={item._id} pageName="shop" />
               </>
@@ -129,9 +129,9 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
   useEffect(() => {
     if (error) {
       toast.error(
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center justify-center">
           <p className="font-bold">We are sorry</p>
-          <p className="message-body text-sm text-gray-600 text-justify">
+          <p className="text-sm text-justify text-gray-600 message-body">
             The product you were looking for is not available but we&apos;ve got similar products!
           </p>
         </div>
@@ -230,11 +230,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
           property="og:description"
           content={`Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!`}
         />
-        <meta
-          key="og-image"
-          property="og:image"
-          content={`${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`}
-        />
+        <meta key="og-image" property="og:image" content={`${imageKit.baseDeliveryUrl}/${assetsList?.list[0]?.cdn}`} />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
@@ -244,7 +240,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
           property="twitter:description"
           content={`Shopping furniture and decor for your home? Try Spacejoy. Modern, mid-century, boho, industrial, we have products of all styles from 500+ brands. And you'll always get great discounts with our furniture sale!`}
         />
-        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`} />
+        <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${assetsList?.list[0]?.cdn}`} />
 
         <link rel="canonical" href="https://spacejoy.com/shop" />
         <link rel="icon" href="/favicon.ico" />
@@ -341,7 +337,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                 <Disclosure>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex items-center justify-between w-full border-0 py-4 text-left rounded-sm">
+                      <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-0 rounded-sm">
                         <h3 className="text-gray-700">Price</h3>
                         <span className="flex items-center ml-6">
                           {open ? <MinusIcon className="w-3 h-3" /> : <PlusIcon className="w-3 h-3" />}
@@ -450,8 +446,8 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                 )}
               </FilterDrawer>
             )}
-            <div className="grid grid-cols-4 lg:grid-cols-5 gap-8">
-              <div className="col-span-1 p-4 bg-white rounded-lg hidden lg:block">
+            <div className="grid grid-cols-4 gap-8 lg:grid-cols-5">
+              <div className="hidden col-span-1 p-4 bg-white rounded-lg lg:block">
                 <form className="hidden lg:block">
                   {verticalList?.length !== 0 && (
                     <Disclosure defaultOpen>
@@ -611,15 +607,15 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
               </div>
               <div className="col-span-4 rounded">
                 {isMobile === 'true' && (
-                  <div className="sticky top-20 z-20 mb-4">
-                    <div className=" bg-gray-100 py-1 flex w-full justify-end">
+                  <div className="sticky z-20 mb-4 top-20">
+                    <div className="flex justify-end w-full py-1 bg-gray-100 ">
                       <button
                         onClick={() => setIsOpen(true)}
-                        className="flex w-1/4 items-center  justify-center space-x-2 p-2 text-base font-medium text-white bg-black shadow-xs cursor-not-allowed group hover:shadow-md rounded-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        className="flex items-center justify-center w-1/4 p-2 space-x-2 text-base font-medium text-white bg-black rounded-md shadow-xs cursor-not-allowed group hover:shadow-md focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
+                          className="w-5 h-5"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -636,7 +632,7 @@ export const Shop = ({ initialFilters, assetsList, searchText = '', alternatives
                     </div>
                   </div>
                 )}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 xl:grid-cols-3 2xl:grid-cols-3">
+                <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
                   {isFetching ? (
                     <>
                       {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
@@ -704,6 +700,7 @@ export async function getServerSideProps(context) {
     const { subcategory = [], category = [], vertical = [], ...otherFilters } = payload;
     const allFilters = { ...defaultFilters, ...payload };
     const assetsList = await fetchAssetList({ filters: { ...allFilters } }, context);
+    console.log('test:', assetsList);
 
     return {
       props: {

@@ -158,7 +158,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
           <a href={`/product-view/${product._id}`} {...linkProps}>
             <Image
               // src={product?.imageUrl}
-              src={`${cloudinary.baseDeliveryURL}/w_400,ar_1,c_pad/${product?.cdn}`}
+              src={`${imageKit.baseDeliveryUrl}/w_400,ar_1,c_pad/${product?.cdn}`}
               alt={product?.name}
               layout="fill"
               objectFit="contain"
@@ -350,7 +350,7 @@ export default function Cart() {
                             <a>
                               <div className="relative aspect-w-7 aspect-h-2">
                                 <Image
-                                  src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                                  src={`${imageKit.baseDeliveryUrl}/w_600/${data?.cartBannerV2?.cdn}`}
                                   alt="cartBanner"
                                   layout="fill"
                                   objectFit="contain"
@@ -361,7 +361,7 @@ export default function Cart() {
                         ) : (
                           <div className="relative aspect-w-7 aspect-h-2">
                             <Image
-                              src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                              src={`${imageKit.baseDeliveryUrl}/w_600/${data?.cartBannerV2?.cdn}`}
                               alt="cartBanner"
                               layout="fill"
                               objectFit="contain"
@@ -449,7 +449,7 @@ export default function Cart() {
                             <a>
                               <div className="relative aspect-w-7 aspect-h-2">
                                 <Image
-                                  src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                                  src={`${imageKit.baseDeliveryUrl}/w_600/${data?.cartBannerV2?.cdn}`}
                                   alt="cartBanner"
                                   layout="fill"
                                   objectFit="contain"
@@ -460,7 +460,7 @@ export default function Cart() {
                         ) : (
                           <div className="relative aspect-w-7 aspect-h-2">
                             <Image
-                              src={`${cloudinary.baseDeliveryURL}/w_600/${data?.cartBannerV2?.cdn}`}
+                              src={`${imageKit.baseDeliveryUrl}/w_600/${data?.cartBannerV2?.cdn}`}
                               alt="cartBanner"
                               layout="fill"
                               objectFit="contain"

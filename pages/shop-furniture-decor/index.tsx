@@ -56,15 +56,15 @@ const Index = ({ isMobile }) => {
         <InjectBanner2 />
         <FreeShipping mobile={isMobile} />
         {/* <ShopInjectBanner /> */}
-        {/* <div className="container max-w-7xl px-4 mx-auto">
-          <div className="mt-16 mb-16 block">
+        {/* <div className="container px-4 mx-auto max-w-7xl">
+          <div className="block mt-16 mb-16">
             <SectionHeading title="Why buy from spacejoy?" />
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
               {WhyShopWithSpacejoy?.map((item) => {
                 return (
-                  <div key={item?.id} className="space-y-1 my-2">
+                  <div key={item?.id} className="my-2 space-y-1">
                     <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
-                    <p className="text-md font-bold text-gray-900">{item?.title}</p>
+                    <p className="font-bold text-gray-900 text-md">{item?.title}</p>
                     <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
                   </div>
                 );

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { ScrollTrigger, Tween } from 'react-gsap';
 import SectionTitle from '../Shared/SectionTitle';
+import { imageKit } from '@utils/config';
 
 const Featured: React.FC = () => {
   return (
@@ -20,7 +21,7 @@ const Featured: React.FC = () => {
                 >
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1644328125/shared/brandsLogo/apartmentTherapy_m07wox.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328125/shared/brandsLogo/apartmentTherapy_m07wox.svg`}
                       alt="spacejoy happy customer"
                       height={'130'}
                       width={'200'}
@@ -29,7 +30,7 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/hgtv_fohatr.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328123/shared/brandsLogo/hgtv_fohatr.svg`}
                       alt="spacejoy happy customer"
                       height={'100'}
                       width={'170'}
@@ -38,7 +39,7 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/goodHouseKeeping_gsw3hd.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328123/shared/brandsLogo/goodHouseKeeping_gsw3hd.svg`}
                       alt="spacejoy happy customer"
                       height={'130'}
                       width={'200'}
@@ -47,7 +48,7 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1644328125/shared/brandsLogo/parade_qglpbv.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328125/shared/brandsLogo/parade_qglpbv.svg`}
                       alt="spacejoy happy customer"
                       height={'130'}
                       width={'200'}
@@ -56,7 +57,7 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1644328123/shared/brandsLogo/furnitureDecorLighting_zj27z0.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328123/shared/brandsLogo/furnitureDecorLighting_zj27z0.svg`}
                       alt="spacejoy happy customer"
                       height={'130'}
                       width={'200'}
@@ -64,8 +65,9 @@ const Featured: React.FC = () => {
                     />
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
+                    {/* /w_30 */}
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/w_30/v1644328123/shared/brandsLogo/forbes_ud5zvu.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328123/shared/brandsLogo/forbes_ud5zvu.svg`}
                       alt="spacejoy happy customer"
                       height={'100'}
                       width={'170'}
@@ -74,7 +76,7 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1658478094/shared/brandsLogo/logo-architectural-digest_no15yk.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1658478094/shared/brandsLogo/logo-architectural-digest_no15yk.svg`}
                       alt="spacejoy happy customer"
                       height={'80'}
                       width={'130'}
@@ -82,8 +84,9 @@ const Featured: React.FC = () => {
                     />
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
+                    {/* w_350 */}
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/w_350/v1644328123/shared/brandsLogo/businessInsider_pbxfnp.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1644328123/shared/brandsLogo/businessInsider_pbxfnp.svg`}
                       alt="spacejoy happy customer"
                       height={'100'}
                       width={'160'}
@@ -101,9 +104,10 @@ const Featured: React.FC = () => {
         </div>
       </div>
       <div className="relative min-h-[300px] sm:min-h-[320px] xl:min-h-[360px]">
+        {/* fl_lossy,f_auto,q_auto,w_1896,h_759 */}
         <Image
           className="object-cover filter contrast-125"
-          src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1896,h_759/v1622186205/spj-v2/spj-living-room_gyepig.jpg"
+          src={`${imageKit.baseDeliveryUrl}/v1622186205/spj-v2/spj-living-room_gyepig.jpg`}
           alt="spacejoy happy customer"
           height={'450'}
           width={'1896'}

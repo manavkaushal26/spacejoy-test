@@ -1,5 +1,6 @@
 import Carousel from '@components/Carousel';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -16,33 +17,29 @@ const sliderSettings = {
 const data = [
   {
     id: 1,
-    imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1657192670/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner_Mobile_nzuhby.jpg',
-    imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1657194365/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner1_rbvq30.jpg',
+    imgSrcMob: `${imageKit.baseDeliveryUrl}/v1657192670/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner_Mobile_nzuhby.jpg`,
+    imgSrcDesk: `${imageKit.baseDeliveryUrl}/v1657194365/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner1_rbvq30.jpg`,
     href: '/shop',
   },
   {
     id: 2,
-    imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1657192670/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner_Mobile_nzuhby.jpg',
-    imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/v1657192669/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner2_d68mka.jpg',
+    imgSrcMob: `${imageKit.baseDeliveryUrl}/v1657192670/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner_Mobile_nzuhby.jpg`,
+    imgSrcDesk: `${imageKit.baseDeliveryUrl}/v1657192669/web/furniture-decor-shop/V2/Generic_Banners_Shop_Page_Main_banner2_d68mka.jpg`,
     href: `/quiz/start-quiz`,
   },
+  // fl_lossy,q_auto/w_800
+  // /fl_lossy,q_auto
   {
     id: 3,
-    imgSrcMob:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_800/v1652325144/web/furniture-decor-shop/V2/Card_zjq1g2.jpg',
-    imgSrcDesk:
-      'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652185038/web/furniture-decor-shop/V2/Banner_3_uqqhjz.jpg',
+    imgSrcMob: `${imageKit.baseDeliveryUrl}/v1652325144/web/furniture-decor-shop/V2/Card_zjq1g2.jpg`,
+    imgSrcDesk: `${imageKit.baseDeliveryUrl}/v1652185038/web/furniture-decor-shop/V2/Banner_3_uqqhjz.jpg`,
     href: '',
   },
 ];
 
 const HeroCarousel = ({ mobile }) => {
   return (
-    <div className="max-w-7xl mx-auto pt-6">
+    <div className="pt-6 mx-auto max-w-7xl">
       <Carousel
         imageCount={data?.length || 0}
         responsive={sliderSettings}

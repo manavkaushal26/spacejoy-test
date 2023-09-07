@@ -1,6 +1,6 @@
 import { ExternalLinkIcon, SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { blurredProduct } from '@public/images/bg-base-64';
-import { oldSpacejoyUrl } from '@utils/config';
+import { imageKit, oldSpacejoyUrl } from '@utils/config';
 import { priceToLocaleString } from '@utils/helpers';
 import AssetType from '@utils/types/AssetType';
 import Image from 'next/image';
@@ -99,8 +99,8 @@ const ProductCard: React.FC<ProductCardInterface> = ({
       ) : null}
 
       {itemStatus && (
-        <div className="inset-0 absolute flex z-30 justify-center items-center bg-black/40">
-          <span className="text-white font-bold text-xl">{itemStatus}</span>
+        <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/40">
+          <span className="text-xl font-bold text-white">{itemStatus}</span>
         </div>
       )}
 
@@ -111,9 +111,10 @@ const ProductCard: React.FC<ProductCardInterface> = ({
           ${((product?.depth || 0) * 12)?.toFixed(2).toString()}"`}
         </p>
       </div>
-      <div className="p-4 aspect-square flex-1 relative">
+      <div className="relative flex-1 p-4 aspect-square">
+        {/* fl_lossy,q_auto,w_300,ar_1,c_pad/ */}
         <Image
-          src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_300,ar_1,c_pad/${productThumbnail}`}
+          src={`${imageKit.baseDeliveryUrl}/${productThumbnail}`}
           alt={product?.name}
           layout="fill"
           objectFit="contain"

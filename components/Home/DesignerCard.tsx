@@ -1,5 +1,5 @@
 import { blurredBgImage } from '@public/images/bg-base-64';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -29,7 +29,7 @@ const Index = ({ data }) => {
             </button>
           </div>
           <Image
-            src={`${cloudinary.baseDeliveryURL}/${
+            src={`${imageKit.baseDeliveryUrl}/${
               coverImgType === 'before' ? `${data?.before?.img}` : `${data?.after.img}`
             }`}
             alt={data?.after?.alt}
@@ -47,7 +47,7 @@ const Index = ({ data }) => {
             <div className="h-32 w-32 relative">
               <Image
                 className="inline-block rounded-xl"
-                src={`${cloudinary.baseDeliveryURL}/${data?.dp}`}
+                src={`${imageKit.baseDeliveryUrl}/${data?.dp}`}
                 alt=""
                 // height="90"
                 // width="90"

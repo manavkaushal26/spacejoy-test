@@ -86,7 +86,7 @@ const RecommendationsListView: React.FC = () => {
       <EmptyState
         title="Select any product from the canvas to swap!"
         message=""
-        // assetPath="https://res.cloudinary.com/spacejoy/image/upload/v1634637463/Icon_-_select_p8nfvu.svg"
+        // assetPath={`${imageKit.baseDeliveryUrl}/v1634637463/Icon_-_select_p8nfvu.svg`}
       />
     </div>
   ) : (

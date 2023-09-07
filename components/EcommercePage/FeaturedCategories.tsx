@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { convertFilterToUrlPath, convertUrlPathToFilter } from '@utils/helpers';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 
 const FeaturedCategoriesGrid = styled.div`
   .grid {
@@ -120,8 +121,9 @@ const FeaturedCategories = ({ mobile }) => {
                   });
                 }}
               >
+                {/* /fl_lossy,q_auto */}
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1652191607/web/furniture-decor-shop/V2/Sofas_vmnho9.jpg`}
                   alt="Sofas"
                   layout="fill"
                   objectFit="cover"
@@ -146,8 +148,9 @@ const FeaturedCategories = ({ mobile }) => {
                     });
                   }}
                 >
+                  {/* /fl_lossy,q_auto */}
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg"
+                    src={`${imageKit.baseDeliveryUrl}/v1652191663/web/furniture-decor-shop/V2/Chairs_tmn1ao.jpg`}
                     alt="Chairs"
                     layout="fill"
                     objectFit="cover"
@@ -172,7 +175,7 @@ const FeaturedCategories = ({ mobile }) => {
                   }}
                 >
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg"
+                    src={`${imageKit.baseDeliveryUrl}/v1652191821/web/furniture-decor-shop/V2/Tv_Console_fotmok.jpg`}
                     alt="TV Console"
                     layout="fill"
                     objectFit="cover"
@@ -199,7 +202,7 @@ const FeaturedCategories = ({ mobile }) => {
                   }}
                 >
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg"
+                    src={`${imageKit.baseDeliveryUrl}/v1652191430/web/furniture-decor-shop/V2/Tables_m1zuz2.jpg`}
                     alt="Tables"
                     layout="fill"
                     objectFit="cover"
@@ -224,7 +227,7 @@ const FeaturedCategories = ({ mobile }) => {
                   }}
                 >
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg"
+                    src={`${imageKit.baseDeliveryUrl}/v1652192080/web/furniture-decor-shop/V2/Storage_and_Organisers_lcvqh2.jpg`}
                     alt="Storage and Organizers"
                     layout="fill"
                     objectFit="cover"
@@ -250,7 +253,7 @@ const FeaturedCategories = ({ mobile }) => {
                 }}
               >
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1652190748/web/furniture-decor-shop/V2/Rugs_czamhg.jpg`}
                   alt="Rugs"
                   layout="fill"
                   objectFit="cover"
@@ -275,7 +278,7 @@ const FeaturedCategories = ({ mobile }) => {
                 }}
               >
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1652191959/web/furniture-decor-shop/V2/Lamps_and_Shades_ndt9jw.jpg"`}
                   alt="Lamps & Shades"
                   layout="fill"
                   objectFit="cover"
@@ -300,7 +303,7 @@ const FeaturedCategories = ({ mobile }) => {
                 }}
               >
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1652192121/web/furniture-decor-shop/V2/Beds_wxnkdh.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1652192121/web/furniture-decor-shop/V2/Beds_wxnkdh.jpg`}
                   alt="Beds"
                   layout="fill"
                   objectFit="cover"

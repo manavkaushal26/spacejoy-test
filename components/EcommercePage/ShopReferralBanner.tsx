@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { imageKit } from '@utils/config';
 
 const ShopBanner = ({ linkTo, shopInjectBanner }) => {
   return (
@@ -9,7 +10,7 @@ const ShopBanner = ({ linkTo, shopInjectBanner }) => {
         <Link href={linkTo || ''} passHref>
           <a target="_blank">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1642414643/web/homev3/Inject_Banner-2_he75rr.gif"
+              src={`${imageKit.baseDeliveryUrl}/v1642414643/web/homev3/Inject_Banner-2_he75rr.gif`}
               alt="Referral Banner"
               className="cursor-pointer rounded-lg"
               layout="fill"
@@ -26,7 +27,7 @@ const ShopBanner = ({ linkTo, shopInjectBanner }) => {
         <Link href={linkTo || ''} passHref>
           <a target="_blank">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1645618931/web/homev3/Referral_Banner_Mobile_3_jmpjy6.gif"
+              src={`${imageKit.baseDeliveryUrl}/v1645618931/web/homev3/Referral_Banner_Mobile_3_jmpjy6.gif`}
               alt="Referral Banner"
               className="cursor-pointer rounded-lg"
               layout="fill"

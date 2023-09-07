@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { PushEvent } from '@utils/analyticsLogger';
-import { oldSpacejoyUrl } from '@utils/config';
+import { imageKit, oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -23,7 +23,7 @@ const CustomerStoriesNav = () => {
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-green-50 hover:bg-green-100">
               <div className="relative w-full">
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1644242817/spj-v2/interior_designs_v5ctez.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1644242817/spj-v2/interior_designs_v5ctez.jpg`}
                   alt="Interior Designs"
                   width={300}
                   height={280}
@@ -44,7 +44,7 @@ const CustomerStoriesNav = () => {
         >
           <div className="relative w-full">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1644326196/spj-v2/collection_oy3r9v.jpg"
+              src={`${imageKit.baseDeliveryUrl}/v1644326196/spj-v2/collection_oy3r9v.jpg`}
               alt="Collection"
               width={300}
               height={280}
@@ -71,7 +71,7 @@ const CustomerStoriesNav = () => {
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-cyan-50 hover:bg-cyan-100">
               <div className="relative w-full">
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1644244318/spj-v2/tips_and_guides_suvngg.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1644244318/spj-v2/tips_and_guides_suvngg.jpg`}
                   alt="Tips and Guides"
                   width={300}
                   height={280}
@@ -100,7 +100,7 @@ const CustomerStoriesNav = () => {
             <div className="h-full shadow-sm cursor-pointer rounded-xl bg-yellow-50 hover:bg-yellow-100">
               <div className="relative w-full">
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1644244341/spj-v2/customer_stories_cdytgy.jpg"
+                  src={`${imageKit.baseDeliveryUrl}/v1644244341/spj-v2/customer_stories_cdytgy.jpg`}
                   alt="Customer Stories"
                   width={300}
                   height={280}

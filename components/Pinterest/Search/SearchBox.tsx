@@ -4,7 +4,7 @@
 // import LottieAnimation from '@components/LottieAnimation';
 
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, pinterestConfig } from '@utils/config';
+import { cloudinary, imageKit, pinterestConfig } from '@utils/config';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -181,7 +181,7 @@ const SearchBox: React.FC = () => {
                 className="pinterest-icon"
                 layout="fill"
                 objectFit="contain"
-                src={`${cloudinary.baseDeliveryURL}/ar_1,c_pad,q_80/v1634813240/web/pinterest-integration/icons/icon-pinterest_mw3pqw.svg`}
+                src={`${cloudinary.baseDeliveryUrl}/ar_1,c_pad,q_80/v1634813240/web/pinterest-integration/icons/icon-pinterest_mw3pqw.svg`}
               />
             </div>
             <div>Connect your board</div>

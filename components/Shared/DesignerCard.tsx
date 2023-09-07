@@ -1,4 +1,5 @@
 import { blurredBgImage } from '@public/images/bg-base-64';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,7 +11,7 @@ const DesignerCard = () => {
         <div>
           <Image
             className="object-cover rounded-xl"
-            src="https://res.cloudinary.com/spacejoy/image/upload/v1617712167/web/avatars/Chloe_Lehman_Portrait_-_Chloe_Lehman_ooxhxu.jpg"
+            src={`${imageKit.baseDeliveryUrl}/v1617712167/web/avatars/Chloe_Lehman_Portrait_-_Chloe_Lehman_ooxhxu.jpg`}
             alt="Chloe Lehman"
             height="80"
             width="80"

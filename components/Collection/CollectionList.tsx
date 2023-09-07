@@ -77,16 +77,17 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
     {},
     {}
   );
+  console.log({ feedData });
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container px-4 mx-auto">
       <div className="flex items-end py-8">
         <div className="flex-1">
           <p className="text-gray-500">Our most popular design ideas handpicked for you</p>
-          <h1 className="my-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="my-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             Explore Curated Collections
           </h1>
-          <p className="text-gray-800 max-w-3xl">
+          <p className="max-w-3xl text-gray-800">
             Take a look at the wide collection of interior design ideas curated by our design experts for special
             occasions and ever-evolving trends. Our collections will help you visualize your new room effortlessly and
             create a space that is best suited for your needs.
@@ -94,7 +95,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
         </div>
       </div>
       <div className="relative bg-white">
-        <AnimateBox className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 xl:gap-6 2xl:gap-8 gap-y-10">
+        <AnimateBox className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-6 2xl:gap-8 gap-y-10">
           {isFetching && (
             <>
               {[...new Array(internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE)].map((_d, _i) => (

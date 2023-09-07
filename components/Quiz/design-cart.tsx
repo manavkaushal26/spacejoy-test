@@ -2,7 +2,7 @@ import PricingModal from '@components/Shared/PricingModal';
 import SVGLoader from '@components/Shared/SVGLoader';
 import { TagIcon } from '@heroicons/react/outline';
 import { blurredBgImage } from '@public/images/bg-base-64';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { bgImages } from '@utils/Mocks/topCollages';
 import Image from 'next/image';
@@ -37,7 +37,7 @@ const Index = ({ data, pricingData, updateCart }) => {
 
           return { ...item, isApplied: false };
         });
-        
+
         setAvailableCoupons(formatted);
       })
       .catch((e) => {});
@@ -71,7 +71,7 @@ const Index = ({ data, pricingData, updateCart }) => {
         category: 'Quiz',
         action: `Remove Coupon ${couponId}`,
         label: 'Remove Coupon',
-      })
+      });
     } else {
       toast.error('Error while removing coupon');
     }
@@ -102,14 +102,14 @@ const Index = ({ data, pricingData, updateCart }) => {
         PushEvent({
           category: 'Quiz',
           action: `Apply ${type} - ${couponCode}`,
-          label: `Apply ${type}` 
-        })
+          label: `Apply ${type}`,
+        });
       } else {
         throw new Error();
       }
     } catch {
       setCart({ ...cart, loading: false });
-      
+
       toast.error('Error while applying coupon');
     } finally {
       if (type === 'giftCard') {
@@ -163,16 +163,15 @@ const Index = ({ data, pricingData, updateCart }) => {
                 <div className="ml-auto flex items-center ">
                   {/* <div className="mr-4 text-sm text-[#EE2F70] font-bold">View Package</div> */}
                   <div className="text-sm mr-4 text-[#EE2F70] hidden md:block">
-                    <PricingModal btnName={'View Package'} selectBtn={false} pricingData={pricingData} session={{}}/>
+                    <PricingModal btnName={'View Package'} selectBtn={false} pricingData={pricingData} session={{}} />
                   </div>
                   <div className="text-sm mr-4 text-[#EE2F70] md:hidden block">
-                    <PricingModal btnName={'View'} selectBtn={false} pricingData={pricingData}  session={{}}/>
+                    <PricingModal btnName={'View'} selectBtn={false} pricingData={pricingData} session={{}} />
                   </div>
 
                   <div className="relative w-20 h-20">
-                    
                     <Image
-                      src={`${cloudinary.baseDeliveryURL}/${bgImages[item?.name?.substr(0, 3)?.toLowerCase()]}`}
+                      src={`${imageKit.baseDeliveryUrl}/${bgImages[item?.name?.substr(0, 3)?.toLowerCase()]}`}
                       alt={item?.name}
                       placeholder="blur"
                       blurDataURL={blurredBgImage}
@@ -205,7 +204,14 @@ const Index = ({ data, pricingData, updateCart }) => {
                         className={`bg-gray-900 text-white capitalize rounded-md ${
                           !couponText ? 'pointer-events-none	bg-gray-300' : 'pointer-events-auto	'
                         }`}
-                        onClick={() => {applyCoupon(couponText, 'coupon');  PushEvent({category: 'Quiz', action: `coupon clicked ${couponText}`, label: 'Apply coupon'})}}
+                        onClick={() => {
+                          applyCoupon(couponText, 'coupon');
+                          PushEvent({
+                            category: 'Quiz',
+                            action: `coupon clicked ${couponText}`,
+                            label: 'Apply coupon',
+                          });
+                        }}
                       >
                         {loading ? <SVGLoader /> : <span>Submit</span>}
                       </button>

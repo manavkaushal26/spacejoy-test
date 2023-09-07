@@ -1,4 +1,5 @@
 import SectionTitle from '@components/Shared/SectionTitle';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
 
@@ -16,7 +17,7 @@ const Process: React.FC = () => {
           <div className="flex-1 py-14">
             <div className="text-center">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1625204341/spj-v2/process/upload-floor-plan_v4jnzx"
+                src={`${imageKit.baseDeliveryUrl}/v1625204341/spj-v2/process/upload-floor-plan_v4jnzx`}
                 height="135"
                 width="239"
                 alt="Tell us what you like"
@@ -31,7 +32,7 @@ const Process: React.FC = () => {
           <div className="flex-1 py-14">
             <div className="text-center">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1625204341/spj-v2/process/interior-subscription_jskxct"
+                src={`${imageKit.baseDeliveryUrl}/v1625204341/spj-v2/process/interior-subscription_jskxct`}
                 height="135"
                 width="239"
                 alt="Tell us what you like"
@@ -46,7 +47,7 @@ const Process: React.FC = () => {
           <div className="flex-1 py-14">
             <div className="text-center">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1625204341/spj-v2/process/tell-what-you-like_hzb7qb"
+                src={`${imageKit.baseDeliveryUrl}/v1625204341/spj-v2/process/tell-what-you-like_hzb7qb`}
                 height="135"
                 width="239"
                 alt="Tell us what you like"

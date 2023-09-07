@@ -4,7 +4,7 @@ import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString, convertFilterToUrlPath } from '@utils/helpers';
 import Cookies from 'js-cookie';
@@ -179,11 +179,8 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
               <div className="relative w-full mb-2 aspect-w-1 aspect-h-1">
                 <Image
                   src={
-                    product?.cdn
-                      ? `${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`
-                      : product?.imageUrl || blurredBgProduct
+                    product?.cdn ? `${imageKit.baseDeliveryUrl}${product?.cdn}` : product?.imageUrl || blurredBgProduct
                   }
-                  // src={`${cloudinary.baseDeliveryURL}/c_scale,w_400/${product?.cdn}`}
                   alt={product?.name}
                   className="object-contain object-center w-full h-full"
                   layout="fill"

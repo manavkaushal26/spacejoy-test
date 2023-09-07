@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import SectionTitle from '../Shared/SectionTitle';
+import { imageKit } from '@utils/config';
 
 const ChooseUs = (): JSX.Element => {
   return (
@@ -15,8 +16,9 @@ const ChooseUs = (): JSX.Element => {
           <div className="border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
             <div className="text-center">
               <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-red-100 flex justify-center items-center">
+                {/* c_scale,w_300 */}
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/v1622188237/spj-v2/3d-icons/spj-22_ypkbw5.png"
+                  src={`${imageKit.baseDeliveryUrl}/v1622188237/spj-v2/3d-icons/spj-22_ypkbw5.png`}
                   alt="No markups"
                   height={'200'}
                   width={'200'}
@@ -32,8 +34,9 @@ const ChooseUs = (): JSX.Element => {
           <div className="border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
             <div className="text-center">
               <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-yellow-100 flex justify-center items-center">
+                {/* c_scale,w_300 */}
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/v1622188240/spj-v2/3d-icons/spj-23_lgp9bw.png"
+                  src={`${imageKit.baseDeliveryUrl}/v1622188240/spj-v2/3d-icons/spj-23_lgp9bw.png`}
                   alt="Comp Service"
                   height={'200'}
                   width={'200'}
@@ -50,7 +53,7 @@ const ChooseUs = (): JSX.Element => {
             <div className="text-center">
               <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-green-100 flex justify-center items-center">
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/v1622188220/spj-v2/3d-icons/spj-1_jas7do.png"
+                  src={`${imageKit.baseDeliveryUrl}/v1622188220/spj-v2/3d-icons/spj-1_jas7do.png`}
                   alt="Returns"
                   height={'200'}
                   width={'200'}
@@ -67,7 +70,7 @@ const ChooseUs = (): JSX.Element => {
             <div className="text-center">
               <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-indigo-100 flex justify-center items-center">
                 <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/v1622188230/spj-v2/3d-icons/spj-11_ievy9p.png"
+                  src={`${imageKit.baseDeliveryUrl}/v1622188230/spj-v2/3d-icons/spj-11_ievy9p.png`}
                   alt="24/7 Support"
                   height={'200'}
                   width={'200'}

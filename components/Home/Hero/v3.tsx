@@ -1,5 +1,5 @@
 import Carousel from '@components/Carousel';
-import { oldSpacejoyUrl } from '@utils/config';
+import { imageKit, oldSpacejoyUrl } from '@utils/config';
 import useWindowSize from '@utils/useWindowSize';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,17 +17,17 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    src: `${imageKit.baseDeliveryUrl}/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png`,
   },
-  { src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/Beige_Paper_TextureBathBody_eCommerce_Web_Banner.png' },
+  { src: `${imageKit.baseDeliveryUrl}/Beige_Paper_TextureBathBody_eCommerce_Web_Banner.png` },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/BeigePapeTextureBathBodyeCommerceWebBanner.png',
-  },
-  {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
+    src: `${imageKit.baseDeliveryUrl}/BeigePapeTextureBathBodyeCommerceWebBanner.png`,
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
+    src: `${imageKit.baseDeliveryUrl}/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png`,
+  },
+  {
+    src: `${imageKit.baseDeliveryUrl}/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png`,
   },
 ];
 

@@ -42,6 +42,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       label: `Wishlist item clicked`,
     });
   };
+  console.log({ assetsData });
 
   return (
     <Layout>
@@ -52,9 +53,9 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container px-4 mx-auto my-4 py-4">
+        <div className="container px-4 py-4 mx-auto my-4">
           <Tab.Group defaultIndex={0}>
-            <Tab.List className="flex rounded-xl justify-center mt-4">
+            <Tab.List className="flex justify-center mt-4 rounded-xl">
               <div className="bg-white rounded-xl p-1 border border-[#9CA3AF] space-x-2">
                 <Tab
                   className={({ selected }) =>
@@ -83,7 +84,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
 
             <Tab.Panel>
               {assetsData?.length ? (
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
+                <div className="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-4">
                   {assetsData?.map((asset) => (
                     <div key={asset?._id} onClick={() => analytics('product', asset?._id)}>
                       <ProductCard product={asset?.document} />
@@ -98,7 +99,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
             </Tab.Panel>
             <Tab.Panel>
               {designSetsData?.length ? (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+                <div className="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-3">
                   {designSetsData?.map((design) => (
                     <div key={design?._id} onClick={() => analytics('design_set', design?._id)}>
                       <DesignSetCardV2 designData={design?.document} isMobile={true} large={false} pageRef="Wishlist" />

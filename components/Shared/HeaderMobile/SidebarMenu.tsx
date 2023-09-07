@@ -2,7 +2,7 @@ import React, { Fragment, useMemo, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
-import { company, oldSpacejoyUrl } from '@utils/config';
+import { company, imageKit, oldSpacejoyUrl } from '@utils/config';
 // import { useShopFilterContext } from '@store/ShopFilterContext';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -120,8 +120,9 @@ export default function MobileSidebar({ data, open, setOpen }) {
                               setOpen(false);
                             }}
                           >
+                            {/* /fl_lossy,q_auto/w_200 */}
                             <Image
-                              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
+                              src={`${imageKit.baseDeliveryUrl}/v1578101355/shared/spacejoy-logo_ase39m.svg`}
                               width={125}
                               height={25}
                               alt="Spacejoy Logo"

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import { ArrowRightIcon } from '@heroicons/react/outline';
-import { oldSpacejoyUrl } from '@utils/config';
+import { imageKit, oldSpacejoyUrl } from '@utils/config';
 import shoppingBagIcon from '@public/images/empty-bag.svg';
 
 const EmptyCart = () => {
@@ -37,7 +37,7 @@ const EmptyCart = () => {
                 <div className="h-full shadow-lg cursor-pointer rounded-xl hover:bg-gray-100">
                   <div className="relative w-full ">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645524503/web/icons/image_2_qrba31.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1645524503/web/icons/image_2_qrba31.svg`}
                       alt="Interior Designs"
                       width={300}
                       height={280}
@@ -65,7 +65,7 @@ const EmptyCart = () => {
                 <div className="h-full shadow-lg cursor-pointer rounded-xl hover:bg-gray-100">
                   <div className="relative w-full ">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645524498/web/icons/image_1_xamr3b.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1645524498/web/icons/image_1_xamr3b.svg`}
                       alt="Tips and Guides"
                       width={300}
                       height={280}
@@ -94,7 +94,7 @@ const EmptyCart = () => {
                 <div className="h-full shadow-lg cursor-pointer rounded-xl hover:bg-gray-100">
                   <div className="relative w-full">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1645524493/web/icons/image_3_v3vwfl.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1645524493/web/icons/image_3_v3vwfl.svg`}
                       alt="Customer Stories"
                       width={300}
                       height={280}

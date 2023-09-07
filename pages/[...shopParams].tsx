@@ -10,7 +10,7 @@ import { ChevronRightIcon, HomeIcon, MinusIcon, PlusIcon } from '@heroicons/reac
 import usePagination from '@hooks/usePagination';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { useShopFilterContext } from '@store/ShopFilterContext';
-import { cloudinary, company, internalPages } from '@utils/config';
+import { cloudinary, company, imageKit, internalPages } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { convertUrlPathToFilter, titleCase } from '@utils/helpers';
 import { SpacejoyMeta } from '@utils/SEO/metaInfo.config';
@@ -31,11 +31,10 @@ const ProductList = ({ list }) => {
       {list?.length ? (
         <>
           {list?.map((item) => {
-            
             return (
               <>
                 {/* {idx === 4 && (
-                  <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />
+                  <AffirmCard imgUrl={`${imageKit.baseDeliveryUrl}/v1645792556/web/homepage-v3/Card_tjadyd.svg`} />
                 )} */}
                 <ProductCard product={item} key={item._id} pageName="shop" />
               </>
@@ -782,12 +781,12 @@ export async function getServerSideProps(context) {
       return { ...item, type: 'category' };
     });
 
-    const subCategories = [];
-    categories.forEach(c => {
-        c.subCategories.forEach(s => {
-            subCategories.push(s);
-        })
+  const subCategories = [];
+  categories.forEach((c) => {
+    c.subCategories.forEach((s) => {
+      subCategories.push(s);
     });
+  });
 
   const assetsList: any = await fetchAssetList({ filters: { ...allFilters } }, context);
 
@@ -795,15 +794,15 @@ export async function getServerSideProps(context) {
   let metaInfo: any = {};
   const catSubCat = shopParams && shopParams?.length ? convertUrlPathToFilter(shopParams[0]) : '';
 
-  const isValidSub = subCategories.filter(c => c.name.toLowerCase() === catSubCat.toLowerCase());
-  if(isValidSub.length === 0){
+  const isValidSub = subCategories.filter((c) => c.name.toLowerCase() === catSubCat.toLowerCase());
+  if (isValidSub.length === 0) {
     return {
-        redirect: {
-          permanent: false,
-          destination: "/404",
-        },
-        props:{},
-      };
+      redirect: {
+        permanent: false,
+        destination: '/404',
+      },
+      props: {},
+    };
   }
 
   const verticalName = shopParams && shopParams?.length > 1 ? convertUrlPathToFilter(shopParams[1]) : '';
@@ -817,7 +816,7 @@ export async function getServerSideProps(context) {
   if (shopParams?.length < 2) {
     // case1.a --> { shopParams: [ 'category'/'subCategory' ] }
     metaInfo = SpacejoyMeta.find((item) => item.url === `/${shopParams[0]}`) || {};
-    metaInfo.image = `${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`;
+    metaInfo.image = `${imageKit.baseDeliveryUrl}/${assetsList?.list[0]?.cdn}`;
     metaInfo.metaUrl = `${company.url}${resolvedUrl}`;
   } else {
     // case2 --> if shopParams.length > 2
@@ -828,7 +827,7 @@ export async function getServerSideProps(context) {
       metaInfo.description = `${
         metaInfo?.verticalDescription?.prefix ? metaInfo?.verticalDescription?.prefix : ''
       } ${verticalName} ${metaInfo?.verticalDescription?.suffix ? metaInfo?.verticalDescription?.suffix : ''}`;
-      metaInfo.image = `${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`;
+      metaInfo.image = `${imageKit.baseDeliveryUrl}/${assetsList?.list[0]?.cdn}`;
       metaInfo.metaUrl = `${company.url}${resolvedUrl}`;
     } else {
       // case2.b --> { shopParams: [ 'subCategory', 'vertical' ] }
@@ -840,7 +839,7 @@ export async function getServerSideProps(context) {
       metaInfo.description = `${
         metaInfo?.verticalDescription?.prefix ? metaInfo?.verticalDescription?.prefix : ''
       } ${verticalName} ${metaInfo?.verticalDescription?.suffix ? metaInfo?.verticalDescription?.suffix : ''}`;
-      metaInfo.image = `${cloudinary.baseDeliveryURL}/${assetsList?.list[0]?.cdn}`;
+      metaInfo.image = `${imageKit.baseDeliveryUrl}/${assetsList?.list[0]?.cdn}`;
       metaInfo.metaUrl = `${company.url}${resolvedUrl}`;
     }
   }

@@ -2,6 +2,7 @@ import Carousel, { position } from '@components/Shared/Carousel';
 import SectionTitle from '@components/Shared/SectionTitle';
 import { StarIcon } from '@heroicons/react/solid';
 import TestimonialData from '@utils/Mocks/Testimonials';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
 
@@ -30,7 +31,7 @@ const Slide = ({ testimonial }) => (
           <div className="flex-shrink-0 inline-flex rounded-full border-2 border-white">
             <Image
               className="h-50 w-50 rounded-md shadow-md object-cover filter contrast-125"
-              src={`https://res.cloudinary.com/spacejoy/${testimonial.dp}`}
+              src={`${imageKit.baseDeliveryUrl}/${testimonial.dp}`}
               alt={testimonial.name}
               height={'40'}
               width={'40'}

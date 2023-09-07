@@ -27,6 +27,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       setData(data);
     }
   };
+  console.log({ listData });
 
   return (
     <Layout>
@@ -37,13 +38,13 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="mt-2 text-3xl leading-8 tracking-loose text-gray-900 sm:text-4xl mb-12">Your wishlist </h1>
-          <div className="mb-4 hidden lg:block">
+        <div className="container px-4 py-4 mx-auto">
+          <h1 className="mt-2 mb-12 text-3xl leading-8 text-gray-900 tracking-loose sm:text-4xl">Your wishlist </h1>
+          <div className="hidden mb-4 lg:block">
             <CreateRoomBtn cb={updatedRoomCollection} />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 rounded-md">
+          <div className="grid grid-cols-1 gap-8 rounded-md lg:grid-cols-4">
             {listData && listData?.length ? (
               <>
                 {listData?.map((item) => (

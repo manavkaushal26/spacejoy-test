@@ -1,3 +1,4 @@
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
 import { Scene } from 'react-scrollmagic';
@@ -36,18 +37,18 @@ const TeamMember: React.FC<TeamMemberInterface> = ({ designer }) => {
       <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={true}>
         <AnimateBox>
           <Image
-            className="mx-auto h-20 w-20 rounded-full lg:w-24 lg:h-24 object-cover filter contrast-125"
-            src={`https://res.cloudinary.com/spacejoy/${designer.icon}`}
+            className="object-cover w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24 filter contrast-125"
+            src={`${imageKit.baseDeliveryUrl}/${designer.icon}`}
             alt={designer.firstName}
             height={'180'}
             width={'180'}
             layout="responsive"
           />
           <div className="">
-            <p className="font-bold text-sm">
+            <p className="text-sm font-bold">
               {designer.firstName} {designer.lastName}
             </p>
-            <p className="text-indigo-400 text-xs">Design Expert</p>
+            <p className="text-xs text-indigo-400">Design Expert</p>
           </div>
         </AnimateBox>
       </Scene>

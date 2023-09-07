@@ -5,7 +5,7 @@ import { HeartIcon as SolidHeart } from '@heroicons/react/solid';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { useSession } from '@store/AuthProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import topCollages, { defaultImgSrcThumbnail } from '@utils/Mocks/DefaultFavourites';
 import Cookies from 'js-cookie';
@@ -299,8 +299,9 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
       <WishListModal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
         <WishListModal.Header>
           <div className="flex justify-between items-center">
+            {/* /fl_lossy,q_auto/w_200 */}
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
+              src={`${imageKit.baseDeliveryUrl}/v1578101355/shared/spacejoy-logo_ase39m.svg`}
               width={125}
               height={25}
               alt="Spacejoy Logo"
@@ -352,11 +353,11 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
                       >
                         <div className="px-10 py-10 relative rounded-lg">
                           <Image
-                            // src={`${cloudinary.baseDeliveryURL}/${room?.cdnThumbnail || room?.thumbnail}`}
+                            // src={`${imageKit.baseDeliveryUrl}/${room?.cdnThumbnail || room?.thumbnail}`}
 
                             src={
                               room?.thumbnail
-                                ? `${cloudinary.baseDeliveryURL}/${room?.thumbnail}`
+                                ? `${imageKit.baseDeliveryUrl}/${room?.thumbnail}`
                                 : defaultImgSrcThumbnail
                             }
                             className="object-cover object-center w-full h-full rounded-lg"
@@ -388,7 +389,7 @@ const WishListBtn = ({ outline = true, selected = false, type = 'Asset', documen
                     >
                       <Image
                         className=""
-                        src="https://res.cloudinary.com/spacejoy/image/upload/v1649417086/web/icons/Path_9_boxyrv.svg"
+                        src={`${imageKit.baseDeliveryUrl}/v1649417086/web/icons/Path_9_boxyrv.svg`}
                         height="40"
                         width="40"
                         alt="spacejoy logo"

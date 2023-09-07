@@ -2,6 +2,7 @@ import WishListModal from '@components/Shared/WishlistModal';
 import { PlusIcon, XIcon } from '@heroicons/react/outline';
 import { HeartIcon as SolidHeart } from '@heroicons/react/solid';
 import { PushEvent } from '@utils/analyticsLogger';
+import { imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -57,8 +58,9 @@ const CreateBtn = ({ open = false, cb = () => {} }) => {
       <WishListModal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
         <WishListModal.Header>
           <div className="flex justify-between items-center">
+            {/* /fl_lossy,q_auto/w_200 */}
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg"
+              src={`${imageKit.baseDeliveryUrl}/v1578101355/shared/spacejoy-logo_ase39m.svg`}
               width={125}
               height={25}
               alt="Spacejoy Logo"
@@ -95,7 +97,7 @@ const CreateBtn = ({ open = false, cb = () => {} }) => {
                   >
                     <Image
                       className=""
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1649417086/web/icons/Path_9_boxyrv.svg"
+                      src={`${imageKit.baseDeliveryUrl}/v1649417086/web/icons/Path_9_boxyrv.svg`}
                       height="40"
                       width="40"
                       alt="spacejoy logo"

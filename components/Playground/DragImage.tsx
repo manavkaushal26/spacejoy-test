@@ -1,3 +1,4 @@
+import { imageKit } from '@utils/config';
 import React, { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Circle, Sprite, Text } from 'react-konva';
 import { toast } from 'react-toastify';
@@ -77,7 +78,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   };
 
   const [img, status] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
+    `${imageKit.baseDeliveryUrl}/fl_lossy,f_auto,q_100,w_${
       state?.playgroundWidth
         ? Math.ceil(state?.playgroundWidth * 2 * state.count * (state?.currentScale || 1))
         : Math.ceil(state?.width) * state?.count * 175 * (state?.currentScale || 1)

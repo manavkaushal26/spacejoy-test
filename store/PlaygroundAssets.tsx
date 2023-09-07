@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { NavSelectContext } from 'store/NavSelect';
 import { useDesignSetAssetContext } from './DesignSetAssetProvider';
 import { SelectedIdContext } from './SelectedId';
+import { imageKit } from '@utils/config';
 
 // ========================= TYPES =========================
 
@@ -134,7 +135,7 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
   },
   bg: {
     bgImgUrl: {
-      value: 'https://res.cloudinary.com/spacejoy/image/upload/v1633589614/spj-v2/DIY/room-bg/final_BR1_ioyrvq.jpg',
+      value: `${imageKit.baseDeliveryUrl}/v1633589614/spj-v2/DIY/room-bg/final_BR1_ioyrvq.jpg`,
       type: 'bg-img',
     },
     setBgImgUrl: () => {

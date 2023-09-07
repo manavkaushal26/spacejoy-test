@@ -9,6 +9,7 @@ import {
 import Image from 'next/image';
 import React from 'react';
 import UnitAction from './UnitAction';
+import { imageKit } from '@utils/config';
 
 const MoreActions: React.FC = () => {
   return (
@@ -31,9 +32,10 @@ const MoreActions: React.FC = () => {
         <UnitAction position="left" title="Feedback" onClick={() => null}>
           <EmojiHappyIcon className="h-4 w-4" />
         </UnitAction>
+        {/* /w_70 */}
         <div className="next-image-fix">
           <Image
-            src="https://res.cloudinary.com/spacejoy/image/upload/w_70/v1628138169/spj-v2/DIY/emojis/angry_i0zybg.png"
+            src={`${imageKit.baseDeliveryUrl}/v1628138169/spj-v2/DIY/emojis/angry_i0zybg.png`}
             alt="angry"
             height="35"
             width="35"
@@ -41,7 +43,7 @@ const MoreActions: React.FC = () => {
         </div>
         <div className="next-image-fix">
           <Image
-            src="https://res.cloudinary.com/spacejoy/image/upload/w_70/v1628138185/spj-v2/DIY/emojis/okay_yjadc4.png"
+            src={`${imageKit.baseDeliveryUrl}/v1628138185/spj-v2/DIY/emojis/okay_yjadc4.png`}
             alt="angry"
             height="35"
             width="35"
@@ -49,7 +51,7 @@ const MoreActions: React.FC = () => {
         </div>
         <div className="next-image-fix">
           <Image
-            src="https://res.cloudinary.com/spacejoy/image/upload/w_70/v1628138205/spj-v2/DIY/emojis/good_bqckuq.png"
+            src={`${imageKit.baseDeliveryUrl}/v1628138205/spj-v2/DIY/emojis/good_bqckuq.png`}
             alt="angry"
             height="35"
             width="35"
@@ -57,7 +59,7 @@ const MoreActions: React.FC = () => {
         </div>
         <div className="next-image-fix">
           <Image
-            src="https://res.cloudinary.com/spacejoy/image/upload/w_70/v1628138169/spj-v2/DIY/emojis/awesome_hsitft.png"
+            src={`${imageKit.baseDeliveryUrl}/v1628138169/spj-v2/DIY/emojis/awesome_hsitft.png`}
             alt="angry"
             height="35"
             width="35"

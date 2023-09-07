@@ -1,7 +1,7 @@
 import { XIcon } from '@heroicons/react/outline';
 import { NavSelectContext } from '@store/NavSelect';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
@@ -226,7 +226,6 @@ export const RoomImageList = [
     id: 22,
     url: 'v1649067742/spj-v2/DIY/room-bg/2022-new-room-templates/bedroom/Layout_1_BR_Final_ita0qt.png',
   },
-
 ];
 
 export interface ColorListType {
@@ -401,13 +400,19 @@ const BgSelector: React.FC = () => {
           {RoomImageList.map((img, idx) => {
             return (
               <div
-                onClick={() => setBg(`${cloudinary.baseDeliveryURL}/${img?.url}`, 'bg-img')}
+                onClick={() => setBg(`${imageKit.baseDeliveryUrl}/${img?.url}`, 'bg-img')}
                 key={idx}
                 className={`border-2 border-transparent rounded box-border flex-shrink-0 h-24 last:mr-0 relative cursor-pointer overflow-hidden ${
-                  bg?.bgImgUrl?.value === `${cloudinary.baseDeliveryURL}/${img?.url}` && 'border-black'
+                  bg?.bgImgUrl?.value === `${imageKit.baseDeliveryUrl}/${img?.url}` && 'border-black'
                 }`}
               >
-                <Image src={`${cloudinary.baseDeliveryURL}/w_400,f_auto,q_auto/${img.url}`} layout="fill" alt={`${cloudinary.baseDeliveryURL}/${img?.url}`} objectFit="cover" quality={100} />
+                <Image
+                  src={`${imageKit.baseDeliveryUrl}/w_400,f_auto,q_auto/${img.url}`}
+                  layout="fill"
+                  alt={`${imageKit.baseDeliveryUrl}/${img?.url}`}
+                  objectFit="cover"
+                  quality={100}
+                />
               </div>
             );
           })}

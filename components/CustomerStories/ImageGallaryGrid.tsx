@@ -1,5 +1,5 @@
 import { lightBoxOptions } from '@components/Carousel';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import React, { useEffect, useMemo, useState } from 'react';
 import SocialShare from '@components/SocialShare';
@@ -23,42 +23,41 @@ const ImageGallaryGrid = ({ data }) => {
   }, [data]);
 
   return (
-    <div className='container'>
-      
-        <div className={`grid gap-1 ${getTemplate(trimmedData.length)}`}>
-          {trimmedData.map((item, index) => (
-            <div
-              className={`${
-                index === 0
-                  ? `col-span-full ${
-                      trimmedData.length > 4
-                        ? 'row-span-2 sm:row-span-3 sm:col-span-4'
-                        : `row-span-2 sm:row-span-3 ${trimmedData.length > 2 ? 'sm:col-span-6' : 'sm:col-span-1'}`
-                    }`
-                  : `${
-                      trimmedData.length > 4
-                        ? 'row-span-1 col-span-1 sm:col-span-2'
-                        : `${
-                            trimmedData.length > 2
-                              ? ` w-${1 / (trimmedData.length - 1)} sm:w-full  col-span-1 sm:col-span-2`
-                              : 'col-span-1'
-                          }`
-                    }  `
-              } bg-white overflow-hidden min-h-[100px] cursor-pointer pt-[55%] relative`}
-              key={item._id}
-            >
-              <Image
-                src={`${cloudinary.baseDeliveryURL}/c_scale/${item.cdn}`}
-                alt=""
-                className=" object-cover absolute top-0 left-0 w-full h-full"
-                layout="fill"
-              />
-              <div className=" absolute top-1 right-1 opacity-0 hover:opacity-100">
-                <SocialShare media={item.cdn} />
-              </div>
+    <div className="container">
+      <div className={`grid gap-1 ${getTemplate(trimmedData.length)}`}>
+        {trimmedData.map((item, index) => (
+          <div
+            className={`${
+              index === 0
+                ? `col-span-full ${
+                    trimmedData.length > 4
+                      ? 'row-span-2 sm:row-span-3 sm:col-span-4'
+                      : `row-span-2 sm:row-span-3 ${trimmedData.length > 2 ? 'sm:col-span-6' : 'sm:col-span-1'}`
+                  }`
+                : `${
+                    trimmedData.length > 4
+                      ? 'row-span-1 col-span-1 sm:col-span-2'
+                      : `${
+                          trimmedData.length > 2
+                            ? ` w-${1 / (trimmedData.length - 1)} sm:w-full  col-span-1 sm:col-span-2`
+                            : 'col-span-1'
+                        }`
+                  }  `
+            } bg-white overflow-hidden min-h-[100px] cursor-pointer pt-[55%] relative`}
+            key={item._id}
+          >
+            <Image
+              src={`${imageKit.baseDeliveryUrl}/c_scale/${item.cdn}`}
+              alt=""
+              className=" object-cover absolute top-0 left-0 w-full h-full"
+              layout="fill"
+            />
+            <div className=" absolute top-1 right-1 opacity-0 hover:opacity-100">
+              <SocialShare media={item.cdn} />
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

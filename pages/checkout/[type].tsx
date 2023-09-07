@@ -417,7 +417,7 @@ const Checkout = () => {
               ) : (
                 <>
                   {!orderPlaced && (
-                    <div className="container mx-auto px-4 py-8">
+                    <div className="container px-4 py-8 mx-auto">
                       <div className="grid grid-cols-1 lg:grid-cols-2">
                         <div>
                           <h3 className="mb-4">Secure Payment</h3>

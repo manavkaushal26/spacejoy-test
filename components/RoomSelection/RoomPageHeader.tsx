@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { pinterestConfig } from '@utils/config';
+import { imageKit, pinterestConfig } from '@utils/config';
 import topCollages, { SlugToCategory } from '@utils/Mocks/topCollages';
 import Cookies from 'js-cookie';
 import { NextPage } from 'next';
@@ -114,9 +114,7 @@ const RoomPageHeader: NextPage<{
           <Link href="/pinterest/search">
             <a className=" flex-grow bg-red-600/75 px-3 py-3 rounded-full text-ellipsis overflow-hidden flex space-between text-xs lg:text-base items-center transition-all font-bold gap-4 text-white hover:shadow-lg ">
               <Image
-                src={
-                  'https://res.cloudinary.com/spacejoy/image/upload/v1640335624/web/pinterest-integration/icons/badgeRGB-FFFFFF_iozyje.svg'
-                }
+                src={`${imageKit.baseDeliveryUrl}/v1640335624/web/pinterest-integration/icons/badgeRGB-FFFFFF_iozyje.svg`}
                 alt="pinterest logo"
                 className=" h-8 w-8"
                 width="64px"

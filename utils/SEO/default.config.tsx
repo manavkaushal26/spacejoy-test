@@ -54,7 +54,7 @@ const organizationSchema = {
 //   description: company.description,
 //   images: [
 //     {
-//       url: `${cloudinary.baseDeliveryURL}/image/upload/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg`,
+//       url: `${imageKit.baseDeliveryUrl}/image/upload/w_200/v1578101355/shared/spacejoy-logo_ase39m.svg`,
 //       width: 118,
 //       height: 25,
 //       alt: 'Spacejoy',

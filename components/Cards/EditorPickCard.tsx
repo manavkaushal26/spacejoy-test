@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import RecommendedIcon from '@public/images/recommended.svg';
+import { imageKit } from '@utils/config';
 
 const correctedSlug = (slug: string) => {
   return slug?.split(' ').join('-');
@@ -15,13 +16,13 @@ const EditorPickCard = ({ data }) => {
       as={`/interior-designs/${correctedSlug(data?.room?.slug)}/${data?.slug}`}
     >
       <a>
-        <div className="cursor-pointer mt-8">
-          <div className=" rounded overflow-hidden relative border border-gray-200 transition group-hover:shadow-md">
+        <div className="mt-8 cursor-pointer">
+          <div className="relative overflow-hidden transition border border-gray-200 rounded group-hover:shadow-md">
             <div className="absolute inset-0 bg-gray-200 animate-pulse" />
             <Image
-              className="object-cover transition duration-700 filter transform group-hover:brightness-110 hover:brightness-110 hover:scale-105 rounded-t-lg"
+              className="object-cover transition duration-700 transform rounded-t-lg filter group-hover:brightness-110 hover:brightness-110 hover:scale-105"
               alt={data?.name}
-              src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,h_600/${data?.cdnRender[0]}`}
+              src={`${imageKit.baseDeliveryUrl}${data?.cdnRender[0]}`}
               height="300"
               width="500"
               layout="responsive"
@@ -32,10 +33,10 @@ const EditorPickCard = ({ data }) => {
               <Image src={RecommendedIcon} alt={`${data.customerName}`} layout="fill" />
             </div>
           </div>
-          <div className="flex items-center py-4 bg-white px-4  rounded-b-lg">
+          <div className="flex items-center px-4 py-4 bg-white rounded-b-lg">
             <div className="flex-1 mr-2">
-              <p className="text-gray-500 text-xs capitalize">{data?.room?.roomType}</p>
-              <p className="text-gray-800 mt-1 transition hover:text-red-500 line-clamp-2">{data?.name}</p>
+              <p className="text-xs text-gray-500 capitalize">{data?.room?.roomType}</p>
+              <p className="mt-1 text-gray-800 transition hover:text-red-500 line-clamp-2">{data?.name}</p>
             </div>
           </div>
         </div>

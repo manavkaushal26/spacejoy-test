@@ -3,7 +3,7 @@ import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { cloudinary, company, internalPages } from '@utils/config';
+import { cloudinary, company, imageKit, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -52,7 +52,7 @@ const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
           property="og:description"
           content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
         />
-        <meta property="og:image" content={`${cloudinary.baseDeliveryURL}/${collectionData?.coverImg}`} />
+        <meta property="og:image" content={`${imageKit.baseDeliveryUrl}/${collectionData?.coverImg}`} />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content={`${company.url}${router.asPath}`} />
@@ -61,14 +61,14 @@ const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
           property="twitter:description"
           content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
         />
-        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${collectionData?.coverImg}`} />
+        <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${collectionData?.coverImg}`} />
         <link rel="canonical" href={`${company.url}${router.asPath}`} />
         <base href="/" />
       </Head>
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className=" container lg:px-48">
+        <div className="container lg:px-48">
           <CollectionBanner data={collectionData} />
           <DesignList feedData={designFeedData} />
           <PreFooter />
@@ -132,7 +132,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             status: data?.status,
             metaTitle: data?.metaTitle,
             metaDescription: data?.metaDescription,
-            cdnThumbnail: data?.cdnThumbnail,
+            cdnThumbnail: data?.cdnThumbnail || '',
           },
         },
         revalidate: 1,

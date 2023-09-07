@@ -26,7 +26,7 @@ import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
 import { useSession } from '@store/AuthProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, company } from '@utils/config';
+import { cloudinary, company, imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import { convertFilterToUrlPath, priceToLocaleString } from '@utils/helpers';
@@ -383,7 +383,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
         <meta property="og:url" content={`${company.url}${router.asPath}`} />
         <meta property="og:title" content={product?.name} />
         <meta property="og:description" content={`Buy ${product?.name} from ${product?.retailer?.name} | Spacejoy`} />
-        <meta property="og:image" content={`${cloudinary.baseDeliveryURL}/${product?.cdn}`} />
+        <meta property="og:image" content={`${imageKit.baseDeliveryUrl}/${product?.cdn}`} />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
@@ -393,7 +393,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
           property="twitter:description"
           content={`Buy ${product?.name} from ${product?.retailer?.name} | Spacejoy`}
         />
-        <meta property="twitter:image" content={`${cloudinary.baseDeliveryURL}/${product?.cdn}`} />
+        <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${product?.cdn}`} />
         <link rel="canonical" href={`${company.url}${router.asPath.split('?')[0]}`} />
         <base href="/" />
       </Head>
@@ -504,7 +504,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                     return (
                       <div key={productImage}>
                         <Image
-                          src={`${cloudinary.baseDeliveryURL}/f_auto,q_auto,w_1000/${productImage?.cdn}`}
+                          src={`${imageKit.baseDeliveryUrl}${productImage?.cdn}`}
                           alt=""
                           className="object-contain object-center w-full sm:rounded-lg"
                           width="450"

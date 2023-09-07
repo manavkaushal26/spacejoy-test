@@ -3,7 +3,7 @@ import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { cloudinary, company, internalPages } from '@utils/config';
+import { cloudinary, company, imageKit, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import topCollections from '@utils/Mocks/topCollections';
@@ -15,7 +15,6 @@ import { BlogListInterface } from '@components/InteriorBlogs/BlogListInterface';
 import BlogIntro from '@components/InteriorBlogs/BlogIntro';
 
 const InteriorDesignsBlogs = ({ blogFeedData }): JSX.Element => {
-
   return (
     <Layout>
       <Head>
@@ -40,7 +39,7 @@ const InteriorDesignsBlogs = ({ blogFeedData }): JSX.Element => {
         <meta
           key="og-image"
           property="og:image"
-          content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
+          content={`${imageKit.baseDeliveryUrl}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
         />
         <meta key="og-image-width" property="og:image:width" content="600" />
         <meta key="og-image-height" property="og:image:height" content="600" />
@@ -57,13 +56,13 @@ const InteriorDesignsBlogs = ({ blogFeedData }): JSX.Element => {
         <meta
           key="twitter-image"
           name="twitter:image"
-          content={`${cloudinary.baseDeliveryURL}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
+          content={`${imageKit.baseDeliveryUrl}/image/upload/c_scale,w_600/v1593540130/web/seo/blogs_page_tpdcla.jpg`}
         />
       </Head>
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
+        <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
           <BlogIntro />
           <BlogList data={blogFeedData} />
           <PreFooter />

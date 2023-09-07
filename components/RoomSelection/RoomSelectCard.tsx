@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary } from '@utils/config';
+import { imageKit } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -56,7 +56,7 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
                 <Image
                   className="object-cover rounded-lg"
                   alt={cardData?.name}
-                  src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
+                  src={`${imageKit.baseDeliveryUrl}/${cardData?.cdnThumbnail}`}
                   height="600"
                   width="500"
                   placeholder="blur"
@@ -66,7 +66,7 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
                 <div className="w-full aspect-w-2 aspect-h-1">
                   <Image
                     alt={cardData?.name}
-                    src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
+                    src={`${imageKit.baseDeliveryUrl}/${cardData?.cdnThumbnail}`}
                     className="object-cover object-center w-full h-full"
                     layout="fill"
                     placeholder="blur"
@@ -104,7 +104,7 @@ const TopCollageCard: React.FC<TopCollageCardInterface> = ({ cardData, inset, in
             <Image
               className="rounded object-cover"
               alt={cardData?.name}
-              src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
+              src={`${imageKit.baseDeliveryUrl}/${cardData?.cdnThumbnail}`}
               height="600"
               width="500"
             />
