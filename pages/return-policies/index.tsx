@@ -4,6 +4,7 @@ import { brandsReturnPolicies } from '@utils/Mocks/BrandReturnPolicies';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { useRouter } from 'next/router';
+import { ArrowRightIcon } from '@heroicons/react/outline';
 
 type Props = {};
 
@@ -17,16 +18,21 @@ const ReturnPoliciesPage = (props: Props) => {
       <Layout.Header />
       <Layout.Body>
         <div className="container px-4 pt-8 mx-auto antialiased">
-          <h1 className="mb-4 text-2xl">Select brand to read its Return Policy</h1>
-          {brandsReturnPolicies.map((brand) => (
-            <h4
-              key={brand.id}
-              className="mt-2 text-lg cursor-pointer w-fit hover:underline"
-              onClick={() => router.push(`/return-policies/${brand.slug}`)}
-            >
-              {brand.name}
-            </h4>
-          ))}
+          <h1 className="mb-4 text-2xl">Select a brand to read its Return Policy</h1>
+          <div className="grid grid-cols-1 gap-4 sm:gap-8 sm:grid-cols-4">
+            {brandsReturnPolicies.map((brand) => (
+              <div
+                key={brand.id}
+                className="p-4 mt-2 text-lg duration-300 bg-white border border-gray-100 rounded-md shadow cursor-pointer group hover:shadow-lg hover:bg-red-100/50"
+                onClick={() => router.push(`/return-policies/${brand.slug}`)}
+              >
+                <h4 className="flex items-center font-medium">
+                  <span>{brand.name}</span>
+                  <ArrowRightIcon className="w-4 h-4 ml-2 text-gray-800 duration-300 group-hover:ml-4" />
+                </h4>
+              </div>
+            ))}
+          </div>
         </div>
         <PreFooter />
       </Layout.Body>
