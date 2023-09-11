@@ -176,6 +176,13 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
+              <li>
+                <Link href="/return-policies">
+                  <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Return Policy
+                  </a>
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
