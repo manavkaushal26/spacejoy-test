@@ -1,7 +1,7 @@
 import ImageGallaryGrid from '@components/CustomerStories/ImageGallaryGrid';
 import { AssetList, StoryViewResponse } from '@components/CustomerStories/StoryViewInterface';
 import Layout from '@components/Shared/Layout';
-import { cloudinary, company } from '@utils/config';
+import { cloudinary, company, imageKit } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import { IndexPageMeta } from '@utils/meta';
@@ -180,8 +180,9 @@ const Product = ({ asset }) => {
           <div className="flex flex-col bg-white justify-between rounded-lg h-full hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl">
             <div className="p-4">
               <div className="relative w-full mb-2 aspect-w-1 aspect-h-1">
+                {/* /c_scale,w_400 */}
                 <Image
-                  src={asset?.cdn ? `${imageKit.baseDeliveryUrl}/c_scale,w_400/${asset?.cdn}` : asset?.imageUrl}
+                  src={asset?.cdn ? `${imageKit.baseDeliveryUrl}/${asset?.cdn}` : asset?.imageUrl}
                   alt={asset?.name}
                   blurDataURL={blurredProduct}
                   className="object-contain object-center w-full h-full"
@@ -279,8 +280,8 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
 
           <div className="px-5 ">
             <div className="mt-12 mb-8">
-              {roomType && <p className="text-xs font-semibold text-gray-500  sm:text-sm">{roomType}</p>}
-              <h3 className="mb-1 text-2xl capitalize  sm:text-4xl sm:mb-2">{about?.title}</h3>
+              {roomType && <p className="text-xs font-semibold text-gray-500 sm:text-sm">{roomType}</p>}
+              <h3 className="mb-1 text-2xl capitalize sm:text-4xl sm:mb-2">{about?.title}</h3>
               <p className="mt-8 text-base text-gray-700">
                 Read {about?.customerName}&apos;s online interior design experience with Spacejoy
               </p>
@@ -337,8 +338,8 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
                                 {item.section === 'designProcess' && item.meta && (
                                   <>
                                     <br />
-                                    <div className="p-4 m-0 rounded-md shadow-none  bg-blue-50">
-                                      <h3 className="mb-1 text-xl capitalize  sm:text-2xl sm:mb-2">Designer Notes</h3>
+                                    <div className="p-4 m-0 rounded-md shadow-none bg-blue-50">
+                                      <h3 className="mb-1 text-xl capitalize sm:text-2xl sm:mb-2">Designer Notes</h3>
                                       <p className="mt-8 text-sm text-gray-700">{item.meta.designerNote}</p>
                                     </div>
                                   </>
@@ -360,8 +361,8 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
           <div className="container">
             <div className="grid text-center">
               <div className="mt-12 mb-8">
-                <h3 className="mb-1 text-2xl capitalize  sm:text-4xl sm:mb-2">Final Design Renders</h3>
-                <p className="text-xs text-gray-500  sm:text-sm">100% Happiness Delivered</p>
+                <h3 className="mb-1 text-2xl capitalize sm:text-4xl sm:mb-2">Final Design Renders</h3>
+                <p className="text-xs text-gray-500 sm:text-sm">100% Happiness Delivered</p>
               </div>
               <div className="mb-8">
                 <SimpleReactLightbox>
@@ -372,11 +373,11 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
               </div>
 
               {summary && summary?.testimonial && (
-                <div className="p-5 mx-5 rounded-md shadow-none  bg-yellow-50 sm:mx-48">
+                <div className="p-5 mx-5 rounded-md shadow-none bg-yellow-50 sm:mx-48">
                   <div className="grid text-left">
                     <div className="">
                       <div className="mb-8">
-                        <h3 className="mb-1 text-xl capitalize  sm:text-2xl sm:mb-2">{`This is what ${about.customerName} had to say on the final design`}</h3>
+                        <h3 className="mb-1 text-xl capitalize sm:text-2xl sm:mb-2">{`This is what ${about.customerName} had to say on the final design`}</h3>
                         <p className="text-sm text-gray-500 ">Joyous Homes, Happy Customer</p>
                       </div>
                       <p className=" sm:text-sm">{summary?.testimonial}</p>
@@ -395,7 +396,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
               <div className="">
                 {summary && summary?.assetList && summary?.assetList.length > 0 && (
                   <div className="flex flex-col py-5 m-5 mt-16 bg-gray-100 rounded-lg sm:mt-24 sm:p-5">
-                    <h3 className="mb-8 text-2xl text-center capitalize  sm:text-4xl sm:mb-8">Shopping List</h3>
+                    <h3 className="mb-8 text-2xl text-center capitalize sm:text-4xl sm:mb-8">Shopping List</h3>
                     <div className="grid grid-cols-2 gap-1 text-left md:grid-cols-2 lg:grid-cols-4 sm:gap-3">
                       {summary?.assetList &&
                         summary?.assetList.map((item) => {

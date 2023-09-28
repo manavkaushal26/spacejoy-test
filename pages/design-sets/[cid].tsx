@@ -12,7 +12,7 @@ import { NavSelectContextProvider } from '@store/NavSelect';
 import { PlaygroundAssetsContextProvider } from '@store/PlaygroundAssets';
 import RecommendationsListContextProvider from '@store/RecommendationsList';
 import { SelectedIdContextProvider } from '@store/SelectedId';
-import { cloudinary, company } from '@utils/config';
+import { cloudinary, company, imageKit } from '@utils/config';
 import mainCategories from '@utils/constants/DesignSets/mainCategory';
 import fetcher from '@utils/fetcher';
 import { onlyUnique } from '@utils/helpers';
@@ -94,8 +94,8 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                       <div className="container px-4 m-auto">
                         {isMobile === 'true' ? (
                           <div className="space-y-4">
-                            <div className="relative aspect-2 mt-12">
-                              <button className="mb-0  absolute top-0 right-0 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold">
+                            <div className="relative mt-12 aspect-2">
+                              <button className="absolute top-0 right-0 z-20 p-2 mb-0 font-bold rounded-md bg-white/70 hover:bg-white/40">
                                 <WishListBtn type="Collage" documentId={collageData?._id} />
                               </button>
                               <Image
@@ -111,12 +111,12 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                             className={`bg-white  aspect-[16/8]    flex-1 rounded-xl overflow-hidden relative `}
                             ref={PlaygroundWrapperRef}
                           >
-                            <button className="mb-0  absolute top-0 right-32 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold">
+                            <button className="absolute top-0 z-20 p-2 mb-0 font-bold rounded-md right-32 bg-white/70 hover:bg-white/40">
                               <WishListBtn type="Collage" documentId={collageData?._id} />
                             </button>
                             <button
                               onClick={onTotalClick}
-                              className="mb-0 absolute top-4 right-4 z-20 bg-white/70 hover:bg-white/40  p-2 rounded-md font-bold"
+                              className="absolute z-20 p-2 mb-0 font-bold rounded-md top-4 right-4 bg-white/70 hover:bg-white/40"
                             >
                               {/* Total: {priceToLocaleString(priceOfSet)} */}
                               Shop Now

@@ -11,7 +11,7 @@ import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, company } from '@utils/config';
+import { cloudinary, company, imageKit } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { priceToLocaleString } from '@utils/helpers';
 import { IndexPageMeta } from '@utils/meta';
@@ -156,9 +156,10 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
       <div className="col-span-3 mb-2 aspect-w-1 aspect-h-1">
         <Link key={product._id} href={`/product-view/${product._id}`} passHref>
           <a href={`/product-view/${product._id}`} {...linkProps}>
+            {/* /w_400,ar_1,c_pad */}
             <Image
               // src={product?.imageUrl}
-              src={`${imageKit.baseDeliveryUrl}/w_400,ar_1,c_pad/${product?.cdn}`}
+              src={`${imageKit.baseDeliveryUrl}/${product?.cdn}`}
               alt={product?.name}
               layout="fill"
               objectFit="contain"
@@ -337,7 +338,7 @@ export default function Cart() {
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Your Shopping Cart</h1>
               )}
               {Object.keys(cart?.cartItems)?.length === 0 && <>{loading ? null : <EmptyCart />}</>}
-              <form className="mt-4 grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
+              <form className="grid mt-4 lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
                 <section aria-labelledby="cart-heading" className="lg:col-span-7">
                   <h2 id="cart-heading" className="sr-only">
                     Items in your shopping cart
@@ -440,7 +441,7 @@ export default function Cart() {
                 {!loading && cart?.count !== 0 && (
                   <section
                     aria-labelledby="summary-heading"
-                    className="lg:sticky  lg:col-span-5 top-20 flex flex-col space-y-4 order-first lg:order-last"
+                    className="flex flex-col order-first space-y-4 lg:sticky lg:col-span-5 top-20 lg:order-last"
                   >
                     <div className="block lg:hidden">
                       {data?.cartBannerV2?.visible &&
@@ -475,9 +476,9 @@ export default function Cart() {
                     ) : (
                       <>
                         <div className="px-4 py-6 rounded-lg bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 addToCart">
-                          <h2 className="text-center text-lg font-bold text-gray-900 pb-6">Order summary</h2>
+                          <h2 className="pb-6 text-lg font-bold text-center text-gray-900">Order summary</h2>
                           <p className="flex justify-between">
-                            <span className=" font-medium">Shopping Total:</span>
+                            <span className="font-medium ">Shopping Total:</span>
                             <span>&nbsp;&nbsp;&nbsp;${guestTotal}</span>
                           </p>
                         </div>
@@ -495,7 +496,7 @@ export default function Cart() {
 
           {cart?.count ? (
             <StickyFooter show={!showCartFooter}>
-              <div className="flex  space-x-4 sm:flex-col-1 addToCart px-4 my-2">
+              <div className="flex px-4 my-2 space-x-4 sm:flex-col-1 addToCart">
                 {isUserAuthenticated ? (
                   <>
                     <p>
@@ -505,7 +506,7 @@ export default function Cart() {
                     <Link href="/checkout/store" passHref>
                       <button
                         type="button"
-                        className="w-full md:w-auto p-0 md:px-12 py-3 text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                        className="w-full p-0 py-3 text-base font-medium text-white bg-gray-900 shadow-xs md:w-auto md:px-12 group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                       >
                         Checkout
                       </button>

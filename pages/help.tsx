@@ -1,7 +1,7 @@
 import Help from '@components/Help';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { company, cloudinary } from '@utils/config';
+import { company, cloudinary, imageKit } from '@utils/config';
 import { HelpPageMeta } from '@utils/meta';
 import Head from 'next/head';
 import React from 'react';
@@ -29,10 +29,11 @@ export const search = (): JSX.Element => (
         content={`Common questions related to online interior design service answered on ${company.product} Help Center - Customer support, payment, features, services, shopping and more`}
       />
       <meta key="og-url" property="og:url" content="https://www.spacejoy.com/help" />
+      {/* /image/upload/c_scale,q_auto,w_600 */}
       <meta
         key="og-image"
         property="og:image"
-        content={`${imageKit.baseDeliveryUrl}/image/upload/c_scale,q_auto,w_600/v1593540159/web/seo/help_page_ujzm7k.jpg`}
+        content={`${imageKit.baseDeliveryUrl}/v1593540159/web/seo/help_page_ujzm7k.jpg`}
       />
       <meta key="og-image-width" property="og:image:width" content="600" />
       <meta key="og-image-height" property="og:image:height" content="452" />
