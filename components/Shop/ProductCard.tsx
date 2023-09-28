@@ -179,7 +179,7 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
               <div className="relative w-full mb-2 aspect-w-1 aspect-h-1">
                 <Image
                   src={
-                    product?.cdn ? `${imageKit.baseDeliveryUrlShort}${product?.cdn}` : product?.imageUrl || blurredBgProduct
+                    product?.cdn ? `${imageKit.baseDeliveryUrl}${product?.cdn}` : product?.imageUrl || blurredBgProduct
                   }
                   alt={product?.name}
                   className="object-contain object-center w-full h-full"

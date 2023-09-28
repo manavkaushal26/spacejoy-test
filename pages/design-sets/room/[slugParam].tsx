@@ -45,7 +45,6 @@ const CollageView: NextPage<CollageViewProps> = ({
   const formattedRoomName = useMemo(() => {
     return name.slice(0, name.length - 12);
   }, [name]);
-  console.log({ feedData });
   let metaSEO = useMemo(() => {
     return RoomSelectSEO.find((item) => item?.slug === slug);
   }, []);

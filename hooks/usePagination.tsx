@@ -106,7 +106,7 @@ const fetchMoreData = async (api, skip, limit, field) => {
       }
     }
   } catch (e) {
-    console.log('error message', e?.message);
+    console.error('error message', e?.message);
   }
 };
 

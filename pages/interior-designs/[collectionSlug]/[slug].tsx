@@ -49,7 +49,6 @@ interface DesignData {
 const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
   const { value, toggle } = useBoolean(false);
   const { customerData, editorPickData, similarPicksData, categoryData } = engagementBlockData;
-  console.log({ design });
 
   return (
     <Layout>

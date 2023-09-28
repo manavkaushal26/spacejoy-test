@@ -42,7 +42,6 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       label: `Wishlist item clicked`,
     });
   };
-  console.log({ assetsData });
 
   return (
     <Layout>

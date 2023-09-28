@@ -20,7 +20,6 @@ const CollageProductList: React.FC<{
 }> = ({ assets = [], collageId, showAffirmCard = false, showBannerCard = false, showAppointmentCard = false }) => {
   const { data } = useFirebaseContext();
   const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
-  console.log({ assets });
 
   return (
     <div className="bg-gray-100 ">

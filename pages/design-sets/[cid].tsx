@@ -55,7 +55,6 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
       return acc;
     }, 0);
   }, []);
-  console.log({ collageData });
 
   return (
     <Layout>

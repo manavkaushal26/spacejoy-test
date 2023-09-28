@@ -16,7 +16,6 @@ interface DesignSetCardV2Props {
 }
 
 const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, isMobile, pageRef }) => {
-  console.log({ designData });
   const mobile = Cookies.get('isMobile') === 'true' ? true : false;
 
   const tagsInPills = useMemo(() => {

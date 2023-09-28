@@ -77,8 +77,9 @@ const DragImage: React.FC<DragImageInterface> = ({
     setMouseInside(value);
   };
 
+  // fl_lossy,f_auto,q_100,
   const [img, status] = useImage(
-    `${imageKit.baseDeliveryUrl}/fl_lossy,f_auto,q_100,w_${
+    `${imageKit.baseDeliveryUrl}/tr:w_${
       state?.playgroundWidth
         ? Math.ceil(state?.playgroundWidth * 2 * state.count * (state?.currentScale || 1))
         : Math.ceil(state?.width) * state?.count * 175 * (state?.currentScale || 1)

@@ -102,7 +102,7 @@ function CheckoutForm({
       }
     }
   }, [typeof window]);
-  
+
   const handlePay = async (token) => {
     setSubmitInProgress(true);
     const body = {
@@ -173,7 +173,8 @@ function CheckoutForm({
         });
       }
       PushEvent({
-        category: checkoutFlow === 'store' || checkoutFlow === 'subscriptionCart' ? `${checkoutFlow} Checkout` : 'Checkout',
+        category:
+          checkoutFlow === 'store' || checkoutFlow === 'subscriptionCart' ? `${checkoutFlow} Checkout` : 'Checkout',
         action: `Place ${token ? 'Paid' : 'Free'} Order For - ${
           checkoutFlow === 'store' ? cartData?.invoiceData?.total : plan
         }`,
@@ -247,7 +248,7 @@ function CheckoutForm({
           <br />
           <button
             type="submit"
-            className="w-full flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 lg:w-52"
+            className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 lg:w-52"
             onClick={() => {
               PushEvent({
                 category: checkoutFlow === 'store' ? 'Store Checkout' : 'Checkout',

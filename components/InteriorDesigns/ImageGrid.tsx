@@ -8,8 +8,6 @@ type Images = {
 };
 
 const ImageGrid: React.FC<Images> = ({ images }) => {
-  console.log({ images });
-
   return (
     <div>
       <div className={`grid gap-4  grid-cols-1 sm:grid-cols-2`}>

@@ -700,7 +700,6 @@ export async function getServerSideProps(context) {
     const { subcategory = [], category = [], vertical = [], ...otherFilters } = payload;
     const allFilters = { ...defaultFilters, ...payload };
     const assetsList = await fetchAssetList({ filters: { ...allFilters } }, context);
-    console.log('test:', assetsList);
 
     return {
       props: {

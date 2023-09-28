@@ -27,7 +27,6 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
       setData(data);
     }
   };
-  console.log({ listData });
 
   return (
     <Layout>

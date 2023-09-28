@@ -77,7 +77,6 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
     {},
     {}
   );
-  console.log({ feedData });
 
   return (
     <div className="container px-4 mx-auto">
