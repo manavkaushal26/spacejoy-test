@@ -55,14 +55,14 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
       return acc;
     }, 0);
   }, []);
+  console.log({ collageData });
 
   return (
     <Layout>
       <Head>
         <title>{`${correctedCollageName?.[0]?.toLocaleUpperCase()}${correctedCollageName?.slice(1)}`} | Spacejoy</title>
 
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:type" content="website" />
+        {/* <meta property="og:type" content="website" />
         <meta property="og:url" content={`${company.url}${router.asPath}`} />
         <meta
           property="og:title"
@@ -70,7 +70,6 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
         />
         <meta property="og:image" content={`${imageKit.baseDeliveryUrl}/${collageData.thumbnail}`} />
 
-        {/* <!-- Twitter --> */}
         <meta property="twitter:url" content={`${company.url}${router.asPath}`} />
         <meta
           property="twitter:title"
@@ -78,7 +77,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
         />
         <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${collageData.thumbnail}`} />
 
-        <link rel="canonical" href={`${company.url}${router.asPath.split('?')[0]}`} />
+        <link rel="canonical" href={`${company.url}${router.asPath.split('?')[0]}`} /> */}
         <base href="/" />
       </Head>
       <Layout.Banner />
@@ -99,7 +98,7 @@ const SingleCollageSet: NextPage<CollageViewProps> = ({ assets, collageData, gro
                                 <WishListBtn type="Collage" documentId={collageData?._id} />
                               </button>
                               <Image
-                                src={`${imageKit.baseDeliveryUrl}/${collageData.thumbnail}`}
+                                src={`${imageKit.baseDeliveryUrl}/${collageData?.thumbnail}`}
                                 alt=""
                                 layout="fill"
                                 className="rounded-lg"

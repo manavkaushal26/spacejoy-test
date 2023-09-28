@@ -20,6 +20,7 @@ const CollageProductList: React.FC<{
 }> = ({ assets = [], collageId, showAffirmCard = false, showBannerCard = false, showAppointmentCard = false }) => {
   const { data } = useFirebaseContext();
   const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
+  console.log({ assets });
 
   return (
     <div className="bg-gray-100 ">
@@ -34,7 +35,7 @@ const CollageProductList: React.FC<{
                 {showAppointmentCard && idx === 2 && (
                   <Link href="/quiz/start-quiz">
                     <a target="_blank">
-                      <div className="container rounded-lg w-full h-full relative">
+                      <div className="container relative w-full h-full rounded-lg">
                         {isMobile ? (
                           <Image
                             src={`${imageKit.baseDeliveryUrl}/v1650456436/web/homepage-v3/Home-in-just-7-days-Mobile_bwsdxy.gif`}
@@ -72,7 +73,7 @@ const CollageProductList: React.FC<{
             <AffirmCard imgUrl={`${imageKit.baseDeliveryUrl}/v1646728697/web/homepage-v3/Card_yu5azf.svg`} />
           )}
           {showBannerCard && data?.designViewV2?.visible && (
-            <div className="container rounded-lg w-full h-full relative">
+            <div className="container relative w-full h-full rounded-lg">
               {data?.designViewV2?.link !== undefined && data?.designViewV2?.link !== '' ? (
                 <Link href={data?.designViewV2?.link}>
                   <a>
