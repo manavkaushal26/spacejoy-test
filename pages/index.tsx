@@ -325,7 +325,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                       <div className="relative aspect-[3/4] sm:aspect-[1] md:aspect-[3/4] lg:aspect-[1] rounded-3xl">
                         {/* /w_800 */}
                         <Image
-                          src={`${imageKit.baseDeliveryUrl}/${item.bg}`}
+                          src={`${imageKit.baseDeliveryUrl}${item.bg}`}
                           alt="image 1"
                           className="object-cover object-center w-full h-full rounded-3xl"
                           layout="fill"

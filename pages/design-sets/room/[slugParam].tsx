@@ -45,7 +45,7 @@ const CollageView: NextPage<CollageViewProps> = ({
   const formattedRoomName = useMemo(() => {
     return name.slice(0, name.length - 12);
   }, [name]);
-
+  
   let metaSEO = useMemo(() => {
     return RoomSelectSEO.find((item) => item?.slug === slug);
   }, []);
@@ -129,7 +129,7 @@ const CollageView: NextPage<CollageViewProps> = ({
       <Layout.Header />
       <Layout.Body>
         <div className="bg-gray-100">
-          <div className="container mx-auto px-4">
+          <div className="container px-4 mx-auto">
             <RoomPageHeader
               category={category}
               onCategoryChange={(category) => {
@@ -157,8 +157,8 @@ const CollageView: NextPage<CollageViewProps> = ({
                 />
               </FilterDrawer>
             )}
-            <div className="grid sm:grid-cols-5 grid-cols-4 gap-8">
-              <div className="col-span-1 p-4 bg-white rounded-lg border hidden sm:block">
+            <div className="grid grid-cols-4 gap-8 sm:grid-cols-5">
+              <div className="hidden col-span-1 p-4 bg-white border rounded-lg sm:block">
                 {!isMobile && (
                   <DesignFilters
                     updateTags={updateTags}
@@ -182,7 +182,7 @@ const CollageView: NextPage<CollageViewProps> = ({
                             updateTags(item, 'theme');
                           }}
                         >
-                          {item} <XIcon className="h-4 w-4 ml-2" />
+                          {item} <XIcon className="w-4 h-4 ml-2" />
                         </button>
                       );
                     })}
@@ -197,12 +197,12 @@ const CollageView: NextPage<CollageViewProps> = ({
                             updateTags(item, 'tag');
                           }}
                         >
-                          {item} <XIcon className="h-4 w-4 ml-2" />
+                          {item} <XIcon className="w-4 h-4 ml-2" />
                         </button>
                       );
                     })}
                     <button
-                      className="py-2 px-4 underline text-sm"
+                      className="px-4 py-2 text-sm underline"
                       onClick={() => {
                         setTagFilters([]);
                         setThemeFilters([]);

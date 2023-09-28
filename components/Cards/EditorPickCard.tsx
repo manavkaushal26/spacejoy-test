@@ -22,7 +22,7 @@ const EditorPickCard = ({ data }) => {
             <Image
               className="object-cover transition duration-700 transform rounded-t-lg filter group-hover:brightness-110 hover:brightness-110 hover:scale-105"
               alt={data?.name}
-              src={`${imageKit.baseDeliveryUrl}${data?.cdnRender[0]}`}
+              src={`${imageKit.baseDeliveryUrlShort}${data?.cdnRender[0]}`}
               height="300"
               width="500"
               layout="responsive"

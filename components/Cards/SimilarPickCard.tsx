@@ -17,7 +17,7 @@ const SimilarPickCard = ({ data }) => {
           <div className="w-full aspect-w-2 aspect-h-1">
             <Image
               alt={data?.name}
-              src={`${imageKit.baseDeliveryUrl}${data?.cdnRender[0]}`}
+              src={`${imageKit.baseDeliveryUrlShort}${data?.cdnRender[0]}`}
               className="object-cover object-center w-full h-full rounded-lg"
               layout="fill"
               placeholder="blur"

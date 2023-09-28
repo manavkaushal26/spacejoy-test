@@ -30,7 +30,7 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
             <Image
               className="object-cover transition duration-700 transform filter group-hover:brightness-110"
               alt={cardData?.name}
-              src={`${imageKit.baseDeliveryUrl}${cardData?.cdnRender[0]}`}
+              src={`${imageKit.baseDeliveryUrlShort}${cardData?.cdnRender[0]}`}
               height="300"
               width="500"
               layout="responsive"

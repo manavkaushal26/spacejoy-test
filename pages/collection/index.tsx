@@ -11,12 +11,12 @@ import React from 'react';
 const collection: React.FC<CollectionListInterface> = ({ feedData }) => {
   return (
     <Layout>
-      <Layout.Banner /> 
+      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-      <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
-        <CollectionList feedData={feedData} />
-        <PreFooter />
+        <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
+          <CollectionList feedData={feedData} />
+          <PreFooter />
         </div>
       </Layout.Body>
       <Layout.Footer />

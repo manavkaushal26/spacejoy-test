@@ -8,6 +8,8 @@ type Images = {
 };
 
 const ImageGrid: React.FC<Images> = ({ images }) => {
+  console.log({ images });
+
   return (
     <div>
       <div className={`grid gap-4  grid-cols-1 sm:grid-cols-2`}>
@@ -15,7 +17,7 @@ const ImageGrid: React.FC<Images> = ({ images }) => {
           <div className="shadow-lg aspect-w-16 aspect-h-9" key={image}>
             <Image
               className="object-cover rounded-lg"
-              src={imageKit.baseDeliveryUrl + image}
+              src={image}
               layout="fill"
               alt="s"
               placeholder="blur"

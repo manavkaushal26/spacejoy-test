@@ -16,6 +16,7 @@ interface DesignSetCardV2Props {
 }
 
 const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, isMobile, pageRef }) => {
+  console.log({ designData });
   const mobile = Cookies.get('isMobile') === 'true' ? true : false;
 
   const tagsInPills = useMemo(() => {
@@ -51,7 +52,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                 <Image
                   loading="eager"
                   className="z-10 overflow-hidden rounded-lg"
-                  src={`${imageKit.baseDeliveryUrl}/${designData?.thumbnail}`}
+                  src={`${imageKit.baseDeliveryUrlShort}/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
                   objectFit={'contain'}

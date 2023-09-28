@@ -31,7 +31,6 @@ const DesignList: React.FC<DesignListInterface> = ({ feedData }) => {
     {},
     {}
   );
-  console.log({ currentRenderList });
 
   return (
     <div className="bg-white">

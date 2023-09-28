@@ -37,7 +37,8 @@ const cloudinary = {
   apiBaseURL: '//api.cloudinary.com/v1_1/spacejoy',
 };
 const imageKit = {
-  baseDeliveryUrl: 'https://ik.imagekit.io/spacejoy',
+  baseDeliveryUrl: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload',
+  baseDeliveryUrlShort: 'https://ik.imagekit.io/spacejoy',
 };
 const pinterestConfig = {
   appName: 'SpaceJoyWeb',
