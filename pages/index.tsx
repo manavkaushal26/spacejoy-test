@@ -121,7 +121,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
               </div>
             </div>
-            <div className="my-auto text-center ">
+            <div className="my-auto text-center">
               <Image
                 height="200"
                 width="200"

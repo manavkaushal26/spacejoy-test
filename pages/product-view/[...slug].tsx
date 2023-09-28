@@ -504,7 +504,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                     return (
                       <div key={productImage}>
                         <Image
-                          src={`${imageKit.baseDeliveryUrl}${productImage?.cdn}`}
+                          src={`${imageKit.baseDeliveryUrlShort}${productImage?.cdn}`}
                           alt=""
                           className="object-contain object-center w-full sm:rounded-lg"
                           width="450"

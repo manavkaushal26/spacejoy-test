@@ -114,7 +114,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({
       <div className="relative flex-1 p-4 aspect-square">
         {/* fl_lossy,q_auto,w_300,ar_1,c_pad/ */}
         <Image
-          src={`${imageKit.baseDeliveryUrl}/${productThumbnail}`}
+          src={`${imageKit.baseDeliveryUrlShort}/${productThumbnail}`}
           alt={product?.name}
           layout="fill"
           objectFit="contain"
