@@ -58,16 +58,6 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
   const showTopNavTags = useMemo(() => width <= 992, [width]);
   const isScreenMedium = useMemo(() => width < 768, [width]);
 
-  useEffect(() => {
-    (async () => {
-      const storiesRes = await fetcher({
-        endPoint: `${publicRoutes.customerStoriesList}`,
-        method: 'GET',
-      });
-      console.log({ storiesRes, route: process.env.NEXT_PUBLIC_API_GATEWAY + publicRoutes.customerStoriesList });
-    })();
-  }, []);
-
   return (
     <>
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
