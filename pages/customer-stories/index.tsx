@@ -8,7 +8,7 @@ import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import topCollections from '@utils/Mocks/topCollections';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CustomerStoriesPageMeta, InteriorDesignBlogPageMeta } from '@utils/meta';
 import BlogList from '@components/InteriorBlogs/BlogList';
 import BlogIntro from '@components/InteriorBlogs/BlogIntro';
@@ -83,6 +83,7 @@ export const getStaticProps = async () => {
       endPoint: `${publicRoutes.customerStoriesList}${additionalParams}`,
       method: 'GET',
     });
+
     const { data, statusCode } = storiesRes;
     if (statusCode <= 301) {
       return {

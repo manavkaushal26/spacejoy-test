@@ -30,7 +30,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
@@ -57,6 +57,16 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
   const { width } = useWindowSize();
   const showTopNavTags = useMemo(() => width <= 992, [width]);
   const isScreenMedium = useMemo(() => width < 768, [width]);
+
+  useEffect(() => {
+    (async () => {
+      const storiesRes = await fetcher({
+        endPoint: `${publicRoutes.customerStoriesList}`,
+        method: 'GET',
+      });
+      console.log({ storiesRes, route: process.env.NEXT_PUBLIC_API_GATEWAY + publicRoutes.customerStoriesList });
+    })();
+  }, []);
 
   return (
     <>
