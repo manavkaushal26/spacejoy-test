@@ -9,8 +9,6 @@ import { GetStaticProps } from 'next';
 import React from 'react';
 
 const collection: React.FC<CollectionListInterface> = ({ feedData }) => {
-  console.log({ feedData });
-
   return (
     <Layout>
       <Layout.Banner />
