@@ -1,4 +1,5 @@
 import { exploreIdeasCat, hireADesignerCat, splitCategories } from '@utils/Mocks/SplitCategoriesData';
+import { newSpacejoyStoreUrl } from '@utils/config';
 
 export const menuData = [
   {
@@ -14,7 +15,7 @@ export const menuData = [
   },
   {
     name: 'Shop',
-    url: '/shop-furniture-decor',
+    url: newSpacejoyStoreUrl,
     active: true,
   },
   {

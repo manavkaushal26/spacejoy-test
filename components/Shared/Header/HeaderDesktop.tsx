@@ -18,6 +18,7 @@ import { ExploreIdeasNav } from '../ExploreIdeasNav';
 import { HireADesignerHeader } from '../HireADesignerHeader';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
+import { newSpacejoyStoreUrl } from '@utils/config';
 
 const HeaderDesktop: React.FC = () => {
   const mobile = Cookies.get('isMobile');
@@ -124,7 +125,7 @@ const HeaderDesktop: React.FC = () => {
     <>
       <header className={`bg-white sticky ${isBroadcastVisible ? 'top-10 mb-10' : 'top-0'} z-50`}>
         <div className="container px-4 mx-auto">
-          <div className="hidden md:flex md:items-center h-16">
+          <div className="hidden h-16 md:flex md:items-center">
             <Link href="/">
               <a
                 className="inline-flex pr-1 mr-10 rounded-md focus:outline-none"
@@ -211,10 +212,11 @@ const HeaderDesktop: React.FC = () => {
                     <button
                       type="button"
                       className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
-                        pathname === '/shop-furniture-decor' ? 'text-red-500' : 'text-gray-700'
+                        pathname === newSpacejoyStoreUrl ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
-                        router.push({ pathname: '/shop-furniture-decor' });
+                        // router.push({ pathname: newSpacejoyStoreUrl });
+                        window.open(newSpacejoyStoreUrl, '_blank');
                         PushEvent({
                           category: `Top Nav - Shop`,
                           action: `Open Shop Page`,
@@ -250,7 +252,7 @@ const HeaderDesktop: React.FC = () => {
                     </button>
                   </li>
                   <li
-                    className="text-sm sm:inline-block md:inline-block lg:hidden cursor-pointer"
+                    className="text-sm cursor-pointer sm:inline-block md:inline-block lg:hidden"
                     onClick={() => {
                       toggleMenu();
                     }}
@@ -272,7 +274,7 @@ const HeaderDesktop: React.FC = () => {
                 </a>
               </Link>
               {/* <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`}>
-                <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200  focus:outline-none ">
+                <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200 focus:outline-none ">
                   <span className="sr-only">Shopping</span>
                   <ShoppingBagIcon className="inline w-4 h-4" />
                   {cart?.count && cart?.count > 0 ? (
@@ -294,12 +296,12 @@ const HeaderDesktop: React.FC = () => {
         <div>
           {secondaryHeaderLocations.includes(pathname) && mobile === 'false' && (
             <div className={`hide-scrollbar w-full z-50`}>
-              <div className="bg-gray-100 whitespace-nowrap hidden sm:block">
-                <div className="relative container p-4 py-3 flex items-center justify-center space-x-8 text-sm text-gray-700 mx-auto">
-                  <Popover.Group className="flex  flex-wrap">
+              <div className="hidden bg-gray-100 whitespace-nowrap sm:block">
+                <div className="container relative flex items-center justify-center p-4 py-3 mx-auto space-x-8 text-sm text-gray-700">
+                  <Popover.Group className="flex flex-wrap">
                     <Link href="/shop">
                       <a>
-                        <p className="hover:text-red-500 transition duration-200 px-4 py-1 leading-relaxed">
+                        <p className="px-4 py-1 leading-relaxed transition duration-200 hover:text-red-500">
                           All Products
                         </p>
                       </a>
@@ -336,11 +338,11 @@ const HeaderDesktop: React.FC = () => {
                                 leaveFrom="opacity-100 translate-y-0"
                                 leaveTo="opacity-0 -translate-y-1"
                               >
-                                <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
+                                <Popover.Panel className="absolute inset-x-0 z-10 hidden transform bg-white shadow-lg md:block top-full">
                                   {({ close }) => (
-                                    <div className="max-w-7xl mx-auto grid px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16gap-y-6">
+                                    <div className="grid px-4 py-6 mx-auto max-w-7xl sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16gap-y-6">
                                       <div>
-                                        <h3 className="font-semibold text-2xl">{selectedNavItem[0]?.name}</h3>
+                                        <h3 className="text-2xl font-semibold">{selectedNavItem[0]?.name}</h3>
                                         <div className="mt-2 space-y-2">
                                           <p
                                             onClick={() => {
@@ -349,7 +351,7 @@ const HeaderDesktop: React.FC = () => {
                                               );
                                               close();
                                             }}
-                                            className="cursor-pointer text-gray-800 hover:text-red-500 transition duration-200 w-fit underline"
+                                            className="text-gray-800 underline transition duration-200 cursor-pointer hover:text-red-500 w-fit"
                                           >
                                             Shop All {selectedNavItem[0]?.name}
                                           </p>
@@ -360,7 +362,7 @@ const HeaderDesktop: React.FC = () => {
                                                 router.push(`/${convertFilterToUrlPath(item.name.toLowerCase())}`);
                                                 close();
                                               }}
-                                              className="cursor-pointer text-gray-800 hover:text-red-500 transition duration-200 w-fit"
+                                              className="text-gray-800 transition duration-200 cursor-pointer hover:text-red-500 w-fit"
                                             >
                                               {item.name}
                                             </p>
@@ -389,7 +391,7 @@ const HeaderDesktop: React.FC = () => {
                       ))}
                     <Link href="/shop?discount=10%3A%3A100">
                       <a>
-                        <p className="hover:text-red-500 transition duration-200 px-4 py-1 leading-relaxed">Sale</p>
+                        <p className="px-4 py-1 leading-relaxed transition duration-200 hover:text-red-500">Sale</p>
                       </a>
                     </Link>
                   </Popover.Group>
@@ -419,7 +421,7 @@ const HeaderDesktop: React.FC = () => {
         } bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90`}
       >
         <Dialog.Overlay />
-        <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl absolute top-10 left-1/3">
+        <div className="absolute inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl top-10 left-1/3">
           <Dialog.Title>More Options</Dialog.Title>
           <ul>
             <li

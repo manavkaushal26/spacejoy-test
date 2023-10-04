@@ -46,6 +46,8 @@ const pinterestConfig = {
 
 const oldSpacejoyUrl = 'https://designs.spacejoy.com';
 
+const newSpacejoyStoreUrl = 'https://store.spacejoy.com';
+
 const company = {
   logo: 'w_200/v1578101355/shared/spacejoy-logo_ase39m.svg',
   name: 'Neo Design Labs Inc',
@@ -174,4 +176,5 @@ export {
   authUrl,
   isProduction,
   firebaseConfig,
+  newSpacejoyStoreUrl,
 };
