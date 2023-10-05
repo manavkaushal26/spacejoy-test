@@ -8,11 +8,11 @@ export const menuData = [
     categories: hireADesignerCat,
     active: true,
   },
-  {
-    name: 'Shop Sets',
-    url: '/room-select',
-    active: true,
-  },
+  // {
+  //   name: 'Shop Sets',
+  //   url: '/room-select',
+  //   active: true,
+  // },
   {
     name: 'Shop',
     url: newSpacejoyStoreUrl,

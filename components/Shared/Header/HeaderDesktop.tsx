@@ -190,7 +190,7 @@ const HeaderDesktop: React.FC = () => {
                       />
                     </button>
                   </li>
-                  <li className="inline-block">
+                  {/* <li className="inline-block">
                     <Link href="/room-select">
                       <a
                         className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
@@ -207,7 +207,7 @@ const HeaderDesktop: React.FC = () => {
                         Shop Sets
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="items-center h-full sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
