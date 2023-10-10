@@ -64,13 +64,4 @@ const BrandReturnPolicyPage = (props: Props) => {
   );
 };
 
-export async function getServerSideProps(ctx) {
-  return {
-    redirect: {
-      permanent: false,
-      destination: newSpacejoyStoreUrl + '/pages/return-policies',
-    },
-  };
-}
-
 export default BrandReturnPolicyPage;
