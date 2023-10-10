@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const CustomerStoryCard = ({ data }) => {
+  console.log(data);
+
   return (
     <Link href={`/customer-stories/${data.slug}`}>
       <a>
@@ -26,7 +28,7 @@ const CustomerStoryCard = ({ data }) => {
             </div>
             <div className=" absolute -bottom-3 right-3 rounded-full ring-2 ring-white bg-[#F39C12] h-14 w-14  -mb-1 border-1 border-white overflow-hidden">
               <Image
-                src={`${imageKit.baseDeliveryUrl}/${data.customerAvatar}`}
+                src={`${imageKit.baseDeliveryUrlShort}${data.customerAvatar}`}
                 alt={`${data.customerName}`}
                 layout="fill"
               />

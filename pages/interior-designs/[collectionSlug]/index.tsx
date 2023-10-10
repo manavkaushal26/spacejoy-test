@@ -52,7 +52,7 @@ const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
           property="og:description"
           content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
         />
-        <meta property="og:image" content={`${imageKit.baseDeliveryUrl}/${collectionData?.coverImg}`} />
+        {/* <meta property="og:image" content={`${imageKit.baseDeliveryUrl}/${collectionData?.coverImg}`} /> */}
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content={`${company.url}${router.asPath}`} />
@@ -61,7 +61,7 @@ const CollectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
           property="twitter:description"
           content={`Discover stunning ${collectionData?.name.toLowerCase()} and interior decorating ideas for your space. Explore and shop beautiful designs for every style & budget, curated by top designers.`}
         />
-        <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${collectionData?.coverImg}`} />
+        {/* <meta property="twitter:image" content={`${imageKit.baseDeliveryUrl}/${collectionData?.coverImg}`} /> */}
         <link rel="canonical" href={`${company.url}${router.asPath}`} />
         <base href="/" />
       </Head>
@@ -116,7 +116,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       method: 'POST',
       body: { data: data?.searchKey || {} },
     });
+
     const { data: designData = {}, statusCode: designResStatus } = designRes;
+
     if (designResStatus < 301) {
       const { list: designList = [] } = designData;
 
@@ -126,7 +128,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           collectionData: {
             name: data?.name,
             description: data?.description,
-            coverImg: data?.cdnCover,
+            coverImg: data?.cdnCover || '',
             slug: data?.slug,
             publishedDate: data?.publishedDate,
             status: data?.status,

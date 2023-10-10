@@ -181,6 +181,8 @@ export const getServerSideProps = async ({ params }) => {
     const queryParams = '?&limit=5';
     const engagementBlockData = await getEngagementsBlocks(queryParams);
     const { data, statusCode } = blogRes;
+    console.log({ data });
+
     if (statusCode <= 301) {
       return {
         props: {

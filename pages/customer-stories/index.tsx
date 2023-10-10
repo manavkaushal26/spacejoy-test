@@ -16,6 +16,8 @@ import CustomerStoriesIntro from '@components/CustomerStories/CustomerStoriesInt
 import StoryList from '@components/CustomerStories/StoryList';
 
 const CustomerStories = ({ storiesFeedData }): JSX.Element => {
+  console.log(storiesFeedData);
+
   return (
     <Layout>
       <Head>
@@ -85,6 +87,8 @@ export const getStaticProps = async () => {
     });
 
     const { data, statusCode } = storiesRes;
+    console.log({ data });
+
     if (statusCode <= 301) {
       return {
         props: {

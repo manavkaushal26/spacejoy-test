@@ -2,6 +2,8 @@ import { imageKit } from '@utils/config';
 import Image from 'next/image';
 
 export default function CustomerCard({ name, description, subText, avatar }) {
+  console.log(`${imageKit.baseDeliveryUrl}/${avatar}`);
+
   return (
     <div className="flex flex-1 bg-[#f8f8f8] shadow-md rounded-md p-5">
       <div className="flex-shrink-0 mr-4">

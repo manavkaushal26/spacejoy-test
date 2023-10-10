@@ -1,6 +1,7 @@
 import fetcher from '@utils/fetcher';
 import { useRouter } from 'next/router';
 import { useEffect, useReducer, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const initialState = {
   list: {
@@ -66,13 +67,14 @@ const fetchMoreData = async (api, skip, limit) => {
       data: { list = [], data = [] },
       statusCode,
     } = res;
+
     if (statusCode <= 301) {
       return list.concat(data);
     } else {
-      throw new Error();
+      toast.error(res?.data?.message || 'Something went wrong');
     }
   } catch (e) {
-    throw new Error();
+    console.error(e?.message);
   }
 };
 

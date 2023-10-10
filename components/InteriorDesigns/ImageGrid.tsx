@@ -15,7 +15,7 @@ const ImageGrid: React.FC<Images> = ({ images }) => {
           <div className="shadow-lg aspect-w-16 aspect-h-9" key={image}>
             <Image
               className="object-cover rounded-lg"
-              src={image}
+              src={imageKit.baseDeliveryUrlShort + image}
               layout="fill"
               alt="s"
               placeholder="blur"

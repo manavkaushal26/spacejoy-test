@@ -651,6 +651,7 @@ export async function getServerSideProps(ctx) {
   const isMobile = ctx?.req?.cookies['isMobile'] === 'true' ? true : false;
 
   const res = await fetcher({ endPoint: publicRoutes.pricingRoute, method: 'GET' });
+  
   const {
     data: { list = [] },
   } = res;

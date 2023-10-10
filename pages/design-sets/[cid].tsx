@@ -166,6 +166,7 @@ export const getServerSideProps = async ({ params }) => {
           endPoint: `/v1/collages/${designId}`,
           method: 'GET',
         });
+
         const { data = {}, statusCode } = collageRes;
         const {
           data: { categoryMap, background = '', bgType = '' },
@@ -201,6 +202,7 @@ export const getServerSideProps = async ({ params }) => {
               },
               method: 'POST',
             });
+
             const { data: productData = {}, statusCode: status } = productRes;
             const isError = status < 300 ? false : true;
             if (isError) throw new Error();

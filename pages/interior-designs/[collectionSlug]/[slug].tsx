@@ -62,7 +62,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
           <div className="container px-4 mx-auto">
             <Breadcrumb design={design} />
             <h2 className="my-8 text-3xl tracking-wide">{design?.name}</h2>
-            <ImageGrid images={design?.urlRender} />
+            <ImageGrid images={design?.cdnRender} />
             <div className="my-8 text-sm ">
               <p className={`${!value && 'line-clamp-3'} leading-normal whitespace-pre-line`}>{design?.description}</p>
               <button className="my-1 text-[#F5296E] text-sm" onClick={toggle}>

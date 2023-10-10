@@ -12,11 +12,11 @@ const data = [
     description:
       'I love my design! It feels warm and cozy even with the amount of grey that is currently in there. I’ve wanted that rug for a while sp seeing it used it in the design helped me make my mind up. I have already bought the coffee table and plan on buying the rest too. This design is everything I was looking for.',
     before: {
-      img: 'v1654258826/Room1_Before_yphffo.jpg',
+      img: 'v1574266287/web/testimonial/Trinity_Before_wrtik7.jpg',
       alt: 'Spacejoy review of master bedroom room design by Trinity Harding ',
     },
     after: {
-      img: 'v1654258827/Room1_After_ynqxbk.png',
+      img: 'v1574266288/web/testimonial/Trinity_After_l6cdjt.jpg',
       alt: "Master bedroom design for Trinity Harding by spacejoy's online interior designer",
     },
   },
@@ -33,11 +33,11 @@ const data = [
     description:
       'My Spacejoy designer understood exactly what I wanted and brought it to life with her beautiful designs. My room looks amazing - It’s exactly the style we were going for but could never quite achieve. And the 3D renders are so life-like, I was beyond thrilled to see my space before it was done!',
     before: {
-      img: 'v1654258826/Room2_Before_sg6rli.png',
+      img: 'v1580125373/web/testimonial/Chelsey-Before_fvrb3v.jpg',
       alt: 'Spacejoy review of living room design by chelsey soup',
     },
     after: {
-      img: 'v1654258826/Room2_After_uzjgzv.png',
+      img: 'v1580125374/web/testimonial/Chelsey-After_mlpqsw.jpg',
       alt: "Living room design for Chelsey Soup by Spacejoy's online interior designer ",
     },
   },
@@ -76,11 +76,11 @@ const data = [
     description:
       'I LOVE Spacejoy! Not only are their designs absolutely stunning but they also have the widest selection of products from all the top brands. I found everything I needed for my home, all in one place! Plus they give extra discounts which means more savings! Win-win!',
     before: {
-      img: 'v1654258826/Room3_Before_gku78b.png',
+      img: 'v1595828656/web/testimonial/Kayla-Before_obtbsb.jpg',
       alt: 'Spacejoy review of living room design by Kayla',
     },
     after: {
-      img: 'v1654258826/Room3_After_yfy3py.png',
+      img: 'v1595828657/web/testimonial/Kayla-Render_euv1cj.jpg',
       alt: "Living room design for Kayla by Spacejoy's online interior designer ",
     },
   },
@@ -97,11 +97,11 @@ const data = [
       'We wanted some ideas on designing and decorating our living room! After researching, we decided to work with Spacejoy and boy! am I glad we did! The designer designed out entire space in 3D. We could see how the products looked in our space and what we didn’t like, the designer found alternatives for, all within our budget!',
 
     before: {
-      img: 'v1654258827/Room4_Before_utrjmk.png',
+      img: 'v1574266309/web/testimonial/Erica_Before_t0jt6b.jpg',
       alt: 'Spacejoy review of nursery design  by Kaleb and Erica',
     },
     after: {
-      img: 'v1654258827/Room4_After_gnasb9.png',
+      img: 'v1574266298/web/testimonial/Erica_After_a8zyco.jpg',
       alt: "Nursery design for Kaleb and Erica by spacejoy's online interior designer",
     },
   },

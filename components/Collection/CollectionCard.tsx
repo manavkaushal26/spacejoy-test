@@ -21,7 +21,7 @@ const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) 
               <Image
                 className="object-cover rounded"
                 alt={cardData?.name}
-                src={imageKit.baseDeliveryUrl + '/' + cardData?.cdnThumbnail}
+                src={imageKit.baseDeliveryUrlShort + '/' + cardData?.cdnThumbnail}
                 height="300"
                 width="225"
                 placeholder="blur"
@@ -31,7 +31,7 @@ const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) 
               <div className="w-full aspect-w-2 aspect-h-1">
                 <Image
                   alt={cardData?.name}
-                  src={imageKit.baseDeliveryUrl + '/' + cardData?.cdnThumbnail}
+                  src={imageKit.baseDeliveryUrlShort + '/' + cardData?.cdnThumbnail}
                   className="object-cover object-center w-full h-full"
                   layout="fill"
                   placeholder="blur"

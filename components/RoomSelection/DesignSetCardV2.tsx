@@ -51,10 +51,10 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                 <Image
                   loading="eager"
                   className="z-10 overflow-hidden rounded-lg"
-                  src={`${imageKit.baseDeliveryUrlShort}/${designData?.thumbnail}`}
+                  src={`${imageKit.baseDeliveryUrl}/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
-                  objectFit={'contain'}
+                  objectFit={'cover'}
                   placeholder="blur"
                   blurDataURL={blurredBgProduct}
                 />
@@ -108,7 +108,7 @@ const DesignSetCardV2: React.FC<DesignSetCardV2Props> = ({ designData, large, is
                   src={`${imageKit.baseDeliveryUrl}/${designData?.thumbnail}`}
                   layout="fill"
                   alt={designData?.collageId}
-                  objectFit={'contain'}
+                  objectFit={'cover'}
                   placeholder="blur"
                   blurDataURL={blurredBgProduct}
                 />

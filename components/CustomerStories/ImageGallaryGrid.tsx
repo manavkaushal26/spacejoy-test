@@ -46,13 +46,14 @@ const ImageGallaryGrid = ({ data }) => {
             } bg-white overflow-hidden min-h-[100px] cursor-pointer pt-[55%] relative`}
             key={item._id}
           >
+            {/* c_scale/ */}
             <Image
-              src={`${imageKit.baseDeliveryUrl}/c_scale/${item.cdn}`}
+              src={`${imageKit.baseDeliveryUrlShort}/${item.cdn}`}
               alt=""
-              className=" object-cover absolute top-0 left-0 w-full h-full"
+              className="absolute top-0 left-0 object-cover w-full h-full "
               layout="fill"
             />
-            <div className=" absolute top-1 right-1 opacity-0 hover:opacity-100">
+            <div className="absolute opacity-0 top-1 right-1 hover:opacity-100">
               <SocialShare media={item.cdn} />
             </div>
           </div>

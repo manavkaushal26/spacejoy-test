@@ -1,7 +1,6 @@
 import CustomerStoryCard from '@components/Cards/CustomerStoryCard';
 import React from 'react';
 
-
 const CustomerStories = ({ data }) => {
   return (
     <>

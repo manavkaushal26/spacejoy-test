@@ -182,7 +182,7 @@ const Product = ({ asset }) => {
               <div className="relative w-full mb-2 aspect-w-1 aspect-h-1">
                 {/* /c_scale,w_400 */}
                 <Image
-                  src={asset?.cdn ? `${imageKit.baseDeliveryUrl}/${asset?.cdn}` : asset?.imageUrl}
+                  src={asset?.cdn ? `${imageKit.baseDeliveryUrlShort}/${asset?.cdn}` : asset?.imageUrl}
                   alt={asset?.name}
                   blurDataURL={blurredProduct}
                   className="object-contain object-center w-full h-full"
@@ -206,9 +206,12 @@ const Product = ({ asset }) => {
   );
 };
 
-const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summary, createdAt, slug } }) => {
+const storyView: React.FC<StoryViewResponse> = ({ data }) => {
+  const { about, timeline, summary, createdAt, slug } = data;
   const roomType = timeline.length > 0 && timeline[0].meta && timeline[0].meta.roomType;
   const creationDate = new Date(createdAt).toDateString();
+  // console.log({ about, timeline, summary, createdAt, slug });
+  console.log({ data });
 
   return (
     <Layout>
@@ -317,8 +320,9 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
                               <div className="grid-cols-12">
                                 <div className="flex content-center mb-8 space-x-5">
                                   <div className=" relative rounded-full ring-2 ring-white bg-[#F39C12] h-16 w-16 -mb-1 border-1 border-white overflow-hidden">
+                                    {/* c_fill,g_faces,h_100,w_100/ */}
                                     <Image
-                                      src={`${imageKit.baseDeliveryUrl}/c_fill,g_faces,h_100,w_100/${about?.customerAvatar}`}
+                                      src={`${imageKit.baseDeliveryUrl}/${about?.customerAvatar}`}
                                       alt=""
                                       layout="fill"
                                     />
