@@ -6,6 +6,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/outline';
+import { newSpacejoyStoreUrl } from '@utils/config';
 
 type Props = {};
 
@@ -62,5 +63,14 @@ const BrandReturnPolicyPage = (props: Props) => {
     </Layout>
   );
 };
+
+export async function getServerSideProps(ctx) {
+  return {
+    redirect: {
+      permanent: false,
+      destination: newSpacejoyStoreUrl + '/pages/return-policies',
+    },
+  };
+}
 
 export default BrandReturnPolicyPage;

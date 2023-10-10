@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import { newSpacejoyStoreUrl } from '@utils/config';
 
 type Props = {};
 
@@ -40,5 +41,14 @@ const ReturnPoliciesPage = (props: Props) => {
     </Layout>
   );
 };
+
+export async function getServerSideProps(ctx) {
+  return {
+    redirect: {
+      permanent: false,
+      destination: newSpacejoyStoreUrl + '/pages/return-policies',
+    },
+  };
+}
 
 export default ReturnPoliciesPage;
