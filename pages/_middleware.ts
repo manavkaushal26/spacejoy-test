@@ -1,4 +1,5 @@
 // eslint-disable-next-line @next/next/no-server-import-in-page
+import { newSpacejoyStoreUrl } from '@utils/config';
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
@@ -20,6 +21,9 @@ export function middleware(req: NextRequest) {
 
   if (path.startsWith('/quiz')) {
     return NextResponse.redirect('https://designs.spacejoy.com/new-project?quiz=start&plan=bliss');
+  }
+  if (path.includes('/return-policies')) {
+    return NextResponse.redirect(newSpacejoyStoreUrl + '/pages/return-policies');
   }
 
   return NextResponse.next().cookie('isMobile', isMobile.toString());

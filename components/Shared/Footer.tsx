@@ -1,5 +1,5 @@
 import { Tab } from '@headlessui/react';
-import { company, oldSpacejoyUrl } from '@utils/config';
+import { company, newSpacejoyStoreUrl, oldSpacejoyUrl } from '@utils/config';
 import { CommonSeoLinks } from '@utils/Mocks/CommonSeoLinks';
 import spacejoyPromiseData from '@utils/Mocks/spacejoyPromises';
 import Image from 'next/image';
@@ -169,17 +169,20 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-              <li>
+              <li className="footer-item">
                 <Link href="/refund-policy">
                   <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Refund Policy
                   </a>
                 </Link>
               </li>
-              <li>
-                <Link href="/return-policies">
-                  <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Return Policy
+              <li className="footer-item">
+                <Link href={`${newSpacejoyStoreUrl}/pages/return-policies`}>
+                  <a
+                    className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    target="_blank"
+                  >
+                    Return Policies
                   </a>
                 </Link>
               </li>

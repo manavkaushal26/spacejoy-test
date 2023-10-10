@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import { newSpacejoyStoreUrl } from '@utils/config';
 
 type Props = {};
 

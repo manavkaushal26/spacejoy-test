@@ -27,7 +27,7 @@ const TopBarMobile = () => {
           </a>
         </Link>
       </div>
-      <div className="p-2 mb-2 bg-gray-100 border-2 rounded-md cursor-pointer border-b-lime-400">
+      {/* <div className="p-2 mb-2 bg-gray-100 border-2 rounded-md cursor-pointer border-b-lime-400">
         <Link href={`/room-select`} passHref>
           <a rel="noreferrer">
             <div className="flex space-x-3">
@@ -47,7 +47,7 @@ const TopBarMobile = () => {
             </div>
           </a>
         </Link>
-      </div>
+      </div> */}
       <div className="p-2 mb-2 bg-gray-100 border-2 rounded-md cursor-pointer border-b-rose-300">
         <a rel="noreferrer" href={newSpacejoyStoreUrl} target="_blank">
           <div className="flex space-x-3">

@@ -6,6 +6,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/outline';
+import { newSpacejoyStoreUrl } from '@utils/config';
 
 type Props = {};
 
