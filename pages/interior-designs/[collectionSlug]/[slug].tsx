@@ -223,6 +223,7 @@ export const getStaticProps = async ({ params }) => {
   const { data, statusCode } = response;
   const queryParams = '?&limit=5';
   const engagementBlockData = await getEngagementsBlocks(queryParams);
+
   if (statusCode < 300) {
     return {
       props: {

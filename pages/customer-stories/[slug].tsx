@@ -210,8 +210,6 @@ const storyView: React.FC<StoryViewResponse> = ({ data }) => {
   const { about, timeline, summary, createdAt, slug } = data;
   const roomType = timeline.length > 0 && timeline[0].meta && timeline[0].meta.roomType;
   const creationDate = new Date(createdAt).toDateString();
-  // console.log({ about, timeline, summary, createdAt, slug });
-  console.log({ data });
 
   return (
     <Layout>
@@ -277,7 +275,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data }) => {
         <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
           <SimpleReactLightbox>
             <SRLWrapper>
-              <ImageGallaryGrid data={about?.afterImages} />
+              <ImageGallaryGrid data={about?.afterImages} cdnPrefix="short" />
             </SRLWrapper>
           </SimpleReactLightbox>
 
@@ -371,7 +369,7 @@ const storyView: React.FC<StoryViewResponse> = ({ data }) => {
               <div className="mb-8">
                 <SimpleReactLightbox>
                   <SRLWrapper {...lightBoxOptions}>
-                    <ImageGallaryGrid data={about.afterImages} />
+                    <ImageGallaryGrid data={about.afterImages} cdnPrefix="short" />
                   </SRLWrapper>
                 </SimpleReactLightbox>
               </div>

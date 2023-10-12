@@ -4,6 +4,8 @@ import Image from 'next/image';
 import React, { useEffect, useMemo, useState } from 'react';
 import SocialShare from '@components/SocialShare';
 
+type Props = { data: any[]; cdnPrefix?: 'short' | 'standard' };
+
 const getTemplate = (length) => {
   if (length === 1) {
     return 'grid-rows-1 grid-cols-1';
@@ -16,7 +18,7 @@ const getTemplate = (length) => {
   }
 };
 
-const ImageGallaryGrid = ({ data }) => {
+const ImageGallaryGrid = ({ data, cdnPrefix = 'standard' }: Props) => {
   const [trimmedData, setTrimmedData] = useState(data.length > 5 ? data.splice(4, data.length - 5) : data);
   useMemo(() => {
     setTrimmedData(data);
@@ -48,7 +50,7 @@ const ImageGallaryGrid = ({ data }) => {
           >
             {/* c_scale/ */}
             <Image
-              src={`${imageKit.baseDeliveryUrlShort}/${item.cdn}`}
+              src={`${cdnPrefix === 'short' ? imageKit.baseDeliveryUrlShort : imageKit.baseDeliveryUrl}/${item.cdn}`}
               alt=""
               className="absolute top-0 left-0 object-cover w-full h-full "
               layout="fill"

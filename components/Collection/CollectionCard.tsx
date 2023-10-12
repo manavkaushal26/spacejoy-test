@@ -9,19 +9,23 @@ import { CollectionCardDataInterface } from './interface';
 interface CollectionCardInterface {
   cardData: CollectionCardDataInterface;
   inset: boolean;
+  staticImg?: boolean;
 }
 
-const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) => {
+const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset, staticImg = false }) => {
   return (
     <li>
       <Link href={`/interior-designs/${cardData?.slug}`}>
         <a className="inline-block w-full rounded focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-700 focus:outline-none">
           <div className="relative overflow-hidden transition-all duration-300 transform bg-gray-200 border border-gray-300 rounded shadow-sm group hover:shadow-xl hover:-translate-y-1">
             {inset ? (
+              //! Done
               <Image
                 className="object-cover rounded"
                 alt={cardData?.name}
-                src={imageKit.baseDeliveryUrlShort + '/' + cardData?.cdnThumbnail}
+                src={
+                  (staticImg ? imageKit.baseDeliveryUrl : imageKit.baseDeliveryUrlShort) + '/' + cardData?.cdnThumbnail
+                }
                 height="300"
                 width="225"
                 placeholder="blur"
@@ -31,7 +35,11 @@ const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) 
               <div className="w-full aspect-w-2 aspect-h-1">
                 <Image
                   alt={cardData?.name}
-                  src={imageKit.baseDeliveryUrlShort + '/' + cardData?.cdnThumbnail}
+                  src={
+                    (staticImg ? imageKit.baseDeliveryUrl : imageKit.baseDeliveryUrlShort) +
+                    '/' +
+                    cardData?.cdnThumbnail
+                  }
                   className="object-cover object-center w-full h-full"
                   layout="fill"
                   placeholder="blur"

@@ -6,8 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const CustomerStoryCard = ({ data }) => {
-  console.log(data);
-
   return (
     <Link href={`/customer-stories/${data.slug}`}>
       <a>

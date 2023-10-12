@@ -80,6 +80,7 @@ export const getStaticProps = async () => {
       endPoint: `${publicRoutes.interiorDesignsBlogList}${additionalParams}`,
       method: 'GET',
     });
+    
     const { data, statusCode } = blogRes;
     if (statusCode <= 301) {
       return {
