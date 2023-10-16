@@ -206,8 +206,7 @@ const Product = ({ asset }) => {
   );
 };
 
-const storyView: React.FC<StoryViewResponse> = ({ data }) => {
-  const { about, timeline, summary, createdAt, slug } = data;
+const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summary, createdAt, slug } }) => {
   const roomType = timeline.length > 0 && timeline[0].meta && timeline[0].meta.roomType;
   const creationDate = new Date(createdAt).toDateString();
 
