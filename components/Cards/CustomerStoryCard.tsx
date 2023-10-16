@@ -26,7 +26,7 @@ const CustomerStoryCard = ({ data }) => {
             </div>
             <div className=" absolute -bottom-3 right-3 rounded-full ring-2 ring-white bg-[#F39C12] h-14 w-14  -mb-1 border-1 border-white overflow-hidden">
               <Image
-                src={`${imageKit.baseDeliveryUrlShort}${data.customerAvatar}`}
+                src={`${imageKit.baseDeliveryUrl}/${data.customerAvatar}`}
                 alt={`${data.customerName}`}
                 layout="fill"
               />
