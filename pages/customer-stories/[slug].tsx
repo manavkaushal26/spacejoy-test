@@ -379,15 +379,15 @@ const storyView: React.FC<StoryViewResponse> = ({ data }) => {
                   <div className="grid text-left">
                     <div className="">
                       <div className="mb-8">
-                        <h3 className="mb-1 text-xl capitalize sm:text-2xl sm:mb-2">{`This is what ${about.customerName} had to say on the final design`}</h3>
+                        <h3 className="mb-1 text-xl capitalize sm:text-2xl sm:mb-2">{`This is what ${about?.customerName} had to say on the final design`}</h3>
                         <p className="text-sm text-gray-500 ">Joyous Homes, Happy Customer</p>
                       </div>
                       <p className=" sm:text-sm">{summary?.testimonial}</p>
                       <UserCard
-                        dp={about.customerAvatar}
-                        name={about.customerName}
+                        dp={about?.customerAvatar}
+                        name={about?.customerName}
                         ratings={summary?.rating}
-                        address={about.customerAddress.state}
+                        address={about?.customerAddress.state}
                         align="left"
                       />
                     </div>
