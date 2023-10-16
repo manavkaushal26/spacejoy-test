@@ -25,6 +25,12 @@ export function middleware(req: NextRequest) {
   if (path.includes('/return-policies')) {
     return NextResponse.redirect(newSpacejoyStoreUrl + '/pages/return-policies');
   }
+  if (path.includes('/room-select')) {
+    return NextResponse.redirect('/', 307);
+  }
+  if (path.includes('/design-sets')) {
+    return NextResponse.redirect('/', 307);
+  }
 
   return NextResponse.next().cookie('isMobile', isMobile.toString());
 }

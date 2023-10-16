@@ -16,7 +16,7 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/images/hero-pattern.png')",
         'card-texture': "url('https://ik.imagekit.io/spacejoy/spacejoy/image/upload/v1652948828/Mesh_Bg_asjn3i.png')",
-        vector: "url('https://ik.imagekit.io/spacejoy/spacejoy/image/upoad/v1653652981/Dotted_Vector_jcdmmi.svg')",
+        vector: "url('https://ik.imagekit.io/spacejoy/spacejoy/image/upload/v1653652981/Dotted_Vector_jcdmmi.svg')",
       },
       borderWidth: ['last', 'first'],
       colors: {

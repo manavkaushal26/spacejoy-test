@@ -45,7 +45,7 @@ const SearchBox: React.FC = () => {
 
   const [searchString, setSearchString] = useState('');
   const [lastSearchString, setLastSearchString] = useState('');
-  const [searchType, setSearchType] = useState<'products' | 'design-sets' | 'design-ideas'>('products');
+  const [searchType, setSearchType] = useState<'products' | 'design-ideas'>('products');
   const [isFetchingDesigns, setIsFetchingDesigns] = useState(false);
   const [isFetchingProducts, setIsFetchingProducts] = useState(false);
   const [isFetchingDesignIdeas, setIsFetchingDesignIdeas] = useState(false);
@@ -202,9 +202,9 @@ const SearchBox: React.FC = () => {
       setPageCountProducts(newPageCount);
     }
     switch (searchType) {
-      case 'design-sets':
-        fetchDesignsData();
-        break;
+      // case 'design-sets':
+      //   fetchDesignsData();
+      //   break;
       case 'design-ideas':
         const keywords = searchString?.split(' ');
         fetchDesignIdeasData(keywords);
@@ -230,11 +230,11 @@ const SearchBox: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-free bg-gray-100">
-      <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto py-5 px-4 sm:px-6 lg:pt-8 lg:px-8 flex space-x-4 align-middle">
-        <AnimateBox className="entry grow shadow-lg">
+    <div className="relative bg-gray-100 min-h-free">
+      <div className="relative flex px-4 py-5 mx-auto space-x-4 align-middle md:max-w-3xl xl:max-w-3xl sm:px-6 lg:pt-8 lg:px-8">
+        <AnimateBox className="shadow-lg entry grow">
           <div className="relative">
-            <div className="absolute left-6 inset-y-0 flex justify-center items-center">
+            <div className="absolute inset-y-0 flex items-center justify-center left-6">
               <SearchIcon className="w-4 h-4 text-gray-900" />
             </div>
             <input
@@ -248,10 +248,10 @@ const SearchBox: React.FC = () => {
               autoComplete="off"
               placeholder="Start Typing to View Products and Designs sets"
               value={searchString}
-              className="py-5 pl-14 pr-28 outline-none block w-full caret-yellow-500 shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
+              className="block w-full py-5 capitalize border border-gray-100 shadow-sm outline-none pl-14 pr-28 caret-yellow-500 focus:shadow-lg focus:ring-transparent focus:border-gray-100 rounded-xl"
             />
             <button
-              className="absolute right-0 inset-y-0 text-gray-500 hover:text-yellow-500 w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl focus:ring-1 focus:ring-gray-600 focus:outline-none"
+              className="absolute inset-y-0 right-0 flex items-center justify-center w-16 text-center text-gray-500 border border-gray-100 hover:text-yellow-500 bg-gray-50 rounded-xl focus:ring-1 focus:ring-gray-600 focus:outline-none"
               onClick={clear}
             >
               <span className="text-xs">clear</span>
@@ -274,10 +274,10 @@ const SearchBox: React.FC = () => {
               case 0:
                 setSearchType('products');
                 break;
+              // case 1:
+              //   setSearchType('design-sets');
+              //   break;
               case 1:
-                setSearchType('design-sets');
-                break;
-              case 2:
                 setSearchType('design-ideas');
                 break;
               default:
@@ -286,7 +286,7 @@ const SearchBox: React.FC = () => {
             }
           }}
         >
-          <Tab.List className="flex rounded-xl justify-center mt-4">
+          <Tab.List className="flex justify-center mt-4 rounded-xl">
             <div className="bg-white rounded-xl p-1 border border-[#9CA3AF] space-x-2">
               <Tab
                 className={({ selected }) =>
@@ -299,7 +299,7 @@ const SearchBox: React.FC = () => {
               >
                 Products
               </Tab>
-              <Tab
+              {/* <Tab
                 className={({ selected }) =>
                   classNames(
                     'py-2 text-sm leading-5 font-medium rounded-lg w-fit px-2 sm:px-8',
@@ -309,7 +309,7 @@ const SearchBox: React.FC = () => {
                 }
               >
                 Design Sets
-              </Tab>
+              </Tab> */}
               <Tab
                 className={({ selected }) =>
                   classNames(
@@ -331,7 +331,7 @@ const SearchBox: React.FC = () => {
                     <EmptyState title="No matching products found" message="" />
                   </div>
                 ) : (
-                  <div className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1 lg:gap-2 xl:grid-cols-5 xl:gap-3 grid">
+                  <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4 lg:gap-2 xl:grid-cols-5 xl:gap-3">
                     {isFetchingProducts && (
                       <>
                         {[...Array(internalPages?.Shop?.DEFAULT_PAGE_SIZE)].map((_d, _i) => {
@@ -367,25 +367,24 @@ const SearchBox: React.FC = () => {
               </div>
             </Tab.Panel>
             <Tab.Panel className={classNames('bg-gray-100 rounded-xl p-3')}>
-              <div className="container mx-auto sm:px-4 pb-40">
-                
+              <div className="container pb-40 mx-auto sm:px-4">
                 {!designsResults?.length && !isFetchingDesigns ? (
                   <div className="col-span-12">
                     <EmptyState title="No matching design sets found" message="" />
                   </div>
                 ) : (
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
                     {isFetchingDesigns && (
-                  <>
-                    {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
-                      return (
-                        <div key={_d} >
-                          <CollageCardDimmer />
-                        </div>
-                      );
-                    })}
-                  </>
-                )}
+                      <>
+                        {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
+                          return (
+                            <div key={_d}>
+                              <CollageCardDimmer />
+                            </div>
+                          );
+                        })}
+                      </>
+                    )}
                     {designsResults?.map((searchItem) => (
                       <DesignSetCardV2
                         designData={searchItem}
@@ -415,25 +414,24 @@ const SearchBox: React.FC = () => {
               </div>
             </Tab.Panel>
             <Tab.Panel className={classNames('bg-gray-100 rounded-xl p-3')}>
-              <div className="container mx-auto sm:px-4 pb-40">
-                
+              <div className="container pb-40 mx-auto sm:px-4">
                 {!designIdeasResults?.length && !isFetchingDesignIdeas ? (
                   <div className="col-span-12">
                     <EmptyState title="No matching design ideas found" message="" />
                   </div>
                 ) : (
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-2 xl:grid-cols-3 xl:gap-2">
                     {isFetchingDesignIdeas && (
-                  <>
-                    {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
-                      return (
-                        <div key={_d}>
-                          <CollectionCardDimmer />
-                        </div>
-                      );
-                    })}
-                  </>
-                )}
+                      <>
+                        {[...new Array(internalPages.Collages.DEFAULT_PAGE_SIZE)].map((_d, i) => {
+                          return (
+                            <div key={_d}>
+                              <CollectionCardDimmer />
+                            </div>
+                          );
+                        })}
+                      </>
+                    )}
                     {designIdeasResults?.map((searchItem) => (
                       <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
                     ))}

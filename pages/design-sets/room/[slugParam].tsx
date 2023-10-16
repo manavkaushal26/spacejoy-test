@@ -244,7 +244,7 @@ export async function getServerSideProps(
   if (enabledCollages.includes(slug as string)) {
     const category = SlugToCategory[slug as string];
     const { data } = await fetcher({ endPoint: publicRoutes?.collageCategoryRoute, method: 'GET' });
-    
+
     const selectedCategory = data?.find((item) => item?.name === category);
     try {
       const { data: subCategories } = await fetcher({
@@ -264,7 +264,7 @@ export async function getServerSideProps(
           wildcard: true,
         },
       });
-      
+
       const { data: { data: collageList = [], count = 0 } = {}, statusCode } = designRes;
 
       if (statusCode <= 301) {

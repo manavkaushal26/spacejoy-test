@@ -12,12 +12,12 @@ import Pricing from '@components/Shared/PricingData';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import TopBarMobile from '@components/Shared/TopBarMobile';
 import { Disclosure } from '@headlessui/react';
-import { ArrowRightIcon, CheckIcon, ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
+import { ArrowRightIcon, ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct, homePagePoster } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
-import { cloudinary, imageKit, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
+import { imageKit, oldSpacejoyUrl, pinterestConfig } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
 import faqs from '@utils/Mocks/HomepageFAQs';
@@ -30,7 +30,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
@@ -277,7 +278,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-32 sm:mb-12">
             <video width="400" controls autoPlay className="w-full aspect-video" muted poster={homePagePoster}>
               <source
-                src="https://res.cloudinary.com/spacejoy/video/upload/v1655115548/Comp_1_bumvd8.mp4"
+                src="https://ik.imagekit.io/spacejoy/spacejoy/video/upload/v1655115548/Comp_1_bumvd8.mp4"
                 type="video/webm"
               />
               Your browser does not support HTML video.
@@ -651,7 +652,7 @@ export async function getServerSideProps(ctx) {
   const isMobile = ctx?.req?.cookies['isMobile'] === 'true' ? true : false;
 
   const res = await fetcher({ endPoint: publicRoutes.pricingRoute, method: 'GET' });
-  
+
   const {
     data: { list = [] },
   } = res;
