@@ -141,6 +141,7 @@ module.exports = withPWA({
       'storage.googleapis.com',
       'secure.img1-fg.wfcdn.com',
       'i.pinimg.com',
+      'ik.imagekit.io',
     ],
   },
   pwa: {

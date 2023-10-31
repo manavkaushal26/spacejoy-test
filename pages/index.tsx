@@ -5,6 +5,7 @@ import HomeSectionTitle from '@components/Home/Hero/HomeSectionTitle';
 import OutputGallery from '@components/Home/OutputGallery';
 import { PricingData } from '@components/Pricing/PricingTypes';
 import Carousel, { position } from '@components/Shared/Carousel';
+import Button from '@components/Shared/Form/Button';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import Pricing from '@components/Shared/PricingData';
@@ -101,7 +102,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
           <Hero3 isMobile={isMobile} />
-          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12 block lg:hidden mt-12">
+          <div className="container block px-4 mx-auto mt-12 mt-16 mb-6 sm:mt-32 sm:mb-12 lg:hidden">
             <HomeSectionTitle className="text-center capitalize">
               <HomeSectionTitle.MainTitle>
                 <span className="capitalize">Bring your vision to life</span>
@@ -110,17 +111,17 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               </HomeSectionTitle.MainTitle>
             </HomeSectionTitle>
             <div className="mt-12">
-              <div className="step grid grid-cols-1 text-center">
+              <div className="grid grid-cols-1 text-center step">
                 <div className="h-[40px] w-[40px] bg-[#FFC1AD] font-bold rounded-full flex items-center justify-center mx-auto mb-2">
                   1
                 </div>
                 <div className="col-span-3">
-                  <h2 className="capitalize text-xl text-center">Share your vision</h2>
-                  <p className="text-center mt-2">Upload photos of your home and tell us your needs.</p>
+                  <h2 className="text-xl text-center capitalize">Share your vision</h2>
+                  <p className="mt-2 text-center">Upload photos of your home and tell us your needs.</p>
                 </div>
               </div>
             </div>
-            <div className=" my-auto text-center">
+            <div className="my-auto text-center ">
               <Image
                 height="200"
                 width="200"
@@ -130,19 +131,19 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               />
             </div>
             <div className="">
-              <div className="step grid grid-cols-1 text-center">
+              <div className="grid grid-cols-1 text-center step">
                 <div className="h-[40px] w-[40px] bg-[#FFC1AD] font-bold rounded-full flex items-center justify-center mx-auto mb-2">
                   2
                 </div>
                 <div className="col-span-3">
-                  <h2 className="capitalize text-xl text-center">Get a personalized design</h2>
-                  <p className="text-center mt-2">
+                  <h2 className="text-xl text-center capitalize">Get a personalized design</h2>
+                  <p className="mt-2 text-center">
                     Consult 1:1 with a professional designer to create spaces that match your vision.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="mt-4 my-auto text-center">
+            <div className="my-auto mt-4 text-center">
               <Image
                 height="200"
                 width="200"
@@ -152,20 +153,20 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               />
             </div>
             <div className="mt-4">
-              <div className="step grid grid-cols-1 text-center">
+              <div className="grid grid-cols-1 text-center step">
                 <div className="h-[40px] w-[40px] bg-[#FFC1AD] font-bold rounded-full flex items-center justify-center mx-auto mb-2">
                   3
                 </div>
                 <div className="col-span-3">
-                  <h2 className="capitalize text-xl text-center">Shop your favorites</h2>
-                  <p className="text-center mt-2">
+                  <h2 className="text-xl text-center capitalize">Shop your favorites</h2>
+                  <p className="mt-2 text-center">
                     Get a comprehensive shopping list of all the products curated just for you.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="container mt-16 px-4 mx-auto xl:px-20 lg:mt-28 xl:mt-36 mb-6 sm:mb-12 hidden lg:block">
+          <div className="container hidden px-4 mx-auto mt-16 mb-6 xl:px-20 lg:mt-28 xl:mt-36 sm:mb-12 lg:block">
             <div className="w-3/4 mx-auto">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
@@ -176,7 +177,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               </HomeSectionTitle>
             </div>
             <div className="w-full xl:w-3/4 bg-white flex justify-between h-[500px] mt-12 mx-auto bg-vector bg-contain bg-no-repeat bg-center grid grid-cols-4">
-              <div className="col-span-2 items-center flex justify-center">
+              <div className="flex items-center justify-center col-span-2">
                 <div className="flex max-w-[370px] py-2 bg-white translate-y-[40px]">
                   <div className="basis-1/4">
                     <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-[#FFC1AD] font-bold">
@@ -184,13 +185,13 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                     </div>
                   </div>
                   <div className="ml-2">
-                    <p className="text-2xl mb-2 font-bold">Share your vision</p>
+                    <p className="mb-2 text-2xl font-bold">Share your vision</p>
                     <p>Upload photos of your home and tell us your needs.</p>
                   </div>
                 </div>
               </div>
-              <div className="col-span-2 flex items-center justify-center">
-                <div className="col-span-2 items-center flex justify-center">
+              <div className="flex items-center justify-center col-span-2">
+                <div className="flex items-center justify-center col-span-2">
                   <div className="flex max-w-[370px] py-2 bg-white">
                     <div className="basis-1/4">
                       <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-[#FFC1AD] font-bold">
@@ -198,14 +199,14 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                       </div>
                     </div>
                     <div className="ml-2">
-                      <p className="text-2xl mb-2 font-bold">Get a personalized design</p>
+                      <p className="mb-2 text-2xl font-bold">Get a personalized design</p>
                       <p>Consult 1:1 with a professional designer to create spaces that match your vision.</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-span-4 flex items-end justify-center">
-                <div className="col-span-2 items-center flex justify-center ">
+              <div className="flex items-end justify-center col-span-4">
+                <div className="flex items-center justify-center col-span-2 ">
                   <div className="flex max-w-[370px] py-2 bg-white translate-y-[48px]">
                     <div className="basis-1/4">
                       <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-[#FFC1AD] font-bold ">
@@ -213,7 +214,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                       </div>
                     </div>
                     <div className="ml-2">
-                      <p className="text-2xl mb-2 font-bold">Shop your favorites</p>
+                      <p className="mb-2 text-2xl font-bold">Shop your favorites</p>
                       <p>Get a comprehensive shopping list of all the products curated just for you.</p>
                     </div>
                   </div>
@@ -224,7 +225,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
 
           {/* Section Start */}
           {pinterestConfig.enable === true && (
-            <div className="container mt-16 px-4 mx-auto my-28 xl:my-40 xl:px-20">
+            <div className="container px-4 mx-auto mt-16 my-28 xl:my-40 xl:px-20">
               <div className="flex flex-col xl:flex-row">
                 <div className="w-full mb-6 xl:mb-0 xl:w-3/4">
                   <HomeSectionTitle className="text-left">
@@ -263,7 +264,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                     </svg>
                   </div>
                   <div className="flex-grow text-left">
-                    <h3 className="text-2xl text-red-400 ml-2">Connect Now!</h3>
+                    <h3 className="ml-2 text-2xl text-red-400">Connect Now!</h3>
                   </div>
                   <div className="flex items-center justify-center w-10 h-10 col-span-2 bg-red-400 rounded-full justify-self-end">
                     <ArrowRightIcon className="inline w-4 h-4 text-white" />
@@ -273,7 +274,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
 
-          <div className="container mt-16 px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-32 sm:mb-12">
             <video width="400" controls autoPlay className="w-full aspect-video" muted poster={homePagePoster}>
               <source
                 src="https://res.cloudinary.com/spacejoy/video/upload/v1655115548/Comp_1_bumvd8.mp4"
@@ -283,8 +284,8 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </video>
           </div>
           {/* Section Start */}
-          <div className="container mt-16 px-4 mx-auto  xl:px-20 sm:mt-32 mb-6 sm:mb-12">
-            <div className="flex flex-col items-center justify-between md:flex-row space-y-6 md:space-x-8 xl:space-x-32">
+          <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-32 sm:mb-12">
+            <div className="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-x-8 xl:space-x-32">
               <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
@@ -311,7 +312,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   </Link>
                 )}
               </div>
-              <div className="relative w-full mx-auto  md:w-1/2">
+              <div className="relative w-full mx-auto md:w-1/2">
                 <Carousel
                   centerPadding="0%"
                   centerMode
@@ -368,40 +369,43 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           </div>
 
-          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
             <Pricing data={pricingData || []} />
-            <div className="text-center mt-4 flex justify-center">
+            <div className="flex justify-center mt-4 text-center">
               <Link href="/pricing" passHref>
-                <button className="rounded-lg bg-gray-900 py-3 px-6 text-white flex items-center group">
+                <button className="flex items-center px-6 py-3 text-white bg-gray-900 rounded-lg group">
                   <span>Pricing</span>
-                  <ArrowRightIcon className="h-4 w-4 text-white ml-2 transition-transform transform group-hover:translate-x-2" />
+                  <ArrowRightIcon className="w-4 h-4 ml-2 text-white transition-transform transform group-hover:translate-x-2" />
                 </button>
               </Link>
             </div>
           </div>
-          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
             <div className="w-3/4 mx-auto">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
-                  <span> Create a stunning home with products from top brands</span>
+                  <span>Create a stunning home with quality products</span>
                 </HomeSectionTitle.MainTitle>
-
-                <HomeSectionTitle.Description align="center">
-                  With a comprehensive shopping list
-                </HomeSectionTitle.Description>
               </HomeSectionTitle>
             </div>
-            <div className="pg relative mt-12">
+            <div className="relative mt-12 border rounded-lg pg">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1652948829/Save_big_on_biy42h.png"
+                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:w-1920,q-auto/Beige_Paper_Texture_Bath_Body.png"
                 alt="shop with us"
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 className="rounded-lg"
               />
             </div>
+            <Link href="https://store.spacejoy.com/" passHref>
+              <a target="_blank" rel="noopener noreferrer">
+                <button className="flex items-center px-6 py-3 mx-auto mt-4 text-white bg-gray-900 rounded-lg group">
+                  <span>Shop Now</span>
+                </button>
+              </a>
+            </Link>
           </div>
-          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>
                 <p>Get raving reviews from friends and family</p>
@@ -421,8 +425,8 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               }
             </div>
           </div>
-          {/* <div className="container mt-16 mx-auto px-4 ">
-            <div className="w-3/4 mx-auto sm:mt-32 mb-6 sm:mb-12">
+          {/* <div className="container px-4 mx-auto mt-16 ">
+            <div className="w-3/4 mx-auto mb-6 sm:mt-32 sm:mb-12">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>
                   <span>It&apos;s a joy to shop on Spacejoy</span>
@@ -433,8 +437,8 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </HomeSectionTitle.Description>
               </HomeSectionTitle>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 mt-12">
-              <div className="p-golden relative">
+            <div className="grid grid-cols-1 mt-12 md:grid-cols-2">
+              <div className="relative p-golden">
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1652950083/Customer_care_image_gk1x5y.png"
                   layout="fill"
@@ -451,7 +455,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   {features?.map((item) => {
                     return (
                       <p className="flex items-center" key={item}>
-                        <CheckIcon className="h-6 w-6 " />
+                        <CheckIcon className="w-6 h-6 " />
                         <span className="ml-2">{item}</span>
                       </p>
                     );
@@ -461,17 +465,17 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           </div> */}
           {/* <div className="mt-12 bg-gray-100">
-            <div className="container mt-16 mx-auto px-4 p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="container p-8 px-4 mx-auto mt-16">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="px-4 lg:p-8">
-                  <h2 className="font-bold text-2xl">
+                  <h2 className="text-2xl font-bold">
                     No spam! Only the latest deals and discounts delivered straight to your inbox
                   </h2>
                 </div>
-                <div className="px-4 lg:p-8 inline-flex items-center">
-                  <input type="text" className="w-1/2 h-12 inline-block text-sm" placeholder="Email Address" />
+                <div className="inline-flex items-center px-4 lg:p-8">
+                  <input type="text" className="inline-block w-1/2 h-12 text-sm" placeholder="Email Address" />
                   <LoginManager
-                    ctaText={<button className="bg-gray-900 text-white w-full">Sign Up</button>}
+                    ctaText={<button className="w-full text-white bg-gray-900">Sign Up</button>}
                     redirect="/"
                     styles="bg-gray-900 text-white p-4 w-1/2 rounded-md ml-2 flex text-sm h-12"
                   />
@@ -482,7 +486,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div> */}
 
           {/* Section Start */}
-          <div className="container mt-16 grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-8 px-4 mx-auto mt-16 lg:mt-32 my-12">
+          <div className="container grid grid-cols-1 gap-4 px-4 mx-auto my-12 mt-16 sm:grid-cols-4 sm:gap-4 md:gap-5 lg:gap-8 lg:mt-32">
             <div className="col-span-1 sm:col-span-4">
               {data?.homepageV2?.hp1Link !== undefined && data?.cartBannerV2?.hp1Link !== '' ? (
                 <Link href={data?.homepageV2?.hp1Link}>
@@ -524,8 +528,8 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               />
             </div> */}
           </div>
-          <div className="container mt-16 px-4 mx-auto sm:mt-32 mb-6 sm:mb-12">
-            <div className="mt-8 block lg:hidden">
+          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
+            <div className="block mt-8 lg:hidden">
               <HomeSectionTitle.MainTitle>
                 <p className="text-center">Get the Spacejoy advantage</p>
               </HomeSectionTitle.MainTitle>
@@ -550,17 +554,17 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               })}
             </div>
 
-            <div className="hidden lg:block sm:mt-32 mb-6 sm:mb-12">
+            <div className="hidden mb-6 lg:block sm:mt-32 sm:mb-12">
               <HomeSectionTitle className="text-center">
                 <HomeSectionTitle.MainTitle>Get the Spacejoy advantage</HomeSectionTitle.MainTitle>
               </HomeSectionTitle>
 
-              <div className="my-8 hidden lg:grid lg:grid-cols-4 lg:gap-12 bg-white mt-12">
+              <div className="hidden my-8 mt-12 bg-white lg:grid lg:grid-cols-4 lg:gap-12">
                 {SpjShoppingAdvantage?.map((item, index) => {
                   return (
                     <div key={item?.id}>
                       <Image height="40" width="40" src={item?.iconLink} alt={item?.title} />
-                      <p className="text-md font-bold text-gray-900 mt-4">{item?.title}</p>
+                      <p className="mt-4 font-bold text-gray-900 text-md">{item?.title}</p>
                       <div className="mt-2 text-sm text-gray-700">{item?.content}</div>
                     </div>
                   );
@@ -569,7 +573,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           </div>
           <div className="bg-gray-100">
-            <div className="container mt-16 mx-auto px-4 py-16 sm:mt-32 mb-6 sm:mb-12">
+            <div className="container px-4 py-16 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
               <div className="lg:grid lg:grid-cols-4 lg:gap-12">
                 <div className="col-span-2">
                   <HomeSectionTitle className="text-center">
@@ -590,11 +594,11 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                     {faqs.map((faq) => (
                       <Disclosure as="div" key={faq.question}>
                         {({ open }) => (
-                          <div className="border-b border-gray-500 pb-4">
+                          <div className="pb-4 border-b border-gray-500">
                             <dt className="text-sm ">
-                              <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400 ">
-                                <span className="text-lg lg:text-md text-gray-900 font-bold">{faq.question}</span>
-                                <span className="ml-6 h-7 flex items-center">
+                              <Disclosure.Button className="flex items-start justify-between w-full text-left text-gray-400 ">
+                                <span className="text-lg font-bold text-gray-900 lg:text-md">{faq.question}</span>
+                                <span className="flex items-center ml-6 h-7">
                                   <ChevronDownIcon
                                     className={classNames(open ? '-rotate-180' : 'rotate-0', 'h-6 w-6 transform')}
                                     aria-hidden="true"
@@ -602,7 +606,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                                 </span>
                               </Disclosure.Button>
                             </dt>
-                            <Disclosure.Panel as="dd" className="mt-2 pr-12 ">
+                            <Disclosure.Panel as="dd" className="pr-12 mt-2 ">
                               <p className="text-base text-gray-500">{faq.answer}</p>
                             </Disclosure.Panel>
                           </div>
@@ -616,7 +620,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div>
 
           {/* Section Start */}
-          <div className="container mt-16 mx-auto px-4 sm:mt-32 mb-6 sm:mb-12">
+          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
             <HomeSectionTitle className="text-center">
               <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
               {isMobile !== 'true' && (
@@ -628,7 +632,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div>
           <OutputGallery />
           {/* Section Start */}
-          <div className="mt-16 sm:mt-32 mb-6 sm:mb-12">
+          <div className="mt-16 mb-6 sm:mt-32 sm:mb-12">
             <DynamicFeaturedWithNoSSR />
           </div>
 
