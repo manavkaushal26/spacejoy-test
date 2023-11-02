@@ -21,7 +21,7 @@ const bannerImages = [
   },
   { src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/Beige_Paper_TextureBathBody_eCommerce_Web_Banner.png' },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1691694312/web/homepage-bannerimages/Home_page_image_EDITED_icqmod.png',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/BeigePapeTextureBathBodyeCommerceWebBanner.png',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
