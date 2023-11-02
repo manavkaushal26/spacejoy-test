@@ -390,11 +390,12 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
             <div className="relative mt-12 border rounded-lg pg">
               <Image
-                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:w-1920,q-auto/Beige_Paper_Texture_Bath_Body.png"
+                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:w-1920,q-100/Beige_Paper_Texture_Bath_Body.png"
                 alt="shop with us"
                 layout="fill"
                 objectFit="contain"
                 className="rounded-lg"
+                quality={100}
               />
             </div>
             <Link href="https://store.spacejoy.com/" passHref>
