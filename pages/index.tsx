@@ -390,7 +390,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
             <div className="relative mt-12 border rounded-lg pg">
               <Image
-                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:w-1920,q-100/Beige_Paper_Texture_Bath_Body.png"
+                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:W-1920/HomePageBB.png"
                 alt="shop with us"
                 layout="fill"
                 objectFit="contain"
@@ -573,6 +573,25 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               </div>
             </div>
           </div>
+
+          {/* Section Start */}
+          <div className="mt-16 mb-6 sm:mt-32 sm:mb-12">
+            <DynamicFeaturedWithNoSSR />
+          </div>
+
+          {/* Section Start */}
+          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
+            <HomeSectionTitle className="text-center">
+              <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
+              {isMobile !== 'true' && (
+                <HomeSectionTitle.Description align="center">
+                  From a corner to a whole room, see how our customers are transforming their homes
+                </HomeSectionTitle.Description>
+              )}
+            </HomeSectionTitle>
+          </div>
+          <OutputGallery />
+
           <div className="bg-gray-100">
             <div className="container px-4 py-16 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
               <div className="lg:grid lg:grid-cols-4 lg:gap-12">
@@ -618,23 +637,6 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Section Start */}
-          <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
-            <HomeSectionTitle className="text-center">
-              <HomeSectionTitle.MainTitle>Beautiful spaces await you</HomeSectionTitle.MainTitle>
-              {isMobile !== 'true' && (
-                <HomeSectionTitle.Description align="center">
-                  From a corner to a whole room, see how our customers are transforming their homes
-                </HomeSectionTitle.Description>
-              )}
-            </HomeSectionTitle>
-          </div>
-          <OutputGallery />
-          {/* Section Start */}
-          <div className="mt-16 mb-6 sm:mt-32 sm:mb-12">
-            <DynamicFeaturedWithNoSSR />
           </div>
 
           {/* Section Start */}
