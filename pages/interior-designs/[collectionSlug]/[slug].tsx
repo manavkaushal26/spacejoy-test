@@ -16,7 +16,7 @@ import useBoolean from '@hooks/useBoolean';
 import fetcher from '@utils/fetcher';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Props {
   design: DesignData;
@@ -45,8 +45,21 @@ interface DesignData {
 }
 
 const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
+  const [spacejoyAssets, setSpacejoyAssets] = useState<Array<AssetInterface>>([]);
+  const [otherAssets, setOtherAssets] = useState<Array<AssetInterface>>([]);
+
   const { value, toggle } = useBoolean(false);
   const { customerData, editorPickData, similarPicksData, categoryData } = engagementBlockData;
+
+  useEffect(() => {
+    if (design?.assets?.length > 0) {
+      const temp = [...design.assets];
+      const spacejoyAssets = temp.filter((asset) => asset.asset.retailer.toLowerCase() === 'spacejoy');
+      const otherAssets = temp.filter((asset) => asset.asset.retailer.toLowerCase() !== 'spacejoy');
+      setSpacejoyAssets(spacejoyAssets);
+      setOtherAssets(otherAssets);
+    }
+  }, [design?.assets]);
 
   return (
     <Layout>
@@ -56,41 +69,35 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
-          <div className="container mx-auto px-4">
+        <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
+          <div className="container px-4 mx-auto">
             <Breadcrumb design={design} />
             <h2 className="my-8 text-3xl tracking-wide">{design?.name}</h2>
             <ImageGrid images={design?.cdnRender} />
-            <div className=" text-sm my-8">
+            <div className="my-8 text-sm ">
               <p className={`${!value && 'line-clamp-3'} leading-normal whitespace-pre-line`}>{design?.description}</p>
               <button className="my-1 text-[#F5296E] text-sm" onClick={toggle}>
                 {!value ? '... read more' : 'hide'}
               </button>
             </div>
-            <div className="flex justify-center space-x-5 sm:space-x-10 content-center">
+            <div className="flex content-center justify-center space-x-5 sm:space-x-10">
               <SocialLinks />
               <div className="rounded-md shadow">
                 <Link href={`/quiz/start-quiz`} passHref>
-                  <a className="w-full flex items-center justify-center px-4 sm:px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10 text-center">
+                  <a className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-center text-white bg-gray-900 border border-transparent rounded-md sm:px-8 md:py-4 md:text-lg md:px-10">
                     Start Your Project
                   </a>
                 </Link>
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col md:space-x-10 sm:mt-20">
+            <div className="flex flex-col mt-10 sm:mt-20 md:flex-row md:space-x-10">
               <div className="sm:w-2/3">
-                <h3 className="text-2xl tracking-wide text-gray-700 mb-8">Shop the products featured in this room</h3>
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-1 sm:gap-3">
-                  {design?.assets?.length === 0 ? (
-                    <>
-                      {[...Array(28)].map((_d, _i) => {
-                        return <ProductCardDimmer key={_i} />;
-                      })}
-                    </>
-                  ) : (
-                    <>
-                      {design?.assets?.map((asset, index) => {
+                {spacejoyAssets?.length > 0 ? (
+                  <div>
+                    <h3 className="mb-8 text-2xl tracking-wide text-gray-700">Spacejoy exclusive products</h3>
+                    <div className="grid grid-cols-2 gap-1 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 sm:gap-3">
+                      {spacejoyAssets?.map((asset, index) => {
                         return (
                           <ProductCard
                             key={`${asset.asset._id}-${index}`}
@@ -102,20 +109,47 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                           />
                         );
                       })}
-                    </>
-                  )}
+                    </div>
+                  </div>
+                ) : null}
+                <div className={spacejoyAssets?.length > 0 ? 'mt-10 sm:mt-20' : ''}>
+                  <h3 className="mb-8 text-2xl tracking-wide text-gray-700">Shop the products featured in this room</h3>
+                  <div className="grid grid-cols-2 gap-1 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 sm:gap-3">
+                    {otherAssets?.length === 0 ? (
+                      <>
+                        {[...Array(28)].map((_d, _i) => {
+                          return <ProductCardDimmer key={_i} />;
+                        })}
+                      </>
+                    ) : (
+                      <>
+                        {otherAssets?.map((asset, index) => {
+                          return (
+                            <ProductCard
+                              key={`${asset.asset._id}-${index}`}
+                              product={{
+                                ...asset?.asset,
+                                msrp: asset?.asset?.price,
+                                imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${asset?.asset?.cdn}`,
+                              }}
+                            />
+                          );
+                        })}
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
 
               <div className="sm:w-1/3">
-                <div className="sticky top-28 flex flex-col space-y-5 sm:shadow-2xl rounded-lg">
+                <div className="sticky flex flex-col space-y-5 rounded-lg top-28 sm:shadow-2xl">
                   <TestimonialsMini />
                   <div className="flex flex-col space-y-5 md:basis-1/3 h-fit">
-                    <div className=" bg-white flex flex-col p-5 space-y-5 rounded-lg">
-                      <h3 className=" text-xl capitalize">Unlock The Best Version Of Your {design.room.roomType}</h3>
+                    <div className="flex flex-col p-5 space-y-5 bg-white rounded-lg ">
+                      <h3 className="text-xl capitalize ">Unlock The Best Version Of Your {design.room.roomType}</h3>
                       <div className="rounded-md shadow">
                         <Link href={`/quiz/start-quiz`} passHref>
-                          <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900  md:py-4 md:text-lg md:px-10">
+                          <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10">
                             Start Your Project
                           </a>
                         </Link>
@@ -125,38 +159,38 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                 </div>
               </div>
             </div>
-            <div className="bg-gray-100 mt-8 rounded-lg">
+            <div className="mt-8 bg-gray-100 rounded-lg">
               {similarPicksData.length && (
-                <div className="mt-3 p-5 shadow-none">
-                  <h2 className=" text-xl font-bold">Similar Picks</h2>
-                  <p className=" text-sm">Related designs for you</p>
+                <div className="p-5 mt-3 shadow-none">
+                  <h2 className="text-xl font-bold ">Similar Picks</h2>
+                  <p className="text-sm ">Related designs for you</p>
                   <SimilarPicksCarousel data={similarPicksData} />
                 </div>
               )}
             </div>
-            <div className=" bg-gray-100 mt-8 rounded-lg">
+            <div className="mt-8 bg-gray-100 rounded-lg ">
               {editorPickData.length && (
-                <div className="mt-3 p-5 shadow-none">
-                  <h2 className=" text-xl font-bold">Editors Pick</h2>
-                  <p className=" text-sm">Explore editors design</p>
+                <div className="p-5 mt-3 shadow-none">
+                  <h2 className="text-xl font-bold ">Editors Pick</h2>
+                  <p className="text-sm ">Explore editors design</p>
                   <EditorPicksCarousel data={editorPickData} />
                 </div>
               )}
             </div>
-            <div className=" bg-gray-100 mt-8 rounded-lg">
+            <div className="mt-8 bg-gray-100 rounded-lg ">
               {customerData.length && (
-                <div className="mt-3 p-5 shadow-none">
-                  <h2 className=" text-xl font-bold">Customer Stories</h2>
-                  <p className=" text-sm mb-5">Explore customer designs</p>
+                <div className="p-5 mt-3 shadow-none">
+                  <h2 className="text-xl font-bold ">Customer Stories</h2>
+                  <p className="mb-5 text-sm ">Explore customer designs</p>
                   <CustomerStoriesCarousel data={customerData} />
                 </div>
               )}
             </div>
-            <div className=" bg-gray-100 mt-8 rounded-lg">
+            <div className="mt-8 bg-gray-100 rounded-lg ">
               {categoryData.length && (
-                <div className="mt-3 p-5 shadow-none">
-                  <h2 className=" text-xl font-bold">Categories</h2>
-                  <p className=" text-sm">Explore other categories</p>
+                <div className="p-5 mt-3 shadow-none">
+                  <h2 className="text-xl font-bold ">Categories</h2>
+                  <p className="text-sm ">Explore other categories</p>
                   <SimilarPicksCarousel data={categoryData} />
                 </div>
               )}
