@@ -1,32 +1,32 @@
-import { oldSpacejoyUrl } from '@utils/config';
+import { newSpacejoyStoreUrl, oldSpacejoyUrl } from '@utils/config';
 
 export const CommonSeoLinks = [
-  {
-    title: 'Furniture & Decor Sets',
-    dots: true,
-    list: [
-      {
-        title: 'Living Room Sets',
-        link: '/design-sets/room/living-room-design-sets',
-      },
-      {
-        title: 'Bedroom Sets',
-        link: '/design-sets/room/bedroom-design-sets',
-      },
-      {
-        title: 'Dining Room Sets',
-        link: '/design-sets/room/dining-room-design-sets',
-      },
-      {
-        title: 'Home Office Sets',
-        link: '/design-sets/room/home-office-design-sets',
-      },
-      {
-        title: 'Entryway Sets',
-        link: '/design-sets/room/entryway-design-sets',
-      },
-    ],
-  },
+  // {
+  //   title: 'Furniture & Decor Sets',
+  //   dots: true,
+  //   list: [
+  //     {
+  //       title: 'Living Room Sets',
+  //       link: '/design-sets/room/living-room-design-sets',
+  //     },
+  //     {
+  //       title: 'Bedroom Sets',
+  //       link: '/design-sets/room/bedroom-design-sets',
+  //     },
+  //     {
+  //       title: 'Dining Room Sets',
+  //       link: '/design-sets/room/dining-room-design-sets',
+  //     },
+  //     {
+  //       title: 'Home Office Sets',
+  //       link: '/design-sets/room/home-office-design-sets',
+  //     },
+  //     {
+  //       title: 'Entryway Sets',
+  //       link: '/design-sets/room/entryway-design-sets',
+  //     },
+  //   ],
+  // },
   {
     title: 'Design Styles',
     list: [
@@ -140,35 +140,35 @@ export const CommonSeoLinks = [
     list: [
       {
         title: 'Sofas',
-        link: '/sofas',
+        link: `${newSpacejoyStoreUrl}/collections/sofas`,
       },
       {
         title: 'Coffee Tables',
-        link: '/tables/coffee-tables',
+        link: `${newSpacejoyStoreUrl}/collections/tables?filter.p.product_type=Coffee+Tables`,
       },
       {
         title: 'Side Tables',
-        link: '/tables/end-&-side-tables',
+        link: `${newSpacejoyStoreUrl}/collections/tables?filter.p.product_type=Side+Tables`,
       },
       {
         title: 'Accent Chairs',
-        link: '/chairs/accent-chairs',
+        link: `${newSpacejoyStoreUrl}/collections/chairs?filter.p.product_type=Accent+Chairs`,
       },
       {
         title: 'Lighting',
-        link: '/lighting',
+        link: `${newSpacejoyStoreUrl}/collections/lighting-light-fixtures`,
       },
       {
         title: 'Mirrors',
-        link: '/mirrors',
+        link: `${newSpacejoyStoreUrl}/collections/mirrors`,
       },
-      {
-        title: 'Rugs',
-        link: '/rugs',
-      },
+      // {
+      //   title: 'Rugs',
+      //   link: '/rugs',
+      // },
       {
         title: 'Storage & Organization',
-        link: '/storage-&-organizers',
+        link: `${newSpacejoyStoreUrl}/collections/storage-organization`,
       },
     ],
   },
@@ -176,30 +176,33 @@ export const CommonSeoLinks = [
     title: 'Brands',
     dots: true,
     list: [
-      {
-        title: 'Wayfair',
-        link: '/shop?retailer=Wayfair',
-      },
-      {
-        title: 'West Elm',
-        link: '/shop?retailer=West+Elm',
-      },
-      {
-        title: 'CB2',
-        link: '/shop?retailer=CB2',
-      },
-      {
-        title: 'Pottery Barn',
-        link: '/shop?retailer=Pottery+Barn',
-      },
-      {
-        title: 'Crate & Barrel',
-        link: '/shop?retailer=Crate+And+Barrel',
-      },
-      {
-        title: 'Article',
-        link: '/shop?retailer=Article',
-      },
+      { title: 'Luna & Luxe', link: `${newSpacejoyStoreUrl}/collections/luna-luxe-furniture-decor` },
+      { title: 'Harper Studios', link: `${newSpacejoyStoreUrl}/collections/harper-studios-furniture-decor` },
+      { title: 'Empyrean Living', link: `${newSpacejoyStoreUrl}/collections/empyrean-living-luxe-furniture-decor` },
+      // {
+      //   title: 'Wayfair',
+      //   link: '/shop?retailer=Wayfair',
+      // },
+      // {
+      //   title: 'West Elm',
+      //   link: '/shop?retailer=West+Elm',
+      // },
+      // {
+      //   title: 'CB2',
+      //   link: '/shop?retailer=CB2',
+      // },
+      // {
+      //   title: 'Pottery Barn',
+      //   link: '/shop?retailer=Pottery+Barn',
+      // },
+      // {
+      //   title: 'Crate & Barrel',
+      //   link: '/shop?retailer=Crate+And+Barrel',
+      // },
+      // {
+      //   title: 'Article',
+      //   link: '/shop?retailer=Article',
+      // },
     ],
   },
 ];

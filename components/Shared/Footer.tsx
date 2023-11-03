@@ -80,13 +80,13 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li> */}
-              <li>
+              {/* <li>
                 <Link href="/room-select">
                   <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Furniture & Decor Sets
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href={`/quiz/start-quiz`}>
                   <a
@@ -222,7 +222,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 py-6 md:py-12 sm:grid-cols-3 gap-x-2 gap-y-6 lg:grid-cols-6 lg:gap-2">
+        <div className="grid grid-cols-1 py-6 md:py-12 sm:grid-cols-3 gap-x-2 gap-y-6 lg:grid-cols-5 lg:gap-2">
           {CommonSeoLinks.map((commonLink) => (
             <div key={commonLink.title}>
               <h3 className="mb-2">{commonLink.title}</h3>
@@ -238,7 +238,12 @@ const Footer: React.FC = () => {
                     <Link href={link.link}>
                       <a
                         className="text-xs leading-relaxed text-gray-600 break-words rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                        target={link.link.startsWith('https://designs.spacejoy.com') ? '_blank' : ''}
+                        target={
+                          link.link.startsWith('https://designs.spacejoy.com') ||
+                          link.link.includes(newSpacejoyStoreUrl)
+                            ? '_blank'
+                            : ''
+                        }
                       >
                         {link.title}
                       </a>
