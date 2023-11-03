@@ -19,7 +19,7 @@ const bannerImages = [
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
   },
-  { src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/Beige_Paper_TextureBathBody_eCommerce_Web_Banner.png' },
+  { src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/BeigePaperTextureBathBodyeCommerceWebBanner.png' },
   {
     src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/BeigePapeTextureBathBodyeCommerceWebBanner.png',
   },

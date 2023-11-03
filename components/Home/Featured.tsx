@@ -47,11 +47,12 @@ const Featured: React.FC = () => {
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1644328125/shared/brandsLogo/parade_qglpbv.svg"
+                      src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/the-washington-post-logo.png"
                       alt="spacejoy happy customer"
-                      height={'130'}
+                      height={'100'}
                       width={'200'}
                       layout="intrinsic"
+                      className='object-contain'
                     />
                   </div>
                   <div className="flex justify-center col-span-1 px-8 py-4 bg-white rounded-md">
