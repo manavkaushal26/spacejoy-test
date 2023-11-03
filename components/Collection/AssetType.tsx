@@ -21,7 +21,7 @@ export interface AssetType {
   retailer: {
     _id: string;
     name: string;
-  };
+  } & string;
   inStock: boolean;
   status: string;
   name: string;
