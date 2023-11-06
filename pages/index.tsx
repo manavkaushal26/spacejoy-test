@@ -390,7 +390,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
             <div className="relative mt-12 border rounded-lg pg">
               <Image
-                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:W-1920/HomePageBB.png"
+                src="https://ik.imagekit.io/spacejoy/spacejoy/image/upload/tr:W-1920/manual/HomePageBB.png"
                 alt="shop with us"
                 layout="fill"
                 objectFit="contain"
