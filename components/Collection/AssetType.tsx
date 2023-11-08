@@ -18,6 +18,7 @@ export interface AssetType {
     vertical: MetaType;
   };
   price: number;
+  retailLink?: string;
   retailer: {
     _id: string;
     name: string;

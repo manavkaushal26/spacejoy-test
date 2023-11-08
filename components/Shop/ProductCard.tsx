@@ -21,9 +21,10 @@ type ProductCardType = {
   showViewDetails?: boolean;
   collageId?: string;
   pageName?: string;
+  useRetailLink?: boolean;
 };
 
-const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductCardType) => {
+const ProductCard = ({ product, showViewDetails, collageId, pageName, useRetailLink }: ProductCardType) => {
   const [addingToCart, isAddingToCart] = useState(false);
   const [localProductQuantity, setLocalProductQuantity] = useState(1);
   const incrementQty = (e) => {
@@ -149,9 +150,13 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
   return (
     <div>
       <Link
-        href={`/product-view${productVertical ? `/${productVertical}` : '/product'}/${
-          product?.slug ? product.slug : product?._id
-        }${pageName ? `?ref=${pageName}` : ''}`}
+        href={
+          useRetailLink
+            ? product.retailLink
+            : `/product-view${productVertical ? `/${productVertical}` : '/product'}/${
+                product?.slug ? product.slug : product?._id
+              }${pageName ? `?ref=${pageName}` : ''}`
+        }
         passHref
       >
         <a
@@ -217,8 +222,8 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
                 )}
               </p>
               {showViewDetails && !itemStatus && (
-                <div className="flex flex-col justify-center align-middle sm:border-t sm:flex-row sm:justify-between sm:align-middle px-4 sm:p-4">
-                  <div className="flex space-x-4 justify-between sm:flex-col-1">
+                <div className="flex flex-col justify-center px-4 align-middle sm:border-t sm:flex-row sm:justify-between sm:align-middle sm:p-4">
+                  <div className="flex justify-between space-x-4 sm:flex-col-1">
                     <button
                       type="button"
                       className="text-base font-medium text-gray-900 sm:bg-gray-50 group hover:shadow-lg rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-400 focus:outline-none"
@@ -237,7 +242,7 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
                   </div>
                   <button
                     type="button"
-                    className="px-4 py-2 sm:py-0 text-sm sm:text-base font-medium text-white bg-gray-900 shadow-xs group hover:shadow-md rounded-md sm:rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                    className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-md shadow-xs sm:py-0 sm:text-base group hover:shadow-md sm:rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                     onClick={(e) => addToCart(e)}
                     disabled={addingToCart ? true : false}
                   >
@@ -248,7 +253,7 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName }: ProductC
             </div>
           </div>
           {/* {showViewDetails && (
-              <div className="absolute bg-gradient-to-r from-gray-200 to-white bottom-0 left-0 w-full py-1 text-sm font-bold text-center text-gray-600 border-t border-b">
+              <div className="absolute bottom-0 left-0 w-full py-1 text-sm font-bold text-center text-gray-600 border-t border-b bg-gradient-to-r from-gray-200 to-white">
                 Shop Now
               </div>
             )} */}
