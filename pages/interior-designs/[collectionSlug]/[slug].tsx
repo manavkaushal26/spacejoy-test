@@ -54,8 +54,8 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
   useEffect(() => {
     if (design?.assets?.length > 0) {
       const temp = [...design.assets];
-      const spacejoyAssets = temp.filter((asset) => asset.asset.retailer.toLowerCase() === 'spacejoy');
-      const otherAssets = temp.filter((asset) => asset.asset.retailer.toLowerCase() !== 'spacejoy');
+      const spacejoyAssets = temp.filter((asset) => asset.asset.retailLink.includes('store.spacejoy.com'));
+      const otherAssets = temp.filter((asset) => !asset.asset.retailLink.includes('store.spacejoy.com'));
       setSpacejoyAssets(spacejoyAssets);
       setOtherAssets(otherAssets);
     }
@@ -106,6 +106,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                               msrp: asset?.asset?.price,
                               imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${asset?.asset?.cdn}`,
                             }}
+                            useRetailLink
                           />
                         );
                       })}
