@@ -370,11 +370,11 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div>
 
           <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
-            <Pricing data={pricingData || []} />
-            <div className="flex justify-center mt-4 text-center">
+            <Pricing variant="new" data={pricingData || []} />
+            <div className="flex justify-center mt-6 text-center">
               <Link href="/pricing" passHref>
                 <button className="flex items-center px-6 py-3 text-white bg-gray-900 rounded-lg group">
-                  <span>Pricing</span>
+                  <span>See Pricing</span>
                   <ArrowRightIcon className="w-4 h-4 ml-2 text-white transition-transform transform group-hover:translate-x-2" />
                 </button>
               </Link>
@@ -400,8 +400,9 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
             <Link href="https://store.spacejoy.com/" passHref>
               <a target="_blank" rel="noopener noreferrer">
-                <button className="flex items-center px-6 py-3 mx-auto mt-4 text-white bg-gray-900 rounded-lg group">
+                <button className="flex items-center px-6 py-3 mx-auto mt-6 text-white bg-gray-900 rounded-lg group">
                   <span>Shop Now</span>
+                  <ArrowRightIcon className="w-4 h-4 ml-2 text-white transition-transform transform group-hover:translate-x-2" />
                 </button>
               </a>
             </Link>
