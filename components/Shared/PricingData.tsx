@@ -16,7 +16,7 @@ const Index = ({ data, variant = 'old' }: Props) => {
   }, [data]);
 
   const title = 'Designing made accessible';
-  const subTitle = `Choose from {data?.length} package options, starting at just ${minPackagePrice}. We have everything for
+  const subTitle = `Choose from ${data?.length} package options, starting at just $${minPackagePrice}. We have everything for
             every need`;
 
   if (variant === 'new')
