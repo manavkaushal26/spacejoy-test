@@ -18,18 +18,23 @@ const responsive = {
 const bannerImages = [
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    link: '',
   },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePaperTextureBathBodyeCommerceWebBanner.png',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BFProductSale.jpeg',
+    link: 'https://store.spacejoy.com',
   },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BFDesignSale.jpeg',
+    link: '',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
+    link: '',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
+    link: '',
   },
 ];
 
@@ -97,7 +102,12 @@ const V3 = ({ isMobile }) => {
           >
             {bannerImages.map((bannerImage, idx) => {
               return (
-                <div key={idx}>
+                <div
+                  key={idx}
+                  onClick={() => {
+                    if (bannerImage.link) window.open(bannerImage.link, '_blank');
+                  }}
+                >
                   <Image
                     className="absolute inset-0 object-cover w-full h-full rounded-xl"
                     src={bannerImage.src}
@@ -141,7 +151,12 @@ const V3 = ({ isMobile }) => {
             >
               {bannerImages.map((bannerImage, idx) => {
                 return (
-                  <div key={idx}>
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      if (bannerImage.link) window.open(bannerImage.link, '_blank');
+                    }}
+                  >
                     <Image
                       className="absolute inset-0 object-cover w-full h-full rounded-lg"
                       src={bannerImage.src}
