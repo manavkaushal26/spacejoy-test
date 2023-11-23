@@ -1130,6 +1130,14 @@ export const getServerSideProps = async ({ params, res, req }) => {
   } = data;
 
   if (statusCode < 301) {
+    if (data.retailLink.includes('store.spacejoy.com')) {
+      return {
+        redirect: {
+          destination: data.retailLink,
+          permanent: false,
+        },
+      };
+    }
     if (slug?.length === 1) {
       return {
         redirect: {
