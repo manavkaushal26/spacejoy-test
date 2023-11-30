@@ -20,12 +20,12 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     link: '',
   },
+  // {
+  //   src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePaperTextureBathBodyeCommerceWebBanner.png',
+  //   link: '',
+  // },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BFProductSale.jpeg',
-    link: 'https://store.spacejoy.com',
-  },
-  {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BFDesignSale.jpeg',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
     link: '',
   },
   {
