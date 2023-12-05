@@ -288,3 +288,22 @@ footer li a {
 
   font-size: 1.5rem;
 }
+
+.joyverse-privacy-policy p {
+  margin-top: 0.5rem;
+}
+
+.joyverse-privacy-policy h1 {
+  margin-top: 2rem;
+}
+
+.joyverse-privacy-policy h3 {
+  margin-top: 1.5rem;
+}
+
+.link {
+  @apply text-blue-600 hover:text-blue-500 underline;
+}
+.link-no-underline {
+  @apply text-blue-600 hover:text-blue-500;
+}
