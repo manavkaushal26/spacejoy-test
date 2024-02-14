@@ -80,7 +80,7 @@ const data = [
   //     <li> A close-up photo of the damage.</li>
   //     <li> A photo of the package (so we can determine if it was damaged in transit).</li>
   //     </p>
-      
+
   //     Please send these photos at returns@spacejoy.com for us to process the replacement with the retailer.
   //     `,
   // },
@@ -190,7 +190,7 @@ const data = [
   {
     tag: 'Services',
     question: 'What If I am unhappy with my design?',
-    answer: `Our designers are experts at translating your wants and needs into reality. In rare cases where we cannot deliver designs you love, our leadership team will reassign your project or refund your money. You can email us at <a href="mailto:hello@spacejoy.com?subject=&body=" style="color:blue;" target="_blank">hello@spacejoy.com</a>.`,
+    answer: `Our designers are experts at translating your wants and needs into reality. In rare cases where we cannot deliver designs you love, our leadership team will reassign your project or refund  based on our <a href="/refund-policy" style="color:blue;" target="_blank">refund policy</a>. You can email us at <a href="mailto:hello@spacejoy.com?subject=&body=" style="color:blue;" target="_blank">hello@spacejoy.com</a>.`,
   },
   {
     tag: 'About Us',
@@ -215,11 +215,10 @@ const data = [
 ];
 
 const groupedData = data.reduce((acc, entry) => {
-    if (!acc[entry.tag]) {
-      acc[entry.tag] = [entry];
-    }else acc[entry.tag].push(entry);
+  if (!acc[entry.tag]) {
+    acc[entry.tag] = [entry];
+  } else acc[entry.tag].push(entry);
 
-    
   return acc;
 }, {});
 
