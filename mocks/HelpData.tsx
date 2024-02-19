@@ -138,16 +138,16 @@ const data = [
     answer:
       'Connect your Pinterest board or any public board to find products from inspiration pins. Our AI assistant will help you find the exact products and alternatives. You can see these products in a room and match it with other products  from our store to see how it looks in a room.',
   },
-  {
-    tag: 'Services',
-    question: 'What are design sets?',
-    answer: `Design sets are furniture and decor arrangements created by Spacejoy's experts based on various factors such as room type, style, color, budget, usability, and layout. The products you see in a design set are handpicked from popular and smaller chic brands that our designers have spent hours curating. Design sets help you discover products and show you how to match them with other furniture pieces and decor. The design sets are arranged in a room to help you visualize. Every design set is 100% customizable and showcases the list of products used to create it. You can click on the products to see more details and add to cart.`,
-  },
-  {
-    tag: 'Services',
-    question: 'How to personalise and shop a design set?',
-    answer: `Select a design set to open it. Click on personalize to start swapping individual products. Click on the product you'd like to swap, and we'll populate a range of alternatives. Once you're happy with how you've personalized it, you can save it and shop the complete design set or individual pieces from the set.​​`,
-  },
+  // {
+  //   tag: 'Services',
+  //   question: 'What are design sets?',
+  //   answer: `Design sets are furniture and decor arrangements created by Spacejoy's experts based on various factors such as room type, style, color, budget, usability, and layout. The products you see in a design set are handpicked from popular and smaller chic brands that our designers have spent hours curating. Design sets help you discover products and show you how to match them with other furniture pieces and decor. The design sets are arranged in a room to help you visualize. Every design set is 100% customizable and showcases the list of products used to create it. You can click on the products to see more details and add to cart.`,
+  // },
+  // {
+  //   tag: 'Services',
+  //   question: 'How to personalise and shop a design set?',
+  //   answer: `Select a design set to open it. Click on personalize to start swapping individual products. Click on the product you'd like to swap, and we'll populate a range of alternatives. Once you're happy with how you've personalized it, you can save it and shop the complete design set or individual pieces from the set.​​`,
+  // },
   {
     tag: 'Services',
     question: 'How can I get in touch with Spacejoy’s design team?',
