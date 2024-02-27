@@ -2,6 +2,7 @@ import { newSpacejoyStoreUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import PulseDot from './PulseDot';
 
 const TopBarMobile = () => {
   return (
@@ -61,7 +62,9 @@ const TopBarMobile = () => {
               />
             </div>
             <span className="my-auto text-xs whitespace-nowrap">
-              <span className="font-bold ">Shop</span>
+              <span className="font-bold ">
+                Shop <PulseDot />
+              </span>
             </span>
           </div>
         </a>
