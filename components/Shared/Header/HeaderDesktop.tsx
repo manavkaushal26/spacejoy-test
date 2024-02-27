@@ -19,6 +19,7 @@ import { HireADesignerHeader } from '../HireADesignerHeader';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
 import { newSpacejoyStoreUrl } from '@utils/config';
+import PulseDot from '../PulseDot';
 
 const HeaderDesktop: React.FC = () => {
   const mobile = Cookies.get('isMobile');
@@ -211,7 +212,7 @@ const HeaderDesktop: React.FC = () => {
                   <li className="items-center h-full sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
-                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md  focus:outline-none ${
+                      className={`hover:text-red-500 text-sm py-1 px-2.5 flex items-center rounded-md focus:outline-none ${
                         pathname === newSpacejoyStoreUrl ? 'text-red-500' : 'text-gray-700'
                       }`}
                       onClick={() => {
@@ -224,7 +225,7 @@ const HeaderDesktop: React.FC = () => {
                         });
                       }}
                     >
-                      Shop
+                      Shop <PulseDot />
                     </button>
                   </li>
                   <li className="flex sm:hidden md:hidden lg:flex">
@@ -432,7 +433,7 @@ const HeaderDesktop: React.FC = () => {
                 setSubNavContent('shop');
               }}
             >
-              Shop
+              Shop <PulseDot />
             </li>
             <li
               className="cursor-pointer"
