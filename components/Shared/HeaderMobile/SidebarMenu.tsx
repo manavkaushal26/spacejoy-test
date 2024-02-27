@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { PushEvent } from '@utils/analyticsLogger';
 import { TabOffers } from '../TabOffers';
 import { convertFilterToUrlPath } from '@utils/helpers';
+import PulseDot from '../PulseDot';
 
 export default function MobileSidebar({ data, open, setOpen }) {
   const topLevelCategories = data?.map((item) => item?.name);
@@ -70,6 +71,7 @@ export default function MobileSidebar({ data, open, setOpen }) {
             }}
           >
             {item.name}
+            {item.name === 'Shop' ? <PulseDot /> : null}
           </div>
         </div>
       )
