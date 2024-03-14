@@ -1,4 +1,6 @@
 import { PricingData } from '@components/Pricing/PricingTypes';
+import { usePricingMeta } from '@store/PricingPackagesProvider';
+import { getCurrencySymbol } from '@utils/helpers';
 import Link from 'next/link';
 import React from 'react';
 
@@ -8,8 +10,10 @@ interface PricingCardInterface {
 const recommendedPackageName = 'bliss';
 
 const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
+  const { userCountry = '' } = usePricingMeta();
+
   return (
-    <div className=" overflow-hidden relative">
+    <div className="overflow-hidden relative">
       {pricingItem?.name === recommendedPackageName && (
         <div className="bg-white px-4 absolute -right-14 top-12 w-52 text-sm text-center text-[#F5296E] rotate-45">
           <div className=" uppercase">Recommended</div>
@@ -26,12 +30,18 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
           <p className="mt-2 text-sm text-gray-500">{pricingItem?.description}</p>
           <p className="mt-8">
             <span className="text-base font-medium">Original Price: </span>
-            <span className="text-lg font-extrabold text-gray-900 line-through">${pricingItem?.price.value}</span>
+            <span className="text-lg font-extrabold text-gray-900 line-through">
+              {getCurrencySymbol(userCountry)}
+              {pricingItem?.price?.value}
+            </span>
             <span className="text-base font-medium text-gray-500 line-through">/room</span>
           </p>
           <p className="">
             <span className="text-xl font-medium">Deal Price: </span>
-            <span className="text-2xl font-extrabold text-gray-900">${pricingItem?.salePrice.value}</span>
+            <span className="text-2xl font-extrabold text-gray-900">
+              {getCurrencySymbol(userCountry)}
+              {pricingItem?.salePrice.value}
+            </span>
             <span className="text-xl font-medium text-gray-500">/room</span>
           </p>
           <p className="mt-4 text-sm text-gray-500">Additional offers available at checkout</p>
@@ -44,7 +54,7 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
         <div className="pt-6 pb-8 px-6">
           <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">What&apos;s included</h3>
           <ul className="mt-6 space-y-4">
-            {pricingItem?.features.map((feature) => (
+            {pricingItem?.includedFeatures?.map((feature) => (
               <li className="flex space-x-3" key={feature?._id}>
                 <svg
                   className="flex-shrink-0 h-5 w-5 text-green-500"

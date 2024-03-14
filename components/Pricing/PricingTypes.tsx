@@ -1,26 +1,56 @@
-export interface Feature {
+export interface PricingData {
   _id: string;
-  label: string;
-  helpText?: string;
+  revisionMeta: RevisionMeta;
+  tags: string[];
+  isSaleActive: boolean;
+  status: string;
+  designs: number;
+  versionNumber: number;
+  mrp: Mrp;
+  price: Price;
+  salePrice: SalePrice;
+  savings: Savings;
+  name: string;
+  description: string;
+  turnAroundTime: number;
+  includedFeatures: IncludedFeature[];
+  excludedFeatures: any[];
+  createdAt: string;
+  updatedAt: string;
+  slug: string;
+  country: string;
 }
-export interface Price {
-  value: number;
+
+export interface RevisionMeta {
+  maxRevisionsAllowed: number;
+  minRevisionTat: number;
+  maxRevisionTat: number;
+  maxProductRequestsAllowed: number;
+}
+
+export interface Mrp {
   label: string;
+  value: number;
+}
+
+export interface Price {
+  label: string;
+  value: number;
+}
+
+export interface SalePrice {
+  label: string;
+  value: number;
 }
 
 export interface Savings {
   label: string;
-  inPercent: number;
   inAmount: number;
+  inPercent: number;
 }
-export interface PricingData {
-  features: Array<Feature>;
-  excludedFeatures: Array<Feature>;
-  price: Price;
-  salePrice: Price,
-  name: string;
-  description: string;
-  savings: Savings;
-  tags: any[];
-  slug: string;
+
+export interface IncludedFeature {
+  _id: string;
+  label: string;
+  helpText: string;
 }

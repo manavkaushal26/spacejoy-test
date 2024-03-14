@@ -5,14 +5,13 @@ import HomeSectionTitle from '@components/Home/Hero/HomeSectionTitle';
 import OutputGallery from '@components/Home/OutputGallery';
 import { PricingData } from '@components/Pricing/PricingTypes';
 import Carousel, { position } from '@components/Shared/Carousel';
-import Button from '@components/Shared/Form/Button';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import Pricing from '@components/Shared/PricingData';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import TopBarMobile from '@components/Shared/TopBarMobile';
 import { Disclosure } from '@headlessui/react';
-import { ArrowRightIcon, CheckIcon, ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
+import { ArrowRightIcon, ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import TeamData from '@mocks/DesignTeamData';
 import { blurredBgImage, blurredBgProduct, homePagePoster } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
@@ -49,7 +48,7 @@ const responsive = {
   // slidesToShow: 1.5,
   // className: 'with-space',
 };
-export const Home = ({ isMobile, pricingData }): JSX.Element => {
+export const Home = ({ isMobile }): JSX.Element => {
   const router = useRouter();
   const { data } = useFirebaseContext();
   const isBroadcastVisible = data?.broadcastV2?.broadcaststripVisible;
@@ -370,7 +369,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           </div>
 
           <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
-            <Pricing variant="new" data={pricingData || []} />
+            <Pricing  />
             <div className="flex justify-center mt-6 text-center">
               <Link href="/pricing" passHref>
                 <button className="flex items-center px-6 py-3 text-white bg-gray-900 rounded-lg group">

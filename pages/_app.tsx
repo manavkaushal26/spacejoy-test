@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { ThemeProvider } from 'styled-components';
 import '../styles/globals.css';
+import PricingPackagesProvider from '@store/PricingPackagesProvider';
 
 declare global {
   interface Window {
@@ -89,27 +90,27 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
       </Head>
       <FirebaseContextProvider>
         <AuthProvider>
-          {/* <SessionProvider session={session}> */}
-          <Provider createStore={createStore}>
-            <OfferProvider createStore={createOfferStore}>
-              <CommonSEO />
-              <ThemeProvider theme={{}}>
-                <ShopFilterContextProvider>
-                  <SimpleReactLightbox>
-                    <NextNProgress options={{ showSpinner: false }} />
-                    <Component {...pageProps} />
-                  </SimpleReactLightbox>
-                  <Toaster
-                    position="top-center"
-                    toastOptions={{
-                      className: 'shadow-lg',
-                    }}
-                  />
-                </ShopFilterContextProvider>
-              </ThemeProvider>
-            </OfferProvider>
-          </Provider>
-          {/* </SessionProvider> */}
+          <PricingPackagesProvider>
+            <Provider createStore={createStore}>
+              <OfferProvider createStore={createOfferStore}>
+                <CommonSEO />
+                <ThemeProvider theme={{}}>
+                  <ShopFilterContextProvider>
+                    <SimpleReactLightbox>
+                      <NextNProgress options={{ showSpinner: false }} />
+                      <Component {...pageProps} />
+                    </SimpleReactLightbox>
+                    <Toaster
+                      position="top-center"
+                      toastOptions={{
+                        className: 'shadow-lg',
+                      }}
+                    />
+                  </ShopFilterContextProvider>
+                </ThemeProvider>
+              </OfferProvider>
+            </Provider>
+          </PricingPackagesProvider>
         </AuthProvider>
       </FirebaseContextProvider>
     </>

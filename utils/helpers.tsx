@@ -152,18 +152,29 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
+export const getCurrencySymbol = (country: string) => {
+  switch (country) {
+    case 'US':
+      return `$`;
+    case 'UAE':
+      return `AED `;
+    default:
+      return `$`;
+  }
+};
+
 export {
-  debounce,
   arraysEqual,
+  b64toFile,
+  classNames,
+  convertFilterToUrlPath,
+  convertUrlPathToFilter,
+  debounce,
+  downloadURI,
+  getParameterByName,
   isDigit,
   onlyUnique,
   priceToLocaleString,
   reactLocalStorage,
-  getParameterByName,
-  b64toFile,
-  downloadURI,
-  convertUrlPathToFilter,
-  convertFilterToUrlPath,
   titleCase,
-  classNames,
 };
