@@ -369,7 +369,7 @@ export const Home = ({ isMobile }): JSX.Element => {
           </div>
 
           <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
-            <Pricing  />
+            <Pricing />
             <div className="flex justify-center mt-6 text-center">
               <Link href="/pricing" passHref>
                 <button className="flex items-center px-6 py-3 text-white bg-gray-900 rounded-lg group">
