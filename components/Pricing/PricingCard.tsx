@@ -13,10 +13,10 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
   const { userCountry = '' } = usePricingMeta();
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="relative overflow-hidden">
       {pricingItem?.name === recommendedPackageName && (
         <div className="bg-white px-4 absolute -right-14 top-12 w-52 text-sm text-center text-[#F5296E] rotate-45">
-          <div className=" uppercase">Recommended</div>
+          <div className="uppercase ">Recommended</div>
         </div>
       )}
       <div
@@ -26,7 +26,7 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
         key={pricingItem?.name}
       >
         <div className="p-6">
-          <h2 className="text-lg leading-6 font-bold text-gray-900 capitalize">{pricingItem?.name}</h2>
+          <h2 className="text-lg font-bold leading-6 text-gray-900 capitalize">{pricingItem?.name}</h2>
           <p className="mt-2 text-sm text-gray-500">{pricingItem?.description}</p>
           <p className="mt-8">
             <span className="text-base font-medium">Original Price: </span>
@@ -46,18 +46,18 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
           </p>
           <p className="mt-4 text-sm text-gray-500">Additional offers available at checkout</p>
           <Link href={`/quiz/start-quiz`}>
-            <a className="mt-8 block w-full bg-gray-900 border border-gray-800 rounded-lg py-4 text-sm text-white text-center hover:bg-gray-900 capitalize">
+            <a className="block w-full py-4 mt-8 text-sm text-center text-white capitalize bg-gray-900 border border-gray-800 rounded-lg hover:bg-gray-900">
               Buy {pricingItem?.name}
             </a>
           </Link>
         </div>
-        <div className="pt-6 pb-8 px-6">
-          <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">What&apos;s included</h3>
+        <div className="px-6 pt-6 pb-8">
+          <h3 className="text-xs font-medium tracking-wide text-gray-900 uppercase">What&apos;s included</h3>
           <ul className="mt-6 space-y-4">
             {pricingItem?.includedFeatures?.map((feature) => (
               <li className="flex space-x-3" key={feature?._id}>
                 <svg
-                  className="flex-shrink-0 h-5 w-5 text-green-500"
+                  className="flex-shrink-0 w-5 h-5 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -75,14 +75,14 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
           </ul>
         </div>
         {pricingItem?.excludedFeatures.length > 0 && (
-          <div className="pt-6 pb-8 px-6">
-            <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">What&apos;s excluded</h3>
+          <div className="px-6 pt-6 pb-8">
+            <h3 className="text-xs font-medium tracking-wide text-gray-900 uppercase">What&apos;s excluded</h3>
             <ul className="mt-6 space-y-4">
               {pricingItem?.excludedFeatures.map((feature) => (
                 <li className="flex space-x-3" key={feature?._id}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="flex-shrink-0 h-5 w-5 text-red-500"
+                    className="flex-shrink-0 w-5 h-5 text-red-500"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

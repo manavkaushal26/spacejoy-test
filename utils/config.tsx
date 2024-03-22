@@ -6,7 +6,8 @@ const authUrl = isProduction ? 'https://auth.spacejoy.com' : 'http://localhost:3
 
 const page = {
   appName: 'SpaceJoyWeb',
-  apiBaseUrl: process.env.NEXT_PUBLIC_API_GATEWAY,
+  // apiBaseUrl: process.env.NEXT_PUBLIC_API_GATEWAY,
+  apiBaseUrl: 'https://staging10.spacejoy.com/api',
   apiSocketUrl: isProduction ? 'https://ws-api.spacejoy.com/api' : 'https://api-staging.spacejoy.com/api',
   placeKey: 'AIzaSyDsLNNs6HOOBILlbiMfr9hn9w3_CTxPlRA',
   googleSiteVerification: 'AvMwlYBDLdgqosxOUuNf114TxPVJtkY3lm3jxDpqLMY',

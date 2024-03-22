@@ -2,25 +2,13 @@ import Carousel from '@components/Carousel';
 import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
 import Reviews from '@components/ProductView/Reviews';
-import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import DiscountTag from '@components/Shared/DiscountTag';
 import Layout from '@components/Shared/Layout';
 import LottieAnimation from '@components/Shared/LottieAnimation';
-import StickyFooter from '@components/Shared/StickyFooter';
-import SVGLoader from '@components/Shared/SVGLoader';
 import WishListBtn from '@components/Shared/WishListBtn';
 import { Disclosure, Tab } from '@headlessui/react';
-import {
-  ChevronRightIcon,
-  ExternalLinkIcon,
-  EyeIcon,
-  HomeIcon,
-  MinusIcon,
-  MinusSmIcon,
-  PlusIcon,
-  PlusSmIcon,
-} from '@heroicons/react/outline';
+import { ChevronRightIcon, ExternalLinkIcon, EyeIcon, HomeIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
 import offerLottie from '@public/lotties/offer.json';
@@ -30,7 +18,6 @@ import { cloudinary, company } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import { convertFilterToUrlPath, priceToLocaleString } from '@utils/helpers';
-import SpjShoppingAdvantage from '@utils/Mocks/Shopping';
 import spacejoyPromiseData from '@utils/Mocks/spacejoyPromises';
 import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
@@ -1119,6 +1106,7 @@ export const getServerSideProps = async ({ params, res, req }) => {
   // get product id
   const productId = slug && slug?.length && slug?.length > 1 ? slug[1]?.split('-')?.pop() : slug[0];
   const { data, statusCode } = await fetcher({ endPoint: `/v2/asset/${productId}`, method: 'GET' });
+
   res.setHeader('Cache-Control', 'no-store');
 
   const { cookies: { isMobile = 'false' } = {} } = req;

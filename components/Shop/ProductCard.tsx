@@ -6,7 +6,8 @@ import { blurredBgProduct } from '@public/images/bg-base-64';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary } from '@utils/config';
 import fetcher from '@utils/fetcher';
-import { priceToLocaleString, convertFilterToUrlPath } from '@utils/helpers';
+import { convertFilterToUrlPath, getCurrencySymbol, priceToLocaleString } from '@utils/helpers';
+import { useSessionStorage } from '@utils/hooks/useSessionStorage';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +26,8 @@ type ProductCardType = {
 };
 
 const ProductCard = ({ product, showViewDetails, collageId, pageName, useRetailLink }: ProductCardType) => {
+  const [userCountry] = useSessionStorage('userCountry', '');
+  console.log({ product });
   const [addingToCart, isAddingToCart] = useState(false);
   const [localProductQuantity, setLocalProductQuantity] = useState(1);
   const incrementQty = (e) => {
@@ -147,6 +150,11 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName, useRetailL
       ? convertFilterToUrlPath(product?.vertical ? product?.vertical : product?.meta?.vertical?.name).toLowerCase()
       : null;
 
+  const productPrice =
+    userCountry !== 'US' && product?.amount
+      ? `${getCurrencySymbol(userCountry)}${product.amount?.find((obj) => obj[userCountry])[userCountry]?.price}`
+      : priceToLocaleString(product?.displayPrice || product?.price);
+
   return (
     <div>
       <Link
@@ -209,7 +217,7 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName, useRetailL
                 {product?.name}
               </h3>
               <p className="mt-1 text-lg font-medium text-gray-900">
-                <span>{priceToLocaleString(product?.displayPrice || product?.price)}</span>
+                <span>{productPrice}</span>
                 {product?.msrp && product?.msrp > 0 && product?.msrp > product?.price && (
                   <>
                     <small className="inline-block ml-2 text-sm text-gray-500 line-through">
