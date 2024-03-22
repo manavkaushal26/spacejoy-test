@@ -14,6 +14,7 @@ import { pageview } from 'react-ga';
 import { Toaster } from 'react-hot-toast';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { ThemeProvider } from 'styled-components';
+import 'react-tooltip/dist/react-tooltip.css';
 import '../styles/globals.css';
 
 declare global {
