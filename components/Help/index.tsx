@@ -48,7 +48,7 @@ function classNames(...classes) {
 
 const Index = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white help-section">
       <div className="relative container mx-auto px-4 z-10">
         <SectionTitle feature="help" title="Frequently asked questions" />
         <Tab.Group>
