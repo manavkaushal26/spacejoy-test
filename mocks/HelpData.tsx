@@ -130,67 +130,138 @@ const data = [
   {
     tag: 'Services',
     question: 'How do I get started on Spacejoy?',
-    answer: `Select the room you’d like to furnish. If you have a Pinterest board full of inspiration and would like to find products from it then connect your Pinterest board to get started.  If not, you can get started by browsing Spacejoy's curated design sets that feature furniture and decor pairings that work well together both functionally and aesthetically. Select a design set that best suits your need to get started. `,
-  },
-  {
-    tag: 'Services',
-    question: 'Connect your Pinterest board to shop products from your favorite pins',
     answer:
-      'Connect your Pinterest board or any public board to find products from inspiration pins. Our AI assistant will help you find the exact products and alternatives. You can see these products in a room and match it with other products  from our store to see how it looks in a room.',
-  },
-  // {
-  //   tag: 'Services',
-  //   question: 'What are design sets?',
-  //   answer: `Design sets are furniture and decor arrangements created by Spacejoy's experts based on various factors such as room type, style, color, budget, usability, and layout. The products you see in a design set are handpicked from popular and smaller chic brands that our designers have spent hours curating. Design sets help you discover products and show you how to match them with other furniture pieces and decor. The design sets are arranged in a room to help you visualize. Every design set is 100% customizable and showcases the list of products used to create it. You can click on the products to see more details and add to cart.`,
-  // },
-  // {
-  //   tag: 'Services',
-  //   question: 'How to personalise and shop a design set?',
-  //   answer: `Select a design set to open it. Click on personalize to start swapping individual products. Click on the product you'd like to swap, and we'll populate a range of alternatives. Once you're happy with how you've personalized it, you can save it and shop the complete design set or individual pieces from the set.​​`,
-  // },
-  {
-    tag: 'Services',
-    question: 'How can I get in touch with Spacejoy’s design team?',
-    answer: `To get in touch with our design team, sign up for a design package <a style="color:blue;" href='${oldSpacejoyUrl}/pricing' target="_blank">package</a>! Once you’ve completed your purchase and design quiz, you’ll have access to your designers using the chat feature in your project dashboard. Please allow your designers 24-48 hours to respond. If you need to get in touch with your designer quicker, feel free to e-mail us at hello@spacejoy.com <a style="color:blue;" href="mailto:hello@spacejoy.com?subject=&body=">hello@spacejoy.com</a>
-    `,
-  },
-  {
-    tag: 'Services',
-    question: 'Does Spacejoy offer swatches?',
-    answer: `If you're looking to buy a sofa or a rug and need to be entirely sure of the fabric, you can email us at   <a href='mailto:hello@spacejoy.com?subject=&body='>hello@spacejoy.com</a> and ask for a swatch. We'll coordinate with the retailer and have it delivered to you if the retailer offers this service. `,
-  },
-  {
-    tag: 'Services',
-    question: 'Can you work with a designer to design your room? ',
-    answer: `Yes. Spacejoy’s in-house designers will transform any room of your home within 7 days. See your exact room designed in 3D with products you can shop. Work with your designer to edit the designs until you’re satisfied. All you have to do is submit pictures of your room, tell us your requirements and leave the heavy lifting to our designers. `,
-  },
-  {
-    tag: 'Services',
-    question: 'What kind of spaces can Spacejoy design for me?',
-    answer: `We can design your living room, bedroom, dining area, sunroom and entryway. If you however have any special requests we’ll be happy to discuss. Email us at <a style="color:blue;" href="mailto:hello@spacejoy.com?subject=&body=">hello@spacejoy.com</a>
-    `,
+      "Simply select the room you wish to have designed and answer a few initial design questions! Once you purchase your design package you will then fill out our requirements quiz which will provide the designer with your design brief. This quiz is where you will share the details of the room we're designing together. Be sure to share the floor plan with dimensions of the room, room images, pictures of inspiration, and any furniture you'd like to keep!",
   },
   {
     tag: 'Services',
     question: 'How is the design service priced?',
-    answer: `There are 3 different design packages you can choose from. Find the details on our Pricing page (<a href="${oldSpacejoyUrl}/pricing" target="_blank" style="color:blue;">${oldSpacejoyUrl}/pricing</a>)`,
+    answer: `There are 3 different design packages you can choose from. Find the details on our pricing page (<a href="https://designs.spacejoy.com/pricing" target="_blank">https://designs.spacejoy.com/pricing</a>)`,
   },
   {
     tag: 'Services',
-    question: 'Who are your designers?',
-    answer:
-      "Our interior designers are professionals from across the United States. Designers' credentials are reviewed by our leadership team and they must pass our assessment test and training prior to working with any customer.",
+    question: 'How long does Spacejoy take to design a room?',
+    answer: `Once you sign up for a design package, we will require up to 48 hours to verify your design brief. We will reach out to you if any additional details are required prior to assigning your project to a designer. Once your project is assigned, your initial room designs will be delivered in 7-10 business days. Revised designs are delivered within 5-7 business days. Spacejoy is the fastest and easiest way to design your room online!`,
   },
   {
     tag: 'Services',
-    question: 'Can Spacejoy work within my budget?',
-    answer:
-      'Yes, we can work within your budget. We believe quality design can happen at any price point, and our super curators will scout stores across the internet to ensure that your space gets the best makeover within your budget.',
+    question: 'What design packages does Spacejoy offer?',
+    answer: `<p>Spacejoy currently has three different design packages for you to choose from Delight, Bliss, and Euphoria.</p><p>With the Delight design package, you will receive one design concept and two revisions. With the Bliss design package, you will get two design concepts, with two design revisions of your most preferred design concept. Our Delight and Bliss design packages are delivered within a 10 business day timeline.</p><p>In the Euphoria design package, you will receive 2 design concepts and 4 LIVE revisions. This is our most exclusive design package with the first two design concepts delivered within a 7 -10 business day timeline.</p><p>Once we start your project, you will receive your designs within 7-10 business days. However, if you are in a hurry, just reach out to your designer to see if they can expedite the design process.</p>`,
+  },
+  {
+    tag: 'Services',
+    question: 'What is a LIVE revision?',
+    answer: `In a LIVE revision your designer will address your design feedback in real time via our 3D app. You will be able to see your design in your 3D room model and can discuss anything from layout, color palettes, products and paint colors. Once the LIVE revision has been completed, your designer will continue to work on the design and will deliver your revision rendered in 3D within 5-7 business days. LIVE revisions are 20 min 1:1 time with your designer.`,
+  },
+  {
+    tag: 'Services',
+    question: 'Can I design any room on Spacejoy, or is there a limitation?',
+    answer: `<p>With Spacejoy, you can design most rooms! (Living Room, Bedroom, Dining Room, Office, Studio, Basement, Nursery, Kids Room, Entryway, Open Living-Dining Room, Outdoor Patio/Balcony, Kitchen and Bathroom) We also help design multifunctional spaces so that you can get the most out of your space!</p><p>For Kitchen and Bathroom structural changes, we can provide the visuals, but you will need to sort a third party contractor to ensure the correct amount of materials are ordered and the design is up to code.</p>`,
+  },
+  {
+    tag: 'Services',
+    question: 'Can I purchase multiple design packages at once for different rooms in my home?',
+    answer: `Yes, you can! For each room design you will need to purchase the design package and select the room type so that you can provide your designer with a design brief for each space. To ensure design cohesion throughout your home, your room designs will be assigned to the same designer unless you say otherwise! Based on the availability of your designer we may not start the designs at the same time. Reach out to us at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a> for any additional questions and for a multiroom discount!`,
+  },
+  {
+    tag: 'Services',
+    question: 'What is the maximum room size for Spacejoy design packages?',
+    answer: `<p>The maximum room size for the Delight and Bliss design package is 400 square feet. For our Euphoria design package the maximum room size is 600 square feet. If your space exceeds 600 square feet you can reach out to us at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a> so we can discuss a custom design package to meet your needs.</p><p>Bathroom and kitchen renovations, as well as open living/dining room projects are completed in our Euphoria package due to the additional design processes required to bring these projects to life!</p>`,
+  },
+  {
+    tag: 'Services',
+    question: 'Who are Spacejoy designers?',
+    answer: `Our interior designers are professionals from across the United States. Our designer’s credentials are reviewed by our leadership team and they must pass our assessment test and training prior to working with any customer.  If you select our Euphoria design package you will be working with one of our top tier designers. Top tier designers have had their work featured in publications.`,
+  },
+  {
+    tag: 'Services',
+    question: 'What styles can Spacejoy design?',
+    answer: `Spacejoy will help you design your room in a style you love! Think Mid-Century Modern, Farmhouse, Scandinavian, Industrial, Rustic, French Country, Eclectic, Transitional, or a combination of design styles. Our designers stay up to date with the latest design trends and will handle your style requests with ease. Not sure what your design style is? Take our style quiz <a href="https://designs.spacejoy.com/style-quiz" target="_blank">here!</a>`,
+  },
+  {
+    tag: 'Services',
+    question: 'Can my existing products be featured in my design?',
+    answer: `If we don't have your exact furniture item in our 3D catalog we will use a placeholder item that best represents your existing piece. If you wish to see your exact item featured in your design you can reach out to <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a> so we can gather the information required to model your existing item and discuss the 3d modelling fee. Please be aware that this may extend your design timeline.`,
+  },
+  {
+    tag: 'Services',
+    question: 'Why do you request design inspiration?',
+    answer: `We ask for this as it will help your designer greatly understand the style you are drawn too and the vision for your space. It also helps us pair you with a designer who specializes in your design style. The design inspiration you provide can be in the form of an image or a Pinterest link. If you don't have any inspiration images you can take our <a href="https://designs.spacejoy.com/style-quiz" target="_blank">inspiration quiz</a> or you can browse through our <a href="https://www.spacejoy.com/interior-designs" target="_blank">completed designs</a>.`,
+  },
+  {
+    tag: 'Services',
+    question: 'Does Spacejoy help with paint recommendations?',
+    answer: `Don't we all know how daunting this can be? All of our design packages include paint recommendations. Your Spacejoy designer will not only select the right color for your space but show you how it looks in your actual room design. We work with Sherwin Williams and Benjamin Moore.`,
+  },
+  {
+    tag: 'Services',
+    question: 'If I purchase a design package do I have to use it right away?',
+    answer: `You have up to a year from the date of your design package purchase to initiate the design process. If your project has passed the one year mark, reach out to us at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a> so we can process your refund.`,
+  },
+  {
+    tag: 'Services',
+    question: 'How will I be able to communicate with my designer?',
+    answer: `As a Spacejoy customer, you will work 1:1 with your designer. Our Bliss and Euphoria design packages come with a call, which can be used before or after receiving the initial designs. You will also have unlimited access to your designer during working hours using the chat feature you will find in your project dashboard. Please allow 2 business days for a response. If you need to get in touch with your designer sooner, please reach out to our team at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a>`,
+  },
+  {
+    tag: 'Services',
+    question: 'How do I chat with my designer',
+    answer: `Sign into your Spacejoy account. There is a drop down menu next to your name. Click on ‘My designs’. On the bottom of the page you will see a chat box. Please allow 2 business days for a response. If you need to get in touch with your designer sooner, please reach out to our team at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a>`,
+  },
+  {
+    tag: 'Services',
+    question: 'How long do I have to submit a revision request?',
+    answer: `We offer multiple redesigns to make sure you fall in love with your new space. Make sure to send in your feedback with design changes within 30 days of receiving your latest design concept. If we don't hear from you within 30 days, your designer will close your project. If you, however, want to request changes after 30 days, your request will undergo a review before we can commit. You can email <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a> to discuss re-opening your project.`,
+  },
+  {
+    tag: 'Services',
+    question: 'How do I purchase furniture in my design?',
+    answer: `With every Spacejoy package you choose, you receive a customized shopping list that includes everything you need for your design. Spacejoy works with design retailers such as Pottery Barn, West Elm, Crate & Barrel, CB2, Article, Wayfair, and more. You are able to purchase your products directly from the retailer. For products featured in our Spacejoy curated collection, our support team is here to help. Simply place your order on our shop page and we will take care of the rest.`,
+  },
+  {
+    tag: 'Services',
+    question: 'What is Spacejoy’s curated collection?',
+    answer: `Elevate your space with our trendsetting, well-crafted, and affordable curated collections. Hand picked by designers our four collections Aurora Home, Luna & Luxe, Empyrean Living and Harper Studios will be sure to inspire and transform your home! Shop our collection <a href="https://store.spacejoy.com/" target="_blank" rel="noopener noreferrer">here</a>.`,
+  },
+  {
+    tag: 'Services',
+    question: 'What happens if the items in my shopping list go out of stock?',
+    answer: `Handpicking furniture from thousands of products that suit your style and budget is not an easy feat to achieve. Your designer will ensure your products are in stock when the initial designs are released to you. Unfortunately, we can't guarantee the stock status of items in your design. We encourage you to buy what you love as soon as you can so you don’t miss out! For those products that do go out of stock, during the duration of your design package, we encourage you to reach out to your designer so they can assist with reselecting products.`,
+  },
+  {
+    tag: 'Services',
+    question: 'Does Spacejoy design commercial spaces?',
+    answer: `We design commercial spaces on a case by case basis. The majority of our projects are residential, so if you are comfortable ordering from our residential retailers, we'd love to discuss your project with you! Connect with us at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a> and share with us your project specifics (inspiration, budget, timeline, etc.)`,
+  },
+  {
+    tag: 'Services',
+    question: 'Does Spacejoy do renovation projects?',
+    answer: `We offer assistance with selection and visualization only. For finishes, built-ins and cabinetry, the material and labor costs must be determined by a 3rd party contractor. For Kitchen and Bathroom structural changes, we can provide the visuals, but you will need to sort a third party contractor to ensure the correct amount of materials are ordered and the design is up to code.`,
+  },
+  {
+    tag: 'Services',
+    question: 'Why does the delivery timeline extend for renovation projects?',
+    answer: `Renovation projects require additional design processes and more team collaboration to bring your design to life. Due to this the timeline may extend. Your designer will keep you updated on the timeline. We appreciate your patience!`,
+  },
+  {
+    tag: 'Services',
+    question: 'If I live outside of the US, can Spacejoy design my space?',
+    answer: `<p>We can complete a design for your space outside of the US however, as a US based company the products that will be used in your design are from US retailers. This would mean that you would have to source products in your own country and would not be able to purchase directly from your shopping list as we only deliver within the US.</p><p>For our Canadian customers we do work with a few retailers available in Canada, such as Wayfair, CB2, Crate &amp; Barrel, Pottery Barn, Article, Anthropologie and West Elm however, these products would be from the US Store and may differ in style and price. Other than this our entire design process is the same for our customers residing outside of the US.</p>`,
+  },
+  {
+    tag: 'Services',
+    question: "How do I locate the design packages I've paid for?",
+    answer: `Once you have logged into your account select ‘My designs’ from the drop down menu. All of your design packages are located in one convenient place!`,
+  },
+  {
+    tag: 'Services',
+    question: 'Can you retroactively apply promo codes to my order?',
+    answer: `Our promo codes should always be applied before placing an order with us. Be sure to submit them during checkout, so you can get the best price!`,
   },
   {
     tag: 'Services',
     question: 'What If I am unhappy with my design?',
-    answer: `Our designers are experts at translating your wants and needs into reality. In rare cases where we cannot deliver designs you love, our leadership team will reassign your project or refund  based on our <a href="/refund-policy" style="color:blue;" target="_blank">refund policy</a>. You can email us at <a href="mailto:hello@spacejoy.com?subject=&body=" style="color:blue;" target="_blank">hello@spacejoy.com</a>.`,
+    answer: `Our designers are experts at translating your wants and needs into reality. In rare cases where we cannot deliver designs you love, our leadership team will reassign your project or refund based on our <a href="https://www.spacejoy.com/refund-policy" target="_blank">refund policy</a>. You can email us at <a href="mailto:hello@spacejoy.com" target="_blank" rel="noopener noreferrer">hello@spacejoy.com</a>.`,
   },
   {
     tag: 'About Us',
