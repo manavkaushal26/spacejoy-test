@@ -639,12 +639,12 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   </a>
                   <WishListBtn type="Asset" documentId={product?._id} />
                 </div>
-                {product?.price && !itemStatus ? (
+                {/* {product?.price && !itemStatus ? (
                   <div className="my-2 text-sm text-center text-gray-700 lg:my-0 lg:text-left">
                     <AffirmPrice totalAmount={product?.price} flow="product" affirmType="as-low-as" />
                   </div>
-                ) : null}
-                <div className="p-4 -mx-4 bg-gray-100 lg:mx-0">
+                ) : null} */}
+                <div className="p-4 mt-4 -mx-4 bg-gray-100 lg:mx-0">
                   <h2>Product Information</h2>
                   <div className="mt-3">
                     <span className="text-sm font-bold">Name: </span>
@@ -690,7 +690,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   </div>
                 </div> */}
 
-                <Disclosure defaultOpen>
+                {/* <Disclosure defaultOpen>
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="flex items-center justify-between w-full py-4 text-left border-b border-gray-300 rounded-sm">
@@ -770,7 +770,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
-                )}
+                )} */}
                 {/* {product?.metaDetails?.description ? (
                   <Disclosure defaultOpen>
                     {({ open }) => (
@@ -860,7 +860,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   </Disclosure>
                 ) : null} */}
 
-                {product?.retailer?.shippingPolicy && (
+                {/* {product?.retailer?.shippingPolicy && (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -877,7 +877,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
-                )}
+                )} */}
 
                 {/* {product?.metaDetails?.shipping ? (
                   <Disclosure>
@@ -917,7 +917,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   )
                 )} */}
 
-                {product?.retailer?.returnPolicy && (
+                {/* {product?.retailer?.returnPolicy && (
                   <Disclosure>
                     {({ open }) => (
                       <>
@@ -934,7 +934,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                       </>
                     )}
                   </Disclosure>
-                )}
+                )} */}
 
                 {/* {product?.metaDetails?.returnPolicy ? (
                   <Disclosure>
