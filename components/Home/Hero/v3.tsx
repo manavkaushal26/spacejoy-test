@@ -20,12 +20,9 @@ const bannerImages = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     link: '',
   },
-  // {
-  //   src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePaperTextureBathBodyeCommerceWebBanner.png',
-  //   link: '',
-  // },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1714015463/spj-v2/Spring_1_rld21a.png',
     link: '',
   },
   {
