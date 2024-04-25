@@ -20,7 +20,7 @@ const PricingPageDescription = () => {
         </Link>
       </div>
       <div className="flex flex-col mx-4 space-y-20">
-        <div className="flex flex-col justify-center text-center sm:flex-row sm:space-x-10">
+        {/* <div className="flex flex-col justify-center text-center sm:flex-row sm:space-x-10">
           <div className="relative mx-auto aspect-1 h-28 w-28 sm:h-24 sm:w-24 sm:mx-0">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/v1577846283/web/Spacejoy-promise_pxbyfc.svg"
@@ -39,8 +39,8 @@ const PricingPageDescription = () => {
               so we can find a resolution!
             </p>
           </div>
-        </div>
-        <div className="flex flex-col px-4 mx-auto space-y-5 text-sm sm:text-base max-w-7xl sm:px-6 lg:px-8">
+        </div> */}
+        <div className="mt-16 flex flex-col px-4 mx-auto space-y-5 text-sm sm:text-base max-w-7xl sm:px-6 lg:px-8">
           <p>
             There is something for everyone - on a budget! Today, access to interior designs online has never been
             easier, and all praise goes out to the number of available online design services out there. You can design
