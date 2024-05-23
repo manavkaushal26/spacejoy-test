@@ -18,19 +18,24 @@ const responsive = {
 const bannerImages = [
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    mobileSrc: '',
     link: '',
   },
   {
     // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
     src: 'https://res.cloudinary.com/spacejoy/image/upload/w_1476,e_sharpen,fl_lossy,q_auto/v1716430021/spj-v2/Memorial_Day_sale_website_2_wp6oyd.png',
+    mobileSrc:
+      'https://res.cloudinary.com/spacejoy/image/upload/w_675,e_sharpen,fl_lossy,q_auto/v1716430493/spj-v2/White_Blue_and_Red_Minimalist_Memorial_Day_Instagram_Post_1_lmw78d.png',
     link: '',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
+    mobileSrc: '',
     link: '',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
+    mobileSrc: '',
     link: '',
   },
 ];
@@ -142,7 +147,7 @@ const V3 = ({ isMobile }) => {
               imageCount={bannerImages?.length || 0}
               responsive={responsive}
               autoplay
-              autoplaySpeed={3000}
+              autoplaySpeed={5000}
               infinite
               slidesToShow={1}
             >
@@ -156,7 +161,7 @@ const V3 = ({ isMobile }) => {
                   >
                     <Image
                       className="absolute inset-0 object-cover w-full h-full rounded-lg"
-                      src={bannerImage.src}
+                      src={bannerImage.mobileSrc ? bannerImage.mobileSrc : bannerImage.src}
                       alt=""
                       height={450}
                       width={450}
