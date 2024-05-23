@@ -17,20 +17,20 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     link: '',
   },
   {
     // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1714015463/spj-v2/Navy_Blue_Red_and_Cream_Minimalist_Veterans_Day_Banner_1_fxgeiw.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/w_1476,e_sharpen,fl_lossy,q_auto/v1716430021/spj-v2/Memorial_Day_sale_website_2_wp6oyd.png',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
     link: '',
   },
 ];
