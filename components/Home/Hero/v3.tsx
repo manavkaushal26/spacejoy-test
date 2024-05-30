@@ -23,9 +23,9 @@ const bannerImages = [
   },
   {
     // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/w_1476,e_sharpen,fl_lossy,q_auto/v1716430021/spj-v2/Memorial_Day_sale_website_2_wp6oyd.png',
-    mobileSrc:
-      'https://res.cloudinary.com/spacejoy/image/upload/w_675,e_sharpen,fl_lossy,q_auto/v1716430493/spj-v2/White_Blue_and_Red_Minimalist_Memorial_Day_Instagram_Post_1_lmw78d.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/w_1476,e_sharpen,fl_lossy,q_auto/v1717058417/spj-v2/Memorial_Day_sale_website_3_pwwmry.png',
+    // mobileSrc:
+    //   'https://res.cloudinary.com/spacejoy/image/upload/w_675,e_sharpen,fl_lossy,q_auto/v1716430493/spj-v2/White_Blue_and_Red_Minimalist_Memorial_Day_Instagram_Post_1_lmw78d.png',
     link: '',
   },
   {
