@@ -10,8 +10,8 @@ const ImageGrid: React.FC<Images> = ({ images }) => {
   return (
     <div>
       <div className={`grid gap-4  grid-cols-1 sm:grid-cols-2`}>
-        {images.slice(0, 2).map((image) => (
-          <div className="aspect-w-16 aspect-h-9 shadow-lg" key={image}>
+        {images.map((image) => (
+          <div className="shadow-lg aspect-w-16 aspect-h-9" key={image}>
             <Image
               className="object-cover rounded-lg"
               src={`https://res.cloudinary.com/spacejoy/image/upload/${image}`}

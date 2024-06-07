@@ -53,7 +53,7 @@ const ImageGallaryGrid = ({ data }) => {
                   : `${cloudinary.baseDeliveryURL}/c_scale/${item.cdn}`
               }
               alt=""
-              className="absolute top-0 left-0 object-cover w-full h-full "
+              className="absolute top-0 left-0 object-cover w-full h-full"
               layout="fill"
             />
             <div className="absolute opacity-0 top-1 right-1 hover:opacity-100">
