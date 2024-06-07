@@ -37,6 +37,11 @@ const cloudinary = {
   apiBaseURL: '//api.cloudinary.com/v1_1/spacejoy',
 };
 
+const imageKit = {
+  // baseDeliveryUrl: isProduction ? "https://ik.imagekit.io/spacejoy" : "https://ik.imagekit.io/spacejoy/staging",
+  baseDeliveryUrl: 'https://ik.imagekit.io/spacejoy',
+};
+
 const pinterestConfig = {
   appName: 'SpaceJoyWeb',
   appId: 1473468,
@@ -177,4 +182,5 @@ export {
   isProduction,
   firebaseConfig,
   newSpacejoyStoreUrl,
+  imageKit,
 };
