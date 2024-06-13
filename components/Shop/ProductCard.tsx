@@ -201,8 +201,8 @@ const ProductCard = ({ product, showViewDetails, collageId, pageName, useRetailL
                   </div>
                 )}
               </div>
-              <small className="mt-4 text-xs text-gray-500">
-                {(product?.retailer as GenericObj)?.name || product?.retailer}
+              <small className="mt-4 text-xs text-gray-500 capitalize">
+                {product?.whiteLabelName || (product?.retailer as GenericObj)?.name || product?.retailer}
               </small>
 
               <h3 className="text-gray-700 text-base sm:min-h-[40px] min-h-[20px] overflow-ellipsis line-clamp-1 sm:line-clamp-2">

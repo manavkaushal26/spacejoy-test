@@ -48,7 +48,6 @@ interface DesignData {
 const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
   const [spacejoyAssets, setSpacejoyAssets] = useState<Array<AssetInterface>>([]);
   const [otherAssets, setOtherAssets] = useState<Array<AssetInterface>>([]);
-
   const { value, toggle } = useBoolean(false);
   const { customerData, editorPickData, similarPicksData, categoryData } = engagementBlockData;
 

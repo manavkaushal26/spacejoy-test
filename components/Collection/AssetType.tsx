@@ -39,4 +39,5 @@ export interface AssetType {
   slug: string;
   vertical?: string;
   recommendedQuantity: number;
+  whiteLabelName?: string;
 }
