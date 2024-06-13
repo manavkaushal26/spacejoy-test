@@ -64,9 +64,12 @@ const Footer: React.FC = () => {
           <div className="mt-2 lg:col-span-2 xl:w-3/4">
             <h3 className="mb-2">About Spacejoy</h3>
             <p className="text-xs leading-relaxed text-gray-600">
-              Spacejoy allows you to discover and furnish your space with furniture/decor sets crafted by designers. Try
-              on different styles in any budget and personalize the sets by swapping it with your inspiration saved on
-              Pinterest and shop directly from the platform.
+              Spacejoy is an online interior design platform celebrated by top publications as one of the premier
+              platforms in the industry. At Spacejoy, we help you create a home that showcases your personality! Trust
+              our interior design professionals to make your home design journey enjoyable and stress-free. We create
+              stunning designs and curate quality items that embrace your style and functionality needs. Communicate
+              your vision, see expertly crafted designs, and fall in love with the complete look before you start
+              shopping—eliminating the stress of returns!
             </p>
             <SocialLinks />
           </div>
