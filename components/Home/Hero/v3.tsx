@@ -32,7 +32,9 @@ const bannerImages = [
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
+    // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
+    // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1718519213/spj-v2/Image_for_Website_bd1lmb.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1718519237/spj-v2/father_s_day_sale_promotional_banner__4_-2_bkwzou.png',
     mobileSrc: '',
     link: '',
   },
