@@ -22,8 +22,7 @@ const bannerImages = [
     link: '',
   },
   {
-    // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/fl_lossy,q_auto/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1718179495/spj-v2/father_s_Day_Sale_Promotional_Banner_4_mtlm6g.png',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/fl_lossy,q_auto/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
     link: '',
   },
   {
