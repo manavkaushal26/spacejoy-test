@@ -22,7 +22,7 @@ const bannerImages = [
     link: '',
   },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/fl_lossy,q_auto/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
     link: '',
   },
   {
