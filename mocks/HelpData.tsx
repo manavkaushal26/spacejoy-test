@@ -267,7 +267,8 @@ const data = [
     tag: 'About Us',
     question: 'What is Spacejoy?',
     answer:
-      'Spacejoy is a design-led e-commerce platform that enables a superior shopping experience by instantly visualizing your space with the products you want to buy. As a one-stop shop, Spacejoy allows you to discover unlimited options from your favorite home brands to furnish your space with ease. With professionally arranged furniture sets, users with all different styles and budgets can personalize their space with products they want to shop for.',
+      // 'Spacejoy is a design-led e-commerce platform that enables a superior shopping experience by instantly visualizing your space with the products you want to buy. As a one-stop shop, Spacejoy allows you to discover unlimited options from your favorite home brands to furnish your space with ease. With professionally arranged furniture sets, users with all different styles and budgets can personalize their space with products they want to shop for.',
+      'Spacejoy is an online interior design platform celebrated by top publications as one of the premier platforms in the industry. At Spacejoy, we help you create a home that showcases your personality! Trust our interior design professionals to make your home design journey enjoyable and stress-free. We create stunning designs and curate quality items that embrace your style and functionality needs. Communicate your vision, see expertly crafted designs, and fall in love with the complete look before you start shopping—eliminating the stress of returns!',
   },
   {
     tag: 'About Us',
