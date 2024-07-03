@@ -22,7 +22,8 @@ const bannerImages = [
     link: '',
   },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1720033540/spj-v2/img_4454_nfptkg.png',
     link: '',
   },
   {
