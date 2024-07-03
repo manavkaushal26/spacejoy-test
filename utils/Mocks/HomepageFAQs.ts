@@ -2,16 +2,20 @@ const data = [
   {
     question: 'Can Spacejoy work within my budget?',
     answer:
-      "Budget will not be a constraint for us to deliver the best design solutions for your home. Spacejoy doesn’t set a minimum budget and is happy to work within your budget. We are also the only design service where you can reuse some of your existing furniture. We also try to get you discounts from our partner brands that’s exclusive to Spacejoy. So be assured you're working with the best, irrespective of your budget.",
+    `We make it a priority to respect the budget you provide us. Estimating the cost of furnishing a room 
+can be daunting, so we ensure our customers are well-informed about typical budgets, taking into consideration the quality of materials and your specific furniture and decor needs.
+`,
   },
   {
     question: 'Can Spacejoy design my room with just the floor plan?',
-    answer: `We have worked with customers in the past who are still in the building phase of their home and our designers are well versed with working with just your floor plan. We will create a 3D model of your actual room and design within it. Via our life-like photo renders, you will be able to see your actual room before it’s actually complete.`,
+    answer:
+    `We have worked with customers in the past who are still in the building phase of their home and our designers are well versed with working with just a floor plan. Via our life-like photo renders, you may be able to see your actual room before it’s even complete! To ensure that we can work with just a floor plan for your unique design project, reach out to hello@spacejoy.com`,
   },
   {
     question: 'Can I use my existing furniture in my new design? ',
-    answer: `Spacejoy is the only design service that allows you to reuse your existing furniture. Choose the right package during checkout and our designers will design your room  by weaving in old and new seamlessly. `,
-  },
+    answer:
+     `If we don't have your exact furniture item in our 3D catalog we will use a placeholder item that best represents your existing piece. If you wish to see your exact item featured in your design you can reach out to hello@spacejoy.com so we can gather the information required to model your existing item and discuss the 3d modeling fee. Please be aware that this may extend your design timeline.`,
+    },
   {
     question: 'Do I have to shop for items in my design right away?',
     answer: `Spacejoy doesn’t enforce a timeline for you to shop your design. However, from past experience we know that products tend to run out quickly and your design might become dated. So it’s in your best interest to shop at the earliest but it’s up to you and your convenience to add products  to cart. `,

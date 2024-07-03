@@ -17,6 +17,11 @@ const responsive = {
 };
 const bannerImages = [
   {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1719907677/spj-v2/IMG_4454_1_ycktsv.png',
+    mobileSrc: '',
+    link: '',
+  },
+  {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',
     link: '',
@@ -32,7 +37,6 @@ const bannerImages = [
     link: '',
   },
   {
-    // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686932137/web/homepage-bannerimages/main2__1__s0m3ps.png',
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1718519213/spj-v2/Image_for_Website_bd1lmb.jpg',
     mobileSrc: '',
     link: '',

@@ -617,6 +617,13 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   <p className=" text-[120px] md:text-[200px] text-gray-300 font-bold text-center">
                     <span className="tracking-widest ">FAQ</span>
                   </p>
+                  <div className="text-center mt-4">
+                    <a href="https://www.spacejoy.com/help">
+                      <button className="px-6 py-3 bg-blue-500 text-white font-semibold text-lg rounded-md hover:bg-blue-700">
+                        View All
+                      </button>
+                    </a>
+                  </div>
                 </div>
                 <div className="mt-12 lg:mt-0 lg:col-span-2">
                   <dl className="space-y-12 ">

@@ -9,7 +9,7 @@ const WhyShopWithSpacejoy = [
     id: 2,
     iconLink: 'https://res.cloudinary.com/spacejoy/image/upload/v1653307484/web/icons/Smiley_Icon_cgcnmo.svg',
     title: 'Fastest design delivery',
-    content: 'Get your design within 7 to 10 days',
+    content: 'Get your design within 7 to 10  business days',
   },
   {
     id: 3,
