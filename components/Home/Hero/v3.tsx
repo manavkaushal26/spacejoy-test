@@ -17,18 +17,13 @@ const responsive = {
 };
 const bannerImages = [
   {
+    // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     src: 'https://res.cloudinary.com/spacejoy/image/upload/v1719907677/spj-v2/IMG_4454_1_ycktsv.png',
     mobileSrc: '',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
-    mobileSrc: '',
-    link: '',
-  },
-  {
-    // src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1720033540/spj-v2/img_4454_nfptkg.png',
+    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
     link: '',
   },
   {
