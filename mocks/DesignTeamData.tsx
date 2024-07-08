@@ -34,7 +34,7 @@ const data = [
     bg: '/v1643954978/web/homepage-v3/designers/Angela_Amore_2_yyfnqa.jpg',
     desc: 'Angela Amore is an interior designer specializing in modern and eclectic designs. She derives her inspiration from nature, unique accent pieces, and the streamline edges of modern furniture. Angela strives to bring in a fiercely fresh quality to each room she designs to create a personalized and functional design.',
   },
- 
+
   {
     firstName: 'Tina ',
     lastName: 'Martindelcampo',
@@ -52,6 +52,12 @@ const data = [
     lastName: 'James ',
     icon: '/v1719911755/web/avatars/Hannah_slochz.png',
     bg: '/v1719911755/web/avatars/Hannah_slochz.png',
+  },
+  {
+    firstName: 'Kaitlyn ',
+    lastName: 'Zill ',
+    icon: 'v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
+    bg: '/v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
   },
 ];
 
