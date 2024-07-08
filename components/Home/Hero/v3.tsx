@@ -17,8 +17,7 @@ const responsive = {
 };
 const bannerImages = [
   {
-    // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/v1719907677/spj-v2/IMG_4454_1_ycktsv.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',
     link: '',
   },
