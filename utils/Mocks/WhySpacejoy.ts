@@ -9,7 +9,7 @@ const WhyShopWithSpacejoy = [
     id: 2,
     iconLink: 'https://res.cloudinary.com/spacejoy/image/upload/v1653307484/web/icons/Smiley_Icon_cgcnmo.svg',
     title: 'Fastest design delivery',
-    content: 'Get your design within 7 to 10  business days',
+    content: 'Get your design within 7-10 business days',
   },
   {
     id: 3,
@@ -21,7 +21,8 @@ const WhyShopWithSpacejoy = [
     id: 4,
     iconLink: 'https://res.cloudinary.com/spacejoy/image/upload/v1653307484/web/icons/Percetage_Icon_uphy6z.svg',
     title: 'Comprehensive Shopping List',
-    content: 'Shop for all the items you loved from your designs directly from the shopping list provided. We curate the products so you can simply shop.',
+    content:
+      'Shop for all the items you loved from your designs directly from the shopping list provided. We curate the products so you can simply shop.',
   },
 ];
 
