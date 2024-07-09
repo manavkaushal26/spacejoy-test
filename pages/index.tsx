@@ -617,12 +617,14 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                   <p className=" text-[120px] md:text-[200px] text-gray-300 font-bold text-center">
                     <span className="tracking-widest ">FAQ</span>
                   </p>
-                  <div className="text-center mt-4">
-                    <a href="https://www.spacejoy.com/help">
-                      <button className="px-6 py-3 bg-blue-500 text-white font-semibold text-lg rounded-md hover:bg-blue-700">
-                        View All
-                      </button>
-                    </a>
+                  <div className="mt-4 text-center">
+                    <button
+                      onClick={() => router.push('/help')}
+                      className="flex items-center px-6 py-3 mx-auto mt-6 text-white bg-gray-900 rounded-lg group"
+                    >
+                      <span>View All</span>
+                      <ArrowRightIcon className="w-4 h-4 ml-2 text-white transition-transform transform group-hover:translate-x-2" />
+                    </button>
                   </div>
                 </div>
                 <div className="mt-12 lg:mt-0 lg:col-span-2">
