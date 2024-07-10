@@ -297,9 +297,9 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               <div className="flex-1 mt-6 sm:mt-0">
                 <HomeSectionTitle className="text-left">
                   <HomeSectionTitle.MainTitle>
-                    7 days to a beautiful room.
+                    Design your space
                     <br />
-                    <span className="text-[#F5296E]">Get paired with a designer.</span>
+                    <span className="text-[#F5296E]">Live your joy</span>
                   </HomeSectionTitle.MainTitle>
                   {isMobile !== 'true' && (
                     <HomeSectionTitle.Description align="left" isMaxWidthHalf={false}>
