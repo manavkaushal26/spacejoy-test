@@ -111,6 +111,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
   const [couponList, setCouponList] = useState([]);
   const [retailerOffers, setRetailerOffers] = useState([]);
   const [showCartFooter, setCartFooter] = useState(false);
+  const [cjUrl, setCjUrl] = useState('');
   const gaClickRef = useRef({});
   const router = useRouter();
 
@@ -340,9 +341,35 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
     return metaArray;
   }, [product]);
 
+  const getCjAffiliateUrl = async () => {
+    try {
+      const res = await fetcher({
+        endPoint: 'https://report.spacejoy.com/cj/link/generator',
+        method: 'POST',
+        body: { asset: product._id },
+        hasBaseUrl: true,
+      });
+      if (res.statusCode <= 301) {
+        if (res.data.clickUrl.includes('cjsku')) {
+          const clickUrl = res.data.clickUrl;
+          setCjUrl(clickUrl);
+        } else {
+          return;
+        }
+      } else {
+        throw new Error('error fetching CJ affiliate url');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     getCouponsList(setCouponList);
     fetchBrandOffers(setRetailerOffers, product?.retailer?._id);
+    if (product?._id) {
+      getCjAffiliateUrl();
+    }
   }, []);
 
   const handleClick = (open, productId: string, sectionName: string) => {
@@ -629,7 +656,7 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   )}
                 </form> */}
                 <div className="flex">
-                  <a href={product?.retailLink} target="_blank" rel="noreferrer">
+                  <a href={cjUrl ? cjUrl : product?.retailLink} target="_blank" rel="noreferrer">
                     <button
                       type="button"
                       className="w-full p-0 py-3 mr-4 text-base font-medium text-white bg-gray-900 shadow-xs md:w-auto md:px-12 group hover:shadow-md rounded-xl focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
