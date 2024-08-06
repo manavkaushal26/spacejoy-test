@@ -19,14 +19,6 @@ const data = [
     desc: 'Originally from Mexico, Maria goal is to transform spaces into beautiful rooms where people feel joy. Her design aesthetic is clean lines, neutral tones, pops of color and lots of plants. She has a deep appreciation for modern eclectic and mid-century minimalist deisgns. ',
   },
   {
-    firstName: 'Micaela',
-    lastName: 'Farley',
-    icon: 'v1611748546/web/designTime/18-Micaela_Farley_qnm4xr.png',
-    isReversed: true,
-    bg: '/v1643954934/web/homepage-v3/designers/Micaela_Farley_1_ajjyjf.jpg',
-    desc: "Micaela has a passion for bringing the creative visions of her clients to life in the most beautiful way possible. She's a lover of the traditional and rustic styles, as well as, transitional formal spaces.",
-  },
-  {
     firstName: 'Angela',
     lastName: 'Amore',
     icon: 'v1611748547/web/designTime/19-Angela_Amore_qhdr33.png',
@@ -58,6 +50,12 @@ const data = [
     lastName: 'Zill ',
     icon: 'v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
     bg: '/v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
+  },
+  {
+    firstName: 'Sarah',
+    lastName: 'Nelson',
+    icon: 'v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
+    bg: '/v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
   },
 ];
 
