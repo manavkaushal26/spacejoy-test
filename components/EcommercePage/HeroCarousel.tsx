@@ -42,7 +42,7 @@ const data = [
 
 const HeroCarousel = ({ mobile }) => {
   return (
-    <div className="max-w-7xl mx-auto pt-6">
+    <div className="pt-6 mx-auto max-w-7xl">
       <Carousel
         imageCount={data?.length || 0}
         responsive={sliderSettings}

@@ -104,11 +104,11 @@ const FeaturedCategoriesGrid = styled.div`
 
 const FeaturedCategories = ({ mobile }) => {
   return (
-    <div className="container max-w-7xl px-4 mx-auto">
+    <div className="container px-4 mx-auto max-w-7xl">
       <SectionHeading title="Featured Categories" />
       <FeaturedCategoriesGrid>
         <div className="grid">
-          <div className="div1 relative aspect-1">
+          <div className="relative div1 aspect-1">
             <Link href="shop?subcategory=sofas" passHref>
               <a
                 target={!mobile ? '_blank' : ''}
@@ -125,16 +125,16 @@ const FeaturedCategories = ({ mobile }) => {
                   alt="Sofas"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-xl w-full block"
+                  className="block w-full rounded-xl"
                 />
-                <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                   Sofas
                 </p>
               </a>
             </Link>
           </div>
           <div className="container1">
-            <div className="div2 relative">
+            <div className="relative div2">
               <Link href="shop?subcategory=chairs" passHref>
                 <a
                   target={!mobile ? '_blank' : ''}
@@ -151,15 +151,15 @@ const FeaturedCategories = ({ mobile }) => {
                     alt="Chairs"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-xl w-full block"
+                    className="block w-full rounded-xl"
                   />
-                  <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                  <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                     Chairs
                   </p>
                 </a>
               </Link>
             </div>
-            <div className="div3 relative">
+            <div className="relative div3">
               <Link href="/media-consoles" passHref>
                 <a
                   target={!mobile ? '_blank' : ''}
@@ -176,9 +176,9 @@ const FeaturedCategories = ({ mobile }) => {
                     alt="TV Console"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-xl w-full block"
+                    className="block w-full rounded-xl"
                   />
-                  <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                  <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                     TV Console
                   </p>
                 </a>
@@ -186,7 +186,7 @@ const FeaturedCategories = ({ mobile }) => {
             </div>
           </div>
           <div className="container2">
-            <div className="div4 relative">
+            <div className="relative div4">
               <Link href="/shop?subcategory=tables" passHref>
                 <a
                   target={!mobile ? '_blank' : ''}
@@ -203,15 +203,15 @@ const FeaturedCategories = ({ mobile }) => {
                     alt="Tables"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-xl w-full block"
+                    className="block w-full rounded-xl"
                   />
-                  <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                  <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                     Tables
                   </p>
                 </a>
               </Link>
             </div>
-            <div className="div5 relative">
+            <div className="relative div5">
               <Link href="/shop?subcategory=Storage-Organizers" passHref>
                 <a
                   target={!mobile ? '_blank' : ''}
@@ -228,16 +228,16 @@ const FeaturedCategories = ({ mobile }) => {
                     alt="Storage and Organizers"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-xl w-full block"
+                    className="block w-full rounded-xl"
                   />
-                  <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                  <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                     Storage and Organizers
                   </p>
                 </a>
               </Link>
             </div>
           </div>
-          <div className="div6 relative">
+          <div className="relative div6">
             <Link href="/shop?subcategory=rugs" passHref>
               <a
                 target={!mobile ? '_blank' : ''}
@@ -254,15 +254,15 @@ const FeaturedCategories = ({ mobile }) => {
                   alt="Rugs"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-xl w-full block"
+                  className="block w-full rounded-xl"
                 />
-                <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                   Rugs
                 </p>
               </a>
             </Link>
           </div>
-          <div className="div7 relative">
+          <div className="relative div7">
             <Link href="/lamps-&-shades" passHref>
               <a
                 target={!mobile ? '_blank' : ''}
@@ -279,15 +279,15 @@ const FeaturedCategories = ({ mobile }) => {
                   alt="Lamps & Shades"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-xl w-full block"
+                  className="block w-full rounded-xl"
                 />
-                <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                   Lamps & Shades
                 </p>
               </a>
             </Link>
           </div>
-          <div className="div8 relative aspect-1">
+          <div className="relative div8 aspect-1">
             <Link href="/shop?subcategory=Beds" passHref>
               <a
                 target={!mobile ? '_blank' : ''}
@@ -304,9 +304,9 @@ const FeaturedCategories = ({ mobile }) => {
                   alt="Beds"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-xl w-full block"
+                  className="block w-full rounded-xl"
                 />
-                <p className="absolute bottom-2 text-white text-xl font-semibold w-full text-center sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
+                <p className="absolute w-full text-xl font-semibold text-center text-white bottom-2 sm:text-2xl lg:text-3xl sm:bottom-6 lg:bottom-10">
                   Beds
                 </p>
               </a>
