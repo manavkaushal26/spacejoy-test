@@ -17,12 +17,12 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1724916569/spj-v2/website_banner_7_ctbbkf.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1724938233/spj-v2/website_banner_i6tbvv.jpg',
     mobileSrc: '',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1724929008/spj-v2/website_banner_xxq2dq.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1724938233/spj-v2/website_banner_1_iry0ci.jpg',
     mobileSrc: '',
     link: '',
   },
