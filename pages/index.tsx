@@ -102,12 +102,12 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
           <Hero3 isMobile={isMobile} />
-          {/* <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-40 sm:mb-12">
-            <Link href="https://store.spacejoy.com/pages/the-biggest-sale" passHref>
+          <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-40 sm:mb-12">
+            <Link href="https://store.spacejoy.com/" passHref>
               <a target="_blank">
                 <div className="relative w-full aspect-[364/45] shadow-md hover:shadow-lg">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/v1724423351/spj-v2/Red_Black_White_Modern_Black_Friday_Leaderboard_Ad_5_ssbiyc.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1724929461/spj-v2/Extra_10_off_on_all_orders_above_1000_2_dorwru.png"
                     alt="sale banner"
                     layout="fill"
                     objectFit="cover"
@@ -116,7 +116,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
               </a>
             </Link>
-          </div> */}
+          </div>
           <div className="container block px-4 mx-auto mt-12 mt-16 mb-6 sm:mt-32 sm:mb-12 lg:hidden">
             <HomeSectionTitle className="text-center capitalize">
               <HomeSectionTitle.MainTitle>
