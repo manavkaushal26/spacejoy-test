@@ -103,7 +103,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           )}
           <Hero3 isMobile={isMobile} />
           <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-40 sm:mb-12">
-            <Link href="https://store.spacejoy.com/" passHref>
+            <Link href="https://store.spacejoy.com/collections/labor-day-sale-products-upto-50-off" passHref>
               <a target="_blank">
                 <div className="relative w-full aspect-[364/45] shadow-md hover:shadow-lg">
                   <Image
