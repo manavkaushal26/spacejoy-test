@@ -22,7 +22,7 @@ const bannerImages = [
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1724938233/spj-v2/website_banner_1_iry0ci.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1724992746/spj-v2/website_banner_2_tivghj.png',
     mobileSrc: '',
     link: '',
   },
