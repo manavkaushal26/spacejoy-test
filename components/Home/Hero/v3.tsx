@@ -22,6 +22,11 @@ const bannerImages = [
     link: '',
   },
   {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1725622889/spj-v2/Green_Beige_Bold_Pizza_Happy_Hour_Landscape_Banner_973_x_650_px_1_vzjv7g.png',
+    mobileSrc: '',
+    link: '',
+  },
+  {
     src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
     link: '',
   },
