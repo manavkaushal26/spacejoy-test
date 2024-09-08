@@ -13,7 +13,7 @@ const responsive = {
   slidesToShow: 1,
   className: 'responsive',
   autoplay: true,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 3000,
 };
 const bannerImages = [
   {
@@ -134,29 +134,36 @@ const V3 = ({ isMobile }) => {
     </div>
   ) : (
     <div className="container relative mx-auto">
-      {' '}
-      <main>
+      <main className="w-full px-4 lg:w-1/3 sm:px-8 xl:pr-16">
         {/* <div className="py-0 pb-12 text-center"> */}
         <div className="py-0 my-0 mt-12">
-          <h1 className="px-4 mb-1 text-2xl text-left">
-            Design Your{' '}
-            <TextLoop mask>
-              {LOOP_CATEGORY.map((category, idx) => (
-                <span key={idx}>{category}</span>
-              ))}
-            </TextLoop>
+          <h1 className="mb-1 text-4xl text-left sm:leading-normal md:text-4xl">
+            <span className=" whitespace-nowrap">
+              Design
+              <br /> Your
+            </span>{' '}
+            <br />
+            <span className="text-gray-900 whitespace-nowrap">
+              <TextLoop mask>
+                {LOOP_CATEGORY.map((category, idx) => (
+                  <span key={idx}>{category}</span>
+                ))}
+              </TextLoop>
+            </span>
           </h1>
-          <p className="px-4 py-2 text-sm text-left text-gray-500 sm:text-base md:mt-5">
+          <p className="mt-5 text-2xl font-bold text-left text-gray-900">
+            The best way to design and shop for your home
+          </p>
+          <p className="max-w-md mt-2 text-lg text-left text-gray-500 sm:text-base md:mt-5 md:max-w-3xl">
             Create a stunning home with handpicked products from top brands that you can shop instantly
           </p>
-          <div className="relative pt-4">
+          <div className="relative w-full h-full mt-4 lg:absolute lg:inset-y-0 lg:right-0 lg:w-2/3">
             <Carousel
               imageCount={bannerImages?.length || 0}
               responsive={responsive}
               autoplay
-              autoplaySpeed={5000}
+              autoplaySpeed={3000}
               infinite
-              slidesToShow={1}
             >
               {bannerImages.map((bannerImage, idx) => {
                 return (
@@ -167,11 +174,11 @@ const V3 = ({ isMobile }) => {
                     }}
                   >
                     <Image
-                      className="absolute inset-0 object-cover w-full h-full rounded-lg"
-                      src={bannerImage.mobileSrc ? bannerImage.mobileSrc : bannerImage.src}
+                      className="absolute inset-0 object-cover w-full h-full rounded-xl"
+                      src={bannerImage.src}
                       alt=""
-                      height={450}
-                      width={450}
+                      height={660}
+                      width={990}
                       layout="responsive"
                     />
                   </div>
