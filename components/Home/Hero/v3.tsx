@@ -17,12 +17,17 @@ const responsive = {
 };
 const bannerImages = [
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1725785119/spj-v2/Green_Beige_Bold_Pizza_Happy_Hour_Landscape_Banner_973_x_650_px_2_ji4ikj.png',
     mobileSrc: '',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1725622889/spj-v2/Green_Beige_Bold_Pizza_Happy_Hour_Landscape_Banner_973_x_650_px_1_vzjv7g.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1725785119/spj-v2/Green_Beige_Bold_Pizza_Happy_Hour_Landscape_Banner_973_x_650_px_3_ftjb1y.png',
+    mobileSrc: '',
+    link: '',
+  },
+  {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',
     link: '',
   },
