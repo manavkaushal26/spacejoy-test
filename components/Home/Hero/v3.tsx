@@ -16,11 +16,11 @@ const responsive = {
   autoplaySpeed: 3000,
 };
 const bannerImages = [
-  {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1726126050/spj-v2/Red_and_Blush_Pink_Flash_Sale_Discount_Animated_Instagram_Story_1_h14q4k.png',
-    mobileSrc: '',
-    link: '',
-  },
+  // {
+  //   src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1726126050/spj-v2/Red_and_Blush_Pink_Flash_Sale_Discount_Animated_Instagram_Story_1_h14q4k.png',
+  //   mobileSrc: '',
+  //   link: '',
+  // },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',
