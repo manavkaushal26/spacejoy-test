@@ -22,6 +22,11 @@ const bannerImages = [
     link: '',
   },
   {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1726561767/spj-v2/Colorful_Bold_Flash_Sale_Instagram_Post_1_vl0nqd.png',
+    mobileSrc: '',
+    link: '',
+  },
+  {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',
     link: '',
