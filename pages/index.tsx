@@ -107,7 +107,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
               <a target="_blank">
                 <div className="relative w-full aspect-[14/2] shadow-md hover:shadow-lg">
                   <Image
-                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1728987418/spj-v2/strip_1_eoivyb.png"
+                    src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1729001471/spj-v2/strip_2_jslrac.png"
                     alt="sale banner"
                     layout="fill"
                     objectFit="cover"
