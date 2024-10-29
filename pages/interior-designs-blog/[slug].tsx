@@ -16,56 +16,68 @@ import CustomerStoriesCarousel from '@components/EngagementBlocks/CustomerStorie
 import PreFooter from '@components/Shared/PreFooter';
 
 const StoryBodyStyled = styled.div`
-  img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    margin: 8px 0px;
-  }
-  p span {
-    font-size: 14px !important ;
-  }
+  line-height: 1.8;
+  color: #333;
+
   p {
-    margin: 16px 0px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #555;
+
+    span {
+      font-size: 1rem;
+    }
+
+    a {
+      color: #f5296e;
+      text-decoration: underline;
+      background-color: transparent !important;
+      &:hover {
+        color: #dd2663;
+      }
+    }
+
+    strong {
+      font-weight: bold;
+    }
   }
-  p span a {
-    color: #f5296e;
-  }
-  p a span {
-    color: #f5296e;
-  }
-  p a strong {
-    font-size: 18px;
-    color: #f5296e;
-  }
-  p strong a {
-    font-size: 18px;
-    color: #f5296e;
-  }
-  p strong {
-    font-size: 28px;
-  }
-  h1 {
-    font-size: 22px;
-    margin: 50px 0px 10px 0px;
-  }
+
   h2 {
-    font-size: 22px;
-    margin: 50px 0px 10px 0px;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #222;
+
+    strong {
+      font-weight: bold;
+    }
+
+    a {
+      color: #f5296e;
+      text-decoration: underline;
+      background-color: transparent !important;
+      &:hover {
+        color: #dd2663;
+      }
+    }
   }
-  h2 strong a {
-    font-size: 18px;
-    color: #f5296e;
-  }
-  h2 a {
-    font-size: 18px;
-    color: #f5296e;
-  }
-  h2 strong {
-    font-size: 18px;
-  }
-  ul li {
-    margin: 0px 0px 10px 0px;
+
+  ul {
+    margin-left: 1.5rem;
+    list-style: disc;
+    margin-bottom: 2rem;
+
+    li {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+
+      p {
+        margin: 0;
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
   }
 `;
 
@@ -119,25 +131,25 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
-          <div className="flex md:flex-row flex-col md:space-x-5 space-y-5">
+        <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
+          <div className="flex flex-col space-y-5 md:flex-row md:space-x-5">
             <div className="p-5 md:basis-2/3">
               <div className="mt-2 mb-8">
                 {data?.category.title && (
-                  <h3 className=" text-2xl sm:text-4xl capitalize mb-1 sm:mb-2">{data?.category.title}</h3>
+                  <h3 className="mb-1 text-2xl capitalize sm:text-4xl sm:mb-2">{data?.category.title}</h3>
                 )}
-                <p className=" text-xs sm:text-base">{data?.title}</p>
+                <p className="text-xs sm:text-base">{data?.title}</p>
               </div>
               <StoryBodyStyled>
-                {data?.blogType === 'full' ? children : <div className=" items-start">{children}</div>}
+                {data?.blogType === 'full' ? children : <div className="items-start ">{children}</div>}
               </StoryBodyStyled>
             </div>
-            <div className="flex flex-col space-y-8 md:basis-1/3 m-5 h-fit sm:shadow-2xl">
+            <div className="flex flex-col m-5 space-y-8 md:basis-1/3 h-fit sm:shadow-2xl">
               <div>
                 {editorPickData.length && (
-                  <div className="mt-3 p-5 shadow-none  rounded-lg">
-                    <h2 className=" text-xl font-bold">Editors Pick</h2>
-                    <p className=" text-sm">Explore editors design</p>
+                  <div className="p-5 mt-3 rounded-lg shadow-none">
+                    <h2 className="text-xl font-bold ">Editors Pick</h2>
+                    <p className="text-sm ">Explore editors design</p>
                     <EditorPick data={editorPickData} />
                   </div>
                 )}
@@ -148,24 +160,24 @@ const blogView: React.FC<Props> = ({ data, engagementBlockData }) => {
         <div className="container">
           <div className=" bg-[#fef7ef] mt-8 rounded-lg md:mx-4">
             {customerData.length && (
-              <div className="mt-3 p-5 shadow-none">
-                <h2 className=" text-xl font-bold">Customer Stories</h2>
-                <p className=" text-sm mb-5">Explore customer designs</p>
+              <div className="p-5 mt-3 shadow-none">
+                <h2 className="text-xl font-bold ">Customer Stories</h2>
+                <p className="mb-5 text-sm ">Explore customer designs</p>
                 <CustomerStoriesCarousel data={customerData} />
               </div>
             )}
           </div>
           <div className=" bg-[#f8f8f8] mt-8 rounded-lg md:mx-4">
             {categoryData.length && (
-              <div className="mt-3 p-5 shadow-none">
-                <h2 className=" text-xl font-bold">Categories</h2>
-                <p className=" text-sm">Explore other categories</p>
+              <div className="p-5 mt-3 shadow-none">
+                <h2 className="text-xl font-bold ">Categories</h2>
+                <p className="text-sm ">Explore other categories</p>
                 <SimilarPicksCarousel data={categoryData} />
               </div>
             )}
           </div>
         </div>
-          <PreFooter />
+        <PreFooter />
       </Layout.Body>
       <Layout.Footer />
     </Layout>
