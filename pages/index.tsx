@@ -102,7 +102,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
             </div>
           )}
           <Hero3 isMobile={isMobile} />
-          <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-40 sm:mb-12">
+          {/* <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-40 sm:mb-12">
             <Link href="https://store.spacejoy.com" passHref>
               <a target="_blank">
                 <div className="relative w-full aspect-[14/2] shadow-md hover:shadow-lg">
@@ -116,7 +116,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
                 </div>
               </a>
             </Link>
-          </div>
+          </div> */}
           <div className="container block px-4 mx-auto mt-12 mt-16 mb-6 sm:mt-32 sm:mb-12 lg:hidden">
             <HomeSectionTitle className="text-center capitalize">
               <HomeSectionTitle.MainTitle>
