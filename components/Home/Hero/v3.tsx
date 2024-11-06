@@ -1,9 +1,8 @@
 import Carousel from '@components/Carousel';
 import { oldSpacejoyUrl } from '@utils/config';
-import useWindowSize from '@utils/useWindowSize';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useMemo } from 'react';
+import React from 'react';
 import TextLoop from 'react-text-loop';
 
 const LOOP_CATEGORY = ["Kid's Room", 'Entryway', 'Dining Room', 'Home Office', 'Bedroom', 'Living Room', 'Imagination'];
@@ -27,43 +26,39 @@ const bannerImages = [
   //   link: '',
   // },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',
     link: '',
   },
   {
-    src: 'https://ik.imagekit.io/spacejoy/spacejoy/image/upload/manual/BeigePapeTextureBathBodyeCommerceWebBanner.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1730710573/spj-v2/BeigePapeTextureBathBodyeCommerceWebBanner_xgmkbu.webp',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1686592820/web/homepage-bannerimages/Homepage_1_snvzpb.png',
     mobileSrc: '',
     link: '',
   },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1718519213/spj-v2/Image_for_Website_bd1lmb.jpg',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1718519213/spj-v2/Image_for_Website_bd1lmb.jpg',
     mobileSrc: '',
     link: '',
   },
 ];
 
 const V3 = ({ isMobile }) => {
-  const { width } = useWindowSize();
-  const isScreenSmall = useMemo(() => width <= 640, [width]);
-  // const isMobile = Cookies.get('isMobile') === 'true' ? true : false;
-
   return isMobile === false ? (
     <div className="container relative mx-auto">
       <main className="lg:relative">
         <div className="w-full pt-16 pb-20 text-center max-w-7xl py-44 lg:text-left">
           <div className="w-full px-4 lg:w-1/3 sm:px-8 xl:pr-16">
-            <h1 className="mb-1 text-4xl text-left sm:leading-normal md:text-4xl">
+            <h1 className="mb-1 text-4xl text-left sm:leading-normal md:text-5xl">
               <span className=" whitespace-nowrap">
                 Design
                 <br /> Your
               </span>{' '}
               <br />
-              <span className="text-gray-900 whitespace-nowrap">
+              <span className="text-[#F5296E] whitespace-nowrap">
                 <TextLoop mask>
                   {LOOP_CATEGORY.map((category, idx) => (
                     <span key={idx}>{category}</span>
@@ -105,8 +100,8 @@ const V3 = ({ isMobile }) => {
           <Carousel
             imageCount={bannerImages?.length || 0}
             responsive={responsive}
-            autoplay
-            autoplaySpeed={3000}
+            // autoplay
+            autoplaySpeed={5000}
             infinite
           >
             {bannerImages.map((bannerImage, idx) => {
@@ -143,7 +138,7 @@ const V3 = ({ isMobile }) => {
               <br /> Your
             </span>{' '}
             <br />
-            <span className="text-gray-900 whitespace-nowrap">
+            <span className="text-[#F5296E] whitespace-nowrap">
               <TextLoop mask>
                 {LOOP_CATEGORY.map((category, idx) => (
                   <span key={idx}>{category}</span>
