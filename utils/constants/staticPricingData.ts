@@ -15,7 +15,7 @@ type Savings = {
   inPercent: number;
 };
 
-type PricingDataType = {
+export type PricingDataType = {
   features: Feature[];
   excludedFeatures: Feature[];
   price: Price;
@@ -47,7 +47,7 @@ export const staticPricingData: PricingDataType[] = [
       },
       {
         _id: '63bdf1da411d7a0018b7de53',
-        label: 'Design delivered within <b>10 business days.</b>',
+        label: 'Design delivered within <b>10 business days</b>.',
         helpText: 'Timeline starts when all info is submitted',
       },
       {
@@ -85,7 +85,7 @@ export const staticPricingData: PricingDataType[] = [
     features: [
       {
         _id: '63bdf2531e48eb001804b497',
-        label: '<b>Get $300 instantly in shopping credits</b> to bring your design to life.',
+        label: 'Get <b>$300 instantly in shopping credits</b> to bring your design to life.',
         helpText: '',
       },
       {
@@ -98,7 +98,7 @@ export const staticPricingData: PricingDataType[] = [
       },
       {
         _id: '63be17443b0b7a001841a24b',
-        label: 'Up to 2 design revisions',
+        label: 'Up to 2 design revisions.',
         helpText: 'Revision request must be submitted within 30 days of receiving your design.',
       },
       {
@@ -141,7 +141,7 @@ export const staticPricingData: PricingDataType[] = [
     features: [
       {
         _id: '62eb7cc5a15d7f001cf09542',
-        label: '<b>Get $400 instantly in shopping credits</b> to bring your design to life.',
+        label: 'Get <b>$400 instantly in shopping credits</b> to bring your design to life.',
         helpText: '',
       },
       {

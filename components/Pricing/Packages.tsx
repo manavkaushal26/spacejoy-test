@@ -1,18 +1,17 @@
-import { PricingData } from '@components/Pricing/PricingTypes';
 import SectionTitle from '@components/Shared/SectionTitle';
-import React from 'react';
+import { PricingDataType } from '@utils/constants/staticPricingData';
 import PricingCard from './PricingCard';
 
 interface PricingProps {
-  pricingData: Array<PricingData>;
+  pricingData: Array<PricingDataType>;
 }
 
 const Packages = ({ pricingData }: PricingProps): JSX.Element => {
   return (
     <div className="bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="mt-12 sm:mt-16 mb-8 sm:mb-16 sm:flex sm:flex-col sm:align-center">
+          <div className="mt-12 mb-8 sm:mt-16 sm:mb-16 sm:flex sm:flex-col sm:align-center">
             <SectionTitle
               feature="Unlock the best version of your room here"
               title="Online Interior Design Packages"

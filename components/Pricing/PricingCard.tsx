@@ -1,11 +1,12 @@
-import { PricingData } from '@components/Pricing/PricingTypes';
 import { InformationCircleIcon } from '@heroicons/react/outline';
+import { PricingDataType } from '@utils/constants/staticPricingData';
 import Link from 'next/link';
 import React from 'react';
+import HtmlParser from 'react-html-parser';
 import { Tooltip } from 'react-tooltip';
 
 interface PricingCardInterface {
-  pricingItem: PricingData;
+  pricingItem: PricingDataType;
 }
 const recommendedPackageName = 'bliss';
 
@@ -36,7 +37,9 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
             <span className="text-2xl font-extrabold text-gray-900">${pricingItem?.salePrice.value}</span>
             <span className="text-xl font-medium text-gray-500">/room</span>
           </p>
-          <p className="mt-4 text-sm text-gray-500">Additional offers available at checkout</p>
+          <p className="mt-4 text-sm text-gray-500">
+            {pricingItem?.saleDescription ? pricingItem.saleDescription : 'Additional offers available at checkout'}
+          </p>
           <Link href={`/quiz/start-quiz`}>
             <a className="block w-full py-4 mt-8 text-sm text-center text-white capitalize bg-gray-900 border border-gray-800 rounded-lg hover:bg-gray-900">
               Buy {pricingItem?.name}
@@ -44,7 +47,7 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
           </Link>
         </div>
         <div className="px-6 pt-6 pb-8">
-          <h3 className="text-xs font-medium tracking-wide text-gray-900 uppercase">What&apos;s included</h3>
+          <h3 className="text-xs font-semibold tracking-wide text-gray-900 uppercase">What&apos;s included</h3>
           <ul className="mt-6 space-y-4">
             {pricingItem?.features.map((feature) => (
               <li className="flex items-center space-x-2" key={feature?._id}>
@@ -61,7 +64,7 @@ const PricingCard: React.FC<PricingCardInterface> = ({ pricingItem }) => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-sm text-gray-500 w-fit">{feature?.label}</span>
+                <span className="text-sm text-gray-500 w-fit">{HtmlParser(feature?.label)}</span>
                 {feature?.helpText ? (
                   <>
                     <div data-tooltip-id={feature._id}>
