@@ -35,12 +35,12 @@ module.exports = withPWA({
       {
         source: '/online-room-design',
         destination: `${legacyRepo}/online-room-design`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/online-interior-design',
         destination: `${legacyRepo}/online-interior-design`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/new-project/:slug*',
@@ -55,22 +55,22 @@ module.exports = withPWA({
       {
         source: '/spacejoy-vs-modsy',
         destination: `${legacyRepo}/spacejoy-vs-modsy`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/spacejoy-vs-havenly',
         destination: `${legacyRepo}/spacejoy-vs-havenly`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/spacejoy-vs-decorist',
         destination: `${legacyRepo}/spacejoy-vs-decorist`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/spacejoy-vs-others',
         destination: `${legacyRepo}/spacejoy-vs-others`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
 
       {
@@ -81,32 +81,32 @@ module.exports = withPWA({
       {
         source: '/checkout/design-package',
         destination: `${legacyRepo}/checkout/design-package`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/style-quiz-intro',
         destination: `${legacyRepo}/style-quiz-intro`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/trending-items',
         destination: `${legacyRepo}/trending-items`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/referrals',
         destination: `${legacyRepo}/referrals`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/balance-check',
         destination: `${legacyRepo}/balance-check`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/profile',
         destination: `${legacyRepo}/profile`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/orders/:slug*',
@@ -121,12 +121,12 @@ module.exports = withPWA({
       {
         source: '/frontdoor',
         destination: `${legacyRepo}/frontdoor`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/american-home-shield',
         destination: `${legacyRepo}/american-home-shield`, // Matched parameters can be used in the destination
-        permanent: false,
+        permanent: true,
       },
     ];
   },
