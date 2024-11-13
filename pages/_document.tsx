@@ -4,11 +4,11 @@ import { ServerStyleSheet } from 'styled-components';
 
 const prod = process.env.NEXT_PUBLIC_NODE_ENV === 'production';
 
-const clarity = `(function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "akeg7k1x06")`;
+// const clarity = `(function(c,l,a,r,i,t,y){
+//         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+//         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+//         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+//     })(window, document, "clarity", "script", "akeg7k1x06")`;
 
 const gtm = `!function(e,t,a,g,n){e[g]=e[g]||[],e[g].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=${page.gtm}",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer");`;
 
@@ -73,6 +73,15 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="icon" href="favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;500&display=swap"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link rel="preconnect" href="https://res.cloudinary.com" />
           {/* Bing webmaster verification */}
           <meta name="msvalidate.01" content="90B5CCABB531B09607FDE6C5344FC8CF" />
           <meta name="facebook-domain-verification" content="36rwmn2vpa1s55ovj31i21delhkcsm" />

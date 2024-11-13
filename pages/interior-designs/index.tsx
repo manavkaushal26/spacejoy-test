@@ -3,13 +3,13 @@ import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { cloudinary, company, internalPages } from '@utils/config';
+import { cloudinary, internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
+import { InteriorDesignMeta } from '@utils/meta';
 import topCollections from '@utils/Mocks/topCollections';
 import Head from 'next/head';
 import React from 'react';
-import { InteriorDesignMeta } from '@utils/meta';
 
 const InteriorDesigns = ({ designFeedData }): JSX.Element => {
   return (
@@ -51,7 +51,7 @@ const InteriorDesigns = ({ designFeedData }): JSX.Element => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <div className="container px-4 mx-auto xl:p-0 max-w-screen-xl">
+        <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
           <CollectionList feedData={topCollections} />
           <ListFilter />
           <DesignList feedData={designFeedData} />
@@ -77,7 +77,7 @@ export const getStaticProps = async () => {
         props: {
           designFeedData: { list: designList, count: 500 },
         },
-        revalidate: 1, //TODO: Recheck the doc Data Fetching
+        revalidate: 3600, //TODO: Recheck the doc Data Fetching
       };
     } else {
       throw new Error(statusCode);
@@ -87,7 +87,7 @@ export const getStaticProps = async () => {
       props: {
         error: e.message || 'Something went wrong',
       },
-      revalidate: 1, //TODO: Recheck the doc Data Fetching
+      revalidate: 3600, //TODO: Recheck the doc Data Fetching
     };
   }
 };
