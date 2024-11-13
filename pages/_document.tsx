@@ -37,6 +37,7 @@ window['_fs_namespace'] = 'FS';
 })(window,document,window['_fs_namespace'],'script','user');
 `;
 
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
@@ -67,6 +68,9 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en-US">
         <Head>
+          <link rel="preconnect" href="https://res.cloudinary.com" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="icon" href="favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
           {/* Bing webmaster verification */}

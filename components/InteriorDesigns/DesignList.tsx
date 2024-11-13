@@ -44,31 +44,32 @@ const DesignList: React.FC<DesignListInterface> = ({ feedData }) => {
             </>
           )}
           {currentRenderList.map((design, index) => (
-            <>
-            {index !== 0 && index % 9 === 0 && firebaseData?.homepageV2?.hp2 && (
-              <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
-                {firebaseData?.homepageV2?.hp2Link !== undefined && firebaseData?.homepageV2?.hp2Link !== '' ? (
-                  <Link href={firebaseData?.homepageV2?.hp2Link}>
-                    <a>
-                      <Image
-                        src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp2}`}
-                        alt="designListBanner"
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </a>
-                  </Link>
-                ) : (
-                  <Image
-                    src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp2}`}
-                    alt="designListBanner"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                )}
-              </div>
-            )}
-            <DesignCard cardData={design} key={design?._id} /></>
+            <React.Fragment key={design._id}>
+              {index !== 0 && index % 9 === 0 && firebaseData?.homepageV2?.hp2 && (
+                <div className="relative rounded-xl col-span-full row-span-1 aspect-[16/7] lg:aspect-[16/6] xl:aspect-[16/5]">
+                  {firebaseData?.homepageV2?.hp2Link !== undefined && firebaseData?.homepageV2?.hp2Link !== '' ? (
+                    <Link href={firebaseData?.homepageV2?.hp2Link}>
+                      <a>
+                        <Image
+                          src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp2}`}
+                          alt="designListBanner"
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      </a>
+                    </Link>
+                  ) : (
+                    <Image
+                      src={`${cloudinary.baseDeliveryURL}/${firebaseData?.homepageV2?.hp2}`}
+                      alt="designListBanner"
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  )}
+                </div>
+              )}
+              <DesignCard cardData={design} key={design?._id} />
+            </React.Fragment>
           ))}
         </div>
         <Pagination buttonList={buttons} />

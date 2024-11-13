@@ -8,6 +8,7 @@
 body {
   /* min-width: 1024px; */
   font-family: 'Poppins', sans-serif;
+  font-display: "swap";
 }
 
 h1,

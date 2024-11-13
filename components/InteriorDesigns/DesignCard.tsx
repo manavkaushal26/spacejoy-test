@@ -1,4 +1,3 @@
-import { HeartIcon, ShareIcon } from '@heroicons/react/outline';
 import { blurredBgImage } from '@public/images/bg-base-64';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,26 +14,27 @@ export interface DesignCardInterface {
     };
   };
 }
-const correctedSlug = (slug:string) => {
+const correctedSlug = (slug: string) => {
   return slug?.split(' ').join('-');
-}
+};
 
 const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
   return (
     <Link href={`/interior-designs/${correctedSlug(cardData.room.slug)}/${cardData?.slug}`}>
-      <a >
+      <a>
         <div className="cursor-pointer group">
           <div className=" rounded overflow-hidden relative border border-gray-200 transition group-hover:shadow-md">
             <div className="absolute inset-0 bg-gray-200 animate-pulse" />
             <Image
               className="object-cover transition duration-700 filter transform group-hover:brightness-110"
               alt={cardData?.name}
-              src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,h_600/${cardData?.cdnRender[0]}`}
-              height="300"
-              width="500"
+              src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_400,h_240/${cardData?.cdnRender[0]}`}
+              height="240"
+              width="400"
               layout="responsive"
               placeholder="blur"
               blurDataURL={blurredBgImage}
+              priority
             />
           </div>
           <div className="flex items-center my-2">
