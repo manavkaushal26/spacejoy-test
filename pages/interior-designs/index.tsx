@@ -77,7 +77,7 @@ export const getStaticProps = async () => {
         props: {
           designFeedData: { list: designList, count: 500 },
         },
-        revalidate: 1, //TODO: Recheck the doc Data Fetching
+        revalidate: 3600, //TODO: Recheck the doc Data Fetching
       };
     } else {
       throw new Error(statusCode);
@@ -87,7 +87,7 @@ export const getStaticProps = async () => {
       props: {
         error: e.message || 'Something went wrong',
       },
-      revalidate: 1, //TODO: Recheck the doc Data Fetching
+      revalidate: 3600, //TODO: Recheck the doc Data Fetching
     };
   }
 };
