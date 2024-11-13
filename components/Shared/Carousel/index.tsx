@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -61,45 +62,50 @@ const Carousel: React.FC<CarouselInterface> = ({
   const sliderRef = useRef<Slider>(null);
 
   const renderTopButtons = () => (
-    <div className="grid gap-4 xl:gap-8 grid-cols-2 mx-auto w-full absolute -top-10 lg:-top-14 ">
+    <div className="absolute grid w-full grid-cols-2 gap-4 mx-auto xl:gap-8 -top-10 lg:-top-14 ">
       <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
       <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
     </div>
   );
 
   const renderBottomButtons = () => (
-    <div className="grid gap-4 xl:gap-8 grid-cols-2 mx-auto w-full absolute bottom-10 ">
+    <div className="absolute grid w-full grid-cols-2 gap-4 mx-auto xl:gap-8 bottom-10 ">
       <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
       <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
     </div>
   );
 
   const renderOutBottomButtons = () => (
-    <div className="grid gap-4 xl:gap-8 grid-cols-2 mx-auto w-full absolute -bottom-16 ">
+    <div className="absolute grid w-full grid-cols-2 gap-4 mx-auto xl:gap-8 -bottom-16 ">
       <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
       <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
     </div>
   );
 
   return (
-    <div className="relative">
-      {position === 'top' && customButtons && renderTopButtons()}
-      <SliderWrapper className="overflow-hidden">
-        <Slider
-          {...settings}
-          arrows={!customButtons && buttons}
-          centerMode={centerMode}
-          centerPadding={centerPadding}
-          slidesToShow={slidesToShow}
-          slidesToScroll={slidesToShow}
-          ref={sliderRef}
-        >
-          {children}
-        </Slider>
-      </SliderWrapper>
-      {position === 'bottom' && customButtons && renderBottomButtons()}
-      {position === 'outside' && customButtons && renderOutBottomButtons()}
-    </div>
+    <>
+      <Head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+      </Head>
+      <div className="relative">
+        {position === 'top' && customButtons && renderTopButtons()}
+        <SliderWrapper className="overflow-hidden">
+          <Slider
+            {...settings}
+            arrows={!customButtons && buttons}
+            centerMode={centerMode}
+            centerPadding={centerPadding}
+            slidesToShow={slidesToShow}
+            slidesToScroll={slidesToShow}
+            ref={sliderRef}
+          >
+            {children}
+          </Slider>
+        </SliderWrapper>
+        {position === 'bottom' && customButtons && renderBottomButtons()}
+        {position === 'outside' && customButtons && renderOutBottomButtons()}
+      </div>
+    </>
   );
 };
 

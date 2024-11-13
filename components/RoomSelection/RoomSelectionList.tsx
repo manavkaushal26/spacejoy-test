@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import Slider from 'react-slick';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import RoomSelectCard from './RoomSelectCard';
 
@@ -19,32 +18,6 @@ interface DesignListInterface {
   };
 }
 
-const settings = {
-  initialSlide: 0,
-  // lazyLoad: 'ondemand',
-  dots: false,
-  infinite: false,
-  speed: 500,
-  slidesToScroll: 1,
-  autoplay: false,
-  autoplaySpeed: 5000,
-  pauseOnHover: true,
-  arrows: false,
-  // mobileFirst: true,
-  accessibility: true,
-  focusOnSelect: false,
-  slidesToShow: 3.3,
-  draggable: true,
-  // responsive: [
-  //   {
-  //     breakpoint: 992,
-  //     settings: {
-  //       slidesToShow: 3,
-  //       slidesToScroll: 1,
-  //     },
-  //   },
-  // ],
-};
 const entry = keyframes`
 	from { 
 		opacity: 0;
@@ -102,26 +75,28 @@ const AnimateBox = styled.ul`
 const TopCollagesList: React.FC<DesignListInterface> = ({ feedData }) => {
   const { list } = feedData;
 
-  const ref = useRef<Slider>(null);
-
   return (
     <section className="interior-design-section">
       <div className="pb-4">
-        <div className="container mx-auto px-4 pt-4">
+        <div className="container px-4 pt-4 mx-auto">
           <div className="flex items-end">
             <div className="flex-1">
-              <h1 className="mt-2 text-3xl leading-8 tracking-loose text-gray-900 sm:text-4xl">
+              <h1 className="mt-2 text-3xl leading-8 text-gray-900 tracking-loose sm:text-4xl">
                 Which room do you want to furnish?
               </h1>
               <p className="py-4 text-xl">Pick one to get started</p>
             </div>
           </div>
-          <AnimateBox className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6 2xl:gap-8 gap-y-10 my-8">
-            {/* <Slider {...settings} ref={ref}> */}
+          <AnimateBox className="grid grid-cols-1 gap-4 my-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-6 2xl:gap-8 gap-y-10">
             {list.map((collection, i) => (
-              <RoomSelectCard key={collection?._id} cardData={collection} inset index={i} disabled={collection.disabled} />
+              <RoomSelectCard
+                key={collection?._id}
+                cardData={collection}
+                inset
+                index={i}
+                disabled={collection.disabled}
+              />
             ))}
-            {/* </Slider> */}
           </AnimateBox>
         </div>
       </div>

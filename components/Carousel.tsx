@@ -1,5 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
-import React, { useState } from 'react';
+import Head from 'next/head';
+import { useState } from 'react';
 import Slider from 'react-slick';
 import { SRLWrapper } from 'simple-react-lightbox';
 
@@ -79,44 +80,49 @@ export default function Carousel({
     return (
       <div className={`slider-arrow ${!mainSliderSettings?.arrows ? 'block lg:hidden' : ''}`}>
         <div
-          className="absolute top-1/2 left-8 md:left-32 z-10 h-8 w-8 rounded-full border border-gray-900 flex items-center justify-center bg-white bg-opacity-25 -translate-y-1/2 -translate-x-1/2 cursor-pointer"
+          className="absolute z-10 flex items-center justify-center w-8 h-8 -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-25 border border-gray-900 rounded-full cursor-pointer top-1/2 left-8 md:left-32"
           onClick={() => nav1 && nav1?.slickPrev()}
         >
-          <ChevronLeftIcon className="h-5 w-5" />
+          <ChevronLeftIcon className="w-5 h-5" />
         </div>
         <div
-          className="absolute top-1/2 right-0 z-10 cursor-pointer h-8 w-8 rounded-full border border-gray-900 flex items-center justify-center bg-white bg-opacity-25 -translate-y-1/2 -translate-x-1/2"
+          className="absolute right-0 z-10 flex items-center justify-center w-8 h-8 -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-25 border border-gray-900 rounded-full cursor-pointer top-1/2"
           onClick={() => nav1 && nav1.slickNext()}
         >
-          <ChevronRightIcon className="h-5 w-5" />
+          <ChevronRightIcon className="w-5 h-5" />
         </div>
       </div>
     );
   };
 
   return (
-    <div className="w-full relative">
-      <div className={`ml-0 ${withNav ? 'md:pl-24' : ''} w-full relative`}>
-        {imageCount > 1 && arrows === true ? renderArrows() : null}
-        {withLightBox ? (
-          <SRLWrapper {...lightBoxOptions}>
-            <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings}>
+    <>
+      <Head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+      </Head>
+      <div className="relative w-full">
+        <div className={`ml-0 ${withNav ? 'md:pl-24' : ''} w-full relative`}>
+          {imageCount > 1 && arrows === true ? renderArrows() : null}
+          {withLightBox ? (
+            <SRLWrapper {...lightBoxOptions}>
+              <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings}>
+                {children}
+              </Slider>
+            </SRLWrapper>
+          ) : (
+            <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings} infinite={infinite}>
               {children}
             </Slider>
-          </SRLWrapper>
-        ) : (
-          <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings} infinite={infinite}>
-            {children}
-          </Slider>
+          )}
+        </div>
+        {imageCount > 1 && withNav && (
+          <div className="relative top-0 hidden w-full md:absolute md:w-16 nav-slider sm:mt-4 lg:mt-0 lg:block">
+            <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings} infinite={infinite}>
+              {children}
+            </Slider>
+          </div>
         )}
       </div>
-      {imageCount > 1 && withNav && (
-        <div className="relative w-full md:absolute md:w-16 top-0 nav-slider sm:mt-4 lg:mt-0 hidden lg:block">
-          <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} {...navSliderSettings} infinite={infinite}>
-            {children}
-          </Slider>
-        </div>
-      )}
-    </div>
+    </>
   );
 }
