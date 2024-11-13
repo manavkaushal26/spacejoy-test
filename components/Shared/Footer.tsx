@@ -190,6 +190,16 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li className="footer-item">
+                <Link href={`/shopping-credit-policy`}>
+                  <a
+                    className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
+                    target="_blank"
+                  >
+                    Shopping Credit Policy
+                  </a>
+                </Link>
+              </li>
+              <li className="footer-item">
                 <Link href={`/joyverse-privacy-policy`}>
                   <a
                     className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
