@@ -12,7 +12,7 @@ const SpacejoyShoppingCreditPolicy = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout.Body>
-        <div className="container px-4 mx-auto my-16 antialiased text-black break-words mb-28 joyverse-privacy">
+        <div className="container px-4 mx-auto my-16 antialiased text-black break-words mb-28 joyverse-privacy-policy">
           <SectionTitle title="Spacejoy Shopping Credit Policy" feature={`Effective Date: November 11, 2024`} />
 
           <h2 className="mb-4">1. ELIGIBILITY AND USAGE</h2>
