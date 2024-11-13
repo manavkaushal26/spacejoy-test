@@ -45,22 +45,7 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
               <p className="text-xs text-gray-500 capitalize">{cardData?.room?.roomType}</p>
               <p className="mt-1 text-gray-800 transition group-hover:text-red-500">{cardData?.name}</p>
             </div>
-            {/* <div>
-              <button
-                type="button"
-                className="px-2 py-2 text-xs text-gray-700 rounded-full focus:outline-none hover:shadow-sm hover:bg-gray-100"
-              >
-                <span className="sr-only">Like</span>
-                <HeartIcon className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                className="px-2 py-2 text-xs text-gray-700 rounded-full focus:outline-none hover:shadow-sm hover:bg-gray-100"
-              >
-                <span className="sr-only">Share</span>
-                <ShareIcon className="w-5 h-5" />
-              </button>
-            </div> */}
+
           </div>
         </div>
       </a>
