@@ -63,7 +63,6 @@
     "sharp": "^0.29.2",
     "simple-react-lightbox": "^3.6.9-0",
     "slick-carousel": "^1.8.1",
-    "swr": "^1.1.2",
     "use-image": "^1.0.8",
     "zustand": "^3.6.8"
   },
