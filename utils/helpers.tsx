@@ -1,3 +1,6 @@
+import clsx, { ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 function debounce(func, wait) {
   let timeout;
 
@@ -148,22 +151,22 @@ function titleCase(str) {
   return '';
 }
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+function classNames(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
 
 export {
-  debounce,
   arraysEqual,
+  b64toFile,
+  classNames,
+  convertFilterToUrlPath,
+  convertUrlPathToFilter,
+  debounce,
+  downloadURI,
+  getParameterByName,
   isDigit,
   onlyUnique,
   priceToLocaleString,
   reactLocalStorage,
-  getParameterByName,
-  b64toFile,
-  downloadURI,
-  convertUrlPathToFilter,
-  convertFilterToUrlPath,
   titleCase,
-  classNames,
 };

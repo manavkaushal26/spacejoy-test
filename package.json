@@ -23,6 +23,7 @@
   "dependencies": {
     "@types/firebase": "^3.2.1",
     "@types/js-cookie": "^3.0.1",
+    "clsx": "^2.1.1",
     "firebase": "^9.6.7",
     "gsap": "^3.9.1",
     "isomorphic-unfetch": "^3.1.0",
@@ -63,6 +64,7 @@
     "sharp": "^0.29.2",
     "simple-react-lightbox": "^3.6.9-0",
     "slick-carousel": "^1.8.1",
+    "tailwind-merge": "^2.5.4",
     "use-image": "^1.0.8",
     "zustand": "^3.6.8"
   },
