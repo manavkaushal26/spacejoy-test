@@ -1,0 +1,27 @@
+import { classNames } from '@utils/helpers';
+import { ElementType, ReactNode } from 'react';
+
+type MaxWidthContainerProps = {
+  children: ReactNode;
+  className?: string;
+  as?: ElementType; // Polymorphic prop for root element
+  ariaLabel?: string;
+};
+
+const MaxWidthContainer = ({
+  children,
+  className = '',
+  as: Component = 'section', // Default to `section`
+  ariaLabel,
+}: MaxWidthContainerProps) => {
+  return (
+    <Component
+      className={classNames('container px-4 pt-10 pb-24 mx-auto sm:pb-32 text-gray-700', className)}
+      aria-label={ariaLabel}
+    >
+      {children}
+    </Component>
+  );
+};
+
+export default MaxWidthContainer;
