@@ -91,10 +91,11 @@ const OurServices = (props: Props) => {
       <svg
         id="wave"
         // style="transform:rotate(0deg); transition: 0.3s"
-        viewBox="0 0 1440 492"
+        viewBox="0 0 2560 625"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         className="absolute inset-0 -z-10 -top-16"
+        style={{ height: '1000px' }}
       >
         <defs>
           <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">

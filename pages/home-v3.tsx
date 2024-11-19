@@ -17,7 +17,7 @@ const HomeV3 = (props: Props) => {
           <BannersBentoGrid />
         </MaxWidthContainer>
         <OurServices />
-        <MaxWidthContainer className="pt-32">Pricing Page</MaxWidthContainer>
+        <MaxWidthContainer className="pt-16">Pricing Page</MaxWidthContainer>
       </Layout.Body>
     </Layout>
   );
