@@ -12,7 +12,7 @@ const SectionHeading: React.FC<{
       className={`w-full space-y-2 ${center ? 'text-center' : 'text-left'} ${noMargin ? 'mt-0 mb-0' : 'mt-16 mb-8'}`}
     >
       {preText && (
-        <span className="border font-medium border-gray-500 py-0.5 px-1.5 rounded-full text-sm text-gray-500">
+        <span className="px-3 py-1 text-sm font-medium text-gray-500 border border-gray-500 rounded-full">
           {preText}
         </span>
       )}
