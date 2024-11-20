@@ -2,11 +2,11 @@ import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline';
-import { classNames } from '@utils/helpers';
-import { OurServicesData } from '@utils/Mocks/home-v3/Services';
+import { cloudinary } from '@utils/config';
+import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
+import { ourServicesData } from '@utils/Mocks/home-v3/Services';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
-import HtmlParser from 'react-html-parser';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -86,6 +86,8 @@ const OurServices = (props: Props) => {
     },
   };
 
+  
+
   return (
     <div className="relative w-full h-full overflow-hidden">
       <svg
@@ -126,7 +128,7 @@ const OurServices = (props: Props) => {
                 }}
                 {...settings}
               >
-                {OurServicesData.map((service) => (
+                {ourServicesData.map((service) => (
                   <div key={service.id} className="relative">
                     <div className="flex items-start space-x-4">
                       <div
@@ -138,8 +140,11 @@ const OurServices = (props: Props) => {
                       </div>
                       <div>
                         <h3 className="text-2xl font-semibold text-spj-red">{service.title}</h3>
-                        <p className="font-semibold text-gray-500">{service.subTitle}</p>
-                        <p className="w-full max-w-3xl mt-2 text-base">{HtmlParser(service.description)}</p>
+                        <p className="text-gray-500">{service.subTitle}</p>
+                        <div
+                          className="w-full max-w-3xl mt-2 text-base"
+                          dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(service.description) }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -158,15 +163,14 @@ const OurServices = (props: Props) => {
             </div>
             <div>
               <SampleImageStyled>
-                {OurServicesData.map((service, i) => (
+                {ourServicesData.map((service, i) => (
                   <ImageWrapperStyled
                     key={`image-${service.id}`}
                     className={currentIndex && currentIndex === service.id ? 'active' : 'inactive'}
                   >
                     <div className="relative w-[500px] aspect-[1.85/1]">
                       <Image
-                        // src={`c_scale,q_100,w_900/${service.imgSrc}`}
-                        src={service.imgSrc}
+                        src={`${cloudinary.baseDeliveryURL}/c_scale,q_100,w_900/${service.imgSrc}`}
                         alt={service.title}
                         className="object-contain"
                         layout="fill"

@@ -155,6 +155,23 @@ function classNames(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+function parseHtmlWithDOMParser(htmlString: string) {
+  if (typeof window !== 'undefined' && htmlString) {
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlString, 'text/html');
+
+      return doc.body.innerHTML || '';
+    } catch (error) {
+      console.error('Error parsing HTML string:', error);
+
+      return htmlString;
+    }
+  }
+
+  return htmlString;
+}
+
 export {
   arraysEqual,
   b64toFile,
@@ -169,4 +186,5 @@ export {
   priceToLocaleString,
   reactLocalStorage,
   titleCase,
+  parseHtmlWithDOMParser,
 };

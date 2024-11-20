@@ -3,8 +3,7 @@ import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import { staticPricingData } from '@utils/constants/staticPricingData';
-import { classNames } from '@utils/helpers';
-import HtmlParser from 'react-html-parser';
+import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
 
 type Props = {};
 
@@ -34,11 +33,14 @@ const Pricing = (props: Props) => {
                   ${item.salePrice.value}
                   <small className="text-base text-gray-500 sm:text-2xl md:text-2xl"> / room</small>
                 </h2>
-                <p className="text-gray-500">{HtmlParser(item.saleDescription)}</p>
+                <div
+                  className="text-gray-500"
+                  dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(item.saleDescription) }}
+                />
                 <div className="h-px bg-gray-300" />
                 <div className="flex items-start gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-emerald-500 shrink-0" />
-                  <p>{HtmlParser(item.summary)}</p>
+                  <div dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(item.summary) }} />
                 </div>
                 {recommendedPackage && (
                   <span className="px-4 py-2 mx-auto text-sm italic font-semibold text-center rounded-full bg-spj-red/10 text-spj-red w-fit">
@@ -49,11 +51,10 @@ const Pricing = (props: Props) => {
             );
           })}
         </div>
-        <div>
-          <ShinyButton href="/pricing" className="mx-auto mt-10">
-            See Pricing
-          </ShinyButton>
-        </div>
+
+        <ShinyButton href="/pricing" className="mx-auto mt-10">
+          See Pricing
+        </ShinyButton>
       </div>
     </>
   );

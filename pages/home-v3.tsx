@@ -18,10 +18,11 @@ const HomeV3 = (props: Props) => {
           <BannersBentoGrid />
         </MaxWidthContainer>
         <OurServices />
-        <MaxWidthContainer className="pt-16">
+        <MaxWidthContainer>
           <Pricing />
         </MaxWidthContainer>
       </Layout.Body>
+      <Layout.Footer />
     </Layout>
   );
 };
