@@ -11,7 +11,7 @@ type MaxWidthContainerProps = {
 const MaxWidthContainer = ({
   children,
   className = '',
-  as: Component = 'section', // Default to `section`
+  as: Component = 'div', // Default to `div`
   ariaLabel,
 }: MaxWidthContainerProps) => {
   return (

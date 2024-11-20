@@ -17,7 +17,7 @@ const BaseCard = ({
   disabledHoverShadow = false,
 }: BaseCardProps) => {
   return (
-    <div className="group relative p-0.5">
+    <div className={classNames('group relative', { 'p-0.5': gradientBorder })}>
       {gradientBorder && (
         <div className="absolute inset-0 rounded-lg -z-10 bg-gradient-to-br from-spj-red via-spj-yellow to-transparent" />
       )}
