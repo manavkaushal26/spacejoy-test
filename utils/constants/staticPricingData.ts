@@ -26,6 +26,7 @@ export type PricingDataType = {
   savings: Savings;
   tags: string[];
   slug: string;
+  summary: string;
 };
 
 export const staticPricingData: PricingDataType[] = [
@@ -71,7 +72,9 @@ export const staticPricingData: PricingDataType[] = [
       value: 299,
     },
     name: 'delight',
-    saleDescription: 'Get $250 shopping credits',
+    saleDescription: 'Get <b>$250</b> shopping credits',
+    summary:
+      'Receive a <b>custom room design</b> from our designer, plus <b>$250 in shopping credits</b> to bring it to life.',
     description: 'To Get You Started',
     savings: {
       label: 'You Save',
@@ -127,8 +130,10 @@ export const staticPricingData: PricingDataType[] = [
       value: 399,
     },
     name: 'bliss',
-    saleDescription: 'Get $300 shopping credits',
+    saleDescription: 'Get <b>$300</b> shopping credits',
     description: 'The Right One For The Most',
+    summary:
+      'Receive <b>2 custom room designs</b> from our senior designer, choose your favorite, plus <b>$300 in shopping credits</b> to bring it to life.',
     savings: {
       label: 'You Save',
       inAmount: 300,
@@ -182,8 +187,10 @@ export const staticPricingData: PricingDataType[] = [
       value: 599,
     },
     name: 'euphoria',
-    saleDescription: 'Get $400 shopping credits',
+    saleDescription: 'Get <b>$400</b> shopping credits',
     description: 'If You Love A Loaded Deal',
+    summary:
+      'Receive <b>2 custom room designs</b> with <b>live edits</b> from our design director, plus <b>$400 in shopping credits</b> to bring your vision to life.',
     savings: {
       label: 'You Save',
       inAmount: 400,

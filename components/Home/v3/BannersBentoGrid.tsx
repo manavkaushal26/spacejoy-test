@@ -4,7 +4,7 @@ const BannersBentoGrid = () => {
   return (
     <div className="grid grid-cols-1 gap-4 mt-10 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
       <div className="lg:col-span-4">
-        <div className="overflow-hidden rounded-lg max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md hover:shadow-lg transition-all duration-200">
+        <div className="overflow-hidden rounded-lg max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
           <div className="relative w-full h-full">
             <Image
               alt="banner 1"
@@ -16,7 +16,7 @@ const BannersBentoGrid = () => {
         </div>
       </div>
       <div className="lg:col-span-2">
-        <div className="overflow-hidden rounded-lg lg:rounded-tr-[2rem] h-full shadow-md hover:shadow-lg transition-all duration-200">
+        <div className="overflow-hidden rounded-lg lg:rounded-tr-[2rem] h-full shadow-md transition-all duration-200">
           <div className="relative w-full h-full">
             <Image
               alt="banner 2"
@@ -28,7 +28,7 @@ const BannersBentoGrid = () => {
         </div>
       </div>
       <div className="lg:col-span-2">
-        <div className="overflow-hidden rounded-lg lg:rounded-bl-[2rem] h-full shadow-md hover:shadow-lg transition-all duration-200">
+        <div className="overflow-hidden rounded-lg lg:rounded-bl-[2rem] h-full shadow-md transition-all duration-200">
           <div className="relative w-full h-full">
             <Image
               alt="banner 3"
@@ -40,7 +40,7 @@ const BannersBentoGrid = () => {
         </div>
       </div>
       <div className="lg:col-span-4">
-        <div className="overflow-hidden rounded-lg max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-80 shadow-md hover:shadow-lg transition-all duration-200">
+        <div className="overflow-hidden rounded-lg max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-80 shadow-md transition-all duration-200">
           <div className="relative w-full h-full">
             <Image
               alt="banner 3"
@@ -48,14 +48,6 @@ const BannersBentoGrid = () => {
               className="object-cover"
               layout="fill"
             />
-          </div>
-          <div className="p-10">
-            <h3 className="font-semibold text-gray-400 text-sm/4">Performance</h3>
-            <p className="mt-2 text-lg font-medium tracking-tight text-white">Lightning-fast builds</p>
-            <p className="max-w-lg mt-2 text-gray-400 text-sm/6">
-              Sed congue eros non finibus molestie. Vestibulum euismod augue vel commodo vulputate. Maecenas at augue
-              sed elit dictum vulputate.
-            </p>
           </div>
         </div>
       </div>

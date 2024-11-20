@@ -138,6 +138,7 @@ const OurServices = (props: Props) => {
                       </div>
                       <div>
                         <h3 className="text-2xl font-semibold text-spj-red">{service.title}</h3>
+                        <p className="font-semibold text-gray-500">{service.subTitle}</p>
                         <p className="w-full max-w-3xl mt-2 text-base">{HtmlParser(service.description)}</p>
                       </div>
                     </div>
