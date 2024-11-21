@@ -1,8 +1,15 @@
-type Props = { content: string };
+import { classNames } from '@utils/helpers';
 
-const Badge = ({ content }: Props) => {
+type Props = { content: string; className?: string };
+
+const Badge = ({ content, className }: Props) => {
   return (
-    <span className="px-3 py-1 text-sm font-medium text-gray-500 transition-all duration-200 border border-gray-500 rounded-full cursor-default hover:border-spj-red hover:text-spj-red">
+    <span
+      className={classNames(
+        'px-3 py-1 text-sm font-medium transition-all duration-200 border rounded-full cursor-default text-zinc-500 border-zinc-500 hover:border-spj-red hover:text-spj-red',
+        className
+      )}
+    >
       {content}
     </span>
   );

@@ -52,7 +52,7 @@ const Pricing = (props: Props) => {
           })}
         </div>
 
-        <ShinyButton href="/pricing" className="mx-auto mt-10">
+        <ShinyButton href="/pricing" showArrow className="mx-auto mt-10">
           See Pricing
         </ShinyButton>
       </div>

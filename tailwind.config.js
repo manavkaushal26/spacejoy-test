@@ -25,6 +25,7 @@ module.exports = {
           'url(https://res.cloudinary.com/spacejoy/image/upload/v1733146640/spj-v2/cyber-monday-sale/Purple_and_White_Futuristic_Artificial_Intelligence_Benefits_Instagram_Post_w626h0.png)',
         'cyber-monday-design':
           'url(https://res.cloudinary.com/spacejoy/image/upload/v1733147319/spj-v2/cyber-monday-sale/DElight_2_em6y3k.png)',
+        hero: "url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1732167271/spj-v2/home-v3/hero_bg_10_zzhnxi.webp')",
       },
       borderWidth: ['last', 'first'],
       colors: {
