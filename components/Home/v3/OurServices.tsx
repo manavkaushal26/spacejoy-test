@@ -2,6 +2,7 @@ import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline';
+import { LightningBoltIcon, QuestionMarkCircleIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
 import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
 import { ourServicesData } from '@utils/Mocks/home-v3/Services';
@@ -12,7 +13,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import styled from 'styled-components';
 
-type Props = {};
+type Props = { type: 'carousel' | 'grid' };
 
 const SampleImageStyled = styled.div`
   position: relative;
@@ -48,18 +49,7 @@ const ImageWrapperStyled = styled.div`
   }
 `;
 
-const backgrounds = {
-  1: '#C5C9FF', // #C5C9FF
-  2: 'bg-red-100', // bg-red-100
-  3: 'bg-yellow-100', // bg-yellow-100
-  4: 'bg-blue-100', // bg-blue-100
-  5: 'bg-rose-100', // bg-rose-100
-  6: 'bg-violet-100', // bg-violet-100
-  7: 'bg-pink-100', // bg-pink-100
-  8: 'bg-purple-100', // bg-purple-100
-};
-
-const OurServices = (props: Props) => {
+const OurServices = ({ type = 'carousel' }: Props) => {
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(null);
 
@@ -111,74 +101,110 @@ const OurServices = (props: Props) => {
       </svg>
       <MaxWidthContainer className="z-10">
         <SectionHeading
-          preText="Work Procedure"
+          // preText="Work Procedure"
+          preText={
+            <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-violet-100 to-violet-300 w-fit">
+              <LightningBoltIcon className="w-8 h-8 text-violet-500" />
+            </div>
+          }
           title="How Our Service Works"
           subTitle="We go beyond picking furniture. We bring your ideas together."
           center
         />
-        <BaseCard className="sm:px-8 sm:py-12" containerClassName="mt-20 overflow-visible">
-          <div className="grid grid-cols-1 gap-32 md:grid-cols-3">
-            <div className="md:col-span-2 slider-container">
-              <Slider
-                ref={(slider) => {
-                  sliderRef.current = slider;
-                }}
-                {...settings}
-              >
-                {ourServicesData.map((service) => (
-                  <div key={service.id} className="relative">
-                    <div className="flex items-start space-x-4">
-                      <div
-                        className={classNames(
-                          'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-4xl text-spj-red'
-                        )}
-                      >
-                        {service.id}
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-semibold text-spj-red">{service.title}</h3>
-                        <p className="text-gray-500">{service.subTitle}</p>
+        {type === 'carousel' && (
+          <BaseCard className="sm:px-8 sm:py-12" containerClassName="mt-20 overflow-visible">
+            <div className="grid grid-cols-1 gap-32 md:grid-cols-3">
+              <div className="md:col-span-2 slider-container">
+                <Slider
+                  ref={(slider) => {
+                    sliderRef.current = slider;
+                  }}
+                  {...settings}
+                >
+                  {ourServicesData.map((service) => (
+                    <div key={service.id} className="relative">
+                      <div className="flex items-start space-x-4">
                         <div
-                          className="w-full max-w-3xl mt-2 text-base"
-                          dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(service.description) }}
+                          className={classNames(
+                            'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-4xl text-spj-red'
+                          )}
+                        >
+                          {service.id}
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-semibold text-spj-red">{service.title}</h3>
+                          <p className="text-gray-500">{service.subTitle}</p>
+                          <div
+                            className="w-full max-w-3xl mt-2 text-base"
+                            dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(service.description) }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+                <div className="flex items-center pl-20 mt-10 space-x-4">
+                  <ArrowLeftIcon
+                    className="w-8 h-8 transition-all duration-200 cursor-pointer hover:text-spj-red"
+                    onClick={previous}
+                  />
+                  <ArrowRightIcon
+                    className="w-8 h-8 transition-all duration-200 cursor-pointer hover:text-spj-red"
+                    onClick={next}
+                  />
+                </div>
+              </div>
+              <div>
+                <SampleImageStyled>
+                  {ourServicesData.map((service, i) => (
+                    <ImageWrapperStyled
+                      key={`image-${service.id}`}
+                      className={currentIndex && currentIndex === service.id ? 'active' : 'inactive'}
+                    >
+                      <div className="relative w-[500px] aspect-[1.85/1]">
+                        <Image
+                          src={`${cloudinary.baseDeliveryURL}/c_scale,q_100,w_900/${service.imgSrc}`}
+                          alt={service.title}
+                          className="object-contain"
+                          layout="fill"
                         />
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </Slider>
-              <div className="flex items-center pl-20 mt-10 space-x-4">
-                <ArrowLeftIcon
-                  className="w-8 h-8 transition-all duration-200 cursor-pointer hover:text-spj-red"
-                  onClick={previous}
-                />
-                <ArrowRightIcon
-                  className="w-8 h-8 transition-all duration-200 cursor-pointer hover:text-spj-red"
-                  onClick={next}
-                />
+                    </ImageWrapperStyled>
+                  ))}
+                </SampleImageStyled>
               </div>
             </div>
-            <div>
-              <SampleImageStyled>
-                {ourServicesData.map((service, i) => (
-                  <ImageWrapperStyled
-                    key={`image-${service.id}`}
-                    className={currentIndex && currentIndex === service.id ? 'active' : 'inactive'}
-                  >
-                    <div className="relative w-[500px] aspect-[1.85/1]">
-                      <Image
-                        src={`${cloudinary.baseDeliveryURL}/c_scale,q_100,w_900/${service.imgSrc}`}
-                        alt={service.title}
-                        className="object-contain"
-                        layout="fill"
-                      />
-                    </div>
-                  </ImageWrapperStyled>
-                ))}
-              </SampleImageStyled>
-            </div>
+          </BaseCard>
+        )}
+        {type === 'grid' && (
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+            {ourServicesData.map((service, index) => (
+              <div
+                key={service.title}
+                className={classNames(
+                  'flex flex-col lg:border-r py-10 relative group',
+                  (index === 0 || index === 4) && 'lg:border-l',
+                  index < 4 && 'lg:border-b'
+                )}
+              >
+                {index < 4 && (
+                  <div className="absolute inset-0 w-full h-full transition duration-200 opacity-0 pointer-events-none group-hover:opacity-100 bg-gradient-to-t from-spj-red/5 to-transparent -z-[1]" />
+                )}
+                {index >= 4 && (
+                  <div className="absolute inset-0 w-full h-full transition duration-200 opacity-0 pointer-events-none group-hover:opacity-100 bg-gradient-to-b from-spj-red/5 to-transparent -z-[1]" />
+                )}
+                <div className="relative z-10 px-10 mb-4 text-zinc-500">{index + 1}</div>
+                <div className="relative z-10 px-10 mb-2 text-xl font-semibold">
+                  <div className="absolute inset-y-0 left-0 w-1 h-6 transition-all duration-200 origin-center rounded-tr-full rounded-br-full group-hover:h-8 bg-zinc-300 group-hover:bg-spj-red" />
+                  <span className="inline-block transition duration-200 group-hover:translate-x-2">
+                    {service.title}
+                  </span>
+                </div>
+                <p className="relative z-10 max-w-xs px-10 text-base text-zinc-500">{service.subTitle}</p>
+              </div>
+            ))}
           </div>
-        </BaseCard>
+        )}
       </MaxWidthContainer>
     </div>
   );
