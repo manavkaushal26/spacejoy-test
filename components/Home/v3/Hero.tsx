@@ -14,7 +14,7 @@ export const Hero = (props: Props) => {
       {showSectionGradient && (
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       )}
-      <MaxWidthContainer className="h-[calc(100vh-100px)] flex flex-col justify-center font-normal !py-0">
+      <MaxWidthContainer className="h-[750px] flex flex-col justify-center font-normal !py-0">
         <div className="w-[40%] space-y-4 text-zinc-800 bg-white bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 px-10 h-full flex flex-col justify-center">
           <div className="text-xl">
             Design Your{' '}
