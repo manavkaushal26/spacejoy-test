@@ -2,7 +2,6 @@ import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import { AnnotationIcon, StarIcon } from '@heroicons/react/solid';
-import { blurredBgImage } from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import { classNames } from '@utils/helpers';
 import { default as TestimonialsData } from '@utils/Mocks/HomeTestimonials';
@@ -81,15 +80,13 @@ const TestimonialCard = ({ data }) => {
             </button>
           </div>
           <Image
-            src={`${cloudinary.baseDeliveryURL}/${data?.before?.img}`}
+            src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_890/${data?.before?.img}`}
             alt={data?.before?.alt}
             layout="fill"
             objectFit="cover"
             className={classNames('rounded-[1rem] opacity-0 transition-all duration-300 pointer-events-none', {
               'opacity-100 pointer-events-auto': coverImgType === 'before',
             })}
-            placeholder="blur"
-            blurDataURL={blurredBgImage}
           />
           <Image
             src={`${cloudinary.baseDeliveryURL}/${data?.after.img}`}
@@ -99,8 +96,6 @@ const TestimonialCard = ({ data }) => {
             className={classNames('rounded-[1rem] opacity-0 transition-all duration-300 pointer-events-none', {
               'opacity-100 pointer-events-auto': coverImgType === 'after',
             })}
-            placeholder="blur"
-            blurDataURL={blurredBgImage}
           />
         </div>
         <div className="flex flex-col justify-center col-span-2 p-8 rounded-[1rem] shadow-md border border-gray-200">
