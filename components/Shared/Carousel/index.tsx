@@ -12,7 +12,7 @@ const SliderWrapper = styled.div`
 
 const settings = {
   initialSlide: 1,
-  // lazyLoad: 'progressive',
+  // lazyLoad: 'ondemand',
   dots: false,
   infinite: true,
   speed: 500,
