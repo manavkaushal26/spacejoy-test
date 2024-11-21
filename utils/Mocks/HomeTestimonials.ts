@@ -10,7 +10,7 @@ const data = [
     shortDescription:
       'I loved the design my designer created. It was warm and cozy all at once. I’ve already bought the table in the design.',
     description:
-      'I love my design! It feels warm and cozy even with the amount of grey that is currently in there. I’ve wanted that rug for a while sp seeing it used it in the design helped me make my mind up. I have already bought the coffee table and plan on buying the rest too. This design is everything I was looking for.',
+      'I love my design! It feels warm and cozy even with the amount of grey that is currently in there. I’ve wanted that rug for a while so seeing it used it in the design helped me make my mind up. I have already bought the coffee table and plan on buying the rest too. This design is everything I was looking for.',
     before: {
       img: 'v1654258826/Room1_Before_yphffo.jpg',
       alt: 'Spacejoy review of master bedroom room design by Trinity Harding ',

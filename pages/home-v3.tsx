@@ -4,6 +4,7 @@ import { Hero } from '@components/Home/v3/Hero';
 import LookBook from '@components/Home/v3/LookBook';
 import OurServices from '@components/Home/v3/OurServices';
 import Pricing from '@components/Home/v3/Pricing';
+import Testimonials from '@components/Home/v3/Testimonials';
 import Video from '@components/Home/v3/Video';
 import Layout from '@components/Shared/Layout';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
@@ -31,6 +32,9 @@ const HomeV3 = (props: Props) => {
         </MaxWidthContainer>
         <MaxWidthContainer className="pt-0">
           <LookBook />
+        </MaxWidthContainer>
+        <MaxWidthContainer className="pt-0">
+          <Testimonials />
         </MaxWidthContainer>
       </Layout.Body>
       <Layout.Footer />

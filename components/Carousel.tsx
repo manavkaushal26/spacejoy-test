@@ -33,6 +33,7 @@ export default function Carousel({
   autoplay = false,
   autoplaySpeed = 2000,
   infinite = false,
+  ...props
 }) {
   const [nav1, setNav1] = useState<any>();
   const [nav2, setNav2] = useState<any>();
@@ -75,6 +76,7 @@ export default function Carousel({
         settings: { ...responsive },
       },
     ],
+    ...props,
   };
   const renderArrows = () => {
     return (

@@ -8,7 +8,7 @@
 body {
   /* min-width: 1024px; */
   font-family: 'Poppins', sans-serif;
-  font-display: "swap";
+  font-display: 'swap';
 }
 
 h1,
@@ -159,19 +159,27 @@ footer li a {
   display: flex !important;
   justify-content: center;
   margin-top: 12px;
+  padding-bottom: 6px;
   z-index: 999;
+  transition: all 0.3s ease-in-out;
 }
 .custom-pagination > li {
-  margin-left: 4px;
+  margin-left: 8px;
   border-radius: 50%;
-  border: 1px solid black;
-  height: 10px;
-  width: 10px;
-  background: transparent;
+  border: 1px solid #d4d4d8;
+  background: #d4d4d8;
+  height: 12px;
+  width: 12px;
   color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+.custom-pagination > li:hover {
+  background: #f5296e;
 }
 .custom-pagination > li.slick-active {
-  background: black;
+  background: #f5296e;
+  border: none;
+  scale: 1.2;
 }
 .neg-container-margin {
   margin: 0 -1rem 0 -1rem;

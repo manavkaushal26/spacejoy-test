@@ -1,5 +1,6 @@
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
+import { LightBulbIcon } from '@heroicons/react/solid';
 import Icons from '@utils/Mocks/Icons';
 import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
@@ -36,6 +37,11 @@ const Video = () => {
     <div className="bg-[#fff1f2]/50">
       <MaxWidthContainer>
         <SectionHeading
+          preText={
+            <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-amber-100 to-amber-300 w-fit">
+              <LightBulbIcon className="w-8 h-8 text-amber-500" />
+            </div>
+          }
           title="Bring Ideas To Life"
           subTitle="We handle the hard work so you can enjoy the process"
           center

@@ -1,7 +1,7 @@
 import ShinyButton from '@components/Button/ShinyButton';
 import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
-import { CheckCircleIcon } from '@heroicons/react/solid';
+import { CheckCircleIcon, CurrencyDollarIcon } from '@heroicons/react/solid';
 import { staticPricingData } from '@utils/constants/staticPricingData';
 import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
 
@@ -11,7 +11,12 @@ const Pricing = (props: Props) => {
   return (
     <>
       <SectionHeading
-        preText="Designs Starting at $49"
+        // preText="Designs Starting at $49"
+        preText={
+          <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-emerald-100 to-emerald-300 w-fit">
+            <CurrencyDollarIcon className="w-8 h-8 text-emerald-500" />
+          </div>
+        }
         title="Transparent Pricing"
         subTitle="An investment in a home you’ll love for years to come"
         center
