@@ -30,8 +30,8 @@ const Pricing = (props: Props) => {
             return (
               <BaseCard
                 key={item.name}
-                className={classNames('flex flex-col gap-4', { '': isBliss })}
-                gradientBorder={isBliss}
+                className={classNames('flex flex-col gap-4 bg-gradient-to-br from-transparent to-[#fff1f2]')}
+                // gradientBorder={isBliss}
               >
                 <h3 className="capitalize text-spj-red/75">{item.name}</h3>
                 <h2 className="text-2xl sm:text-4xl md:text-5xl">
