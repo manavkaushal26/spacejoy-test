@@ -21,7 +21,7 @@ export type PricingDataType = {
   price: Price;
   salePrice: Price;
   name: string;
-  saleDescription: string;
+  saleDescription?: string;
   description: string;
   savings: Savings;
   tags: string[];

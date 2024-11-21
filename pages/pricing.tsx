@@ -6,7 +6,6 @@ import PreFooter from '@components/Shared/PreFooter';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import { cloudinary, company } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
-import { staticPricingData } from '@utils/constants/staticPricingData';
 import fetcher from '@utils/fetcher';
 import { PricingPageMeta } from '@utils/meta';
 import { PricingPageSEO } from '@utils/SEO';
@@ -81,7 +80,7 @@ export const pricing = ({ pricingData }: InferGetStaticPropsType<typeof getStati
         <Layout.Header />
         <Layout.Body>
           {/* <DynamicMindBlowingWithNoSSR /> */}
-          <Packages pricingData={staticPricingData || []} />
+          <Packages pricingData={pricingData || []} />
           <PackagesAdvantages />
           <PricingPageDescription />
           <PreFooter />

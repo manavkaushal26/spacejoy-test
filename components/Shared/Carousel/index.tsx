@@ -12,7 +12,7 @@ const SliderWrapper = styled.div`
 
 const settings = {
   initialSlide: 1,
-  lazyLoad: 'ondemand',
+  // lazyLoad: 'progressive',
   dots: false,
   infinite: true,
   speed: 500,
@@ -20,7 +20,7 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 1500,
   pauseOnHover: true,
-  mobileFirst: true,
+  // mobileFirst: true,
   accessibility: true,
   focusOnSelect: false,
   slidesToShow: 1,

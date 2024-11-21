@@ -11,7 +11,6 @@ import { blurredBgProduct, homePagePoster } from '@public/images/bg-base-64';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { cloudinary } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
-import { staticPricingData } from '@utils/constants/staticPricingData';
 import fetcher from '@utils/fetcher';
 import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import useWindowSize from '@utils/useWindowSize';
@@ -98,7 +97,7 @@ export const Home = ({ isMobile, pricingData }): JSX.Element => {
           <DynamicVideoGuide homePagePoster={homePagePoster} />
           <DynamicDesignerTeam isMobile={isMobile} />
           <div className="container px-4 mx-auto mt-16 mb-6 sm:mt-32 sm:mb-12">
-            <Pricing variant="new" data={staticPricingData || []} />
+            <Pricing variant="new" data={pricingData || []} />
             <div className="flex justify-center mt-6 text-center">
               <Link href="/pricing" passHref>
                 <button className="flex items-center px-6 py-3 text-white bg-gray-900 rounded-lg group">
