@@ -1,5 +1,6 @@
 import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
+import Compare from '@components/Shared/Compare';
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import { AnnotationIcon, StarIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
@@ -97,6 +98,7 @@ const TestimonialCard = ({ data }) => {
               'opacity-100 pointer-events-auto': coverImgType === 'after',
             })}
           />
+          {/* <Compare  /> */}
         </div>
         <div className="flex flex-col justify-center col-span-2 p-8 rounded-[1rem] shadow-md border border-gray-200">
           <div className="flex items-center space-x-0.5">

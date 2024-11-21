@@ -16,26 +16,29 @@ export const Hero = (props: Props) => {
       )}
       <MaxWidthContainer className="h-[750px] flex flex-col justify-center font-normal !py-0">
         <div className="w-[40%] space-y-4 text-zinc-800 bg-white bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 px-10 h-full flex flex-col justify-center">
-          <div className="text-xl">
+          <h1 className="text-6xl font-light">The home you&apos;ve always imagined starts here</h1>
+          <div className="text-2xl">
             Design Your{' '}
             <FlipWords
               words={["Kid's Room", 'Entryway', 'Dining Room', 'Home Office', 'Bedroom', 'Living Room', 'Imagination']}
               className="font-semibold text-spj-red"
             />
           </div>
-          <h1 className="text-6xl font-light">The home you&apos;ve always imagined starts here</h1>
-          <p className="text-xl">
+          {/* <p className="text-xl">
             Shop your custom-designed room with picks from top brands and budget-friendly finds.
-          </p>
+          </p> */}
           <div className="flex items-center pt-4 space-x-4">
             <ShinyButton href="https://designs.spacejoy.com/new-project" target="_blank" showRing={false}>
-              Start Your Project
+              Let&apos; Design Your Room
             </ShinyButton>
             <Link href="/interior-designs" passHref>
-              <a className={buttonVariants({ variant: 'outline', className: 'text-black' })}>Explore Designs</a>
+              <a className={buttonVariants({ variant: 'outline', className: 'text-black' })}>Meet Our Designers</a>
             </Link>
           </div>
-          <p className="flex items-center gap-2">200,000+ beautiful rooms designed and delivered since 2019.</p>
+          <p className="flex items-center gap-1">
+            <span className="font-semibold text-spj-red">200,000+</span> beautiful rooms designed and delivered{' '}
+            <span className="font-semibold text-spj-red">since 2019</span>
+          </p>
         </div>
       </MaxWidthContainer>
     </div>

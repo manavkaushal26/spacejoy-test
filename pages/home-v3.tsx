@@ -26,7 +26,7 @@ const HomeV3 = (props: Props) => {
           <BrandLogosCloud />
           <BannersBentoGrid />
         </MaxWidthContainer>
-        <OurServices type="grid" />
+        <OurServices type="carousel" />
         <Video />
         <MaxWidthContainer>
           <Pricing />

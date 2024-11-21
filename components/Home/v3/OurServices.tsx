@@ -2,7 +2,7 @@ import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline';
-import { LightningBoltIcon, QuestionMarkCircleIcon } from '@heroicons/react/solid';
+import { LightningBoltIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
 import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
 import { ourServicesData } from '@utils/Mocks/home-v3/Services';
@@ -103,8 +103,8 @@ const OurServices = ({ type = 'carousel' }: Props) => {
         <SectionHeading
           // preText="Work Procedure"
           preText={
-            <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-violet-100 to-violet-300 w-fit">
-              <LightningBoltIcon className="w-8 h-8 text-violet-500" />
+            <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-rose-100 to-rose-300 w-fit">
+              <LightningBoltIcon className="w-8 h-8 text-rose-500" />
             </div>
           }
           title="How Our Service Works"
@@ -177,23 +177,28 @@ const OurServices = ({ type = 'carousel' }: Props) => {
           </BaseCard>
         )}
         {type === 'grid' && (
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+          <div className="relative z-10 grid grid-cols-1 shadow-md md:grid-cols-2 lg:grid-cols-4 rounded-[1rem] overflow-hidden">
             {ourServicesData.map((service, index) => (
               <div
                 key={service.title}
                 className={classNames(
-                  'flex flex-col lg:border-r py-10 relative group',
+                  'flex flex-col lg:border-r py-10 relative group bg-white ',
                   (index === 0 || index === 4) && 'lg:border-l',
                   index < 4 && 'lg:border-b'
                 )}
               >
-                {index < 4 && (
+                {/* {index < 4 && (
                   <div className="absolute inset-0 w-full h-full transition duration-200 opacity-0 pointer-events-none group-hover:opacity-100 bg-gradient-to-t from-spj-red/5 to-transparent -z-[1]" />
                 )}
                 {index >= 4 && (
                   <div className="absolute inset-0 w-full h-full transition duration-200 opacity-0 pointer-events-none group-hover:opacity-100 bg-gradient-to-b from-spj-red/5 to-transparent -z-[1]" />
-                )}
-                <div className="relative z-10 px-10 mb-4 text-zinc-500">{index + 1}</div>
+                )} */}
+                <div className="z-10 flex items-center justify-center w-10 h-10 mb-4 ml-10 text-xl font-bold text-white transition-all duration-200 rounded-md bg-gradient-to-br from-spj-red/95 to-spj-yellow/95 group-hover:rounded-xl">
+                  {index + 1}
+                </div>
+                {/* <div className="absolute z-10 px-10 mb-4 font-bold transform -translate-y-1/2 pointer-events-none top-1/2 text-[8rem] right-4 text-zinc-100/50 group-hover:text-spj-red/10 transition-all duration-200">
+                  {index + 1}
+                </div> */}
                 <div className="relative z-10 px-10 mb-2 text-xl font-semibold">
                   <div className="absolute inset-y-0 left-0 w-1 h-6 transition-all duration-200 origin-center rounded-tr-full rounded-br-full group-hover:h-8 bg-zinc-300 group-hover:bg-spj-red" />
                   <span className="inline-block transition duration-200 group-hover:translate-x-2">
