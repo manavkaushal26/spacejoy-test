@@ -37,7 +37,7 @@ export const Hero = (props: Props) => {
           </div>
           <p className="flex items-center gap-1">
             <span className="font-semibold text-spj-red">200,000+</span> beautiful rooms designed and delivered{' '}
-            <span className="font-semibold text-spj-red">since 2019</span>
+            <span className="font-semibold text-spj-red">since 2019!</span>
           </p>
         </div>
       </MaxWidthContainer>

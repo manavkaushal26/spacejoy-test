@@ -1,6 +1,5 @@
 import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
-import Compare from '@components/Shared/Compare';
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import { AnnotationIcon, StarIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
@@ -36,6 +35,7 @@ const Testimonials = (props: Props) => {
             autoplaySpeed={5000}
             pauseOnHover
             pauseOnDotsHover
+            infinite
             responsive={
               {
                 // dots: true,
@@ -90,7 +90,7 @@ const TestimonialCard = ({ data }) => {
             })}
           />
           <Image
-            src={`${cloudinary.baseDeliveryURL}/${data?.after.img}`}
+            src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_890/${data?.after.img}`}
             alt={data?.after?.alt}
             layout="fill"
             objectFit="cover"
@@ -114,13 +114,12 @@ const TestimonialCard = ({ data }) => {
             <div className="relative w-16 h-16 rounded-full">
               <Image
                 className="inline-block rounded-full"
-                src={`${cloudinary.baseDeliveryURL}/${data?.dp}`}
+                src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_100/${data?.dp}`}
                 alt={data.name}
                 layout="fill"
                 objectFit="cover"
               />
             </div>
-
             <div className="flex-col items-center p-2">
               <p className="font-bold">{data?.name}</p>
               <p className="text-zinc-500">{data?.address}</p>
