@@ -1,24 +1,25 @@
-import { Icons } from "react-toastify";
-
-const data = [
+const designTeamData = [
   {
+    id: 1,
     firstName: 'Heather',
     lastName: 'Wise',
     icon: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
     isReversed: true,
     bg: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
-    desc: 'Heather hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Heather loves mid-century modern, boho and eclectic spaces. ',
+    desc: 'Heather hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Heather loves mid-century modern, boho and eclectic spaces.',
   },
 
   {
+    id: 2,
     firstName: 'Maria',
     lastName: 'Castillero',
     icon: 'v1611748547/web/designTime/17-Maria_Castillero_rwxyow.png',
     isReversed: false,
     bg: '/v1643954944/web/homepage-v3/designers/Maria_Castillero_gvfx2f.png',
-    desc: 'Originally from Mexico, Maria goal is to transform spaces into beautiful rooms where people feel joy. Her design aesthetic is clean lines, neutral tones, pops of color and lots of plants. She has a deep appreciation for modern eclectic and mid-century minimalist deisgns. ',
+    desc: 'Originally from Mexico, Maria goal is to transform spaces into beautiful rooms where people feel joy. Her design aesthetic is clean lines, neutral tones, pops of color and lots of plants. She has a deep appreciation for modern eclectic and mid-century minimalist deisgns.',
   },
   {
+    id: 3,
     firstName: 'Angela',
     lastName: 'Amore',
     icon: 'v1611748547/web/designTime/19-Angela_Amore_qhdr33.png',
@@ -26,37 +27,46 @@ const data = [
     bg: '/v1643954978/web/homepage-v3/designers/Angela_Amore_2_yyfnqa.jpg',
     desc: 'Angela Amore is an interior designer specializing in modern and eclectic designs. She derives her inspiration from nature, unique accent pieces, and the streamline edges of modern furniture. Angela strives to bring in a fiercely fresh quality to each room she designs to create a personalized and functional design.',
   },
-
   {
-    firstName: 'Tina ',
-    lastName: 'Martindelcampo',
+    id: 4,
+    firstName: 'Tina',
+    lastName: 'Martidelcampo',
     icon: 'v1719911529/web/avatars/Tina_nqakxg.jpg',
     bg: '/v1719911529/web/avatars/Tina_nqakxg.jpg',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
   },
   {
-    firstName: ' Christina',
-    lastName: ' Manzo',
+    id: 5,
+    firstName: 'Christina',
+    lastName: 'Manzo',
     icon: 'v1719911676/web/avatars/Christina_sfm20t.jpg',
     bg: '/v1719911676/web/avatars/Christina_sfm20t.jpg',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
   },
   {
+    id: 6,
     firstName: 'Hannah',
-    lastName: 'James ',
+    lastName: 'James',
     icon: '/v1719911755/web/avatars/Hannah_slochz.png',
     bg: '/v1719911755/web/avatars/Hannah_slochz.png',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
   },
   {
-    firstName: 'Kaitlyn ',
-    lastName: 'Zill ',
+    id: 7,
+    firstName: 'Kaitlyn',
+    lastName: 'Zill',
     icon: 'v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
     bg: '/v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
   },
   {
+    id: 8,
     firstName: 'Sarah',
     lastName: 'Nelson',
     icon: 'v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
     bg: '/v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
   },
 ];
 
-export default data;
+export default designTeamData;

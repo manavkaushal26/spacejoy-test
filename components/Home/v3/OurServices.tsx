@@ -15,7 +15,7 @@ import styled from 'styled-components';
 
 type Props = { type: 'carousel' | 'grid' };
 
-const SampleImageStyled = styled.div`
+export const SampleImageStyled = styled.div`
   position: relative;
   /* height: 400px; */
   margin-bottom: 2rem;
@@ -27,7 +27,7 @@ const SampleImageStyled = styled.div`
   }
 `;
 
-const ImageWrapperStyled = styled.div`
+export const ImageWrapperStyled = styled.div`
   position: absolute;
   top: -6rem;
   right: 0.5rem;

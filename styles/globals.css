@@ -320,3 +320,7 @@ footer li a {
 .help-section a {
   color: #f5296e !important;
 }
+
+.slick-cloned {
+  pointer-events: none;
+}

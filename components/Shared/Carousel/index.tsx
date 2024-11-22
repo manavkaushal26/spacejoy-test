@@ -13,7 +13,6 @@ const SliderWrapper = styled.div`
 const settings = {
   initialSlide: 1,
   // lazyLoad: 'ondemand',
-  dots: false,
   infinite: true,
   speed: 500,
   slidesToScroll: 4,
@@ -48,6 +47,8 @@ interface CarouselInterface {
   customButtons: boolean;
   slidesToShow?: number;
   buttons?: boolean;
+  fade?: boolean;
+  dots?: boolean;
 }
 
 const Carousel: React.FC<CarouselInterface> = ({
@@ -58,6 +59,8 @@ const Carousel: React.FC<CarouselInterface> = ({
   slidesToShow = 1,
   customButtons,
   buttons = false,
+  fade = false,
+  dots = false,
 }) => {
   const sliderRef = useRef<Slider>(null);
 
@@ -89,7 +92,7 @@ const Carousel: React.FC<CarouselInterface> = ({
       </Head>
       <div className="relative">
         {position === 'top' && customButtons && renderTopButtons()}
-        <SliderWrapper className="overflow-hidden">
+        <SliderWrapper className="">
           <Slider
             {...settings}
             arrows={!customButtons && buttons}
@@ -97,6 +100,7 @@ const Carousel: React.FC<CarouselInterface> = ({
             centerPadding={centerPadding}
             slidesToShow={slidesToShow}
             slidesToScroll={slidesToShow}
+            fade={fade}
             ref={sliderRef}
           >
             {children}

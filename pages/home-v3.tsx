@@ -1,6 +1,7 @@
 import BannersBentoGrid from '@components/Home/v3/BannersBentoGrid';
 import BeautifulSpaces from '@components/Home/v3/BeautifulSpaces';
 import BrandLogosCloud from '@components/Home/v3/BrandLogosCloud';
+import Designers from '@components/Home/v3/Designers';
 import { Hero } from '@components/Home/v3/Hero';
 import LookBook from '@components/Home/v3/LookBook';
 import OurServices from '@components/Home/v3/OurServices';
@@ -40,6 +41,9 @@ const HomeV3 = (props: Props) => {
         </MaxWidthContainer>
         <BeautifulSpaces />
         <Shopping />
+        <MaxWidthContainer>
+          <Designers />
+        </MaxWidthContainer>
       </Layout.Body>
       <Layout.Footer />
     </Layout>

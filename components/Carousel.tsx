@@ -33,6 +33,7 @@ export default function Carousel({
   autoplay = false,
   autoplaySpeed = 2000,
   infinite = false,
+  fade = false,
   ...props
 }) {
   const [nav1, setNav1] = useState<any>();
@@ -64,11 +65,12 @@ export default function Carousel({
     dots: true,
     infinite: false,
     arrows: false,
+    fade: fade,
     dotsClass: 'custom-pagination',
     slidesToShow,
     className: 'with-space',
     mobileFirst: true,
-    autoplay: autoplay,
+    autoplay: false,
     autoplaySpeed: autoplaySpeed,
     responsive: [
       {
@@ -107,12 +109,18 @@ export default function Carousel({
           {imageCount > 1 && arrows === true ? renderArrows() : null}
           {withLightBox ? (
             <SRLWrapper {...lightBoxOptions}>
-              <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings}>
+              <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings} accessibility={false}>
                 {children}
               </Slider>
             </SRLWrapper>
           ) : (
-            <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...mainSliderSettings} infinite={infinite}>
+            <Slider
+              asNavFor={nav2}
+              ref={(slider1) => setNav1(slider1)}
+              {...mainSliderSettings}
+              infinite={infinite}
+              accessibility={false}
+            >
               {children}
             </Slider>
           )}

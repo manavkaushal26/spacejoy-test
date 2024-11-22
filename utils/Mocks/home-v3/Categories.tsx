@@ -8,7 +8,7 @@ const categoriesData = {
         'listen hurried independent control truck beautiful hole adjective naturally third brush send combine want contain cut cool purple team planning am origin sang toward',
       url: 'http://cinji.km/onep',
       imageUrl: 'https://placehold.co/500x500',
-      imgAspectRatio: 'aspect-[1]', // aspect-[1]
+      imgAspectRatio: 'aspect-[1]',
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ const categoriesData = {
         'root fell cell clothes her raise active per attack author plane children blew loose moment exist eaten whenever earn pond greater establish exchange whatever',
       url: 'http://ravzuwep.nu/imta',
       imageUrl: 'https://placehold.co/500x550',
-      imgAspectRatio: 'aspect-[1/1.15]', // aspect-[1/1.15]
+      imgAspectRatio: 'aspect-[1/1.15]',
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const categoriesData = {
         'thin affect exercise job happen factory necessary think glass ruler raise transportation stomach sand wooden dress police driving pan against aloud office can person',
       url: 'http://ipu.il/geno',
       imageUrl: 'https://placehold.co/500x600',
-      imgAspectRatio: 'aspect-[1/1.3]', // aspect-[1/1.3]
+      imgAspectRatio: 'aspect-[1/1.3]',
     },
     {
       id: 4,
@@ -38,7 +38,7 @@ const categoriesData = {
         'running feathers horn herself settlers opportunity printed liquid wooden machinery writing stepped trick wonder active flower seed greater kitchen metal modern nuts honor various',
       url: 'http://gigtor.hm/hijsuk',
       imageUrl: 'https://placehold.co/500x500',
-      imgAspectRatio: 'aspect-[1]', // aspect-[1]
+      imgAspectRatio: 'aspect-[1]',
     },
   ],
   Category2: [
