@@ -37,9 +37,9 @@ const HomeV3 = (props: Props) => {
         <MaxWidthContainer className="pt-0">
           <Testimonials />
         </MaxWidthContainer>
-        <MaxWidthContainer className="pt-0">
+        
           <BeautifulSpaces />
-        </MaxWidthContainer>
+       
       </Layout.Body>
       <Layout.Footer />
     </Layout>
