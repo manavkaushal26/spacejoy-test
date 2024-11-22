@@ -5,6 +5,7 @@ import { Hero } from '@components/Home/v3/Hero';
 import LookBook from '@components/Home/v3/LookBook';
 import OurServices from '@components/Home/v3/OurServices';
 import Pricing from '@components/Home/v3/Pricing';
+import Shopping from '@components/Home/v3/Shopping';
 import Testimonials from '@components/Home/v3/Testimonials';
 import Video from '@components/Home/v3/Video';
 import Layout from '@components/Shared/Layout';
@@ -38,6 +39,7 @@ const HomeV3 = (props: Props) => {
           <Testimonials />
         </MaxWidthContainer>
         <BeautifulSpaces />
+        <Shopping />
       </Layout.Body>
       <Layout.Footer />
     </Layout>

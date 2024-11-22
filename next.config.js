@@ -147,6 +147,7 @@ module.exports = withPWA({
       'secure.img1-fg.wfcdn.com',
       'i.pinimg.com',
       'ik.imagekit.io',
+      'placehold.co',
     ],
   },
   pwa: {

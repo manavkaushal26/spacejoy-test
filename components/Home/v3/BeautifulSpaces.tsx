@@ -12,7 +12,7 @@ const BeautifulSpaces = (props: Props) => {
   return (
     <>
       <div>
-        <MaxWidthContainer className="pt-0">
+        <MaxWidthContainer>
           <SectionHeading
             preText={
               <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-orange-100 to-orange-300 w-fit">
@@ -22,8 +22,9 @@ const BeautifulSpaces = (props: Props) => {
             title="Beautiful spaces await you"
             subTitle="From a corner to a whole room, see how our customers are transforming their homes"
             center
+            noMargin
           />
-          <div className="grid grid-cols-3 grid-rows-5 gap-4">
+          <div className="grid grid-cols-3 grid-rows-5 gap-4 mt-10">
             <div className="row-span-2">
               <ImageCard
                 imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
