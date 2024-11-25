@@ -26,6 +26,7 @@ module.exports = {
         'cyber-monday-design':
           'url(https://res.cloudinary.com/spacejoy/image/upload/v1733147319/spj-v2/cyber-monday-sale/DElight_2_em6y3k.png)',
         hero: "url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1732167271/spj-v2/home-v3/hero_bg_10_zzhnxi.webp')",
+        hero: "url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732521852/spj-v2/home-v3/hero_bg_zab1qe.webp')",
       },
       borderWidth: ['last', 'first'],
       colors: {
