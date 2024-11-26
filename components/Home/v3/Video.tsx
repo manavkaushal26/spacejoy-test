@@ -46,10 +46,10 @@ const Video = () => {
           subTitle="We handle the hard work so you can enjoy the process"
           center
         />
-        <div id="video_container" className="relative mx-auto w-[75%] rounded-2xl shadow-md">
+        <div id="video_container" className="relative mx-auto w-full sm:w-[75%] rounded-2xl shadow-md">
           {/* Design elements */}
-          <div className="bg-[url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_412/v1732126047/spj-v2/home-v3/video_container_design_element_1_1_ufbhtr.webp')] bg-center bg-no-repeat bg-contain w-64 aspect-[3/2] absolute -right-10 -top-28 -z-[1]" />
-          <div className="bg-[url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_208/v1732126808/spj-v2/home-v3/video_container_design_element_2_v78zim.webp')] bg-center bg-no-repeat bg-contain w-32 aspect-[3/2] absolute -left-20 top-[75%] rotate-[10deg] -z-[1]" />
+          <div className="bg-[url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_412/v1732126047/spj-v2/home-v3/video_container_design_element_1_1_ufbhtr.webp')] bg-center bg-no-repeat bg-contain w-24 sm:w-64 aspect-[3/2] absolute right-0 md:-right-10 -top-[20%] -z-[1]" />
+          <div className="bg-[url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_208/v1732126808/spj-v2/home-v3/video_container_design_element_2_v78zim.webp')] bg-center bg-no-repeat bg-contain w-20 sm:w-32 aspect-[3/2] absolute -left-20 top-[75%] rotate-[10deg] -z-[1]" />
 
           <video
             ref={videoRef}
@@ -71,7 +71,7 @@ const Video = () => {
             className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
             onClick={togglePlayback}
           >
-            <div className="relative flex items-center justify-center w-24 h-24 overflow-hidden rounded-full group">
+            <div className="relative flex items-center justify-center w-12 h-12 overflow-hidden rounded-full sm:w-16 md:w-20 md:h-20 sm:h-16 lg:w-24 lg:h-24 group">
               <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-br from-spj-red to-spj-yellow group-hover:-rotate-180" />
               <Icons.playIcon className="z-10" />
             </div>

@@ -17,20 +17,20 @@ type Props = { type: 'carousel' | 'grid' };
 
 export const SampleImageStyled = styled.div`
   position: relative;
-  /* height: 400px; */
   margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media (max-width: 576px) {
-    height: 250px;
+  /* @media (max-width: 576px) {
+    height: 200px;
   }
+  @media (max-width: 576px) {
+    height: 200px;
+  } */
 `;
 
 export const ImageWrapperStyled = styled.div`
   position: absolute;
-  top: -6rem;
-  right: 0.5rem;
+  /* right: 2.5rem; */
+  width: 100%;
+  height: 100%;
   transition: opacity 0.25s ease-in-out, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   img {
     max-width: 100%;
@@ -63,7 +63,7 @@ const OurServices = ({ type = 'carousel' }: Props) => {
   const settings = {
     dots: true,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     speed: 500,
     slidesToShow: 1,
@@ -84,8 +84,8 @@ const OurServices = ({ type = 'carousel' }: Props) => {
         viewBox="0 0 2560 625"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 -z-10 -top-64"
-        style={{ height: '1500px' }}
+        className="absolute inset-0 -z-10 sm:-top-64 sm:h-[1500px] -top-[65%] h-[2500px]"
+        // style={{ height: '1500px' }}
       >
         <defs>
           {/* <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
@@ -112,9 +112,30 @@ const OurServices = ({ type = 'carousel' }: Props) => {
           center
         />
         {type === 'carousel' && (
-          <BaseCard className="sm:px-8 sm:py-12" containerClassName="mt-20 overflow-visible">
-            <div className="grid grid-cols-1 gap-32 md:grid-cols-3">
-              <div className="md:col-span-2 slider-container">
+          <BaseCard className="px-4 py-8 sm:px-8 sm:py-12" containerClassName="mt-20 overflow-visible">
+            {/* <div className="block lg:hidden">
+              <SampleImageStyled className="h-[200px] sm:h-[350px]">
+                {ourServicesData.map((service, i) => (
+                  <ImageWrapperStyled
+                    key={`image-${service.id}`}
+                    className={currentIndex && currentIndex === service.id ? 'active' : 'inactive'}
+                  >
+                    <div className="relative w-full mx-auto aspect-[1.85/1]">
+                      <Image
+                        src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_900/${service.imgSrc}`}
+                        alt={service.title}
+                        className="object-contain"
+                        layout="fill"
+                      />
+                    </div>
+                  </ImageWrapperStyled>
+                ))}
+              </SampleImageStyled>
+            </div> */}
+
+            {/* Slider Section */}
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-40">
+              <div className="order-2 -mt-16 sm:mt-0 lg:order-1 lg:col-span-2 slider-container">
                 <Slider
                   ref={(slider) => {
                     sliderRef.current = slider;
@@ -123,19 +144,19 @@ const OurServices = ({ type = 'carousel' }: Props) => {
                 >
                   {ourServicesData.map((service) => (
                     <div key={service.id} className="relative">
-                      <div className="flex items-start space-x-4">
+                      <div className="flex flex-col items-start space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                         <div
                           className={classNames(
-                            'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-4xl text-spj-red'
+                            'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-3xl md:text-4xl text-spj-red'
                           )}
                         >
                           {service.id}
                         </div>
                         <div>
-                          <h3 className="text-2xl font-semibold text-spj-red">{service.title}</h3>
-                          <p className="text-gray-500">{service.subTitle}</p>
+                          <h3 className="text-xl font-semibold md:text-2xl text-spj-red">{service.title}</h3>
+                          <p className="text-sm text-gray-500 md:text-base">{service.subTitle}</p>
                           <div
-                            className="w-full max-w-3xl mt-2 text-base"
+                            className="w-full max-w-full mt-4 text-sm md:max-w-3xl md:text-base"
                             dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(service.description) }}
                           />
                         </div>
@@ -143,25 +164,30 @@ const OurServices = ({ type = 'carousel' }: Props) => {
                     </div>
                   ))}
                 </Slider>
-                <div className="flex items-center pl-20 mt-10 space-x-4">
+                <div className="flex items-center justify-center pl-0 mt-6 space-x-4 md:justify-start md:pl-20 md:mt-10">
                   <ArrowLeftIcon
-                    className="w-8 h-8 transition-all duration-200 cursor-pointer hover:text-spj-red"
+                    className="w-6 h-6 transition-all duration-200 cursor-pointer md:w-8 md:h-8 hover:text-spj-red"
                     onClick={previous}
                   />
                   <ArrowRightIcon
-                    className="w-8 h-8 transition-all duration-200 cursor-pointer hover:text-spj-red"
+                    className="w-6 h-6 transition-all duration-200 cursor-pointer md:w-8 md:h-8 hover:text-spj-red"
                     onClick={next}
                   />
                 </div>
               </div>
-              <div>
-                <SampleImageStyled>
+
+              {/* Image Section */}
+              <div className="order-1 lg:justify-center lg:flex lg:order-2">
+                <SampleImageStyled className="h-[200px]">
                   {ourServicesData.map((service, i) => (
                     <ImageWrapperStyled
                       key={`image-${service.id}`}
-                      className={currentIndex && currentIndex === service.id ? 'active' : 'inactive'}
+                      className={classNames(
+                        currentIndex && currentIndex === service.id ? 'active' : 'inactive',
+                        'lg:right-64 lg:-top-16'
+                      )}
                     >
-                      <div className="relative w-[500px] aspect-[1.85/1]">
+                      <div className="relative w-full max-w-xs sm:max-w-md md:w-[600px] mx-auto aspect-[1.85/1]">
                         <Image
                           src={`${cloudinary.baseDeliveryURL}/c_scale,q_100,w_900/${service.imgSrc}`}
                           alt={service.title}

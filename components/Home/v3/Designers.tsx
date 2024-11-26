@@ -46,7 +46,19 @@ const Designers = (props: Props) => {
           >
             {designTeamData.map((d) => (
               <div key={`${d.firstName}-${d.lastName}`} className="pb-4 cursor-default pointer-events-auto">
-                <div className="grid grid-cols-3 gap-8 p-6">
+                <div className="grid grid-cols-1 p-6 gap-y-8 md:gap-8 md:grid-cols-3">
+                  <div className="w-full md:w-[80%] mr-auto col-span-1 relative aspect-[1/1.25] rounded-3xl shadow-lg">
+                    <Image
+                      src={cloudinary.baseDeliveryURL + '/fl_lossy,q_auto,w_785/' + d.bg}
+                      alt={d.firstName + ' ' + d.lastName}
+                      layout="fill"
+                      objectFit="cover"
+                      className="object-top rounded-3xl"
+                      priority
+                    />
+                    <div className="absolute bottom-1/2 left-1/2 rounded-tr-[1.9rem] rounded-tl-md rounded-br-md bg-gradient-to-br from-spj-red to-spj-yellow -z-[1] -top-2 -right-2" />
+                    <div className="absolute top-1/2 right-1/2 rounded-bl-[1.9rem] rounded-tl-md rounded-br-md bg-gradient-to-br from-spj-red to-spj-yellow -z-[1] -bottom-2 -left-2" />
+                  </div>
                   <div className="flex flex-col items-start justify-center col-span-2 space-y-6">
                     <div className="flex flex-col items-start justify-center">
                       <span className="text-base text-zinc-500">Meet</span>
@@ -64,18 +76,7 @@ const Designers = (props: Props) => {
                       </ShinyButton>
                     </div>
                   </div>
-                  <div className="w-[80%] ml-auto col-span-1 relative aspect-[1/1.25] rounded-3xl shadow-lg">
-                    <Image
-                      src={cloudinary.baseDeliveryURL + '/fl_lossy,q_auto,w_785/' + d.bg}
-                      alt={d.firstName + ' ' + d.lastName}
-                      layout="fill"
-                      objectFit="cover"
-                      className="object-top rounded-3xl"
-                      priority
-                    />
-                    <div className="absolute bottom-1/2 left-1/2 rounded-tr-[1.9rem] rounded-tl-md rounded-br-md bg-gradient-to-br from-spj-red to-spj-yellow -z-[1] -top-2 -right-2" />
-                    <div className="absolute top-1/2 right-1/2 rounded-bl-[1.9rem] rounded-tl-md rounded-br-md bg-gradient-to-br from-spj-red to-spj-yellow -z-[1] -bottom-2 -left-2" />
-                  </div>
+                  
                 </div>
               </div>
             ))}

@@ -60,11 +60,12 @@ const TestimonialCard = ({ data }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 pb-2 cursor-default lg:grid-cols-5">
-        <div className="relative col-span-3 shadow-md p-golden-ratio rounded-[1rem] overflow-hidden">
-          <div className="absolute z-10 top-4 left-4">
+      <div className="grid grid-cols-1 pb-2 cursor-default lg:gap-4 lg:grid-cols-5">
+        {/* Image Section */}
+        <div className="relative col-span-1 lg:col-span-3 shadow-md p-golden-ratio rounded-t-[1rem] lg:rounded-[1rem] overflow-hidden">
+          <div className="absolute z-10 flex space-x-2 top-2 left-2 lg:top-4 lg:left-4">
             <button
-              className={`rounded-l-md text-sm px-4 py-1 ${
+              className={`rounded-l-md text-xs lg:text-sm px-2 lg:px-4 py-1 ${
                 coverImgType === 'before' ? 'bg-spj-red text-white font-semibold' : 'bg-white'
               }`}
               onClick={() => setType('before')}
@@ -72,7 +73,7 @@ const TestimonialCard = ({ data }) => {
               Before
             </button>
             <button
-              className={`rounded-r-md text-sm px-4 py-1 ${
+              className={`rounded-r-md text-xs lg:text-sm px-2 lg:px-4 py-1 ${
                 coverImgType === 'after' ? 'bg-spj-red text-white font-semibold' : 'bg-white'
               }`}
               onClick={() => setType('after')}
@@ -85,33 +86,40 @@ const TestimonialCard = ({ data }) => {
             alt={data?.before?.alt}
             layout="fill"
             objectFit="cover"
-            className={classNames('rounded-[1rem] opacity-0 transition-all duration-300 pointer-events-none', {
-              'opacity-100 pointer-events-auto': coverImgType === 'before',
-            })}
+            className={classNames(
+              'rounded-t-[1rem] lg:rounded-[1rem] opacity-0 transition-all duration-300 pointer-events-none',
+              {
+                'opacity-100 pointer-events-auto': coverImgType === 'before',
+              }
+            )}
           />
           <Image
             src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_890/${data?.after.img}`}
             alt={data?.after?.alt}
             layout="fill"
             objectFit="cover"
-            className={classNames('rounded-[1rem] opacity-0 transition-all duration-300 pointer-events-none', {
-              'opacity-100 pointer-events-auto': coverImgType === 'after',
-            })}
+            className={classNames(
+              'rounded-t-[1rem] lg:rounded-[1rem] opacity-0 transition-all duration-300 pointer-events-none',
+              {
+                'opacity-100 pointer-events-auto': coverImgType === 'after',
+              }
+            )}
           />
-          {/* <Compare  /> */}
         </div>
-        <div className="flex flex-col justify-center col-span-2 p-8 rounded-[1rem] shadow-md border border-gray-200">
+
+        {/* Content Section */}
+        <div className="flex flex-col justify-center col-span-1 lg:col-span-2 p-6 lg:p-8 rounded-b-[1rem] lg:rounded-[1rem] shadow-md border border-gray-200">
           <div className="flex items-center space-x-0.5">
-            <StarIcon className="w-6 h-6 text-yellow-500" />
-            <StarIcon className="w-6 h-6 text-yellow-500" />
-            <StarIcon className="w-6 h-6 text-yellow-500" />
-            <StarIcon className="w-6 h-6 text-yellow-500" />
-            <StarIcon className="w-6 h-6 text-yellow-500" />
+            {Array(5)
+              .fill(0)
+              .map((_, i) => (
+                <StarIcon key={i} className="w-4 h-4 text-yellow-500 lg:w-6 lg:h-6" />
+              ))}
           </div>
-          <p className="mt-4 text-3xl font-semibold">{data?.shortDescription}.</p>
-          <p className="mt-4 text-zinc-700">{data?.description}</p>
-          <div className="flex items-center justify-center mt-8 lg:justify-start">
-            <div className="relative w-16 h-16 rounded-full">
+          <p className="mt-4 text-lg font-semibold lg:text-3xl">{data?.shortDescription}.</p>
+          <p className="mt-4 text-sm lg:text-base text-zinc-700">{data?.description}</p>
+          <div className="flex items-center justify-start mt-6 lg:mt-8">
+            <div className="relative w-12 h-12 rounded-full lg:w-16 lg:h-16">
               <Image
                 className="inline-block rounded-full"
                 src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_100/${data?.dp}`}
@@ -120,16 +128,16 @@ const TestimonialCard = ({ data }) => {
                 objectFit="cover"
               />
             </div>
-            <div className="flex-col items-center p-2">
-              <p className="font-bold">{data?.name}</p>
-              <p className="text-zinc-500">{data?.address}</p>
+            <div className="flex flex-col pl-4">
+              <p className="text-sm font-bold lg:text-base">{data?.name}</p>
+              <p className="text-xs lg:text-sm text-zinc-500">{data?.address}</p>
             </div>
           </div>
-          <div className="mt-8">
+          <div className="mt-6 lg:mt-8">
             <Link href="/customer-stories" passHref>
               <a className="flex items-center space-x-2 underline transition-all duration-200 text-zinc-500 group">
-                <span>See more customer stories</span>
-                <ArrowNarrowRightIcon className="w-4 h-4 transition-all duration-200 transform group-hover:translate-x-1" />
+                <span className="text-sm lg:text-base">See more customer stories</span>
+                <ArrowNarrowRightIcon className="w-3 h-3 transition-all duration-200 transform lg:w-4 lg:h-4 group-hover:translate-x-1" />
               </a>
             </Link>
           </div>

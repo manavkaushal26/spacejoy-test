@@ -36,7 +36,7 @@ export const Hero = (props: Props) => {
               showRing={false}
               className="w-full xl:w-fit"
             >
-              Let&apos; Design Your Room
+              Design Your Room
             </ShinyButton>
             <Link href="/interior-designs" passHref>
               <a className={buttonVariants({ variant: 'outline', className: 'text-black w-full xl:w-fit' })}>

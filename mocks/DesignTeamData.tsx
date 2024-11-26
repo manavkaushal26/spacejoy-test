@@ -16,7 +16,7 @@ const designTeamData = [
     icon: 'v1611748547/web/designTime/17-Maria_Castillero_rwxyow.png',
     isReversed: false,
     bg: '/v1643954944/web/homepage-v3/designers/Maria_Castillero_gvfx2f.png',
-    desc: 'Originally from Mexico, Maria goal is to transform spaces into beautiful rooms where people feel joy. Her design aesthetic is clean lines, neutral tones, pops of color and lots of plants. She has a deep appreciation for modern eclectic and mid-century minimalist deisgns.',
+    desc: "Originally from Mexico, Maria's goal is to transform spaces into beautiful rooms where people feel joy. Her design aesthetic is clean lines, neutral tones, pops of color and lots of plants. She has a deep appreciation for modern eclectic and mid-century minimalist deisgns.",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const designTeamData = [
     lastName: 'Martidelcampo',
     icon: 'v1719911529/web/avatars/Tina_nqakxg.jpg',
     bg: '/v1719911529/web/avatars/Tina_nqakxg.jpg',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const designTeamData = [
     lastName: 'Manzo',
     icon: 'v1719911676/web/avatars/Christina_sfm20t.jpg',
     bg: '/v1719911676/web/avatars/Christina_sfm20t.jpg',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const designTeamData = [
     lastName: 'James',
     icon: '/v1719911755/web/avatars/Hannah_slochz.png',
     bg: '/v1719911755/web/avatars/Hannah_slochz.png',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ const designTeamData = [
     lastName: 'Zill',
     icon: 'v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
     bg: '/v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ const designTeamData = [
     lastName: 'Nelson',
     icon: 'v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
     bg: '/v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio, repudiandae repellat facilis veritatis explicabo deserunt iusto mollitia minus atque, ullam voluptate quibusdam reiciendis. Libero sint incidunt ipsam nobis.',
+    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
   },
 ];
 

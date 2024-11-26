@@ -27,11 +27,9 @@ type ImageWithDotsProps = {
 // bg-gradient-to-br from-spj-red to-spj-yellow
 
 const ImageWithDots: React.FC<ImageWithDotsProps> = ({ src, alt, width, height, dots, designData }) => {
-  const aspectRatio = width && height ? `width / height` : null;
-
   return (
-    <div className="relative w-full max-w-full group" style={{ aspectRatio: aspectRatio ? aspectRatio : '2.39/1' }}>
-      <Image src={src} alt={alt} layout="fill" objectFit="contain" className="rounded-md shadow-md" />
+    <div className="relative w-full max-w-full group aspect-[1/1.39] md:aspect-[2.39/1]">
+      <Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-md shadow-md" />
       {dots.map((dot, index) => (
         <div
           key={index}
@@ -43,12 +41,12 @@ const ImageWithDots: React.FC<ImageWithDotsProps> = ({ src, alt, width, height, 
           }}
         >
           <div className="relative w-6 h-6">
-            <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+            <div className="flex items-center justify-center w-full h-full bg-white rounded-full">
               <div className="w-3 h-3 rounded-full bg-spj-red" />
             </div>
           </div>
 
-          <span className="px-3 py-1 mt-2 text-sm font-semibold rounded-md shadow-md bg-white">{dot.label}</span>
+          <span className="px-3 py-1 mt-2 text-sm font-semibold bg-white rounded-md shadow-md">{dot.label}</span>
         </div>
       ))}
       <div className="absolute bottom-0 left-0 font-medium text-white leading-[1] bg-black rounded-tr-[2rem] bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 p-6 min-w-[38rem] max-w-[40rem] w-full">
@@ -59,7 +57,7 @@ const ImageWithDots: React.FC<ImageWithDotsProps> = ({ src, alt, width, height, 
             <ExternalLinkIcon className="w-5 h-5" />
           </a>
         </Link>
-        <p className="text-base opacity-80">{designData.description}</p>
+        <p className="max-w-[300px] text-base opacity-80 md:max-w-none">{designData.description}</p>
       </div>
     </div>
   );
