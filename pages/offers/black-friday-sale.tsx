@@ -1,6 +1,6 @@
-import { Brands } from '@components/BlackFridaySale/Brands';
 import { Offers } from '@components/BlackFridaySale/Offers';
 import { SalesBanner } from '@components/BlackFridaySale/SalesBanner';
+import Shopping from '@components/BlackFridaySale/Shopping';
 import { Showcase } from '@components/BlackFridaySale/Showcase';
 import MaxWidthContainer from '@components/MaxWidthContainer';
 import Layout from '@components/Shared/Layout';
@@ -25,9 +25,7 @@ const BlackFridaySalePage: React.FC = () => {
           <MaxWidthContainer>
             <Offers />
           </MaxWidthContainer>
-          <MaxWidthContainer>
-            <Brands />
-          </MaxWidthContainer>
+          <Shopping />
           <MaxWidthContainer>
             <Showcase />
           </MaxWidthContainer>

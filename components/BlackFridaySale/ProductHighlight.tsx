@@ -14,30 +14,30 @@ export const ProductHighlight = () => {
         <div>
           <h2 className="mb-2 text-2xl font-bold sm:text-3xl">DELIGHT</h2>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Price: <span className="text-gray-200 line-through">$199</span>
+            Price: <span className="text-gray-200 line-through">$499</span>
           </p>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Deal Price: <span className="text-[#e6bc63]">$149</span>
+            Deal Price: <span className="text-[#e6bc63]">$299</span>
           </p>
         </div>
 
         <div>
           <h2 className="mb-2 text-2xl font-bold sm:text-3xl">BLISS</h2>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Price: <span className="text-gray-200 line-through">$299</span>
+            Price: <span className="text-gray-200 line-through">$699</span>
           </p>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Deal Price: <span className="text-[#e6bc63]">$229</span>
+            Deal Price: <span className="text-[#e6bc63]">$399</span>
           </p>
         </div>
 
         <div>
           <h2 className="mb-2 text-2xl font-bold sm:text-3xl">EUPHORIA</h2>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Price: <span className="text-gray-200 line-through">$399</span>
+            Price: <span className="text-gray-200 line-through">$999</span>
           </p>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Deal Price: <span className="text-[#e6bc63]">$299</span>
+            Deal Price: <span className="text-[#e6bc63]">$599</span>
           </p>
         </div>
 

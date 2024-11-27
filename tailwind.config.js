@@ -17,6 +17,8 @@ module.exports = {
         'hero-pattern': "url('/images/hero-pattern.png')",
         'card-texture': "url('https://res.cloudinary.com/spacejoy/image/upload/v1652948828/Mesh_Bg_asjn3i.png')",
         vector: "url('https://res.cloudinary.com/spacejoy/image/upload/v1653652981/Dotted_Vector_jcdmmi.svg')",
+        'black-friday':
+          "url('https://res.cloudinary.com/spacejoy/image/upload/v1732728783/spj-v2/strip_10_ijg5sr.webp')",
       },
       borderWidth: ['last', 'first'],
       colors: {
