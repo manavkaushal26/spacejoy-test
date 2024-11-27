@@ -4,7 +4,6 @@ import { SalesBanner } from '@components/BlackFridaySale/SalesBanner';
 import { Showcase } from '@components/BlackFridaySale/Showcase';
 import MaxWidthContainer from '@components/MaxWidthContainer';
 import Layout from '@components/Shared/Layout';
-import { company } from '@utils/config';
 import { BlackFridayPageMeta } from '@utils/meta';
 import Head from 'next/head';
 import React from 'react';
@@ -14,7 +13,7 @@ const BlackFridaySalePage: React.FC = () => {
     <>
       <Head>
         {BlackFridayPageMeta}
-        <title key="title">Explore Exclusive Black Friday Deals By {company.name}</title>
+        <title key="title">Black Friday Sale | Online Interior Design Service</title>
       </Head>
       <Layout>
         <Layout.Banner />

@@ -14,7 +14,7 @@ export const ProductHighlight = () => {
         <div>
           <h2 className="mb-2 text-2xl font-bold sm:text-3xl">DELIGHT</h2>
           <p className="text-xl font-semibold text-white sm:text-2xl">
-            Price: <span className="text-gray-200 line-through">$149</span>
+            Price: <span className="text-gray-200 line-through">$199</span>
           </p>
           <p className="text-xl font-semibold text-white sm:text-2xl">
             Deal Price: <span className="text-[#e6bc63]">$149</span>

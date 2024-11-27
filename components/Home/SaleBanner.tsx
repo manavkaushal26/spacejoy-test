@@ -10,7 +10,7 @@ const SaleBanner = ({ href, src }: Props) => {
   return (
     <div className="container px-4 mx-auto mt-16 mb-6 xl:px-20 sm:mt-40 sm:mb-12">
       <Link href={href} passHref>
-        <a target="_blank">
+        <a>
           <div className="relative w-full aspect-[14/2] shadow-md hover:shadow-lg">
             <Image src={src} alt="sale banner" layout="fill" objectFit="cover" className="rounded-lg" />
           </div>

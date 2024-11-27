@@ -37,9 +37,10 @@ const DynamicHomeGallery = dynamic(() => import('@components/Home/HomeGallery'),
 const DynamicHomeFAQs = dynamic(() => import('@components/Home/HomeFAQs'), { ssr: false });
 
 const saleBannerConfig = {
-  visible: false,
-  href: 'https://store.spacejoy.com',
-  src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1730305620/spj-v2/strip_8_nip0jq.png',
+  visible: true,
+  href: '/offers/black-friday-sale',
+  // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1730305620/spj-v2/strip_8_nip0jq.png',
+  src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1732726384/spj-v2/Black-Friday-sale/strip_10_y6gyho.png',
 };
 
 export const Home = ({ isMobile, pricingData }): JSX.Element => {
