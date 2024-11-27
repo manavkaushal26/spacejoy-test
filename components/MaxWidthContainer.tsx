@@ -16,7 +16,7 @@ const MaxWidthContainer = ({
 }: MaxWidthContainerProps) => {
   return (
     <Component
-      className={classNames('container px-4 pt-4 sm:pt-10 pb-10 mx-auto sm:pb-28 text-gray-700', className)}
+      className={classNames('container px-4 pb-20 mx-auto sm:pb-28 text-gray-700', className)}
       aria-label={ariaLabel}
     >
       {children}
