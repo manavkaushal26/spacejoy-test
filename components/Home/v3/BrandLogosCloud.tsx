@@ -55,7 +55,7 @@ const BrandLogosCloud = () => {
   };
 
   return (
-    <div className="bg-gray-500/5">
+    <div className="bg-gray-500/5 bg-pattern">
       <MaxWidthContainer className="!py-16">
         <p className="mb-10 text-base font-semibold text-center lg:text-xl lg:mx-auto">
           Trusted by the world&apos;s most innovative teams

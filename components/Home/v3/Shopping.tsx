@@ -107,8 +107,8 @@ const Shopping: React.FC<Props> = () => {
                       passHref
                     >
                       <a target="_blank" rel="noopener noreferrer">
-                        <div className="relative p-2 sm:p-3 rounded-lg md:rounded-[2rem] hover:bg-gray-100 h-fit transition-all duration-200 focus:outline-none cursor-pointer">
-                          <div className="relative w-full aspect-[1] rounded-xl md:rounded-[1.6rem] overflow-hidden shadow bg-rose-50 flex flex-col items-center justify-center font-semibold text-xs md:text-sm text-gray-500 text-center">
+                        <div className="relative p-2 sm:p-3 rounded-lg md:rounded-[2rem] hover:bg-gray-100/50 h-fit transition-all duration-200 focus:outline-none cursor-pointer ">
+                          <div className="relative w-full aspect-[1] rounded-xl md:rounded-[1.6rem] overflow-hidden shadow bg-rose-50 flex flex-col items-center justify-center font-semibold text-xs md:text-sm text-gray-500 text-center bg-pattern">
                             All Products Under
                             <span className="flex items-center space-x-2 text-xl capitalize md:text-4xl text-spj-red">
                               {tabKeys[idx]}
