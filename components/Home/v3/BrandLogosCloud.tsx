@@ -1,3 +1,4 @@
+import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import Image from 'next/image';
 import Slider from 'react-slick';
 
@@ -54,26 +55,26 @@ const BrandLogosCloud = () => {
   };
 
   return (
-    <>
-      <p className="mt-16 mb-8 text-base font-semibold text-center lg:text-xl lg:mx-auto">
-        Trusted by the world&apos;s most innovative teams
-      </p>
-      {/* <div className="grid items-center max-w-lg grid-cols-4 mx-auto mt-10 gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6"> */}
-
-      <Slider {...settings}>
-        {whiteLabelBrandLogos.map((logo) => (
-          <div key={logo.name} className="relative !block !w-[100px] md:!w-[130px] !mx-auto aspect-[2/1]">
-            <Image
-              src={'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_195' + logo.src}
-              alt={logo.name + '_logo'}
-              layout="fill"
-              objectFit="contain"
-              priority
-            />
-          </div>
-        ))}
-      </Slider>
-    </>
+    <div className="bg-gray-500/5">
+      <MaxWidthContainer className="!py-16">
+        <p className="mb-10 text-base font-semibold text-center lg:text-xl lg:mx-auto">
+          Trusted by the world&apos;s most innovative teams
+        </p>
+        <Slider {...settings}>
+          {whiteLabelBrandLogos.map((logo) => (
+            <div key={logo.name} className="relative !block !w-[100px] md:!w-[130px] !mx-auto aspect-[2/1]">
+              <Image
+                src={'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_195' + logo.src}
+                alt={logo.name + '_logo'}
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
+          ))}
+        </Slider>
+      </MaxWidthContainer>
+    </div>
   );
 };
 

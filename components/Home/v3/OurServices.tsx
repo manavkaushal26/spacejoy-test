@@ -112,7 +112,7 @@ const OurServices = ({ type = 'carousel' }: Props) => {
           center
         />
         {type === 'carousel' && (
-          <BaseCard className="px-4 py-8 sm:px-8 sm:py-12" containerClassName="mt-20 overflow-visible">
+          <BaseCard className="px-4 py-8 sm:px-8 sm:py-12" containerClassName="mt-10 overflow-visible">
             {/* <div className="block lg:hidden">
               <SampleImageStyled className="h-[200px] sm:h-[350px]">
                 {ourServicesData.map((service, i) => (
@@ -203,7 +203,7 @@ const OurServices = ({ type = 'carousel' }: Props) => {
           </BaseCard>
         )}
         {type === 'grid' && (
-          <div className="relative z-10 grid grid-cols-1 shadow-md md:grid-cols-2 lg:grid-cols-4 rounded-[1rem] overflow-hidden">
+          <div className="mt-10 relative z-10 grid grid-cols-1 shadow-md md:grid-cols-2 lg:grid-cols-4 rounded-[1rem] overflow-hidden">
             {ourServicesData.map((service, index) => (
               <div
                 key={service.title}

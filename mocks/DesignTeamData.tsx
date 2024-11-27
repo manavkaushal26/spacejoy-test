@@ -33,7 +33,7 @@ const designTeamData = [
     lastName: 'Martidelcampo',
     icon: 'v1719911529/web/avatars/Tina_nqakxg.jpg',
     bg: '/v1719911529/web/avatars/Tina_nqakxg.jpg',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
+    desc: 'Tina Martindelcampo has over 15 years of experience designing residential interiors in Los Angeles. She blends creativity, functionality, and inspiration from travel and nature to craft personalized spaces. Tina also restores vintage furniture, reviving heirloom pieces with the belief that they hold unique histories and personalities waiting to be rediscovered.',
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const designTeamData = [
     lastName: 'Manzo',
     icon: 'v1719911676/web/avatars/Christina_sfm20t.jpg',
     bg: '/v1719911676/web/avatars/Christina_sfm20t.jpg',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
+    desc: "Christina Manzo, an interior designer in Tampa, Florida, has 14 years of experience in high-end residential design. She blends personal touches and antique pieces with inspiration from her travels, creating sophisticated spaces. Christina’s designs reflect her passion for crafting beautiful, functional interiors that showcase her clients' personalities and lifestyles.",
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const designTeamData = [
     lastName: 'James',
     icon: '/v1719911755/web/avatars/Hannah_slochz.png',
     bg: '/v1719911755/web/avatars/Hannah_slochz.png',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
+    desc: 'My name is Hannah James and I have been in the interior design industry for 8 years with experience in all aspects of both residential and commercial design! My goal as a designer is to create timeless, functional, and beautiful spaces!',
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ const designTeamData = [
     lastName: 'Zill',
     icon: 'v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
     bg: '/v1720418096/web/avatars/Kaitlyn_Zill_1_pklmgp.png',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
+    desc: 'Kaitlyn Zill is a passionate interior designer and architecture enthusiast with a BFA in Interior Design and a minor in Architecture from SCAD. A former small business owner, she brings creativity and an entrepreneurial spirit to her work. Outside design, Kaitlyn enjoys gardening, crafting, and creating spaces that inspire and uplift.',
   },
   {
     id: 8,

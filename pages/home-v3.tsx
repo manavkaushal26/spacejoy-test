@@ -1,3 +1,4 @@
+import SpacejoyAdvantage from '@components/Home/SpacejoyAdvantage';
 import BannersBentoGrid from '@components/Home/v3/BannersBentoGrid';
 import BeautifulSpaces from '@components/Home/v3/BeautifulSpaces';
 import BrandLogosCloud from '@components/Home/v3/BrandLogosCloud';
@@ -25,7 +26,6 @@ const HomeV3 = (props: Props) => {
       <Layout.Body>
         <Hero />
         <MaxWidthContainer>
-          <BrandLogosCloud />
           <BannersBentoGrid />
         </MaxWidthContainer>
         <OurServices type="carousel" />
@@ -33,12 +33,14 @@ const HomeV3 = (props: Props) => {
         <MaxWidthContainer>
           <Pricing />
         </MaxWidthContainer>
-        <MaxWidthContainer className="pt-0">
+        <BrandLogosCloud />
+        <MaxWidthContainer>
           <LookBook />
         </MaxWidthContainer>
         <MaxWidthContainer className="pt-0">
           <Testimonials />
         </MaxWidthContainer>
+        <SpacejoyAdvantage />
         <BeautifulSpaces />
         <Shopping />
         <MaxWidthContainer>

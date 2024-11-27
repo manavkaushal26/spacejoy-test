@@ -22,7 +22,7 @@ const Designers = (props: Props) => {
         center
         noMargin
       />
-      <div className="pb-4 mx-auto mt-12 max-w-7xl">
+      <div className="pb-4 mx-auto mt-10 max-w-7xl">
         {
           <Slider
             imageCount={10}
@@ -76,7 +76,6 @@ const Designers = (props: Props) => {
                       </ShinyButton>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             ))}

@@ -21,7 +21,7 @@ const Pricing = (props: Props) => {
         subTitle="An investment in a home you’ll love for years to come"
         center
       />
-      <div className="w-full max-w-5xl mx-auto mt-12">
+      <div className="w-full max-w-5xl mx-auto mt-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {staticPricingData.map((item) => {
             const isBliss = item.name.toLowerCase() === 'bliss';

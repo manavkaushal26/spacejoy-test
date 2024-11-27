@@ -67,14 +67,13 @@
     "sharp": "^0.29.2",
     "simple-react-lightbox": "^3.6.9-0",
     "slick-carousel": "^1.8.1",
-    "tailwind-merge": "^2.5.4",
-    "use-image": "^1.0.8",
     "styled-components": "^5.3.3",
+    "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.0.8",
+    "use-image": "^1.0.8",
     "zustand": "^3.6.8"
   },
   "devDependencies": {
-    
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/line-clamp": "^0.3.0",

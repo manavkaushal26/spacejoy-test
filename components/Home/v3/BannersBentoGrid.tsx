@@ -5,7 +5,7 @@ const BannersBentoGrid = () => {
   return (
     <>
       <SectionHeading title="test" subTitle="test" center />
-      <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10 sm:mt-16">
+      <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10">
         <div className="h-[200px] col-span-4 lg:h-full">
           <div className="overflow-hidden rounded-lg max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full">

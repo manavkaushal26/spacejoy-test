@@ -14,7 +14,7 @@ export const Hero = (props: Props) => {
       {showSectionGradient && (
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       )}
-      <MaxWidthContainer className="h-[calc(100vh-200px)] md:h-[750px] flex flex-col justify-center font-normal !py-0">
+      <MaxWidthContainer className="h-[calc(100vh-175px)] flex flex-col justify-center font-normal !py-0">
         <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[40%] space-y-4 text-zinc-800 bg-white bg-clip-padding backdrop-filter backdrop-blur-lg md:backdrop-blur-sm bg-opacity-50 px-10 py-16 rounded-[1rem] md:rounded-none md:py-0 md:h-full flex flex-col justify-center">
           <h1 className="text-4xl font-light md:text-5xl lg:text-[3.3rem]">
             The home you&apos;ve always imagined starts here

@@ -1,9 +1,9 @@
 import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
+import Compare from '@components/Shared/Compare';
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import { AnnotationIcon, StarIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
-import { classNames } from '@utils/helpers';
 import { default as TestimonialsData } from '@utils/Mocks/HomeTestimonials';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -24,7 +24,7 @@ const Testimonials = (props: Props) => {
         subTitle="We'll take care of the heavy lifting so you can sit back and enjoy the compliments"
         center
       />
-      <div className="pb-4 mt-12">
+      <div className="pb-4 mt-10">
         {
           <Slider
             imageCount={10}
@@ -62,8 +62,8 @@ const TestimonialCard = ({ data }) => {
     <>
       <div className="grid grid-cols-1 pb-2 cursor-default lg:gap-4 lg:grid-cols-5">
         {/* Image Section */}
-        <div className="relative col-span-1 lg:col-span-3 shadow-md p-golden-ratio rounded-t-[1rem] lg:rounded-[1rem] overflow-hidden">
-          <div className="absolute z-10 flex space-x-2 top-2 left-2 lg:top-4 lg:left-4">
+        <div className="relative col-span-1 lg:col-span-3 shadow-md rounded-t-[1rem] lg:rounded-[1rem] overflow-hidden">
+          {/* <div className="absolute z-10 flex space-x-2 top-2 left-2 lg:top-4 lg:left-4">
             <button
               className={`rounded-l-md text-xs lg:text-sm px-2 lg:px-4 py-1 ${
                 coverImgType === 'before' ? 'bg-spj-red text-white font-semibold' : 'bg-white'
@@ -104,6 +104,15 @@ const TestimonialCard = ({ data }) => {
                 'opacity-100 pointer-events-auto': coverImgType === 'after',
               }
             )}
+          /> */}
+          <Compare
+            firstImage={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_890/${data?.before?.img}`}
+            secondImage={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_890/${data?.after.img}`}
+            firstImageClassName="object-cover object-left-top"
+            secondImageClassname="object-cover object-left-top"
+            className="w-full aspect-[1.65/1]"
+            slideMode="hover"
+            // autoplay={true}
           />
         </div>
 
