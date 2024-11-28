@@ -14,7 +14,7 @@ export const Offers = () => {
           <a target="_blank" className="col-span-3 overflow-hidden sm:col-span-1 rounded-xl">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/v1732688582/spj-v2/Black-Friday-sale/Shop_for_-3000_or_more_Get_20_off_your_cart_4_dbt4lp.png"
-              alt="Shop More"
+              alt="Exclusive Brands"
               width={600}
               height={350}
               objectFit="cover"
@@ -22,11 +22,11 @@ export const Offers = () => {
             />
           </a>
         </Link>
-        <Link href={newSpacejoyStoreUrl} passHref>
+        <Link href={newSpacejoyStoreUrl + '/collections/black-friday-doorbuster-deals-50-off-msrp'} passHref>
           <a target="_blank" className="col-span-3 overflow-hidden sm:col-span-1 rounded-xl">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/v1732688602/spj-v2/Black-Friday-sale/Shop_for_-3000_or_more_Get_20_off_your_cart_3_xsya8j.png"
-              alt="Exclusive Brands"
+              alt="Doorbusters"
               width={600}
               height={350}
               objectFit="cover"
@@ -38,7 +38,7 @@ export const Offers = () => {
           <a target="_blank" className="col-span-3 overflow-hidden sm:col-span-1 rounded-xl">
             <Image
               src="https://res.cloudinary.com/spacejoy/image/upload/v1732688570/spj-v2/Black-Friday-sale/Shop_for_-3000_or_more_Get_20_off_your_cart_zdxawu.png"
-              alt="Doorbusters"
+              alt="Shop More"
               width={600}
               height={350}
               objectFit="cover"

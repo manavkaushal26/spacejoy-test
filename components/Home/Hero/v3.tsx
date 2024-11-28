@@ -18,12 +18,12 @@ const bannerImages = [
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1732726357/spj-v2/Black-Friday-sale/website_20_ewcbpp.png',
     mobileSrc: '',
-    link: '',
+    link: '/offers/black-friday-sale',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1732726374/spj-v2/Black-Friday-sale/website_21_bnqpee.png',
     mobileSrc: '',
-    link: '',
+    link: '/offers/black-friday-sale',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
@@ -75,20 +75,14 @@ const V3 = ({ isMobile }) => {
             <div className="mt-10 ">
               <div className="rounded-md shadow">
                 <Link href={`/quiz/start-quiz`} passHref>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10"
-                  >
+                  <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10">
                     Start Your Project
                   </a>
                 </Link>
               </div>
               <div className="mt-4 rounded-md shadow ">
                 <Link href={`${oldSpacejoyUrl}/interior-designs`} passHref>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-gray-900 bg-white border border-transparent border-gray-900 rounded-md hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
-                  >
+                  <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-gray-900 bg-white border border-transparent border-gray-900 rounded-md hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
                     Explore Design Ideas
                   </a>
                 </Link>
@@ -109,7 +103,8 @@ const V3 = ({ isMobile }) => {
                 <div
                   key={idx}
                   onClick={() => {
-                    if (bannerImage.link) window.open(bannerImage.link, '_blank');
+                    if (bannerImage.link)
+                      window.open(bannerImage.link, bannerImage.link.includes('https') ? '_blank' : '_self');
                   }}
                 >
                   <Image
