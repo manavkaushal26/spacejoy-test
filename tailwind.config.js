@@ -32,6 +32,7 @@ module.exports = {
       colors: {
         'spj-red': '#F5296E',
         'spj-yellow': '#F39C12',
+        'spj-red-light': '#fff1f2',
       },
       shadows: {
         'spj-red': '0 2px 4px 0 #FFC6C6',

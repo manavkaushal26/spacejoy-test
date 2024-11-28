@@ -36,7 +36,7 @@ const Shopping: React.FC<Props> = () => {
 
   return (
     <div className="relative">
-      <MaxWidthContainer className="pt-0">
+      <MaxWidthContainer className="!pt-0">
         <SectionHeading
           preText={
             <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-purple-100 to-purple-300 w-fit">
@@ -46,6 +46,7 @@ const Shopping: React.FC<Props> = () => {
           title="Boutique, Budget and Big Brands. All under one roof."
           subTitle="Enjoy store credits with every design"
           center
+          noMargin
         />
         <div className="w-full mt-10" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <Tab.Group selectedIndex={currentIndex} onChange={setCurrentIndex}>

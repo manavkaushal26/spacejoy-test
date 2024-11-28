@@ -23,6 +23,7 @@ const LookBook = (props: Props) => {
         title="Spacejoy Curated Collections"
         subTitle="Draw inspiration from rooms designed for our happy customers"
         center
+        noMargin
       />
       <div className="w-full mt-10">
         <BaseCard className="!p-0" containerClassName="rounded-3xl" disabledHoverShadow>

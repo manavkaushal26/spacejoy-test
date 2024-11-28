@@ -25,9 +25,7 @@ const HomeV3 = (props: Props) => {
       <Layout.Header />
       <Layout.Body>
         <Hero />
-        <MaxWidthContainer>
-          <BannersBentoGrid />
-        </MaxWidthContainer>
+        <BannersBentoGrid />
         <OurServices type="carousel" />
         <Video />
         <MaxWidthContainer>
@@ -37,13 +35,13 @@ const HomeV3 = (props: Props) => {
         <MaxWidthContainer>
           <LookBook />
         </MaxWidthContainer>
-        <MaxWidthContainer className="pt-0">
+        <MaxWidthContainer className="!pt-0">
           <Testimonials />
         </MaxWidthContainer>
         <SpacejoyAdvantage />
         <BeautifulSpaces />
         <Shopping />
-        <MaxWidthContainer>
+        <MaxWidthContainer className="!pt-0">
           <Designers />
         </MaxWidthContainer>
       </Layout.Body>

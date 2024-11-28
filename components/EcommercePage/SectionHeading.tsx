@@ -16,7 +16,7 @@ const SectionHeading: React.FC<{
     >
       {preText && preComponent}
       <h2 className="text-3xl font-semibold capitalize lg:text-5xl">{title}</h2>
-      {subTitle && <p className="text-base text-zinc-500 lg:text-xl lg:mx-auto">{subTitle}</p>}
+      {subTitle && <p className="text-base text-zinc-700 lg:text-xl lg:mx-auto">{subTitle}</p>}
     </div>
   );
 };

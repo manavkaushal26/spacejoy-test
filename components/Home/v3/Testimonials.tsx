@@ -23,6 +23,7 @@ const Testimonials = (props: Props) => {
         title="Get raving reviews from customers"
         subTitle="We'll take care of the heavy lifting so you can sit back and enjoy the compliments"
         center
+        noMargin
       />
       <div className="pb-4 mt-10">
         {

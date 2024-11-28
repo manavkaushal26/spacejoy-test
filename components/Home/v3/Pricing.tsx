@@ -20,6 +20,7 @@ const Pricing = (props: Props) => {
         title="Transparent Pricing"
         subTitle="An investment in a home you’ll love for years to come"
         center
+        noMargin
       />
       <div className="w-full max-w-5xl mx-auto mt-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

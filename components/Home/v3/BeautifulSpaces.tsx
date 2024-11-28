@@ -22,6 +22,7 @@ const BeautifulSpaces = (props: Props) => {
             title="Beautiful spaces await you"
             subTitle="From a corner to a whole room, see how our customers are transforming their homes"
             center
+            noMargin
           />
           <div className="grid grid-cols-2 grid-rows-5 gap-2 mt-10 lg:gap-4 lg:grid-cols-3">
             <div className="row-span-2">
