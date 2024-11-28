@@ -93,13 +93,11 @@ const Compare = ({
     }
   };
 
-  // Mouse leave: resume autoplay
   const handleMouseLeave = () => {
     isMouseInsideRef.current = false;
     startAutoplay();
   };
 
-  // Mouse move: update slider position
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!sliderRef.current || !isMouseInsideRef.current) return;
 
@@ -107,7 +105,6 @@ const Compare = ({
     const x = e.clientX - rect.left;
     const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
 
-    // Smoothly animate the slider to the mouse position
     gsap.to(handlebarRef.current, {
       left: `${percent}%`,
       duration: 0.1,
@@ -141,12 +138,12 @@ const Compare = ({
     >
       <div
         ref={handlebarRef}
-        className="h-full w-px absolute top-0 z-30 bg-gradient-to-b from-transparent from-[5%] to-[95%] via-indigo-500 to-transparent"
+        className="absolute top-0 z-30 w-[2px] h-full bg-white"
         style={{ left: `${sliderXPercent}%` }}
       >
         {showHandlebar && (
-          <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
-            <DotsVerticalIcon className="w-4 h-4 text-black" />
+          <div className="h-8 w-8 top-1/2 -translate-y-1/2 bg-gradient-to-br from-spj-red to-spj-yellow z-30 -right-[0.95rem] absolute flex items-center justify-center shadow-lg rounded-full p-1.5 border-[2px] border-white">
+            <DotsVerticalIcon className="w-8 h-8 text-white" />
           </div>
         )}
       </div>

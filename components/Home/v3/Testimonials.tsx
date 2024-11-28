@@ -8,7 +8,6 @@ import { cloudinary } from '@utils/config';
 import { default as TestimonialsData } from '@utils/Mocks/HomeTestimonials';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 type Props = {};
 
@@ -58,8 +57,6 @@ const Testimonials = (props: Props) => {
 };
 
 const TestimonialCard = ({ data }) => {
-  const [coverImgType, setType] = useState('after');
-
   return (
     <>
       <div className="grid grid-cols-1 pb-2 cursor-default lg:gap-4 lg:grid-cols-5">
@@ -114,6 +111,7 @@ const TestimonialCard = ({ data }) => {
             secondImageClassname="object-cover object-left-top"
             className="w-full aspect-[1.65/1]"
             slideMode="hover"
+            initialSliderPercentage={27}
             // autoplay={true}
           />
         </div>
