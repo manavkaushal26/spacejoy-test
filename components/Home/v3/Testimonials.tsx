@@ -1,6 +1,7 @@
 import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import Compare from '@components/Shared/Compare';
+import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import { AnnotationIcon, StarIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
@@ -13,7 +14,7 @@ type Props = {};
 
 const Testimonials = (props: Props) => {
   return (
-    <>
+    <MaxWidthContainer className="!pt-0">
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-blue-100 to-blue-300 w-fit">
@@ -52,7 +53,7 @@ const Testimonials = (props: Props) => {
           </Slider>
         }
       </div>
-    </>
+    </MaxWidthContainer>
   );
 };
 

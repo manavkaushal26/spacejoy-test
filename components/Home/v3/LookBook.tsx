@@ -1,6 +1,7 @@
 import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import ImageWithDots from '@components/Shared/ImageWithDots';
+import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { HeartIcon } from '@heroicons/react/solid';
 
 type Props = {};
@@ -13,7 +14,7 @@ const dots = [
 
 const LookBook = (props: Props) => {
   return (
-    <>
+    <MaxWidthContainer>
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-spj-red/20 to-spj-red/50 w-fit">
@@ -39,7 +40,7 @@ const LookBook = (props: Props) => {
           />
         </BaseCard>
       </div>
-    </>
+    </MaxWidthContainer>
   );
 };
 

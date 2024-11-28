@@ -11,7 +11,6 @@ import Shopping from '@components/Home/v3/Shopping';
 import Testimonials from '@components/Home/v3/Testimonials';
 import Video from '@components/Home/v3/Video';
 import Layout from '@components/Shared/Layout';
-import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import { HomePageSEO } from '@utils/SEO';
 
@@ -28,22 +27,14 @@ const HomeV3 = (props: Props) => {
         <BannersBentoGrid />
         <OurServices type="carousel" />
         <Video />
-        <MaxWidthContainer>
-          <Pricing />
-        </MaxWidthContainer>
+        <Pricing />
         <BrandLogosCloud />
-        <MaxWidthContainer>
-          <LookBook />
-        </MaxWidthContainer>
-        <MaxWidthContainer className="!pt-0">
-          <Testimonials />
-        </MaxWidthContainer>
+        <LookBook />
+        <Testimonials />
         <SpacejoyAdvantage />
         <BeautifulSpaces />
         <Shopping />
-        <MaxWidthContainer className="!pt-0">
-          <Designers />
-        </MaxWidthContainer>
+        <Designers />
       </Layout.Body>
       <Layout.Footer />
     </Layout>

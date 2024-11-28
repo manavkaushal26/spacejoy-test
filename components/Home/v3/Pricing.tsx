@@ -1,6 +1,7 @@
 import ShinyButton from '@components/Button/ShinyButton';
 import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
+import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { CheckCircleIcon, CurrencyDollarIcon } from '@heroicons/react/solid';
 import { staticPricingData } from '@utils/constants/staticPricingData';
 import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
@@ -9,7 +10,7 @@ type Props = {};
 
 const Pricing = (props: Props) => {
   return (
-    <>
+    <MaxWidthContainer>
       <SectionHeading
         // preText="Designs Starting at $49"
         preText={
@@ -62,7 +63,7 @@ const Pricing = (props: Props) => {
           See Pricing
         </ShinyButton>
       </div>
-    </>
+    </MaxWidthContainer>
   );
 };
 
