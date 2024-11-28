@@ -3,6 +3,7 @@ import BannersBentoGrid from '@components/Home/v3/BannersBentoGrid';
 import BeautifulSpaces from '@components/Home/v3/BeautifulSpaces';
 import BrandLogosCloud from '@components/Home/v3/BrandLogosCloud';
 import Designers from '@components/Home/v3/Designers';
+import Faqs from '@components/Home/v3/Faqs';
 import Featured from '@components/Home/v3/Featured';
 import { Hero } from '@components/Home/v3/Hero';
 import LookBook from '@components/Home/v3/LookBook';
@@ -38,6 +39,7 @@ const HomeV3 = (props: Props) => {
         <Shopping />
         <Designers />
         <Featured />
+        <Faqs />
         <PreFooter />
       </Layout.Body>
       <Layout.Footer />
