@@ -64,7 +64,7 @@ const BannersBentoGrid = () => {
             <div className="relative w-full h-full group">
               <Image
                 alt="Explore other rooms image"
-                src={cloudinaryDefault + '/w_740/v1732783471/spj-v2/Outdoor_un6kx1.jpg'}
+                src={cloudinaryDefault + '/w_740/v1732783471/spj-v2/Outdoor_un6kx1.webp'}
                 className="object-cover"
                 layout="fill"
                 priority
@@ -78,7 +78,7 @@ const BannersBentoGrid = () => {
             <div className="relative w-full h-full group">
               <Image
                 alt="banner 3"
-                src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000/v1732167832/spj-v2/home-v3/hero_bg_13_ktwcqe.jpg"
+                src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000/v1732167832/spj-v2/home-v3/hero_bg_13_ktwcqe.webp"
                 className="object-cover"
                 layout="fill"
                 priority

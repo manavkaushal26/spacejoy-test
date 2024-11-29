@@ -1,4 +1,5 @@
 import SectionHeading from '@components/EcommercePage/SectionHeading';
+import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import Image from 'next/image';
 import React from 'react';
 import { ScrollTrigger, Tween } from 'react-gsap';
@@ -6,9 +7,9 @@ import { ScrollTrigger, Tween } from 'react-gsap';
 const Featured: React.FC = () => {
   return (
     <>
-      <SectionHeading title="Your favorites are talking about us" center noMargin />
-      <div className="container p-4 mx-auto mt-10">
-        <div className="relative z-10 mx-auto -mb-56 xl:-mb-72 max-w-7xl">
+      <MaxWidthContainer className='!pt-0'>
+        <SectionHeading title="Your favorites are talking about us" center noMargin />
+        <div className="relative z-10 mx-auto mt-10 -mb-56 xl:-mb-72 max-w-7xl">
           <div className="p-4 border rounded-lg shadow-lg xl:p-8 border-gray-130 bg-gradient-to-r from-blue-50 to-pink-50">
             <ScrollTrigger start="-500px center" end="-130px center">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 xl:gap-8">
@@ -100,7 +101,7 @@ const Featured: React.FC = () => {
             home shopping experience.
           </p> */}
         </div>
-      </div>
+      </MaxWidthContainer>
       <div className="relative min-h-[300px] sm:min-h-[320px] xl:min-h-[360px]">
         <Image
           className="object-cover filter contrast-125"

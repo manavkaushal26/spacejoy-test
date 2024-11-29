@@ -27,38 +27,38 @@ const BeautifulSpaces = (props: Props) => {
           <div className="grid grid-cols-2 grid-rows-5 gap-2 mt-10 lg:gap-4 lg:grid-cols-3">
             <div className="row-span-2">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
+                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
                 title="Mandarin"
                 first
               />
             </div>
             <div className="row-span-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
+                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
                 title="Nirnia"
               />
             </div>
             <div className="row-span-2">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
+                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
                 title="Artex"
               />
             </div>
             <div className="row-span-3 row-start-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
+                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
                 title="Brera"
               />
             </div>
             <div className="col-start-2 row-span-2 row-start-4">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
+                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
                 title="Alea Pro"
               />
             </div>
             <div className="col-start-3 row-span-3 row-start-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.jpg"
+                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
                 title="Nirnia"
               />
             </div>

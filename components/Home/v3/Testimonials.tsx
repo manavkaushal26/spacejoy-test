@@ -26,31 +26,30 @@ const Testimonials = (props: Props) => {
         noMargin
       />
       <div className="pb-4 mt-10">
-        {
-          <Slider
-            imageCount={10}
-            slidesToShow={1}
-            withNav={false}
-            arrows={false}
-            autoplay
-            autoplaySpeed={5000}
-            pauseOnHover
-            pauseOnDotsHover
-            infinite
-            responsive={
-              {
-                // dots: true,
-                // arrows: false,
-                // slidesToShow: 1.5,
-                // className: 'with-space',
-              }
-            }
-          >
-            {TestimonialsData?.map((item) => {
-              return <TestimonialCard data={item} key={item?.id} />;
-            })}
-          </Slider>
-        }
+        <Slider
+          imageCount={10}
+          slidesToShow={1}
+          withNav={false}
+          arrows={false}
+          autoplay
+          autoplaySpeed={5000}
+          pauseOnHover
+          pauseOnDotsHover
+          infinite
+          responsive={{
+            arrows: true,
+            // draggable: false,
+            // swipeToSlide: false,
+            // swipe: false,
+            // touchMove: false,
+            // buttons:true,
+            // touchMove: false,
+          }}
+        >
+          {TestimonialsData?.map((item) => {
+            return <TestimonialCard data={item} key={item?.id} />;
+          })}
+        </Slider>
       </div>
     </MaxWidthContainer>
   );
@@ -61,7 +60,12 @@ const TestimonialCard = ({ data }) => {
     <>
       <div className="grid grid-cols-1 pb-2 cursor-default lg:gap-4 lg:grid-cols-5">
         {/* Image Section */}
-        <div className="relative col-span-1 lg:col-span-3 shadow-md rounded-t-[1rem] lg:rounded-[1rem] overflow-hidden">
+        <div
+          className="relative col-span-1 lg:col-span-3 shadow-md rounded-t-[1rem] lg:rounded-[1rem] overflow-hidden"
+          onTouchStart={(e) => e.stopPropagation()} 
+          onTouchMove={(e) => e.stopPropagation()}
+          onTouchEnd={(e) => e.stopPropagation()}
+        >
           {/* <div className="absolute z-10 flex space-x-2 top-2 left-2 lg:top-4 lg:left-4">
             <button
               className={`rounded-l-md text-xs lg:text-sm px-2 lg:px-4 py-1 ${

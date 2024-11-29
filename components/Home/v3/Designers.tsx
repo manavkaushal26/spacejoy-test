@@ -3,7 +3,7 @@ import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { UsersIcon } from '@heroicons/react/solid';
-import { cloudinary } from '@utils/config';
+import { cloudinary, oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
 import { default as designTeamData } from '../../../mocks/DesignTeamData';
 
@@ -35,7 +35,7 @@ const Designers = (props: Props) => {
             pauseOnHover
             pauseOnDotsHover
             infinite
-            // fade // TODO :: causing issues with the button
+            // fade // TODO :: causing issues with the shiny button
             responsive={
               {
                 // dots: true,
@@ -48,9 +48,9 @@ const Designers = (props: Props) => {
             {designTeamData.map((d) => (
               <div key={`${d.firstName}-${d.lastName}`} className="pb-4 cursor-default pointer-events-auto">
                 <div className="grid grid-cols-1 p-4 gap-y-8 md:gap-12 md:grid-cols-3">
-                  <div className="w-full mr-auto col-span-1 relative aspect-[1]">
+                  <div className="w-[75%] mx-auto sm:w-full sm:mr-auto col-span-1 relative aspect-[1]">
                     <Image
-                      src={cloudinary.baseDeliveryURL + '/fl_lossy,q_auto,w_785,c_fill/' + d.bg}
+                      src={cloudinary.baseDeliveryURL + '/fl_lossy,q_auto,w_785/' + d.bg}
                       alt={d.firstName + ' ' + d.lastName}
                       layout="fill"
                       objectFit="cover"
@@ -63,12 +63,14 @@ const Designers = (props: Props) => {
                   <div className="flex flex-col items-start justify-center col-span-2 space-y-6">
                     <div className="flex flex-col items-start justify-center">
                       <span className="text-base text-zinc-500">Meet</span>
-                      <p className="mt-1 text-5xl text-semibold text-spj-red">{d.firstName + ' ' + d.lastName}</p>
-                      <p className="mt-4 text-base md:text-xl text-zinc-500">{d.desc}</p>
+                      <p className="mt-1 text-4xl sm:text-5xl text-semibold text-spj-red">
+                        {d.firstName + ' ' + d.lastName}
+                      </p>
+                      <p className="mt-4 text-base md:text-xl text-zinc-700">{d.desc}</p>
                     </div>
                     <div>
                       <ShinyButton
-                        href="https://ui.aceternity.com/components/link-preview"
+                        href={oldSpacejoyUrl + '/new-project'}
                         target="_blank"
                         showArrow
                         showRing
