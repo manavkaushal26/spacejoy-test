@@ -13,8 +13,6 @@ interface CompareProps {
   initialSliderPercentage?: number;
   slideMode?: 'hover' | 'drag';
   showHandlebar?: boolean;
-  autoplay?: boolean;
-  autoplayDuration?: number;
 }
 
 const Compare = ({
@@ -26,103 +24,65 @@ const Compare = ({
   initialSliderPercentage = 50,
   slideMode = 'hover',
   showHandlebar = true,
-  autoplay = false,
-  autoplayDuration = 5000,
 }: CompareProps) => {
   const [sliderXPercent, setSliderXPercent] = useState(initialSliderPercentage);
   const sliderRef = useRef<HTMLDivElement>(null);
   const handlebarRef = useRef<HTMLDivElement>(null);
   const firstImageRef = useRef<HTMLImageElement>(null);
-  const autoplayRef = useRef<number | null>(null);
   const isMouseInsideRef = useRef(false);
 
-  // Start autoplay animation
-  const startAutoplay = useCallback(() => {
-    if (!autoplay) return;
+  const updateSliderPosition = useCallback((percent: number) => {
+    const clampedPercent = Math.max(0, Math.min(100, percent));
+    setSliderXPercent(clampedPercent);
 
-    const startTime = Date.now();
-    const animate = () => {
-      if (isMouseInsideRef.current) return; // Pause autoplay when mouse is inside
-
-      const elapsedTime = Date.now() - startTime;
-      const progress = (elapsedTime % (autoplayDuration * 2)) / autoplayDuration;
-      const percentage = progress <= 1 ? progress * 100 : (2 - progress) * 100;
-
-      gsap.to(handlebarRef.current, {
-        left: `${percentage}%`,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-
-      gsap.to(firstImageRef.current, {
-        clipPath: `inset(0 ${100 - percentage}% 0 0)`,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-
-      autoplayRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-  }, [autoplay, autoplayDuration]);
-
-  const stopAutoplay = useCallback(() => {
-    if (autoplayRef.current !== null) {
-      cancelAnimationFrame(autoplayRef.current);
-      autoplayRef.current = null;
-    }
+    // Update GSAP position directly
+    gsap.set(handlebarRef.current, { left: `${clampedPercent}%` });
+    gsap.set(firstImageRef.current, {
+      clipPath: `inset(0 ${100 - clampedPercent}% 0 0)`,
+    });
   }, []);
 
-  // Mouse enter: stop autoplay and set slider position to cursor
-  const handleMouseEnter = (e: React.MouseEvent) => {
+  const handleInteraction = useCallback(
+    (x: number, rect: DOMRect) => {
+      const percent = ((x - rect.left) / rect.width) * 100;
+      updateSliderPosition(percent);
+    },
+    [updateSliderPosition]
+  );
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!sliderRef.current || !isMouseInsideRef.current) return;
+
+      const rect = sliderRef.current.getBoundingClientRect();
+      handleInteraction(e.clientX, rect);
+    },
+    [handleInteraction]
+  );
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (!sliderRef.current) return;
+
+      const rect = sliderRef.current.getBoundingClientRect();
+      const touch = e.touches[0];
+      handleInteraction(touch.clientX, rect);
+    },
+    [handleInteraction]
+  );
+
+  const handleMouseEnter = () => {
     isMouseInsideRef.current = true;
-    stopAutoplay();
-
-    const rect = sliderRef.current?.getBoundingClientRect();
-    if (rect) {
-      const x = e.clientX - rect.left;
-      const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
-
-      setSliderXPercent(percent);
-
-      // Immediately move the slider to the mouse position without animation
-      gsap.set(handlebarRef.current, { left: `${percent}%` });
-      gsap.set(firstImageRef.current, {
-        clipPath: `inset(0 ${100 - percent}% 0 0)`,
-      });
-    }
   };
 
   const handleMouseLeave = () => {
     isMouseInsideRef.current = false;
-    startAutoplay();
+    updateSliderPosition(initialSliderPercentage);
   };
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!sliderRef.current || !isMouseInsideRef.current) return;
-
-    const rect = sliderRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
-
-    gsap.to(handlebarRef.current, {
-      left: `${percent}%`,
-      duration: 0.1,
-      ease: 'power2.out',
-    });
-
-    gsap.to(firstImageRef.current, {
-      clipPath: `inset(0 ${100 - percent}% 0 0)`,
-      duration: 0.1,
-      ease: 'power2.out',
-    });
-  }, []);
-
   useEffect(() => {
-    startAutoplay();
-
-    return () => stopAutoplay();
-  }, [startAutoplay, stopAutoplay]);
+    updateSliderPosition(initialSliderPercentage);
+  }, [initialSliderPercentage, updateSliderPosition]);
 
   return (
     <div
@@ -135,6 +95,7 @@ const Compare = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
     >
       <div
         ref={handlebarRef}
@@ -154,7 +115,7 @@ const Compare = ({
             alt="first image"
             src={firstImage}
             className={classNames(
-              'absolute inset-0 z-20 rounded-2xl flex-shrink-0 w-full h-full select-none',
+              'absolute inset-0 z-20 flex-shrink-0 w-full h-full select-none rounded-t-[1rem] lg:rounded-[1rem]',
               firstImageClassName
             )}
             style={{
@@ -168,7 +129,7 @@ const Compare = ({
             alt="second image"
             src={secondImage}
             className={classNames(
-              'absolute top-0 left-0 z-[19] rounded-2xl w-full h-full select-none',
+              'absolute top-0 left-0 z-[19] w-full h-full select-none rounded-t-[1rem] lg:rounded-[1rem]',
               secondImageClassname
             )}
             draggable={false}
