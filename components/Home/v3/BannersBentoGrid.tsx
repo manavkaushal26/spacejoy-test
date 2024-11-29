@@ -27,7 +27,7 @@ const BannersBentoGrid = () => {
     <MaxWidthContainer>
       <SectionHeading title="test" subTitle="test" noMargin center />
       <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10">
-        <div className="h-[200px] col-span-4 lg:h-full">
+        <div className="h-[200px] col-span-6 md:col-span-4 lg:h-full">
           <div className="overflow-hidden rounded-lg max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
             <Link href="/interior-designs/living-room-ideas" passHref>
               <a target="_blank" rel="noopener noreferrer">
@@ -45,7 +45,7 @@ const BannersBentoGrid = () => {
             </Link>
           </div>
         </div>
-        <div className="h-[200px] col-span-2 lg:h-full">
+        <div className="h-[200px] col-span-6 md:col-span-2 lg:h-full">
           <div className="overflow-hidden rounded-lg lg:rounded-tr-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
@@ -59,7 +59,7 @@ const BannersBentoGrid = () => {
             </div>
           </div>
         </div>
-        <div className="h-[200px] col-span-2 lg:h-full">
+        <div className="h-[200px] col-span-6 md:col-span-2 lg:h-full">
           <div className="overflow-hidden rounded-lg lg:rounded-bl-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
@@ -73,7 +73,7 @@ const BannersBentoGrid = () => {
             </div>
           </div>
         </div>
-        <div className="h-[200px] col-span-4 lg:h-80">
+        <div className="h-[200px] col-span-6 md:col-span-4 lg:h-80">
           <div className="overflow-hidden rounded-lg max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image

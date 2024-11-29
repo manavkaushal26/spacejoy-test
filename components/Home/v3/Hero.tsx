@@ -10,7 +10,7 @@ const showSectionGradient = false;
 
 export const Hero = (props: Props) => {
   return (
-    <div className="relative bg-center bg-no-repeat bg-cover bg-hero min-h-[calc(100vh-175px)]">
+    <div className="relative bg-center bg-no-repeat bg-cover bg-hero">
       {showSectionGradient && (
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       )}

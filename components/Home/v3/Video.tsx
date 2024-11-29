@@ -51,11 +51,10 @@ const Video = () => {
           {/* Design elements */}
           <div className="bg-[url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_412/v1732126047/spj-v2/home-v3/video_container_design_element_1_1_ufbhtr.webp')] bg-center bg-no-repeat bg-contain w-24 sm:w-64 aspect-[3/2] absolute right-0 md:-right-10 -top-[20%] -z-[1]" />
           <div className="bg-[url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_208/v1732126808/spj-v2/home-v3/video_container_design_element_2_v78zim.webp')] bg-center bg-no-repeat bg-contain w-20 sm:w-32 aspect-[3/2] absolute -left-20 top-[75%] rotate-[10deg] -z-[1]" />
-
           <video
             ref={videoRef}
             poster="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1128/v1732111652/video_cover_d9emy1.jpg"
-            controls={false}
+            controls={isPlaying}
             muted={!isPlaying}
             playsInline
             className="rounded-2xl"
@@ -66,17 +65,18 @@ const Video = () => {
             />
             Your browser does not support HTML video.
           </video>
-
-          <div
-            ref={playButtonRef}
-            className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
-            onClick={togglePlayback}
-          >
-            <div className="relative flex items-center justify-center w-12 h-12 overflow-hidden rounded-full sm:w-16 md:w-20 md:h-20 sm:h-16 lg:w-24 lg:h-24 group">
-              <Icons.playIcon className="z-[2] w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
-              <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-br from-spj-red to-spj-yellow group-hover:-rotate-180 z-[1]" />
+          {!isPlaying && (
+            <div
+              ref={playButtonRef}
+              className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
+              onClick={togglePlayback}
+            >
+              <div className="relative flex items-center justify-center w-12 h-12 overflow-hidden rounded-full sm:w-16 md:w-20 md:h-20 sm:h-16 lg:w-24 lg:h-24 group">
+                <Icons.playIcon className="z-[2] w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+                <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-br from-spj-red to-spj-yellow group-hover:-rotate-180 z-[1]" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </MaxWidthContainer>
     </div>
