@@ -14,13 +14,15 @@ export interface Savings {
   inAmount: number;
 }
 export interface PricingData {
-  features: Array<Feature>;
-  excludedFeatures: Array<Feature>;
+  features: Feature[];
+  excludedFeatures: Feature[];
   price: Price;
-  salePrice: Price,
+  salePrice: Price;
   name: string;
+  saleDescription?: string;
   description: string;
   savings: Savings;
-  tags: any[];
+  tags: string[];
   slug: string;
+  summary: string;
 }
