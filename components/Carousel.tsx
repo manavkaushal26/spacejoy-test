@@ -75,11 +75,12 @@ export default function Carousel({
     responsive: [
       {
         breakpoint: 992,
-        settings: { ...responsive },
+        settings: { arrows: true, ...responsive },
       },
     ],
     ...props,
   };
+
   const renderArrows = () => {
     return (
       <div className={`slider-arrow ${!mainSliderSettings?.arrows ? 'block lg:hidden' : ''}`}>
