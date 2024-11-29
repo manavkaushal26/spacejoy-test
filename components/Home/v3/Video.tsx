@@ -35,7 +35,7 @@ const Video = () => {
 
   return (
     <div className="bg-[#fff1f2]/50">
-      <MaxWidthContainer className='!pt-0'>
+      <MaxWidthContainer className="!pt-0">
         <SectionHeading
           preText={
             <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-amber-100 to-amber-300 w-fit">
@@ -73,8 +73,8 @@ const Video = () => {
             onClick={togglePlayback}
           >
             <div className="relative flex items-center justify-center w-12 h-12 overflow-hidden rounded-full sm:w-16 md:w-20 md:h-20 sm:h-16 lg:w-24 lg:h-24 group">
-              <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-br from-spj-red to-spj-yellow group-hover:-rotate-180" />
-              <Icons.playIcon className="z-10" />
+              <Icons.playIcon className="z-[2] w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+              <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-br from-spj-red to-spj-yellow group-hover:-rotate-180 z-[1]" />
             </div>
           </div>
         </div>
