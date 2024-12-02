@@ -24,42 +24,48 @@ const BeautifulSpaces = (props: Props) => {
             center
             noMargin
           />
-          <div className="grid grid-cols-2 grid-rows-5 gap-2 mt-10 lg:gap-4 lg:grid-cols-3">
+          <div className="grid grid-cols-2 grid-rows-6 gap-2 mt-10 lg:grid-rows-5 lg:gap-4 lg:grid-cols-3">
             <div className="row-span-2">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
-                title="Mandarin"
+                imgSrc="/v1733150086/spj-v2/home-v3/render_1_k60ml2.jpg"
+                title="Living Rooms"
+                href="/interior-designs/living-room-ideas"
                 first
               />
             </div>
-            <div className="row-span-3">
+            <div className="row-span-2 lg:row-span-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
-                title="Nirnia"
+                imgSrc="/v1733151432/spj-v2/home-v3/render_6_cffyil.jpg"
+                title="Dining Rooms"
+                href="/interior-designs/dining-room-ideas"
               />
             </div>
-            <div className="row-span-2">
+            <div className="row-span-2 row-start-3 lg:row-start-1 lg:col-start-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
-                title="Artex"
+                imgSrc="/v1733150515/spj-v2/home-v3/render_3_qjg3nc.jpg"
+                title="Outdoors"
+                href="/interior-designs/outdoor-ideas"
               />
             </div>
-            <div className="row-span-3 row-start-3">
+            <div className="row-span-2 row-start-5 lg:row-span-3 lg:row-start-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
-                title="Brera"
+                imgSrc="/v1733150807/spj-v2/home-v3/render_4_pjnybh.jpg"
+                title="Bedrooms"
+                href="/interior-designs/bedroom-ideas"
               />
             </div>
-            <div className="col-start-2 row-span-2 row-start-4">
+            <div className="col-start-2 row-span-2 row-start-3 lg:row-span-2 lg:row-start-4">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
-                title="Alea Pro"
+                imgSrc="/v1733152001/spj-v2/home-v3/render_9_iecc6b.jpg"
+                title="Office Spaces"
+                href="/interior-designs/home-office-ideas"
               />
             </div>
-            <div className="col-start-3 row-span-3 row-start-3">
+            <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
-                imgSrc="https://res.cloudinary.com/spacejoy/image/upload/v1732167831/spj-v2/home-v3/hero_bg_11_xyqqjo.webp"
-                title="Nirnia"
+                imgSrc="/v1733152224/spj-v2/home-v3/render_10_axgbb8.jpg"
+                title="Nursery Rooms"
+                href="/interior-designs/nursery-ideas"
               />
             </div>
           </div>
@@ -90,12 +96,18 @@ const ImageCard = ({
               first ? 'aspect-[1.5/1]' : 'h-full'
             )}
           >
-            <Image src={imgSrc} alt={title} layout="fill" objectFit="cover" />
+            <Image
+              src={'https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_800' + imgSrc}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
           </div>
           <div className="absolute inset-0 flex items-end text-white bg-gradient-to-b from-black/0 via-black/25 to-black">
-            <div className="flex items-center justify-between w-full p-6">
-              <p className="text-xl lg:text-3xl">{title}</p>
-              <div className="p-2 bg-white rounded-full lg:p-3">
+            <div className="flex items-center justify-between w-full p-3 sm:p-6">
+              <p className="text-base md:text-xl lg:text-2xl">{title}</p>
+              <div className="p-1 bg-white rounded-full sm:p-2">
                 <ArrowRightIcon
                   className="w-4 h-4 text-black transition-all duration-300 lg:w-6 lg:h-6 group-hover:-rotate-45 focus:-rotate-45 group-hover:scale-105 focus:scale-105"
                   aria-hidden="true"
