@@ -38,9 +38,9 @@ const DynamicHomeFAQs = dynamic(() => import('@components/Home/HomeFAQs'), { ssr
 
 const saleBannerConfig = {
   visible: true,
-  href: 'https://store.spacejoy.com',
+  href: '/offers/cyber-monday-sale',
   // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1730305620/spj-v2/strip_8_nip0jq.png',
-  src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1733137568/spj-v2/strip_11_je6tmb.png',
+  src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1733148184/spj-v2/cyber-monday-sale/strip_12_bu0qsy.png',
 };
 
 export const Home = ({ isMobile, pricingData }): JSX.Element => {

@@ -19,6 +19,12 @@ module.exports = {
         vector: "url('https://res.cloudinary.com/spacejoy/image/upload/v1653652981/Dotted_Vector_jcdmmi.svg')",
         'black-friday':
           "url('https://res.cloudinary.com/spacejoy/image/upload/v1732728783/spj-v2/strip_10_ijg5sr.webp')",
+        'black-friday-design':
+          "url('https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1732694005/spj-v2/Black-Friday-sale/DElight_5_kc3zjo.webp')",
+        'cyber-monday':
+          'url(https://res.cloudinary.com/spacejoy/image/upload/v1733146640/spj-v2/cyber-monday-sale/Purple_and_White_Futuristic_Artificial_Intelligence_Benefits_Instagram_Post_w626h0.png)',
+        'cyber-monday-design':
+          'url(https://res.cloudinary.com/spacejoy/image/upload/v1733147319/spj-v2/cyber-monday-sale/DElight_2_em6y3k.png)',
       },
       borderWidth: ['last', 'first'],
       colors: {

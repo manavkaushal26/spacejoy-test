@@ -2,11 +2,11 @@ import SectionHeading from '@components/EcommercePage/SectionHeading';
 import { oldSpacejoyUrl } from '@utils/config';
 import Link from 'next/link';
 
-export const Showcase = () => {
+export const Showcase = ({ saleName, code }: { saleName: string; code: string }) => {
   return (
     <div className="p-12 bg-gradient-to-b from-gray-100 to-gray-200">
       <div className="mb-8 text-center sm:mb-12 ">
-        <SectionHeading title="Make the Most of Black Friday Offers" center noMargin />
+        <SectionHeading title={`Make the Most of ${saleName} Offers`} center noMargin />
       </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
@@ -14,8 +14,7 @@ export const Showcase = () => {
           <div className="mb-4 text-5xl font-bold text-gray-300 sm:text-6xl">1.</div>
           <h3 className="mb-2 text-lg font-bold text-gray-800 sm:text-xl">Show us your room, set your budget</h3>
           <p className="text-gray-600">
-            Right after you pick a design package, apply code <span className="font-bold">BLACKFRIDAY</span> to get 35%
-            off
+            Right after you pick a design package, apply code <span className="font-bold">{code}</span> to get 35% off
           </p>
         </div>
 

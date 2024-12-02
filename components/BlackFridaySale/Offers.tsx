@@ -1,20 +1,27 @@
 import SectionHeading from '@components/EcommercePage/SectionHeading';
-import { newSpacejoyStoreUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProductHighlight } from './ProductHighlight';
 
-export const Offers = () => {
+type OffersType = {
+  image1: { href: string; src: string; alt: string };
+  image2: { href: string; src: string; alt: string };
+  image3: { href: string; src: string; alt: string };
+  packageHighlightBackground: string;
+  sale: string;
+};
+
+export const Offers = ({ image1, image2, image3, packageHighlightBackground, sale }: OffersType) => {
   return (
     <div>
       <SectionHeading title="Offers" center noMargin />
 
       <div className="grid grid-cols-3 gap-4 mt-10 sm:grid-cols-3">
-        <Link href={newSpacejoyStoreUrl} passHref>
+        <Link href={image1.href} passHref>
           <a target="_blank" className="col-span-3 overflow-hidden sm:col-span-1 rounded-xl">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1732688582/spj-v2/Black-Friday-sale/Shop_for_-3000_or_more_Get_20_off_your_cart_4_dbt4lp.png"
-              alt="Exclusive Brands"
+              src={'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_800' + image1.src}
+              alt={image1.alt}
               width={600}
               height={350}
               objectFit="cover"
@@ -22,11 +29,11 @@ export const Offers = () => {
             />
           </a>
         </Link>
-        <Link href={newSpacejoyStoreUrl + '/collections/black-friday-doorbuster-deals-50-off-msrp'} passHref>
+        <Link href={image2.href} passHref>
           <a target="_blank" className="col-span-3 overflow-hidden sm:col-span-1 rounded-xl">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1732688602/spj-v2/Black-Friday-sale/Shop_for_-3000_or_more_Get_20_off_your_cart_3_xsya8j.png"
-              alt="Doorbusters"
+              src={'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_800' + image2.src}
+              alt={image2.alt}
               width={600}
               height={350}
               objectFit="cover"
@@ -34,11 +41,11 @@ export const Offers = () => {
             />
           </a>
         </Link>
-        <Link href={newSpacejoyStoreUrl} passHref>
+        <Link href={image3.href} passHref>
           <a target="_blank" className="col-span-3 overflow-hidden sm:col-span-1 rounded-xl">
             <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1732688570/spj-v2/Black-Friday-sale/Shop_for_-3000_or_more_Get_20_off_your_cart_zdxawu.png"
-              alt="Shop More"
+              src={'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_800' + image3.src}
+              alt={image3.alt}
               width={600}
               height={350}
               objectFit="cover"
@@ -46,7 +53,7 @@ export const Offers = () => {
             />
           </a>
         </Link>
-        <ProductHighlight />
+        <ProductHighlight backgroundSrc={packageHighlightBackground} sale={sale} />
       </div>
     </div>
   );

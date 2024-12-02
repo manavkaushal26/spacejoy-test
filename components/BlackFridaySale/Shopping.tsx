@@ -9,7 +9,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-type Props = {};
+type Props = {
+  lastCardBackground?: string;
+  textColor?: string;
+};
 
 const categoriesData = {
   sofas: [
@@ -212,7 +215,7 @@ const categoriesData = {
 // aspect-[1/1.3]
 // aspect-[1]
 
-const Shopping: React.FC<Props> = () => {
+const Shopping: React.FC<Props> = ({ lastCardBackground = '', textColor = '' }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const tabKeys = Object.keys(categoriesData);
@@ -298,10 +301,24 @@ const Shopping: React.FC<Props> = () => {
                         passHref
                       >
                         <a target="_blank" rel="noopener noreferrer">
-                          <div className="relative p-2 sm:p-3 rounded-lg md:rounded-[2rem] hover:bg-gray-100/50 h-fit transition-all duration-200 focus:outline-none cursor-pointer ">
-                            <div className="relative w-full aspect-[1] rounded-xl md:rounded-[1.6rem] overflow-hidden shadow bg-black-friday bg-cover bg-no-repeat bg-right-bottom flex flex-col items-center justify-center font-semibold text-xs md:text-sm text-white text-center bg-pattern">
+                          <div
+                            className={classNames(
+                              'relative p-2 sm:p-3 rounded-lg md:rounded-[2rem] hover:bg-gray-100/50 h-fit transition-all duration-200 focus:outline-none cursor-pointer'
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                'relative w-full aspect-[1] rounded-xl md:rounded-[1.6rem] overflow-hidden shadow bg-cover bg-no-repeat bg-right-bottom flex flex-col items-center justify-center font-semibold text-xs md:text-sm text-white text-center bg-pattern',
+                                lastCardBackground
+                              )}
+                            >
                               All Products Under
-                              <span className="flex items-center space-x-2 text-xl capitalize md:text-4xl text-[#e6bc63]">
+                              <span
+                                className={classNames(
+                                  'flex items-center space-x-2 text-xl capitalize md:text-4xl',
+                                  textColor
+                                )}
+                              >
                                 {tabKeys[idx]}
                               </span>
                             </div>
