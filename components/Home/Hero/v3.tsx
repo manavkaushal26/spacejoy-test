@@ -15,15 +15,15 @@ const responsive = {
   autoplaySpeed: 3000,
 };
 const bannerImages = [
+  // {
+  //   src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1732726357/spj-v2/Black-Friday-sale/website_20_ewcbpp.png',
+  //   mobileSrc: '',
+  //   link: '/offers/black-friday-sale',
+  // },
   {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1732726357/spj-v2/Black-Friday-sale/website_20_ewcbpp.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1500,ar_3:2,c_fill,g_center/v1733137574/spj-v2/website_20_m82dps.png',
     mobileSrc: '',
-    link: '/offers/black-friday-sale',
-  },
-  {
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1732726374/spj-v2/Black-Friday-sale/website_21_bnqpee.png',
-    mobileSrc: '',
-    link: '/offers/black-friday-sale',
+    link: 'https://store.spacejoy.com',
   },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',

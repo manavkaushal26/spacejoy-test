@@ -38,9 +38,9 @@ const DynamicHomeFAQs = dynamic(() => import('@components/Home/HomeFAQs'), { ssr
 
 const saleBannerConfig = {
   visible: true,
-  href: '/offers/black-friday-sale',
+  href: 'https://store.spacejoy.com',
   // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1730305620/spj-v2/strip_8_nip0jq.png',
-  src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1732726384/spj-v2/Black-Friday-sale/strip_10_y6gyho.png',
+  src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1733137568/spj-v2/strip_11_je6tmb.png',
 };
 
 export const Home = ({ isMobile, pricingData }): JSX.Element => {
