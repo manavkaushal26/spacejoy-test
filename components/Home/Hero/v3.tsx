@@ -15,16 +15,16 @@ const responsive = {
   autoplaySpeed: 3000,
 };
 const bannerImages = [
-  // {
-  //   src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1200,ar_3:2,c_fill,g_center/v1733148863/spj-v2/cyber-monday-sale/website_26_b3nx1a.png',
-  //   mobileSrc: '',
-  //   link: '/offers/cyber-monday-sale',
-  // },
-  // {
-  //   src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1200,ar_3:2,c_fill,g_center/v1733148862/spj-v2/cyber-monday-sale/website_25_ujykos.png',
-  //   mobileSrc: '',
-  //   link: '/offers/cyber-monday-sale',
-  // },
+  {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1200,ar_3:2,c_fill,g_center/v1733246561/spj-v2/website_2_acl5kp.png',
+    mobileSrc: '',
+    link: '',
+  },
+  {
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1200,ar_3:2,c_fill,g_center/v1733246570/spj-v2/website_1_uso7yf.png',
+    mobileSrc: '',
+    link: '',
+  },
   {
     src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,ar_3:2,c_fill,g_center/v1656677852/spj-v2/Summer_design_01-_Camera_1_1_-min_yz83hj.png',
     mobileSrc: '',

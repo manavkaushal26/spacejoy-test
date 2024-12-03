@@ -12,7 +12,13 @@ const SaleBanner = ({ href, src }: Props) => {
       <Link href={href} passHref>
         <a target={href.includes('https') ? '_blank' : '_self'}>
           <div className="relative w-full aspect-[15/2] shadow-md hover:shadow-lg transition-all duration-200">
-            <Image src={src} alt="sale banner" layout="fill" objectFit="contain" className="rounded-lg" />
+            <Image
+              src={'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen' + src}
+              alt="sale banner"
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
           </div>
         </a>
       </Link>
