@@ -37,7 +37,7 @@ const DynamicHomeGallery = dynamic(() => import('@components/Home/HomeGallery'),
 const DynamicHomeFAQs = dynamic(() => import('@components/Home/HomeFAQs'), { ssr: false });
 
 const saleBannerConfig = {
-  visible: true,
+  visible: false,
   href: '/offers/cyber-monday-sale',
   // src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1730305620/spj-v2/strip_8_nip0jq.png',
   src: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_100/w_1920,e_sharpen/v1733148184/spj-v2/cyber-monday-sale/strip_12_bu0qsy.png',

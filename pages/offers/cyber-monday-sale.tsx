@@ -59,4 +59,14 @@ const CyberMondaySale = (props: Props) => {
   );
 };
 
+export const getServerSideProps = async (ctx) => {
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/404',
+    },
+    props: {},
+  };
+};
+
 export default CyberMondaySale;
