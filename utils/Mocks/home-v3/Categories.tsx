@@ -7,7 +7,7 @@ const categoriesData = {
       description:
         'listen hurried independent control truck beautiful hole adjective naturally third brush send combine want contain cut cool purple team planning am origin sang toward',
       href: 'sofas?filter.p.product_type=Sectionals',
-      imageUrl: '/v1732606527/spj-v2/home-v3/sectional_sofas_w7jggn.jpg',
+      imageUrl: '/v1733236785/spj-v2/home-v3/sectional_sofa_main_tdkxsd.webp',
       imgAspectRatio: 'aspect-[1]',
     },
     {
@@ -27,7 +27,7 @@ const categoriesData = {
       description:
         'thin affect exercise job happen factory necessary think glass ruler raise transportation stomach sand wooden dress police driving pan against aloud office can person',
       href: 'sofas?filter.p.product_type=Loveseats+%26+Settees',
-      imageUrl: '/v1732607566/spj-v2/home-v3/loveseats_and_settees_sofas_zb2e3t.jpg',
+      imageUrl: '/v1733235404/spj-v2/home-v3/loveseats_fk7hfd.webp',
       imgAspectRatio: 'aspect-[1/1.3]',
     },
   ],
@@ -71,7 +71,7 @@ const categoriesData = {
       description:
         'then recent wealth opportunity third faster additional camp cover kids heavy fence harder brown hurried country according mud valuable drawn combination no major duty',
       href: 'chairs?filter.p.product_type=Accent+Chairs',
-      imageUrl: '/v1732617996/spj-v2/home-v3/accent_chairs_a9ithe.jpg',
+      imageUrl: '/v1733234859/spj-v2/home-v3/accent_chair_owvw4f.webp',
       imgAspectRatio: 'aspect-[1]',
     },
     {
@@ -81,7 +81,7 @@ const categoriesData = {
       description:
         'three bus brick straight sang composition thou tall period voyage adult satisfied table health sentence familiar exactly bat count sight telephone safe lucky deeply',
       href: 'chairs?filter.p.product_type=Dining+Chairs',
-      imageUrl: '/v1732618114/spj-v2/home-v3/dining_chairs_pjdwnw.jpg',
+      imageUrl: '/v1733235316/spj-v2/home-v3/dining_chairs_ek1wqi.webp',
       imgAspectRatio: 'aspect-[1/1.15]',
     },
     {
@@ -91,7 +91,7 @@ const categoriesData = {
       description:
         'screen board changing tales spin chapter than pattern eager system enter income top require separate prevent number claws roar six valley white change day',
       href: 'chairs?filter.p.product_type=Bar+Stools&filter.p.product_type=Benches',
-      imageUrl: '/v1732618334/spj-v2/home-v3/bar_stools_and_benches_oyv7kv.jpg',
+      imageUrl: '/v1733235134/spj-v2/home-v3/bar_stools_d2obqa.webp',
       imgAspectRatio: 'aspect-[1/1.3]',
     },
   ],
@@ -103,7 +103,7 @@ const categoriesData = {
       description:
         'then recent wealth opportunity third faster additional camp cover kids heavy fence harder brown hurried country according mud valuable drawn combination no major duty',
       href: 'tables?filter.p.product_type=Coffee+Tables&filter.p.product_type=Console+Tables',
-      imageUrl: '/v1732618616/spj-v2/home-v3/coffee_tables_rihzt1.jpg',
+      imageUrl: '/v1733234493/spj-v2/home-v3/coffee_table_sgo5dw.webp',
       imgAspectRatio: 'aspect-[1]',
     },
     {
@@ -123,7 +123,7 @@ const categoriesData = {
       description:
         'screen board changing tales spin chapter than pattern eager system enter income top require separate prevent number claws roar six valley white change day',
       href: 'tables?filter.p.product_type=End+%26+Side+Tables',
-      imageUrl: '/v1732618834/spj-v2/home-v3/end_side_tables_iblfuh.jpg',
+      imageUrl: '/v1733234645/spj-v2/home-v3/side_table_b3wkix.webp',
       imgAspectRatio: 'aspect-[1/1.3]',
     },
   ],

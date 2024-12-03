@@ -75,10 +75,10 @@ const Compare = ({
     isMouseInsideRef.current = true;
   };
 
-  const handleMouseLeave = () => {
-    isMouseInsideRef.current = false;
-    updateSliderPosition(initialSliderPercentage);
-  };
+  // const handleMouseLeave = () => {
+  //   isMouseInsideRef.current = false;
+  //   updateSliderPosition(initialSliderPercentage);
+  // };
 
   useEffect(() => {
     updateSliderPosition(initialSliderPercentage);
@@ -93,7 +93,7 @@ const Compare = ({
         cursor: slideMode === 'drag' ? 'grab' : 'col-resize',
       }}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      // onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
     >

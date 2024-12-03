@@ -5,18 +5,14 @@ import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ContentOverlay = ({ title, href }: { title: string; href?: string }) => {
+const ContentOverlay = ({ title }: { title: string }) => {
   return (
-    <Link href={href ?? '#'}>
-      <a target="_blank" rel="noopener noreferrer">
-        <div className="absolute inset-0 flex items-end justify-start px-8 py-4 text-white transition-all duration-200 bg-gradient-to-b from-transparent via-black/25 to-black/75">
-          <div className="flex items-center space-x-2">
-            <p className="text-lg font-semibold sm:text-xl">{title}</p>
-            {href && <ExternalLinkIcon className="w-5 h-5" aria-hidden="true" aria-label="external link icon" />}
-          </div>
-        </div>
-      </a>
-    </Link>
+    <div className="absolute inset-0 flex items-end justify-start px-4 py-4 text-white transition-all duration-200 md:px-8 bg-gradient-to-b from-transparent via-black/5 to-black/50">
+      <div className="flex items-center space-x-2">
+        <p className="text-base font-semibold md:text-lg sm:text-xl">{title}</p>
+        <ExternalLinkIcon className="w-5 h-5" aria-hidden="true" aria-label="external link icon" />
+      </div>
+    </div>
   );
 };
 
@@ -25,65 +21,65 @@ const BannersBentoGrid = () => {
 
   return (
     <MaxWidthContainer>
-      <SectionHeading title="test" subTitle="test" noMargin center />
+      <SectionHeading title="Your Dream Living Room Awaits" noMargin center />
       <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10">
-        <div className="h-[200px] col-span-6 md:col-span-4 lg:h-full">
-          <div className="overflow-hidden rounded-lg max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
+        <div className="h-48 col-span-6 group md:col-span-4 lg:h-full">
+          <div className="overflow-hidden rounded-xl max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
             <Link href="/interior-designs/living-room-ideas" passHref>
               <a target="_blank" rel="noopener noreferrer">
                 <div className="relative w-full h-full group">
                   <Image
                     alt="Explore living rooms image"
-                    src={cloudinaryDefault + '/w_1200/v1732783468/spj-v2/Living_room_2_pqv0ly.webp'}
-                    className="object-cover"
+                    src={cloudinaryDefault + '/w_1200/v1733221282/spj-v2/home-v3/living_space_p38ddv.webp'}
+                    className="object-cover transition-all duration-300 group-hover:scale-105"
                     layout="fill"
                     priority
                   />
-                  <ContentOverlay title="Explore Living Room Ideas" href="" />
+                  {/* <ContentOverlay title="Explore Living Room Ideas" /> */}
                 </div>
               </a>
             </Link>
           </div>
         </div>
-        <div className="h-[200px] col-span-6 md:col-span-2 lg:h-full">
-          <div className="overflow-hidden rounded-lg lg:rounded-tr-[2rem] h-full shadow-md transition-all duration-200">
+        <div className="h-48 col-span-6 group md:col-span-2 lg:h-full">
+          <div className="overflow-hidden rounded-xl lg:rounded-tr-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
                 alt="Explore bedrooms image"
-                src={cloudinaryDefault + '/w_740/v1732782844/spj-v2/Bedroom_ajqj8s.webp'}
-                className="object-cover"
+                src={cloudinaryDefault + '/w_740/v1733220220/spj-v2/home-v3/800x520_1_krfahe.webp'}
+                className="object-cover transition-all duration-300 group-hover:scale-105"
                 layout="fill"
                 priority
               />
-              <ContentOverlay title="Explore Bedroom Ideas" href="" />
+              {/* <ContentOverlay title="Explore Bedroom Ideas" /> */}
             </div>
           </div>
         </div>
-        <div className="h-[200px] col-span-6 md:col-span-2 lg:h-full">
-          <div className="overflow-hidden rounded-lg lg:rounded-bl-[2rem] h-full shadow-md transition-all duration-200">
+        <div className="h-48 col-span-6 group md:col-span-2 lg:h-full">
+          <div className="overflow-hidden rounded-xl lg:rounded-bl-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
                 alt="Explore other rooms image"
-                src={cloudinaryDefault + '/w_740/v1732783471/spj-v2/Outdoor_un6kx1.webp'}
-                className="object-cover"
+                src={cloudinaryDefault + '/w_740/v1733220035/spj-v2/home-v3/800x520_coocjh.webp'}
+                className="object-cover transition-all duration-300 group-hover:scale-105"
                 layout="fill"
                 priority
               />
-              <ContentOverlay title="Explore Other Room Ideas" href="" />
+              {/* <ContentOverlay title="Explore Other Room Ideas" /> */}
             </div>
           </div>
         </div>
-        <div className="h-[200px] col-span-6 md:col-span-4 lg:h-80">
-          <div className="overflow-hidden rounded-lg max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-full shadow-md transition-all duration-200">
+        <div className="h-48 col-span-6 group md:col-span-4 lg:h-96">
+          <div className="overflow-hidden rounded-xl max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
                 alt="banner 3"
-                src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000/v1732167832/spj-v2/home-v3/hero_bg_13_ktwcqe.webp"
-                className="object-cover"
+                src={cloudinaryDefault + '/w_1200/v1733223540/spj-v2/home-v3/living_space_1_g9035b.webp'}
+                className="object-cover transition-all duration-300 group-hover:scale-105"
                 layout="fill"
                 priority
               />
-              <ContentOverlay title="This will be a sale banner" href="" />
+              {/* <ContentOverlay title="This will be a sale banner" /> */}
             </div>
           </div>
         </div>

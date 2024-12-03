@@ -42,25 +42,24 @@ const data = [
     },
   },
   {
-    id: '6',
-    name: 'Kimberly',
-    dp: 'v1574864705/web/testimonial/Kim_gov4xx.jpg',
-    address: 'New York',
-    roomType: 'Living Room',
+    id: '4',
+    name: 'Erica & Kaleb',
+    dp: 'v1574266287/web/testimonial/EricaKaleb_jpav9i.jpg',
+    address: 'Salt Lake City, Utah',
+    roomType: 'Nursery',
     ratings: 5,
-    bg: 'green',
-    shortDescription:
-      'We decided to give Spacejoy a try and so glad we did. Couldn’t be happier with how our room turned out.',
+    bg: 'yellow',
+    shortDescription: 'Next time you need a fresh new look or a total redesign, go with Spacejoy!',
     description:
-      'I absolutely loved working with Spacejoy! From the 3D renders to the personalized 1:1 moments working with my designer, the whole experience was great. My designer understood what I wanted and created a design that makes my space look amazing. Can’t wait to work with Spacejoy for the other rooms!',
+      'We wanted some ideas on designing and decorating our living room! After researching, we decided to work with Spacejoy and boy! am I glad we did! The designer designed out entire space in 3D. We could see how the products looked in our space and what we didn’t like, the designer found alternatives for, all within our budget!',
 
     before: {
-      img: 'v1574864758/web/testimonial/Kimberly_Before_y275vw.jpg',
-      alt: 'Spacejoy review of living room design  by Kimberley in New York',
+      img: 'v1654258827/Room4_Before_utrjmk.png',
+      alt: 'Spacejoy review of nursery design  by Kaleb and Erica',
     },
     after: {
-      img: 'v1574864751/web/testimonial/Kimberly_After_zhluna.jpg',
-      alt: "Living room design for Kimberly  by spacejoy's online interior designer",
+      img: 'v1654258827/Room4_After_gnasb9.png',
+      alt: "Nursery design for Kaleb and Erica by spacejoy's online interior designer",
     },
   },
   {
@@ -84,27 +83,7 @@ const data = [
       alt: "Living room design for Kayla by Spacejoy's online interior designer ",
     },
   },
-  {
-    id: '4',
-    name: 'Erica & Kaleb',
-    dp: 'v1574266287/web/testimonial/EricaKaleb_jpav9i.jpg',
-    address: 'Salt Lake City, Utah',
-    roomType: 'Nursery',
-    ratings: 5,
-    bg: 'yellow',
-    shortDescription: 'Next time you need a fresh new look or a total redesign, go with Spacejoy!',
-    description:
-      'We wanted some ideas on designing and decorating our living room! After researching, we decided to work with Spacejoy and boy! am I glad we did! The designer designed out entire space in 3D. We could see how the products looked in our space and what we didn’t like, the designer found alternatives for, all within our budget!',
 
-    before: {
-      img: 'v1654258827/Room4_Before_utrjmk.png',
-      alt: 'Spacejoy review of nursery design  by Kaleb and Erica',
-    },
-    after: {
-      img: 'v1654258827/Room4_After_gnasb9.png',
-      alt: "Nursery design for Kaleb and Erica by spacejoy's online interior designer",
-    },
-  },
   // {
   //   id: '2',
   //   name: 'Caroline Sferruzzo',
@@ -249,6 +228,28 @@ const data = [
   //   after: {
   //     img: 'v1578230229/web/testimonial/Caroline-After_bhhgtp.jpg',
   //     alt: "Master bedroom design for Caroline Stfanno by spacejoy's online interior designer ",
+  //   },
+  // },
+  // {
+  //   id: '6',
+  //   name: 'Kimberly',
+  //   dp: 'v1574864705/web/testimonial/Kim_gov4xx.jpg',
+  //   address: 'New York',
+  //   roomType: 'Living Room',
+  //   ratings: 5,
+  //   bg: 'green',
+  //   shortDescription:
+  //     'We decided to give Spacejoy a try and so glad we did. Couldn’t be happier with how our room turned out.',
+  //   description:
+  //     'I absolutely loved working with Spacejoy! From the 3D renders to the personalized 1:1 moments working with my designer, the whole experience was great. My designer understood what I wanted and created a design that makes my space look amazing. Can’t wait to work with Spacejoy for the other rooms!',
+
+  //   before: {
+  //     img: 'v1574864758/web/testimonial/Kimberly_Before_y275vw.jpg',
+  //     alt: 'Spacejoy review of living room design  by Kimberley in New York',
+  //   },
+  //   after: {
+  //     img: 'v1574864751/web/testimonial/Kimberly_After_zhluna.jpg',
+  //     alt: "Living room design for Kimberly  by spacejoy's online interior designer",
   //   },
   // },
 ];

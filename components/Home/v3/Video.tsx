@@ -58,6 +58,7 @@ const Video = () => {
             muted={!isPlaying}
             playsInline
             className="rounded-2xl"
+            preload="metadata"
           >
             <source
               src="https://res.cloudinary.com/spacejoy/video/upload/fl_lossy,q_auto/v1719828761/spj-v2/homepage_video_compressed_hlom7a.mp4"

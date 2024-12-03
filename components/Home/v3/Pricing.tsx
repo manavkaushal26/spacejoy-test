@@ -35,15 +35,18 @@ const Pricing = (props: Props) => {
                 className={classNames('flex flex-col gap-4 bg-gradient-to-br from-transparent to-[#fff1f2]')}
                 // gradientBorder={isBliss}
               >
-                <h3 className="capitalize text-spj-red/75">{item.name}</h3>
-                <h2 className="text-2xl sm:text-4xl md:text-5xl">
-                  ${item.salePrice.value}
-                  <small className="text-base text-gray-500 sm:text-2xl md:text-2xl"> / room</small>
-                </h2>
-                <div
-                  className="text-gray-500"
-                  dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(item.saleDescription) }}
-                />
+                <div className="flex flex-col gap-2 md:gap-4">
+                  <h3 className="capitalize text-spj-red/75">{item.name}</h3>
+                  <h2 className="text-4xl md:text-5xl">
+                    ${item.salePrice.value}
+                    <small className="text-gray-500 md:text-2xl"> / room</small>
+                  </h2>
+                  <div
+                    className="text-gray-500"
+                    dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(item.saleDescription) }}
+                  />
+                </div>
+
                 <div className="h-px bg-gray-300" />
                 <div className="flex items-start gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-emerald-500 shrink-0" />

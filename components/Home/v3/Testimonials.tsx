@@ -62,7 +62,7 @@ const TestimonialCard = ({ data }) => {
         {/* Image Section */}
         <div
           className="relative col-span-1 lg:col-span-3 shadow-md rounded-t-[1rem] lg:rounded-[1rem] overflow-hidden"
-          onTouchStart={(e) => e.stopPropagation()} 
+          onTouchStart={(e) => e.stopPropagation()}
           onTouchMove={(e) => e.stopPropagation()}
           onTouchEnd={(e) => e.stopPropagation()}
         >
@@ -126,10 +126,10 @@ const TestimonialCard = ({ data }) => {
             {Array(5)
               .fill(0)
               .map((_, i) => (
-                <StarIcon key={i} className="w-4 h-4 text-yellow-500 lg:w-6 lg:h-6" />
+                <StarIcon key={i} className="w-6 h-6 text-yellow-500 md:h-4 md:w-4 lg:w-6 lg:h-6" />
               ))}
           </div>
-          <p className="mt-4 text-lg font-semibold lg:text-3xl">{data?.shortDescription}.</p>
+          <p className="mt-4 text-xl font-semibold leading-6 lg:text-3xl">{data?.shortDescription}.</p>
           <p className="mt-4 text-sm lg:text-base text-zinc-700">{data?.description}</p>
           <div className="flex items-center justify-start mt-6 lg:mt-8">
             <div className="relative w-12 h-12 rounded-full lg:w-16 lg:h-16">

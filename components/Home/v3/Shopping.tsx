@@ -97,9 +97,9 @@ const Shopping: React.FC<Props> = () => {
                               <span>{post.title}</span>
                               <ExternalLinkIcon className="w-5 h-5 text-spj-red" />
                             </h3>
-                            <p className="px-1 text-xs sm:px-2 md:text-base text-zinc-500 line-clamp-2">
+                            {/* <p className="px-1 text-xs sm:px-2 md:text-base text-zinc-500 line-clamp-2">
                               {post.description}
-                            </p>
+                            </p> */}
                           </a>
                         </Link>
                       ))}

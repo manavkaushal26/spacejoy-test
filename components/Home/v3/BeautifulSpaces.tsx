@@ -27,45 +27,45 @@ const BeautifulSpaces = (props: Props) => {
           <div className="grid grid-cols-2 grid-rows-6 gap-2 mt-10 lg:grid-rows-5 lg:gap-4 lg:grid-cols-3">
             <div className="row-span-2">
               <ImageCard
-                imgSrc="/v1733150086/spj-v2/home-v3/render_1_k60ml2.jpg"
-                title="Living Rooms"
-                href="/interior-designs/living-room-ideas"
+                imgSrc="/v1733216291/spj-v2/home-v3/beautiful_outdoor_space_1_twhozw.webp"
+                title="Outdoor Spaces"
+                href="/interior-designs/outdoor-ideas"
                 first
               />
             </div>
             <div className="row-span-2 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1733151432/spj-v2/home-v3/render_6_cffyil.jpg"
-                title="Dining Rooms"
-                href="/interior-designs/dining-room-ideas"
+                imgSrc="/v1733219563/spj-v2/home-v3/beautiful_living_space_3_uujoug.webp"
+                title="Living Rooms"
+                href="/interior-designs/living-room-ideas"
               />
             </div>
             <div className="row-span-2 row-start-3 lg:row-start-1 lg:col-start-3">
               <ImageCard
-                imgSrc="/v1733150515/spj-v2/home-v3/render_3_qjg3nc.jpg"
-                title="Outdoors"
-                href="/interior-designs/outdoor-ideas"
+                imgSrc="/v1733216973/spj-v2/home-v3/beautiful_nursery_space_1_vfosjn.webp"
+                title="Nursery Rooms"
+                href="/interior-designs/nursery-ideas"
               />
             </div>
             <div className="row-span-2 row-start-5 lg:row-span-3 lg:row-start-3">
               <ImageCard
-                imgSrc="/v1733150807/spj-v2/home-v3/render_4_pjnybh.jpg"
-                title="Bedrooms"
-                href="/interior-designs/bedroom-ideas"
+                imgSrc="/spj-v2/home-v3/beautiful_dining_space_1_ainynr.webp"
+                title="Dining Rooms"
+                href="/interior-designs/dining-room-ideas"
               />
             </div>
             <div className="col-start-2 row-span-2 row-start-3 lg:row-span-2 lg:row-start-4">
               <ImageCard
-                imgSrc="/v1733152001/spj-v2/home-v3/render_9_iecc6b.jpg"
-                title="Office Spaces"
-                href="/interior-designs/home-office-ideas"
+                imgSrc="/v1733214261/spj-v2/home-v3/beautiful_bedroom_space_zawn04.webp"
+                title="Bedrooms"
+                href="/interior-designs/bedroom-ideas"
               />
             </div>
             <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1733152224/spj-v2/home-v3/render_10_axgbb8.jpg"
-                title="Nursery Rooms"
-                href="/interior-designs/nursery-ideas"
+                imgSrc="/v1733215936/spj-v2/home-v3/beautiful_home_office_space_gx35vl.webp"
+                title="Home Offices"
+                href="/interior-designs/home-office-ideas"
               />
             </div>
           </div>
@@ -92,7 +92,7 @@ const ImageCard = ({
         <div className="group relative h-full w-full rounded-[1rem] lg:rounded-[2rem] shadow-md overflow-hidden">
           <div
             className={classNames(
-              'relative w-full group-hover:scale-110 transition-all duration-300',
+              'relative w-full group-hover:scale-105 transition-all duration-300',
               first ? 'aspect-[1.5/1]' : 'h-full'
             )}
           >
@@ -104,17 +104,19 @@ const ImageCard = ({
               priority
             />
           </div>
-          <div className="absolute inset-0 flex items-end text-white bg-gradient-to-b from-black/0 via-black/25 to-black">
-            <div className="flex items-center justify-between w-full p-3 sm:p-6">
-              <p className="text-base md:text-xl lg:text-2xl">{title}</p>
-              <div className="p-1 bg-white rounded-full sm:p-2">
-                <ArrowRightIcon
-                  className="w-4 h-4 text-black transition-all duration-300 lg:w-6 lg:h-6 group-hover:-rotate-45 focus:-rotate-45 group-hover:scale-105 focus:scale-105"
-                  aria-hidden="true"
-                />
+          {title && (
+            <div className="absolute inset-0 flex items-end text-white bg-gradient-to-b from-transparent via-black/5 to-black/50 translate-y-100">
+              <div className="flex items-center justify-between w-full p-3 sm:p-6">
+                <p className="text-base md:text-xl lg:text-2xl">{title}</p>
+                <div className="p-1 bg-white rounded-full sm:p-2">
+                  <ArrowRightIcon
+                    className="w-4 h-4 text-black transition-all duration-300 lg:w-6 lg:h-6 group-hover:-rotate-45 focus:-rotate-45 group-hover:scale-105 focus:scale-105"
+                    aria-hidden="true"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </a>
     </Link>
