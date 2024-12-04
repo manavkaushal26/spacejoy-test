@@ -3,7 +3,6 @@ import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ExternalLinkIcon, GiftIcon } from '@heroicons/react/outline';
 import { cloudinary } from '@utils/config';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const ContentOverlay = ({ title }: { title: string }) => {
   return (
@@ -28,26 +27,23 @@ const BannersBentoGrid = () => {
           </div>
         }
         title="Dream Spaces Begin Here"
+        subTitle="Designed to make every corner a place you adore"
         noMargin
         center
       />
       <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10">
         <div className="h-48 col-span-6 group md:col-span-4 lg:h-full">
           <div className="overflow-hidden rounded-xl max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
-            <Link href="/interior-designs/living-room-ideas" passHref>
-              <a target="_blank" rel="noopener noreferrer">
-                <div className="relative w-full h-full group">
-                  <Image
-                    alt="Explore living rooms image"
-                    src={cloudinaryDefault + '/w_1200/v1733307567/spj-v2/home-v3/banner_1_a_c9ydbt.webp'}
-                    className="object-cover transition-all duration-300 group-hover:scale-105"
-                    layout="fill"
-                    priority
-                  />
-                  {/* <ContentOverlay title="Explore Living Room Ideas" /> */}
-                </div>
-              </a>
-            </Link>
+            <div className="relative w-full h-full group">
+              <Image
+                alt="Explore living rooms image"
+                src={cloudinaryDefault + '/w_1200/v1733307567/spj-v2/home-v3/banner_1_a_c9ydbt.webp'}
+                className="object-cover transition-all duration-300 group-hover:scale-105"
+                layout="fill"
+                priority
+              />
+              {/* <ContentOverlay title="Explore Living Room Ideas" /> */}
+            </div>
           </div>
         </div>
         <div className="h-48 col-span-6 group md:col-span-2 lg:h-full">

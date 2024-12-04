@@ -60,7 +60,7 @@ export const ProductHighlight = ({ backgroundSrc = '', sale = '' }: ProductHighl
               <button
                 className={classNames('mt-4 text-black px-6 py-3 rounded-lg font-bold', getBackgroundColor[sale])}
               >
-                START YOUR PROJECT →
+                DESIGN YOUR ROOM →
               </button>
             </a>
           </Link>

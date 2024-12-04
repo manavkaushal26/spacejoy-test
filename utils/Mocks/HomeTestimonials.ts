@@ -29,7 +29,7 @@ const data = [
     ratings: 5,
     bg: 'red',
     shortDescription:
-      'Will never paint or buy furnishing for another room without getting a design from Spacejoy first',
+      'Will never paint or buy furnishing for another room without getting a design from Spacejoy first.',
     description:
       'My Spacejoy designer understood exactly what I wanted and brought it to life with her beautiful designs. My room looks amazing - It’s exactly the style we were going for but could never quite achieve. And the 3D renders are so life-like, I was beyond thrilled to see my space before it was done!',
     before: {
@@ -71,7 +71,7 @@ const data = [
     ratings: 5,
     bg: 'red',
     shortDescription:
-      'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact pieces',
+      'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact pieces.',
     description:
       'I LOVE Spacejoy! Not only are their designs absolutely stunning but they also have the widest selection of products from all the top brands. I found everything I needed for my home, all in one place! Plus they give extra discounts which means more savings! Win-win!',
     before: {

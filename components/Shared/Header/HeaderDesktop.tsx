@@ -287,7 +287,7 @@ const HeaderDesktop: React.FC = () => {
               </Link> */}
               <Link href={`/quiz/start-quiz`}>
                 <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700 whitespace-nowrap">
-                  Start Your Project
+                  Design Your Room
                 </a>
               </Link>
               <UserNav />

@@ -40,7 +40,7 @@ export const Showcase = ({ saleName, code }: { saleName: string; code: string })
         <Link href={oldSpacejoyUrl + '/new-project'}>
           <a target="_blank" rel="noopener noreferrer">
             <button className="w-full px-6 py-3 text-base font-bold text-white bg-black rounded-lg sm:w-auto sm:px-8 sm:py-4 sm:text-lg ">
-              START YOUR PROJECT →
+              DESIGN YOUR ROOM →
             </button>
           </a>
         </Link>

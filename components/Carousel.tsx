@@ -70,7 +70,7 @@ export default function Carousel({
     slidesToShow,
     className: 'with-space',
     mobileFirst: true,
-    autoplay: false,
+    autoplay: autoplay,
     autoplaySpeed: autoplaySpeed,
     responsive: [
       {

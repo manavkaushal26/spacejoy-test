@@ -76,7 +76,7 @@ const V3 = ({ isMobile }) => {
               <div className="rounded-md shadow">
                 <Link href={`/quiz/start-quiz`} passHref>
                   <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10">
-                    Start Your Project
+                    Design Your room
                   </a>
                 </Link>
               </div>
@@ -183,7 +183,7 @@ const V3 = ({ isMobile }) => {
                   href="#"
                   className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md md:py-4 md:text-lg md:px-10"
                 >
-                  Start Your Project
+                  Design Your Room
                 </a>
               </Link>
             </div>

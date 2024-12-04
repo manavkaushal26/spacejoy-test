@@ -18,7 +18,7 @@ const Designers = (props: Props) => {
             <UsersIcon className="w-8 h-8 text-orange-500" />
           </div>
         }
-        title="Design your space. Live your joy"
+        title="Over a Decade of Design Excellence, Tailored for You"
         subTitle="Let our experts design a space you'll love with products you can shop right away on Spacejoy!"
         center
         noMargin
@@ -30,7 +30,7 @@ const Designers = (props: Props) => {
             slidesToShow={1}
             withNav={false}
             arrows={false}
-            autoplay
+            autoplay={true}
             autoplaySpeed={5000}
             pauseOnHover
             pauseOnDotsHover
@@ -69,12 +69,7 @@ const Designers = (props: Props) => {
                       <p className="mt-4 text-base md:text-xl text-zinc-700">{d.desc}</p>
                     </div>
                     <div>
-                      <ShinyButton
-                        href={oldSpacejoyUrl + '/new-project'}
-                        target="_blank"
-                        showArrow
-                        showRing
-                      >
+                      <ShinyButton href={oldSpacejoyUrl + '/new-project'} target="_blank" showArrow showRing>
                         Hire {d.firstName}
                       </ShinyButton>
                     </div>
