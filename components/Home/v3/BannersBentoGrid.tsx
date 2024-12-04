@@ -30,7 +30,7 @@ const BannersBentoGrid = () => {
                 <div className="relative w-full h-full group">
                   <Image
                     alt="Explore living rooms image"
-                    src={cloudinaryDefault + '/w_1200/v1733221282/spj-v2/home-v3/living_space_p38ddv.webp'}
+                    src={cloudinaryDefault + '/w_1200/v1733307567/spj-v2/home-v3/banner_1_a_c9ydbt.webp'}
                     className="object-cover transition-all duration-300 group-hover:scale-105"
                     layout="fill"
                     priority
@@ -46,7 +46,7 @@ const BannersBentoGrid = () => {
             <div className="relative w-full h-full group">
               <Image
                 alt="Explore bedrooms image"
-                src={cloudinaryDefault + '/w_740/v1733220220/spj-v2/home-v3/800x520_1_krfahe.webp'}
+                src={cloudinaryDefault + '/w_740/v1733309596/spj-v2/home-v3/banner_2_3_mcsbdh.webp'}
                 className="object-cover transition-all duration-300 group-hover:scale-105"
                 layout="fill"
                 priority
@@ -60,7 +60,7 @@ const BannersBentoGrid = () => {
             <div className="relative w-full h-full group">
               <Image
                 alt="Explore other rooms image"
-                src={cloudinaryDefault + '/w_740/v1733220035/spj-v2/home-v3/800x520_coocjh.webp'}
+                src={cloudinaryDefault + '/w_740/v1733309906/spj-v2/home-v3/banner_3_1_apuqme.webp'}
                 className="object-cover transition-all duration-300 group-hover:scale-105"
                 layout="fill"
                 priority

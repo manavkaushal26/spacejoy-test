@@ -35,7 +35,7 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="row-span-2 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1733219563/spj-v2/home-v3/beautiful_living_space_3_uujoug.webp"
+                imgSrc="/v1733310266/spj-v2/home-v3/licing_room_a_sl6lqm.webp"
                 title="Living Rooms"
                 href="/interior-designs/living-room-ideas"
               />
@@ -63,7 +63,7 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1733215936/spj-v2/home-v3/beautiful_home_office_space_gx35vl.webp"
+                imgSrc="/v1733310175/spj-v2/home-v3/home_office_a_kfh106.webp"
                 title="Home Offices"
                 href="/interior-designs/home-office-ideas"
               />

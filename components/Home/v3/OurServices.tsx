@@ -171,21 +171,21 @@ const OurServices = ({ type = 'carousel' }: Props) => {
 
               {/* Image Section */}
               <div className="order-1 lg:justify-center lg:flex lg:order-2">
-                <SampleImageStyled className="h-[200px]">
+                <SampleImageStyled className="h-[250px]">
                   {ourServicesData.map((service, i) => (
                     <ImageWrapperStyled
                       key={`image-${service.id}`}
                       className={classNames(
                         currentIndex && currentIndex === service.id ? 'active' : 'inactive',
-                        'lg:right-64 lg:-top-16'
+                        'w-full lg:right-80 lg:-top-20'
                       )}
                     >
-                      <div className="relative w-full max-w-xs sm:max-w-md md:w-[600px] mx-auto aspect-[1.85/1]">
+                      <div className="relative w-full max-w-sm md:max-w-none md:w-[530px] mx-auto aspect-[1.6/1]">
                         <Image
-                          src={`${cloudinary.baseDeliveryURL}/c_scale,q_100,w_900/${service.imgSrc}`}
+                          src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_1000,e_sharpen/${service.imgSrc}`}
                           alt={service.title}
-                          className="object-contain"
                           layout="fill"
+                          objectFit="contain"
                         />
                       </div>
                     </ImageWrapperStyled>

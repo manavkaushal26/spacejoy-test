@@ -27,7 +27,7 @@ const HomeV3 = (props: Props) => {
       <Layout.Header />
       <Layout.Body>
         <Hero />
-        <BannersBentoGrid />
+        <BeautifulSpaces />
         <OurServices type="carousel" />
         <Video />
         <Pricing />
@@ -35,7 +35,7 @@ const HomeV3 = (props: Props) => {
         <LookBook />
         <Testimonials />
         <SpacejoyAdvantage />
-        <BeautifulSpaces />
+        <BannersBentoGrid />
         <Shopping />
         <Designers />
         <Featured />

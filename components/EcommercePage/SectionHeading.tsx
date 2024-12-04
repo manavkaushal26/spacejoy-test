@@ -15,7 +15,7 @@ const SectionHeading: React.FC<{
       className={`w-full space-y-2 ${center ? 'text-center' : 'text-left'} ${noMargin ? 'mt-0 mb-0' : 'mt-16 mb-8'}`}
     >
       {preText && preComponent}
-      <h2 className="text-3xl font-semibold capitalize lg:text-5xl">{title}</h2>
+      <h2 className="text-3xl font-medium capitalize lg:text-5xl">{title}</h2>
       {subTitle && <p className="text-base text-zinc-500 lg:text-xl lg:mx-auto">{subTitle}</p>}
     </div>
   );

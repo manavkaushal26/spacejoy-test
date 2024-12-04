@@ -4,13 +4,21 @@ import ImageWithDots from '@components/Shared/ImageWithDots';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { HeartIcon } from '@heroicons/react/solid';
 
-type Props = {};
+enum WHITE_LABEL_RETAILERS_ENUM {
+  EMPYREAN_LIVING = 'Empyrean Living',
+  LUNA_AND_LUXE = 'Luna & Lux',
+}
+
+type WHITE_LABEL_RETAILERS = `${WHITE_LABEL_RETAILERS_ENUM}`;
+
 interface DotType {
   id: number;
   x: number;
   y: number;
   label: string;
-  visible: boolean;
+  retailer: WHITE_LABEL_RETAILERS;
+  slug: string;
+  position: 'top' | 'bottom';
 }
 
 interface DeviceType {
@@ -26,31 +34,68 @@ export interface DesignType {
   mobile: DeviceType;
 }
 
-const data: DesignType[] = [
-  {
+const LookBook = () => {
+  const designData: DesignType = {
     name: 'Transitional Living Room',
     description: 'A modern minimalist aesthetic with a touch of luxury.',
-    url: 'https://www.spacejoy.com/interior-designs/living-room-ideas/eclectic-living-room-with-gallery-wall-66635f2b06a911000d0f4e4d',
+    url: 'https://www.spacejoy.com/interior-designs/living-room-ideas/transitional-mid-century-modern-living-room-with-built-in-shelving-67004cdda631cf000dabf412',
     desktop: {
       imgSrc: '/v1733237680/spj-v2/home-v3/transitional_living_rl3hxo.webp',
       dots: [
-        { id: 1, x: 0, y: 0, label: '', visible: true },
-        { id: 2, x: 0, y: 0, label: '', visible: true },
-        { id: 3, x: 0, y: 0, label: '', visible: true },
+        {
+          id: 1,
+          x: 54.6,
+          y: 85,
+          label: 'Milet Coffee Table',
+          retailer: 'Empyrean Living',
+          slug: 'milet-coffee-table',
+          position: 'bottom',
+        },
+        {
+          id: 2,
+          x: 46,
+          y: 60,
+          label: 'Layke Black Concrete Side Table',
+          retailer: 'Luna & Lux',
+          slug: 'layke-black-concrete-side-table',
+          position: 'top',
+        },
+        {
+          id: 3,
+          x: 24,
+          y: 60,
+          label: 'Mayfair Side Table',
+          retailer: 'Luna & Lux',
+          slug: 'mayfair-side-table',
+          position: 'top',
+        },
       ],
     },
     mobile: {
       imgSrc: '/v1733237951/spj-v2/home-v3/transitional_living_mobile_kicqha.webp',
       dots: [
-        { id: 1, x: 0, y: 0, label: '', visible: true },
-        { id: 2, x: 0, y: 0, label: '', visible: true },
-        { id: 3, x: 0, y: 0, label: '', visible: true },
+        {
+          id: 1,
+          x: 72,
+          y: 65,
+          label: 'Milet Coffee Table',
+          retailer: 'Empyrean Living',
+          slug: 'milet-coffee-table',
+          position: 'top',
+        },
+        {
+          id: 2,
+          x: 24,
+          y: 56,
+          label: 'Layke Black Concrete Side Table',
+          retailer: 'Luna & Lux',
+          slug: 'layke-black-concrete-side-table',
+          position: 'top',
+        },
       ],
     },
-  },
-];
+  };
 
-const LookBook = (props: Props) => {
   return (
     <MaxWidthContainer>
       <SectionHeading
@@ -66,17 +111,7 @@ const LookBook = (props: Props) => {
       />
       <div className="w-full mt-10">
         <BaseCard className="!p-0" containerClassName="rounded-3xl" disabledHoverShadow>
-          <ImageWithDots
-            designData={data[0]}
-            // src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_2500/v1733225749/spj-v2/home-v3/image_1_tuhohh.png"
-            // alt="Modern Rustic Cabin"
-            // dots={dots}
-            // designData={{
-            //   name: 'Modern Rustic Cabin',
-            //   description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, nostrum.',
-            //   url: 'https://www.spacejoy.com/interior-designs/open-living-and-dining-room-ideas/modern-rustic-cabin-with-rust-tones-670046e18d8448000d55c00e',
-            // }}
-          />
+          <ImageWithDots designData={designData} />
         </BaseCard>
       </div>
     </MaxWidthContainer>

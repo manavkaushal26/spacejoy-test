@@ -68,7 +68,7 @@ const designTeamData = [
     lastName: 'Nelson',
     icon: 'v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
     bg: '/v1732793589/web/design-team/sarah_nelson_pbtzio.webp',
-    desc: 'lorem50Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dignissimos tempora mollitia fuga explicabo commodi rem libero sed corrupti porro adipisci illo, sint doloremque nostrum repudiandae alias. Saepe quae quis, optio',
+    desc: 'Sarah Nelson, our interior designer at Spacejoy, has a knack for turning houses into homes. With an eye for style and a love for creating spaces that feel personal, she’s here to make your dream interiors a reality—simple, beautiful, and uniquely yours.',
     isReversed: false,
   },
 ];
