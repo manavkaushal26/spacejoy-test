@@ -1,3 +1,5 @@
+import { AssetInterface } from "@components/InteriorDesigns/types";
+
 export interface CustomerAddress {
   country: string;
   state?:string;
@@ -44,7 +46,7 @@ export interface AssetList {
 }
 
 export interface Summary {
-  assetList: AssetList[];
+  assetList: Array<AssetInterface>;
   testimonial: string;
   rating: number;
 }

@@ -358,15 +358,18 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
                     <h3 className="mb-8 text-2xl text-center capitalize sm:text-4xl sm:mb-8">Shopping List</h3>
                     <div className="grid grid-cols-2 gap-1 text-left md:grid-cols-2 lg:grid-cols-4 sm:gap-3">
                       {summary?.assetList &&
-                        summary?.assetList.map((item) => {
-                          return <ProductCard 
-                          key={item._id} 
-                          product={{
-                            ...item?.asset,
-                            msrp: item?.asset?.price,
-                            imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${item?.asset?.cdn}`,
-                          }} 
-                          useRetailLink />;
+                        summary?.assetList.map((asset, index) => {
+                          return (
+                            <ProductCard
+                              key={`${asset.asset._id}-${index}`}
+                              product={{
+                                ...asset?.asset,
+                                msrp: asset?.asset?.price,
+                                imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${asset?.asset?.cdn}`,
+                              }}
+                              useRetailLink
+                            />
+                          )
                         })}
                     </div>
                   </div>
