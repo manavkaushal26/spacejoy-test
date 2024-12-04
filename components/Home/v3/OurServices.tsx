@@ -99,7 +99,7 @@ const OurServices = ({ type = 'carousel' }: Props) => {
               <LightningBoltIcon className="w-8 h-8 text-rose-500" />
             </div>
           }
-          title="How Our Service Works"
+          title="Interior design made accessible from the comfort of your home"
           subTitle="We go beyond picking furniture. We bring your ideas together."
           center
           noMargin

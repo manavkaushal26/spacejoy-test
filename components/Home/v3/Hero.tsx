@@ -44,7 +44,7 @@ export const Hero = (props: Props) => {
           </div>
           <p>
             <span className="font-semibold text-spj-red">200,000+</span> beautiful rooms designed and delivered{' '}
-            <span className="font-semibold text-spj-red">since 2019!</span>
+            <span className="font-semibold text-spj-red lg:block 2xl:inline-block">since 2019</span>
           </p>
         </div>
       </MaxWidthContainer>

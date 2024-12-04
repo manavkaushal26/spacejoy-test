@@ -4,15 +4,15 @@ export const ourServicesData = [
     title: 'Find your style',
     subTitle: 'Not sure what you love? We’ll help you discover it.',
     description:
-      '<p>Your space should reflect you. Through personalized consultations, we’ll uncover your unique style, whether <strong>modern</strong>, <strong>rustic</strong>, or <strong>classic</strong>. Let us turn your ideas into a space that feels just right—beautiful, personal, and perfectly tailored to you.</p>',
+      '<p>Your space should reflect you. Through personalized consultations, we’ll uncover your unique style, whether <strong>modern</strong>, <strong>classic</strong>, or <strong>anything in between</strong>. Let us turn your ideas into a space that feels just right—beautiful, personal, and perfectly tailored for you.</p>',
     imgSrc: 'v1733307960/spj-v2/home-v3/1_cbioat.webp',
   },
   {
     id: 2,
-    title: 'Affordable design experts',
-    subTitle: 'Access top designers without the high costs.',
+    title: 'Design made personal',
+    subTitle: 'Expert designers, personalized service, and stunning results—all at a price you’ll love.',
     description:
-      '<p>Access top-tier design expertise without breaking the bank. Our <strong>affordable design services</strong> connect you with talented professionals who bring your vision to life. From concept to completion, we deliver exceptional results tailored to your style and budget.</p>',
+      '<p>Our online interior design service makes great design accessible to everyone—no hefty price tags, no hassle. We’ve carefully selected top designers from across the country, each ready to bring their creative best to your project. Once we understand your style and needs, we’ll pair you with a designer who will guide you from concept to completion. Our cutting-edge design tools make it easy to bring your vision to life, all while staying affordable and effortless.</p>',
     imgSrc: 'v1733307960/spj-v2/home-v3/2_cdasco.webp',
   },
   {

@@ -18,7 +18,7 @@ const Designers = (props: Props) => {
             <UsersIcon className="w-8 h-8 text-orange-500" />
           </div>
         }
-        title="Over a Decade of Design Excellence, Tailored for You"
+        title="The best design crew is waiting to work with you"
         subTitle="Let our experts design a space you'll love with products you can shop right away on Spacejoy!"
         center
         noMargin

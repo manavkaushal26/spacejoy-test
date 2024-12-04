@@ -20,7 +20,7 @@ const Testimonials = (props: Props) => {
             <AnnotationIcon className="w-8 h-8 text-blue-500" />
           </div>
         }
-        title="Get raving reviews from customers"
+        title="Joyful Before and Afters"
         subTitle="We'll take care of the heavy lifting so you can sit back and enjoy the compliments"
         center
         noMargin
