@@ -64,6 +64,7 @@ const CollageProductList: React.FC<{
                   key={asset?._id}
                   collageId={collageId}
                   pageName="design-sets"
+                  useRetailLink
                 />
               </>
             );

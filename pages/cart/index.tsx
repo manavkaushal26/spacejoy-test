@@ -154,8 +154,8 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
   return (
     <li key={product._id} className="grid grid-cols-12 py-6 group sm:py-10">
       <div className="col-span-3 mb-2 aspect-w-1 aspect-h-1">
-        <Link key={product._id} href={`/product-view/${product._id}`} passHref>
-          <a href={`/product-view/${product._id}`} {...linkProps}>
+        <Link key={product._id} href={product?.retailLink} passHref>
+          <a {...linkProps}>
             <Image
               // src={product?.imageUrl}
               src={`${cloudinary.baseDeliveryURL}/w_400,ar_1,c_pad/${product?.cdn}`}
@@ -175,7 +175,7 @@ const CartItem: React.FC<CartItemInterface> = ({ product, key, retailer }) => {
             <div className="flex justify-between">
               <h3 className="text-sm capitalize group-hover:underline">
                 <a
-                  href={`/product-view/${product._id}`}
+                  href={product?.retailLink}
                   className="font-medium text-gray-700 capitalize hover:text-gray-800"
                   target="_blank"
                   rel="noreferrer"

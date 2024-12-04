@@ -61,7 +61,7 @@ const ProductList = ({ list }) => {
                 {idx === 4 && (
                   <AffirmCard imgUrl="https://res.cloudinary.com/spacejoy/image/upload/v1645792556/web/homepage-v3/Card_tjadyd.svg" />
                 )}
-                <ProductCard product={item} key={item._id} pageName="shop" />
+                <ProductCard product={item} key={item._id} pageName="shop" useRetailLink />
               </>
             );
           })}

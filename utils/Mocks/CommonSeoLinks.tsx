@@ -178,7 +178,7 @@ export const CommonSeoLinks = [
     list: [
       { title: 'Luna & Luxe', link: `${newSpacejoyStoreUrl}/collections/luna-luxe-furniture-decor` },
       { title: 'Harper Studios', link: `${newSpacejoyStoreUrl}/collections/harper-studios-furniture-decor` },
-      { title: 'Empyrean Living', link: `${newSpacejoyStoreUrl}/collections/empyrean-living-luxe-furniture-decor` },
+      { title: 'Empyrean Living', link: `${newSpacejoyStoreUrl}/collections/empyrean-living-furniture-decor` },
       { title: 'Aurora Home', link: `${newSpacejoyStoreUrl}/collections/aurora-home` },
       { title: 'Urban Nova', link: `${newSpacejoyStoreUrl}/collections/urban-nova` },
       { title: 'Thread & Thistle', link: `${newSpacejoyStoreUrl}/collections/thread-thistle` },

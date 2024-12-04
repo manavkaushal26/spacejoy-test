@@ -1,6 +1,12 @@
+import UserCard from '@components/Cards/UserCard';
+import { lightBoxOptions } from '@components/Carousel';
+import CustomerCard from '@components/CustomerStories/CustomerCard';
 import ImageGallaryGrid from '@components/CustomerStories/ImageGallaryGrid';
-import { AssetList, StoryViewResponse } from '@components/CustomerStories/StoryViewInterface';
+import { StoryViewResponse } from '@components/CustomerStories/StoryViewInterface';
 import Layout from '@components/Shared/Layout';
+import PreFooter from '@components/Shared/PreFooter';
+import ProductCard from '@components/Shop/ProductCard';
+import SVGIcon from '@components/SVGIcon';
 import { cloudinary, company, imageKit } from '@utils/config';
 import { publicRoutes } from '@utils/constants';
 import fetcher from '@utils/fetcher';
@@ -8,17 +14,8 @@ import { IndexPageMeta } from '@utils/meta';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
+import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
 import styled from 'styled-components';
-import SVGIcon from '@components/SVGIcon';
-import UserCard from '@components/Cards/UserCard';
-import { priceToLocaleString } from '@utils/helpers';
-import Link from 'next/link';
-import { blurredProduct } from '@public/images/bg-base-64';
-import CustomerCard from '@components/CustomerStories/CustomerCard';
-import { lightBoxOptions } from '@components/Carousel';
-import { SRLWrapper } from 'simple-react-lightbox';
-import SimpleReactLightbox from 'simple-react-lightbox';
-import PreFooter from '@components/Shared/PreFooter';
 
 const StoryBodyStyled = styled.div`
   img {
@@ -167,43 +164,6 @@ const renderStep = (section) => {
   }
 };
 
-const Product = ({ asset }) => {
-  return (
-    <div>
-      <Link
-        href={`/product-view${asset.vertical ? `/${asset.vertical}` : '/product'}/${
-          asset?.slug ? asset.slug : asset?._id
-        }`}
-        passHref
-      >
-        <a>
-          <div className="flex flex-col bg-white justify-between rounded-lg h-full hover:z-30 hover:scale-[1.02] relative transition hover:shadow-xl">
-            <div className="p-4">
-              <div className="relative w-full mb-2 aspect-w-1 aspect-h-1">
-                <Image
-                  src={asset?.cdn ? `${cloudinary.baseDeliveryURL}/c_scale,w_400/${asset?.cdn}` : asset?.imageUrl}
-                  alt={asset?.name}
-                  blurDataURL={blurredProduct}
-                  className="object-contain object-center w-full h-full"
-                  layout="fill"
-                  placeholder="blur"
-                />
-              </div>
-              <small className="mt-4 text-xs text-gray-500">{asset?.retailer}</small>
-
-              <h3 className="text-gray-700 text-base sm:min-h-[40px] min-h-[20px] overflow-ellipsis line-clamp-1 sm:line-clamp-2">
-                {asset?.name}
-              </h3>
-              <p className="mt-1 text-lg font-medium text-gray-900">
-                <span>{priceToLocaleString(asset?.price)}</span>
-              </p>
-            </div>
-          </div>
-        </a>
-      </Link>
-    </div>
-  );
-};
 
 const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summary, createdAt, slug } }) => {
   const roomType = timeline.length > 0 && timeline[0].meta && timeline[0].meta.roomType;
@@ -399,7 +359,14 @@ const storyView: React.FC<StoryViewResponse> = ({ data: { about, timeline, summa
                     <div className="grid grid-cols-2 gap-1 text-left md:grid-cols-2 lg:grid-cols-4 sm:gap-3">
                       {summary?.assetList &&
                         summary?.assetList.map((item) => {
-                          return <Product asset={item?.asset} key={item._id} />;
+                          return <ProductCard 
+                          key={item._id} 
+                          product={{
+                            ...item?.asset,
+                            msrp: item?.asset?.price,
+                            imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${item?.asset?.cdn}`,
+                          }} 
+                          useRetailLink />;
                         })}
                     </div>
                   </div>

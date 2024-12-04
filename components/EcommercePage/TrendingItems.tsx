@@ -1,11 +1,11 @@
-import ProductCard from '@components/Shop/ProductCard';
-import React, { useEffect, useMemo, useState } from 'react';
-import { useFirebaseContext } from '@store/FirebaseContextProvider';
-import SectionHeading from './SectionHeading';
-import fetcher from '@utils/fetcher';
 import Carousel from '@components/Carousel';
-import Link from 'next/link';
+import ProductCard from '@components/Shop/ProductCard';
+import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
+import fetcher from '@utils/fetcher';
+import Link from 'next/link';
+import React, { useEffect, useMemo, useState } from 'react';
+import SectionHeading from './SectionHeading';
 
 const sliderSettings = {
   dots: false,
@@ -63,7 +63,7 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
                   <div className="collections-slider">
                     <Carousel imageCount={dataToDisplay?.length || 0} responsive={sliderSettings} slidesToShow={4}>
                       {dataToDisplay.map((product: any) => (
-                        <ProductCard key={product._id} product={product} showViewDetails={false} pageName="hot-deals" />
+                        <ProductCard key={product._id} product={product} showViewDetails={false} pageName="hot-deals" useRetailLink />
                       ))}
 
                       <Link href={'/hot-deals'}>
@@ -91,7 +91,7 @@ const TrendingItems: React.FC<{ page?: boolean; mobile?: boolean }> = ({ page, m
             ) : (
               <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4">
                 {dataToDisplay.map((product: any) => (
-                  <ProductCard key={product._id} product={product} showViewDetails={false} />
+                  <ProductCard key={product._id} product={product} showViewDetails={false} useRetailLink />
                 ))}
               </div>
             )}

@@ -5,7 +5,6 @@ import { EngagementBlockInterface } from '@components/EngagementBlocks/Engagemen
 import SimilarPicksCarousel from '@components/EngagementBlocks/SimilarPicksCarousel';
 import { getEngagementsBlocks } from '@components/EngagementBlocks/Utils';
 import Breadcrumb from '@components/InteriorDesigns/Breadcrumb';
-import ImageGrid from '@components/InteriorDesigns/ImageGrid';
 import TestimonialsMini from '@components/InteriorDesigns/TestimonialsMini';
 import { AssetInterface } from '@components/InteriorDesigns/types';
 import SocialLinks from '@components/Shared/Footer/SocialLinks';
@@ -133,6 +132,7 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
                                 msrp: asset?.asset?.price,
                                 imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${asset?.asset?.cdn}`,
                               }}
+                              useRetailLink
                             />
                           );
                         })}

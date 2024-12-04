@@ -86,7 +86,7 @@ const WishList: React.FC<ComponentInterface> = ({ data }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
                   {assetsData?.map((asset) => (
                     <div key={asset?._id} onClick={() => analytics('product', asset?._id)}>
-                      <ProductCard product={asset?.document} />
+                      <ProductCard product={asset?.document} useRetailLink />
                     </div>
                   ))}
                 </div>

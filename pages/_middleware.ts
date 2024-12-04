@@ -1,11 +1,14 @@
 // eslint-disable-next-line @next/next/no-server-import-in-page
 import { newSpacejoyStoreUrl } from '@utils/config';
 import { NextRequest, NextResponse } from 'next/server';
+import { categories } from "./../utils/categoriesMock";
 
 export function middleware(req: NextRequest) {
   const basicAuth = req.cookies['token'];
   const path = req.nextUrl.pathname;
   const pathName = 'Checkout';
+
+  const normalizedCategories = categories.map((category) => category.subcategoryName.toLowerCase().replace(/\s+/g, ''));
 
   const userAgent = req?.ua;
 
@@ -18,7 +21,9 @@ export function middleware(req: NextRequest) {
 
     return NextResponse.rewrite('/unauthorised').cookie('isMobile', isMobile.toString());
   }
-
+  if (normalizedCategories.some((category) =>  (path.toLowerCase().startsWith(`/${category}`)) )) {
+    return NextResponse.redirect('https://store.spacejoy.com/collections/furniture', 301);
+  }
   if (path.startsWith('/quiz')) {
     return NextResponse.redirect('https://designs.spacejoy.com/new-project?quiz=start&plan=bliss');
   }

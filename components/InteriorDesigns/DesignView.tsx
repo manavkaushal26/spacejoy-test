@@ -1,14 +1,9 @@
-import Breadcrumb from '@components/InteriorDesigns/Breadcrumb';
 import ImageGrid from '@components/InteriorDesigns/ImageGrid';
-import { DesignViewInterface } from '@components/InteriorDesigns/types';
-import DesignerCard from '@components/Shared/DesignerCard';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import ProductCard from '@components/Shop/ProductCard';
 import ProductCardDimmer from '@components/Shop/ProductCardDimmer';
-import fetcher from '@utils/fetcher';
 import Head from 'next/head';
-import React from 'react';
 
 const DesignView = ({ design }) => {
   return (
@@ -45,6 +40,7 @@ const DesignView = ({ design }) => {
                               msrp: asset?.asset?.price,
                               imageUrl: `https://res.cloudinary.com/spacejoy/image/upload/${asset?.asset?.cdn}`,
                             }}
+                            useRetailLink
                           />
                         );
                       })}

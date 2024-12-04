@@ -346,7 +346,7 @@ const SearchBox: React.FC = () => {
                         searchItem?.inStock &&
                         searchItem?.status !== 'discontinued' &&
                         preferredRetailerNames?.includes(searchItem?.retailer) && (
-                          <ProductCard product={searchItem} key={searchItem._id} />
+                          <ProductCard product={searchItem} key={searchItem._id} useRetailLink />
                         )
                     )}
                   </div>

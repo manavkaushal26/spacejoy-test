@@ -26,7 +26,7 @@ const SimilarProducts = ({ productId }) => {
       <div className="mt-4 grid grid-cols-1 ">
         <Carousel imageCount={5} slidesToShow={5} withNav={false} responsive={responsive}>
           {recommendationsData?.slice(0, 5)?.map((product) => {
-            return <ProductCard product={product} key={product._id} />;
+            return <ProductCard product={product} key={product._id} useRetailLink />;
           })}
         </Carousel>
       </div>

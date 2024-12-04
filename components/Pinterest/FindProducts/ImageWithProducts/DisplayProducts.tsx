@@ -112,7 +112,7 @@ const DisplayProducts: React.FC<{ box: BoxShape; hue: number }> = ({ box, hue })
 
                   return (
                     <div className="border rounded-lg" key={product?._id}>
-                      {product && <ProductCard product={product} />}
+                      {product && <ProductCard product={product} useRetailLink />}
                     </div>
                   );
                 })}
@@ -148,7 +148,7 @@ const DisplayProducts: React.FC<{ box: BoxShape; hue: number }> = ({ box, hue })
 
                 return (
                   <div className="border rounded-lg col-span-1" key={product?._id}>
-                    {product && <ProductCard product={product} />}
+                    {product && <ProductCard product={product} useRetailLink />}
                   </div>
                 );
               })}
