@@ -68,7 +68,7 @@ const designTeamData = [
     lastName: 'Nelson',
     icon: 'v1722573327/web/avatars/Sarah_Nelson_tvdtyf.jpg',
     bg: '/v1732793589/web/design-team/sarah_nelson_pbtzio.webp',
-    desc: 'Sarah Nelson, our interior designer at Spacejoy, has a knack for turning houses into homes. With an eye for style and a love for creating spaces that feel personal, she’s here to make your dream interiors a reality—simple, beautiful, and uniquely yours.',
+    desc: "Sarah Nelson is an award-winning interior stylist specializing in imaginative and playful designs. She has nearly 15 years of professional design experience and her work has been featured by HGTV Magazine, Better Homes & Gardens, Apartment Therapy, and more!  Inspired by hotels and restaurants, she mixes different design styles to create unique and livable spaces that cater to her client's needs.",
     isReversed: false,
   },
 ];

@@ -43,7 +43,7 @@ const Shopping: React.FC<Props> = () => {
               <ShoppingCartIcon className="w-8 h-8 text-purple-500" />
             </div>
           }
-          title="Boutique, Budget and Big Brands. All under one roof."
+          title="Luxury You Deserve, Prices You’ll Love"
           subTitle="Enjoy store credits with every design"
           center
           noMargin

@@ -49,7 +49,7 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="row-span-2 row-start-5 lg:row-span-3 lg:row-start-3">
               <ImageCard
-                imgSrc="/spj-v2/home-v3/beautiful_dining_space_1_ainynr.webp"
+                imgSrc="/v1733312429/spj-v2/home-v3/dining_1_pohj8w.webp"
                 title="Dining Rooms"
                 href="/interior-designs/dining-room-ideas"
               />

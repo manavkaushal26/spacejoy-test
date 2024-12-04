@@ -1,6 +1,6 @@
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
-import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { ExternalLinkIcon, GiftIcon } from '@heroicons/react/outline';
 import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,7 +21,16 @@ const BannersBentoGrid = () => {
 
   return (
     <MaxWidthContainer>
-      <SectionHeading title="Your Dream Living Room Awaits" noMargin center />
+      <SectionHeading
+        preText={
+          <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-indigo-100 to-indigo-300 w-fit">
+            <GiftIcon className="w-8 h-8 text-indigo-500" />
+          </div>
+        }
+        title="Dream Spaces Begin Here"
+        noMargin
+        center
+      />
       <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10">
         <div className="h-48 col-span-6 group md:col-span-4 lg:h-full">
           <div className="overflow-hidden rounded-xl max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">

@@ -1,8 +1,6 @@
-import { buttonVariants } from '@components/Button';
 import ShinyButton from '@components/Button/ShinyButton';
 import { FlipWords } from '@components/Shared/FlipWords';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
-import Link from 'next/link';
 
 type Props = {};
 
@@ -38,11 +36,11 @@ export const Hero = (props: Props) => {
             >
               Design Your Room
             </ShinyButton>
-            <Link href="/interior-designs" passHref>
+            {/* <Link href="/interior-designs" passHref>
               <a className={buttonVariants({ variant: 'outline', className: 'text-black w-full xl:w-fit' })}>
                 Meet Our Designers
               </a>
-            </Link>
+            </Link> */}
           </div>
           <p>
             <span className="font-semibold text-spj-red">200,000+</span> beautiful rooms designed and delivered{' '}
