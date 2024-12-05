@@ -110,30 +110,39 @@ const Compare = ({
       </div>
       <div className="absolute inset-0 z-20 w-full h-full">
         {firstImage && (
-          <img
-            ref={firstImageRef}
-            alt="first image"
-            src={firstImage}
-            className={classNames(
-              'absolute inset-0 z-20 flex-shrink-0 w-full h-full select-none rounded-t-[1rem] lg:rounded-[1rem]',
-              firstImageClassName
-            )}
-            style={{
-              clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)`,
-            }}
-            draggable={false}
-          />
+          <div
+            className={classNames('absolute inset-0 z-20 w-full h-full', firstImageClassName)}
+            style={{ clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)` }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              ref={firstImageRef}
+              alt="first image"
+              src={firstImage}
+              className="w-full h-full select-none rounded-t-[1rem] lg:rounded-[1rem]"
+              draggable={false}
+            />
+            <div className="absolute px-2 py-1 text-xs font-bold text-white rounded sm:text-sm bg-black/75 top-4 left-4">
+              Before
+            </div>
+          </div>
         )}
         {secondImage && (
-          <img
-            alt="second image"
-            src={secondImage}
-            className={classNames(
-              'absolute top-0 left-0 z-[19] w-full h-full select-none rounded-t-[1rem] lg:rounded-[1rem]',
-              secondImageClassname
-            )}
-            draggable={false}
-          />
+          <div className="absolute inset-0 w-full h-full z-[19]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt="second image"
+              src={secondImage}
+              className={classNames(
+                'w-full h-full select-none rounded-t-[1rem] lg:rounded-[1rem]',
+                secondImageClassname
+              )}
+              draggable={false}
+            />
+            <div className="absolute px-2 py-1 text-xs font-bold text-white rounded sm:text-sm bg-black/75 top-4 right-4">
+              After
+            </div>
+          </div>
         )}
       </div>
     </div>

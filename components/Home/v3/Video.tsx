@@ -42,7 +42,7 @@ const Video = () => {
               <LightBulbIcon className="w-8 h-8 text-amber-500" />
             </div>
           }
-          title="Find your look. We'll get your style just right"
+          title="We'll get your style just right"
           subTitle="Rest easy and enjoy your new, elevated space"
           center
           noMargin

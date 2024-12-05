@@ -104,8 +104,8 @@ const LookBook = () => {
             <HeartIcon className="w-8 h-8 text-rose-500" />
           </div>
         }
-        title="Curate a refined look with the help of our design crew"
-        subTitle="Shop boutique brands that are exclusive to Spacejoy"
+        title="Your dream space? We’ve got the crew for that."
+        subTitle="Stylish finds you can shop instantly"
         center
         noMargin
       />

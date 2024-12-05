@@ -19,7 +19,7 @@ const BeautifulSpaces = (props: Props) => {
                 <HomeIcon className="w-8 h-8 text-orange-500" />
               </div>
             }
-            title="Ideas & Inspiration to Elevate your Home"
+            title="Inspiration to Elevate your Home"
             subTitle="From a corner to a whole room, see how our customers have transformed their homes"
             center
             noMargin
