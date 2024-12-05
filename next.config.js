@@ -132,6 +132,11 @@ module.exports = withPWA({
         source: '/product-view/:slug*',
         destination: `/`,
         permanent: true,
+      },
+      {
+        source: '/design-cart',
+        destination: `/`,
+        permanent: true,
       }
     ];
   },

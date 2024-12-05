@@ -148,7 +148,7 @@ export const CommonSeoLinks = [
       },
       {
         title: 'Side Tables',
-        link: `${newSpacejoyStoreUrl}/collections/tables?filter.p.product_type=Side+Tables`,
+        link: `${newSpacejoyStoreUrl}/collections/tables?filter.p.product_type=End+%26+Side+Tables`,
       },
       {
         title: 'Accent Chairs',

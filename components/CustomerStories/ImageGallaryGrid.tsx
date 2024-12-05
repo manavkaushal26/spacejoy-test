@@ -1,8 +1,7 @@
-import { lightBoxOptions } from '@components/Carousel';
+import SocialShare from '@components/SocialShare';
 import { cloudinary, imageKit } from '@utils/config';
 import Image from 'next/image';
-import React, { useEffect, useMemo, useState } from 'react';
-import SocialShare from '@components/SocialShare';
+import { useMemo, useState } from 'react';
 
 const getTemplate = (length) => {
   if (length === 1) {
@@ -27,7 +26,9 @@ const ImageGallaryGrid = ({ data }) => {
       <div className={`grid gap-1 ${getTemplate(trimmedData.length)}`}>
         {trimmedData.map((item, index) => (
           <div
+            key={item._id}
             className={`${
+              
               index === 0
                 ? `col-span-full ${
                     trimmedData.length > 4
@@ -44,7 +45,7 @@ const ImageGallaryGrid = ({ data }) => {
                         }`
                   }  `
             } bg-white overflow-hidden min-h-[100px] cursor-pointer pt-[55%] relative`}
-            key={item._id}
+            
           >
             <Image
               src={
@@ -55,6 +56,7 @@ const ImageGallaryGrid = ({ data }) => {
               alt=""
               className="absolute top-0 left-0 object-cover w-full h-full"
               layout="fill"
+              priority={index===0}
             />
             <div className="absolute opacity-0 top-1 right-1 hover:opacity-100">
               <SocialShare media={item.cdn} />
