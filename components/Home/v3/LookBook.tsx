@@ -104,7 +104,7 @@ const LookBook = () => {
             <HeartIcon className="w-8 h-8 text-rose-500" />
           </div>
         }
-        title="Your dream space? We’ve got the crew for that."
+        title="Your dream space? We’ve got the crew for that"
         subTitle="Stylish finds you can shop instantly"
         center
         noMargin
