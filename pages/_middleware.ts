@@ -30,6 +30,12 @@ export function middleware(req: NextRequest) {
   if (path.includes('/return-policies')) {
     return NextResponse.redirect(newSpacejoyStoreUrl + '/pages/return-policies');
   }
+  if(path.startsWith('/design-sets') || path.startsWith('/room-select')){
+    return NextResponse.redirect('/', 301);
+  }
+  if(path.startsWith('/shop')){
+    return NextResponse.redirect('https://store.spacejoy.com/collections', 301);
+  }
 
   return NextResponse.next().cookie('isMobile', isMobile.toString());
 }

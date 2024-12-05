@@ -1,7 +1,6 @@
 import { newSpacejoyStoreUrl } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import PulseDot from './PulseDot';
 
 const TopBarMobile = () => {
@@ -28,27 +27,6 @@ const TopBarMobile = () => {
           </a>
         </Link>
       </div>
-      {/* <div className="p-2 mb-2 bg-gray-100 border-2 rounded-md cursor-pointer border-b-lime-400">
-        <Link href={`/room-select`} passHref>
-          <a rel="noreferrer">
-            <div className="flex space-x-3">
-              <div className="relative w-8 h-8 aspect-1">
-                <Image
-                  src="https://res.cloudinary.com/spacejoy/image/upload/v1622456552/web/icons/diy-1_zc1c5q.svg"
-                  alt=""
-                  layout="responsive"
-                  height={50}
-                  width={50}
-                />
-              </div>
-              <span className="text-[10px] my-auto whitespace-nowrap">
-                <span className="text-xs font-bold">Shop</span>
-                <br /> Sets
-              </span>
-            </div>
-          </a>
-        </Link>
-      </div> */}
       <div className="p-2 mb-2 bg-gray-100 border-2 rounded-md cursor-pointer border-b-rose-300">
         <a rel="noreferrer" href={newSpacejoyStoreUrl} target="_blank">
           <div className="flex space-x-3">

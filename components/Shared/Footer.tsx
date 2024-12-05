@@ -76,20 +76,6 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="mb-2">Quick Links</h3>
             <ul className="space-y-1 sm:space-y-0">
-              {/* <li>
-                <Link href="${oldSpacejoyUrl}/furniture-decor-shop">
-                  <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Furniture & Decor Shop
-                  </a>
-                </Link>
-              </li> */}
-              {/* <li>
-                <Link href="/room-select">
-                  <a className="text-xs leading-relaxed text-gray-600 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
-                    Furniture & Decor Sets
-                  </a>
-                </Link>
-              </li> */}
               <li>
                 <Link href={`/quiz/start-quiz`}>
                   <a

@@ -1,10 +1,11 @@
 import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 // import ShopCategories from '@components/Shared/ShopCategories';
 import { Dialog, Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, SearchIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
+import { newSpacejoyStoreUrl } from '@utils/config';
 import { classNames, convertFilterToUrlPath } from '@utils/helpers';
 import { secondaryHeaderLocations } from '@utils/Mocks/HeaderLocations';
 import { menuData, navDataCategories } from '@utils/Mocks/MobileSidebar';
@@ -16,10 +17,9 @@ import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'reac
 import shallow from 'zustand/shallow';
 import { ExploreIdeasNav } from '../ExploreIdeasNav';
 import { HireADesignerHeader } from '../HireADesignerHeader';
+import PulseDot from '../PulseDot';
 import SubNav from '../SubNav';
 import UserNav from './UserNav';
-import { newSpacejoyStoreUrl } from '@utils/config';
-import PulseDot from '../PulseDot';
 
 const HeaderDesktop: React.FC = () => {
   const mobile = Cookies.get('isMobile');
@@ -191,24 +191,6 @@ const HeaderDesktop: React.FC = () => {
                       />
                     </button>
                   </li>
-                  {/* <li className="inline-block">
-                    <Link href="/room-select">
-                      <a
-                        className={`whitespace-nowrap text-sm py-1 px-2.5 hover:text-red-500 rounded-md  focus:outline-none ${
-                          router.asPath === '/room-select' ? 'text-red-600' : 'text-gray-900'
-                        }`}
-                        onClick={() => {
-                          PushEvent({
-                            category: `Top Nav - Design your Space`,
-                            action: `Go to Room Select Page`,
-                            label: `Design your Space`,
-                          });
-                        }}
-                      >
-                        Shop Sets
-                      </a>
-                    </Link>
-                  </li> */}
                   <li className="items-center h-full sm:hidden md:hidden lg:flex">
                     <button
                       type="button"
