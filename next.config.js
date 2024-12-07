@@ -137,6 +137,11 @@ module.exports = withPWA({
         source: '/design-cart',
         destination: `/`,
         permanent: true,
+      },
+      {
+        source: '/shopping-credit-policy',
+        destination: `/credit-policy`,
+        permanent: true,
       }
     ];
   },
