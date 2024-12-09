@@ -79,7 +79,10 @@ const BannersBentoGrid = () => {
             <div className="relative w-full h-full group">
               <Image
                 alt="banner 3"
-                src={cloudinaryDefault + '/w_1200/v1733223540/spj-v2/home-v3/living_space_1_g9035b.webp'}
+                src={
+                  cloudinaryDefault +
+                  '/w_1200/v1733732735/spj-v2/home-v3/Sale%20Banners/holiday_sale_banner_jlcqab.webp'
+                }
                 className="object-cover transition-all duration-300 group-hover:scale-105"
                 layout="fill"
                 priority
