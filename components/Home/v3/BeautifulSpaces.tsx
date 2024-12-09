@@ -2,6 +2,7 @@ import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { HomeIcon } from '@heroicons/react/solid';
+import { oldSpacejoyUrl } from '@utils/config';
 import { classNames } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -63,9 +64,9 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1733310175/spj-v2/home-v3/home_office_a_kfh106.webp"
-                title="Home Offices"
-                href="/interior-designs/home-office-ideas"
+                imgSrc="/v1733734665/spj-v2/home-v3/Sale%20Banners/Untitled_design_3_kx0poi.webp"
+                // title="Design Your Room"
+                href={`${oldSpacejoyUrl}/new-project`}
               />
             </div>
           </div>
@@ -78,48 +79,54 @@ const BeautifulSpaces = (props: Props) => {
 const ImageCard = ({
   href = '',
   imgSrc,
-  title,
+  title = '',
   first = false,
 }: {
   href?: string;
   imgSrc: string;
-  title: string;
+  title?: string;
   first?: boolean;
 }) => {
-  return (
-    <Link href={href ?? '#'}>
-      <a target="_blank">
-        <div className="group relative h-full w-full rounded-[1rem] lg:rounded-[2rem] shadow-md overflow-hidden">
-          <div
-            className={classNames(
-              'relative w-full group-hover:scale-105 transition-all duration-300',
-              first ? 'aspect-[1.5/1]' : 'h-full'
-            )}
-          >
-            <Image
-              src={'https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_800' + imgSrc}
-              alt={title}
-              layout="fill"
-              objectFit="cover"
-              priority
-            />
-          </div>
-          {title && (
-            <div className="absolute inset-0 flex items-end text-white bg-gradient-to-b from-transparent via-black/5 to-black/50 translate-y-100">
-              <div className="flex items-center justify-between w-full p-3 sm:p-6">
-                <p className="text-base md:text-xl lg:text-2xl">{title}</p>
-                <div className="p-1 bg-white rounded-full sm:p-2">
-                  <ArrowRightIcon
-                    className="w-4 h-4 text-black transition-all duration-300 lg:w-6 lg:h-6 group-hover:-rotate-45 focus:-rotate-45 group-hover:scale-105 focus:scale-105"
-                    aria-hidden="true"
-                  />
-                </div>
-              </div>
+  const content = (
+    <div className="group relative h-full w-full rounded-[1rem] lg:rounded-[2rem] shadow-md overflow-hidden">
+      <div
+        className={classNames(
+          'relative w-full group-hover:scale-105 transition-all duration-300',
+          first ? 'aspect-[1.5/1]' : 'h-full'
+        )}
+      >
+        <Image
+          src={'https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_800' + imgSrc}
+          alt={title || 'Image'}
+          layout="fill"
+          objectFit="cover"
+          priority
+        />
+      </div>
+
+      {/* Title Overlay */}
+      {title && (
+        <div className="absolute inset-0 flex items-end text-white bg-gradient-to-b from-transparent via-black/5 to-black/50 translate-y-100">
+          <div className="flex items-center justify-between w-full p-3 sm:p-6">
+            <p className="text-base md:text-xl lg:text-2xl">{title}</p>
+            <div className="p-1 bg-white rounded-full sm:p-2">
+              <ArrowRightIcon
+                className="w-4 h-4 text-black transition-all duration-300 lg:w-6 lg:h-6 group-hover:-rotate-45 focus:-rotate-45 group-hover:scale-105 focus:scale-105"
+                aria-hidden="true"
+              />
             </div>
-          )}
+          </div>
         </div>
-      </a>
+      )}
+    </div>
+  );
+
+  return href ? (
+    <Link href={href} passHref>
+      <a target="_blank">{content}</a>
     </Link>
+  ) : (
+    content
   );
 };
 

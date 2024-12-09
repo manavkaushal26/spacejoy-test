@@ -1,8 +1,9 @@
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ExternalLinkIcon, GiftIcon } from '@heroicons/react/outline';
-import { cloudinary } from '@utils/config';
+import { cloudinary, oldSpacejoyUrl } from '@utils/config';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ContentOverlay = ({ title }: { title: string }) => {
   return (
@@ -27,7 +28,6 @@ const BannersBentoGrid = () => {
           </div>
         }
         title="Dream Spaces Begin Here"
-        subTitle="Designed to make every corner a place you adore"
         noMargin
         center
       />
@@ -76,16 +76,23 @@ const BannersBentoGrid = () => {
         </div>
         <div className="h-48 col-span-6 group md:col-span-4 lg:h-96">
           <div className="overflow-hidden rounded-xl max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-full shadow-md transition-all duration-200">
-            <div className="relative w-full h-full group">
-              <Image
-                alt="banner 3"
-                src={cloudinaryDefault + '/w_1200/v1733223540/spj-v2/home-v3/living_space_1_g9035b.webp'}
-                className="object-cover transition-all duration-300 group-hover:scale-105"
-                layout="fill"
-                priority
-              />
-              {/* <ContentOverlay title="This will be a sale banner" /> */}
-            </div>
+            <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
+              <a target="_blank" rel="noopener noreferrer">
+                <div className="relative w-full h-full group">
+                  <Image
+                    alt="banner 3"
+                    src={
+                      cloudinaryDefault +
+                      '/w_1200/v1733732735/spj-v2/home-v3/Sale%20Banners/holiday_sale_banner_jlcqab.webp'
+                    }
+                    className="object-cover transition-all duration-300 group-hover:scale-105"
+                    layout="fill"
+                    priority
+                  />
+                  {/* <ContentOverlay title="This will be a sale banner" /> */}
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
