@@ -64,7 +64,7 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1733734665/spj-v2/home-v3/Sale%20Banners/Untitled_design_3_kx0poi.webp"
+                imgSrc="/v1734255709/spj-v2/home-v3/25_off_1_srouf4.webp"
                 // title="Design Your Room"
                 href={`${oldSpacejoyUrl}/new-project`}
               />
@@ -91,7 +91,7 @@ const ImageCard = ({
     <div className="group relative h-full w-full rounded-[1rem] lg:rounded-[2rem] shadow-md overflow-hidden">
       <div
         className={classNames(
-          'relative w-full group-hover:scale-105 transition-all duration-300',
+          'relative w-full group-hover:scale-105 transition-all duration-300 rounded-[1rem] lg:rounded-[2rem]',
           first ? 'aspect-[1.5/1]' : 'h-full'
         )}
       >
