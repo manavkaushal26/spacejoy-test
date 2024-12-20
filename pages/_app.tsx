@@ -1,3 +1,4 @@
+import ScamWarningStrip from '@components/Shared/ScamWarningStrip';
 import CommonSEO from '@components/Shared/SEO/DefaultSeo';
 import { Provider as OfferProvider, useCreateStore as OfferStore } from '@lib/offerStore';
 import { Provider, useCreateStore } from '@lib/store';
@@ -12,9 +13,9 @@ import NextNProgress from 'nextjs-progressbar';
 import React, { useEffect, useState } from 'react';
 import { pageview } from 'react-ga';
 import { Toaster } from 'react-hot-toast';
+import 'react-tooltip/dist/react-tooltip.css';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { ThemeProvider } from 'styled-components';
-import 'react-tooltip/dist/react-tooltip.css';
 import '../styles/globals.css';
 
 declare global {
@@ -94,6 +95,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
           <Provider createStore={createStore}>
             <OfferProvider createStore={createOfferStore}>
               <CommonSEO />
+              <ScamWarningStrip/>
               <ThemeProvider theme={{}}>
                 <ShopFilterContextProvider>
                   <SimpleReactLightbox>
