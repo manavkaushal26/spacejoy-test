@@ -37,14 +37,14 @@ const ScamWarningStrip: React.FC = () => {
           . We are actively collecting evidence to pursue legal action against these scammers. Stay vigilant and verify all communication directly with us.
         </p>
         <p className="mt-2 text-xs">
-          Fraud Domain:{" "}
+          Fraud Domains:{" "}
           {/* <a
             href="https://www.spacejoyagency.co/"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-gray-200"
           > */}
-            https://www.spacejoyagency.co/
+            https://www.spacejoyagency.co/ , www.spacejoystyle.com
           {/* </a> */}
         </p>
       </div>
