@@ -64,7 +64,8 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
-                imgSrc="/v1734898248/spj-v2/home-v3/photo_2024-12-23_01-40-02_hqg3lr.webp"
+                imgSrc="/dle1p1ruo/image/upload/v1735394174/wev_square_1_zhoqs4.png"
+                externalLink='https://res.cloudinary.com/dle1p1ruo/image/upload/v1735394174/wev_square_1_zhoqs4.png'
                 // title="Design Your Room"
                 href={`${oldSpacejoyUrl}/new-project`}
               />
@@ -81,11 +82,13 @@ const ImageCard = ({
   imgSrc,
   title = '',
   first = false,
+  externalLink = null
 }: {
   href?: string;
   imgSrc: string;
   title?: string;
   first?: boolean;
+  externalLink?: string;
 }) => {
   const content = (
     <div className="group relative h-full w-full rounded-[1rem] lg:rounded-[2rem] shadow-md overflow-hidden">
@@ -96,7 +99,7 @@ const ImageCard = ({
         )}
       >
         <Image
-          src={'https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_800' + imgSrc}
+          src={externalLink ? externalLink : ('https://res.cloudinary.com/spacejoy/image/upload/f_auto,q_auto,w_800' + imgSrc)}
           alt={title || 'Image'}
           layout="fill"
           objectFit="cover"
