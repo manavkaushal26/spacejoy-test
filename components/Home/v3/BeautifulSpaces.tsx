@@ -65,7 +65,7 @@ const BeautifulSpaces = (props: Props) => {
             <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
                 imgSrc="/dle1p1ruo/image/upload/v1735394174/wev_square_1_zhoqs4.png"
-                externalLink='https://res.cloudinary.com/dle1p1ruo/image/upload/v1735394174/wev_square_1_zhoqs4.png'
+                externalLink='https://res.cloudinary.com/dle1p1ruo/image/upload/v1735639705/wev_square_2_kvebef.png'
                 // title="Design Your Room"
                 href={`${oldSpacejoyUrl}/new-project`}
               />
