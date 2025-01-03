@@ -41,10 +41,10 @@ const Pricing = (props: Props) => {
                     ${item.salePrice.value}
                     <small className="text-gray-500 md:text-2xl"> / room</small>
                   </h2>
-                  <div
+                  {/* <div
                     className="text-gray-500"
                     dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(item.saleDescription) }}
-                  />
+                  /> */}
                 </div>
 
                 <div className="h-px bg-gray-300" />

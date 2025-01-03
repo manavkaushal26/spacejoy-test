@@ -73,8 +73,7 @@ export const staticPricingData: PricingDataType[] = [
     },
     name: 'delight',
     saleDescription: 'Get <b>$250</b> shopping credits',
-    summary:
-      'Receive a <b>custom room design</b> from our designer, plus <b>$250 in shopping credits</b> to bring it to life.',
+    summary: 'Receive a <b>custom room design</b> from our designer, plus <b>shopping credits</b> to bring it to life.',
     description: 'To Get You Started',
     savings: {
       label: 'You Save',
@@ -133,7 +132,7 @@ export const staticPricingData: PricingDataType[] = [
     saleDescription: 'Get <b>$300</b> shopping credits',
     description: 'The Right One For The Most',
     summary:
-      'Receive <b>2 custom room designs</b> from our senior designer, choose your favorite, plus <b>$300 in shopping credits</b> to bring it to life.',
+      'Receive <b>2 custom room designs</b> from our senior designer, choose your favorite, plus <b>shopping credits</b> to bring it to life.',
     savings: {
       label: 'You Save',
       inAmount: 300,
@@ -190,7 +189,7 @@ export const staticPricingData: PricingDataType[] = [
     saleDescription: 'Get <b>$400</b> shopping credits',
     description: 'If You Love A Loaded Deal',
     summary:
-      'Receive <b>2 custom room designs</b> with <b>live edits</b> from our design director, plus <b>$400 in shopping credits</b> to bring your vision to life.',
+      'Receive <b>2 custom room designs</b> with <b>live edits</b> from our design director, plus <b>shopping credits</b> to bring your vision to life.',
     savings: {
       label: 'You Save',
       inAmount: 400,
