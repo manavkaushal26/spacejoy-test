@@ -44,7 +44,7 @@ const ScamWarningStrip: React.FC = () => {
             rel="noopener noreferrer"
             className="underline hover:text-gray-200"
           > */}
-            https://www.spacejoyagency.co/ , www.spacejoystyle.com
+            https://www.spacejoyagency.co/ , www.spacejoystyle.com , https://www.spacejoyarts.com
           {/* </a> */}
         </p>
       </div>
