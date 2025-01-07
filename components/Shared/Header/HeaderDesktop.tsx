@@ -1,7 +1,7 @@
 import CustomerStoriesNav from '@components/Shared/CustomerStoriesNav';
 // import ShopCategories from '@components/Shared/ShopCategories';
 import { Dialog, Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon, SearchIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { useFirebaseContext } from '@store/FirebaseContextProvider';
 import { PushEvent } from '@utils/analyticsLogger';
@@ -246,7 +246,7 @@ const HeaderDesktop: React.FC = () => {
               </nav>
             </div>
             <div className="w-2/5 md:flex md:items-center md:justify-center lg:justify-end">
-              <Link href="/search">
+              {/* <Link href="/search">
                 <a
                   className={`text-gray-700 text-xs py-1 px-2 mx-2 rounded-lg border hover:shadow-xl hover:border-gray-200  focus:outline-none ${
                     router.asPath === '/search' ? 'border-gray-200 text-red-600' : 'border-transparent'
@@ -255,7 +255,7 @@ const HeaderDesktop: React.FC = () => {
                   <span className="sr-only">Search</span>
                   <SearchIcon className="inline w-4 h-4" />
                 </a>
-              </Link>
+              </Link> */}
               {/* <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`}>
                 <a className="relative px-2 py-1 mx-2 text-xs text-gray-700 border border-transparent rounded-lg hover:shadow-xl hover:border-gray-200 focus:outline-none ">
                   <span className="sr-only">Shopping</span>
