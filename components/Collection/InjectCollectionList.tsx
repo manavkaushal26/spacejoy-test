@@ -80,24 +80,24 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
   return (
     <section className="interior-design-section">
       <div className="py-4 bg-gray-100 rounded-lg">
-        <div className="container mx-auto px-4 pt-4">
+        <div className="container px-4 pt-4 mx-auto">
           <div className="flex items-end">
             <div className="flex-1">
-              <p className="text-sm sm:text-base text-gray-500">Design ideas for every space</p>
-              <h1 className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Choose one to start exploring
+              <p className="text-sm text-gray-500 sm:text-base">Design ideas for every space</p>
+              <h1 className="mt-2 text-2xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+                Choose one to start exploring
               </h1>
             </div>
-            <div className="text-right flex-1">
+            <div className="flex-1 text-right">
               <Link href="/collection">
-                <a className="text-xs sm:text-sm hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1">
+                <a className="px-1 text-xs rounded-md sm:text-sm hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                   See All <ArrowRightIcon className="inline w-4 h-4" />
                 </a>
               </Link>
             </div>
           </div>
-          <div className="relative">
-            <AnimateBox className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 xl:gap-6 2xl:gap-8 my-4 2xl:my-6">
+          <div className="relative mt-4 overflow-x-auto whitespace-nowrap">
+            <AnimateBox className="flex items-center space-x-4 min-w-max">
               {list.map((collection) => (
                 <CollectionCard key={collection?._id} cardData={collection} inset />
               ))}

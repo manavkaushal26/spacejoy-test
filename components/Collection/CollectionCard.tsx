@@ -19,22 +19,24 @@ const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) 
           <div className="relative overflow-hidden transition-all duration-300 transform bg-gray-200 border border-gray-300 rounded shadow-sm group hover:shadow-xl hover:-translate-y-1">
             {inset ? (
               <Image
-                className="object-cover rounded"
+                className="rounded"
                 alt={cardData?.name}
-                src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_150,h_200/${cardData?.cdnThumbnail}`}
+                src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_340,h_600,c_thumb/${cardData?.cdnThumbnail}`}
                 height="300"
                 width="225"
                 placeholder="blur"
+                objectFit="cover"
                 blurDataURL={blurredBgImage}
                 priority
               />
             ) : (
-              <div className="w-full aspect-w-2 aspect-h-1">
+              <div className="relative w-full aspect-w-2 aspect-h-1">
                 <Image
                   alt={cardData?.name}
-                  src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_150,h_200/${cardData?.cdnThumbnail}`}
-                  className="object-cover object-center w-full h-full"
+                  src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_340/${cardData?.cdnThumbnail}`}
+                  className="object-cover"
                   layout="fill"
+                  objectFit="cover"
                   placeholder="blur"
                   blurDataURL={blurredBgImage}
                   priority

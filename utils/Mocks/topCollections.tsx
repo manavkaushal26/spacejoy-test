@@ -48,6 +48,38 @@ const topCollections = {
       cdnThumbnail: 'v1623902156/spj-v2/room-types/cropped/dining-room_v808nc.jpg',
       metaTitle: '2000+ 3D Designs',
     },
+    {
+      _id: 7,
+      name: 'Kitchen',
+      metaDescription: '2000+ 3D Designs',
+      slug: 'kitchen-ideas',
+      cdnThumbnail: 'v1715587434/spj-v2/room-types/Kitchen_oneuhk.jpg',
+      metaTitle: '2000+ 3D Designs',
+    },
+    {
+      _id: 8,
+      name: 'Bathroom',
+      metaDescription: '2000+ 3D Designs',
+      slug: 'bathroom-ideas',
+      cdnThumbnail: 'v1715587433/spj-v2/room-types/Bathroom_ijyugi.jpg',
+      metaTitle: '2000+ 3D Designs',
+    },
+    {
+      _id: 9,
+      name: 'Outdoor',
+      metaDescription: '2000+ 3D Designs',
+      slug: 'outdoor-ideas',
+      cdnThumbnail: 'v1715586893/spj-v2/room-types/Outdoor_ygzofp.jpg',
+      metaTitle: '2000+ 3D Designs',
+    },
+    {
+      _id: 10,
+      name: 'Large Spaces',
+      metaDescription: '2000+ 3D Designs',
+      slug: 'large-spaces-ideas',
+      cdnThumbnail: 'v1715587433/spj-v2/room-types/Large_Spaces_jqqhir.jpg',
+      metaTitle: '2000+ 3D Designs',
+    },
   ],
 };
 
