@@ -60,6 +60,8 @@ const DesignView: React.FC<Props> = ({ design, engagementBlockData }) => {
     }
   }, [design?.assets]);
 
+  console.log({ design });
+
   return (
     <Layout>
       <Head>
