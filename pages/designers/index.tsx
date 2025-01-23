@@ -20,7 +20,7 @@ const Designers = ({ designFeedData }): JSX.Element => {
         <Layout.Header />
         <Layout.Body>
           <div className="container max-w-screen-xl px-4 mx-auto xl:p-0">
-            <div></div>
+            <div />
             <SectionHeading
               preText={
                 <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-orange-100 to-orange-300 w-fit">
@@ -32,7 +32,7 @@ const Designers = ({ designFeedData }): JSX.Element => {
               center
               noMargin
             />
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mt-8">
+            <div className="grid grid-cols-1 gap-12 mt-8 md:grid-cols-4">
               {designTeamData?.map((item) => {
                 return (
                   <Link
@@ -40,16 +40,7 @@ const Designers = ({ designFeedData }): JSX.Element => {
                     key={item?.id}
                   >
                     <div
-                      className="relative bg-neutral-500
-                              bg-clip-padding
-                              backdrop-filter
-                              backdrop-blur-md
-                              bg-opacity-10
-                              backdrop-saturate-50
-                              backdrop-contrast-125 bg-blend-overlay rounded-xl py-8
-                              transition-transform hover:-translate-y-1 cursor-pointer  will-change-transform 
-                              hover:shadow-lg 
-                              "
+                      className="relative py-8 transition-transform cursor-pointer bg-neutral-500 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 backdrop-saturate-50 backdrop-contrast-125 bg-blend-overlay rounded-xl hover:-translate-y-1 will-change-transform hover:shadow-lg "
                     >
                       <div key={item?.id} className="relative w-full aspect-[1/1] mx-auto w-1/2">
                         <Image
@@ -63,7 +54,7 @@ const Designers = ({ designFeedData }): JSX.Element => {
                         />
                       </div>
                       <div className="px-4">
-                        <h3 className="mt-6 text-base/7 font-semibold tracking-tight text-gray-600 text-center">
+                        <h3 className="mt-6 font-semibold tracking-tight text-center text-gray-600 text-base/7">
                           {item?.firstName + ' ' + item?.lastName}
                         </h3>
                       </div>
