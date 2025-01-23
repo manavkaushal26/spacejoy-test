@@ -6,7 +6,7 @@ const designTeamData = [
     lastName: 'Wise',
     icon: 'v1643954979/web/homepage-v3/designers/Heather_Wise_hiquk8.jpg',
     bg: '/v1732706636/web/design-team/heather_wise_biqrgg.webp',
-    desc: 'Heather hails from Dallas and has a design background ranging from working on large corporate spaces to flipping and staging residential homes. Heather loves mid-century modern, boho and eclectic spaces.',
+    desc: 'My goal as a designer is to translate your design aspirations into a beautifully curated space that is highly functional, utilizes quality furnishings and that truly makes you feel at home. I pull inspiration for designs directly from my clients- carefully reviewing goals/lifestyle, style preferences and more. I encourage collaborations with my clients and open communication so that we can create the perfect design for you!',
     isReversed: false,
     coverImageUrl:
       'https://res.cloudinary.com/spacejoy/image/upload/v1737372229/web/design-team/cover/greg-rakozy-oMpAz-DN-9I-unsplash_chsqh2.jpg',
