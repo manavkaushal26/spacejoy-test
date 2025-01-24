@@ -128,11 +128,11 @@ module.exports = withPWA({
         destination: `${legacyRepo}/american-home-shield`, // Matched parameters can be used in the destination
         permanent: true,
       },
-      {
-        source: '/product-view/:slug*',
-        destination: `/`,
-        permanent: true,
-      },
+      // {
+      //   source: '/product-view/:slug*',
+      //   destination: `/`,
+      //   permanent: true,
+      // },
       {
         source: '/design-cart',
         destination: `/`,
