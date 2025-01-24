@@ -2,36 +2,25 @@ import Carousel from '@components/Carousel';
 import { renderMetaSection } from '@components/ProductView/MetaDetails/useMetaRenderSwitch';
 import ProductDesignSet from '@components/ProductView/ProductDesignSet';
 import Reviews from '@components/ProductView/Reviews';
-import SimilarProducts from '@components/ProductView/SimilarProducts';
 import DeliveryTimeline from '@components/Shared/DeliverTimeline';
 import DiscountTag from '@components/Shared/DiscountTag';
 import Layout from '@components/Shared/Layout';
-import LottieAnimation from '@components/Shared/LottieAnimation';
-import StickyFooter from '@components/Shared/StickyFooter';
-import SVGLoader from '@components/Shared/SVGLoader';
 import WishListBtn from '@components/Shared/WishListBtn';
-import { Disclosure, Tab } from '@headlessui/react';
+import { Tab } from '@headlessui/react';
 import {
   ChevronRightIcon,
   ExternalLinkIcon,
   EyeIcon,
-  HomeIcon,
-  MinusIcon,
-  MinusSmIcon,
-  PlusIcon,
-  PlusSmIcon,
+  HomeIcon
 } from '@heroicons/react/outline';
 import { useStore } from '@lib/store';
 import { blurredBgProduct } from '@public/images/bg-base-64';
-import offerLottie from '@public/lotties/offer.json';
 import { useSession } from '@store/AuthProvider';
 import { PushEvent } from '@utils/analyticsLogger';
 import { cloudinary, company } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { fetchBrandOffers, getCouponsList } from '@utils/fetchOffers';
 import { convertFilterToUrlPath, priceToLocaleString } from '@utils/helpers';
-import SpjShoppingAdvantage from '@utils/Mocks/Shopping';
-import spacejoyPromiseData from '@utils/Mocks/spacejoyPromises';
 import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -519,11 +508,11 @@ const ProductView = ({ product, currentlyViewing }): JSX.Element => {
                   </ReactScroll.Link>
                 ) : null}
 
-                <div className="flex mt-2">
+                {/* <div className="flex mt-2">
                   <EyeIcon className="w-6 h-6 text-red-500" />
                   <span className="ml-1 text-sm">Currently viewing: </span>
                   <span className="ml-1 text-sm">{currentlyViewing} </span>
-                </div>
+                </div> */}
               </div>
               <div className="relative top-0 z-10 w-full mt-8 lg:sticky">
                 <Carousel imageCount={productImages?.length || 0} withLightBox withNav>

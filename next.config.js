@@ -5,6 +5,14 @@ const legacyRepo = 'https://designs.spacejoy.com';
 const runtimeCaching = require('next-pwa/cache');
 
 module.exports = withPWA({
+  async rewrites(){
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/hello'
+      }
+    ]
+  },
   async redirects() {
     return [
       // {
@@ -142,6 +150,11 @@ module.exports = withPWA({
         source: '/shopping-credit-policy',
         destination: `/credit-policy`,
         permanent: true,
+      },
+      {
+        source: '/api/sitemap',
+        destination: 'sitemap',
+        permanent: true
       }
     ];
   },
