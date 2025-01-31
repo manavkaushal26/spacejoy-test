@@ -1,76 +1,78 @@
 'use client';
 import { classNames } from '@utils/helpers';
-import { gsap } from 'gsap';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-export const FlipWords = ({
+const FlipWords = ({
   words,
-  duration = 3000,
   className,
+  currentIndex,
 }: {
   words: string[];
-  duration?: number;
+  currentIndex: number;
   className?: string;
 }) => {
-  const [currentWord, setCurrentWord] = useState(words[0]);
-  const wordRef = useRef<HTMLDivElement>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const splitWordIntoSpans = (word: string) => {
-    return word.split(' ').map((w, wordIndex) => (
-      <span key={w + wordIndex} className="inline-block whitespace-nowrap">
-        {w.split('').map((char, charIndex) => (
-          <span
-            key={w + charIndex}
-            className="inline-block"
-            style={{ opacity: 0, transform: 'translateY(10px) blur(8px)' }}
-          >
-            {char}
-          </span>
-        ))}
-        <span>&nbsp;</span>
-      </span>
-    ));
-  };
-
-  const startAnimation = useCallback(() => {
-    const nextWord = words[(words.indexOf(currentWord) + 1) % words.length];
-    setCurrentWord(nextWord);
-    setIsAnimating(true);
-  }, [currentWord, words]);
-
-  useEffect(() => {
-    if (!isAnimating) {
-      const timeout = setTimeout(() => {
-        startAnimation();
-      }, duration);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [isAnimating, duration, startAnimation]);
-
-  useEffect(() => {
-    if (wordRef.current) {
-      const chars = wordRef.current.querySelectorAll('span span');
-
-      gsap.fromTo(
-        chars,
-        { opacity: 0, y: 10, filter: 'blur(8px)' },
-        {
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        animate={{
           opacity: 1,
           y: 0,
-          filter: 'blur(0px)',
-          stagger: 0.05,
-          duration: 0.2,
-          onComplete: () => setIsAnimating(false),
-        }
-      );
-    }
-  }, [currentWord]);
-
-  return (
-    <div ref={wordRef} className={classNames('z-10 inline-block relative text-left', className)}>
-      {splitWordIntoSpans(currentWord)}
-    </div>
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 100,
+          damping: 10,
+          duration: 0.5,
+        }}
+        exit={{
+          opacity: 0,
+          y: -40,
+          x: 40,
+          filter: 'blur(8px)',
+          scale: 2,
+          position: 'absolute',
+        }}
+        className={classNames(
+          'z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2',
+          className
+        )}
+        key={words[currentIndex]}
+      >
+        {words[currentIndex].split(' ').map((word, wordIndex) => (
+          <motion.span
+            key={word + wordIndex}
+            initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{
+              delay: wordIndex * 0.3,
+              duration: 0.3,
+            }}
+            className="inline-block whitespace-nowrap"
+          >
+            {word.split('').map((letter, letterIndex) => (
+              <motion.span
+                key={word + letterIndex}
+                initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{
+                  delay: wordIndex * 0.3 + letterIndex * 0.05,
+                  duration: 0.2,
+                }}
+                className="inline-block"
+              >
+                {letter}
+              </motion.span>
+            ))}
+            <span className="inline-block">&nbsp;</span>
+          </motion.span>
+        ))}
+      </motion.div>
+    </AnimatePresence>
   );
 };
+
+export default FlipWords;

@@ -1,13 +1,12 @@
+import ShinyButton from '@components/Button/ShinyButton';
 import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import Compare from '@components/Shared/Compare';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
-import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import { AnnotationIcon, StarIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
 import { default as TestimonialsData } from '@utils/Mocks/HomeTestimonials';
 import Image from 'next/image';
-import Link from 'next/link';
 
 type Props = {};
 
@@ -50,6 +49,9 @@ const Testimonials = (props: Props) => {
             return <TestimonialCard data={item} key={item?.id} />;
           })}
         </Slider>
+        <ShinyButton href="/customer-stories" showArrow className="mx-auto mt-10">
+          See more customer stories
+        </ShinyButton>
       </div>
     </MaxWidthContainer>
   );
@@ -146,14 +148,14 @@ const TestimonialCard = ({ data }) => {
               <p className="text-xs lg:text-sm text-zinc-500">{data?.address}</p>
             </div>
           </div>
-          <div className="mt-6 lg:mt-8">
+          {/* <div className="mt-6 lg:mt-8">
             <Link href="/customer-stories" passHref>
               <a className="flex items-center space-x-2 underline transition-all duration-200 text-spj-red group">
                 <span className="text-sm lg:text-base">See more customer stories</span>
                 <ArrowNarrowRightIcon className="w-3 h-3 transition-all duration-200 transform lg:w-4 lg:h-4 group-hover:translate-x-1" />
               </a>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

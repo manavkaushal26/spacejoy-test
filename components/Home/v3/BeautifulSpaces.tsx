@@ -13,7 +13,7 @@ const BeautifulSpaces = (props: Props) => {
   return (
     <>
       <div>
-        <MaxWidthContainer className="pt-16 sm:pt-24">
+        <MaxWidthContainer className='pt-16 sm:pt-24'>
           <SectionHeading
             preText={
               <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-orange-100 to-orange-300 w-fit">
@@ -25,7 +25,7 @@ const BeautifulSpaces = (props: Props) => {
             center
             noMargin
           />
-          <div className="grid grid-cols-2 grid-rows-6 gap-2 mt-10 md:grid-rows-5 md:gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-2 grid-rows-6 gap-2 mt-10 lg:grid-rows-5 lg:gap-4 lg:grid-cols-3">
             <div className="row-span-2">
               <ImageCard
                 imgSrc="/v1733216291/spj-v2/home-v3/beautiful_outdoor_space_1_twhozw.webp"
@@ -34,35 +34,35 @@ const BeautifulSpaces = (props: Props) => {
                 first
               />
             </div>
-            <div className="row-span-2 md:row-span-3">
+            <div className="row-span-2 lg:row-span-3">
               <ImageCard
                 imgSrc="/v1733310266/spj-v2/home-v3/licing_room_a_sl6lqm.webp"
                 title="Living Rooms"
                 href="/interior-designs/living-room-ideas"
               />
             </div>
-            <div className="row-span-2 row-start-3 md:row-start-1 md:col-start-3">
+            <div className="row-span-2 row-start-3 lg:row-start-1 lg:col-start-3">
               <ImageCard
                 imgSrc="/v1733216973/spj-v2/home-v3/beautiful_nursery_space_1_vfosjn.webp"
                 title="Nursery Rooms"
                 href="/interior-designs/nursery-ideas"
               />
             </div>
-            <div className="row-span-2 row-start-5 md:row-span-3 md:row-start-3">
+            <div className="row-span-2 row-start-5 lg:row-span-3 lg:row-start-3">
               <ImageCard
                 imgSrc="/v1733312429/spj-v2/home-v3/dining_1_pohj8w.webp"
                 title="Dining Rooms"
                 href="/interior-designs/dining-room-ideas"
               />
             </div>
-            <div className="col-start-2 row-span-2 row-start-3 md:row-span-2 md:row-start-4">
+            <div className="col-start-2 row-span-2 row-start-3 lg:row-span-2 lg:row-start-4">
               <ImageCard
                 imgSrc="/v1733214261/spj-v2/home-v3/beautiful_bedroom_space_zawn04.webp"
                 title="Bedrooms"
                 href="/interior-designs/bedroom-ideas"
               />
             </div>
-            <div className="col-start-2 row-span-2 row-start-5 md:col-start-3 md:row-span-3">
+            <div className="col-start-2 row-span-2 row-start-5 lg:col-start-3 lg:row-span-3">
               <ImageCard
                 imgSrc="/v1737637410/spj-v2/home-v3/5_2_kg6ief.webp"
                 // title="Design Your Room"
@@ -90,10 +90,9 @@ const ImageCard = ({
   const content = (
     <div className="group relative h-full w-full rounded-[1rem] lg:rounded-[2rem] shadow-md overflow-hidden">
       <div
-        // aspect-[1/1.3] sm:aspect-[1/1] md:aspect-[1.5/1]
         className={classNames(
-          'relative h-full w-full group-hover:scale-105 transition-all duration-300 rounded-[1rem] lg:rounded-[2rem]',
-          first ? 'aspect-[1/1.3] md:aspect-[1/1] lg:aspect-[1.5/1]' : ''
+          'relative w-full group-hover:scale-105 transition-all duration-300 rounded-[1rem] lg:rounded-[2rem]',
+          first ? 'aspect-[1.5/1]' : 'h-full'
         )}
       >
         <Image
