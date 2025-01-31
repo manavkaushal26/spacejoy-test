@@ -11,7 +11,7 @@ type Props = {};
 const Faqs = (props: Props) => {
   return (
     <div className="bg-gray-100 bg-pattern">
-      <MaxWidthContainer>
+      <MaxWidthContainer className='py-16 sm:py-24'>
         <div className="lg:grid lg:grid-cols-4 lg:gap-12">
           <div className="col-span-2">
             {/* <HomeSectionTitle className="text-center">

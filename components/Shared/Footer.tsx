@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
         {/* Mobile */}
         <div className="w-full mt-6 md:hidden">
           <Tab.Group>
-            <Tab.List className={`grid grid-cols-3 border-b-2 w-fit mx-auto justify-center`}>
+            <Tab.List className={`grid grid-cols-3 gap-x-6 border-b-2 w-fit mx-auto justify-center`}>
               {spacejoyPromiseData.map((promise) => (
                 <Tab
                   key={promise.title}
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Desktop -> min-width: 768px */}
-        <div className="hidden gap-6 my-5 md:grid md:grid-cols-3">
+        <div className="hidden gap-6 my-10 md:grid md:grid-cols-3">
           {spacejoyPromiseData.map((promise) => (
             <div key={promise.title} className="mt-2">
               <div className="relative flex flex-col py-2 bg-white rounded-lg sm:space-x-3 sm:py-5 justify-left lg:flex-row lg:items-start">

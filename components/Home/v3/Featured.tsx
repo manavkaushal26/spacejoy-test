@@ -7,7 +7,7 @@ import { ScrollTrigger, Tween } from 'react-gsap';
 const Featured: React.FC = () => {
   return (
     <>
-      <MaxWidthContainer className="!pt-0">
+      <MaxWidthContainer className="pt-16 sm:pt-24">
         <SectionHeading title="Your favorite design joints are raving about us" center noMargin />
         <div className="relative z-10 mx-auto mt-10 -mb-56 xl:-mb-72 max-w-7xl">
           <div className="p-4 border rounded-lg shadow-lg xl:p-8 border-gray-130 bg-gradient-to-r from-blue-50 to-pink-50">

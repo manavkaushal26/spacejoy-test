@@ -13,7 +13,7 @@ type Props = {};
 
 const Testimonials = (props: Props) => {
   return (
-    <MaxWidthContainer className="!pt-0">
+    <MaxWidthContainer className="pt-16 sm:pt-24">
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-blue-100 to-blue-300 w-fit">
@@ -148,7 +148,7 @@ const TestimonialCard = ({ data }) => {
           </div>
           <div className="mt-6 lg:mt-8">
             <Link href="/customer-stories" passHref>
-              <a className="flex items-center space-x-2 underline transition-all duration-200 text-zinc-500 group">
+              <a className="flex items-center space-x-2 underline transition-all duration-200 text-spj-red group">
                 <span className="text-sm lg:text-base">See more customer stories</span>
                 <ArrowNarrowRightIcon className="w-3 h-3 transition-all duration-200 transform lg:w-4 lg:h-4 group-hover:translate-x-1" />
               </a>

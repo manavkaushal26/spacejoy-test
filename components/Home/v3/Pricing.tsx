@@ -10,7 +10,7 @@ type Props = {};
 
 const Pricing = (props: Props) => {
   return (
-    <MaxWidthContainer>
+    <MaxWidthContainer className='pt-16 sm:pt-24'>
       <SectionHeading
         // preText="Designs Starting at $49"
         preText={

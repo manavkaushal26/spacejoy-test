@@ -11,7 +11,7 @@ type Props = {};
 
 const Designers = (props: Props) => {
   return (
-    <MaxWidthContainer className="!pt-0">
+    <MaxWidthContainer className="pt-12 sm:pt-20">
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-orange-100 to-orange-300 w-fit">

@@ -13,7 +13,7 @@ const BeautifulSpaces = (props: Props) => {
   return (
     <>
       <div>
-        <MaxWidthContainer>
+        <MaxWidthContainer className='pt-16 sm:pt-24'>
           <SectionHeading
             preText={
               <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-orange-100 to-orange-300 w-fit">

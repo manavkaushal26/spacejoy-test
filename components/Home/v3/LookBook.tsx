@@ -97,7 +97,7 @@ const LookBook = () => {
   };
 
   return (
-    <MaxWidthContainer>
+    <MaxWidthContainer className='pt-16 sm:pt-24'>
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-spj-red/20 to-spj-red/50 w-fit">

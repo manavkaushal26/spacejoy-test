@@ -35,7 +35,7 @@ const Video = () => {
 
   return (
     <div className="bg-[#fff1f2]/50">
-      <MaxWidthContainer className="!pt-0">
+      <MaxWidthContainer className="py-16 sm:py-24">
         <SectionHeading
           preText={
             <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-amber-100 to-amber-300 w-fit">

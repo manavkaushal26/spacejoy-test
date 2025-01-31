@@ -10,7 +10,7 @@ type Props = {};
 const SpacejoyAdvantage = (props: Props) => {
   return (
     <div className="bg-[#fff1f2]/50 bg-pattern">
-      <MaxWidthContainer className="!py-16">
+      <MaxWidthContainer className="py-12 sm:py-16 mt-16 sm:mt-24">
         <SectionHeading title="Get the Spacejoy advantage" center noMargin />
         <div className="block mt-10 lg:hidden">
           {SpjShoppingAdvantage?.map((item, index) => {
