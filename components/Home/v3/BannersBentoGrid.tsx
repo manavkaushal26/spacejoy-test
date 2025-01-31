@@ -20,7 +20,7 @@ const BannersBentoGrid = () => {
   const cloudinaryDefault = cloudinary.baseDeliveryURL + '/fl_lossy,q_auto';
 
   return (
-    <MaxWidthContainer className='pt-16 sm:pt-24'>
+    <MaxWidthContainer className="pt-16 sm:pt-24">
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-indigo-100 to-indigo-300 w-fit">
@@ -81,7 +81,7 @@ const BannersBentoGrid = () => {
                 <div className="relative w-full h-full group">
                   <Image
                     alt="banner 3"
-                    src={cloudinaryDefault + '/w_1200/v1737637422/spj-v2/home-v3/4_1_x4ify5.webp'}
+                    src={cloudinaryDefault + '/w_1200/v1738327906/spj-v2/home-v3/new_banner_1_nyu3wo.webp'}
                     className="object-cover transition-all duration-300 group-hover:scale-105"
                     layout="fill"
                     priority
