@@ -95,7 +95,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }): React.React
           <Provider createStore={createStore}>
             <OfferProvider createStore={createOfferStore}>
               <CommonSEO />
-              <ScamWarningStrip/>
+              {/* <ScamWarningStrip/> */}
               <ThemeProvider theme={{}}>
                 <ShopFilterContextProvider>
                   <SimpleReactLightbox>
