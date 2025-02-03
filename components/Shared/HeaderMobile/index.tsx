@@ -69,7 +69,7 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
         } z-50`}
       >
         <div className="container px-4 mx-auto">
-          <div className="flex items-center h-20 lg:hidden">
+          <div className="flex items-center h-16 lg:hidden">
             <div className="flex items-center flex-grow space-x-3">
               <MenuIcon className="w-6 h-6" onClick={() => setOpen(true)} />
               <div>

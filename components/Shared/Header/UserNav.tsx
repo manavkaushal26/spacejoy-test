@@ -26,7 +26,7 @@ const UserNav = () => {
     return (
       <div className="relative inline-flex">
         <Menu>
-          {mobile ? (
+          {/* {mobile ? (
             <Menu.Button>
               <UserIcon className="w-6 h-6 cursor-pointer" />
             </Menu.Button>
@@ -34,7 +34,10 @@ const UserNav = () => {
             <Menu.Button className="text-gray-700 text-sm py-1.5 ml-2 rounded-lg hover:text-red-500">
               {session?.user?.name} <ChevronDownIcon className="inline w-4 h-4" />
             </Menu.Button>
-          )}
+          )} */}
+          <Menu.Button className="text-gray-700 text-sm py-1.5 ml-2 rounded-lg hover:text-red-500">
+              {session?.user?.name} <ChevronDownIcon className="inline w-4 h-4" />
+            </Menu.Button>
 
           <Transition
             as={Fragment}
