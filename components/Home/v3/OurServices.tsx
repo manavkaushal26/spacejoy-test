@@ -5,7 +5,7 @@ import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline';
 import { LightningBoltIcon } from '@heroicons/react/solid';
 import { cloudinary } from '@utils/config';
-import { classNames, parseHtmlWithDOMParser } from '@utils/helpers';
+import { classNames } from '@utils/helpers';
 import { ourServicesData } from '@utils/Mocks/home-v3/Services';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -87,7 +87,7 @@ const OurServices = () => {
               <LightningBoltIcon className="w-8 h-8 text-rose-500" />
             </div>
           }
-          title="How this Works"
+          title="How Spacejoy Works"
           subTitle="Grab a seat and get cozy, while we take care of the hard part."
           center
           noMargin
@@ -106,7 +106,7 @@ const OurServices = () => {
                     <div className="flex flex-col items-start space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                       <div
                         className={classNames(
-                          'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-3xl md:text-4xl text-spj-red'
+                          'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-3xl text-spj-red'
                         )}
                       >
                         {service.id}
@@ -114,11 +114,11 @@ const OurServices = () => {
                       <div>
                         <div>
                           <h3 className="text-xl font-semibold md:text-2xl text-spj-red">{service.title}</h3>
-                          <p className="text-sm text-gray-500 md:text-base">{service.subTitle}</p>
-                          <div
+                          <p className="max-w-xl mt-2 text-xl">{service.subTitle}</p>
+                          {/* <div
                             className="w-full max-w-full mt-4 text-sm md:max-w-3xl md:text-base"
                             dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(service.description) }}
-                          />
+                          /> */}
                         </div>
                         {/* <div className="mt-5">
                           {service.cta && service.href && service.Icon && (

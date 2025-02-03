@@ -70,12 +70,12 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
       >
         <div className="container px-4 mx-auto">
           <div className="flex items-center h-20 lg:hidden">
-            <div className="flex items-center space-x-3 flex-grow">
+            <div className="flex items-center flex-grow space-x-3">
               <MenuIcon className="w-6 h-6" onClick={() => setOpen(true)} />
               <div>
                 <Link href="/">
                   <a
-                    className="inline-block pr-1 mr-10 rounded-md ring-0 outline-none focus:ring-0 focus:outline-none"
+                    className="inline-block pr-1 mr-10 rounded-md outline-none ring-0 focus:ring-0 focus:outline-none"
                     aria-label="logo"
                     onClick={() => {
                       PushEvent({
@@ -97,7 +97,7 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
             </div>
 
             <div className="flex items-center space-x-6">
-              <div>
+              {/* <div>
                 <Link href="/search" passHref>
                   <a>
                     <span className="sr-only">Search</span>
@@ -106,7 +106,7 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
                     />
                   </a>
                 </Link>
-              </div>
+              </div> */}
               <div>
                 <Link href={`/cart${refSource ? `?ref=${refSource}` : ''}`} passHref>
                   <div className="relative cursor-pointer">
@@ -130,7 +130,7 @@ const HeaderMobile: React.FC<{ mobile: boolean }> = ({ mobile }) => {
         {secondaryHeaderLocations.includes(pathname) && mobile === true && (
           <>
             <div className="min-h-[40px] p-4 bg-gray-100 font-semibold" onClick={() => setCategoriesMenuOpen(true)}>
-              <div className="flex items-center justify-between container px-4 mx-auto">
+              <div className="container flex items-center justify-between px-4 mx-auto">
                 <p>Shop By Categories</p>
                 <span>
                   <ChevronRightIcon className="w-5 h-5" />

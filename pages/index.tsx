@@ -31,11 +31,11 @@ const HomeV3 = () => {
         <BeautifulSpaces />
         <Video />
         <BrandLogosCloud />
+        <Shopping />
         <LookBook />
         <Testimonials />
         <SpacejoyAdvantage />
         <BannersBentoGrid />
-        <Shopping />
         <Featured />
         <Faqs />
         <PreFooter />

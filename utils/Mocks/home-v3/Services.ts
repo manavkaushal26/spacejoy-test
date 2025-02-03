@@ -35,7 +35,7 @@ export const ourServicesData = [
     id: 4,
     title: 'Shop with Confidence',
     subTitle:
-      'Love your design?Shop exclusive boutique brands curated by Spacejoy, handpicked to fit your style and space.',
+      'Love your design? Shop exclusive boutique brands curated by Spacejoy, handpicked to fit your style and space.',
     description:
       '<p>Every detail matters. We source <strong>perfectly curated pieces</strong> that align with your vision, style, and needs. From furniture to décor, our experts ensure each item complements your space beautifully. Let us take the guesswork out of design and deliver a look that feels effortlessly cohesive and uniquely yours.</p>',
     imgSrc: 'v1733307961/spj-v2/home-v3/4_a3ax0a.webp',
