@@ -2,6 +2,7 @@ import BaseCard from '@components/Cards/BaseCard';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import ImageWithDots from '@components/Shared/ImageWithDots';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
+import StartNewProjectButton from '@components/Shared/StartNewProjectButton';
 import { HeartIcon } from '@heroicons/react/solid';
 
 enum WHITE_LABEL_RETAILERS_ENUM {
@@ -97,15 +98,15 @@ const LookBook = () => {
   };
 
   return (
-    <MaxWidthContainer className='pt-16 sm:pt-24'>
+    <MaxWidthContainer className="pt-16 sm:pt-24">
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-spj-red/20 to-spj-red/50 w-fit">
             <HeartIcon className="w-8 h-8 text-rose-500" />
           </div>
         }
-        title="Your dream space? We’ve got the crew for that"
-        subTitle="Stylish finds you can shop instantly"
+        title="Find Your Inspiration"
+        subTitle="Get inspired with design samples from our portfolio, showcasing a variety of styles and personalized spaces."
         center
         noMargin
       />
@@ -114,6 +115,7 @@ const LookBook = () => {
           <ImageWithDots designData={designData} />
         </BaseCard>
       </div>
+      <StartNewProjectButton className="mt-10" center />
     </MaxWidthContainer>
   );
 };

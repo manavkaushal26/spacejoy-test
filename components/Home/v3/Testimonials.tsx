@@ -49,8 +49,8 @@ const Testimonials = (props: Props) => {
             return <TestimonialCard data={item} key={item?.id} />;
           })}
         </Slider>
-        <ShinyButton href="/customer-stories" showArrow className="mx-auto mt-10">
-          See more customer stories
+        <ShinyButton href="/customer-stories" showArrow className="mx-auto mt-6 md:mt-10">
+          More Customer Stories
         </ShinyButton>
       </div>
     </MaxWidthContainer>

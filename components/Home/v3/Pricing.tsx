@@ -19,8 +19,8 @@ const Pricing = (props: Props) => {
             <CurrencyDollarIcon className="w-8 h-8 text-emerald-500" />
           </div>
         }
-        title="Transparent Pricing"
-        subTitle="An investment in a home you’ll love for years to come"
+        title="Transparent pricing. Designed for you."
+        subTitle="Great design should be accessible. Choose from our flexible design packages, each tailored to your needs"
         center
         noMargin
       />
@@ -43,10 +43,7 @@ const Pricing = (props: Props) => {
                         ${item.salePrice.value}
                         <small className="text-gray-500 md:text-2xl"> / room</small>
                       </h2>
-                      {/* <div
-                    className="text-gray-500"
-                    dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(item.saleDescription) }}
-                  /> */}
+                      <p className="text-gray-500">{item.description}</p>
                     </div>
 
                     <div className="h-px bg-gray-300" />
@@ -66,7 +63,7 @@ const Pricing = (props: Props) => {
           })}
         </div>
 
-        <ShinyButton href="/pricing" showArrow className="mx-auto mt-10">
+        <ShinyButton href="/pricing" showArrow className="mx-auto mt-6 md:mt-10">
           See Pricing
         </ShinyButton>
       </div>

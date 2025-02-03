@@ -17,9 +17,7 @@ import PreFooter from '@components/Shared/PreFooter';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
 import { HomePageSEO } from '@utils/SEO';
 
-type Props = {};
-
-const HomeV3 = (props: Props) => {
+const HomeV3 = () => {
   return (
     <Layout>
       <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
@@ -27,17 +25,17 @@ const HomeV3 = (props: Props) => {
       <Layout.Header />
       <Layout.Body>
         <Hero />
-        <BeautifulSpaces />
-        <OurServices type="carousel" />
-        <Video />
+        <Designers />
+        <OurServices />
         <Pricing />
+        <BeautifulSpaces />
+        <Video />
         <BrandLogosCloud />
         <LookBook />
         <Testimonials />
         <SpacejoyAdvantage />
         <BannersBentoGrid />
         <Shopping />
-        <Designers />
         <Featured />
         <Faqs />
         <PreFooter />

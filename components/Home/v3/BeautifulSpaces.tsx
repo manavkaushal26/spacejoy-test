@@ -1,3 +1,4 @@
+import ShinyButton from '@components/Button/ShinyButton';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowRightIcon } from '@heroicons/react/outline';
@@ -20,8 +21,8 @@ const BeautifulSpaces = (props: Props) => {
                 <HomeIcon className="w-8 h-8 text-orange-500" />
               </div>
             }
-            title="Inspiration to Elevate your Home"
-            subTitle="From a corner to a whole room, see how our customers have transformed their homes"
+            title="Explore spaces we've designed"
+            subTitle="See real projects come to life"
             center
             noMargin
           />
@@ -70,6 +71,9 @@ const BeautifulSpaces = (props: Props) => {
               />
             </div>
           </div>
+          <ShinyButton href="/interior-designs" className="mx-auto mt-6 md:mt-10" showRing showArrow>
+            Explore Design Ideas
+          </ShinyButton>
         </MaxWidthContainer>
       </div>
     </>

@@ -63,9 +63,12 @@ const BrandLogosCloud = () => {
 
   return (
     <div className="bg-gray-500/5 bg-pattern">
-      <MaxWidthContainer className="py-12 sm:py-16 mt-16 sm:mt-24">
-        <p className="mb-10 text-base font-semibold text-center capitalize lg:text-xl lg:mx-auto">
-          Boutique brands curated just for you
+      <MaxWidthContainer className="py-12 sm:py-16">
+        <p className="text-base font-semibold text-center capitalize lg:text-xl lg:mx-auto">
+          Introducing Spacejoy Boutique Brands
+        </p>
+        <p className="max-w-4xl mb-10 text-sm text-center text-gray-500 lg:text-lg lg:mx-auto">
+          We partner with high-quality brands to bring you exclusive furniture and decor that match your unique style.
         </p>
         <Slider {...settings}>
           {whiteLabelBrandLogos.map((logo) => (

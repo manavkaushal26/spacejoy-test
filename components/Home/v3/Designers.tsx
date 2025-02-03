@@ -1,25 +1,23 @@
-import ShinyButton from '@components/Button/ShinyButton';
 import Slider from '@components/Carousel';
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
+import StartNewProjectButton from '@components/Shared/StartNewProjectButton';
 import { UsersIcon } from '@heroicons/react/solid';
-import { cloudinary, oldSpacejoyUrl } from '@utils/config';
+import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import { default as designTeamData } from '../../../mocks/DesignTeamData';
 
-type Props = {};
-
-const Designers = (props: Props) => {
+const Designers = () => {
   return (
-    <MaxWidthContainer className="pt-12 sm:pt-20">
+    <MaxWidthContainer className="pt-16 sm:pt-24">
       <SectionHeading
         preText={
           <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-orange-100 to-orange-300 w-fit">
             <UsersIcon className="w-8 h-8 text-orange-500" />
           </div>
         }
-        title="The best design crew is waiting to work with you"
-        subTitle="Let our experts design a space you'll love with products you can shop right away on Spacejoy!"
+        title="You're in skilled hands. Meet your designers."
+        subTitle="Experts at creating stunning, functional spaces tailored for you. With an eye for detail and a deep understanding of style, they transform your vision into a beautifully designed reality."
         center
         noMargin
       />
@@ -68,11 +66,11 @@ const Designers = (props: Props) => {
                       </p>
                       <p className="mt-4 text-base md:text-xl text-zinc-700">{d.desc}</p>
                     </div>
-                    <div>
+                    {/* <div>
                       <ShinyButton href={oldSpacejoyUrl + '/new-project'} target="_blank" showArrow showRing>
                         Hire {d.firstName}
                       </ShinyButton>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -80,6 +78,7 @@ const Designers = (props: Props) => {
           </Slider>
         }
       </div>
+      <StartNewProjectButton className="mt-6 md:mt-10" center />
     </MaxWidthContainer>
   );
 };

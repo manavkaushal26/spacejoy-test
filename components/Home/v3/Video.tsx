@@ -1,5 +1,6 @@
 import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
+import StartNewProjectButton from '@components/Shared/StartNewProjectButton';
 import { LightBulbIcon } from '@heroicons/react/solid';
 import Icons from '@utils/Mocks/Icons';
 import { gsap } from 'gsap';
@@ -34,16 +35,16 @@ const Video = () => {
   }, [isPlaying]);
 
   return (
-    <div className="bg-[#fff1f2]/50">
-      <MaxWidthContainer className="py-16 sm:py-24">
+    <div className="bg-[#fff1f2]/50 mt-16 sm:mt-24">
+      <MaxWidthContainer className="py-12 sm:py-20">
         <SectionHeading
           preText={
             <div className="p-2 mx-auto rounded-full bg-gradient-to-b from-amber-100 to-amber-300 w-fit">
               <LightBulbIcon className="w-8 h-8 text-amber-500" />
             </div>
           }
-          title="We'll get your style just right"
-          subTitle="Rest easy and enjoy your new, elevated space"
+          title="Watch how Spacejoy works"
+          subTitle="From consultation to final transformation"
           center
           noMargin
         />
@@ -79,6 +80,7 @@ const Video = () => {
             </div>
           )}
         </div>
+        <StartNewProjectButton className="mt-6 md:mt-10" center />
       </MaxWidthContainer>
     </div>
   );

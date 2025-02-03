@@ -10,8 +10,8 @@ type Props = {};
 const SpacejoyAdvantage = (props: Props) => {
   return (
     <div className="bg-[#fff1f2]/50 bg-pattern">
-      <MaxWidthContainer className="py-12 sm:py-16 mt-16 sm:mt-24">
-        <SectionHeading title="Get the Spacejoy advantage" center noMargin />
+      <MaxWidthContainer className="py-12 mt-12 sm:py-16 sm:mt-20">
+        <SectionHeading title="Why Trust Spacejoy?" center noMargin />
         <div className="block mt-10 lg:hidden">
           {SpjShoppingAdvantage?.map((item, index) => {
             return (
@@ -32,7 +32,7 @@ const SpacejoyAdvantage = (props: Props) => {
             );
           })}
         </div>
-        <div className="hidden max-w-6xl mx-auto mt-10 lg:block">
+        <div className="hidden mx-auto mt-10 max-w-7xl lg:block">
           <div className="grid grid-cols-4 gap-8">
             {SpjShoppingAdvantage?.map((item, index) => {
               return (
