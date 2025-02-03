@@ -72,7 +72,7 @@ export const Hero = (props: Props) => {
           </MaxWidthContainer>
         </ImagesSlider>
       </div>
-      <div className="block md:hidden aspect-[1.375/1]">
+      <div className="block md:hidden aspect-[1.5/1]">
         <ImagesSlider images={backgrounds} overlay={false} initialIndex={currentIndex}>
           <div />
         </ImagesSlider>
