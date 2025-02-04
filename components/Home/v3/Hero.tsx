@@ -19,18 +19,26 @@ const words = ['Cozy Spaces', 'Living Rooms', 'Bedrooms', 'Dining Rooms', 'Nurse
 //   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732521852/spj-v2/home-v3/hero_bg_zab1qe.webp',
 //   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732109954/spj-v2/home-v3/hero_bg_1_muwmcz.webp',
 // ];
+// const backgrounds = [
+//   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732109954/spj-v2/home-v3/hero_bg_1_muwmcz.webp',
+//   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732521852/spj-v2/home-v3/hero_bg_zab1qe.webp',
+//   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737718726/spacejoy-v3/home/bedroom_hero_2_mbhenx.webp',
+//   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737717654/spacejoy-v3/home/dining_hero_cinknk.webp',
+//   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737713903/spacejoy-v3/home/kids_room_hero_mvscll.webp',
+//   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737717420/spacejoy-v3/home/home_office_hero_gpdsol.webp',
+// ];
 const backgrounds = [
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732109954/spj-v2/home-v3/hero_bg_1_muwmcz.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732521852/spj-v2/home-v3/hero_bg_zab1qe.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737718726/spacejoy-v3/home/bedroom_hero_2_mbhenx.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737717654/spacejoy-v3/home/dining_hero_cinknk.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737713903/spacejoy-v3/home/kids_room_hero_mvscll.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737717420/spacejoy-v3/home/home_office_hero_gpdsol.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1738654291/spacejoy-Z3uSM5GVpFc-unsplash_uehltg.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1738669997/spacejoy-WQ35C1ZqCPk-unsplash_k9fhcc.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1738654411/spacejoy-M95SWsUIXTE-unsplash_fhfnrf.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1738654189/photo-1633505412556-82c0921e8f4a_mjtb1q.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1738655705/image_r6rxvh.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1738655465/spacejoy-fkOURiFtFCk-unsplash_bqy97c.webp',
 ];
 
 const backgroundsMobile = [
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738654291/spacejoy-Z3uSM5GVpFc-unsplash_uehltg.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738645024/photo-1631510083755-11ecb5172d81_jkks2p.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738669997/spacejoy-WQ35C1ZqCPk-unsplash_k9fhcc.webp',
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738654411/spacejoy-M95SWsUIXTE-unsplash_fhfnrf.webp',
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738654189/photo-1633505412556-82c0921e8f4a_mjtb1q.webp',
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738655705/image_r6rxvh.webp',
@@ -71,7 +79,7 @@ export const Hero = () => {
                   showRing={false}
                   className="w-full px-5 py-2.5 xl:w-fit font-semibold"
                 >
-                  Design My Room
+                  Design Your Room
                 </ShinyButton>
               </div>
               <p>
@@ -105,7 +113,7 @@ export const Hero = () => {
                 showRing={false}
                 className="w-full px-5 py-2.5 xl:w-fit font-semibold"
               >
-                Design My Room
+                Design Your Room
               </ShinyButton>
             </div>
             <p>

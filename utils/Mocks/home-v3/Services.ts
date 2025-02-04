@@ -1,4 +1,4 @@
-import { oldSpacejoyUrl } from '@utils/config';
+import { newSpacejoyStoreUrl, oldSpacejoyUrl } from '@utils/config';
 
 export const ourServicesData = [
   {
@@ -7,8 +7,8 @@ export const ourServicesData = [
     subTitle: 'Tell us about your space and share your preferences.',
     description:
       '<p>Your space should reflect you. Through personalized consultations, we’ll uncover your unique style, whether <strong>modern</strong>, <strong>classic</strong>, or <strong>anything in between</strong>. Let us turn your ideas into a space that feels just right—beautiful, personal, and perfectly tailored for you.</p>',
-    imgSrc: 'v1733307960/spj-v2/home-v3/1_cbioat.webp',
-    cta: 'Style Quiz',
+    imgSrc: 'v1738662541/spj-v2/home-v3/1_m46l36.webp',
+    cta: 'Take The Quiz',
     href: `${oldSpacejoyUrl}/style-quiz`,
   },
   {
@@ -17,9 +17,9 @@ export const ourServicesData = [
     subTitle: "They'll handle everything—from designing a space you'll love to curating furniture.",
     description:
       '<p>Our online interior design service makes great design accessible to everyone—no hefty price tags, no hassle. We’ve carefully selected top designers from across the country, each ready to bring their creative best to your project. Once we understand your style and needs, we’ll pair you with a designer who will guide you from concept to completion. Our cutting-edge design tools make it easy to bring your vision to life, all while staying affordable and effortless.</p>',
-    imgSrc: 'v1733307960/spj-v2/home-v3/2_cdasco.webp',
-    cta: 'Design My Room',
-    href: `${oldSpacejoyUrl}/new-project?quiz=start&plan=bliss`,
+    imgSrc: 'v1738662541/spj-v2/home-v3/2_t6hlxv.webp',
+    cta: 'Explore Designers Now',
+    href: '/designers',
   },
   {
     id: 3,
@@ -27,9 +27,9 @@ export const ourServicesData = [
     subTitle: 'Get a fully interactive 3D design of your space with furniture and decor selected just for you.',
     description:
       '<p>Your inspiration deserves to shine. We transform your <strong>ideas</strong> into a seamless, cohesive design that reflects your vision. From initial concepts to final touches, our team ensures every detail aligns with your style and goals. Let us bring your dream space to life with creativity and precision.</p>',
-    imgSrc: 'v1733307961/spj-v2/home-v3/3_leqrqx.webp',
-    cta: 'Design My Room',
-    href: `${oldSpacejoyUrl}/new-project?quiz=start&plan=bliss`,
+    imgSrc: 'v1738662541/spj-v2/home-v3/3_b7dh9w.webp',
+    cta: 'Explore Designs Now',
+    href: '/interior-designs',
   },
   {
     id: 4,
@@ -38,9 +38,9 @@ export const ourServicesData = [
       'Love your design? Shop exclusive boutique brands curated by Spacejoy, handpicked to fit your style and space.',
     description:
       '<p>Every detail matters. We source <strong>perfectly curated pieces</strong> that align with your vision, style, and needs. From furniture to décor, our experts ensure each item complements your space beautifully. Let us take the guesswork out of design and deliver a look that feels effortlessly cohesive and uniquely yours.</p>',
-    imgSrc: 'v1733307961/spj-v2/home-v3/4_a3ax0a.webp',
-    cta: 'Design My Room',
-    href: `${oldSpacejoyUrl}/new-project?quiz=start&plan=bliss`,
+    imgSrc: 'v1738662541/spj-v2/home-v3/4_wjlstg.webp',
+    cta: 'Start Exploring Store',
+    href: newSpacejoyStoreUrl,
   },
   // {
   //   id: 5,

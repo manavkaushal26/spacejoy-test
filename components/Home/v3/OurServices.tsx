@@ -15,11 +15,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import styled from 'styled-components';
 
-export const SampleImageStyled = styled.div`
-  position: relative;
-  margin-bottom: 2rem;
-`;
-
 export const ImageWrapperStyled = styled.div`
   position: absolute;
   width: 100%;
@@ -36,9 +31,6 @@ export const ImageWrapperStyled = styled.div`
   &.inactive {
     opacity: 0;
     transform: scale(0.95);
-  }
-  @media (max-width: 576px) {
-    margin-top: 0;
   }
 `;
 
@@ -92,9 +84,12 @@ const OurServices = () => {
           center
           noMargin
         />
-        <BaseCard className="px-4 py-8 sm:px-8 sm:py-12" containerClassName="mt-12 overflow-visible">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-40">
-            <div className="order-2 -mt-16 sm:mt-0 lg:order-1 lg:col-span-2 slider-container">
+        <BaseCard
+          className="!p-0"
+          containerClassName="mt-12 overflow-hidden rounded-[0.5rem] md:rounded-[1rem] border-none"
+        >
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 relative">
+            <div className="order-2 lg:order-1 px-4 py-8 sm:px-6 sm:py-12 lg:py-16">
               <Slider
                 ref={(slider) => {
                   sliderRef.current = slider;
@@ -103,34 +98,32 @@ const OurServices = () => {
               >
                 {ourServicesData.map((service) => (
                   <div key={service.id} className="relative">
-                    <div className="flex flex-col items-start space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-                      <div
-                        className={classNames(
-                          'p-4 px-6 font-bold rounded-full w-fit bg-spj-red/5 text-3xl text-spj-red'
-                        )}
-                      >
-                        {service.id}
+                    <div className="relative aspect-[1.61/1] lg:hidden rounded-[0.5rem] overflow-hidden">
+                      <Image
+                        src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_1000,e_sharpen/${service.imgSrc}`}
+                        alt={service.title}
+                        layout="fill"
+                      />
+                    </div>
+                    <div className="flex flex-col items-start space-y-4 md:flex-row md:space-y-0 md:space-x-4 mt-8 lg:mt-0">
+                      <div className="flex items-center space-x-4">
+                        <div
+                          className={classNames(
+                            'w-10 h-10 md:w-16 md:h-16 font-bold rounded-full flex items-center justify-center bg-spj-red/5 text-3xl text-spj-red'
+                          )}
+                        >
+                          {service.id}
+                        </div>
+                        <h3 className="md:hidden text-xl font-semibold md:text-2xl text-spj-red">{service.title}</h3>
                       </div>
+
                       <div>
                         <div>
-                          <h3 className="text-xl font-semibold md:text-2xl text-spj-red">{service.title}</h3>
+                          <h3 className="text-xl font-semibold md:text-2xl text-spj-red hidden md:block">
+                            {service.title}
+                          </h3>
                           <p className="max-w-xl mt-2 text-xl">{service.subTitle}</p>
-                          {/* <div
-                            className="w-full max-w-full mt-4 text-sm md:max-w-3xl md:text-base"
-                            dangerouslySetInnerHTML={{ __html: parseHtmlWithDOMParser(service.description) }}
-                          /> */}
                         </div>
-                        {/* <div className="mt-5">
-                          {service.cta && service.href && service.Icon && (
-                            <Link href={service.href} passHref>
-                              <a target="_blank" rel="noopener noreferrer">
-                                <Button size="sm">
-                                  {service.cta} <service.Icon className="w-4 h-4" />
-                                </Button>
-                              </a>
-                            </Link>
-                          )}
-                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -141,7 +134,7 @@ const OurServices = () => {
                 <div className="pl-0 mt-6 md:mt-10 md:pl-20">
                   <Link href={getCTAHref(currentIndex)} passHref>
                     <a target="_blank" rel="noopener noreferrer">
-                      <Button>
+                      <Button size="md" className="text-sm hover:opacity-90 transition-all duration-200">
                         {getCTAText(currentIndex)} <ArrowRightIcon className="w-4 h-4" />
                       </Button>
                     </a>
@@ -160,27 +153,26 @@ const OurServices = () => {
               </div>
             </div>
 
-            <div className="order-1 lg:justify-center lg:flex lg:order-2">
-              <SampleImageStyled className="h-[250px]">
-                {ourServicesData.map((service, i) => (
-                  <ImageWrapperStyled
-                    key={`image-${service.id}`}
-                    className={classNames(
-                      currentIndex && currentIndex === service.id ? 'active' : 'inactive',
-                      'w-full lg:right-80 lg:-top-20'
-                    )}
-                  >
-                    <div className="relative w-full max-w-sm md:max-w-none md:w-[530px] mx-auto aspect-[1.6/1]">
-                      <Image
-                        src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_1000,e_sharpen/${service.imgSrc}`}
-                        alt={service.title}
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </div>
-                  </ImageWrapperStyled>
-                ))}
-              </SampleImageStyled>
+            <div className="order-1 w-full lg:order-2 relative lg:block hidden">
+              {ourServicesData.map((service, i) => (
+                <ImageWrapperStyled
+                  key={`image-${service.id}`}
+                  className={classNames(
+                    currentIndex && currentIndex === service.id ? 'active' : 'inactive',
+                    'w-full aspect-[1.5/1]'
+                  )}
+                >
+                  <div className="relative w-full mx-auto h-full">
+                    <Image
+                      src={`${cloudinary.baseDeliveryURL}/fl_lossy,q_auto,w_1000,e_sharpen/${service.imgSrc}`}
+                      alt={service.title}
+                      layout="fill"
+                      objectFit="contain"
+                      className="rounded-r-[0.5rem] md:rounded-r-[1rem]"
+                    />
+                  </div>
+                </ImageWrapperStyled>
+              ))}
             </div>
           </div>
         </BaseCard>

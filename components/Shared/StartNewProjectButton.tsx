@@ -9,7 +9,7 @@ type StartNewProjectButtonProps = {
 };
 
 const StartNewProjectButton = ({
-  cta = 'Design My Room',
+  cta = 'Design Your Room',
   center = false,
   className = '',
 }: StartNewProjectButtonProps) => {
