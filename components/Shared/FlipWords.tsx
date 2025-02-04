@@ -17,10 +17,12 @@ const FlipWords = ({
         initial={{
           opacity: 0,
           y: 10,
+          position: 'absolute',
         }}
         animate={{
           opacity: 1,
           y: 0,
+          position: 'relative',
         }}
         transition={{
           type: 'spring',
@@ -30,13 +32,13 @@ const FlipWords = ({
         }}
         exit={{
           opacity: 0,
-          y: -20,
-          x: 20,
+          y: -10,
+          x: 10,
           filter: 'blur(8px)',
-          scale: 1.2,
+          scale: 1.5,
           position: 'absolute',
         }}
-        className={classNames('z-10 relative inline-block text-left text-neutral-900 dark:text-neutral-100', className)}
+        className={classNames('z-10 inline-block text-left text-neutral-900 dark:text-neutral-100', className)}
         key={words[currentIndex]}
       >
         {words[currentIndex].split(' ').map((word, wordIndex) => (

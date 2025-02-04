@@ -88,10 +88,11 @@ export const Hero = () => {
         </ImagesSlider>
         <MaxWidthContainer>
           <div className="flex flex-col justify-center w-full py-8 space-y-4 text-foreground">
-            <div className="text-[1.8rem] !leading-[1.2] md:text-4xl lg:text-[2.75rem] font-semibold">
+            <div className="text-[2rem] !leading-[1.2] md:text-4xl lg:text-[2.75rem] font-semibold">
               We Design
               <br />
               <FlipWords words={words} className="!text-spj-red" currentIndex={currentIndex} />
+              {/* <span className="text-spj-red">Living Rooms</span> */}
             </div>
             <p className="mt-2 font-medium md:text-lg">
               Personalized 3D designs, one-on-one designer collaboration, and handpicked furniture that fits your style
