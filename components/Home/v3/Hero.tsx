@@ -54,7 +54,7 @@ export const Hero = () => {
       <div className="hidden md:block h-[calc(100vh-175px)] min-h-[600px]">
         <ImagesSlider images={backgrounds} overlay={false} initialIndex={currentIndex}>
           <MaxWidthContainer className="absolute inset-0 flex flex-col justify-center font-normal !py-0 z-50">
-            <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[40%] space-y-4 text-foreground bg-white bg-clip-padding backdrop-filter backdrop-blur-lg md:backdrop-blur-sm bg-opacity-50 px-10 py-16 rounded-[1rem] md:rounded-none md:py-0 md:h-full flex flex-col justify-center">
+            <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[40%] space-y-4 text-foreground bg-white bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-75 px-10 py-16 rounded-[1rem] md:rounded-none md:py-0 md:h-full flex flex-col justify-center">
               <div className="text-[2rem] font-light !leading-[1.2] md:text-4xl lg:text-[2.75rem]">
                 We Design
                 <br />
@@ -87,8 +87,8 @@ export const Hero = () => {
           <div />
         </ImagesSlider>
         <MaxWidthContainer>
-          <div className="flex flex-col justify-center w-full px-4 py-8 space-y-4 text-foreground">
-            <div className="text-[2rem] !leading-[1.2] md:text-4xl lg:text-[2.75rem] font-semibold">
+          <div className="flex flex-col justify-center w-full py-8 space-y-4 text-foreground">
+            <div className="text-[1.8rem] !leading-[1.2] md:text-4xl lg:text-[2.75rem] font-semibold">
               We Design
               <br />
               <FlipWords words={words} className="!text-spj-red" currentIndex={currentIndex} />

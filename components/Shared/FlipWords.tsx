@@ -30,10 +30,10 @@ const FlipWords = ({
         }}
         exit={{
           opacity: 0,
-          y: -40,
-          x: 40,
+          y: -20,
+          x: 20,
           filter: 'blur(8px)',
-          scale: 1.5,
+          scale: 1.2,
           position: 'absolute',
         }}
         className={classNames('z-10 relative inline-block text-left text-neutral-900 dark:text-neutral-100', className)}

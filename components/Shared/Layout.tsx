@@ -16,7 +16,7 @@ Layout.Banner = () => <Banner />;
 
 Layout.Header = () => <Header />;
 
-Layout.Body = ({ children }) => <main id="main" className='overflow-x-hidden'>{children}</main>;
+Layout.Body = ({ children }) => <main id="main">{children}</main>;
 
 Layout.Footer = () => <Footer />;
 
