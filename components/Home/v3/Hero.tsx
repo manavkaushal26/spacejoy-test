@@ -8,7 +8,7 @@ import { ImagesSlider } from './ImagesSlider';
 type Props = {};
 
 // const words = ["Kid's Room", 'Entryway', 'Dining Room', 'Home Office', 'Bedroom', 'Living Room', 'Imagination'];
-const words = ['Cozy Spaces', 'Living Rooms', 'Bedrooms', 'Dining Rooms', 'Nursery'];
+const words = ['Cozy Spaces', 'Living Rooms', 'Bedrooms', 'Dining Rooms', 'Nursery', 'Office Spaces'];
 
 // const backgrounds = [
 //   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737713903/spacejoy-v3/home/kids_room_hero_mvscll.webp',
@@ -22,12 +22,22 @@ const words = ['Cozy Spaces', 'Living Rooms', 'Bedrooms', 'Dining Rooms', 'Nurse
 const backgrounds = [
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732109954/spj-v2/home-v3/hero_bg_1_muwmcz.webp',
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1732521852/spj-v2/home-v3/hero_bg_zab1qe.webp',
-  'https://res.cloudinary.com/spacejoy/image/upload/v1737718726/spacejoy-v3/home/bedroom_hero_2_mbhenx.jpg',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737718726/spacejoy-v3/home/bedroom_hero_2_mbhenx.webp',
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737717654/spacejoy-v3/home/dining_hero_cinknk.webp',
   'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737713903/spacejoy-v3/home/kids_room_hero_mvscll.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,e_sharpen/v1737717420/spacejoy-v3/home/home_office_hero_gpdsol.webp',
 ];
 
-export const Hero = (props: Props) => {
+const backgroundsMobile = [
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738654291/spacejoy-Z3uSM5GVpFc-unsplash_uehltg.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738645024/photo-1631510083755-11ecb5172d81_jkks2p.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738654411/spacejoy-M95SWsUIXTE-unsplash_fhfnrf.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738654189/photo-1633505412556-82c0921e8f4a_mjtb1q.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738655705/image_r6rxvh.webp',
+  'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_645/v1738655465/spacejoy-fkOURiFtFCk-unsplash_bqy97c.webp',
+];
+
+export const Hero = () => {
   const duration = 5000;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -73,15 +83,15 @@ export const Hero = (props: Props) => {
         </ImagesSlider>
       </div>
       <div className="block md:hidden aspect-[1.8/1]">
-        <ImagesSlider images={backgrounds} overlay={false} initialIndex={currentIndex}>
+        <ImagesSlider images={backgroundsMobile} overlay={false} initialIndex={currentIndex}>
           <div />
         </ImagesSlider>
         <MaxWidthContainer>
           <div className="flex flex-col justify-center w-full px-4 py-8 space-y-4 text-foreground">
-            <div className="text-[2rem] font-light !leading-[1.2] md:text-4xl lg:text-[2.75rem]">
+            <div className="text-[2rem] !leading-[1.2] md:text-4xl lg:text-[2.75rem] font-semibold">
               We Design
               <br />
-              <FlipWords words={words} className="font-semibold !text-spj-red" currentIndex={currentIndex} />
+              <FlipWords words={words} className="!text-spj-red" currentIndex={currentIndex} />
             </div>
             <p className="mt-2 font-medium md:text-lg">
               Personalized 3D designs, one-on-one designer collaboration, and handpicked furniture that fits your style

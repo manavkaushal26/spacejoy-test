@@ -33,13 +33,10 @@ const FlipWords = ({
           y: -40,
           x: 40,
           filter: 'blur(8px)',
-          scale: 2,
+          scale: 1.5,
           position: 'absolute',
         }}
-        className={classNames(
-          'z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100',
-          className
-        )}
+        className={classNames('z-10 relative inline-block text-left text-neutral-900 dark:text-neutral-100', className)}
         key={words[currentIndex]}
       >
         {words[currentIndex].split(' ').map((word, wordIndex) => (
