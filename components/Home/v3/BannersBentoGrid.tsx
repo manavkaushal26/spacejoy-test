@@ -32,7 +32,7 @@ const BannersBentoGrid = () => {
         center
       />
       <div className="grid grid-cols-6 grid-rows-2 gap-4 mt-10">
-        <div className="h-48 col-span-6 group md:col-span-4 lg:h-full">
+        <div className="w-full h-full aspect-[2.48/1] col-span-6 group md:col-span-4">
           <div className="overflow-hidden rounded-xl max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
@@ -46,7 +46,7 @@ const BannersBentoGrid = () => {
             </div>
           </div>
         </div>
-        <div className="h-48 col-span-6 group md:col-span-2 lg:h-full">
+        <div className="w-full h-full aspect-[2.48/1] col-span-6 group md:col-span-2">
           <div className="overflow-hidden rounded-xl lg:rounded-tr-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
@@ -60,7 +60,7 @@ const BannersBentoGrid = () => {
             </div>
           </div>
         </div>
-        <div className="h-48 col-span-6 group md:col-span-2 lg:h-full">
+        <div className="w-full h-full aspect-[2.48/1] col-span-6 group md:col-span-2">
           <div className="overflow-hidden rounded-xl lg:rounded-bl-[2rem] h-full shadow-md transition-all duration-200">
             <div className="relative w-full h-full group">
               <Image
@@ -74,14 +74,14 @@ const BannersBentoGrid = () => {
             </div>
           </div>
         </div>
-        <div className="h-48 col-span-6 group md:col-span-4 lg:h-96">
+        <div className="w-full h-full aspect-[2.48/1] col-span-6 group md:col-span-4">
           <div className="overflow-hidden rounded-xl max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] h-full shadow-md transition-all duration-200">
             <Link href={`${oldSpacejoyUrl}/new-project`} passHref>
               <a target="_blank" rel="noopener noreferrer">
                 <div className="relative w-full h-full group">
                   <Image
                     alt="banner 3"
-                    src={cloudinaryDefault + '/w_1200/v1738925081/spj-v2/valentine_day_web_banner_ijhr7z.webp'}
+                    src={cloudinaryDefault + '/w_1500/v1738936176/new_web_vdniar.webp'}
                     className="object-cover transition-all duration-300 group-hover:scale-105"
                     layout="fill"
                     priority

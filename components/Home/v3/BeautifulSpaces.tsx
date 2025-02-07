@@ -65,7 +65,7 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="col-start-2 row-span-2 row-start-5 md:col-start-3 md:row-span-3">
               <ImageCard
-                imgSrc="/v1738925081/spj-v2/new_web_500_x_500_px_nw14th.webp"
+                imgSrc="/v1738936175/new_web_500_x_500_px_fjy0hu.webp"
                 // title="Design Your Room"
                 href={`${oldSpacejoyUrl}/new-project`}
               />
