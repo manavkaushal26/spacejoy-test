@@ -29,7 +29,7 @@ const SpacejoyShoppingCreditPolicy = (props: Props) => {
             <li className="mb-4">
               <p>
                 <em>
-                  A minimum order value of <b>$1,500</b> is required to utilize the Shopping Credit.
+                  A minimum order value of <b>$2,000</b> is required to utilize the Shopping Credit.
                 </em>
               </p>
             </li>
