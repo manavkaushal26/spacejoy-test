@@ -3,7 +3,6 @@ import SectionHeading from '@components/EcommercePage/SectionHeading';
 import MaxWidthContainer from '@components/Shared/MaxWidthContainer';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { HomeIcon } from '@heroicons/react/solid';
-import { oldSpacejoyUrl } from '@utils/config';
 import { classNames } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -65,9 +64,9 @@ const BeautifulSpaces = (props: Props) => {
             </div>
             <div className="col-start-2 row-span-2 row-start-5 md:col-start-3 md:row-span-3">
               <ImageCard
-                imgSrc="/v1739623047/spj-v2/photo_2025-02-15_18-04-40_ashhuv.webp"
-                // title="Design Your Room"
-                href={`${oldSpacejoyUrl}/new-project`}
+                imgSrc="/v1733310175/spj-v2/home-v3/home_office_a_kfh106.webp"
+                title="Home Offices"
+                href="/interior-designs/home-office-ideas"
               />
             </div>
           </div>
